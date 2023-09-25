@@ -1,2 +1,2 @@
 # R3.01_Projet
-Caron Pierrick, Carvajal Tom, Ferrier Killian, Nardi Fabio, ... Vanessa  
+Caron Pierrick, Carvajal Tom, Ferrier Killian, Nardi Fabio, GUIL Vanessa  
