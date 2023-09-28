@@ -1,0 +1,36 @@
+.navbar{
+    padding-inline: 10em;
+}
+.navbar-top{
+    background-color: var(--bs-header-color)!important;
+}
+.navbar-bottom{
+    padding-block: 0;
+    padding-inline: 11em;
+    font-size: 14px;
+}
+.navbar-brand{
+    padding: 0;
+}
+
+.responsive-menu{
+    flex-direction: initial!important;
+    justify-content: center;
+    margin-block: 0.2em;
+}
+
+.form-control{
+    border-radius: 5em;
+}
+
+.menu-img{
+    margin-left: 0.8em;
+}
+
+
+
+@media (max-width: 660px) {
+    .navbar{
+        padding-inline: 2em;
+    }
+}
