@@ -1,4 +1,4 @@
 <?php
-require "views/main.php";
+include "views/main.php";
 echo test
 ?>
