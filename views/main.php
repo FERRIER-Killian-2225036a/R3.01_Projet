@@ -9,8 +9,9 @@
         <link rel="icon" href="/media/public_assets/favicon.png">
     </head>
     <body>
-        <?php require "views/common/header.php";
-        require "./../common_scripts/general_scripts.php";
+        <?php 
+            require "views/common/header.php";
+            require "/../common_scripts/general_scripts.php";
         ?>
     </body>
 </html>
