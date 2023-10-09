@@ -1,4 +1,4 @@
 <?php
 require "views/main.php";
-echo test
+echo "<p>test</p>"
 ?>
