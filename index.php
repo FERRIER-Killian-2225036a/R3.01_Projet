@@ -1,7 +1,7 @@
 <?php
 // Ce fichier est le point d'entrée de votre application
 
-    require 'core/autoLoad.php';
+    require 'core/AutoLoad.php';
     /*
      url pour notre premier test MVC Hello World,
      nous n'avons pas d'action précisée on visera celle par défaut
@@ -28,14 +28,14 @@
         $O_controleur = new motorController($S_urlADecortiquer, $mapOfPostParameters);
         $O_controleur->run();
     }
-    catch (exceptionsController $O_exception)
+    catch (ExceptionsController $O_exception)
     {
         echo ('Une erreur s\'est produite : ' . $O_exception->getMessage());
     }
 
 
     // Les différentes sous-vues ont été "crachées" dans le tampon d'affichage, on les récupère
-    $contenuPourAffichage = motorView::getBufferContent();
+    $contentForShow = motorView::getBufferContent();
 
     // On affiche le contenu dans la partie body du gabarit général
-    motorView::show('main', array('body' => $contenuPourAffichage));
+    motorView::show('main', array('body' => $contentForShow));
