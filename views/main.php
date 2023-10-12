@@ -10,9 +10,11 @@
         <link rel="icon" href="/media/public_assets/favicon.png">
     </head>
     <body>
-        <?php 
-            require "views/common/header.php";
-            require "views/menu/homeFeed.php";
+        <?php
+            motorView::show('common/header');
+            $mapView['body'] = "Hello world";
+            echo $mapView['body'];
+            motorView::show('common/footer');
             require "common_scripts/general_scripts.php";
         ?>
     </body>
