@@ -38,4 +38,4 @@
     $contenuPourAffichage = motorView::getBufferContent();
 
     // On affiche le contenu dans la partie body du gabarit général
-    motorView::show('gabarit', array('body' => $contenuPourAffichage));
+    motorView::show('main', array('body' => $contenuPourAffichage));
