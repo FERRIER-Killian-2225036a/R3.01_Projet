@@ -1,7 +1,3 @@
-<head>
-    <link rel="stylesheet" href="../common_styles/header.css">
-    <title>Header</title>
-</head>
 <body>
     <nav class="navbar navbar-top navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">

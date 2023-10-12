@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Cyphub</title>
+        <link rel="stylesheet" href="/common_styles/header.css">
         <link rel="stylesheet" href="/common_styles/main.css">
         <link rel="icon" href="/media/public_assets/favicon.png">
     </head>
