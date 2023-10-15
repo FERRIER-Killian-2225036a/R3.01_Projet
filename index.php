@@ -21,11 +21,10 @@
     $S_urlADecortiquer = isset($_GET['url']) ? $_GET['url'] : null;
     $mapOfPostParameters = isset($_POST) ? $_POST : null;
 
-    motorView::openBuffer(); // on ouvre le tampon d'affichage, les contrôleurs qui appellent des vues les mettront dedans
-
+    MotorView::openBuffer(); // on ouvre le tampon d'affichage, les contrôleurs qui appellent des vues les mettront dedans
     try
     {
-        $O_controleur = new motorController($S_urlADecortiquer, $mapOfPostParameters);
+        $O_controleur = new MotorController($S_urlADecortiquer, $mapOfPostParameters);
         $O_controleur->run();
     }
     catch (ExceptionsController $O_exception)
@@ -35,7 +34,7 @@
 
 
     // Les différentes sous-vues ont été "crachées" dans le tampon d'affichage, on les récupère
-    $contentForShow = motorView::getBufferContent();
+    $contentForShow = MotorView::getBufferContent();
 
     // On affiche le contenu dans la partie body du gabarit général
-    motorView::show('main', array('body' => $contentForShow));
+    MotorView::show('main', array('body' => $contentForShow));
