@@ -1,0 +1,59 @@
+.shadow{
+    box-shadow: green 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.round{
+    border-radius: 0.75rem!important;
+}
+.colorText{
+    color: white;
+    font-weight: bold;
+    font-size: 100%;
+}
+
+.row{
+    --bs-gutter-x: 5rem;
+}
+
+/*Pour gérer la taille du texte */
+
+.responsiveTitle {
+    font-size: 2em; /* Taille par défault */
+}
+
+.responsiveText {
+    font-size: 1em; /* Taille par défault */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .responsiveTitle {
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 992px) {
+    .responsiveTitle {
+        font-size: 1.6em;
+    }
+    .responsiveText {
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 768px) {
+    .responsiveTitle {
+        font-size: 1.4em;
+    }
+    .responsiveText {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 576px) {
+    .responsiveTitle {
+        font-size: 1.2em;
+    }
+    .responsiveText {
+        font-size: 0.85em;
+    }
+}

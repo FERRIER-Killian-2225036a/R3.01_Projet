@@ -1,0 +1,63 @@
+.background{
+    background: #D9D9D9;
+}
+.round{
+    border-radius: 0.75rem!important;
+}
+.padding{
+    padding-top: 2rem!important;
+    padding-bottom: 2rem!important;
+}
+.shadow{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.btn{
+    text-align: left;
+}
+/* General styles */
+.bg-body-tertiary {
+    display: flex;
+    align-items: center;
+}
+
+.responsive-image {
+    max-width: 30%;
+    height: auto;
+    flex-shrink: 0; /* This ensures the image doesn't shrink if the container becomes too small */
+}
+
+.text-content {
+    margin-left: 1rem;
+    flex-grow: 1; /* This allows the text content to take up remaining space */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .bg-body-tertiary {
+        flex-direction: column;
+        text-align: center; /* center text for mobile */
+    }
+
+    .text-content {
+        margin-left: 0;
+        margin-top: 1rem; /* add some space between the image and text */
+    }
+    .responsive-image {
+        max-width: 100%;
+    }
+}
+/*Pour Augmenter la taille des qu'on passe la souris dessus*/
+.grow-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #D9D9D9; /* Assuming this color for the button */
+    color: black; /* Color for the text on the button */
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition effect for both scaling and shadow */
+}
+
+.grow-button:hover {
+    transform: scale(1.1); /* Increase the button size by 10% */
+    box-shadow: 0px 3px 8px #7B3DFF;
+}
