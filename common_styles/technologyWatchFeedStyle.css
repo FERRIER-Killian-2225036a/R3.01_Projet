@@ -1,0 +1,15 @@
+.background{
+    background: transparent;
+}
+.round{
+    border-radius: 0.75rem!important;
+}
+.padding{
+    padding-top: 2rem!important;
+}
+.shadow{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.btn{
+    text-align: left;
+}
