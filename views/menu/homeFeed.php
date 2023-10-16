@@ -5,32 +5,32 @@
 <body>
 
 <section class = "background">
-  <section class="paddingHome text-left container background">
-      <div class="col-lg-6 col-md-8 mx-left">
-        <h1 class="homeTitle responsiveTitle">Bienvenue chez Cyphub !</h1>
-        <p class="colorText lead text-body-secondary responsiveText">Ici est le début de la page home avec juste une phrase qui finira par être modifier </p>
-        <p>
-          <div class="col-lg-8 col-md-8 mx-left">
-            <a href="#" class="cta colorText noneColor text-left block">
-              <span class="visual">Se connecter</span>
-                <svg class="svg1" width="13px" height="10px" viewBox="0 0 13 10">
-                  <path d="M1,5 L11,5"></path>
-                  <polyline points="8 1 12 5 8 9"></polyline>
-                </svg>
-            </a>
-            <a href="#" class="cta colorText noneColor text-left block ">
-              <span class="visual">Créer un compte</span>
-                <svg class="svg1" width="13px" height="10px" viewBox="0 0 13 10">
-                  <path d="M1,5 L11,5"></path>
-                  <polyline points="8 1 12 5 8 9"></polyline>
-                </svg>
-            </a>
-          </div>
-        </p>
-      </div>
-      <img src="/media/public_assets/homePicture.png" alt="Logo Cyphub" width="37" height="37">
-    </div>
-  </section>
+    <section class="paddingHome text-left container background">
+        <div class="col-lg-6 col-md-8 mx-left">
+            <h1 class="homeTitle responsiveTitle">Bienvenue chez Cyphub !</h1>
+            <p class="colorText lead text-body-secondary responsiveText">Ici est le début de la page home avec juste une phrase qui finira par être modifier </p>
+            <p>
+            <div class="col-lg-8 col-md-8 mx-left">
+                <a href="#" class="cta colorText noneColor text-left block">
+                    <span class="visual">Se connecter</span>
+                    <svg class="svg1" width="13px" height="10px" viewBox="0 0 13 10">
+                        <path d="M1,5 L11,5"></path>
+                        <polyline points="8 1 12 5 8 9"></polyline>
+                    </svg>
+                </a>
+                <a href="#" class="cta colorText noneColor text-left block ">
+                    <span class="visual">Créer un compte</span>
+                    <svg class="svg1" width="13px" height="10px" viewBox="0 0 13 10">
+                        <path d="M1,5 L11,5"></path>
+                        <polyline points="8 1 12 5 8 9"></polyline>
+                    </svg>
+                </a>
+            </div>
+            </p>
+        </div>
+        <img src="/media/public_assets/homePicture.png" alt="Logo Cyphub" width="37" height="37">
+        </div>
+    </section>
 </section>
 
 
@@ -39,13 +39,8 @@
     <div class="py-lg-5">
         <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
             <div class="col">
-<<<<<<< HEAD
-                <div class="card mb-4 rounded-4 shadow-gn background">
-                    <a href="./../ActualityFeed/" type="button" class="w-20 rounded-4 btn btn-lg text-center colorButton shadow-gn grow-button">
-=======
                 <div class="card mb-4 round shadow background">
                     <a href="actualityFeed.php" type="button" class="w-20 round btn btn-lg text-center colorButton shadow-gn grow-button">
->>>>>>> 40add9609e591ab6b5f1f06f612ec356fc883f17
                         <img class="sizeRs" src="../../media/public_assets/iconeTech.png"alt="Icone Veille Tehcnologique " height="150" width="150">
                         <p class="colorText">Veille Technologique</p></a>
                 </div>

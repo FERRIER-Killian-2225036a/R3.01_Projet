@@ -1,5 +1,5 @@
 <?php
-class defaultController {
+class DefaultController {
     public function DefaultAction(): void
     {
         MotorView::show('menu/homeFeed');
