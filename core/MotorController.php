@@ -20,7 +20,8 @@ final class MotorController
         }
 
         if (empty($arrayOfSplitUrl[0])) {
-            // Nous avons pris le parti de nommer tout les controleur <nom controleur>Controller
+            // Nous avons pris le parti de nommer tout les controleur Controller<nom controleur> sauf pour le
+            // controlleur par defaut
             $arrayOfSplitUrl[0] = 'DefaultController';
         } else {
             $arrayOfSplitUrl[0] = 'Controller' . ucfirst($arrayOfSplitUrl[0]);
