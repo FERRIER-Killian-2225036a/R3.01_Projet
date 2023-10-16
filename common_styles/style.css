@@ -1,33 +1,14 @@
 .shadow{
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: green 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 .round{
     border-radius: 0.75rem!important;
 }
-.colorTextLM{
+.colorText{
     color: white;
     font-weight: bold;
     font-size: 100%;
 }
-/*Pour Augmenter la taille des qu'on passe la souris dessus*/
-.grow-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #7B3DFF; /* Assuming this color for the button */
-    color: black; /* Color for the text on the button */
-    border: none;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition effect for both scaling and shadow */
-}
-
-.grow-button:hover {
-    transform: scale(1.1); /* Increase the button size by 10% */
-    box-shadow: 0px 3px 8px #7B3DFF;
-}
-
-
-
-
 
 .row{
     --bs-gutter-x: 5rem;
