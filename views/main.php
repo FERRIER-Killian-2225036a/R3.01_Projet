@@ -11,9 +11,10 @@
     </head>
     <body>
         <?php
-            MotorView::show('common/header');
-            echo $mapView['body'];
-            MotorView::show('common/footer');
+            motorView::show('common/header');
+            //echo $mapView['body'];
+            require "menu/technologyWatchFeed.php";
+            motorView::show('common/footer');
             require "common_scripts/general_scripts.php";
         ?>
     </body>

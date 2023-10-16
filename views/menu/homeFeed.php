@@ -3,8 +3,12 @@
 </head>
 <body>
 
-<section class = "background">
-    <section class="paddingP1 text-left container background">
+  <section class = "background">
+    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+    </div>
+<main>
+
+  <section class="paddingP1 text-left container background">
       <div class="col-lg-6 col-md-8 mx-left">
         <h1 class="homeTitle">Bienvenue chez Cyphub !</h1>
         <p class="colorText lead text-body-secondary">Ici est le début de la page home avec juste une phrase qui finira par être modifier </p>
