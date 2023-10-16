@@ -1,5 +1,5 @@
 <?php
-final class motorView
+final class MotorView
 {
     public static function openBuffer(): void
     {

@@ -1,5 +1,5 @@
 <?php
-final class motorController
+final class MotorController
 {
     private array $_mapOfSplitUrl;
 
