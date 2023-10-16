@@ -13,7 +13,7 @@
         <?php
             motorView::show('common/header');
             //echo $mapView['body'];
-            require "menu/technologyWatchFeed.php";
+            echo $mapView['body'];
             motorView::show('common/footer');
             require "common_scripts/general_scripts.php";
         ?>
