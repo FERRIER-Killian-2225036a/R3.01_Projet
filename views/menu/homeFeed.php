@@ -1,14 +1,11 @@
 <head>
-    <link rel="stylesheet" href="../common_styles/homeFeedStyle.css">
+    <link rel="stylesheet" href="../../common_styles/style.css">
+    <link rel="stylesheet" href="../../common_styles/homeFeedStyle.css">
 </head>
 <body>
 
-  <section class = "background">
-    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-    </div>
-<main>
-
-  <section class="paddingP1 text-left container background">
+<section class = "background">
+  <section class="paddingHome text-left container background">
       <div class="col-lg-6 col-md-8 mx-left">
         <h1 class="homeTitle">Bienvenue chez Cyphub !</h1>
         <p class="colorText lead text-body-secondary">Ici est le début de la page home avec juste une phrase qui finira par être modifier </p>
@@ -42,22 +39,22 @@
     <div class="py-lg-5">
         <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
             <div class="col">
-                <div class="card mb-4 rounded-4 shadow-gn background">
-                    <a href="technologyWatchFeed.php" type="button" class="w-20 rounded-4 btn btn-lg text-center colorButton shadow-gn grow-button">
+                <div class="card mb-4 round shadow background">
+                    <a href="technologyWatchFeed.php" type="button" class="w-20 round btn btn-lg text-center colorButton shadow-gn grow-button">
                         <img class="sizeRs" src="../../media/public_assets/iconeTech.png"alt="Icone Veille Tehcnologique " height="150" width="150">
                         <p class="colorText">Veille Technologique</p></a>
                 </div>
             </div>
             <div class="col">
-                <div class="card mb-4 rounded-4 shadow-gn background">
-                    <a href="blogFeed.php" type="button" class="w-20 rounded-4 btn btn-lg text-center colorButton shadow-gn grow-button">
+                <div class="card mb-4 round shadow background">
+                    <a href="blogFeed.php" type="button" class="w-20 round btn btn-lg text-center colorButton shadow-gn grow-button">
                         <img class="sizeRs" src="../../media/public_assets/iconeBlog.png"alt="Icone Blog" height="150" width="150">
                         <p class="colorText">Blog</p></a>
                 </div>
             </div>
             <div class="col">
-                <div class="card mb-4 rounded-4 shadow-gn background">
-                    <a href="forumFeed.php" type="button" class="w-20 rounded-4 btn btn-lg text-center colorButton shadow-gn grow-button">
+                <div class="card mb-4 round shadow background">
+                    <a href="forumFeed.php" type="button" class="w-20 round btn btn-lg text-center colorButton shadow-gn grow-button">
                         <img class="sizeRs" src="../../media/public_assets/iconeForum.png"alt="Icone Forum" height="150" width="150">
                         <p class="colorText">Forum</p></a>
                 </div>

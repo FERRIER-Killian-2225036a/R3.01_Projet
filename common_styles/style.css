@@ -1,0 +1,24 @@
+.shadow{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.round{
+    border-radius: 0.75rem!important;
+}
+.colorTextLM{
+    color: white;
+    font-weight: bold;
+    font-size: 100%;
+}
+/*Pour Augmenter la taille des qu'on passe la souris dessus*/
+.grow-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: transform 0.3s ease; /* Effet de transition */
+}
+
+.grow-button:hover {
+    transform: scale(1.1); /* Augmente la taille du bouton de 10% */
+}
+.row{
+    --bs-gutter-x: 5rem;
+}
