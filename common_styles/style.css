@@ -13,12 +13,66 @@
 .grow-button {
     padding: 10px 20px;
     font-size: 16px;
-    transition: transform 0.3s ease; /* Effet de transition */
+    background-color: #7B3DFF; /* Assuming this color for the button */
+    color: black; /* Color for the text on the button */
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition effect for both scaling and shadow */
 }
 
 .grow-button:hover {
-    transform: scale(1.1); /* Augmente la taille du bouton de 10% */
+    transform: scale(1.1); /* Increase the button size by 10% */
+    box-shadow: 0px 3px 8px #7B3DFF;
 }
+
+
+
+
+
 .row{
     --bs-gutter-x: 5rem;
+}
+
+/*Pour gérer la taille du texte */
+
+.responsiveTitle {
+    font-size: 2em; /* Taille par défault */
+}
+
+.responsiveText {
+    font-size: 1em; /* Taille par défault */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .responsiveTitle {
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 992px) {
+    .responsiveTitle {
+        font-size: 1.6em;
+    }
+    .responsiveText {
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 768px) {
+    .responsiveTitle {
+        font-size: 1.4em;
+    }
+    .responsiveText {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 576px) {
+    .responsiveTitle {
+        font-size: 1.2em;
+    }
+    .responsiveText {
+        font-size: 0.85em;
+    }
 }
