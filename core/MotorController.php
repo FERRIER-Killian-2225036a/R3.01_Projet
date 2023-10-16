@@ -43,7 +43,7 @@ final class MotorController
         // ...on stocke ces éventuels parametres dans la variable d'instance qui leur est réservée
         $this->_mapOfResidualParameters = $arrayOfSplitUrl;
 
-        // On  s'occupe du tableau $mapOfPostParameters
+        // On s'occupe du tableau $mapOfPostParameters
         $this->_mapOfPostParameters = $mapOfPostParameters;
 
     }
