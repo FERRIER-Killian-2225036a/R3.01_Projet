@@ -24,7 +24,7 @@ class ControllerAuth
     public function LogoutAction(Array $A_parametres = null, Array $A_postParams = null): void
     {
 
-        MotorView::show('authentification/logout');
+        //MotorView::show('authentification/logout');
     }
 
     public function ForgotPasswordAction(Array $A_parametres = null, Array $A_postParams = null): void

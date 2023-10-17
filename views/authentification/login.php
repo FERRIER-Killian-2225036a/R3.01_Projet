@@ -18,24 +18,25 @@
                                     <h4 class="mt-1 mb-5 pb-1">Connexion Cyphub</h4>
                                 </div>
 
-                                <form>
+                                <form action="" method="post" name="login">
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example11">Adresse mail</label>
                                         <input type="email" id="form2Example11" class="form-control"
-                                               placeholder="krokmou@exemple.fr" />
+                                               placeholder="krokmou@exemple.fr" name="mail"/>
                                     </div>
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example22">Mot de passe</label>
                                         <input type="password" id="form2Example22" class="form-control"
-                                                placeholder="********"/>
+                                                placeholder="********" name="password"/>
                                     </div>
 
                                     <div class="text-center pt-1 mb-5 pb-1">
                                         <a class="size" href="#!">Mot de passe oublié ?</a>
                                         <br>
-                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Se connecter</button>
+                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                                                type="submit" name="submit">Se connecter</button>
                                     </div>
 
                                     <div class="d-flex align-items-center justify-content-center pb-4">
