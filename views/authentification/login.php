@@ -1,6 +1,6 @@
 <head>
     <link rel="stylesheet" href="../../common_styles/general.css">
-    <link rel="stylesheet" href="../../common_styles/login.css">
+    <link rel="stylesheet" href="../../common_styles/authentification.css">
 </head>
 <body>
 <section class="h-100 gradient-form" style="background-color: #eee;">
@@ -35,13 +35,12 @@
                                     <div class="text-center pt-1 mb-5 pb-1">
                                         <a class="size" href="#!">Mot de passe oublié ?</a>
                                         <br>
-                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Log
-                                            in</button>
+                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Se connecter</button>
                                     </div>
 
                                     <div class="d-flex align-items-center justify-content-center pb-4">
-                                        <p class="mb-0 me-2">Don't have an account?</p>
-                                        <a href="signUp.php" type="button" class="btn btn-outline-danger">Create new</a>
+                                        <p class="mb-0 me-2">Tu n'as pas de compte?</p>
+                                        <a href="signUp.php" type="button" class="btn btn-outline-danger">Inscrit toi</a>
                                     </div>
 
                                 </form>
