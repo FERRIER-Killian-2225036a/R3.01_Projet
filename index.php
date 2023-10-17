@@ -22,8 +22,9 @@
     $mapOfPostParameters = isset($_POST) ? $_POST : null;
     //print_r($S_urlADecortiquer);
 
+    echo "connexion a la base de donnée...";
     $conn = DatabaseManager::getInstance();
-
+    print_r($conn);
 
 MotorView::openBuffer(); // on ouvre le tampon d'affichage, les contrôleurs qui appellent des vues les mettront dedans
     try
