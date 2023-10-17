@@ -25,7 +25,7 @@
     echo "connexion a la base de donnée...";
     print_r(Constants::DB);
 
-$conn = DatabaseManager::getInstance();
+    $conn = DatabaseManager::getInstance();
 
 MotorView::openBuffer(); // on ouvre le tampon d'affichage, les contrôleurs qui appellent des vues les mettront dedans
     try

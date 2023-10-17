@@ -9,7 +9,7 @@ final class Constants
     const EXCEPTION_DIRECTORY  = '/monitoring/exceptions/';
     const CONTROLLER_DIRECTORY = '/controllers/';
 
-    const DB = $DB;
+    //const DB = ;
 
     public static function rootDirectory(): false|string
     {
