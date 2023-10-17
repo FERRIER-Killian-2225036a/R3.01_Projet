@@ -18,18 +18,20 @@ class DatabaseManager
         return self::$instance->conn;
     }
 
-    public function __construct(){
-        $this->conn = new PDO("mysql:dbname=". Constants::DB['dbname'].
-                                ";host=". Constants::DB['host'],
-                                Constants::DB['usr'],
-                                Constants::DB['pwd']);
-        print_r($this->conn);
-        if ($this->conn->errorInfo() != null) {
-            throw new ExceptionsDatabase("Connection failed: " .implode($this->conn->errorInfo()));
+    public function __construct() {
+        try {
+            $this->conn = new PDO(
+                "mysql:dbname=" . Constants::DB['dbname'] .
+                ";host=" . Constants::DB['host'],
+                Constants::DB['usr'],
+                Constants::DB['pwd']
+            );
+
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            throw new ExceptionsDatabase("Connection failed: " . $e->getMessage());
         }
-
     }
-
 
 
 }
