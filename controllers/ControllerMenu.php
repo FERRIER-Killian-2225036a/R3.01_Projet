@@ -8,8 +8,8 @@ class ControllerMenu
     }
     public function ActualityFeedAction(Array $A_parametres = null, Array $A_postParams = null): void
     {
-        print_r($A_parametres);
-        print_r($A_postParams);
+        //print_r($A_parametres);
+        //print_r($A_postParams);
         //TO-DO : récupérer les paramètres (afin de charger d'autres Articles)
         //la requete ressemble à : GET /Menu/ActualityFeed/More
 

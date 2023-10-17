@@ -36,10 +36,10 @@
 
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    <a class="nav-link" href="#">Veille Tech</a>
-                    <a class="nav-link" href="#">Blogs</a>
-                    <a class="nav-link" href="#">Forum</a>
+                    <a class="nav-link active" aria-current="page" href="/Menu">Home</a>
+                    <a class="nav-link" href="/Menu/ActualityFeed">Veille Tech</a>
+                    <a class="nav-link" href="/Menu/BlogFeed">Blogs</a>
+                    <a class="nav-link" href="/Menu/ForumFeed">Forum</a>
                 </div>
             </div>
         </div>
