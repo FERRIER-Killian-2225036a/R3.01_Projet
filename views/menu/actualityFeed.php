@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" href="../../common_styles/style.css">
+    <link rel="stylesheet" href="../../common_styles/general.css">
     <link rel="stylesheet" href="../../common_styles/actualityFeed.css">
 </head>
 <body>

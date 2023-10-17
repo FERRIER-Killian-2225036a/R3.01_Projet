@@ -86,9 +86,8 @@ a:hover{
 .card{
     border: none!important;
 }
-.paddingHome{
-    padding-top: 10rem!important;
-    padding-bottom: 0.25rem!important;
+.padding{
+    padding: 7rem!important;
 }
 .grow-button {
     padding: 10px 20px;
