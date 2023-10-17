@@ -23,7 +23,7 @@ class DatabaseManager
                                 ";host=". Constants::DB['host'],
                                 Constants::DB['usr'],
                                 Constants::DB['pwd']);
-        print_r($this->conn->errorInfo());
+        print_r($this->conn);
         if ($this->conn->errorInfo() != null) {
             throw new ExceptionsDatabase("Connection failed: " .implode($this->conn->errorInfo()));
         }
