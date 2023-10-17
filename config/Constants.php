@@ -7,6 +7,14 @@ final class Constants
     const EXCEPTION_DIRECTORY  = '/monitoring/exceptions/';
     const CONTROLLER_DIRECTORY = '/controllers/';
 
+    const DB = array(
+        "dbname"=>"temp", // /!\ NE JAMAIS METTRE LE MOT DE PASSE EN CLAIR LORS D'UN PUSH
+        "host"=>"temp", // /!\ NE JAMAIS METTRE LE MOT DE PASSE EN CLAIR LORS D'UN PUSH
+        "usr"=>"temp", // /!\ NE JAMAIS METTRE LE MOT DE PASSE EN CLAIR LORS D'UN PUSH
+        "pwd"=>"temp", // /!\ NE JAMAIS METTRE LE MOT DE PASSE EN CLAIR LORS D'UN PUSH
+        );
+
+
     public static function rootDirectory(): false|string
     {
         return realpath(__DIR__ . '/../');
