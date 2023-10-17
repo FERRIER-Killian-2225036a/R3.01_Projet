@@ -11,14 +11,14 @@
             <p class="colorText lead text-body-secondary">Ici est le début de la page home avec juste une phrase qui finira par être modifier </p>
             <p>
             <div class="col-lg-8 col-md-8 mx-left">
-                <a href="#" class="cta colorText noneColor text-left block">
+                <a href="/Auth/Login" class="cta colorText noneColor text-left block">
                     <span class="visual">Se connecter</span>
                     <svg class="svg1" width="13px" height="10px" viewBox="0 0 13 10">
                         <path d="M1,5 L11,5"></path>
                         <polyline points="8 1 12 5 8 9"></polyline>
                     </svg>
                 </a>
-                <a href="#" class="cta colorText noneColor text-left block ">
+                <a href="/Auth/SignUp" class="cta colorText noneColor text-left block ">
                     <span class="visual">Créer un compte</span>
                     <svg class="svg1" width="13px" height="10px" viewBox="0 0 13 10">
                         <path d="M1,5 L11,5"></path>
