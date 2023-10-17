@@ -10,7 +10,7 @@ class ControllerMenu
     {
         MotorView::show('menu/actualityFeed');
     }
-    public function BlogFeedAction(): void
+    public function BlogFeedAction(): void  
     {
         MotorView::show('menu/blogFeed');
     }
