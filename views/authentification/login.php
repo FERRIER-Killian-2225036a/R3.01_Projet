@@ -18,7 +18,7 @@
                                     <h4 class="mt-1 mb-5 pb-1">Connexion Cyphub</h4>
                                 </div>
 
-                                <form action="/" method="post" name="login">
+                                <form action="/Auth/Login" method="post" name="login">
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example11">Adresse mail</label>

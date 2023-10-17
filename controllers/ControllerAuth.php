@@ -11,7 +11,8 @@ class ControllerAuth
 
     public function LoginAction(Array $A_parametres = null, Array $A_postParams = null): void
     {
-
+        //print_r($A_parametres);
+        print_r($A_postParams);
         MotorView::show('authentification/login');
     }
 
