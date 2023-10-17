@@ -1,6 +1,4 @@
 <?php
-require "safe.php"; // Ici, je récupère les identifiants de connexion à la base de données
-
 final class Constants
 {
     const VIEW_DIRECTORY        = '/views/';
@@ -9,7 +7,13 @@ final class Constants
     const EXCEPTION_DIRECTORY  = '/monitoring/exceptions/';
     const CONTROLLER_DIRECTORY = '/controllers/';
 
-    //const DB = ;
+    const DB = array(
+        "dbname"=>"temp", // /!\ NE JAMAIS METTRE LE MOT DE PASSE EN CLAIR LORS D'UN PUSH
+        "host"=>"temp", // /!\ NE JAMAIS METTRE LE MOT DE PASSE EN CLAIR LORS D'UN PUSH
+        "usr"=>"temp", // /!\ NE JAMAIS METTRE LE MOT DE PASSE EN CLAIR LORS D'UN PUSH
+        "pwd"=>"temp", // /!\ NE JAMAIS METTRE LE MOT DE PASSE EN CLAIR LORS D'UN PUSH
+        );
+
 
     public static function rootDirectory(): false|string
     {
