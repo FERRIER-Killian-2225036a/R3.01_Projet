@@ -11,7 +11,7 @@ final class Constants
         "dbname"=>"cyphubte_db",
         "host"=>"localhost",
         "usr"=>"cyphubte_normal_user",
-        "pwd"=>"nid[H#Gqn6zm", // on changera le mot de passe quand ce sera en prod, (mot de passe temporaire)
+        "pwd"=>"TODEFINE", // on changera le mot de passe quand ce sera en prod, (mot de passe temporaire)
     );
 
 

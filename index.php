@@ -23,16 +23,13 @@
     //print_r($S_urlADecortiquer);
 
     try {
-        echo "connexion a la base de donnée...";
-        print_r(Constants::DB); // !!!!!!! supprimer hors debug to do
         $conn = DatabaseManager::getInstance();
-        echo "sucess";
-
     }
     catch (ExceptionsDatabase $O_exception) {
         echo ('Une erreur s\'est produite : ' . $O_exception->getMessage());
     }
-MotorView::openBuffer(); // on ouvre le tampon d'affichage, les contrôleurs qui appellent des vues les mettront dedans
+
+    MotorView::openBuffer(); // on ouvre le tampon d'affichage, les contrôleurs qui appellent des vues les mettront dedans
     try
     {
         $O_controleur = new MotorController($S_urlADecortiquer, $mapOfPostParameters);
