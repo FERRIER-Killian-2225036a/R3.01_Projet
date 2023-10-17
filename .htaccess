@@ -1,8 +1,11 @@
-RewriteBase /
+# Sans mod_rewrite installé, pas de réécriture d'URL, notre projet est inutilisable
+<IfModule !mod_rewrite.c>
+	ErrorDocument 500 "mod_rewrite doit etre installé et activé"
+</IfModule>
 RewriteEngine on
-#1) redirect the client from "/index.php/foo/bar" to "/foo/bar"RewriteCond %{THE_REQUEST} /index\.php/(.+)\sHTTP [NC]
-#RewriteRule ^ /%1 [NE,L,R]
-#2)internally map "/foo/bar" to "/index.php/foo/bar"
-RewriteCond %{REQUEST_FILENAME} !-d
+# Tout ce qui n'est ni un fichier...
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.+)$ /index.php?url=$1 #[L]
+# Ni un répertoire...
+RewriteCond %{REQUEST_FILENAME} !-d
+# Sera redirigé sur le fichier index.php sous le nom d'url !
+RewriteRule ^(.*)$ /index.php?url=$1
