@@ -18,10 +18,10 @@
     $O_controleur = new Controleur($S_controleur, $S_action);
 */
     //print_r($_GET);
-
     $S_urlADecortiquer = isset($_GET['url']) ? $_GET['url'] : null;
     $mapOfPostParameters = isset($_POST) ? $_POST : null;
     //print_r($S_urlADecortiquer);
+
 
 MotorView::openBuffer(); // on ouvre le tampon d'affichage, les contrôleurs qui appellent des vues les mettront dedans
     try
