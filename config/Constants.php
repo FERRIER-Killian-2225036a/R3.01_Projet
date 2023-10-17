@@ -8,11 +8,11 @@ final class Constants
     const CONTROLLER_DIRECTORY = '/controllers/';
 
     const DB = array(
-        "dbname"=>"temp", // /!\ NE JAMAIS METTRE LE MOT DE PASSE EN CLAIR LORS D'UN PUSH
-        "host"=>"temp", // /!\ NE JAMAIS METTRE LE MOT DE PASSE EN CLAIR LORS D'UN PUSH
-        "usr"=>"temp", // /!\ NE JAMAIS METTRE LE MOT DE PASSE EN CLAIR LORS D'UN PUSH
-        "pwd"=>"temp", // /!\ NE JAMAIS METTRE LE MOT DE PASSE EN CLAIR LORS D'UN PUSH
-        );
+        "dbname"=>"cyphubte_db",
+        "host"=>"localhost",
+        "usr"=>"cyphubte_normal_user",
+        "pwd"=>"mD(,-nl~%wJB", // on changera le mot de passe quand ce sera en prod, (mot de passe temporaire)
+    );
 
 
     public static function rootDirectory(): false|string
