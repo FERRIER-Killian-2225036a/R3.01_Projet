@@ -48,7 +48,7 @@
 
                                     <div class="d-flex align-items-center justify-content-center pb-4">
                                         <p class="mb-0 me-2">Tu as déjà un compte ?</p>
-                                        <a href="login.php" type="button" class="btn btn-outline-danger">Connecte toi</a>
+                                        <a href="/Auth/Login" type="button" class="btn btn-outline-danger">Connecte toi</a>
                                     </div>
 
                                 </form>

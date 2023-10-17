@@ -40,7 +40,7 @@
 
                                     <div class="d-flex align-items-center justify-content-center pb-4">
                                         <p class="mb-0 me-2">Tu n'as pas de compte?</p>
-                                        <a href="signUp.php" type="button" class="btn btn-outline-danger">Inscrit toi</a>
+                                        <a href="/Auth/SingUp" type="button" class="btn btn-outline-danger">Inscrit toi</a>
                                     </div>
 
                                 </form>
