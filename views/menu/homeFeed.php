@@ -28,7 +28,7 @@
             </div>
             </p>
         </div>
-            <img src="/media/public_assets/homePicture.png" alt="Logo Cyphub" width="500" height="500">
+            <!--<img src="/media/public_assets/homePicture.png" alt="Logo Cyphub" width="500" height="500">!-->
     </section>
 </section>
 
