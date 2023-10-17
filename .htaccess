@@ -1,4 +1,4 @@
-
+RewriteBase /
 RewriteEngine on
 #1) redirect the client from "/index.php/foo/bar" to "/foo/bar"RewriteCond %{THE_REQUEST} /index\.php/(.+)\sHTTP [NC]
 #RewriteRule ^ /%1 [NE,L,R]
