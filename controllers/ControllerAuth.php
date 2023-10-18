@@ -33,9 +33,11 @@ class ControllerAuth
                     // affichage message d'erreur a deplacé ?
                     echo $status;
                 }
-
             }
-            // message pour demander de remplir les champs
+            else {
+                // message pour demander de remplir les champs
+                echo "remplir les champs";
+            }
         }
     }
     public function LogoutAction(Array $A_parametres = null, Array $A_postParams = null): void
