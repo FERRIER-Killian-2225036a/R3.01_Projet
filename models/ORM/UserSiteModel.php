@@ -74,6 +74,7 @@ class UserSiteModel
         }
         catch (ExceptionsDatabase $e)
         {
+            echo $e->getMessage();
             return $e;
         }
 
