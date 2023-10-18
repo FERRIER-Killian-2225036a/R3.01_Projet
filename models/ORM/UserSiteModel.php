@@ -19,9 +19,7 @@ class UserSiteModel
             }
             $this->conn->beginTransaction();
             // Insert user into USERSite
-            $insertUserSQL = "INSERT INTO USERSite (Mail, Pseudo, DateFirstLogin, DateLastLogin, Role, AlertLevelUser, 
-                              NumberOfAction, Status, lastIpAdress, NumberOfConnection) VALUES (?, ?, CURRENT_TIMESTAMP, 
-                              CURRENT_TIMESTAMP, 'registered', 0, 0, 'connected', ?, 1)";
+            $insertUserSQL = "INSERT INTO USERSite (Mail, Pseudo, DateFirstLogin, DateLastLogin, Role, AlertLevelUser, NumberOfAction, Status, lastIpAdress, NumberOfConnection) VALUES (?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'registered', 0, 0, 'connected', ?, 1)";
             $stmt1 = $this->conn->prepare($insertUserSQL);
             $stmt1->bindParam(1, $mail_a, PDO::PARAM_STR);
             $stmt1->bindParam(2, $pseudo_a, PDO::PARAM_STR);
@@ -43,6 +41,7 @@ class UserSiteModel
             // In case of an error, rollback the transaction
             //$this->conn->rollback();
             echo "Error creating user: " . $e->getMessage();
+            return null;
         }
     }
 
