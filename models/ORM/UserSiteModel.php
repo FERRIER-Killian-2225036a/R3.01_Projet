@@ -21,6 +21,7 @@ class UserSiteModel
             ];
             $hashedPassword = password_hash($password_a, PASSWORD_ARGON2ID, $options);
 
+
             if (!$this->DBBrain->isValidEmail($mail_a)) { // si l'email n'a pas un format valide
                 throw new ExceptionsDatabase("This email format is not valid");
             }
@@ -48,8 +49,9 @@ class UserSiteModel
             $userPassword = $result2['Password'];
 
 
-
-            if ($userPassword !== $hashedPassword) { // si le mot de passe ne correspond pas
+            echo "userPassword : ".$userPassword." <br>";
+            echo "hashedPassword : ".$hashedPassword." <br>";
+            if (password_verify($userPassword, $hashedPassword)) { // si le mot de passe ne correspond pas
                 throw new ExceptionsDatabase("Email or password does not match");
             }
             /*
