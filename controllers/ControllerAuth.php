@@ -22,7 +22,7 @@ class ControllerAuth
                 //status = success / erreur type
                 if ($status=="success"){
                     //redirection vers page de login
-                    echo "success";
+                    echo " stats : success";
                     header("Location: /");
                 }
                 else{

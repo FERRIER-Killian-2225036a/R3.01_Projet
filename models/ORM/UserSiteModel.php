@@ -67,7 +67,7 @@ class UserSiteModel
             $stmt->execute();
             $stmt->closeCursor();
             // Increment the number of connections
-            $this->noyauDB->incrementNumberOfConnexion();
+            $this->DBBrain->incrementNumberOfConnexion();
             // Return UserID
             return $userId;
 
