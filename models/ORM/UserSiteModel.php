@@ -60,8 +60,8 @@ class UserSiteModel
     {
         $checkUserSQL = "SELECT COUNT(*) FROM USERSite WHERE Mail = ? OR Pseudo = ?";
         $stmt = $this->conn->prepare($checkUserSQL);
-        $stmt->bindParam(1, $email, PDO::PARAM_STR);
-        $stmt->bindParam(2, $pseudo, PDO::PARAM_STR);
+        $stmt->bindParam(1, $mail_a, PDO::PARAM_STR);
+        $stmt->bindParam(2, $$pseudo_a, PDO::PARAM_STR);
         $stmt->execute();
         $count = $stmt->fetchColumn();
         echo "count : $count";
