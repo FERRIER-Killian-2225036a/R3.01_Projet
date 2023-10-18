@@ -25,7 +25,15 @@ class UserSiteModel
             if ($this->isPasswordNotSafe($password_a)) {
                 throw new ExceptionsDatabase("This Password is not strong enough, please choose another one");
             }
-            
+            // on utilise l'algo de hachage ARGON2ID
+            $options = [ // configuration minimale recommandé par OWASP TOP 10 (cheat sheet)
+                'memory_cost' => 65536, // 19 MiB en kibibytes (1024 * 19)
+                'time_cost' => 2, // 2 itérations
+                'threads' => 1, // Degré de parallélisme de 1
+            ];
+            $hashedPassword = password_hash($password_a, PASSWORD_ARGON2ID, $options);
+            // on utilisera password_verify($passwordFromUser, $storedHashedPassword)) pour verifier le mot de passe
+            // lors de la connexion
 
             $this->conn->beginTransaction();
             // Insert user into USERSite
@@ -40,7 +48,7 @@ class UserSiteModel
             // Insert password into PASSWORD
             $insertPasswordSQL = "INSERT INTO PASSWORD (Password, UserId) VALUES (?, ?)";
             $stmt2 = $this->conn->prepare($insertPasswordSQL);
-            $stmt2->bindParam(1, $password_a, PDO::PARAM_STR);
+            $stmt2->bindParam(1, $hashedPassword, PDO::PARAM_STR);
             $stmt2->bindParam(2, $userId, PDO::PARAM_INT);
             $stmt2->execute();
             // Commit de la transaction
