@@ -20,7 +20,7 @@ class UserSiteModel
                 'threads' => 1, // Degré de parallélisme de 1
             ];
             $pwd_peppered = hash_hmac("sha256", $password_a, Constants::PEPPER);
-            $hashedPassword = password_hash($pwd_peppered, PASSWORD_ARGON2ID, $options);
+            //$hashedPassword = password_hash($pwd_peppered, PASSWORD_ARGON2ID, $options);
 
 
             if (!$this->DBBrain->isValidEmail($mail_a)) { // si l'email n'a pas un format valide
@@ -50,9 +50,7 @@ class UserSiteModel
             $userPassword = $result2['Password'];
 
 
-            echo "userPassword : ".$userPassword." <br>";
-            echo "hashedPassword : ".$hashedPassword." <br>";
-            if (!password_verify($password_a, $userPassword)) { // si le mot de passe ne correspond pas                throw new ExceptionsDatabase("Email or password does not match");
+            if (!password_verify($pwd_peppered, $userPassword)) { // si le mot de passe ne correspond pas                throw new ExceptionsDatabase("Email or password does not match");
                 echo "do not match";
                 throw new ExceptionsDatabase("Email or password does not match");
             }
