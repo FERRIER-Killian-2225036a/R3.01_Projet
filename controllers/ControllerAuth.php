@@ -11,6 +11,7 @@ class ControllerAuth
 
     public function LoginAction(Array $A_parametres = null, Array $A_postParams = null): void
     {
+        MotorView::show('authentification/login');
         //print_r($A_parametres);
         print_r($A_postParams);
         if ($_SERVER["REQUEST_METHOD"] ==="POST")
@@ -32,7 +33,6 @@ class ControllerAuth
                 echo "remplir les champs";
             }
         }
-        MotorView::show('authentification/login');
     }
 
     public function SignUpAction(Array $A_parametres = null, Array $A_postParams = null): void
