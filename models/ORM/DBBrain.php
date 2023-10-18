@@ -36,7 +36,7 @@ class DBBrain
     {
         try {
             // Increment the value and update the database
-            $updateQuery = "UPDATE USERSite SET numberOfConnection = numberOfConnection + 1 WHERE UserId = ?";
+            $updateQuery = "UPDATE USERSite SET NumberOfConnection = (NumberOfConnection + 1) WHERE UserId = ?";
             $stmt = $this->conn->prepare($updateQuery);
             $stmt->bindParam(1, $UserId);
             $stmt->execute();
