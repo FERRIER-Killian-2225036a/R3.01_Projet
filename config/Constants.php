@@ -6,6 +6,7 @@ final class Constants
     const CORE_DIRECTORY       = '/core/';
     const EXCEPTION_DIRECTORY  = '/monitoring/exceptions/';
     const CONTROLLER_DIRECTORY = '/controllers/';
+    const ORM_DIRECTORY = '/models/ORM/';
 
     const DB = array(
         "dbname"=>"cyphubte_db",
@@ -43,5 +44,10 @@ final class Constants
     public static function controllerDirectory(): string
     {
         return self::rootDirectory() . self::CONTROLLER_DIRECTORY;
+    }
+
+    public static function ORMDirectory(): string
+    {
+        return self::rootDirectory() . self::ORM_DIRECTORY;
     }
 }

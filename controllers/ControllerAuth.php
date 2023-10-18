@@ -18,8 +18,11 @@ class ControllerAuth
 
     public function SignUpAction(Array $A_parametres = null, Array $A_postParams = null): void
     {
-
         MotorView::show('authentification/signUp');
+        if (isset($A_postParams["email"]) && isset($A_postParams["pseudo"]) && isset($A_postParams["password"])) {
+            (new UserSiteModel)->createUser($A_postParams["email"], $A_postParams["pseudo"], $A_postParams["password"]);
+            echo "success";
+        }
     }
 
     public function LogoutAction(Array $A_parametres = null, Array $A_postParams = null): void

@@ -22,6 +22,12 @@ final class AutoLoad
 
         return static::_load($S_file);
     }
+    public static function ORMClassesLoader ($S_className)
+    {
+        $S_file = Constants::ORMDirectory() . "$S_className.php";
+
+        return static::_load($S_file);
+    }
 
 
     public static function viewClassesLoader ($S_className)
@@ -52,3 +58,4 @@ spl_autoload_register('autoLoad::exceptionsClassesLoader');
 spl_autoload_register('autoLoad::modelClassesLoader');
 spl_autoload_register('autoLoad::viewClassesLoader');
 spl_autoload_register('autoLoad::controllerClassesLoader');
+spl_autoload_register('autoLoad::ORMClassesLoader');

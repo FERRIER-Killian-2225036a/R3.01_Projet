@@ -37,23 +37,23 @@
 
 
 
-        MotorView::openBuffer(); // on ouvre le tampon d'affichage, les contrôleurs qui appellent des vues les mettront dedans
-        try
-        {
-            $O_controleur = new MotorController($S_urlADecortiquer, $mapOfPostParameters);
-            $O_controleur->run();
-        }
-        catch (ExceptionsController $O_exception)
-        {
-            echo ('Une erreur s\'est produite : ' . $O_exception->getMessage());
-        }
+    MotorView::openBuffer(); // on ouvre le tampon d'affichage, les contrôleurs qui appellent des vues les mettront dedans
+    try
+    {
+        $O_controleur = new MotorController($S_urlADecortiquer, $mapOfPostParameters);
+        $O_controleur->run();
+    }
+    catch (ExceptionsController $O_exception)
+    {
+        echo ('Une erreur s\'est produite : ' . $O_exception->getMessage());
+    }
 
 
-        // Les différentes sous-vues ont été "crachées" dans le tampon d'affichage, on les récupère
-        $contentForShow = MotorView::getBufferContent();
+    // Les différentes sous-vues ont été "crachées" dans le tampon d'affichage, on les récupère
+    $contentForShow = MotorView::getBufferContent();
 
-        // On affiche le contenu dans la partie body du gabarit général
-        MotorView::show('main', array('body' => $contentForShow));
+    // On affiche le contenu dans la partie body du gabarit général
+    MotorView::show('main', array('body' => $contentForShow));
 
 
 
