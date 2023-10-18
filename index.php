@@ -29,11 +29,15 @@
 
     session_start();
 
-    if ($S_urlADecortiquer != '/' && $S_urlADecortiquer != '/Menu' && $S_urlADecortiquer != '/Menu/HomeFeed') {
+    if ($S_urlADecortiquer != '/' && $S_urlADecortiquer != '/Menu' && $S_urlADecortiquer != '/Menu/HomeFeed' &&
+        $S_urlADecortiquer != '/Menu/ActualityFeed' && $S_urlADecortiquer != '/Menu/BlogFeed' &&
+        $S_urlADecortiquer != '/Menu/ForumFeed' && $S_urlADecortiquer != '/Auth' && $S_urlADecortiquer != '/Auth/Login' &&
+        $S_urlADecortiquer != '/Auth/SignUp' )
+    {
         if (!isset($_SESSION['user'])) {
             // L'utilisateur n'est pas authentifié, redirige vers la page de connexion
             header('Location: /Auth/Login');
-            exit;
+            //exit;
         }
     }
 
