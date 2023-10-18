@@ -28,7 +28,7 @@ class UserSiteModel
             // Get UserId
             $userId = $this->conn->lastInsertId();
             // Insert password into PASSWORD
-            $insertPasswordSQL = "INSERT INTO Password (Password, UserId) VALUES (?, ?)";
+            $insertPasswordSQL = "INSERT INTO PASSWORD (Password, UserId) VALUES (?, ?)";
             $stmt2 = $this->conn->prepare($insertPasswordSQL);
             $stmt2->bindParam(1, $password_a, PDO::PARAM_STR);
             $stmt2->bindParam(2, $userId, PDO::PARAM_INT);
