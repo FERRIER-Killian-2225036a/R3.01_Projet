@@ -17,10 +17,25 @@
     Vue::ouvrirTampon(); //  /Noyau/Vue.php : on ouvre le tampon d'affichage, les contrôleurs qui appellent des vues les mettront dedans
     $O_controleur = new Controleur($S_controleur, $S_action);
 */
+
+
+
+
     //print_r($_GET);
     $S_urlADecortiquer = isset($_GET['url']) ? $_GET['url'] : null;
     $mapOfPostParameters = isset($_POST) ? $_POST : null;
-    //print_r($S_urlADecortiquer);
+    print_r($S_urlADecortiquer);
+
+
+    session_start();
+
+    if ($S_urlADecortiquer != '/' && $S_urlADecortiquer != '/Menu' && $S_urlADecortiquer != '/Menu/HomeFeed') {
+        if (!isset($_SESSION['user'])) {
+            // L'utilisateur n'est pas authentifié, redirige vers la page de connexion
+            header('Location: /Auth/Login');
+            exit;
+        }
+    }
 
     try {
         $conn = DatabaseManager::getInstance();
@@ -28,6 +43,8 @@
     catch (ExceptionsDatabase $O_exception) {
         echo ('Une erreur s\'est produite : ' . $O_exception->getMessage());
     }
+
+
 
     MotorView::openBuffer(); // on ouvre le tampon d'affichage, les contrôleurs qui appellent des vues les mettront dedans
     try
