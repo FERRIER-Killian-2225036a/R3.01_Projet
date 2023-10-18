@@ -23,11 +23,19 @@ class ControllerAuth
         if ($_SERVER["REQUEST_METHOD"] ==="POST")
         {
             if (isset($A_postParams["mail"]) && isset($A_postParams["pseudo"]) && isset($A_postParams["password"])) {
-                (new UserSiteModel)->createUser($A_postParams["pseudo"], $A_postParams["mail"], $A_postParams["password"]);
-                echo "success";
-            } else {
-                echo "error";
+                $status = SessionManager::SignUp($A_postParams);
+                //status = success / erreur type
+                if ($status=="success"){
+                    //redirection vers page de login
+                    header("Location: /");
+                }
+                else{
+                    // affichage message d'erreur a deplacé ?
+                    echo $status;
+                }
+
             }
+            // message pour demander de remplir les champs
         }
     }
     public function LogoutAction(Array $A_parametres = null, Array $A_postParams = null): void

@@ -60,6 +60,8 @@ final class MotorController
             throw new ExceptionsController($this->_mapOfSplitUrl['action'] . " du contrôleur " .
                 $this->_mapOfSplitUrl['controller'] . " n'est pas une action valide.");
         }
+        // on verifie si session + page accessible ou non .
+        // sinon on redirige vers page d'authentification
 
         $B_called = call_user_func_array(array(new $this->_mapOfSplitUrl['controller'],
             $this->_mapOfSplitUrl['action']), array($this->_mapOfResidualParameters, $this->_mapOfPostParameters));
