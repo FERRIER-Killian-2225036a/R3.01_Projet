@@ -27,6 +27,7 @@ class UserSiteModel
                 throw new ExceptionsDatabase("This email format is not valid");
             }
             if (!$this->isEmailUse($mail_a)) { // si l'email n'est pas utilisé
+                echo " email not used";
                 throw new ExceptionsDatabase("Email or password does not match");
             }
 
@@ -54,6 +55,7 @@ class UserSiteModel
                 echo "do not match";
                 throw new ExceptionsDatabase("Email or password does not match");
             }
+            echo "match";
             /*
             if ($userStatus !== 'disconnected') { // not normal user status ? on peut supposer que c'est un attaquant OU
                 // que l'utilisateur essai de se connecter depuis un autre appareil , dans les deux cas on deconnecte
