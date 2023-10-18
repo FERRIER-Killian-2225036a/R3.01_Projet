@@ -2,7 +2,7 @@
 
 class SessionManager
 {
-
+    //TODO limité taille entrée utilisateur: pseudo, mail, password
     public static function SignUp($A_postParams)
     {
         $status = ((new UserSiteModel)->createUser(
@@ -50,7 +50,7 @@ class SessionManager
     }
 
     public static function disconnect()
-    {
+    {   //TODO CORRIGER CA
         if (session_status()==PHP_SESSION_ACTIVE){
             if (isset($_SESSION["UserId"])) {
                 $id = $_SESSION["UserId"];
