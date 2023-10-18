@@ -49,7 +49,7 @@ class UserSiteModel
             return $userId;
         } catch (ExceptionsDatabase $e) {
             //annulation de la transaction si erreur
-            $this->conn->rollback();
+            //$this->conn->rollback();
             echo "Error creating user: " . $e->getMessage();
             //echo "$mail_a, $pseudo_a, $password_a" ;
             return false;
