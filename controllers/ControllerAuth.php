@@ -18,9 +18,11 @@ class ControllerAuth
         {
             if (isset($A_postParams["mail"]) && isset($A_postParams["password"])) {
                 $status = SessionManager::Login($A_postParams);
+
                 //status = success / erreur type
                 if ($status=="success"){
                     //redirection vers page de login
+                    echo "success";
                     header("Location: /");
                 }
                 else{
