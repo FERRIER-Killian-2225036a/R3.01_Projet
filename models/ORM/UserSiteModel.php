@@ -41,6 +41,7 @@ class UserSiteModel
             // In case of an error, rollback the transaction
             //$this->conn->rollback();
             echo "Error creating user: " . $e->getMessage();
+            echo "$mail_a, $pseudo_a, $password_a" ;
             return null;
         }
     }
