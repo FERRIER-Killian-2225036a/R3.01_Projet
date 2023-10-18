@@ -20,7 +20,7 @@ class ControllerAuth
     {
         MotorView::show('authentification/signUp');
         if (isset($A_postParams["mail"]) && isset($A_postParams["pseudo"]) && isset($A_postParams["password"])) {
-            (new UserSiteModel)->createUser($A_postParams["pseudo"], $A_postParams["test"], $A_postParams["password"]);
+            (new UserSiteModel)->createUser($A_postParams["pseudo"], $A_postParams["mail"], $A_postParams["password"]);
             echo "success";
         }
         echo "erreur :c";
