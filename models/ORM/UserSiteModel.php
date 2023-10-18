@@ -11,7 +11,7 @@ class UserSiteModel
         $this->conn = $this->DBBrain->getConn();
     }
 
-    public function createUser($mail_a, $pseudo_a, $password_a) {
+    public function createUser($pseudo_a,$mail_a,  $password_a) {
         try {
             // Test le format d'un email
             if (!$this->DBBrain->isValidEmail($mail_a)) {
