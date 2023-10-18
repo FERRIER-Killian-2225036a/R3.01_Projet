@@ -48,4 +48,26 @@ class SessionManager
             }
         }
     }
+
+    public static function disconnect()
+    {
+        if (session_status()==PHP_SESSION_ACTIVE){
+            if (isset($_SESSION["UserId"])) {
+                $id = $_SESSION["UserId"];
+                ((new UserSiteModel)->disconnectUser($id));
+                session_unset();
+                session_destroy();
+                header("Location: /");
+            }
+        }else {
+            session_start();
+            session_unset();
+            session_destroy();
+            header("Location: /");
+        }
+    }
+    public static function logout() //alias
+    {
+        self::disconnect();
+    }
 }

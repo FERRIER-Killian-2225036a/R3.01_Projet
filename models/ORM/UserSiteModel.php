@@ -53,7 +53,8 @@ class UserSiteModel
             echo "couple : $userId, $userStatus, $userPassword";
             if ($userStatus !== 'disconnected') { // not normal user status ? on peut supposer que c'est un attaquant OU
                 // que l'utilisateur essai de se connecter depuis un autre appareil , dans les deux cas on deconnecte
-                throw new ExceptionsDatabase("You are already connected");
+                SessionManager::disconnect();
+                //throw new ExceptionsDatabase("You are already connected");
             }
             if ($userPassword !== $hashedPassword) { // si le mot de passe ne correspond pas
                 throw new ExceptionsDatabase("Email or password does not match");
@@ -194,5 +195,40 @@ class UserSiteModel
         // Si le mot de passe est suffisamment fort, retournez true
         // Vous pouvez ajouter d'autres critères de force ici
         return false;
+    }
+
+    public function disconnectUser(int $id)
+    {
+        try {
+
+            if (!$this->isUserIDExists($id)) {
+                throw new ExceptionsDatabase("User with this email or pseudo already exists");
+            }
+            // Checking the existence of the user by UserId
+            $stmt = $this->conn->prepare("SELECT Status FROM USERSite WHERE UserId = ?");
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $stmt->closeCursor();
+
+            // Update user status to 'disconnected'
+            $stmt = $this->conn->prepare("UPDATE USERSite SET Status = 'disconnected' WHERE UserId = ?");
+            $stmt->bindParam(1, $userId_a, PDO::PARAM_INT);
+            $stmt->execute();
+            return "success";
+        } catch (ExceptionsDatabase $e) {
+            return $e;
+        }
+    }
+
+    private function isUserIDExists(int $id)
+    {
+        $checkUserSQL = "SELECT COUNT(*) FROM USERSite WHERE UserId = ? ";
+        $stmt = $this->conn->prepare($checkUserSQL);
+        $stmt->bindParam(1, $id, PDO::PARAM_STR);
+        $stmt->execute();
+        $count = $stmt->fetchColumn();
+        //echo $count > 0;
+        return $count > 0;
     }
 }
