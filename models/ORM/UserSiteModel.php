@@ -75,7 +75,7 @@ class UserSiteModel
             $stmt->execute();
             $stmt->closeCursor();
             // Change lastIpAddress
-            $updateQuery = "UPDATE USERSite SET lastIpAddress = ? WHERE UserId = ?";
+            $updateQuery = "UPDATE USERSite SET LastIpAdress = ? WHERE UserId = ?";
             $stmt = $this->conn->prepare($updateQuery);
             $stmt->bindParam(1, $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
             $stmt->bindParam(2, $userId, PDO::PARAM_INT);
