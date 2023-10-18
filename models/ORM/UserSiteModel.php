@@ -82,7 +82,7 @@ class UserSiteModel
             $stmt->execute();
             $stmt->closeCursor();
             // Increment the number of connections
-            $result = $this->DBBrain->incrementNumberOfConnexion();
+            $result = $this->DBBrain->incrementNumberOfConnexion($userId);
             if (!$result) {
                 throw new ExceptionsDatabase("Error incrementing number of connections");
             }

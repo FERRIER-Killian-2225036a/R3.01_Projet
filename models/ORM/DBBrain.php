@@ -32,7 +32,7 @@ class DBBrain
         return filter_var($mail_a, FILTER_VALIDATE_EMAIL)!== false;
     }
 
-    public function incrementNumberOfConnexion(): bool
+    public function incrementNumberOfConnexion($UserId): bool
     {
         try {
             // Increment the value and update the database
