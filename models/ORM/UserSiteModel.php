@@ -50,7 +50,7 @@ class UserSiteModel
         } catch (ExceptionsDatabase $e) {
             //annulation de la transaction si erreur
             $this->conn->rollback();
-            //echo "Error creating user: " . $e->getMessage();
+            echo "Error creating user: " . $e->getMessage();
             //echo "$mail_a, $pseudo_a, $password_a" ;
             return false;
         }
@@ -64,7 +64,7 @@ class UserSiteModel
         $stmt->bindParam(2, $$pseudo_a, PDO::PARAM_STR);
         $stmt->execute();
         $count = $stmt->fetchColumn();
-        echo "count : $count";
+        echo $count > 0;
         return $count > 0;
 
     }
