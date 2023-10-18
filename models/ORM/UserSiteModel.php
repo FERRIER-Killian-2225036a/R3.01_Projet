@@ -22,7 +22,7 @@ class UserSiteModel
             if ($this->isUserExists($mail_a, $pseudo_a)) {
                 throw new ExceptionsDatabase("User with this email or pseudo already exists");
             }
-            if ($this->isPasswordSafe($password_a)) {
+            if ($this->isPasswordNotSafe($password_a)) {
                 throw new ExceptionsDatabase("Ce mot de passe n'est pas assez sécurisé");
             }
             
@@ -69,8 +69,10 @@ class UserSiteModel
 
     }
 
-    private function isPasswordSafe($password_a): bool
-    {    $hashedPassword = strtoupper(sha1($password_a));
+    private function isPasswordNotSafe($password_a): bool
+    {
+
+        $hashedPassword = strtoupper(sha1($password_a));
 
         // Prenez les 5 premiers caractères du hachage (préfixe)
         $prefix = substr($hashedPassword, 0, 5);
@@ -78,18 +80,19 @@ class UserSiteModel
         // Faites une requête à l'API Have I Been Pwned
         $apiUrl = "https://api.pwnedpasswords.com/range/" . $prefix;
         $response = file_get_contents($apiUrl);
-
         // Recherchez le reste du hachage dans la réponse
         $searchTerm = substr($hashedPassword, 5);
         $searchResult = preg_match('/' . $searchTerm . ':(\d+)/', $response, $matches);
 
+        echo "DEBUG : $response, $hashedPassword, $prefix, $searchTerm, $searchResult";
+
         // Si le mot de passe est apparu dans une fuite, retournez false
         if ($searchResult) {
-            return false;
+            return true;
         }
 
         // Si le mot de passe est suffisamment fort, retournez true
         // Vous pouvez ajouter d'autres critères de force ici
-        return true;
+        return false;
     }
 }
