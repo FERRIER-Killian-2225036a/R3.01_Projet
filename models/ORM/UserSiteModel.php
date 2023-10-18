@@ -19,7 +19,8 @@ class UserSiteModel
                 'time_cost' => 2, // 2 itérations
                 'threads' => 1, // Degré de parallélisme de 1
             ];
-            $hashedPassword = password_hash($password_a, PASSWORD_ARGON2ID, $options);
+            $pwd_peppered = hash_hmac("sha256", $password_a, Constants::PEPPER);
+            $hashedPassword = password_hash($pwd_peppered, PASSWORD_ARGON2ID, $options);
 
 
             if (!$this->DBBrain->isValidEmail($mail_a)) { // si l'email n'a pas un format valide
@@ -52,6 +53,7 @@ class UserSiteModel
             echo "userPassword : ".$userPassword." <br>";
             echo "hashedPassword : ".$hashedPassword." <br>";
             if (!password_verify($password_a, $userPassword)) { // si le mot de passe ne correspond pas                throw new ExceptionsDatabase("Email or password does not match");
+                echo "do not match";
                 throw new ExceptionsDatabase("Email or password does not match");
             }
             /*
@@ -109,13 +111,16 @@ class UserSiteModel
             if ($this->isPasswordNotSafe($password_a)) {
                 throw new ExceptionsDatabase("This Password is not strong enough, please choose another one");
             }
+            // on ajoute un poivre
+            $pwd_peppered = hash_hmac("sha256", $password_a, Constants::PEPPER);
             // on utilise l'algo de hachage ARGON2ID
             $options = [ // configuration minimale recommandé par OWASP TOP 10 (cheat sheet)
                 'memory_cost' => 65536, // 19 MiB en kibibytes (1024 * 19)
                 'time_cost' => 2, // 2 itérations
                 'threads' => 1, // Degré de parallélisme de 1
+
             ];
-            $hashedPassword = password_hash($password_a, PASSWORD_ARGON2ID, $options);
+            $hashedPassword = password_hash($pwd_peppered, PASSWORD_ARGON2ID, $options);
             // on utilisera password_verify($passwordFromUser, $storedHashedPassword)) pour verifier le mot de passe
             // lors de la connexion
 

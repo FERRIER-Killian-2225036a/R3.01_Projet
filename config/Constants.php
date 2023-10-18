@@ -20,6 +20,8 @@ final class Constants
     const PDP_URL_DEFAULT = ""; // TODO : mettre une image par défaut
 
 
+    const PEPPER = "mjOlvxisvFdxMDpecFwc1d" ;
+
     public static function rootDirectory(): false|string
     {
         return realpath(__DIR__ . '/../');
