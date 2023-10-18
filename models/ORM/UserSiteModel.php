@@ -31,20 +31,25 @@ class UserSiteModel
             }
             echo "email used";
 
-            $stmt = $this->conn->prepare("SELECT UserId, Status, Password FROM USERSite WHERE Mail = ?");
+            $stmt = $this->conn->prepare("SELECT UserId, Status FROM USERSite WHERE Mail = ?");
             $stmt->bindParam(1, $mail_a, PDO::PARAM_STR);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $stmt->closeCursor();
-            echo "la requete est passé";
-
-            if (!$result) {
+            /*if (!$result) { //n'arrive jamais car on test avant si l'email est utilisé
                 throw new ExceptionsDatabase("User does not exist");
-            }
-            echo "il existe un utilisateur";
+                }
+            */
             $userId = $result['UserId'];
             $userStatus = $result['Status'];
-            $userPassword = $result['Password'];
+
+            $stmt2= $this->conn->prepare("SELECT Password FROM PASSWORD WHERE UserId = ?");
+            $stmt2->bindParam(1, $userId, PDO::PARAM_INT);
+            $stmt2->execute();
+            $result2 = $stmt2->fetch(PDO::FETCH_ASSOC);
+            $stmt2->closeCursor();
+            $userPassword = $result2['Password'];
+
             echo "couple : $userId, $userStatus, $userPassword";
             if ($userStatus !== 'disconnected') { // not normal user status ? on peut supposer que c'est un attaquant OU
                 // que l'utilisateur essai de se connecter depuis un autre appareil , dans les deux cas on deconnecte
