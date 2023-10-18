@@ -64,6 +64,7 @@ class UserSiteModel
         $stmt->bindParam(2, $pseudo, PDO::PARAM_STR);
         $stmt->execute();
         $count = $stmt->fetchColumn();
+        echo "count : $count";
         return $count > 0;
 
     }
