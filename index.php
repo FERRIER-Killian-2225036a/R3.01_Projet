@@ -32,7 +32,7 @@
         echo ('Une erreur s\'est produite : ' . $O_exception->getMessage());
 
     }
-    
+
     // Les différentes sous-vues ont été "crachées" dans le tampon d'affichage, on les récupère
     $contentForShow = MotorView::getBufferContent();
 

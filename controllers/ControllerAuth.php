@@ -13,6 +13,25 @@ class ControllerAuth
     {
         //print_r($A_parametres);
         print_r($A_postParams);
+        if ($_SERVER["REQUEST_METHOD"] ==="POST")
+        {
+            if (isset($A_postParams["mail"]) && isset($A_postParams["password"])) {
+                $status = SessionManager::Login($A_postParams);
+                //status = success / erreur type
+                if ($status=="success"){
+                    //redirection vers page de login
+                    header("Location: /");
+                }
+                else{
+                    // affichage message d'erreur a deplacé ?
+                    echo $status;
+                }
+            }
+            else {
+                // message pour demander de remplir les champs
+                echo "remplir les champs";
+            }
+        }
         MotorView::show('authentification/login');
     }
 
