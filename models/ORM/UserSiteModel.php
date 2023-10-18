@@ -13,17 +13,17 @@ class UserSiteModel
 
     public function createUser($pseudo_a,$mail_a,  $password_a) {
         try {
-            // Test le format d'un email
-
+            // désensibilisation a la casse pour le pseudo
+            $pseudo_a= strtolower($pseudo_a);
 
             if (!$this->DBBrain->isValidEmail($mail_a)) {
-                throw new ExceptionsDatabase("Invalid email format");
+                throw new ExceptionsDatabase("This email format is not valid");
             }
             if ($this->isUserExists($mail_a, $pseudo_a)) {
                 throw new ExceptionsDatabase("User with this email or pseudo already exists");
             }
             if ($this->isPasswordNotSafe($password_a)) {
-                throw new ExceptionsDatabase("Ce mot de passe n'est pas assez sécurisé");
+                throw new ExceptionsDatabase("This Password is not strong enough, please choose another one");
             }
             
 
@@ -58,6 +58,8 @@ class UserSiteModel
 
     private function isUserExists($mail_a, $pseudo_a): bool
     {
+        //FONCTIONNE CORRECTEMENT
+
         $checkUserSQL = "SELECT COUNT(*) FROM USERSite WHERE Mail = ? OR Pseudo = ?";
         $stmt = $this->conn->prepare($checkUserSQL);
         $stmt->bindParam(1, $mail_a, PDO::PARAM_STR);

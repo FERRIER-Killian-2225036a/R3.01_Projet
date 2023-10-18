@@ -20,14 +20,20 @@ class DatabaseManager
 
     public function __construct() {
         try {
+            // d'apres https://phpdelusions.net/pdo
+            $dsn = "mysql:host=".Constants::DB['host'].";dbname=".Constants::DB['dbname'].";charset=".Constants::DB['charset'];
+            $options = [
+                PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_EMULATE_PREPARES   => false,
+            ];
             $this->conn = new PDO(
-                "mysql:dbname=" . Constants::DB['dbname'] .
-                ";host=" . Constants::DB['host'],
+                $dsn,
                 Constants::DB['usr'],
-                Constants::DB['pwd']
+                Constants::DB['pwd'],
+                $options
             );
 
-            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             throw new ExceptionsDatabase("Connection failed: " . $e->getMessage());
         }

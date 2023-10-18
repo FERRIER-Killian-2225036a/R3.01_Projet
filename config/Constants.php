@@ -13,6 +13,7 @@ final class Constants
         "host"=>"localhost",
         "usr"=>"cyphubte_normal_user",
         "pwd"=>"eyeF[9ek&MTi", // on changera le mot de passe quand ce sera en prod, (mot de passe temporaire)
+        "charset"=>"utf8mb4"
     );
 
 
