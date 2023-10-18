@@ -51,7 +51,7 @@ class UserSiteModel
 
             echo "userPassword : ".$userPassword." <br>";
             echo "hashedPassword : ".$hashedPassword." <br>";
-            if (password_verify($userPassword, $hashedPassword)) { // si le mot de passe ne correspond pas
+            if (!password_verify($password_a, $userPassword)) { // si le mot de passe ne correspond pas                throw new ExceptionsDatabase("Email or password does not match");
                 throw new ExceptionsDatabase("Email or password does not match");
             }
             /*
