@@ -18,23 +18,24 @@
                                     <h4 class="mt-1 mb-5 pb-1">Bienvenue chez Cyphub !</h4>
                                 </div>
 
-                                <form>
+                                <form action="/Auth/SignUp" method="post" name="SignUp">
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example11">Pseudo</label>
-                                        <input type="email" id="form2Example11" class="form-control"
-                                               placeholder="krokmou" />
+                                        <input type="text" id="form2Example11" class="form-control"
+                                               placeholder="krokmou" name="pseudo" />
                                     </div>
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example11">Adresse mail</label>
                                         <input type="email" id="form2Example11" class="form-control"
-                                               placeholder="krokmou@exemple.fr" />
+                                               placeholder="krokmou@exemple.fr" name = "mail"/>
                                     </div>
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example22">Mot de passe</label>
                                         <input type="password" id="form2Example22" class="form-control"
-                                               placeholder="********"/>
+                                               placeholder="********" name="password"/>
+                                        <!-- TO DO VERIFIER COTE CLIENT SI MDP 1 == MDP 2 avant  d'envoyer -->
                                     </div>
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example22">Comfirmer votre mot de passe</label>
@@ -43,7 +44,7 @@
                                     </div>
 
                                     <div class="text-center pt-1 mb-5 pb-1">
-                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">S'inscire</button>
+                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">S'inscire</button>
                                     </div>
 
                                     <div class="d-flex align-items-center justify-content-center pb-4">
