@@ -23,24 +23,25 @@ class UserSiteModel
                               NumberOfAction, Status, lastIpAdress, NumberOfConnection) VALUES (?, ?, CURRENT_TIMESTAMP, 
                               CURRENT_TIMESTAMP, 'registered', 0, 0, 'connected', ?, 1)";
             $stmt1 = $this->conn->prepare($insertUserSQL);
-            $stmt1->bindParam("sss", $mail_a, $pseudo_a, $_SERVER['REMOTE_ADDR']);
+            $stmt1->bindParam(1, $mail_a, PDO::PARAM_STR);
+            $stmt1->bindParam(2, $pseudo_a, PDO::PARAM_STR);
+            $stmt1->bindParam(3, $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
             $stmt1->execute();
-            $stmt1->closeCursor();
             // Get UserId
             $userId = $this->conn->lastInsertId();
             // Insert password into PASSWORD
             $insertPasswordSQL = "INSERT INTO Password (Password, UserId) VALUES (?, ?)";
             $stmt2 = $this->conn->prepare($insertPasswordSQL);
-            $stmt2->bindParam("si", $password_a, $userId);
+            $stmt2->bindParam(1, $password_a, PDO::PARAM_STR);
+            $stmt2->bindParam(2, $userId, PDO::PARAM_INT);
             $stmt2->execute();
-            $stmt2->closeCursor();
             // Commit the transaction
             $this->conn->commit();
             // Return the UserId
             return $userId;
         } catch (Exception $e) {
             // In case of an error, rollback the transaction
-            $this->conn->rollback();
+            //$this->conn->rollback();
             echo "Error creating user: " . $e->getMessage();
         }
     }
