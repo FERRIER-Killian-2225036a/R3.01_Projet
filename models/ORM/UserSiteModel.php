@@ -14,7 +14,6 @@ class UserSiteModel
     public function loginUser($mail_a, $password_a): ExceptionsDatabase|string
     {
         try{
-            echo "couple : $mail_a, $password_a";
             $options = [ // configuration minimale recommandé par OWASP TOP 10 (cheat sheet)
                 'memory_cost' => 65536, // 19 MiB en kibibytes (1024 * 19)
                 'time_cost' => 2, // 2 itérations
@@ -25,11 +24,9 @@ class UserSiteModel
             if (!$this->DBBrain->isValidEmail($mail_a)) { // si l'email n'a pas un format valide
                 throw new ExceptionsDatabase("This email format is not valid");
             }
-            echo "email valide";
             if (!$this->isEmailUse($mail_a)) { // si l'email n'est pas utilisé
                 throw new ExceptionsDatabase("Email or password does not match");
             }
-            echo "email used";
 
             $stmt = $this->conn->prepare("SELECT UserId, Status FROM USERSite WHERE Mail = ?");
             $stmt->bindParam(1, $mail_a, PDO::PARAM_STR);
@@ -50,16 +47,18 @@ class UserSiteModel
             $stmt2->closeCursor();
             $userPassword = $result2['Password'];
 
-            echo "couple : $userId, $userStatus, $userPassword";
+
+
+            if ($userPassword !== $hashedPassword) { // si le mot de passe ne correspond pas
+                throw new ExceptionsDatabase("Email or password does not match");
+            }
+            /*
             if ($userStatus !== 'disconnected') { // not normal user status ? on peut supposer que c'est un attaquant OU
                 // que l'utilisateur essai de se connecter depuis un autre appareil , dans les deux cas on deconnecte
                 SessionManager::disconnect();
                 //throw new ExceptionsDatabase("You are already connected");
             }
-            if ($userPassword !== $hashedPassword) { // si le mot de passe ne correspond pas
-                throw new ExceptionsDatabase("Email or password does not match");
-            }
-
+            */
             // Update user status to 'connected'
             $stmt = $this->conn->prepare("UPDATE USERSite SET Status = 'connected' WHERE UserId = ?");
             $stmt->bindParam(1, $userId, PDO::PARAM_INT);
