@@ -1,6 +1,7 @@
 <head>
     <link rel="stylesheet" href="../../common_styles/general.css">
     <link rel="stylesheet" href="../../common_styles/authentification.css">
+
 </head>
 <body>
 <section class="h-100 gradient-form" style="background-color: #eee;">
@@ -27,19 +28,19 @@
                                     </div>
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example11">Adresse mail</label>
-                                        <input type="email" id="form2Example11" class="form-control"
+                                        <input type="email" id="form2Example111" class="form-control"
                                                placeholder="krokmou@exemple.fr" name = "mail"/>
                                     </div>
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example22">Mot de passe</label>
-                                        <input type="password" id="form2Example22" class="form-control"
-                                               placeholder="********" name="password"/>
-                                        <!-- TO DO VERIFIER COTE CLIENT SI MDP 1 == MDP 2 avant  d'envoyer -->
+                                        <input type="password" id="form2Example22" class="form-control" placeholder="********" name="password" onkeyup="checkPasswordStrength(this.value)" />
+                                        <div id="password-strength-bar"></div>
                                     </div>
+                                    <!-- TO DO VERIFIER COTE CLIENT SI MDP 1 == MDP 2 avant  d'envoyer -->
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example22">Comfirmer votre mot de passe</label>
-                                        <input type="password" id="form2Example22" class="form-control"
+                                        <input type="password" id="form2Example222" class="form-control"
                                                placeholder="********"/>
                                     </div>
 
@@ -67,5 +68,6 @@
             </div>
         </div>
     </div>
+    <script src="../../common_scripts/checkPasswordStrength.js"></script>
 </section>
 </body>

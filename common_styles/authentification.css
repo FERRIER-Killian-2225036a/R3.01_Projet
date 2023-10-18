@@ -40,3 +40,24 @@
 .size{
     font-size: 13px;
 }
+
+/* style de vérification de math de passe */
+#password-strength-bar {
+    height: 3px;
+    width: 0;
+    background-color: red; /* Couleur de base (peut être modifiée) */
+    transition: width 0.3s;
+    border-radius: 5px;
+}
+.password-weak {
+    background-color: red!important;
+}
+.password-medium {
+    background-color: orange!important;
+}
+.password-strong {
+    background-color: yellow!important;
+}
+.password-verystrong {
+    background-color: green!important;
+}
