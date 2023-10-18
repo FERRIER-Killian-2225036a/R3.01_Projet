@@ -21,23 +21,27 @@ class UserSiteModel
                 'threads' => 1, // Degré de parallélisme de 1
             ];
             $hashedPassword = password_hash($password_a, PASSWORD_ARGON2ID, $options);
-            echo "couple : $mail_a, $hashedPassword";
 
             if (!$this->DBBrain->isValidEmail($mail_a)) { // si l'email n'a pas un format valide
                 throw new ExceptionsDatabase("This email format is not valid");
             }
+            echo "email valide";
             if (!$this->isEmailUse($mail_a)) { // si l'email n'est pas utilisé
                 throw new ExceptionsDatabase("Email or password does not match");
             }
+            echo "email used";
 
             $stmt = $this->conn->prepare("SELECT UserId, Status, Password FROM USERSite WHERE Mail = ?");
             $stmt->bindParam(1, $mail_a, PDO::PARAM_STR);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $stmt->closeCursor();
+            echo "la requete est passé";
+
             if (!$result) {
                 throw new ExceptionsDatabase("User does not exist");
             }
+            echo "il existe un utilisateur";
             $userId = $result['UserId'];
             $userStatus = $result['Status'];
             $userPassword = $result['Password'];
@@ -76,7 +80,7 @@ class UserSiteModel
         }
         catch (ExceptionsDatabase $e)
         {
-            echo $e->getMessage();
+            echo "Error login user: " . $e->getMessage();
             return $e;
         }
 
