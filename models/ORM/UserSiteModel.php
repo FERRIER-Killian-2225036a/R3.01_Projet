@@ -14,19 +14,20 @@ class UserSiteModel
     public function loginUser($mail_a, $password_a): ExceptionsDatabase|string
     {
         try{
-
+            echo "couple : $mail_a, $password_a";
             $options = [ // configuration minimale recommandé par OWASP TOP 10 (cheat sheet)
                 'memory_cost' => 65536, // 19 MiB en kibibytes (1024 * 19)
                 'time_cost' => 2, // 2 itérations
                 'threads' => 1, // Degré de parallélisme de 1
             ];
             $hashedPassword = password_hash($password_a, PASSWORD_ARGON2ID, $options);
+            echo "couple : $mail_a, $hashedPassword";
 
             if (!$this->DBBrain->isValidEmail($mail_a)) { // si l'email n'a pas un format valide
-                throw new Exception("This email format is not valid");
+                throw new ExceptionsDatabase("This email format is not valid");
             }
             if (!$this->isEmailUse($mail_a)) { // si l'email n'est pas utilisé
-                throw new Exception("Email or password does not match");
+                throw new ExceptionsDatabase("Email or password does not match");
             }
 
             $stmt = $this->conn->prepare("SELECT UserId, Status, Password FROM USERSite WHERE Mail = ?");
@@ -35,17 +36,18 @@ class UserSiteModel
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $stmt->closeCursor();
             if (!$result) {
-                throw new Exception("User does not exist");
+                throw new ExceptionsDatabase("User does not exist");
             }
             $userId = $result['UserId'];
             $userStatus = $result['Status'];
             $userPassword = $result['Password'];
+            echo "couple : $userId, $userStatus, $userPassword";
             if ($userStatus !== 'disconnected') { // not normal user status ? on peut supposer que c'est un attaquant OU
                 // que l'utilisateur essai de se connecter depuis un autre appareil , dans les deux cas on deconnecte
-                throw new Exception("You are already connected");
+                throw new ExceptionsDatabase("You are already connected");
             }
             if ($userPassword !== $hashedPassword) { // si le mot de passe ne correspond pas
-                throw new Exception("Email or password does not match");
+                throw new ExceptionsDatabase("Email or password does not match");
             }
 
             // Update user status to 'connected'
