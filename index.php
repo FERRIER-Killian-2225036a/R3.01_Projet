@@ -37,7 +37,7 @@
     {
         if (!isset($_SESSION['user'])) {
             // L'utilisateur n'est pas authentifié, redirige vers la page de connexion
-            header('Location: /');
+            header('Location: /Auth/Login');
             exit;
             //echo "on doit te rediriger";
         }
