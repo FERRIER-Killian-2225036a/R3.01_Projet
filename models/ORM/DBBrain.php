@@ -29,7 +29,6 @@ class DBBrain
 
     public function isValidEmail($mail_a): bool
     {
-        echo "mail_a : $mail_a  ";
         return filter_var($mail_a, FILTER_VALIDATE_EMAIL)!== false;
     }
 }

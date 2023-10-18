@@ -36,7 +36,7 @@
                                         <a class="size" href="#!">Mot de passe oublié ?</a>
                                         <br>
                                         <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
-                                                type="submit" name="submit">Se connecter</button>
+                                                type="submit" >Se connecter</button>
                                     </div>
 
                                     <div class="d-flex align-items-center justify-content-center pb-4">

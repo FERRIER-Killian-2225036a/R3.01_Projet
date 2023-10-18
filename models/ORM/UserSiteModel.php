@@ -11,7 +11,8 @@ class UserSiteModel
         $this->conn = $this->DBBrain->getConn();
     }
 
-    public function createUser($pseudo_a,$mail_a,  $password_a) {
+    public function createUser($pseudo_a,$mail_a,  $password_a): ExceptionsDatabase|string
+    {
         try {
             // désensibilisation a la casse pour le pseudo
             $pseudo_a= strtolower($pseudo_a);
@@ -55,6 +56,8 @@ class UserSiteModel
             $this->conn->commit();
             // renvoi l'identifiant du nouvel utilisateur
             return $userId;
+            // TODO : envoyer un mail de confirmation
+
         } catch (ExceptionsDatabase $e) {
             //echo "Error creating user: " . $e->getMessage();
             return $e;

@@ -1,41 +1,25 @@
 <?php
-// Ce fichier est le point d'entrée de votre application
+// Ce fichier est le point d'entrée de notre application
 
     require 'core/AutoLoad.php';
     /*
-     url pour notre premier test MVC Hello World,
-     nous n'avons pas d'action précisée on visera celle par défaut
-     /index.php?ctrl=helloworld
-     /helloworld
-     /controleur/nom_action/whatever/whatever2/
-
+    si nous n'avons pas d'action précisée on visera celle par défaut
+    convention :
+    https://cyphub.tech/ControllerNom/NomAction/param1/param2/param3/...
+    Notre page par default est / qui correspond a /Menu/HomeFeed
     */
-/*
-    $S_controleur = isset($_GET['ctrl']) ? $_GET['ctrl'] : null;
-    $S_action = isset($_GET['action']) ? $_GET['action'] : null;
 
-    Vue::ouvrirTampon(); //  /Noyau/Vue.php : on ouvre le tampon d'affichage, les contrôleurs qui appellent des vues les mettront dedans
-    $O_controleur = new Controleur($S_controleur, $S_action);
-*/
-
-
-
-
-    //print_r($_GET);
     $S_urlADecortiquer = isset($_GET['url']) ? $_GET['url'] : null;
     $mapOfPostParameters = isset($_POST) ? $_POST : null;
-    print_r($S_urlADecortiquer);
+    print_r($S_urlADecortiquer); // TODO enlever ce print_r (utile pour le debugging)
 
     try {
         $conn = DatabaseManager::getInstance();
     }
     catch (ExceptionsDatabase $O_exception) {
-        echo ('Une erreur s\'est produite : ' . $O_exception->getMessage());
+        echo ('Une erreur s\'est produite lors de la connexion a la base: ' . $O_exception->getMessage());
+        // TODO LOG CA
     }
-
-    //session_start();
-
-
 
     MotorView::openBuffer(); // on ouvre le tampon d'affichage, les contrôleurs qui appellent des vues les mettront dedans
     try
@@ -46,9 +30,9 @@
     catch (ExceptionsController $O_exception)
     {
         echo ('Une erreur s\'est produite : ' . $O_exception->getMessage());
+
     }
-
-
+    
     // Les différentes sous-vues ont été "crachées" dans le tampon d'affichage, on les récupère
     $contentForShow = MotorView::getBufferContent();
 

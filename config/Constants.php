@@ -12,9 +12,12 @@ final class Constants
         "dbname"=>"cyphubte_db",
         "host"=>"localhost",
         "usr"=>"cyphubte_normal_user",
-        "pwd"=>"eyeF[9ek&MTi", // on changera le mot de passe quand ce sera en prod, (mot de passe temporaire)
+        "pwd"=>"eyeF[9ek&MTi", // TODO on changera le mot de passe quand ce sera en prod, (mot de passe temporaire)
         "charset"=>"utf8mb4"
     );
+
+    const PICTURE_URL_DEFAULT = ""; // TODO : mettre une image par défaut
+    const PDP_URL_DEFAULT = ""; // TODO : mettre une image par défaut
 
 
     public static function rootDirectory(): false|string
