@@ -1,6 +1,7 @@
 <head xmlns="http://www.w3.org/1999/html">
     <link rel="stylesheet" href="../../common_styles/general.css">
     <link rel="stylesheet" href="../../common_styles/authentification.css">
+    <script src="../../common_scripts/"></script>
 
 </head>
 <body>
@@ -30,16 +31,16 @@
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example22">Mot de passe</label>
-                                        <input type="password" class="form-control" id="passwordStrength" placeholder="********" name="password" onkeyup="checkPasswordStrength(this.value)" />
+                                        <input type="password" class="form-control" id="passwordStrength password" placeholder="********" name="password" onkeyup="checkPasswordStrength(this.value)" />
                                     </div>
                                     <!-- TO DO VERIFIER COTE CLIENT SI MDP 1 == MDP 2 avant  d'envoyer -->
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example22">Comfirmer votre mot de passe</label>
-                                        <input type="password" class="form-control" placeholder="********"/>
+                                        <input type="password" id="confirmPassword" class="form-control" placeholder="********"/>
                                     </div>
 
                                     <div class="text-center pt-1 mb-5 pb-1">
-                                        <button class="btn btn-primary btn-block fa-lg mb-3" id="signUpButton" type="submit">S'inscire</button>
+                                        <button class="btn btn-primary btn-block fa-lg mb-3" id="signUpButton" type="submit" onclick="checkPasswordStrength()">S'inscire</button>
                                     </div>
 
                                     <div class="d-flex align-items-center justify-content-center pb-4">
