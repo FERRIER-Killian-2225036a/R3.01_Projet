@@ -27,8 +27,8 @@ class ControllerAuth
                 }
                 else{
                     // affichage message d'erreur a deplacé ?
-                    echo $status;
-                    echo ShowLoginErrorMessage($status);
+                    //echo $status;
+                    //echo ShowLoginErrorMessage($status);
                     echo "pifpafpouf";
                 }
             }
