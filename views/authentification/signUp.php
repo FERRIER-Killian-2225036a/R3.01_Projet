@@ -31,7 +31,7 @@
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example22">Mot de passe</label>
-                                        <input type="password" class="form-control" id="passwordStrength password" placeholder="********" name="password" onkeyup="checkPasswordStrength(this.value)" />
+                                        <input type="password" class="form-control" id="passwordStrength" placeholder="********" name="password" onkeyup="checkPasswordStrength(this.value)" />
                                     </div>
                                     <!-- TO DO VERIFIER COTE CLIENT SI MDP 1 == MDP 2 avant  d'envoyer -->
                                     <div class="form-outline mb-4">

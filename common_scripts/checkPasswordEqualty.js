@@ -1,5 +1,5 @@
 function checkPasswordsEquality() {
-    const password = document.getElementById('password').value;
+    const password = document.getElementById('passwordStrength').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
 
     if (password && confirmPassword) { // On vérifie si les deux champs ont des valeurs pour éviter un feedback inutile lorsque les champs sont vides
