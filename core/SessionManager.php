@@ -73,7 +73,7 @@ class SessionManager
                 session_unset();
                 session_destroy();
                 header("Location: /");
-        
+
         }else {
             session_start();
             session_unset();
