@@ -2,7 +2,7 @@
     <nav class="navbar navbar-top navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
-                <img src="/media/public_assets/CyphubLogo.png" alt="Logo Cyphub" width="auto" height="37" class="d-inline-block align-text-top">
+                <img src="/media/public_assets/CyphubLogo.png" alt="Logo Cyphub" id="logoImg" class="d-inline-block align-text-top">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -16,12 +16,12 @@
                     </li>
                     <li class="nav-item">
                         <a href="#">
-                            <img src="/media/users/Profil.png" alt="Logo Cyphub" width="37" height="37" class="menu-img">
+                            <img src="/media/users/Profil.png" alt="Logo Cyphub" class="menu-img">
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#">
-                            <img src="/media/public_assets/logout.png" alt="Logo Cyphub" width="37" height="37" class="menu-img me-2">
+                            <img src="/media/public_assets/logout.png" alt="Logo Cyphub" class="menu-img me-2">
                         </a>
                     </li>
                 </ul>
@@ -44,4 +44,5 @@
             </div>
         </div>
     </nav>
+    <script src="../../common_scripts/navLinks.js"></script>
 </body>
