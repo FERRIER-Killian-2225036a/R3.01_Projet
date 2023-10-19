@@ -1,4 +1,4 @@
-<head>
+<head xmlns="http://www.w3.org/1999/html">
     <link rel="stylesheet" href="../../common_styles/general.css">
     <link rel="stylesheet" href="../../common_styles/authentification.css">
 
@@ -23,24 +23,23 @@
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example11">Pseudo</label>
-                                        <input type="text" id="form2Example11" class="form-control"
+                                        <input type="text" class="form-control"
                                                placeholder="krokmou" name="pseudo" />
                                     </div>
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example11">Adresse mail</label>
-                                        <input type="email" id="form2Example111" class="form-control"
+                                        <input type="email" class="form-control"
                                                placeholder="krokmou@exemple.fr" name = "mail"/>
                                     </div>
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example22">Mot de passe</label>
-                                        <input type="password" id="form2Example22" class="form-control" placeholder="********" name="password" onkeyup="checkPasswordStrength(this.value)" />
-                                        <div id="password-strength-bar"></div>
+                                        <input type="password" class="form-control" id="passwordStrength" placeholder="********" name="password" onkeyup="checkPasswordStrength(this.value)" />
                                     </div>
                                     <!-- TO DO VERIFIER COTE CLIENT SI MDP 1 == MDP 2 avant  d'envoyer -->
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example22">Comfirmer votre mot de passe</label>
-                                        <input type="password" id="form2Example222" class="form-control"
+                                        <input type="password" class="form-control"
                                                placeholder="********"/>
                                     </div>
 

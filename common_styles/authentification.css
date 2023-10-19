@@ -41,23 +41,23 @@
     font-size: 13px;
 }
 
-/* style de vérification de math de passe */
-#password-strength-bar {
-    height: 3px;
-    width: 0;
-    background-color: red; /* Couleur de base (peut être modifiée) */
-    transition: width 0.3s;
-    border-radius: 5px;
+/* Styles pour les bordures des input en fonction de la solidité du mot de passe */
+#passwordStrength {
+    border-color: red;
+    border-width: 2px;
 }
 .password-weak {
-    background-color: red!important;
+    border-color: red !important;
 }
+
 .password-medium {
-    background-color: orange!important;
+    border-color: orange !important;
 }
+
 .password-strong {
-    background-color: yellow!important;
+    border-color: yellow !important;
 }
+
 .password-verystrong {
-    background-color: green!important;
+    border-color: green !important;
 }
