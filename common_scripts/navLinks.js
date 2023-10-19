@@ -10,5 +10,8 @@ navLinks.forEach(link => {
     if (currentPath === link.getAttribute('href')) {
         // Ajoutez la classe "active" au lien si le chemin correspond
         link.classList.add('active');
+    } else {
+        // Supprimez la classe "active" du lien si le chemin ne correspond pas
+        link.classList.remove('active');
     }
 });
