@@ -94,18 +94,25 @@ class SessionManager
 
     public static function checkValiditySessionTime(): void
     {
-        $lastConnexionDate = DateTime::createFromFormat('Y-m-d H:i:s', $_SESSION["LastConnexion"]);
-        $lastConnexionTimestamp = $lastConnexionDate->getTimestamp();
+        if (isset($_SESSION["LastConnexion"])) {
+            $lastConnexionDate = DateTime::createFromFormat('Y-m-d H:i:s', $_SESSION["LastConnexion"]);
+            $lastConnexionTimestamp = $lastConnexionDate->getTimestamp();
 
-        echo "  lastConnexionTimestamp = ".$lastConnexionTimestamp;
-        echo "  time() = ".time();
-        echo " (time() - $lastConnexionTimestamp) ";
-        echo " > ".Constants::DECONNEXION_TIME;
-        echo " = ".((time() - $lastConnexionTimestamp) > Constants::DECONNEXION_TIME);
 
-        if (isset($_SESSION["LastConnexion"]) &&
-            (time() - $lastConnexionTimestamp) > Constants::DECONNEXION_TIME ){
-            self::disconnect();
+            echo "  lastConnexionTimestamp = ".$lastConnexionTimestamp;
+            echo "  time() = ".time();
+            echo " (time() - $lastConnexionTimestamp) ";
+            echo " > ".Constants::DECONNEXION_TIME;
+            echo " = ".((time() - $lastConnexionTimestamp) > Constants::DECONNEXION_TIME);
+
+
+            if (isset($_SESSION["LastConnexion"]) &&
+                (time() - $lastConnexionTimestamp) > Constants::DECONNEXION_TIME ){
+                self::disconnect();
+            }
         }
+
+
+
     }
 }
