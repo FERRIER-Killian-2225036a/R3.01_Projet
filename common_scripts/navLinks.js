@@ -1,15 +1,14 @@
+// Récupérez le chemin de l'URL actuelle
+const currentPath = window.location.pathname;
+
 // Récupérez tous les éléments de navigation (liens)
 const navLinks = document.querySelectorAll('.nav-link');
 
-// Parcourez les liens et ajoutez un gestionnaire d'événements de clic
+// Parcourez les liens
 navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        // Supprimez la classe "active" de tous les liens
-        navLinks.forEach(navLink => {
-            navLink.classList.remove('active');
-        });
-
-        // Ajoutez la classe "active" uniquement au lien sur lequel vous avez cliqué
+    // Vérifiez si le chemin de l'URL correspond à l'attribut "href" du lien
+    if (currentPath === link.getAttribute('href')) {
+        // Ajoutez la classe "active" au lien si le chemin correspond
         link.classList.add('active');
-    });
+    }
 });
