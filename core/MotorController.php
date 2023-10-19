@@ -51,8 +51,10 @@ final class MotorController
         // On s'occupe du tableau $mapOfPostParameters
         $this->_mapOfPostParameters = $mapOfPostParameters;
 
+        // regle de redirection
         if (!isset($_SESSION['UserId']) && ($this->_mapOfSplitUrl['controller'] !== 'ControllerAuth' &&
-            $this->_mapOfSplitUrl['controller'] !== 'ControllerDefault')) {
+            $this->_mapOfSplitUrl['controller'] !== 'ControllerDefault') &&
+            ($this->_mapOfSplitUrl['controller'] !== 'ControllerMenu' )) {
             $this->_redirectionNeededBecauseOfAuthentification = true;
         } else {
             $this->_redirectionNeededBecauseOfAuthentification = false;
