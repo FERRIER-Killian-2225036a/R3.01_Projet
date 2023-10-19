@@ -36,11 +36,11 @@
                                     <!-- TO DO VERIFIER COTE CLIENT SI MDP 1 == MDP 2 avant  d'envoyer -->
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example22">Comfirmer votre mot de passe</label>
-                                        <input type="password" id="confirmPassword" class="form-control" placeholder="********"/>
+                                        <input type="password" id="confirmPassword" class="form-control" oninput="checkPasswordsEquality()" placeholder="********"/>
                                     </div>
 
                                     <div class="text-center pt-1 mb-5 pb-1">
-                                        <button class="btn btn-primary btn-block fa-lg mb-3" id="signUpButton" type="submit" onclick="checkPasswordStrength()">S'inscire</button>
+                                        <button class="btn btn-primary btn-block fa-lg mb-3" id="signUpButton" type="submit">S'inscire</button>
                                     </div>
 
                                     <div class="d-flex align-items-center justify-content-center pb-4">
