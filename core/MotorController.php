@@ -7,8 +7,14 @@ final class MotorController
 
     private $_mapOfPostParameters;
 
+    private bool $_redirectionNeededBecauseOfAuthentification;
+
     public function __construct($S_url, $mapOfPostParameters)
     {
+        session_start();
+        //$_SESSION['id'];
+
+
         // On élimine l'éventuel slash en fin d'URL sinon notre explode renverra une dernière entrée vide et on vérifie qu'il n'est pas null
         if ($S_url !== null && str_ends_with($S_url, '/')) {
             $S_url = substr($S_url, 0, strlen($S_url) - 1);
@@ -46,6 +52,12 @@ final class MotorController
         // On s'occupe du tableau $mapOfPostParameters
         $this->_mapOfPostParameters = $mapOfPostParameters;
 
+        if ($_SESSION['id'] === null && ($this->_mapOfSplitUrl['controller'] !== 'ControllerAuthentification' &&
+            $this->_mapOfSplitUrl['controller'] !== 'ControllerDefault')) {
+            $this->_redirectionNeededBecauseOfAuthentification = true;
+        } else {
+            $this->_redirectionNeededBecauseOfAuthentification = false;
+        }
     }
 
     // On exécute notre triplet
@@ -63,6 +75,9 @@ final class MotorController
         // TODO on verifie si session + page accessible ou non .
         // TODO sinon on redirige vers page d'authentification
 
+        if ($this->_redirectionNeededBecauseOfAuthentification) {
+            header("Location: /Auth/Login");
+        }
         $B_called = call_user_func_array(array(new $this->_mapOfSplitUrl['controller'],
             $this->_mapOfSplitUrl['action']), array($this->_mapOfResidualParameters, $this->_mapOfPostParameters));
 

@@ -12,7 +12,7 @@ final class Constants
         "dbname"=>"cyphubte_db",
         "host"=>"localhost",
         "usr"=>"cyphubte_normal_user",
-        "pwd"=>"eyeF[9ek&MTi", // TODO on changera le mot de passe quand ce sera en prod, (mot de passe temporaire)
+        "pwd"=>"3T3;)qa,+:@Yw.u", // TODO on changera le mot de passe quand ce sera en prod, (mot de passe temporaire)
         "charset"=>"utf8mb4"
     );
 

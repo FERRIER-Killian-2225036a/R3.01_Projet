@@ -4,7 +4,7 @@ class ControllerMenu
 {
     public function DefaultAction(): void
     {
-        MotorView::show('menu/homeFeed');
+        header("Location: /");
     }
     public function ActualityFeedAction(Array $A_parametres = null, Array $A_postParams = null): void
     {

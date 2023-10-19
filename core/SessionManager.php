@@ -2,6 +2,17 @@
 
 class SessionManager
 {
+    //private $sessionID;
+    private static USERSite $userObject;
+
+    public static function sessionLinkObject(){
+        $_SESSION['UserId']=self::$userObject->getId();
+        $_SESSION['Username']=self::$userObject->getPseudo();
+        $_SESSION['Ip']=self::$userObject->getLastIpAdress();
+        $_SESSION['Status']=self::$userObject->getStatus();
+        $_SESSION['LastConnexion']=self::$userObject->getDateLastLogin();
+    }
+
     //TODO limité taille entrée utilisateur: pseudo, mail, password
     public static function SignUp($A_postParams)
     {
@@ -12,11 +23,13 @@ class SessionManager
 
         if ($status instanceof ExceptionsDatabase) {
             return "Error : " . $status->getMessage();
-        } else {
-            session_start();
-            $_SESSION["UserId"] = $status;
-            $_SESSION['Ip'] = $_SERVER['REMOTE_ADDR'];
-            $_SESSION['Username'] = strtolower($A_postParams['pseudo']);
+        }
+        else {
+            self::$userObject=new USERSite($status); // création d'un utilisateur pour la classe
+            self::sessionLinkObject();
+            //$_SESSION["UserId"] = $status;
+            //$_SESSION['Ip'] = $_SERVER['REMOTE_ADDR'];
+            //$_SESSION['Username'] = strtolower($A_postParams['pseudo']);
             return "success";
         }
     }
@@ -25,11 +38,11 @@ class SessionManager
     {
         // on vérifie qu'il n'y est pas une session active
         if (session_status()==PHP_SESSION_ACTIVE){
-            if (isset($_SESSION["UserId"])) {
-                //on redirege vers la page d'accueil
+            if (self::$userObject!==null){
                 header("Location: /");
+                return "success";
             }
-            return "success";
+            return "session active, pour aucun utilisateur";
         }
         else {
             // essai de se connecter
@@ -41,8 +54,13 @@ class SessionManager
 
             if ($status instanceof ExceptionsDatabase) {
                 return "Error : " . $status->getMessage();
-            } else {
-
+            }
+            else {
+                self::$userObject=new USERSite($status); // création d'un utilisateur pour la classe
+                self::sessionLinkObject();
+                //$_SESSION["UserId"] = $status;
+                //$_SESSION['Ip'] = $_SERVER['REMOTE_ADDR'];
+                //$_SESSION['Username'] = strtolower($A_postParams['pseudo']);
                 return "success";
 
             }
@@ -52,7 +70,7 @@ class SessionManager
     public static function disconnect()
     {   //TODO CORRIGER CA
         if (session_status()==PHP_SESSION_ACTIVE){
-            if (isset($_SESSION["UserId"])) {
+            if (isset($_SESSION["UserId"])) { // self::$userObject!==null ? a remplacer ???
                 $id = $_SESSION["UserId"];
                 ((new UserSiteModel)->disconnectUser($id));
                 session_unset();

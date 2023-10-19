@@ -11,6 +11,29 @@ class UserSiteModel
         $this->conn = $this->DBBrain->getConn();
     }
 
+    public function getValuesById($Id)
+    {
+        $mapArrayOfUserValues = null;
+        try {
+            if (!$this->isUserIDExists($Id)) {
+                throw new ExceptionsDatabase("This user doesn't exist");
+            }
+
+            $stmt = $this->conn->prepare("SELECT * FROM USERSite WHERE UserID = ?");
+            $stmt->bindParam(1, $Id, PDO::PARAM_STR);
+            $stmt->execute();
+            $mapArrayOfUserValues = $stmt->fetch(PDO::FETCH_ASSOC); // Stocke le résultat dans le tableau
+
+            $stmt->closeCursor();
+        } catch (ExceptionsDatabase $e) {
+                // Gérer l'exception ici
+            echo $e->getMessage();
+        }
+
+        return $mapArrayOfUserValues; // Retourne le tableau avec les valeurs de la requete
+    }
+
+
     public function loginUser($mail_a, $password_a): ExceptionsDatabase|string
     {
         try{
@@ -122,7 +145,7 @@ class UserSiteModel
 
             $this->conn->beginTransaction();
             // Insert user into USERSite
-            $insertUserSQL = "INSERT INTO USERSite (Mail, Pseudo, DateFirstLogin, DateLastLogin, Role, AlertLevelUser, NumberOfAction, Status, lastIpAdress, NumberOfConnection) VALUES (?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'registered', 0, 0, 'connected', ?, 1)";
+            $insertUserSQL = "INSERT INTO USERSite (Mail, Pseudo, DateFirstLogin, DateLastLogin, Role, AlertLevelUser, NumberOfAction, Status, LastIpAdress, NumberOfConnection) VALUES (?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'registered', 0, 0, 'connected', ?, 1)";
             $stmt1 = $this->conn->prepare($insertUserSQL);
             $stmt1->bindParam(1, $mail_a, PDO::PARAM_STR);
             $stmt1->bindParam(2, $pseudo_a, PDO::PARAM_STR);
