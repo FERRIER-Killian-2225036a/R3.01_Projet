@@ -109,3 +109,29 @@ a:hover {
 .grow-button:hover {
     transform: scale(1.1);
 }
+/* Par défaut (pour les mobiles), mettons une petite marge négative */
+.overlap {
+    margin-top: -20px;
+}
+
+/* À partir de tablettes */
+@media (min-width: 576px) {
+    .overlap {
+        margin-top: -130px;
+    }
+}
+
+/* Pour les écrans moyens (comme certains ordinateurs portables) */
+@media (min-width: 768px) {
+    .overlap {
+        margin-top: -150px;
+    }
+}
+
+/* Pour les écrans plus larges */
+@media (min-width: 992px) {
+    .overlap {
+        margin-top: -175px;
+    }
+}
+
