@@ -1,5 +1,6 @@
 :root{
     --purple: #7B3DFF;
+    --purple-light: #9e75fd;
     --bs-logout-color: black;
     --opacity-passwordStrength : 0.1;
 }
