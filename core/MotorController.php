@@ -51,7 +51,7 @@ final class MotorController
         // On s'occupe du tableau $mapOfPostParameters
         $this->_mapOfPostParameters = $mapOfPostParameters;
 
-        if (!isset($_SESSION['UserId']) && ($this->_mapOfSplitUrl['controller'] !== 'ControllerAuthentification' &&
+        if (!isset($_SESSION['UserId']) && ($this->_mapOfSplitUrl['controller'] !== 'ControllerAuth' &&
             $this->_mapOfSplitUrl['controller'] !== 'ControllerDefault')) {
             $this->_redirectionNeededBecauseOfAuthentification = true;
         } else {
@@ -75,6 +75,7 @@ final class MotorController
         // TODO sinon on redirige vers page d'authentification
 
         if ($this->_redirectionNeededBecauseOfAuthentification) {
+            error_log("redirectionNeededBecauseOfAuthentification");
             header("Location: /Auth/Login");
         }
         $B_called = call_user_func_array(array(new $this->_mapOfSplitUrl['controller'],
