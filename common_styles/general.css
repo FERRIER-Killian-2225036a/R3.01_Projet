@@ -1,59 +1,69 @@
-.shadow{
-    box-shadow: green 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-}
-.round{
-    border-radius: 0.75rem!important;
-}
-.colorText{
-    color: white;
-    font-weight: bold;
-    font-size: 100%;
+.background {
+    background: var(--grey-light);
 }
 
-.row{
-    --bs-gutter-x: 5rem;
+.round {
+    border-radius: var(--border-radius-large) !important;
 }
 
-/*Pour gérer la taille du texte */
-
-.responsiveTitle {
-    font-size: 2em; /* Taille par défault */
+.padding {
+    padding-top: var(--large-padding) !important;
+    padding-bottom: var(--large-padding) !important;
 }
 
-.responsiveText {
-    font-size: 1em; /* Taille par défault */
+.shadow {
+    box-shadow: var(--shadow-default) 0px 3px 8px;
 }
 
-/* Responsive adjustments */
-@media (max-width: 1200px) {
-    .responsiveTitle {
-        font-size: 1.8em;
-    }
+.btn {
+    text-align: left;
 }
 
-@media (max-width: 992px) {
-    .responsiveTitle {
-        font-size: 1.6em;
-    }
-    .responsiveText {
-        font-size: 0.95em;
-    }
+/* General styles */
+.bg-body-tertiary {
+    display: flex;
+    align-items: center;
 }
 
+.responsive-image {
+    max-width: 30%;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.text-content {
+    margin-left: 1rem;
+    flex-grow: 1;
+}
+
+/* Responsive styles */
 @media (max-width: 768px) {
-    .responsiveTitle {
-        font-size: 1.4em;
+    .bg-body-tertiary {
+        flex-direction: column;
+        text-align: center;
     }
-    .responsiveText {
-        font-size: 0.9em;
+
+    .text-content {
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+    .responsive-image {
+        max-width: 100%;
     }
 }
 
-@media (max-width: 576px) {
-    .responsiveTitle {
-        font-size: 1.2em;
-    }
-    .responsiveText {
-        font-size: 0.85em;
-    }
+/* Hover effect */
+.grow-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: var(--btn-bg-color);
+    color: var(--btn-text-color);
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grow-button:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 3px 8px var(--shadow-hover);
 }

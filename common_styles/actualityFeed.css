@@ -1,19 +1,24 @@
-.background{
-    background: #D9D9D9;
+.background {
+    background: var(--background-color);
 }
-.round{
-    border-radius: 0.75rem!important;
+
+.round {
+    border-radius: var(--border-radius-large) !important;
 }
-.padding{
-    padding-top: 2rem!important;
-    padding-bottom: 2rem!important;
+
+.padding {
+    padding-top: var(--large-padding) !important;
+    padding-bottom: var(--large-padding) !important;
 }
-.shadow{
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+.shadow {
+    box-shadow: var(--shadow-default) 0px 3px 8px;
 }
-.btn{
+
+.btn {
     text-align: left;
 }
+
 /* General styles */
 .bg-body-tertiary {
     display: flex;
@@ -23,41 +28,42 @@
 .responsive-image {
     max-width: 30%;
     height: auto;
-    flex-shrink: 0; /* This ensures the image doesn't shrink if the container becomes too small */
+    flex-shrink: 0;
 }
 
 .text-content {
     margin-left: 1rem;
-    flex-grow: 1; /* This allows the text content to take up remaining space */
+    flex-grow: 1;
 }
 
 /* Responsive styles */
 @media (max-width: 768px) {
     .bg-body-tertiary {
         flex-direction: column;
-        text-align: center; /* center text for mobile */
+        text-align: center;
     }
 
     .text-content {
         margin-left: 0;
-        margin-top: 1rem; /* add some space between the image and text */
+        margin-top: 1rem;
     }
     .responsive-image {
         max-width: 100%;
     }
 }
-/*Pour Augmenter la taille des qu'on passe la souris dessus*/
+
+/* Hover effect */
 .grow-button {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #f8f9fa; /* Assuming this color for the button */
-    color: black; /* Color for the text on the button */
+    background-color: var(--btn-bg-color);
+    color: var(--btn-text-color);
     border: none;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition effect for both scaling and shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .grow-button:hover {
-    transform: scale(1.03); /* Increase the button size by 10% */
-    box-shadow: 0px 3px 8px #7B3DFF;
+    transform: scale(1.03);
+    box-shadow: 0px 3px 8px var(--shadow-hover);
 }

@@ -6,35 +6,39 @@
 
 <section class = "background">
     <section class="padding text-left container">
-        <div class="col-lg-6 col-md-8 mx-left">
-            <h1 class="homeTitle">Bienvenue chez Cyphub !</h1>
-            <p class="colorText lead text-body-secondary">Ici est le début de la page home avec juste une phrase qui finira par être modifier </p>
-            <p>
-            <div class="col-lg-8 col-md-8 mx-left">
-                <a href="/Auth/Login" class="cta colorText noneColor text-left block">
-                    <span class="visual">Se connecter</span>
-                    <svg class="svg1" width="13px" height="10px" viewBox="0 0 13 10">
-                        <path d="M1,5 L11,5"></path>
-                        <polyline points="8 1 12 5 8 9"></polyline>
-                    </svg>
-                </a>
-                <a href="/Auth/SignUp" class="cta colorText noneColor text-left block ">
-                    <span class="visual">Créer un compte</span>
-                    <svg class="svg1" width="13px" height="10px" viewBox="0 0 13 10">
-                        <path d="M1,5 L11,5"></path>
-                        <polyline points="8 1 12 5 8 9"></polyline>
-                    </svg>
-                </a>
+        <div class="row">  <!-- Ajout d'une rangée -->
+            <div class="col-lg-6 col-md-8">
+                <h1 class="homeTitle">Bienvenue chez Cyphub !</h1>
+                <p class="colorText lead text-body-secondary">Ici est le début de la page home avec juste une phrase qui finira par être modifiée.</p>
+
+                <div class="col-lg-8 col-md-8 mx-left">
+                    <a href="/Auth/Login" class="cta colorText noneColor text-left block">
+                        <span class="visual">Se connecter</span>
+                        <svg class="svg1" width="13px" height="10px" viewBox="0 0 13 10">
+                            <path d="M1,5 L11,5"></path>
+                            <polyline points="8 1 12 5 8 9"></polyline>
+                        </svg>
+                    </a>
+                    <a href="/Auth/SignUp" class="cta colorText noneColor text-left block">
+                        <span class="visual">Créer un compte</span>
+                        <svg class="svg1" width="13px" height="10px" viewBox="0 0 13 10">
+                            <path d="M1,5 L11,5"></path>
+                            <polyline points="8 1 12 5 8 9"></polyline>
+                        </svg>
+                    </a>
+                </div>
             </div>
-            </p>
+
+            <div class="col-lg-6 col-md-4 text-right">  <!-- Cette colonne est pour l'image -->
+                <img src="/media/public_assets/homePicture.png" alt="Logo Cyphub" width="632" height="395">
+            </div>
         </div>
-            <!--<img src="/media/public_assets/homePicture.png" alt="Logo Cyphub" width="500" height="500">!-->
     </section>
 </section>
 
 
 
-<section class="py-3 text-center container ">
+<section class="py-3 text-center container overlap ">
     <div class="py-lg-5">
         <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
             <div class="col">

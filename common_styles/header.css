@@ -2,7 +2,7 @@
     padding-inline: 10em;
 }
 .navbar-top{
-    background-color: var(--bs-header-color)!important;
+    background-color: var(--purple-light)!important;
 }
 .navbar-bottom{
     padding-block: 0;
@@ -26,8 +26,14 @@
 .menu-img{
     margin-left: 0.8em;
 }
-
-
+a > img {
+    width : 37px;
+    height : 37px;
+}
+#logoImg {
+    width : auto;
+    height : 37px;
+}
 
 @media (max-width: 660px) {
     .navbar{

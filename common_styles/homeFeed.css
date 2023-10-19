@@ -1,26 +1,28 @@
-.homeTitle{
+.homeTitle {
     font-weight: bold;
     justify-content: left;
-    color: white;
+    color: var(--white);  /* Assuming you have this variable for white color, if not, you can just use `white` directly */
+}
 
+.background {
+    background-color: var(--purple-light) !important;
 }
-.background{
-    background-color: var(--bs-header-color)!important;
-}
-.block{
+
+.block {
     display: block;
-
 }
+
 .btn {
     text-align: left;
-
 }
+
 .cta {
     position: relative;
     margin: auto;
     padding: 19px 22px;
     transition: all 0.2s ease;
 }
+
 .cta:before {
     content: "";
     position: absolute;
@@ -33,6 +35,7 @@
     height: 56px;
     transition: all 0.3s ease;
 }
+
 .cta .visual {
     position: relative;
     font-size: 16px;
@@ -42,6 +45,7 @@
     text-transform: uppercase;
     vertical-align: middle;
 }
+
 .cta .svg1 {
     position: relative;
     top: 0;
@@ -49,53 +53,85 @@
     fill: none;
     stroke-linecap: round;
     stroke-linejoin: round;
-    stroke: white;
+    stroke: var(--white);  /* Same assumption about white color */
     stroke-width: 2;
     transform: translateX(-5px);
     transition: all 0.3s ease;
 }
+
 .cta:hover:before {
     width: 100%;
-    color: white;
-    background: #7B3DFF;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    color: var(--white);
+    background: var(--purple);
+    box-shadow: var(--shadow-default) 0px 5px 15px;
 }
+
 .cta:hover .svg1 {
     transform: translateX(0);
-
 }
+
 .cta:active {
     transform: scale(0.96);
-
-}
-a:hover{
-    color : white;
 }
 
-.noneColor{
+a:hover {
+    color: var(--white);
+}
+
+.noneColor {
     text-decoration: none;
-    color: white;
+    color: var(--white);
 }
-.colorButton{
-    background: #7B3DFF;
+
+.colorButton {
+    background: var(--purple);
 }
+
 .sizeRs {
     max-width: 80%;
     height: auto;
 }
-.card{
-    border: none!important;
+
+.card {
+    border: none !important;
 }
-.padding{
-    padding: 7rem!important;
+
+.padding {
+    padding: 7rem !important;
 }
+
 .grow-button {
     padding: 10px 20px;
     font-size: 16px;
-    transition: transform 0.3s ease; /* Effet de transition */
+    transition: transform 0.3s ease;
 }
 
 .grow-button:hover {
-    transform: scale(1.1); /* Augmente la taille du bouton de 10% */
+    transform: scale(1.1);
+}
+/* Par défaut (pour les mobiles), mettons une petite marge négative */
+.overlap {
+    margin-top: -20px;
+}
+
+/* À partir de tablettes */
+@media (min-width: 576px) {
+    .overlap {
+        margin-top: -130px;
+    }
+}
+
+/* Pour les écrans moyens (comme certains ordinateurs portables) */
+@media (min-width: 768px) {
+    .overlap {
+        margin-top: -150px;
+    }
+}
+
+/* Pour les écrans plus larges */
+@media (min-width: 992px) {
+    .overlap {
+        margin-top: -175px;
+    }
 }
 

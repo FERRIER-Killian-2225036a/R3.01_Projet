@@ -1,25 +1,21 @@
-// Fonction pour vérifier la solidité du mot de passe
+// Fonction pour changer le style en fonction de la solidité du mot de passe
 function checkPasswordStrength(password) {
-    const progressBar = document.getElementById('password-strength-bar');
+    const passwordInput = document.getElementById('passwordStrength'); // Sélectionnez l'élément d'input par son ID
     const percentage = calculatePasswordStrength(password);
-
-    // Pour que la barre prenne une taille définiz
-    /*const maxWidth = 28; // Largeur maximale souhaitée en pixels
-    const width = Math.min((percentage * maxWidth / 100), maxWidth) + 'vh';
-    progressBar.style.width = width;*/
-
-    // Pour que la barre prenne toute la largeur avec ( margin: 0 )
-    progressBar.style.width = percentage + '%';
 
     // Ajout de classes CSS en fonction du niveau de solidité
     if (percentage < 40) {
-        progressBar.className = 'password-weak';
+        passwordInput.classList.remove('password-medium', 'password-strong', 'password-verystrong');
+        passwordInput.classList.add('password-weak');
     } else if (percentage < 70) {
-        progressBar.className = 'password-medium';
+        passwordInput.classList.remove('password-weak', 'password-strong', 'password-verystrong');
+        passwordInput.classList.add('password-medium');
     } else if (percentage < 80) {
-        progressBar.className = 'password-strong';
+        passwordInput.classList.remove('password-weak', 'password-medium', 'password-verystrong');
+        passwordInput.classList.add('password-strong');
     } else {
-        progressBar.className = 'password-verystrong';
+        passwordInput.classList.remove('password-weak', 'password-medium', 'password-strong');
+        passwordInput.classList.add('password-verystrong');
     }
 }
 
