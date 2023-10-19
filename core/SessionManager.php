@@ -94,7 +94,10 @@ class SessionManager
 
     public static function checkValiditySessionTime(): void
     {
-        if (isset($_SESSION["LastConnexion"]) && (time() -$_SESSION["LastConnexion"])>86400 ){
+        if (isset($_SESSION["LastConnexion"]) && (time() -$_SESSION["LastConnexion"]) > Constants::DECONNEXION_TIME ){
+            if (self::$userObject->getStatus()=="connected") {
+                self::disconnect();
+            }
             session_unset();
             session_destroy();
             header("Location : /");

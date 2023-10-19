@@ -15,7 +15,7 @@ final class Constants
         "pwd"=>"3T3;)qa,+:@Yw.u", // TODO on changera le mot de passe quand ce sera en prod, (mot de passe temporaire)
         "charset"=>"utf8mb4"
     );
-
+    const DECONNEXION_TIME = 86400;
     const PICTURE_URL_DEFAULT = ""; // TODO : mettre une image par défaut
     const PDP_URL_DEFAULT = ""; // TODO : mettre une image par défaut
 
