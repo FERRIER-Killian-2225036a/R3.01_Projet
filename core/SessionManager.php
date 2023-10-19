@@ -18,7 +18,6 @@ class SessionManager
         $_SESSION['LastConnexion']=self::$userObject->getDateLastLogin();
     }
 
-    //TODO limité taille entrée utilisateur: pseudo, mail, password
     public static function SignUp($A_postParams): string
     {
         $status = ((new UserSiteModel)->createUser(
@@ -43,6 +42,13 @@ class SessionManager
     {
         // on vérifie qu'il n'y est pas une session active
             if (self::$userObject!==null) {
+                // test si l'ip enregistré est la meme que celle de la session
+                if (self::$userObject->getLastIpAdress() !== $_SERVER['REMOTE_ADDR']) {
+                    // on deconnecte
+                    self::disconnect();
+                    return "disconnected" ;
+                }
+
                 session_regenerate_id();
                 header("Location: /");
                 return "success";
@@ -51,7 +57,6 @@ class SessionManager
         else {
             // essai de se connecter
 
-            // TODO to change
             $status = ((new UserSiteModel)->loginUser(
                 $A_postParams["mail"],
                 $A_postParams["password"]));
