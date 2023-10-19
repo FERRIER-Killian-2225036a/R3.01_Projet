@@ -58,6 +58,6 @@
         </div>
     </div>
     <script src="../../common_scripts/showErrorMessage.js"></script>
-    <?php echo $mapView['script']?>
+    <?php echo var_dump($mapView['script'])?>
 </section>
 </body>
