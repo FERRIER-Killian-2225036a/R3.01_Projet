@@ -94,21 +94,12 @@ class SessionManager
 
     public static function checkValiditySessionTime(): void
     {
+        // Fonctionne correctement
         if (isset($_SESSION["LastConnexion"])) {
             $lastConnexionDate = DateTime::createFromFormat('Y-m-d H:i:s', $_SESSION["LastConnexion"]);
             $lastConnexionTimestamp = $lastConnexionDate->getTimestamp();
 
-
-            echo "  lastConnexionTimestamp = ".$lastConnexionTimestamp;
-            echo "  time() = ".time();
-            echo " (time() - $lastConnexionTimestamp) ";
-            echo " > ".Constants::DECONNEXION_TIME;
-            echo " = ";
-            echo ((time() - $lastConnexionTimestamp) > Constants::DECONNEXION_TIME);
-            echo "fin";
-
-            if (isset($_SESSION["LastConnexion"]) &&
-                (time() - $lastConnexionTimestamp) > Constants::DECONNEXION_TIME ){
+            if ((time() - $lastConnexionTimestamp) > Constants::DECONNEXION_TIME){
                 self::disconnect();
             }
         }
