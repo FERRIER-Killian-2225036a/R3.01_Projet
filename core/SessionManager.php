@@ -94,12 +94,14 @@ class SessionManager
 
     public static function checkValiditySessionTime(): void
     {
+
         echo "checkValiditySessionTime";
         echo "calc = ". time()-strtotime($_SESSION["LastConnexion"]);
         echo "res". (time() - strtotime($_SESSION["LastConnexion"])) > Constants::DECONNEXION_TIME ;
+        
 
-
-        if (isset($_SESSION["LastConnexion"]) && (time() - strtotime($_SESSION["LastConnexion"])) > Constants::DECONNEXION_TIME ){
+        if (isset($_SESSION["LastConnexion"]) &&
+            (time() - DateTime::createFromFormat('Y-m-d H:i:s', $_SESSION["LastConnexion"])) > Constants::DECONNEXION_TIME ){
             self::disconnect();
         }
     }
