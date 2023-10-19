@@ -238,9 +238,10 @@ class UserSiteModel
 
             // Update user status to 'disconnected'
             $stmt = $this->conn->prepare("UPDATE USERSite SET Status = 'disconnected' WHERE UserId = ?");
-            $stmt->bindParam(1, $userId_a, PDO::PARAM_INT);
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
             $stmt->execute();
-            error_log("disconnectUser".$id);
+
+            //error_log("disconnectUser".$id); debug only
             return "success";
         } catch (ExceptionsDatabase $e) {
             return $e;
