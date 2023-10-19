@@ -32,7 +32,7 @@
                                     <div class="text-center pt-1 mb-5 pb-1">
                                         <a class="forgotPasswordSize" href="#!">Mot de passe oublié ?</a>
                                         <br>
-                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit" >Se connecter</button>
+                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" id="signUpButton" type="submit" >Se connecter</button>
                                     </div>
 
                                     <div class="d-flex align-items-center justify-content-center pb-4">
@@ -42,7 +42,7 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="col-lg-6 d-flex align-items-center gradient-custom-2 removeRs">
+                        <div class="col-lg-6 d-flex align-items-center removeRs" id="rightSide">
                             <div class="align-item-center px-3 py-4 p-md-5 mx-md-4">
                                 <img src="../../media/public_assets/CyphubLogo.png"  id="bottomImg" alt="logo">
                             </div>
