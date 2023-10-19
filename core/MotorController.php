@@ -11,8 +11,9 @@ final class MotorController
 
     public function __construct($S_url, $mapOfPostParameters)
     {
-        session_start();
-
+        SessionManager::createSession();
+        SessionManager::checkValiditySessionTime();
+       
 
         // On élimine l'éventuel slash en fin d'URL sinon notre explode renverra une dernière entrée vide et on vérifie qu'il n'est pas null
         if ($S_url !== null && str_ends_with($S_url, '/')) {
