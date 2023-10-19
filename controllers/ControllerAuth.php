@@ -22,13 +22,13 @@ class ControllerAuth
                 //status = success / erreur type
                 if ($status=="success"){
                     //redirection vers page de login
-                    echo " stats : success";
                     header("Location: /");
                 }
                 else{
                     // affichage message d'erreur a deplacé ?
                     $temp ='<script type="text/javascript">ShowLoginErrorMessage('.$status.')</script>';
-                    MotorView::show('authentification/login',Array('script'=>$temp));
+                    //MotorView::show('authentification/login',Array('script'=>$temp));
+                    echo $temp;
                 }
             }
             else {
