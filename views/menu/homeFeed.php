@@ -5,7 +5,7 @@
 <body>
 
 <section class = "background">
-    <section class="padding text-left container">
+    <section class="padding text-left">
         <div class="row">  <!-- Ajout d'une rangée -->
             <div class="col-lg-6 col-md-8">
                 <h1 class="homeTitle">Bienvenue chez Cyphub !</h1>
@@ -30,7 +30,7 @@
             </div>
 
             <div class="col-lg-6 col-md-4 text-right">  <!-- Cette colonne est pour l'image -->
-                <img src="/media/public_assets/homePicture.png" alt="Logo Cyphub" width="632" height="395">
+                <img src="/media/public_assets/homePicture.png" id="decorationImg" alt="Logo Cyphub" width="632" height="395">
             </div>
         </div>
     </section>
@@ -40,27 +40,24 @@
 
 <section class="py-3 text-center container overlap ">
     <div class="py-lg-5">
-        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <div id="buttonContainer">
             <div class="col">
-                <div class="card mb-4 rounded-4 shadow background">
-                    <a href="/Menu/ActualityFeed" type="button" class="w-20 rounded-4 btn btn-lg text-center colorButton shadow-gn grow-button">
-                        <img class="sizeRs" src="../../media/public_assets/icone/iconeTerminalWhite.png"alt="Icone Veille Tehcnologique " height="150" width="150">
-                        <p class="colorText">Veille Technologique</p></a>
-                </div>
+                <a href="/Menu/ActualityFeed" type="button" class="w-20 rounded-4 btn btn-lg text-center colorButton shadow-gn grow-button">
+                    <img class="sizeRs" src="../../media/public_assets/icone/iconeTerminalWhite.png"alt="Icone Veille Tehcnologique " height="150" width="150">
+                    <p class="colorText">Veille Technologique</p>
+                </a>
             </div>
             <div class="col">
-                <div class="card mb-4 rounded-4 shadow background">
-                    <a href="blogFeed.php" type="button" class="w-20 rounded-4 btn btn-lg text-center colorButton shadow-gn grow-button">
-                        <img class="sizeRs" src="../../media/public_assets/icone/iconeBlogWhite.png"alt="Icone Blog" height="150" width="150">
-                        <p class="colorText">Blog</p></a>
-                </div>
+                <a href="blogFeed.php" type="button" class="w-20 rounded-4 btn btn-lg text-center colorButton shadow-gn grow-button">
+                    <img class="sizeRs" src="../../media/public_assets/icone/iconeBlogWhite.png"alt="Icone Blog" height="150" width="150">
+                    <p class="colorText">Blog</p>
+                </a>
             </div>
             <div class="col">
-                <div class="card mb-4 rounded-4 shadow background">
-                    <a href="forumFeed.php" type="button" class="w-20 rounded-4 btn btn-lg text-center colorButton shadow-gn grow-button">
-                        <img class="sizeRs" src="../../media/public_assets/icone/iconeForumWhite.png"alt="Icone Forum" height="150" width="150">
-                        <p class="colorText">Forum</p></a>
-                </div>
+                <a href="forumFeed.php" type="button" class="w-20 rounded-4 btn btn-lg text-center colorButton shadow-gn grow-button">
+                    <img class="sizeRs" src="../../media/public_assets/icone/iconeForumWhite.png"alt="Icone Forum" height="150" width="150">
+                    <p class="colorText">Forum</p>
+                </a>
             </div>
         </div>
     </div>

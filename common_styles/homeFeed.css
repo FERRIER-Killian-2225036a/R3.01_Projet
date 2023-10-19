@@ -97,41 +97,109 @@ a:hover {
 }
 
 .padding {
-    padding: 7rem !important;
+    padding-block: 7rem!important;
+    padding-inline: 10.9em!important;
 }
 
 .grow-button {
-    padding: 10px 20px;
+    padding: 3.5em 0;
     font-size: 16px;
     transition: transform 0.3s ease;
+
 }
 
 .grow-button:hover {
-    transform: scale(1.1);
-}
-/* Par défaut (pour les mobiles), mettons une petite marge négative */
-.overlap {
-    margin-top: -20px;
+    transform: scale(1.2);
 }
 
+.row {
+    justify-content: space-around;
+}
+
+.col, .grow-button {
+    width: 12em;
+}
+
+#buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1.5em;
+}
+
+/* Par défaut (pour les mobiles), mettons une petite marge négative */
+.overlap {
+    margin-top: -175px;
+}
+
+@media (max-width: 991px) {
+    #decorationImg {
+        display: none;
+    }
+    .padding {
+        padding-top: 4em!important;
+        padding-inline: 5em!important;
+    }
+    div.col-lg-6.col-md-4.text-right {
+        display: none;
+    }
+    #buttonContainer {
+        padding-top: 4em;
+    }
+
+}
+@media (max-width: 767px) {
+    .padding {
+        padding-inline: 11em!important;
+    }
+    #buttonContainer {
+        display: inline-block;
+    }
+    #buttonContainer>.col{
+        padding-block: 1em;
+    }
+    .col, .grow-button {
+        width: 20em;
+    }
+}
+@media (max-width: 660px) {
+    .padding {
+        padding-inline: 3.4em!important;
+    }
+
+}
 /* À partir de tablettes */
-@media (min-width: 576px) {
+/*@media (width > 576px) {
     .overlap {
         margin-top: -130px;
     }
-}
+    .padding {
+        padding-top: 4em!important;
+    }
+    #decorationImg {
+        display: none;
+    }
+}*/
 
 /* Pour les écrans moyens (comme certains ordinateurs portables) */
-@media (min-width: 768px) {
+/*@media (min-width: 768px) {
     .overlap {
         margin-top: -150px;
     }
-}
+    #decorationImg {
+        display: none;
+    }
+}*/
 
 /* Pour les écrans plus larges */
-@media (min-width: 992px) {
+/*@media (min-width: 992px) {
     .overlap {
         margin-top: -175px;
     }
-}
+    #decorationImg {
+        display: inherit;
+    }
+    .padding {
+        padding-top: 7em!important;
+    }
+}*/
 
