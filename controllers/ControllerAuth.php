@@ -26,7 +26,7 @@ class ControllerAuth
                 }
                 else{
                     // affichage message d'erreur a deplacé ?
-                    $temp ='<script type="text/javascript">ShowLoginErrorMessage('.$status.')</script>';
+                    $temp ='<script type="text/javascript">ShowLoginErrorMessage("'.$status.'")</script>';
                     //MotorView::show('authentification/login',Array('script'=>$temp));
                     echo $temp;
                 }
