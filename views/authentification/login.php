@@ -57,5 +57,6 @@
             </div>
         </div>
     </div>
+    <script src="../../common_scripts/showErrorMessage.js"></script>
 </section>
 </body>
