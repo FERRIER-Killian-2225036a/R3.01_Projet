@@ -3,7 +3,7 @@
 class SessionManager
 {
     //private $sessionID;
-    private static USERSite $userObject;
+    private static ?USERSite $userObject = null;
 
     public static function sessionLinkObject(){
         $_SESSION['UserId']=self::$userObject->getId();
