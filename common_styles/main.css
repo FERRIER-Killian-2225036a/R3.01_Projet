@@ -1,4 +1,5 @@
 :root{
-    --bs-header-color: #9669F5;
+    --purple: #7B3DFF;
     --bs-logout-color: black;
+    --opacity-passwordStrength : 0.1;
 }

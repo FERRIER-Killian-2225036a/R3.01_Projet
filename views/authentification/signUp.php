@@ -4,32 +4,28 @@
 
 </head>
 <body>
-<section class="h-100 gradient-form" style="background-color: #eee;">
+<section class="h-100 gradient-form">
     <div class="container py-2 ">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-xl-10">
                 <div class="card round text-black">
                     <div class="row g-0">
-                        <div class="col-lg-6">
+                        <div class="col-lg-6" id="leftSide">
                             <div class="card-body p-md-5 mx-md-4">
 
                                 <div class="text-center">
-                                    <img src="../../media/public_assets/CyphubLogo.png"
-                                         style="width: 185px;" alt="logo">
+                                    <img src="../../media/public_assets/CyphubLogo.png" id="topImg" alt="Logo Cyphub">
                                     <h4 class="mt-1 mb-5 pb-1">Bienvenue chez Cyphub !</h4>
                                 </div>
 
                                 <form action="/Auth/SignUp" method="post" name="SignUp">
-
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example11">Pseudo</label>
-                                        <input type="text" class="form-control"
-                                               placeholder="krokmou" name="pseudo" />
+                                        <input type="text" class="form-control" placeholder="krokmou" name="pseudo" />
                                     </div>
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example11">Adresse mail</label>
-                                        <input type="email" class="form-control"
-                                               placeholder="krokmou@exemple.fr" name = "mail"/>
+                                        <input type="email" class="form-control" placeholder="krokmou@exemple.fr" name = "mail"/>
                                     </div>
 
                                     <div class="form-outline mb-4">
@@ -39,12 +35,11 @@
                                     <!-- TO DO VERIFIER COTE CLIENT SI MDP 1 == MDP 2 avant  d'envoyer -->
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example22">Comfirmer votre mot de passe</label>
-                                        <input type="password" class="form-control"
-                                               placeholder="********"/>
+                                        <input type="password" class="form-control" placeholder="********"/>
                                     </div>
 
                                     <div class="text-center pt-1 mb-5 pb-1">
-                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">S'inscire</button>
+                                        <button class="btn btn-primary btn-block fa-lg mb-3" id="signUpButton" type="submit">S'inscire</button>
                                     </div>
 
                                     <div class="d-flex align-items-center justify-content-center pb-4">
@@ -56,10 +51,9 @@
 
                             </div>
                         </div>
-                        <div class="col-lg-6 d-flex align-items-center gradient-custom-2 removeRs">
-                            <div class="align-item-center px-3 py-4 p-md-5 mx-md-4">
-                                <img src="../../media/public_assets/CyphubLogo.png"
-                                     style="width: 200px;" alt="logo">
+                        <div class="col-lg-6 d-flex align-items-center removeRs" id="rightSide">
+                            <div class="align-item-center px-3 py-4 p-md-5 mx-md-4" >
+                                <img src="../../media/public_assets/CyphubLogo.png" id="bottomImg" alt="Logo Cyphub">
                             </div>
                         </div>
                     </div>

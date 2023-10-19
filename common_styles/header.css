@@ -2,7 +2,7 @@
     padding-inline: 10em;
 }
 .navbar-top{
-    background-color: var(--bs-header-color)!important;
+    background-color: var(--purple)!important;
 }
 .navbar-bottom{
     padding-block: 0;

@@ -1,12 +1,11 @@
-.gradient-custom-2 {
-    /* fallback for old browsers */
-    background: #fccb90;
-
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: #7B3DFF;
+section {
+    background-color: #eee;
+}
+#signUpButton, #rightSide {
+    background-color: var(--purple);
+}
+#rightSide {
+    width: 47%;
 }
 
 @media (min-width: 768px) {
@@ -15,14 +14,15 @@
     }
 }
 @media (min-width: 769px) {
-    .gradient-custom-2 {
-        border-top-right-radius: .3rem;
-        border-bottom-right-radius: .3rem;
+    #rightSide {
+        border-top-right-radius: .7rem;
+        border-bottom-right-radius: .7rem;
     }
 }
 @media (max-width: 991px) {
     .removeRs{
         visibility: hidden;
+        display: none!important;
     }
 }
 .btn-outline-danger{
@@ -41,23 +41,36 @@
     font-size: 13px;
 }
 
+#topImg {
+    width: 185px;
+}
+#bottomImg {
+    width: 200px;
+}
+
+
 /* Styles pour les bordures des input en fonction de la solidité du mot de passe */
 #passwordStrength {
     border-color: red;
     border-width: 2px;
+    background-color: rgba(255, 0, 0, var(--opacity-passwordStrength));
 }
 .password-weak {
     border-color: red !important;
+    background-color: rgba(255, 0, 0, var(--opacity-passwordStrength))!important;
 }
 
 .password-medium {
     border-color: orange !important;
+    background-color: rgb(255, 165, 0, var(--opacity-passwordStrength))!important;
 }
 
 .password-strong {
     border-color: yellow !important;
+    background-color: rgb(255, 255, 0, var(--opacity-passwordStrength))!important;
 }
 
 .password-verystrong {
     border-color: green !important;
+    background-color: rgb(0, 128, 0, var(--opacity-passwordStrength))!important;
 }
