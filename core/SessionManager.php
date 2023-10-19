@@ -72,7 +72,7 @@ class SessionManager
     }
 
     public static function disconnect(): void
-    {   //TODO CORRIGER CA
+    {   
         if (isset($_SESSION["UserId"])) { // self::$userObject!==null ? a remplacer ???
                 $id = $_SESSION["UserId"];
                 ((new UserSiteModel)->disconnectUser($id));
@@ -95,12 +95,7 @@ class SessionManager
     public static function checkValiditySessionTime(): void
     {
         if (isset($_SESSION["LastConnexion"]) && (time() -$_SESSION["LastConnexion"]) > Constants::DECONNEXION_TIME ){
-            if (self::$userObject->getStatus()=="connected") {
-                self::disconnect();
-            }
-            session_unset();
-            session_destroy();
-            header("Location : /");
+            self::disconnect();
         }
     }
 }
