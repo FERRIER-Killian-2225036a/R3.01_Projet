@@ -1,7 +1,7 @@
 <head xmlns="http://www.w3.org/1999/html">
     <link rel="stylesheet" href="../../common_styles/general.css">
     <link rel="stylesheet" href="../../common_styles/authentification.css">
-    <script src="../../common_scripts/"></script>
+    <script src="../../common_scripts/checkPasswordEqualty.js"></script>
 
 </head>
 <body>
