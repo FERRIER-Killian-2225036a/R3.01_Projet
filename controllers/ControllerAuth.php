@@ -27,9 +27,8 @@ class ControllerAuth
                 }
                 else{
                     // affichage message d'erreur a deplacé ?
-                    //echo $status;
-                    //echo ShowLoginErrorMessage($status);
-                    echo "pifpafpouf";
+                    $temp ='<script type="text/javascript">ShowLoginErrorMessage('.$status.')</script>';
+                    MotorView::show('authentification/login',Array('script'=>$temp));
                 }
             }
             else {
