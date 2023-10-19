@@ -1,11 +1,13 @@
 section {
-    background-color: #eee;
+    background-color: var(--section-bg-color);
 }
+
 #signUpButton, #rightSide {
-    background-color: var(--purple);
+    background-color: var(--primary-color);
 }
+
 #rightSide {
-    width: 47%;
+    width: var(--right-side-width);
 }
 
 @media (min-width: 768px) {
@@ -13,64 +15,71 @@ section {
         height: 100vh !important;
     }
 }
+
 @media (min-width: 769px) {
     #rightSide {
-        border-top-right-radius: .7rem;
-        border-bottom-right-radius: .7rem;
+        border-top-right-radius: var(--border-radius-medium);
+        border-bottom-right-radius: var(--border-radius-medium);
     }
 }
+
 @media (max-width: 991px) {
-    .removeRs{
+    .removeRs {
         visibility: hidden;
-        display: none!important;
+        display: none !important;
     }
 }
-.btn-outline-danger{
-    color: #7B3DFF;
-    border-color: #7B3DFF;
+
+.btn-outline-danger {
+    color: var(--btn-danger-color);
+    border-color: var(--btn-danger-color);
 }
+
 .btn-outline-danger:hover {
     color: #fff;
-    background-color: #7B3DFF;
-    border-color: #7B3DFF;
+    background-color: var(--btn-danger-color);
+    border-color: var(--btn-danger-color);
 }
-.btn-check:focus+.btn-outline-danger, .btn-outline-danger:focus {
-    box-shadow: 0 0 0 0.25rem #9669F5;
+
+.btn-check:focus + .btn-outline-danger, .btn-outline-danger:focus {
+    box-shadow: 0 0 0 0.25rem var(--btn-danger-focus-shadow);
 }
-.size{
-    font-size: 13px;
+
+.size {
+    font-size: var(--font-size-small);
 }
 
 #topImg {
-    width: 185px;
+    width: var(--img-width-small);
 }
+
 #bottomImg {
-    width: 200px;
+    width: var(--img-width-medium);
 }
 
-
-/* Styles pour les bordures des input en fonction de la solidité du mot de passe */
 #passwordStrength {
-    border-color: red;
-    border-width: 2px;
-    background-color: rgba(255, 0, 0, var(--opacity-passwordStrength));
+    border-color: var(--password-weak-color);
+    border-width: var(--border-width-medium);
+    background-color: var(--password-weak-color);
+    opacity: var(--opacity-passwordStrength);
 }
+
 .password-weak {
-    border-color: red !important;
-    background-color: rgba(255, 0, 0, var(--opacity-passwordStrength))!important;
+    border-color: var(--password-weak-color) !important;
+    background-color: var(--password-weak-color) !important;
 }
 
 .password-medium {
-    border-color: orange !important;
-    background-color: rgb(255, 165, 0, var(--opacity-passwordStrength))!important;
+    border-color: var(--password-medium-color) !important;
+    background-color: var(--password-medium-color) !important;
 }
 
 .password-strong {
-    border-color: yellow !important;
-    background-color: rgb(255, 255, 0, var(--opacity-passwordStrength))!important;
+    border-color: var(--password-strong-color) !important;
+    background-color: var(--password-strong-color) !important;
 }
 
 .password-verystrong {
-    border-color: green !important;
-    background-color: rgb(0, 128, 0, var(--opacity-passwordStrength))!important;
+    border-color: var(--password-verystrong-color) !important;
+    background-color: var(--password-verystrong-color) !important;
 }
