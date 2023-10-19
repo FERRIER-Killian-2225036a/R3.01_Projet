@@ -1,16 +1,29 @@
 function checkPasswordsEquality() {
-    const password = document.getElementById('passwordStrength').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
+    const passwordElement = document.getElementById('passwordStrength');
+    const confirmPasswordElement = document.getElementById('confirmPassword');
+    const feedbackElement = document.getElementById('passwordFeedback');
 
-    if (password && confirmPassword) { // On vérifie si les deux champs ont des valeurs pour éviter un feedback inutile lorsque les champs sont vides
+    const password = passwordElement.value;
+    const confirmPassword = confirmPasswordElement.value;
+
+    if (password && confirmPassword) {
         if (password === confirmPassword) {
-            document.getElementById('message').textContent = "Les mots de passe correspondent !";
-            document.getElementById('message').style.color = "green";
+            confirmPasswordElement.setCustomValidity('');
+            feedbackElement.textContent = "Les mots de passe correspondent.";
+            feedbackElement.style.color = "green";
+            confirmPasswordElement.classList.add('valid');
+            confirmPasswordElement.classList.remove('invalid');
         } else {
-            document.getElementById('message').textContent = "Les mots de passe ne correspondent pas !";
-            document.getElementById('message').style.color = "red";
+            confirmPasswordElement.setCustomValidity('Les mots de passe ne correspondent pas !');
+            feedbackElement.textContent = "Les mots de passe ne correspondent pas.";
+            feedbackElement.style.color = "red";
+            confirmPasswordElement.classList.add('invalid');
+            confirmPasswordElement.classList.remove('valid');
         }
     } else {
-        document.getElementById('message').textContent = ""; // Efface le message s'il n'y a pas de valeur dans l'un des champs
+        confirmPasswordElement.setCustomValidity('');
+        feedbackElement.textContent = "";
+        confirmPasswordElement.classList.remove('valid');
+        confirmPasswordElement.classList.remove('invalid');
     }
 }
