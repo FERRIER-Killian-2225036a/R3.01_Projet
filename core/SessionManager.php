@@ -103,8 +103,9 @@ class SessionManager
             echo "  time() = ".time();
             echo " (time() - $lastConnexionTimestamp) ";
             echo " > ".Constants::DECONNEXION_TIME;
-            echo " = ".((time() - $lastConnexionTimestamp) > Constants::DECONNEXION_TIME);
-
+            echo " = ";
+            echo ((time() - $lastConnexionTimestamp) > Constants::DECONNEXION_TIME);
+            echo "fin";
 
             if (isset($_SESSION["LastConnexion"]) &&
                 (time() - $lastConnexionTimestamp) > Constants::DECONNEXION_TIME ){
