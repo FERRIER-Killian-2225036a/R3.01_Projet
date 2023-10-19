@@ -37,13 +37,11 @@ class SessionManager
     public static function Login($A_postParams)
     {
         // on vérifie qu'il n'y est pas une session active
-        if (session_status()==PHP_SESSION_ACTIVE){
-            if (self::$userObject!==null){
+            if (self::$userObject!==null) {
                 header("Location: /");
                 return "success";
+
             }
-            return "session active, pour aucun utilisateur";
-        }
         else {
             // essai de se connecter
 
