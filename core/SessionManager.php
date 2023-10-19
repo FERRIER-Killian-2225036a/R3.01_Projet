@@ -108,8 +108,5 @@ class SessionManager
                 self::disconnect();
             }
         }
-
-
-
     }
 }
