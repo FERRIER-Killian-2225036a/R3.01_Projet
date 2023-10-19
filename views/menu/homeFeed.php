@@ -43,19 +43,19 @@
         <div id="buttonContainer">
             <div class="col">
                 <a href="/Menu/ActualityFeed" type="button" class="w-20 rounded-4 btn btn-lg text-center colorButton shadow-gn grow-button">
-                    <img class="sizeRs" src="../../media/public_assets/icone/iconeTerminalWhite.png"alt="Icone Veille Tehcnologique " height="150" width="150">
+                    <img class="sizeRs iconSize" src="../../media/public_assets/icone/iconeTerminalWhite.png" alt="Icone Veille Tehcnologique">
                     <p class="colorText">Veille Technologique</p>
                 </a>
             </div>
             <div class="col">
                 <a href="blogFeed.php" type="button" class="w-20 rounded-4 btn btn-lg text-center colorButton shadow-gn grow-button">
-                    <img class="sizeRs" src="../../media/public_assets/icone/iconeBlogWhite.png"alt="Icone Blog" height="150" width="150">
+                    <img class="sizeRs iconSize" src="../../media/public_assets/icone/iconeBlogWhite.png" alt="Icone Blog">
                     <p class="colorText">Blog</p>
                 </a>
             </div>
             <div class="col">
                 <a href="forumFeed.php" type="button" class="w-20 rounded-4 btn btn-lg text-center colorButton shadow-gn grow-button">
-                    <img class="sizeRs" src="../../media/public_assets/icone/iconeForumWhite.png"alt="Icone Forum" height="150" width="150">
+                    <img class="sizeRs iconSize" src="../../media/public_assets/icone/iconeForumWhite.png" alt="Icone Forum">
                     <p class="colorText">Forum</p>
                 </a>
             </div>
