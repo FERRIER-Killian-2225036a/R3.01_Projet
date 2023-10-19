@@ -13,7 +13,7 @@ class ControllerAuth
     {
         MotorView::show('authentification/login');
         //print_r($A_parametres);
-        print_r($A_postParams);
+        //print_r($A_postParams);
         if ($_SERVER["REQUEST_METHOD"] ==="POST")
         {
             if (isset($A_postParams["mail"]) && isset($A_postParams["password"])) {
