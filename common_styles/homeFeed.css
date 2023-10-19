@@ -5,7 +5,7 @@
 
 }
 .background{
-    background-color: var(--bs-header-color)!important;
+    background-color: var(--purple)!important;
 }
 .block{
     display: block;
