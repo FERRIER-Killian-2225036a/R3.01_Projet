@@ -26,8 +26,14 @@
 .menu-img{
     margin-left: 0.8em;
 }
-
-
+a > img {
+    width : 37px;
+    height : 37px;
+}
+#logoImg {
+    width : auto;
+    height : 37px;
+}
 
 @media (max-width: 660px) {
     .navbar{

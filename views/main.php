@@ -15,7 +15,7 @@
             //echo $mapView['body'];
             echo $mapView['body'];
             motorView::show('common/footer');
-            require "common_scripts/general_scripts.php";
+            require 'common_scripts/general_scripts.php';
         ?>
     </body>
 </html>
