@@ -4,14 +4,8 @@ section {
 #signUpButton, #rightSide {
     background-color: var(--purple);
 }
-#leftSide {
-    padding-right: 0;
-}
 #rightSide {
     width: 47%;
-}
-.form-label {
-    width: 100%;
 }
 
 @media (min-width: 768px) {
@@ -43,11 +37,10 @@ section {
 .btn-check:focus+.btn-outline-danger, .btn-outline-danger:focus {
     box-shadow: 0 0 0 0.25rem #9669F5;
 }
-.forgotPasswordSize{
+.size{
     font-size: 13px;
 }
 
-/* Gestion du style des images */
 #topImg {
     width: 185px;
 }
@@ -80,11 +73,4 @@ section {
 .password-verystrong {
     border-color: green !important;
     background-color: rgb(0, 128, 0, var(--opacity-passwordStrength))!important;
-}
-
-/* Gestion de l'affichage d'erreur */
-#wrongInfo {
-    color: red;
-    font-size: 13px;
-    display: none;
 }

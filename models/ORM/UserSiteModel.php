@@ -11,16 +11,34 @@ class UserSiteModel
         $this->conn = $this->DBBrain->getConn();
     }
 
+    public function getValuesById($Id)
+    {
+        $mapArrayOfUserValues = null;
+        try {
+            if (!$this->isUserIDExists($Id)) {
+                throw new ExceptionsDatabase("This user doesn't exist");
+            }
+
+            $stmt = $this->conn->prepare("SELECT * FROM USERSite WHERE UserID = ?");
+            $stmt->bindParam(1, $Id, PDO::PARAM_STR);
+            $stmt->execute();
+            $mapArrayOfUserValues = $stmt->fetch(PDO::FETCH_ASSOC); // Stocke le résultat dans le tableau
+
+            $stmt->closeCursor();
+        } catch (ExceptionsDatabase $e) {
+                // Gérer l'exception ici
+            echo $e->getMessage();
+        }
+
+        return $mapArrayOfUserValues; // Retourne le tableau avec les valeurs de la requete
+    }
+
+
     public function loginUser($mail_a, $password_a): ExceptionsDatabase|string
     {
         try{
-            $options = [ // configuration minimale recommandé par OWASP TOP 10 (cheat sheet)
-                'memory_cost' => 65536, // 19 MiB en kibibytes (1024 * 19)
-                'time_cost' => 2, // 2 itérations
-                'threads' => 1, // Degré de parallélisme de 1
-            ];
+
             $pwd_peppered = hash_hmac("sha256", $password_a, Constants::PEPPER);
-            //$hashedPassword = password_hash($pwd_peppered, PASSWORD_ARGON2ID, $options);
 
 
             if (!$this->DBBrain->isValidEmail($mail_a)) { // si l'email n'a pas un format valide
@@ -31,7 +49,7 @@ class UserSiteModel
                 throw new ExceptionsDatabase("Email or password does not match");
             }
 
-            $stmt = $this->conn->prepare("SELECT UserId, Status FROM USERSite WHERE Mail = ?");
+            $stmt = $this->conn->prepare("SELECT UserId FROM USERSite WHERE Mail = ?");
             $stmt->bindParam(1, $mail_a, PDO::PARAM_STR);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -41,7 +59,6 @@ class UserSiteModel
                 }
             */
             $userId = $result['UserId'];
-            $userStatus = $result['Status'];
 
             $stmt2= $this->conn->prepare("SELECT Password FROM PASSWORD WHERE UserId = ?");
             $stmt2->bindParam(1, $userId, PDO::PARAM_INT);
@@ -52,10 +69,9 @@ class UserSiteModel
 
 
             if (!password_verify($pwd_peppered, $userPassword)) { // si le mot de passe ne correspond pas                throw new ExceptionsDatabase("Email or password does not match");
-                echo "do not match";
+                //echo "do not match";
                 throw new ExceptionsDatabase("Email or password does not match");
             }
-            echo "match";
             /*
             if ($userStatus !== 'disconnected') { // not normal user status ? on peut supposer que c'est un attaquant OU
                 // que l'utilisateur essai de se connecter depuis un autre appareil , dans les deux cas on deconnecte
@@ -93,7 +109,7 @@ class UserSiteModel
         }
         catch (ExceptionsDatabase $e)
         {
-            echo "Error login user: " . $e->getMessage();
+            //echo "Error login user: " . $e->getMessage();
             return $e;
         }
 
@@ -122,7 +138,6 @@ class UserSiteModel
                 'memory_cost' => 65536, // 19 MiB en kibibytes (1024 * 19)
                 'time_cost' => 2, // 2 itérations
                 'threads' => 1, // Degré de parallélisme de 1
-
             ];
             $hashedPassword = password_hash($pwd_peppered, PASSWORD_ARGON2ID, $options);
             // on utilisera password_verify($passwordFromUser, $storedHashedPassword)) pour verifier le mot de passe
@@ -130,7 +145,7 @@ class UserSiteModel
 
             $this->conn->beginTransaction();
             // Insert user into USERSite
-            $insertUserSQL = "INSERT INTO USERSite (Mail, Pseudo, DateFirstLogin, DateLastLogin, Role, AlertLevelUser, NumberOfAction, Status, lastIpAdress, NumberOfConnection) VALUES (?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'registered', 0, 0, 'connected', ?, 1)";
+            $insertUserSQL = "INSERT INTO USERSite (Mail, Pseudo, DateFirstLogin, DateLastLogin, Role, AlertLevelUser, NumberOfAction, Status, LastIpAdress, NumberOfConnection) VALUES (?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'registered', 0, 0, 'connected', ?, 1)";
             $stmt1 = $this->conn->prepare($insertUserSQL);
             $stmt1->bindParam(1, $mail_a, PDO::PARAM_STR);
             $stmt1->bindParam(2, $pseudo_a, PDO::PARAM_STR);
