@@ -12,7 +12,6 @@ final class MotorController
     public function __construct($S_url, $mapOfPostParameters)
     {
         session_start();
-        //$_SESSION['id'];
 
 
         // On élimine l'éventuel slash en fin d'URL sinon notre explode renverra une dernière entrée vide et on vérifie qu'il n'est pas null
@@ -52,7 +51,7 @@ final class MotorController
         // On s'occupe du tableau $mapOfPostParameters
         $this->_mapOfPostParameters = $mapOfPostParameters;
 
-        if (!isset($_SESSION['id']) && ($this->_mapOfSplitUrl['controller'] !== 'ControllerAuthentification' &&
+        if (!isset($_SESSION['UserId']) && ($this->_mapOfSplitUrl['controller'] !== 'ControllerAuthentification' &&
             $this->_mapOfSplitUrl['controller'] !== 'ControllerDefault')) {
             $this->_redirectionNeededBecauseOfAuthentification = true;
         } else {
