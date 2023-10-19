@@ -62,9 +62,9 @@ class ControllerAuth
             }
         }
     }
-    public function LogoutAction(Array $A_parametres = null, Array $A_postParams = null): void
+    public function LogOutAction(Array $A_parametres = null, Array $A_postParams = null): void
     {
-
+        SessionManager::disconnect();
         //MotorView::show('authentification/logout');
     }
 

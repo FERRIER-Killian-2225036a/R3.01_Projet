@@ -67,14 +67,13 @@ class SessionManager
 
     public static function disconnect()
     {   //TODO CORRIGER CA
-        if (session_status()==PHP_SESSION_ACTIVE){
-            if (isset($_SESSION["UserId"])) { // self::$userObject!==null ? a remplacer ???
+        if (isset($_SESSION["UserId"])) { // self::$userObject!==null ? a remplacer ???
                 $id = $_SESSION["UserId"];
                 ((new UserSiteModel)->disconnectUser($id));
                 session_unset();
                 session_destroy();
                 header("Location: /");
-            }
+        
         }else {
             session_start();
             session_unset();

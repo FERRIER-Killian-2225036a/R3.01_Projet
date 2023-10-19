@@ -20,7 +20,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#">
+                        <a href="/Auth/LogOut">
                             <img src="/media/public_assets/logout.png" alt="Logo Cyphub" class="menu-img me-2">
                         </a>
                     </li>
