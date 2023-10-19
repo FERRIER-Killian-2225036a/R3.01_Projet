@@ -80,6 +80,7 @@ final class MotorController
             error_log("redirectionNeededBecauseOfAuthentification");
             header("Location: /Auth/Login");
         }
+        print_r($_SESSION);
         $B_called = call_user_func_array(array(new $this->_mapOfSplitUrl['controller'],
             $this->_mapOfSplitUrl['action']), array($this->_mapOfResidualParameters, $this->_mapOfPostParameters));
 
