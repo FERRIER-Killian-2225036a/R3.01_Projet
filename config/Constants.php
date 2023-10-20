@@ -7,6 +7,8 @@ final class Constants
     const EXCEPTION_DIRECTORY  = '/monitoring/exceptions/';
     const CONTROLLER_DIRECTORY = '/controllers/';
     const ORM_DIRECTORY = '/models/ORM/';
+    const UserIdForItArticle = 238;
+
 
     const DB = array(
         "dbname"=>"cyphubte_db",
