@@ -2,8 +2,8 @@
 
 class UserSiteModel
 {
-    private $conn;
-    private $DBBrain;
+    private PDO $conn;
+    private DBBrain $DBBrain;
 
     public function __construct()
     {
@@ -11,41 +11,21 @@ class UserSiteModel
         $this->conn = $this->DBBrain->getConn();
     }
 
-    public function getValuesById($Id)
-    {
-        $mapArrayOfUserValues = null;
-        try {
-            if (!$this->isUserIDExists($Id)) {
-                throw new ExceptionsDatabase("This user doesn't exist");
-            }
 
-            $stmt = $this->conn->prepare("SELECT * FROM USERSite WHERE UserID = ?");
-            $stmt->bindParam(1, $Id, PDO::PARAM_STR);
-            $stmt->execute();
-            $mapArrayOfUserValues = $stmt->fetch(PDO::FETCH_ASSOC); // Stocke le résultat dans le tableau
 
-            $stmt->closeCursor();
-        } catch (ExceptionsDatabase $e) {
-                // Gérer l'exception ici
-            echo $e->getMessage();
-        }
-
-        return $mapArrayOfUserValues; // Retourne le tableau avec les valeurs de la requete
-    }
-
+    // ----------- AUTHENTIFICATION ------------
 
     public function loginUser($mail_a, $password_a): ExceptionsDatabase|string
     {
-        try{
+        try {
 
             $pwd_peppered = hash_hmac("sha256", $password_a, Constants::PEPPER);
-
 
             if (!$this->DBBrain->isValidEmail($mail_a)) { // si l'email n'a pas un format valide
                 throw new ExceptionsDatabase("This email format is not valid");
             }
             if (!$this->isEmailUse($mail_a)) { // si l'email n'est pas utilisé
-                echo " email not used";
+                //echo " email not used";
                 throw new ExceptionsDatabase("Email or password does not match");
             }
 
@@ -60,7 +40,7 @@ class UserSiteModel
             */
             $userId = $result['UserId'];
 
-            $stmt2= $this->conn->prepare("SELECT Password FROM PASSWORD WHERE UserId = ?");
+            $stmt2 = $this->conn->prepare("SELECT Password FROM PASSWORD WHERE UserId = ?");
             $stmt2->bindParam(1, $userId, PDO::PARAM_INT);
             $stmt2->execute();
             $result2 = $stmt2->fetch(PDO::FETCH_ASSOC);
@@ -70,11 +50,14 @@ class UserSiteModel
 
             if (!password_verify($pwd_peppered, $userPassword)) { // si le mot de passe ne correspond pas                throw new ExceptionsDatabase("Email or password does not match");
                 //echo "do not match";
+                //TODO LOG DANS LA BASE DE LOG (tentative de connexion échouée avec l'ip)
+                //TODO INCREMENTER LE NIVEAU D'ALERTE
+                //TODO BLOQUER LE COMPTE SI NIVEAU D'ALERTE TROP ELEVE
                 throw new ExceptionsDatabase("Email or password does not match");
             }
-            /*
+            /* //TODO : a voir si on laisse cette partie
             if ($userStatus !== 'disconnected') { // not normal user status ? on peut supposer que c'est un attaquant OU
-                // que l'utilisateur essai de se connecter depuis un autre appareil , dans les deux cas on deconnecte
+                // que l'utilisateur essai de se connecter depuis un autre appareil , dans les deux cas on déconnecte
                 SessionManager::disconnect();
                 //throw new ExceptionsDatabase("You are already connected");
             }
@@ -103,24 +86,18 @@ class UserSiteModel
                 throw new ExceptionsDatabase("Error incrementing number of connections");
             }
             // Return UserID
-
             return $userId;
 
-        }
-        catch (ExceptionsDatabase $e)
-        {
+        } catch (ExceptionsDatabase $e) {
             //echo "Error login user: " . $e->getMessage();
             return $e;
         }
-
     }
-
-
-    public function createUser($pseudo_a,$mail_a,  $password_a): ExceptionsDatabase|string
+    public function createUser($pseudo_a, $mail_a, $password_a): ExceptionsDatabase|string
     {
         try {
             // désensibilisation a la casse pour le pseudo
-            $pseudo_a= strtolower($pseudo_a);
+            $pseudo_a = strtolower($pseudo_a);
 
             if (!$this->DBBrain->isValidEmail($mail_a)) {
                 throw new ExceptionsDatabase("This email format is not valid");
@@ -128,7 +105,7 @@ class UserSiteModel
             if ($this->isUserExists($mail_a, $pseudo_a)) {
                 throw new ExceptionsDatabase("User with this email or pseudo already exists");
             }
-            if ($this->isPasswordNotSafe($password_a)) {
+            if ($this->DBBrain->isPasswordNotSafe($password_a)) {
                 throw new ExceptionsDatabase("This Password is not strong enough, please choose another one");
             }
             // on ajoute un poivre
@@ -171,7 +148,27 @@ class UserSiteModel
             return $e;
         }
     }
+    public function disconnectUser(int $id): ExceptionsDatabase|string
+    {
+        try {
 
+            if (!$this->isUserIDExists($id)) {
+                throw new ExceptionsDatabase("User with this email or pseudo already exists");
+            }
+            // Update user status to 'disconnected'
+            $stmt = $this->conn->prepare("UPDATE USERSite SET Status = 'disconnected' WHERE UserId = ?");
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
+            $stmt->execute();
+            //error_log("disconnectUser".$id); debug only
+            return "success";
+        } catch (ExceptionsDatabase $e) {
+            return $e;
+        }
+    }
+
+
+
+    // ----------- UTILITAIRE ------------
     private function isUserExists($mail_a, $pseudo_a): bool
     {
         //FONCTIONNE CORRECTEMENT
@@ -186,6 +183,17 @@ class UserSiteModel
         return $count > 0;
 
     }
+    private function isUserIDExists(int $id): bool
+    {
+        $checkUserSQL = "SELECT COUNT(*) FROM USERSite WHERE UserId = ? ";
+        $stmt = $this->conn->prepare($checkUserSQL);
+        $stmt->bindParam(1, $id, PDO::PARAM_STR);
+        $stmt->execute();
+        $count = $stmt->fetchColumn();
+        //echo $count > 0;
+        return $count > 0;
+    }
+
     private function isEmailUse($mail_a): bool
     {
         //FONCTIONNE CORRECTEMENT
@@ -200,93 +208,155 @@ class UserSiteModel
 
     }
 
-    private function isPasswordNotSafe($password_a): bool
-    {
-        //FONCTIONNE CORRECTEMENT
+    // ----------- GETTERS ------------
 
-        $hashedPassword = strtoupper(sha1($password_a));
-        // Prenez les 5 premiers caractères du hachage (préfixe)
-        $prefix = substr($hashedPassword, 0, 5);
-        // Faites une requête à l'API Have I Been Pwned
-        $apiUrl = "https://api.pwnedpasswords.com/range/" . $prefix;
-        $response = file_get_contents($apiUrl);
-        // Recherchez le reste du hachage dans la réponse
-        $searchTerm = substr($hashedPassword, 5);
-        $searchResult = preg_match('/' . $searchTerm . ':(\d+)/', $response, $matches);
-        // Si le mot de passe est apparu dans une fuite, retournez false
-        if ($searchResult) {
-            return true;
-        }
-        // Si le mot de passe est suffisamment fort, retournez true
-        // Vous pouvez ajouter d'autres critères de force ici
-        return false;
-    }
-
-    public function disconnectUser(int $id)
+    public function getValuesById($Id)
     {
+        //$mapArrayOfUserValues = null;
         try {
-
-            if (!$this->isUserIDExists($id)) {
-                throw new ExceptionsDatabase("User with this email or pseudo already exists");
+            if (!$this->isUserIDExists($Id)) {
+                throw new ExceptionsDatabase("This user doesn't exist");
             }
-            // Checking the existence of the user by UserId
-            $stmt = $this->conn->prepare("SELECT Status FROM USERSite WHERE UserId = ?");
-            $stmt->bindParam(1, $id, PDO::PARAM_INT);
+
+            $stmt = $this->conn->prepare("SELECT * FROM USERSite WHERE UserID = ?");
+            $stmt->bindParam(1, $Id, PDO::PARAM_STR);
             $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $mapArrayOfUserValues = $stmt->fetch(PDO::FETCH_ASSOC); // Stocke le résultat dans le tableau
+
             $stmt->closeCursor();
-
-            // Update user status to 'disconnected'
-            $stmt = $this->conn->prepare("UPDATE USERSite SET Status = 'disconnected' WHERE UserId = ?");
-            $stmt->bindParam(1, $id, PDO::PARAM_INT);
-            $stmt->execute();
-
-            //error_log("disconnectUser".$id); debug only
-            return "success";
         } catch (ExceptionsDatabase $e) {
+            //echo $e->getMessage();
             return $e;
         }
+
+        return $mapArrayOfUserValues; // Retourne le tableau avec les valeurs de la requete
     }
 
-    private function isUserIDExists(int $id)
+    public function getPseudoOfUser($UserId)
     {
-        $checkUserSQL = "SELECT COUNT(*) FROM USERSite WHERE UserId = ? ";
-        $stmt = $this->conn->prepare($checkUserSQL);
-        $stmt->bindParam(1, $id, PDO::PARAM_STR);
-        $stmt->execute();
-        $count = $stmt->fetchColumn();
-        //echo $count > 0;
-        return $count > 0;
-    }
-
-    public function getPseudoOfUser($UserId) {
         try {
-            $query = "SELECT pseudo FROM USERSite WHERE UserId = :userId";
+            $query = "SELECT Pseudo FROM USERSite WHERE UserId = :userId";
             $stmt = $this->conn->prepare($query);
-            $stmt->bindParam(':userId',$UserId, PDO::PARAM_INT);
+            $stmt->bindParam(':userId', $UserId, PDO::PARAM_INT);
             $stmt->execute();
             $data = $stmt->fetch(PDO::FETCH_ASSOC);
             $stmt->closeCursor(); // Fermez le curseur (si nécessaire)
-            return $data['pseudo'];
-        } catch (PDOException $e) {
+            return $data['Pseudo'];
+        } catch (PDOException $e) {//TODO ExceptionsDatabase ?
             echo "Error: " . $e->getMessage();
             return null;
         }
     }
 
-    public function incrementNumberOfConnexion($UserId): bool
+    public function getStatusOfUser($UserId)
+    {
+        try {
+            $query = "SELECT Status FROM USERSite WHERE UserId = :userId";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':userId', $UserId, PDO::PARAM_INT);
+            $stmt->execute();
+            $data = $stmt->fetch(PDO::FETCH_ASSOC);
+            $stmt->closeCursor(); // Fermez le curseur (si nécessaire)
+            return $data['Status'];
+        } catch (PDOException $e) { //TODO ExceptionsDatabase ?
+            echo "Error: " . $e->getMessage();
+            return null;
+        }
+    }
+
+    // ----------- UPDATERS ------------
+    public function incrementNumberOfConnexion($UserId): Bool|ExceptionsDatabase
     {
         try {
             // Increment the value and update the database
+            if (!$this->isUserIDExists($UserId)) {
+                throw new ExceptionsDatabase("User not exist");
+            }
             $updateQuery = "UPDATE USERSite SET NumberOfConnection = NumberOfConnection + 1 WHERE UserId = ?";
             $stmt = $this->conn->prepare($updateQuery);
             $stmt->bindParam(1, $UserId);
             $stmt->execute();
             $stmt->closeCursor();
             return true;
-        } catch (Exception $e) {
-            echo "Error: " . $e->getMessage();
-            return false;
+        } catch (ExceptionsDatabase $e) {
+            //echo "Error: " . $e->getMessage();
+            return $e;
+        }
+    }
+    private function incrementNumberOfAction($CurrentUserId): bool|ExceptionsDatabase
+    {
+
+        try {
+            if (!$this->isUserIDExists($CurrentUserId)) {
+                throw new ExceptionsDatabase("User not exist");
+            }
+            // Increment the value and update the database
+            $updateQuery = "UPDATE USERSite SET NumberOfAction = NumberOfAction + 1 WHERE UserId = ?";
+            $stmt = $this->conn->prepare($updateQuery);
+            $stmt->bindParam(1, $CurrentUserId);
+            $stmt->execute();
+            $stmt->closeCursor();
+            return true;
+        } catch (ExceptionsDatabase $e) {
+            //echo "Error: " . $e->getMessage();
+            return $e;
+        }
+
+    }
+    public function update_pseudo($CurrentUserId, $new_pseudo): bool|ExceptionsDatabase
+    {
+        try {
+            // Check the user status*
+            if (!$this->isUserIDExists($CurrentUserId)) {
+                throw new ExceptionsDatabase("User not exist");
+            }
+            if ($this->getStatusOfUser($CurrentUserId) == "Disconnected") {
+                throw new ExceptionsDatabase("User status not valid");
+            }
+
+            // Change pseudo
+            $stmt = $this->conn->prepare("UPDATE USERSite SET Pseudo = ? WHERE UserId = ?");
+            $stmt->bindParam(1, $new_pseudo);
+            $stmt->bindParam(2, $CurrentUserId);
+            $stmt->execute();
+            $stmt->closeCursor();
+            // Insert log entry into the log database
+            // $stmt = $logConn->prepare("INSERT INTO LogUser (UserId, dateC, action) VALUES (?, CURRENT_TIMESTAMP, 'Change Pseudo')");
+            // $stmt->bind_param("is", $CurrentUserId);
+            // $stmt->execute();
+            // $stmt->close();
+            // Increment number action user
+            $this->incrementNumberOfAction($CurrentUserId);
+            return true;
+        } catch (ExceptionsDatabase $e) {
+            //echo "Error: " . $e->getMessage();
+            return $e;
+        }
+    }
+    public function update_mail($CurrentUserId, $new_mail): bool|ExceptionsDatabase
+    {
+        try {
+            // Check the user status
+            if (!$this->isUserIDExists($CurrentUserId)) {
+                throw new ExceptionsDatabase("User not exist");
+            }
+            if ($this->getStatusOfUser($CurrentUserId) == "Disconnected") {
+                throw new ExceptionsDatabase("User status not valid");
+            }
+            // Test the format of mail
+            if (!$this->DBBrain->isValidEmail($new_mail)) {
+                throw new ExceptionsDatabase("mail not valid");
+            }
+            // Change mail
+            $stmt = $this->conn->prepare("UPDATE USERSite SET mail = ? WHERE UserId = ?");
+            $stmt->bindParam(1, $new_mail);
+            $stmt->bindParam(2, $CurrentUserId);
+            $stmt->execute();
+            $stmt->closeCursor();
+            return true;
+        } catch (ExceptionsDatabase $e) {
+            //echo "Error: " . $e->getMessage();
+            return $e;
         }
     }
 }
