@@ -23,6 +23,7 @@ final class Constants
 
 
     const PEPPER = "mjOlvxisvFdxMDpecFwc1d" ;
+    const MAIL_FROM_EMAIL = "noreply@cyphub.tech";
 
     public static function rootDirectory(): false|string
     {

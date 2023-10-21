@@ -11,7 +11,6 @@
 
     $S_urlADecortiquer = isset($_GET['url']) ? $_GET['url'] : null;
     $mapOfPostParameters = isset($_POST) ? $_POST : null;
-    //print_r($S_urlADecortiquer); // TODO enlever ce print_r (utile pour le debugging)
 
     try {
         $conn = DatabaseManager::getInstance();

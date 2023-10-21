@@ -46,11 +46,13 @@ class UserSite
             $userPassword = $result2['Password'];
 
 
-            if (!password_verify($pwd_peppered, $userPassword)) { // si le mot de passe ne correspond pas                throw new ExceptionsDatabase("Email or password does not match");
+            if (!password_verify($pwd_peppered, $userPassword)) { // si le mot de passe ne correspond pas
+                //      throw new ExceptionsDatabase("Email or password does not match");
                 //echo "do not match";
                 //TODO LOG DANS LA BASE DE LOG (tentative de connexion échouée avec l'ip)
                 //TODO INCREMENTER LE NIVEAU D'ALERTE
                 //TODO BLOQUER LE COMPTE SI NIVEAU D'ALERTE TROP ELEVE
+                $this->incrementAlertLevelUser($userId);
                 throw new ExceptionsDatabase("Email or password does not match");
             }
             /* //TODO : a voir si on laisse cette partie
@@ -128,8 +130,16 @@ class UserSite
             // Commit de la transaction
             $this->conn->commit();
             // renvoi l'identifiant du nouvel utilisateur
+
+
+
+            $subject = "Bienvenue sur Cyphub !";
+            $message = "Bonjour ".$pseudo_a.",\n\nBienvenue sur Cyphub !\n\nNous sommes heureux de vous compter parmi nous !\n\nL'équipe Cyphub";
+            (new mailSender($mail_a,$subject,$message  )); // on peut ajouter getstatus si on veut savoir si le mail a été envoyé
+            //TODO on pourra améliorer le system de mail pour avoir des templates automatique
+            //TODO et des mails plus jolie, mais pour l'instant on fait simple
+
             return $userId;
-            // TODO : envoyer un mail de confirmation
             // TODO : limiter taille
 
         } catch (ExceptionsDatabase $e) {
@@ -277,6 +287,25 @@ class UserSite
             }
             // Increment the value and update the database
             $updateQuery = "UPDATE USERSite SET NumberOfAction = NumberOfAction + 1 WHERE UserId = ?";
+            $stmt = $this->conn->prepare($updateQuery);
+            $stmt->bindParam(1, $CurrentUserId);
+            $stmt->execute();
+            $stmt->closeCursor();
+            return true;
+        } catch (ExceptionsDatabase $e) {
+            //echo "Error: " . $e->getMessage();
+            return $e;
+        }
+
+    }
+    private function incrementAlertLevelUser($CurrentUserId): bool|ExceptionsDatabase
+    {
+        try {
+            if (!$this->isUserIDExists($CurrentUserId)) {
+                throw new ExceptionsDatabase("User not exist");
+            }
+            // Increment the value and update the database
+            $updateQuery = "UPDATE USERSite SET AlertLevelUser = AlertLevelUser + 1 WHERE UserId = ?";
             $stmt = $this->conn->prepare($updateQuery);
             $stmt->bindParam(1, $CurrentUserId);
             $stmt->execute();

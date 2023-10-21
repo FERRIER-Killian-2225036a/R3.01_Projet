@@ -56,6 +56,9 @@ final class MotorController
         if (!isset($_SESSION['UserId']) && ($this->_mapOfSplitUrl['controller'] !== 'ControllerAuth' &&
             $this->_mapOfSplitUrl['controller'] !== 'ControllerDefault') &&
             ($this->_mapOfSplitUrl['controller'] !== 'ControllerMenu' )) {
+            // TODO A ameliorer avec les roles, voir ce faire des regles d'acces dans un fichier json
+            // on verifie si session + page accessible ou non .
+
             $this->_redirectionNeededBecauseOfAuthentification = true;
         } else {
             $this->_redirectionNeededBecauseOfAuthentification = false;
@@ -74,11 +77,11 @@ final class MotorController
             throw new ExceptionsController($this->_mapOfSplitUrl['action'] . " du contrôleur " .
                 $this->_mapOfSplitUrl['controller'] . " n'est pas une action valide.");
         }
-        // TODO on verifie si session + page accessible ou non .
-        // TODO sinon on redirige vers page d'authentification
 
         if ($this->_redirectionNeededBecauseOfAuthentification) {
-            error_log("redirectionNeededBecauseOfAuthentification");
+            // TODO sinon on redirige vers page d'authentification
+
+            error_log("redirectionNeededBecauseOfAuthentification"); //TODO AMELIORER LOG
             header("Location: /Auth/Login");
         }
         print_r($_SESSION);
