@@ -2,11 +2,16 @@
 
 class DBBrain
 {
-    private $conn;
+    private PDO $conn;
     public function __construct()
     {
         $this->conn= DatabaseManager::getInstance();
     }
+    public function getConn(): PDO
+{
+    return $this->conn;
+}
+
     public function isPasswordNotSafe($password_a): bool
     {
         //FONCTIONNE CORRECTEMENT
@@ -28,15 +33,25 @@ class DBBrain
         // Vous pouvez ajouter d'autres critères de force ici
         return false;
     }
-    public function getConn(): PDO
-    {
-        return $this->conn;
-    }
-
     public function isValidEmail($mail_a): bool
     {
         return filter_var($mail_a, FILTER_VALIDATE_EMAIL)!== false;
     }
 
+    public function argonifiedPassword($password_a): string
+    {
+        // on ajoute un poivre
+        $pwd_peppered = hash_hmac("sha256", $password_a, Constants::PEPPER);
+        // on utilise l'algo de hachage ARGON2ID
+        $options = [ // configuration minimale recommandé par OWASP TOP 10 (cheat sheet)
+            'memory_cost' => 65536, // 19 MiB en kibibytes (1024 * 19)
+            'time_cost' => 2, // 2 itérations
+            'threads' => 1, // Degré de parallélisme de 1
+        ];
+
+        // on utilisera password_verify($passwordFromUser, $storedHashedPassword)) pour verifier le mot de passe
+        // lors de la connexion
+        return password_hash($pwd_peppered, PASSWORD_ARGON2ID, $options);
+    }
 
 }

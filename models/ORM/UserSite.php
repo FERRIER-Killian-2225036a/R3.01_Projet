@@ -1,6 +1,6 @@
 <?php
 
-class UserSiteModel
+class UserSite
 {
     private PDO $conn;
     private DBBrain $DBBrain;
@@ -10,8 +10,6 @@ class UserSiteModel
         $this->DBBrain = new DBBrain();
         $this->conn = $this->DBBrain->getConn();
     }
-
-
 
     // ----------- AUTHENTIFICATION ------------
 
@@ -29,7 +27,7 @@ class UserSiteModel
                 throw new ExceptionsDatabase("Email or password does not match");
             }
 
-            $stmt = $this->conn->prepare("SELECT UserId FROM USERSite WHERE Mail = ?");
+            $stmt = $this->conn->prepare("SELECT UserId FROM USERSiteModel WHERE Mail = ?");
             $stmt->bindParam(1, $mail_a, PDO::PARAM_STR);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -63,18 +61,18 @@ class UserSiteModel
             }
             */
             // Update user status to 'connected'
-            $stmt = $this->conn->prepare("UPDATE USERSite SET Status = 'connected' WHERE UserId = ?");
+            $stmt = $this->conn->prepare("UPDATE USERSiteModel SET Status = 'connected' WHERE UserId = ?");
             $stmt->bindParam(1, $userId, PDO::PARAM_INT);
             $stmt->execute();
             $stmt->closeCursor();
             // Change date of last login
-            $updateQuery = "UPDATE USERSite SET dateLastLogin = CURRENT_TIMESTAMP WHERE UserId = ?";
+            $updateQuery = "UPDATE USERSiteModel SET dateLastLogin = CURRENT_TIMESTAMP WHERE UserId = ?";
             $stmt = $this->conn->prepare($updateQuery);
             $stmt->bindParam(1, $userId, PDO::PARAM_INT);
             $stmt->execute();
             $stmt->closeCursor();
             // Change lastIpAddress
-            $updateQuery = "UPDATE USERSite SET LastIpAdress = ? WHERE UserId = ?";
+            $updateQuery = "UPDATE USERSiteModel SET LastIpAdress = ? WHERE UserId = ?";
             $stmt = $this->conn->prepare($updateQuery);
             $stmt->bindParam(1, $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
             $stmt->bindParam(2, $userId, PDO::PARAM_INT);
@@ -108,21 +106,12 @@ class UserSiteModel
             if ($this->DBBrain->isPasswordNotSafe($password_a)) {
                 throw new ExceptionsDatabase("This Password is not strong enough, please choose another one");
             }
-            // on ajoute un poivre
-            $pwd_peppered = hash_hmac("sha256", $password_a, Constants::PEPPER);
-            // on utilise l'algo de hachage ARGON2ID
-            $options = [ // configuration minimale recommandé par OWASP TOP 10 (cheat sheet)
-                'memory_cost' => 65536, // 19 MiB en kibibytes (1024 * 19)
-                'time_cost' => 2, // 2 itérations
-                'threads' => 1, // Degré de parallélisme de 1
-            ];
-            $hashedPassword = password_hash($pwd_peppered, PASSWORD_ARGON2ID, $options);
-            // on utilisera password_verify($passwordFromUser, $storedHashedPassword)) pour verifier le mot de passe
-            // lors de la connexion
+
+            $argonifiedPassword = $this->DBBrain->argonifiedPassword($password_a);
 
             $this->conn->beginTransaction();
-            // Insert user into USERSite
-            $insertUserSQL = "INSERT INTO USERSite (Mail, Pseudo, DateFirstLogin, DateLastLogin, Role, AlertLevelUser, NumberOfAction, Status, LastIpAdress, NumberOfConnection) VALUES (?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'registered', 0, 0, 'connected', ?, 1)";
+            // Insert user into USERSiteModel
+            $insertUserSQL = "INSERT INTO USERSiteModel (Mail, Pseudo, DateFirstLogin, DateLastLogin, Role, AlertLevelUser, NumberOfAction, Status, LastIpAdress, NumberOfConnection) VALUES (?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'registered', 0, 0, 'connected', ?, 1)";
             $stmt1 = $this->conn->prepare($insertUserSQL);
             $stmt1->bindParam(1, $mail_a, PDO::PARAM_STR);
             $stmt1->bindParam(2, $pseudo_a, PDO::PARAM_STR);
@@ -133,7 +122,7 @@ class UserSiteModel
             // Insert password into PASSWORD
             $insertPasswordSQL = "INSERT INTO PASSWORD (Password, UserId) VALUES (?, ?)";
             $stmt2 = $this->conn->prepare($insertPasswordSQL);
-            $stmt2->bindParam(1, $hashedPassword, PDO::PARAM_STR);
+            $stmt2->bindParam(1, $argonifiedPassword, PDO::PARAM_STR);
             $stmt2->bindParam(2, $userId, PDO::PARAM_INT);
             $stmt2->execute();
             // Commit de la transaction
@@ -156,7 +145,7 @@ class UserSiteModel
                 throw new ExceptionsDatabase("User with this email or pseudo already exists");
             }
             // Update user status to 'disconnected'
-            $stmt = $this->conn->prepare("UPDATE USERSite SET Status = 'disconnected' WHERE UserId = ?");
+            $stmt = $this->conn->prepare("UPDATE USERSiteModel SET Status = 'disconnected' WHERE UserId = ?");
             $stmt->bindParam(1, $id, PDO::PARAM_INT);
             $stmt->execute();
             //error_log("disconnectUser".$id); debug only
@@ -166,14 +155,12 @@ class UserSiteModel
         }
     }
 
-
-
     // ----------- UTILITAIRE ------------
     private function isUserExists($mail_a, $pseudo_a): bool
     {
         //FONCTIONNE CORRECTEMENT
 
-        $checkUserSQL = "SELECT COUNT(*) FROM USERSite WHERE Mail = ? OR Pseudo = ?";
+        $checkUserSQL = "SELECT COUNT(*) FROM USERSiteModel WHERE Mail = ? OR Pseudo = ?";
         $stmt = $this->conn->prepare($checkUserSQL);
         $stmt->bindParam(1, $mail_a, PDO::PARAM_STR);
         $stmt->bindParam(2, $pseudo_a, PDO::PARAM_STR);
@@ -185,7 +172,7 @@ class UserSiteModel
     }
     private function isUserIDExists(int $id): bool
     {
-        $checkUserSQL = "SELECT COUNT(*) FROM USERSite WHERE UserId = ? ";
+        $checkUserSQL = "SELECT COUNT(*) FROM USERSiteModel WHERE UserId = ? ";
         $stmt = $this->conn->prepare($checkUserSQL);
         $stmt->bindParam(1, $id, PDO::PARAM_STR);
         $stmt->execute();
@@ -193,12 +180,11 @@ class UserSiteModel
         //echo $count > 0;
         return $count > 0;
     }
-
     private function isEmailUse($mail_a): bool
     {
         //FONCTIONNE CORRECTEMENT
 
-        $checkUserSQL = "SELECT COUNT(*) FROM USERSite WHERE Mail = ? ";
+        $checkUserSQL = "SELECT COUNT(*) FROM USERSiteModel WHERE Mail = ? ";
         $stmt = $this->conn->prepare($checkUserSQL);
         $stmt->bindParam(1, $mail_a, PDO::PARAM_STR);
         $stmt->execute();
@@ -218,7 +204,7 @@ class UserSiteModel
                 throw new ExceptionsDatabase("This user doesn't exist");
             }
 
-            $stmt = $this->conn->prepare("SELECT * FROM USERSite WHERE UserID = ?");
+            $stmt = $this->conn->prepare("SELECT * FROM USERSiteModel WHERE UserID = ?");
             $stmt->bindParam(1, $Id, PDO::PARAM_STR);
             $stmt->execute();
             $mapArrayOfUserValues = $stmt->fetch(PDO::FETCH_ASSOC); // Stocke le résultat dans le tableau
@@ -231,11 +217,10 @@ class UserSiteModel
 
         return $mapArrayOfUserValues; // Retourne le tableau avec les valeurs de la requete
     }
-
     public function getPseudoOfUser($UserId)
     {
         try {
-            $query = "SELECT Pseudo FROM USERSite WHERE UserId = :userId";
+            $query = "SELECT Pseudo FROM USERSiteModel WHERE UserId = :userId";
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(':userId', $UserId, PDO::PARAM_INT);
             $stmt->execute();
@@ -247,11 +232,10 @@ class UserSiteModel
             return null;
         }
     }
-
     public function getStatusOfUser($UserId)
     {
         try {
-            $query = "SELECT Status FROM USERSite WHERE UserId = :userId";
+            $query = "SELECT Status FROM USERSiteModel WHERE UserId = :userId";
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(':userId', $UserId, PDO::PARAM_INT);
             $stmt->execute();
@@ -265,6 +249,7 @@ class UserSiteModel
     }
 
     // ----------- UPDATERS ------------
+
     public function incrementNumberOfConnexion($UserId): Bool|ExceptionsDatabase
     {
         try {
@@ -272,7 +257,7 @@ class UserSiteModel
             if (!$this->isUserIDExists($UserId)) {
                 throw new ExceptionsDatabase("User not exist");
             }
-            $updateQuery = "UPDATE USERSite SET NumberOfConnection = NumberOfConnection + 1 WHERE UserId = ?";
+            $updateQuery = "UPDATE USERSiteModel SET NumberOfConnection = NumberOfConnection + 1 WHERE UserId = ?";
             $stmt = $this->conn->prepare($updateQuery);
             $stmt->bindParam(1, $UserId);
             $stmt->execute();
@@ -291,7 +276,7 @@ class UserSiteModel
                 throw new ExceptionsDatabase("User not exist");
             }
             // Increment the value and update the database
-            $updateQuery = "UPDATE USERSite SET NumberOfAction = NumberOfAction + 1 WHERE UserId = ?";
+            $updateQuery = "UPDATE USERSiteModel SET NumberOfAction = NumberOfAction + 1 WHERE UserId = ?";
             $stmt = $this->conn->prepare($updateQuery);
             $stmt->bindParam(1, $CurrentUserId);
             $stmt->execute();
@@ -315,7 +300,7 @@ class UserSiteModel
             }
 
             // Change pseudo
-            $stmt = $this->conn->prepare("UPDATE USERSite SET Pseudo = ? WHERE UserId = ?");
+            $stmt = $this->conn->prepare("UPDATE USERSiteModel SET Pseudo = ? WHERE UserId = ?");
             $stmt->bindParam(1, $new_pseudo);
             $stmt->bindParam(2, $CurrentUserId);
             $stmt->execute();
@@ -327,6 +312,7 @@ class UserSiteModel
             // $stmt->close();
             // Increment number action user
             $this->incrementNumberOfAction($CurrentUserId);
+
             return true;
         } catch (ExceptionsDatabase $e) {
             //echo "Error: " . $e->getMessage();
@@ -348,15 +334,129 @@ class UserSiteModel
                 throw new ExceptionsDatabase("mail not valid");
             }
             // Change mail
-            $stmt = $this->conn->prepare("UPDATE USERSite SET mail = ? WHERE UserId = ?");
+            $stmt = $this->conn->prepare("UPDATE USERSiteModel SET mail = ? WHERE UserId = ?");
             $stmt->bindParam(1, $new_mail);
             $stmt->bindParam(2, $CurrentUserId);
             $stmt->execute();
             $stmt->closeCursor();
+            $this->incrementNumberOfAction($CurrentUserId);
             return true;
         } catch (ExceptionsDatabase $e) {
             //echo "Error: " . $e->getMessage();
             return $e;
         }
+    }
+    public function update_password($CurrentUserId, $new_password): bool|ExceptionsDatabase
+    {
+        try {
+            // Check the user status
+            if (!$this->isUserIDExists($CurrentUserId)) {
+                throw new ExceptionsDatabase("User not exist");
+            }
+            if ($this->getStatusOfUser($CurrentUserId) == "Disconnected") {
+                throw new ExceptionsDatabase("User status not valid");
+            }
+            // Test the format of password
+            if ($this->DBBrain->isPasswordNotSafe($new_password)) {
+                //TODO on pensera a affiché une erreur dans la page de profil pour dire que le mot de passe n'est pas assez fort
+                //TODO et qu'il faut en choisir un autre
+                throw new ExceptionsDatabase("Password not valid");
+            }
+
+            $argonifiedPassword = $this->DBBrain->argonifiedPassword($new_password);
+            // Change password
+            $stmt = $this->conn->prepare("UPDATE PASSWORD SET Password = ? WHERE UserId = ?");
+            $stmt->bindParam(1, $argonifiedPassword);
+            $stmt->bindParam(2, $CurrentUserId);
+            $stmt->execute();
+            $stmt->closeCursor();
+            $this->incrementNumberOfAction($CurrentUserId);
+
+            return true;
+        } catch (ExceptionsDatabase $e) {
+            //echo "Error: " . $e->getMessage();
+            return $e;
+        }
+
+    }
+    public function update_picture($CurrentUserId, $new_picture): bool|ExceptionsDatabase
+    {
+        try {
+            // Check the user status
+            if (!$this->isUserIDExists($CurrentUserId)) {
+                throw new ExceptionsDatabase("User not exist");
+            }
+            if ($this->getStatusOfUser($CurrentUserId) == "Disconnected") { // on pourrait imaginé une condition pour
+                // que le staff puisse changer la photo de profil de qqln d'autre même si il est déconnecté
+                throw new ExceptionsDatabase("User status not valid");
+            }
+            // Change picture
+            $stmt = $this->conn->prepare("UPDATE USERSiteModel SET UrlPicture = ? WHERE UserId = ?");
+            $stmt->bindParam(1, $new_picture);
+            $stmt->bindParam(2, $CurrentUserId);
+            $stmt->execute();
+            $stmt->closeCursor();
+            $this->incrementNumberOfAction($CurrentUserId);
+
+            return true;
+        } catch (ExceptionsDatabase $e) {
+            //echo "Error: " . $e->getMessage();
+            return $e;
+        }
+    }
+
+    // ----------- REMOVERS ------------
+    public function remove_picture($CurrentUserId): bool|ExceptionsDatabase
+    {
+        try {
+            $this->update_picture($CurrentUserId, Constants::PICTURE_URL_DEFAULT);
+            return true;// on incrémente pas car on le fait deja dans update_picture
+        }
+        catch (ExceptionsDatabase $e) {
+            //echo "Error: " . $e->getMessage();
+            return $e;
+        }
+    }
+    public function remove_user ($CurrentUserId): bool|ExceptionsDatabase{
+        // TODO refaire cette fonction car très problématique au niveau de la bdd
+        // TODO suppression impossible avec utilisateurs bdd par defaut, (concept de permissions)
+        // la suppresion revient a changer le pseudo & mail en deleted user.
+        // (on pourrait imaginer une suppression définitive)
+        try {
+            // Check the user status
+            if (!$this->isUserIDExists($CurrentUserId)) {
+                throw new ExceptionsDatabase("User not exist");
+            }
+            if ($this->getStatusOfUser($CurrentUserId) == "Disconnected") {
+                throw new ExceptionsDatabase("User status not valid");
+            }
+            $this->remove_picture($CurrentUserId);
+            $hashId= hash_hmac("sha256", $CurrentUserId, Constants::PEPPER);
+            $account_name = "Deleted_User_".$hashId;
+            $mail_name = $account_name."@cyphub.tech"; // reflechir a si on change le mail ou
+            // pas pour permettre un restoration de compte
+
+
+
+            $this->update_password($CurrentUserId, $hashId); // en changeant le mot de passe on empeche
+            // d'ailleurs la réstoration du compte;
+
+            $stmt = $this->conn->prepare("UPDATE USERSiteModel 
+                                                SET 
+                                                Pseudo = ?,
+                                                Mail = ?,
+                                                WHERE UserId = ?;");
+            $stmt->bindParam(1, $account_name);
+            $stmt->bindParam(2, $mail_name);
+            $stmt->bindParam(3, $CurrentUserId);
+            $stmt->execute();
+
+            return true;
+        }
+        catch (ExceptionsDatabase $e) {
+            //echo "Error: " . $e->getMessage();
+            return $e;
+        }
+
     }
 }

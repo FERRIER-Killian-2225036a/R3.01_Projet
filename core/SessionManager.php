@@ -3,7 +3,7 @@
 class SessionManager
 {
     //private $sessionID;
-    private static ?USERSite $userObject = null;
+    private static ?USERSiteModel $userObject = null;
 
     public static function createSession(): void
     {
@@ -17,10 +17,9 @@ class SessionManager
         $_SESSION['Status']=self::$userObject->getStatus();
         $_SESSION['LastConnexion']=self::$userObject->getDateLastLogin();
     }
-
     public static function SignUp($A_postParams): string
     {
-        $status = ((new UserSiteModel)->createUser(
+        $status = ((new UserSite)->createUser(
             $A_postParams["pseudo"],
             $A_postParams["mail"],
             $A_postParams["password"]));
@@ -29,7 +28,7 @@ class SessionManager
             return "Error : " . $status->getMessage();
         }
         else {
-            self::$userObject=new USERSite($status); // création d'un utilisateur pour la classe
+            self::$userObject=new USERSiteModel($status); // création d'un utilisateur pour la classe
             self::sessionLinkObject();
             //$_SESSION["UserId"] = $status;
             //$_SESSION['Ip'] = $_SERVER['REMOTE_ADDR'];
@@ -37,7 +36,6 @@ class SessionManager
             return "success";
         }
     }
-
     public static function Login($A_postParams): string
     {
         // on vérifie qu'il n'y est pas une session active
@@ -57,7 +55,7 @@ class SessionManager
         else {
             // essai de se connecter
 
-            $status = ((new UserSiteModel)->loginUser(
+            $status = ((new UserSite)->loginUser(
                 $A_postParams["mail"],
                 $A_postParams["password"]));
 
@@ -65,7 +63,7 @@ class SessionManager
                 return "Error : " . $status->getMessage();
             }
             else {
-                self::$userObject=new USERSite($status); // création d'un utilisateur pour la classe
+                self::$userObject=new USERSiteModel($status); // création d'un utilisateur pour la classe
                 self::sessionLinkObject();
                 //$_SESSION["UserId"] = $status;
                 //$_SESSION['Ip'] = $_SERVER['REMOTE_ADDR'];
@@ -75,12 +73,11 @@ class SessionManager
             }
         }
     }
-
     public static function disconnect(): void
     {
         if (isset($_SESSION["UserId"])) { // self::$userObject!==null ? a remplacer ???
                 $id = $_SESSION["UserId"];
-                ((new UserSiteModel)->disconnectUser($id));
+                ((new UserSite)->disconnectUser($id));
                 session_unset();
                 session_destroy();
                 header("Location: /");
@@ -96,7 +93,6 @@ class SessionManager
     {
         self::disconnect();
     }
-
     public static function checkValiditySessionTime(): void
     {
         // Fonctionne correctement
