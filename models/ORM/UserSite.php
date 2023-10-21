@@ -134,7 +134,7 @@ class UserSite
 
 
             $subject = "Bienvenue sur Cyphub !";
-            $message = "Bonjour ".$pseudo_a.",\n\nBienvenue sur Cyphub !\n\nNous sommes heureux de vous compter parmi nous !\n\nL'équipe Cyphub";
+            $message = "Bonjour ".$pseudo_a.",\n\nBienvenue sur Cyphub !\n\nNous sommes heureux de vous compter parmi nous !\n\nL'équipe Cyphub.";
             (new mailSender($mail_a,$subject,$message  )); // on peut ajouter getstatus si on veut savoir si le mail a été envoyé
             //TODO on pourra améliorer le system de mail pour avoir des templates automatique
             //TODO et des mails plus jolie, mais pour l'instant on fait simple
