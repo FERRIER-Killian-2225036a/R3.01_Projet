@@ -67,3 +67,6 @@
     transform: scale(1.03);
     box-shadow: 0px 3px 8px var(--shadow-hover);
 }
+a > img {
+    width: auto!important;
+}
