@@ -3,6 +3,7 @@
 
     require 'core/AutoLoad.php';
     Constants::defineFakeConst();
+    echo Constants::$DB['host'];
     error_log(print_r(Constants::$DB, true));
     print_r(Constants::$DB);
 
