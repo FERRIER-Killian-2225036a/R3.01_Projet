@@ -1,78 +1,77 @@
 <head>
-    <link rel="stylesheet" href="../../common_styles/manageAccount.css">
+    <link rel="stylesheet" href="../../common_styles/profileSettings.css">
 </head>
 <body>
-<div class="container-fluid ">
+<div class="container-fluid">
     <div class="row">
-        <div class="d-flex flex-column flex-shrink-0 bg-body-tertiary sidebar-padding" style="width: 280px;">
+        <div class="d-flex flex-column flex-shrink-0 bg-body-tertiary shadow rounded" style="width: 280px;"> <!-- Ajout de la classe 'shadow' ici -->
+
             <!-- Mon compte -->
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none text-dark"> <!-- Ajout de 'text-dark' ici -->
                 <img src="https://github.com/mdo.png" alt="Profil Image" width="40" height="40" class="rounded-circle me-2">
                 <span class="fs-4">Mon compte</span>
             </a>
             <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
+            <ul class="nav nav-pills flex-column mb-auto align-items-center">
                 <!-- Information personnel-->
                 <li class="nav-item">
-                    <a href="#" class="nav-link active">
+                    <a href="#" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
                         Informations personnelles
                     </a>
                 </li>
                 <!-- Support -->
                 <li>
-                    <a href="#" class="nav-link">
+                    <a href="#" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
                         Support
                     </a>
                 </li>
                 <!-- Langue -->
                 <li>
-                    <a href="#" class="nav-link">
+                    <a href="#" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
                         Langue
                     </a>
                 </li>
                 <!-- Thème -->
                 <li>
-                    <a href="#" class="nav-link">
+                    <a href="#" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
                         Thème
                     </a>
                 </li>
             </ul>
-                <hr>
-                <ul class="nav nav-pills flex-column mb-auto">
-                    <!-- Mes enregistrements -->
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            Mes enregistrements
-                        </a>
-                    </li>
-
-                    <!-- Personnes suivies -->
-                    <li>
-                        <a href="#" class="nav-link">
-                            Personnes suivies
-                        </a>
-                    </li>
-
-                    <!-- Mes commentaires -->
-                    <li>
-                        <a href="#" class="nav-link">
-                            Mes commentaires
-                        </a>
-                    </li>
-
-                    <!-- Mes posts -->
-                    <li>
-                        <a href="#" class="nav-link">
-                            Mes posts
-                        </a>
-                    </li>
-                </ul>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto align-items-center">
+                <!-- Mes enregistrements -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
+                        Mes enregistrements
+                    </a>
+                </li>
+                <!-- Personnes suivies -->
+                <li>
+                    <a href="#" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
+                        Personnes suivies
+                    </a>
+                </li>
+                <!-- Mes commentaires -->
+                <li>
+                    <a href="#" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
+                        Mes commentaires
+                    </a>
+                </li>
+                <!-- Mes posts -->
+                <li>
+                    <a href="#" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
+                        Mes posts
+                    </a>
+                </li>
+            </ul>
             <hr>
             <a href="#" class="d-flex align-items-center mb-3 link-body-emphasis text-danger text-decoration-none">
                 Se déconnecter
             </a>
-
         </div>
+
+
         <div class="col container">
 
             <!-- Section pour la photo de profil -->
@@ -88,8 +87,8 @@
                 </div>
                 <div class="col-md-6 d-flex align-items-center"> <!-- Notez ici que nous utilisons align-items-center pour centrer les boutons verticalement -->
                     <div class="btn-group">
-                        <button class="btn btn-primary mr-2" onclick="updateImage()">Modifier</button>
-                        <button class="btn btn-danger" onclick="deleteImage()">Supprimer</button>
+                        <button class="btn btn-outline-dark mr-2" onclick="updateImage()">Modifier</button>
+                        <button class="btn btn-outline-danger" onclick="deleteImage()">Supprimer</button>
                     </div>
                 </div>
             </div>
@@ -107,7 +106,7 @@
                 </div>
                 <div class="col-md-6 d-flex align-items-center"> <!-- Notez ici que nous utilisons align-items-center pour centrer les boutons verticalement -->
                     <div class="btn-group">
-                        <button class="btn btn-success" onclick="updateUsername()">Modifier</button>
+                        <button class="btn btn-outline-dark" onclick="updateUsername()">Modifier</button>
                     </div>
                 </div>
             </div>
@@ -125,7 +124,7 @@
                 </div>
                 <div class="col-md-6 d-flex align-items-center"> <!-- Notez ici que nous utilisons align-items-center pour centrer les boutons verticalement -->
                     <div class="btn-group">
-                        <button class="btn btn-success" onclick="updateEmail()">Modifier</button>
+                        <button class="btn btn-outline-dark" onclick="updateEmail()">Modifier</button>
                     </div>
                 </div>
             </div>
@@ -150,7 +149,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 d-flex align-items-end justify-content-start">
-                    <button class="btn btn-success" onclick="updatePassword()">Modifier</button>
+                    <button class="btn btn-custom" onclick="updatePassword()">Modifier</button>
                 </div>
             </div>
 
@@ -160,7 +159,7 @@
                 <div class="col-md-6">
                     <h2 class="text-danger">Supprimer le compte</h2>
                     <p>Attention, cette action est irréversible.</p>
-                    <button class="btn btn-danger" onclick="deleteAccount()">Supprimer le compte</button>
+                    <button class="btn btn-outline-danger" onclick="deleteAccount()">Supprimer le compte</button>
                 </div>
             </div>
 
