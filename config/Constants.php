@@ -55,8 +55,9 @@ final class Constants
 
     public static function defineFakeConst()
     {
-        $chemin_pwd_bdd = $_SERVER['DOCUMENT_ROOT'] . "CONSTANTES_MDP.txt";
+        $chemin_pwd_bdd = $_SERVER['DOCUMENT_ROOT'] . "/CONSTANTES_MDP.txt";
         if (file_exists($chemin_pwd_bdd)) {
+            error_log("le fichier existe");
             $mot_de_passe = file_get_contents($chemin_pwd_bdd);
             // Assurez-vous de nettoyer ou valider le mot de passe lu depuis le fichier, par exemple, en utilisant trim() ou d'autres validations.
             Constants::setBDDPASSWORD($mot_de_passe);
