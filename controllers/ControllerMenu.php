@@ -12,6 +12,14 @@ class ControllerMenu
         //print_r($A_postParams);
         // TODO : récupérer les paramètres (afin de charger d'autres Articles)
         //la requete ressemble à : GET /Menu/ActualityFeed/More
+        $page = new ITPage;
+
+        $ArrayOf5IdByDate = $page->get5PagesByDate();
+        $ArrayOfITPageModel = array();
+        foreach ($ArrayOf5IdByDate as $id) {
+            $ArrayOfITPageModel[] = new ITPageModel($id);
+        }
+        print_r($ArrayOfITPageModel);
 
         MotorView::show('menu/actualityFeed');
     }
