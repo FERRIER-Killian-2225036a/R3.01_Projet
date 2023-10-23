@@ -1,0 +1,16 @@
+/*manageAccount*/
+.custom-nav-link:hover, .custom-nav-link:focus, .custom-nav-link.active {
+    outline: 2px solid var(--purple);  /* Changez la couleur comme vous le souhaitez */
+    outline-offset: 2px;
+    background-color: rgba(0, 0, 0, 0.05); /* Légère coloration de fond pour une meilleure visibilité */
+}
+.btn-custom {
+    color: black;               /* Texte noir */
+    border-color: red;          /* Contour rouge */
+    background-color: transparent; /* Fond transparent */
+}
+
+.btn-custom:hover {
+    color: white;              /* Texte blanc lors du survol */
+    background-color: black;     /* Fond rouge lors du survol */
+}
