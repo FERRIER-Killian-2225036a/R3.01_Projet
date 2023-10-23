@@ -21,12 +21,12 @@ class ControllerMenu
         }
 
         foreach ($ArrayOfITPageModel as $obj) {
-            MotorView::show('menu/actualityPost', array("actualityTitle"=>$obj->getTitle()));
-            MotorView::show('menu/actualityPost', array("actualityContent"=>$obj->getContent()));
-            MotorView::show('menu/actualityPost', array("actualityAuthor"=>$obj->getAuthor()));
-            MotorView::show('menu/actualityPost', array("actualityDate"=>$obj->getDate()));
-            MotorView::show('menu/actualityPost', array("actualityUrlPicture"=>$obj->getUrlPicture()));
-            MotorView::show('menu/actualityPost', array("actualityLien"=>$obj->getLien()));
+            MotorView::show('menu/actualityFeed', array("actualityTitle"=>$obj->getTitle()));
+            MotorView::show('menu/actualityFeed', array("actualityContent"=>$obj->getContent()));
+            MotorView::show('menu/actualityFeed', array("actualityAuthor"=>$obj->getAuthor()));
+            MotorView::show('menu/actualityFeed', array("actualityDate"=>$obj->getDate()));
+            MotorView::show('menu/actualityFeed', array("actualityUrlPicture"=>$obj->getUrlPicture()));
+            MotorView::show('menu/actualityFeed', array("actualityLien"=>$obj->getLien()));
         }
 
     }
