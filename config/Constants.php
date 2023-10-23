@@ -53,7 +53,7 @@ final class Constants
         return self::rootDirectory() . self::ORM_DIRECTORY;
     }
 
-    public function defineFakeConst()
+    public static function defineFakeConst()
     {
         $chemin_pwd_bdd = $_SERVER['DOCUMENT_ROOT'] . "/CONSTANTES_MDP.txt";
         if (file_exists($chemin_pwd_bdd)) {

@@ -2,6 +2,8 @@
 // Ce fichier est le point d'entrée de notre application
 
     require 'core/AutoLoad.php';
+    Constants::defineFakeConst();
+
     /*
     si nous n'avons pas d'action précisée on visera celle par défaut
     convention :
