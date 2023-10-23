@@ -19,7 +19,9 @@ class ControllerMenu
         foreach ($ArrayOf5IdByDate as $id) {
             $ArrayOfITPageModel[] = new ITPageModel($id);
         }
-        print_r($ArrayOfITPageModel);
+        foreach ($ArrayOfITPageModel as $obj) {
+            echo $obj->getAuthor();
+        }
 
         MotorView::show('menu/actualityFeed');
     }
