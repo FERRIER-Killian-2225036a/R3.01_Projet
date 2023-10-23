@@ -1,3 +1,7 @@
+<head>
+    <link rel="stylesheet" href="../../common_styles/general.css">
+    <link rel="stylesheet" href="../../common_styles/actualityFeed.css">
+</head>
 <a class="btn bg-body-tertiary round background grow-button" role="button" href="<?php echo $mapView['actualityLien'] ?>">
     <img src="<?php echo $mapView['actualityUrlPicture'] ?>" alt="Logo" class="responsive-image round p-1">
     <div class="text-content">
