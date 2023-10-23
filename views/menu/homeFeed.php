@@ -40,23 +40,23 @@
 
 <section class="py-3 text-center container overlap ">
     <div class="py-lg-5">
-        <div id="buttonContainer">
-            <div class="col">
+        <div id="buttonContainer" class="row">
+            <div class="col-md-4 d-flex justify-content-center"> <!-- d-flex et justify-content-center centrera le contenu dans la colonne -->
                 <a href="/Menu/ActualityFeed" type="button" class="w-20 rounded-4 btn btn-lg text-center colorButton shadow-gn grow-button">
-                    <img class="sizeRs iconSize" src="../../media/public_assets/icone/iconeTerminalWhite.png" alt="Icone Veille Tehcnologique">
-                    <p class="colorText">Veille Technologique</p>
+                    <img class="iconSize" src="../../media/public_assets/icone/iconeTerminalWhite.png" alt="Icone Veille Tehcnologique">
+                    <p class="colorText responsiveText">Veille Technologique</p>
                 </a>
             </div>
-            <div class="col">
+            <div class="col-md-4 d-flex justify-content-center">
                 <a href="blogFeed.php" type="button" class="w-20 rounded-4 btn btn-lg text-center colorButton shadow-gn grow-button">
-                    <img class="sizeRs iconSize" src="../../media/public_assets/icone/iconeBlogWhite.png" alt="Icone Blog">
-                    <p class="colorText">Blog</p>
+                    <img class="iconSize" src="../../media/public_assets/icone/iconeBlogWhite.png" alt="Icone Blog">
+                    <p class="colorText responsiveText">Blog</p>
                 </a>
             </div>
-            <div class="col">
+            <div class="col-md-4 d-flex justify-content-center">
                 <a href="forumFeed.php" type="button" class="w-20 rounded-4 btn btn-lg text-center colorButton shadow-gn grow-button">
-                    <img class="sizeRs iconSize" src="../../media/public_assets/icone/iconeForumWhite.png" alt="Icone Forum">
-                    <p class="colorText">Forum</p>
+                    <img class="iconSize" src="../../media/public_assets/icone/iconeForumWhite.png" alt="Icone Forum">
+                    <p class="colorText responsiveText">Forum</p>
                 </a>
             </div>
         </div>
