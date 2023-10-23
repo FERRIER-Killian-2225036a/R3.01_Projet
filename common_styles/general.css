@@ -37,6 +37,9 @@
 .responsive-text{
     font-size: 1rem;
 }
+.responsive-title {
+    font-size: 2rem;
+}
 
 .text-content {
     margin-left: 1rem;
@@ -49,7 +52,6 @@
         flex-direction: column;
         text-align: center;
     }
-
     .text-content {
         margin-left: 0;
         margin-top: 1rem;
@@ -60,10 +62,16 @@
     .responsive-text {
         font-size: 0.8rem;
     }
+    .responsive-title {
+        font-size: 1.5rem; /* Plus petit pour les écrans "mobiles" */
+    }
 }
 @media (max-width: 480px) {
     .responsive-text {
         font-size: 0.6rem;
+    }
+    .responsive-title {
+        font-size: 1rem; /* Le plus petit pour les très petits écrans */
     }
 }
 /* Hover effect */
