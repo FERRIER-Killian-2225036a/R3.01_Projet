@@ -3,6 +3,8 @@
 
     require 'core/AutoLoad.php';
     Constants::defineFakeConst();
+    print_r(Constants::$DB);
+
 
     /*
     si nous n'avons pas d'action précisée on visera celle par défaut
