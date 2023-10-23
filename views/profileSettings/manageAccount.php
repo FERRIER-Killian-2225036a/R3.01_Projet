@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" href="../../common_styles/profileSettings.css">
+    <link rel="stylesheet" href="../../common_styles/profileSettings.css    ">
 </head>
 <body>
 <div class="container-fluid">
