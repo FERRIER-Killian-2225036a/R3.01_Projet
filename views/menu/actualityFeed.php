@@ -5,8 +5,10 @@
 <body>
 <main class="container padding">
     <div class="p-3">
+        <?php include 'actualityPost.php'?>
+        <!--
         <a class="btn bg-body-tertiary round background grow-button" role="button">
-            <img src="<?php $mapView[urlPicture]?>" alt="Logo" class="responsive-image round p-1">
+            <img src="#" alt="Logo" class="responsive-image round p-1">
             <div class="text-content">
                 <h1 class="responsiveTitle" >Le logiciel espion Pegasus cible de nouveau les iPhones</h1>
                 <p class="lead responsiveText"> Iphone / IOS - 08 september 2023 - auteur </p>
@@ -15,7 +17,7 @@
                     Le laboratoire canadien Citizen Lab, à l'origine de cette découverte, exhorte les détenteurs les plus sensibles à
                     activer le mode verrouillage proposé par la société américaine visant à réduire la surface d'attaque de ses appareils.</p>
             </div>
-        </a>
+        </a>-->
     </div>
     <div class="p-3">
         <a class="btn bg-body-tertiary round background grow-button" role="button">
