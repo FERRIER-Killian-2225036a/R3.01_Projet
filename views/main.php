@@ -7,6 +7,8 @@
         <title>Cyphub</title>
         <link rel="stylesheet" href="/common_styles/header.css">
         <link rel="stylesheet" href="/common_styles/main.css">
+        <link rel="stylesheet" href="../../common_styles/general.css">
+        <link rel="stylesheet" href="../../common_styles/actualityFeed.css">
         <link rel="icon" href="/media/public_assets/favicon.png">
     </head>
     <body>
