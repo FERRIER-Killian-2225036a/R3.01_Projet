@@ -1,38 +1,31 @@
 <?php
+
 final class Constants
 {
-    const VIEW_DIRECTORY        = '/views/';
-    const MODEL_DIRECTORY      = '/models/';
-    const CORE_DIRECTORY       = '/core/';
-    const EXCEPTION_DIRECTORY  = '/monitoring/exceptions/';
+
+    const VIEW_DIRECTORY = '/views/';
+    const MODEL_DIRECTORY = '/models/';
+    const CORE_DIRECTORY = '/core/';
+    const EXCEPTION_DIRECTORY = '/monitoring/exceptions/';
     const CONTROLLER_DIRECTORY = '/controllers/';
     const ORM_DIRECTORY = '/models/ORM/';
     const UserIdForItArticle = 238;
-
-
-    const DB = array(
-        "dbname"=>"cyphubte_db",
-        "host"=>"localhost",
-        "usr"=>"cyphubte_normal_user",
-        "pwd"=>"3T3;)qa,+:@Yw.u", // TODO on changera le mot de passe quand ce sera en prod, (mot de passe temporaire)
-        "charset"=>"utf8mb4"
-    );
     const DECONNEXION_TIME = 86400;
-    const PICTURE_URL_DEFAULT = ""; // TODO : mettre une image par défaut
-    const PDP_URL_DEFAULT = ""; // TODO : mettre une image par défaut
-
-
-    const PEPPER = "mjOlvxisvFdxMDpecFwc1d" ;
+    const PICTURE_URL_DEFAULT = "";
+    const PDP_URL_DEFAULT = "";
+    const PEPPER = "mjOlvxisvFdxMDpecFwc1d";
     const MAIL_FROM_EMAIL = "noreply@cyphub.tech";
-
-    public static function rootDirectory(): false|string
-    {
-        return realpath(__DIR__ . '/../');
-    }
+    public static $BDD_PASSWORD = '';
+    public static $DB; // TODO : mettre une image par défaut
 
     public static function coreDirectory(): string
     {
         return self::rootDirectory() . self::CORE_DIRECTORY;
+    } // TODO : mettre une image par défaut
+
+    public static function rootDirectory(): false|string
+    {
+        return realpath(__DIR__ . '/../');
     }
 
     public static function exceptionsDirectory(): string
@@ -59,4 +52,31 @@ final class Constants
     {
         return self::rootDirectory() . self::ORM_DIRECTORY;
     }
+
+    public function defineFakeConst()
+    {
+        $chemin_pwd_bdd = $_SERVER['DOCUMENT_ROOT'] . "/CONSTANTES_MDP.txt";
+        if (file_exists($chemin_pwd_bdd)) {
+            $mot_de_passe = file_get_contents($chemin_pwd_bdd);
+            // Assurez-vous de nettoyer ou valider le mot de passe lu depuis le fichier, par exemple, en utilisant trim() ou d'autres validations.
+            Constants::setBDDPASSWORD($mot_de_passe);
+            Constants::setDB(array(
+                "dbname" => "cyphubte_db",
+                "host" => "localhost",
+                "usr" => "cyphubte_normal_user",
+                "pwd" => Constants::$BDD_PASSWORD, // TODO on changera le mot de passe quand ce sera en prod, (mot de passe temporaire)
+                "charset" => "utf8mb4"));
+        }
+    }
+
+    public static function setBDDPASSWORD(string $BDD_PASSWORD): void
+    {
+        self::$BDD_PASSWORD = $BDD_PASSWORD;
+    }
+
+    public static function setDB($DB): void
+    {
+        self::$DB = $DB;
+    }
 }
+

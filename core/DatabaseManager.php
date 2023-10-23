@@ -21,7 +21,7 @@ class DatabaseManager
     public function __construct() {
         try {
             // d'apres https://phpdelusions.net/pdo
-            $dsn = "mysql:host=".Constants::DB['host'].";dbname=".Constants::DB['dbname'].";charset=".Constants::DB['charset'];
+            $dsn = "mysql:host=".Constants::$DB['host'].";dbname=".Constants::$DB['dbname'].";charset=".Constants::$DB['charset'];
             $options = [
                 PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -29,8 +29,8 @@ class DatabaseManager
             ];
             $this->conn = new PDO(
                 $dsn,
-                Constants::DB['usr'],
-                Constants::DB['pwd'],
+                Constants::$DB['usr'],
+                Constants::$DB['pwd'],
                 $options
             );
 
