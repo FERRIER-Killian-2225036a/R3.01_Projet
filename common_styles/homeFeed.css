@@ -1,7 +1,7 @@
 .homeTitle {
     font-weight: bold;
     justify-content: left;
-    color: var(--white);
+    color: var(--white);  /* Assuming you have this variable for white color, if not, you can just use `white` directly */
 }
 
 .background {
@@ -26,7 +26,7 @@
 .cta:before {
     content: "";
     position: absolute;
-    top: 0;
+    top: 5px;
     left: 0;
     display: block;
     border-radius: 28px;
@@ -63,7 +63,7 @@
     width: 100%;
     color: var(--white);
     background: var(--purple);
-    box-shadow: var(--shadow-default) 0px 5px 15px;
+    box-shadow: var(--shadow-default) 0 5px 15px;
 }
 
 .cta:hover .svg1 {
@@ -91,47 +91,83 @@ a:hover {
     max-width: 80%;
     height: auto;
 }
+.iconSize {
+    height: 70px;
+    width: 70px;
+}
 
 .card {
     border: none !important;
 }
 
 .padding {
-    padding: 7rem !important;
+    padding-block: 7rem!important;
+    padding-inline: 10.9em!important;
 }
 
 .grow-button {
-    padding: 10px 20px;
+    padding: 3.5em 0;
     font-size: 16px;
     transition: transform 0.3s ease;
+
 }
 
 .grow-button:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
+
+.row {
+    justify-content: space-around;
+}
+
+.col, .grow-button {
+    width: 12em;
+}
+
+#buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1.5em;
+}
+
 /* Par défaut (pour les mobiles), mettons une petite marge négative */
 .overlap {
-    margin-top: -20px;
+    margin-top: -175px;
 }
 
-/* À partir de tablettes */
-@media (min-width: 576px) {
-    .overlap {
-        margin-top: -130px;
+@media (max-width: 991px) {
+    #decorationImg {
+        display: none;
+    }
+    .padding {
+        padding-top: 4em!important;
+        padding-inline: 5em!important;
+    }
+    div.col-lg-6.col-md-4.text-right {
+        display: none;
+    }
+    #buttonContainer {
+        padding-top: 4em;
+    }
+
+}
+@media (max-width: 767px) {
+    .padding {
+        padding-inline: 11em!important;
+    }
+    #buttonContainer {
+        display: inline-block;
+    }
+    #buttonContainer>.col{
+        padding-block: 1em;
+    }
+    .col, .grow-button {
+        width: 20em;
     }
 }
-
-/* Pour les écrans moyens (comme certains ordinateurs portables) */
-@media (min-width: 768px) {
-    .overlap {
-        margin-top: -150px;
+@media (max-width: 660px) {
+    .padding {
+        padding-inline: 3.4em!important;
     }
-}
 
-/* Pour les écrans plus larges */
-@media (min-width: 992px) {
-    .overlap {
-        margin-top: -175px;
-    }
 }
-
