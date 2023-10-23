@@ -56,6 +56,7 @@ final class Constants
     public static function defineFakeConst()
     {
         $chemin_pwd_bdd = $_SERVER['DOCUMENT_ROOT'] . "/CONSTANTES_MDP.txt";
+        error_log($chemin_pwd_bdd);
         if (file_exists($chemin_pwd_bdd)) {
             error_log("le fichier existe");
             $mot_de_passe = file_get_contents($chemin_pwd_bdd);
