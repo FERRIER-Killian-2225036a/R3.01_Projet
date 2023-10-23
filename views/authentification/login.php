@@ -35,7 +35,9 @@
 
 
                                     <div class="text-center pt-1 mb-5 pb-1">
-                                        <a id="forgotPasswordSize" href="#!">Mot de passe oublié ?</a>
+                                        <button type="button" class="btn" data-toggle="modal" data-target="#passwordModal">
+                                            Mot de passe oublié?
+                                        </button>
                                         <br>
                                         <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" id="signUpButton" type="submit" >Se connecter</button>
                                     </div>
