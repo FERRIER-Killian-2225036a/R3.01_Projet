@@ -6,7 +6,7 @@
 <main class="container padding">
     <div class="p-3">
         <a class="btn bg-body-tertiary round background grow-button" role="button">
-            <img src="https://www.numerama.com/wp-content/uploads/2023/09/iphone15-3131-1.jpg" alt="Logo" class="responsive-image round p-1">
+            <img src="<?php $mapView[urlPicture]?>" alt="Logo" class="responsive-image round p-1">
             <div class="text-content">
                 <h1 class="responsiveTitle" >Le logiciel espion Pegasus cible de nouveau les iPhones</h1>
                 <p class="lead responsiveText"> Iphone / IOS - 08 september 2023 - auteur </p>

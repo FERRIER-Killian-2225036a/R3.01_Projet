@@ -19,11 +19,16 @@ class ControllerMenu
         foreach ($ArrayOf5IdByDate as $id) {
             $ArrayOfITPageModel[] = new ITPageModel($id);
         }
+
         foreach ($ArrayOfITPageModel as $obj) {
-            echo $obj->getAuthor();
+            MotorView::show('menu/actualityFeed', array("title"=>$obj->getTitle()));
+            MotorView::show('menu/actualityFeed', array("content"=>$obj->getContent()));
+            MotorView::show('menu/actualityFeed', array("author"=>$obj->getAuthor()));
+            MotorView::show('menu/actualityFeed', array("date"=>$obj->getDate()));
+            MotorView::show('menu/actualityFeed', array("urlPicture"=>$obj->getUrlPicture()));
+            MotorView::show('menu/actualityFeed', array("lien"=>$obj->getLien()));
         }
 
-        MotorView::show('menu/actualityFeed');
     }
     public function BlogFeedAction(Array $A_parametres = null, Array $A_postParams = null): void
     {
