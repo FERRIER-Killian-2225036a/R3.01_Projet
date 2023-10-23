@@ -49,13 +49,12 @@ class ITPageModel
     {   // on pourra combiné ca avec get5PagesByDate de l'orm qui permet de recuperer les 5 derniers articles selon une potentiel
         // date donnée, on aura a rappellé a chaque fois cette fonction avec la date du dernier article affiché (donc dans le controller)
         $arrayOfValues = (new ITPage())->getValuesById($Id);
-        print_r($arrayOfValues);
         $this->id = $arrayOfValues['ArticleId'];
-        $this->title = $arrayOfValues['Title'];
-        $this->content = $arrayOfValues['Content'];
-        $this->author =$arrayOfValues['Author'];
+        $this->title = $arrayOfValues['title'];
+        $this->content = $arrayOfValues['content'];
+        $this->author =$arrayOfValues['author'];
         $this->userId = $arrayOfValues['UserId'];
-        $this->date = $arrayOfValues['Date'];
+        $this->date = $arrayOfValues['dateIT'];
         $this->urlPicture =$arrayOfValues['UrlPicture'];
         $this->lien = $arrayOfValues['Lien'];
     }
