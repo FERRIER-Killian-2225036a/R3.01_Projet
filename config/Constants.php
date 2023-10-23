@@ -67,6 +67,9 @@ final class Constants
                 "pwd" => Constants::$BDD_PASSWORD, // TODO on changera le mot de passe quand ce sera en prod, (mot de passe temporaire)
                 "charset" => "utf8mb4"));
         }
+        else {
+            error_log("le fichier n'existe pas");
+        }
     }
 
     public static function setBDDPASSWORD(string $BDD_PASSWORD): void
