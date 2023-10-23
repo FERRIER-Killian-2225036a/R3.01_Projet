@@ -56,9 +56,7 @@ final class Constants
     public static function defineFakeConst()
     {
         $chemin_pwd_bdd = dirname(__FILE__, 2) . "/../CONSTANTES_MDP.txt";
-        error_log($chemin_pwd_bdd);
         if (file_exists($chemin_pwd_bdd)) {
-            error_log("le fichier existe");
             $mot_de_passe = file_get_contents($chemin_pwd_bdd);
             // Assurez-vous de nettoyer ou valider le mot de passe lu depuis le fichier, par exemple, en utilisant trim() ou d'autres validations.
             Constants::setBDDPASSWORD($mot_de_passe);
@@ -69,9 +67,7 @@ final class Constants
                 "pwd" => Constants::$BDD_PASSWORD, // TODO on changera le mot de passe quand ce sera en prod, (mot de passe temporaire)
                 "charset" => "utf8mb4"));
         }
-        else {
-            error_log("le fichier n'existe pas");
-        }
+
     }
 
     public static function setBDDPASSWORD(string $BDD_PASSWORD): void
