@@ -35,7 +35,7 @@
 
 
                                     <div class="text-center pt-1 mb-5 pb-1">
-                                        <a id="forgotPasswordSize" href="#!">Mot de passe oublié ?</a>
+                                        <a id="forgotPasswordSize" href="forgotPassword.php">Mot de passe oublié ?</a>
                                         <br>
                                         <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" id="signUpButton" type="submit" >Se connecter</button>
                                     </div>
