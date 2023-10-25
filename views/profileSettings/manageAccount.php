@@ -16,8 +16,8 @@
 
                     <div class="btn-group">
                         <form method="POST" enctype="multipart/form-data">
-                            <button class="btn btn-outline-dark mr-2" name="ChangeProfilePicture" onclick="document.getElementById('file').click();" type="button">Modifier</button>
-                            <input class="hiddenInput" type="file" name="ProfilePicture" id="file" accept=".jpg, .jpeg, .png, .gif" onchange="this.form.submit();">
+                            <button class="btn btn-outline-dark mr-2" onclick="document.getElementById('file').click();" type="button">Modifier</button>
+                            <input id="file" class="hiddenInput" type="file" name="ChangeProfilePicture"  accept=".jpg, .jpeg, .png, .gif" onchange="this.form.submit();">
                         </form>
                         <script>
                             // Lorsque le bouton "Modifier" est cliqué

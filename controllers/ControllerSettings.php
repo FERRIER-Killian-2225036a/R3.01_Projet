@@ -23,7 +23,7 @@ class ControllerSettings
                     $uploadDirectory = Constants::MEDIA_DIRECTORY_USERS . "/" . $_SESSION["UserID"] . "/";
                     echo "changement d'image demandé";
                     try {
-                        $result = PictureVerificator::handleFileUpload($_FILES['ProfilePicture'], $uploadDirectory,
+                        $result = PictureVerificator::handleFileUpload($_FILES['ChangeProfilePicture'], $uploadDirectory,
                                                                        $allowedExtensions, $minFileSize, $maxFileSize);
                         echo " resultat de l'upload : $result";
                         if ($result != "success") {
