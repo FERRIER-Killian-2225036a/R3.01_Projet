@@ -10,7 +10,7 @@ class ControllerSettings
         //MotorView::show('profileSettings/manageAccount.php');
     }
 
-    public function ManageAccountAction(array $A_postParams = null): void
+    public function ManageAccountAction(Array $A_parametres = null,array $A_postParams = null): void
     {
         print_r($A_postParams);
         MotorView::show('profileSettings/manageAccount');
