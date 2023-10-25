@@ -1,4 +1,4 @@
-<body>
+<link rel="stylesheet" href="../../common_styles/menu.css">
 <main class="container">
     <div class="p-3">
         <a class="btn bg-body-tertiary round background grow-button" role="button" href="<?php echo $mapView['actualityLien'] ?>" target="_blank">
@@ -13,4 +13,3 @@
         </a>
     </div>
 </main>
-</body>

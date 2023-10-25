@@ -90,3 +90,7 @@
 a > img {
     width: auto!important;
 }
+
+.lead {
+    font-size: 1em;
+}
