@@ -18,6 +18,7 @@
                         <form action="/Settings/ManageAccount" method="POST" enctype="multipart/form-data">
 
                             <input id="file" class="hiddenInput" type="file" name="ProfilePicture"  accept=".jpg, .jpeg, .png, .gif">
+                            <input class="hiddenInput" type="hidden" name="ChangeProfilePicture" value="1">
                             <button class="btn btn-outline-dark mr-2" name="ChangeProfilePicture" type="submit">Modifier</button>
                             <!--
                             <label for="fileInput">Modifier</label> (moche)
@@ -29,7 +30,7 @@
                             // Lorsque le bouton "Modifier" est cliqué
                             document.querySelector('.btn[name="ChangeProfilePicture"]').addEventListener('click', function (event) { //TODO a mettre dans un fichier js
                                 // Empêche le comportement par défaut du bouton
-                                event.preventDefault();
+                                // event.preventDefault();
                                 // Clique sur l'input de fichier caché pour validé l'envoi du fichier
                                 document.getElementById('file').click();
                             });
