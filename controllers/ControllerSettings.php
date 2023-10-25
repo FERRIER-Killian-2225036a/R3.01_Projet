@@ -49,7 +49,7 @@ class ControllerSettings
                             echo "upload reussi";
                             echo "resultat : $result[1]";
                             echo "id : " . $_SESSION["UserId"];
-                            (new USERSite())->update_picture($_SESSION["UserId"],$result[1]);
+                            echo (new USERSite)->update_picture($_SESSION["UserId"],$result[1]);
                         } // maj bdd de l'image
 
                     } catch (ExceptionsUpload $e) {
