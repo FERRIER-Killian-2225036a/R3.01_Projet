@@ -92,8 +92,8 @@ a:hover {
     height: auto;
 }
 .iconSize {
-    height: 70px;
-    width: 70px;
+    height: 10em;
+    width: 10em;
 }
 
 .card {
@@ -113,7 +113,7 @@ a:hover {
 }
 
 .grow-button:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 .row {
