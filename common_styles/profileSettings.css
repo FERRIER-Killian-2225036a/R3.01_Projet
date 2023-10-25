@@ -26,3 +26,6 @@
     border-color: red;  /* Colorie le haut de la ligne en rouge */
     background-color: red;
 }
+.hiddenInput{
+    display: none;
+}
