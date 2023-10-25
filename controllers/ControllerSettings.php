@@ -31,23 +31,22 @@ class ControllerSettings
                     error_log("current path : " . getcwd());
 
                     if (!is_dir($uploadDirectory)) {
-                        if (mkdir($uploadDirectory)) {
-                            // Crée le dossier
+                        if (mkdir($uploadDirectory)) { // création dossier
                             error_log("Le dossier a été créé avec succès.");
-                            echo "Le dossier a été créé avec succès.";
                         } else {
-                            // Erreur lors de la création du dossier
-                            echo "Une erreur est survenue lors de la création du dossier.";
+                            error_log("Une erreur est survenue lors de la création du dossier.");
                         }
                     }
                     error_log("On va demander la verif d'image");
                     try {
-                        $result = PictureVerificator::handleFileUpload($_FILES['ProfilePicture'], $uploadDirectory,
+                        $result = PictureVerificator::VerifyPDP($_FILES['ProfilePicture'], $uploadDirectory,
                                                                        $allowedExtensions, $minFileSize, $maxFileSize);
-                        error_log( " resultat de l'upload : $result");
-                        if ($result != "success") {
+                        //error_log( " resultat de l'upload : $result");
+                        if ($result[0] != "success") {
                             throw new ExceptionsUpload($result);
                         }
+                        else (new USERSite)->update_picture($_SESSION["UserId"],$result[1]); // maj bdd de l'image
+
                     } catch (ExceptionsUpload $e) {
                         echo $e->getMessage();
                     }
