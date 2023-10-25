@@ -12,4 +12,5 @@
             </div>
         </a>
     </div>
+    <script src="../../common_scripts/maxTextSize.js"></script>
 </main>
