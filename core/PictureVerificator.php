@@ -18,7 +18,7 @@ class PictureVerificator
         }
 
         // Désinfection du nom du fichier
-        $fileName = preg_replace('/[^A-Za-z0-9_\-\.]/', '', $fileName);
+        $fileName = preg_replace('/[^A-Za-z0-9_\-.]/', '', $fileName);
         $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
         error_log("desinfection du nom du fichier");
         // Liste blanche des extensions
@@ -37,6 +37,7 @@ class PictureVerificator
         // Génération d'un nom de fichier unique
         $uniqueFileName = uniqid() . '.' . $fileExtension;
         $targetPath = $uploadDirectory . $uniqueFileName;
+        error_log($targetPath);
         error_log("generation d'un nom de fichier unique");
 
         if (move_uploaded_file($fileTmpName, $targetPath)) {
