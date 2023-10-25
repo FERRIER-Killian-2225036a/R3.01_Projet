@@ -15,8 +15,7 @@
         <?php
             motorView::show('common/header');
             //echo $mapView['body'];
-            //echo $mapView['body'];
-            motorView::show('menu/blogFeed');
+            echo $mapView['body'];
             motorView::show('common/help');
             motorView::show('common/footer');
             require 'common_scripts/general_scripts.php';
