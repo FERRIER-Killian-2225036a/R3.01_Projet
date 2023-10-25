@@ -9,15 +9,13 @@
         <link rel="stylesheet" href="/common_styles/main.css">
         <link rel="stylesheet" href="/common_styles/bouee.css">
         <link rel="stylesheet" href="../../common_styles/general.css">
-        <link rel="stylesheet" href="../../common_styles/actualityFeed.css">
         <link rel="icon" href="/media/public_assets/favicon.png">
     </head>
     <body>
         <?php
             motorView::show('common/header');
             //echo $mapView['body'];
-            //echo $mapView['body'];
-            motorView::show('menu/blogFeed');
+            echo $mapView['body'];
             motorView::show('common/help');
             motorView::show('common/footer');
             require 'common_scripts/general_scripts.php';
