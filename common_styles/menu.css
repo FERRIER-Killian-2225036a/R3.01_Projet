@@ -2,12 +2,18 @@
     background: var(--background-color);
 }
 .inputBackground {
-    background-color: var(--gris);
+    background-color: var(--grey-light);
 }
 .custom-input {
     width: 40px;  /* Hauteur par défaut pour tous les écrans */
 }
+.col-lg-4 {
+    width: 80%;
+}
 
+.input-group-append > .btn {
+    margin-left: 1em!important;
+}
 
 .input-group:not(.has-validation)>:not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
     border-top-right-radius: 5em;
