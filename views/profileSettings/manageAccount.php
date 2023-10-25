@@ -15,7 +15,7 @@
                 <div class="col-md-6 d-flex align-items-center"> <!-- Notez ici que nous utilisons align-items-center pour centrer les boutons verticalement -->
 
                     <div class="btn-group">
-                        <form method="POST" enctype="multipart/form-data">
+                        <form action="/Settings/ManageAccount" method="POST" enctype="multipart/form-data">
                             <button class="btn btn-outline-dark mr-2" onclick="document.getElementById('file').click();" type="button">Modifier</button>
                             <input id="file" class="hiddenInput" type="file" name="ChangeProfilePicture"  accept=".jpg, .jpeg, .png, .gif" onchange="this.form.submit();">
                         </form>
