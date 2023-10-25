@@ -14,5 +14,9 @@ class ControllerSettings
         MotorView::show('profileSettings/manageAccount');
     }
 
+    public function LanguageAction(): void
+    {
+        MotorView::show('profileSettings/language');
+    }
 }
 ?>
