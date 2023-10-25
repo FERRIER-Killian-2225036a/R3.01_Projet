@@ -30,7 +30,7 @@
                             // Lorsque le bouton "Modifier" est cliqué
                             document.querySelector('.btn[name="ChangeProfilePicture"]').addEventListener('click', function (event) { //TODO a mettre dans un fichier js
                                 // Empêche le comportement par défaut du bouton
-                                // event.preventDefault();
+                                event.preventDefault();
                                 // Clique sur l'input de fichier caché pour validé l'envoi du fichier
                                 document.getElementById('file').click();
                             });
