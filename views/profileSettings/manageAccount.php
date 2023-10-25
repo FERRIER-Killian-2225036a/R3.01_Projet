@@ -18,7 +18,7 @@
                         <form action="/Settings/ManageAccount" method="POST" enctype="multipart/form-data">
 
                             <button class="btn btn-outline-dark mr-2" name="ChangeProfilePicture" type="submit">Modifier</button>
-                            <input id="file" class="hiddenInput" type="file" name="ProfilePicture"  accept=".jpg, .jpeg, .png, .gif" onchange="this.form.submit();">
+                            <input id="file" class="hiddenInput" type="file" name="ProfilePicture"  accept=".jpg, .jpeg, .png, .gif">
                             <!--
                             <label for="fileInput">Modifier</label> (moche)
                             <input type="file" name="ProfilePicture" id="fileInput">
