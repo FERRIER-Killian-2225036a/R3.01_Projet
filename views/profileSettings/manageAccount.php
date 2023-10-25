@@ -16,25 +16,25 @@
 
                     <div class="btn-group">
                         <form action="/Settings/ManageAccount" method="POST" enctype="multipart/form-data">
-
-                                <input id="file" class="hiddenInput" type="file" name="ProfilePicture" accept=".jpg, .jpeg, .png, .gif">
-                                <button class="btn btn-outline-dark mr-2" type="submit" name="ChangeProfilePicture">Modifier</button>
-
-                            <!--
-                            <label for="fileInput">Modifier</label> (moche)
-                            <input type="file" name="ProfilePicture" id="fileInput">
-                            <input type="submit" name="ChangeProfilePicture" value="Envoyer">
-                            -->
+                            <label for="file" class="btn btn-outline-dark mr-2">Modifier</label>
+                            <input id="file" type="file" name="ProfilePicture" accept=".jpg, .jpeg, .png, .gif" style="display: none;">
+                            <input type="hidden" name="ChangeProfilePicture" value="1">
                         </form>
+
                         <script>
-                            // Lorsque le bouton "Modifier" est cliqué
-                            document.querySelector('.btn[name="ChangeProfilePicture"]').addEventListener('click', function (event) { //TODO a mettre dans un fichier js
-                                // Empêche le comportement par défaut du bouton
-                                event.preventDefault();
-                                // Clique sur l'input de fichier caché pour validé l'envoi du fichier
+                            // Lorsque le label "Modifier" est cliqué
+                            document.querySelector('label[for="file"]').addEventListener('click', function () {
+                                // Clique sur l'input de fichier caché pour permettre à l'utilisateur de choisir un fichier
                                 document.getElementById('file').click();
                             });
+
+                            // Lorsque le champ de fichier est modifié (un fichier est sélectionné)
+                            document.getElementById('file').addEventListener('change', function () {
+                                // Soumet automatiquement le formulaire lorsque l'utilisateur sélectionne un fichier
+                                this.parentNode.submit(); // Cela enverra le formulaire avec le fichier sélectionné
+                            });
                         </script>
+
                         <button class="btn btn-outline-danger" type="submit">Supprimer</button>
                     </div>
                 </div>
