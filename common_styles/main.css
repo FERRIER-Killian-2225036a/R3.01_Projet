@@ -43,3 +43,6 @@
     /*Background*/
     --background-color: transparent;
 }
+body {
+    overflow-x: hidden;
+}

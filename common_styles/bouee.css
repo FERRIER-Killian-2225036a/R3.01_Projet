@@ -1,0 +1,11 @@
+#bouee {
+    position: fixed;
+    float: right;
+    bottom: 2em;
+    right: 2em;
+}
+
+#bouee > img {
+    height: 50px;
+    width: 50px;
+}
