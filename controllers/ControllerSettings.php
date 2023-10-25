@@ -29,8 +29,13 @@ class ControllerSettings
                     error_log($uploadDirectory);
 
                     if (!is_dir($uploadDirectory)){
-                        echo "res : ". mkdir($uploadDirectory);
-                    }
+                        if (mkdir($uploadDirectory)) {
+                            // Crée le dossier
+                            echo "Le dossier a été créé avec succès.";
+                        } else {
+                            // Erreur lors de la création du dossier
+                            echo "Une erreur est survenue lors de la création du dossier.";
+                        }
 
                         error_log("On va demander la verif d'image");
                     try {
