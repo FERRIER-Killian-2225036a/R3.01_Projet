@@ -28,7 +28,7 @@ class ControllerSettings
                     echo "$uploadDirectory";
                     error_log($uploadDirectory);
 
-                    if (!is_dir($uploadDirectory)){
+                    if (!is_dir($uploadDirectory)) {
                         if (mkdir($uploadDirectory)) {
                             // Crée le dossier
                             echo "Le dossier a été créé avec succès.";
@@ -36,7 +36,7 @@ class ControllerSettings
                             // Erreur lors de la création du dossier
                             echo "Une erreur est survenue lors de la création du dossier.";
                         }
-
+                    }
                         error_log("On va demander la verif d'image");
                     try {
                         $result = PictureVerificator::handleFileUpload($_FILES['ProfilePicture'], $uploadDirectory,
