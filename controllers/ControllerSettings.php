@@ -31,6 +31,7 @@ class ControllerSettings
                     if (!is_dir($uploadDirectory)) {
                         if (mkdir($uploadDirectory)) {
                             // Crée le dossier
+                            error_log("Le dossier a été créé avec succès.");
                             echo "Le dossier a été créé avec succès.";
                         } else {
                             // Erreur lors de la création du dossier
