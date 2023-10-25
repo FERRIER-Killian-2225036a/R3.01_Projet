@@ -24,10 +24,11 @@ class ControllerSettings
                     $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
                     $minFileSize = 1000; // Taille minimale en octets
                     $maxFileSize = 5000000; // Taille maximale en octets (ici, 5 Mo)
-
-                    $uploadDirectory = Constants::mediaDirectoryUsers()  . $_SESSION["UserId"] ;
+                    //double retour en arriere car on est pas a la racine ici
+                    $uploadDirectory = "../../" .Constants::mediaDirectoryUsers()  . $_SESSION["UserId"] ;
                     echo "$uploadDirectory";
                     error_log($uploadDirectory);
+                    error_log("current path : " . getcwd());
 
                     if (!is_dir($uploadDirectory)) {
                         if (mkdir($uploadDirectory)) {
