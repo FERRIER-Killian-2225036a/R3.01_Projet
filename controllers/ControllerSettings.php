@@ -48,7 +48,8 @@ class ControllerSettings
                         else {
                             (new UserSite)->update_picture($_SESSION["UserId"],
                                 Constants::MEDIA_DIRECTORY_USERS.$_SESSION["UserId"]."/".$result[1]);
-                            $_SESSION['UrlPicture']=$result[1]; //synchronisation de la session au niveau de l'image
+                            $_SESSION['UrlPicture']=Constants::MEDIA_DIRECTORY_USERS.$_SESSION["UserId"]."/".$result[1];
+                            //synchronisation de la session au niveau de l'image
                         } // maj bdd de l'image
 
                     } catch (ExceptionsUpload $e) {
