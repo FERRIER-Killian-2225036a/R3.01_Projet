@@ -15,6 +15,9 @@ class ControllerSettings
         print_r($A_postParams);
         MotorView::show('profileSettings/manageAccount');
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            echo "on rentre dans le post";
+
+
             if (SessionManager::isUserConnected()) { //TODO reflechir a plus de sécurisation
                 // premier post, on change l'image de profil de l'utilisateur dans le model par le fichier uploader
                 if (isset($A_postParams["ChangeProfilePicture"])) {
@@ -24,7 +27,7 @@ class ControllerSettings
                     $uploadDirectory = Constants::MEDIA_DIRECTORY_USERS . "/" . $_SESSION["UserID"] . "/";
                     error_log("On va demander la verif d'image");
                     try {
-                        $result = PictureVerificator::handleFileUpload($_FILES['ChangeProfilePicture'], $uploadDirectory,
+                        $result = PictureVerificator::handleFileUpload($_FILES['ProfilePicture'], $uploadDirectory,
                                                                        $allowedExtensions, $minFileSize, $maxFileSize);
                         error_log( " resultat de l'upload : $result");
                         if ($result != "success") {
