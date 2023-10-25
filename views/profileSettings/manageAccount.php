@@ -16,10 +16,16 @@
 
                     <div class="btn-group">
                         <form method="POST" enctype="multipart/form-data">
-                            <label for="file">Modifier l'image de profil :</label>
+                            <label for="file">Modifier</label>
                             <input type="file" name="ProfilePicture" id="file" accept=".jpg, .jpeg, .png, .gif" style="display: none;">
                             <button class="btn btn-outline-dark mr-2" name="ChangeProfilePicture" type="submit">Modifier</button>
                         </form>
+                        <script>
+                            // Lorsque le bouton "Modifier" est cliqué
+                            document.getElementById('fileLabel').addEventListener('click', function () {
+                                document.getElementById('file').click(); // Cliquez sur l'input de fichier caché
+                            });
+                        </script>
                         <button class="btn btn-outline-danger" type="submit">Supprimer</button>
                     </div>
                 </div>
