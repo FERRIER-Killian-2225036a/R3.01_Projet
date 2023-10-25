@@ -21,7 +21,7 @@
                         </form>
                         <script>
                             // Lorsque le bouton "Modifier" est cliqué
-                            document.getElementById('fileLabel').addEventListener('click', function () {
+                            document.getElementById('file').addEventListener('click', function () {
                                 document.getElementById('file').click(); // Cliquez sur l'input de fichier caché
                             });
                         </script>
