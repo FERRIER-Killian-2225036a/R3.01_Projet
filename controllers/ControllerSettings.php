@@ -21,11 +21,11 @@ class ControllerSettings
                     $minFileSize = 1000; // Taille minimale en octets
                     $maxFileSize = 5000000; // Taille maximale en octets (ici, 5 Mo)
                     $uploadDirectory = Constants::MEDIA_DIRECTORY_USERS . "/" . $_SESSION["UserID"] . "/";
-                    echo "changement d'image demandé";
+                    error_log("On va demander la verif d'image");
                     try {
                         $result = PictureVerificator::handleFileUpload($_FILES['ChangeProfilePicture'], $uploadDirectory,
                                                                        $allowedExtensions, $minFileSize, $maxFileSize);
-                        echo " resultat de l'upload : $result";
+                        error_log( " resultat de l'upload : $result");
                         if ($result != "success") {
                             throw new ExceptionsUpload($result);
                         }
