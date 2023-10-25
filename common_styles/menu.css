@@ -96,3 +96,9 @@ a > img {
 .lead {
     font-size: 1em;
 }
+
+#signetImg {
+    height: 30px;
+    width: 30px;
+    margin-left: 2em;
+}

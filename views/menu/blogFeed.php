@@ -13,9 +13,9 @@
                     <div class="input-group align-items-center">
                         <input type="text" class="form-control custom-input inputBackground" placeholder="Commenter">
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button">
-                                <i class="fas fa-save">#blog</i>
-                            </button>
+                            <a href="bookmark">
+                                <img src="../../media/public_assets/icone/signet.png" alt="Icon de signet pour mettre en favorie" id="signetImg">
+                            </a>
                         </div>
                     </div>
                 </div>
