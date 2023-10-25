@@ -36,7 +36,7 @@ class PictureVerificator
 
         // Génération d'un nom de fichier unique
         $uniqueFileName = uniqid() . '.' . $fileExtension;
-        $targetPath = $uploadDirectory . $uniqueFileName;
+        $targetPath = $uploadDirectory . "/" .$uniqueFileName;
         error_log($targetPath);
         error_log("generation d'un nom de fichier unique");
 
