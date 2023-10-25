@@ -48,13 +48,15 @@ class PictureVerificator
             $requestData = ['requests' => [['image' => ['content' => base64_encode($imageContent)],
                             'features' => [['type' => 'SAFE_SEARCH_DETECTION']]]]];
 
+
             $options = ['http' => ['header' => 'Content-Type: application/json',
                        'method' => 'POST','content' => json_encode($requestData)]];
 
             $context = stream_context_create($options);
             $response = file_get_contents($url, false, $context);
+            error_log($response);
             $responseData = json_decode($response, true);
-            error_log($responseData);
+            //  error_log($responseData);
             if (isset($responseData['responses'][0]['safeSearchAnnotation']['adult'])) {
                 if ($responseData['responses'][0]['safeSearchAnnotation']['adult'] == 'VERY_LIKELY' || $responseData['responses'][0]['safeSearchAnnotation']['violence'] == 'VERY_LIKELY') {
                     unlink($targetPath); // Supprimez l'image non sécurisée
