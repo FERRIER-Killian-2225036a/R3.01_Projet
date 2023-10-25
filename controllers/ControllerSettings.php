@@ -46,10 +46,7 @@ class ControllerSettings
                             throw new ExceptionsUpload($result);
                         }
                         else {
-                            echo "upload reussi";
-                            echo "resultat : $result[1]";
-                            echo "id : " . $_SESSION["UserId"];
-                            echo (new USERSite)->update_picture($_SESSION["UserId"],$result[1]);
+                            (new UserSite)->update_picture($_SESSION["UserId"],$result[1]);
                         } // maj bdd de l'image
 
                     } catch (ExceptionsUpload $e) {
