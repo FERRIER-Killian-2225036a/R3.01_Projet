@@ -38,7 +38,7 @@ class PictureVerificator
         $uniqueFileName = uniqid() . '.' . $fileExtension;
         $targetPath = $uploadDirectory . $uniqueFileName;
         error_log("generation d'un nom de fichier unique");
-        
+
         if (move_uploaded_file($fileTmpName, $targetPath)) {
             // Vérification de la sécurité avec Google Cloud Vision
             $imageContent = file_get_contents($targetPath);

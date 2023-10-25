@@ -15,6 +15,7 @@ class ControllerSettings
         MotorView::show('profileSettings/manageAccount');
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if (SessionManager::isUserConnected()) { //TODO reflechir a plus de sécurisation
+                error_log(print_r($A_postParams));
                 // premier post, on change l'image de profil de l'utilisateur dans le model par le fichier uploader
                 if (isset($A_postParams["ChangeProfilePicture"])) {
                     $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
@@ -34,6 +35,7 @@ class ControllerSettings
                     }
 
                 } else {
+
                     echo "Une erreur est survenue lors de l'upload du fichier.";
                 }
                 // deuxieme post, on change le pseudo
