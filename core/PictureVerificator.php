@@ -88,7 +88,7 @@ class PictureVerificator
                         return "Erreur : L'image n'est pas sécurisée.";
                     } else {
                         error_log('image securisee');
-                        return ["success",$targetPath ];
+                        return ["success",$uniqueFileName];
                     }
                 } else {
                     unlink($targetPath); // Supprimez l'image non sécurisée
