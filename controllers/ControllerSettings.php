@@ -27,9 +27,9 @@ class ControllerSettings
                     $uploadDirectory = Constants::MEDIA_DIRECTORY_USERS  . $_SESSION["UserId"] . "/";
                     echo "$uploadDirectory";
                     error_log($uploadDirectory);
-                    
+
                     if (!is_dir($uploadDirectory)){
-                        mkdir($uploadDirectory);
+                        echo "res : ". mkdir($uploadDirectory);
                     }
 
                         error_log("On va demander la verif d'image");
