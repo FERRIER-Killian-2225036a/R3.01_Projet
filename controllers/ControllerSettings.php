@@ -11,7 +11,7 @@ class ControllerSettings
 
     public function ManageAccountAction(): void
     {
-        MotorView::show('profileSettings/manageAccount.php');
+        MotorView::show('profileSettings/manageAccount');
     }
 
 }
