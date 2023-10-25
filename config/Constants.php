@@ -9,12 +9,16 @@ final class Constants
     const EXCEPTION_DIRECTORY = '/monitoring/exceptions/';
     const CONTROLLER_DIRECTORY = '/controllers/';
     const ORM_DIRECTORY = '/models/ORM/';
+    const MEDIA_DIRECTORY = '/media/';
+    const MEDIA_DIRECTORY_USERS = '/media/users/';
     const UserIdForItArticle = 238;
     const DECONNEXION_TIME = 86400;
     const PICTURE_URL_DEFAULT = "";
     const PDP_URL_DEFAULT = "/media/users/Profil.png";
     const PEPPER = "mjOlvxisvFdxMDpecFwc1d";
     const MAIL_FROM_EMAIL = "noreply@cyphub.tech";
+
+    const API_KEY_GOOGLE_VISION = "AIzaSyBNrZVaFRcSEXqlE1qEDFQO5Y_2AJ3HVCY";
     public static $BDD_PASSWORD = '';
     public static $DB; // TODO : mettre une image par défaut
 

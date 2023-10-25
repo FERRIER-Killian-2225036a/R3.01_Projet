@@ -86,9 +86,14 @@
                     <img id="profile-image" src="../../media/public_assets/favicon.png" alt="Photo de profil" class="img-thumbnail w-10">
                 </div>
                 <div class="col-md-6 d-flex align-items-center"> <!-- Notez ici que nous utilisons align-items-center pour centrer les boutons verticalement -->
+
                     <div class="btn-group">
-                        <button class="btn btn-outline-dark mr-2" onclick="updateImage()">Modifier</button>
-                        <button class="btn btn-outline-danger" onclick="deleteImage()">Supprimer</button>
+                        <form method="POST" enctype="multipart/form-data">
+                            <label for="file">Modifier l'image de profil :</label>
+                            <input type="file" name="ProfilePicture" id="file" accept=".jpg, .jpeg, .png, .gif" style="display: none;">
+                            <button class="btn btn-outline-dark mr-2" name="ChangeProfilePicture" type="submit">Modifier</button>
+                        </form>
+                        <button class="btn btn-outline-danger" type="submit">Supprimer</button>
                     </div>
                 </div>
             </div>
