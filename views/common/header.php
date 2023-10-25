@@ -15,7 +15,7 @@
                         </form>
                     </li>
                     <li class="nav-item">
-                        <a href="#">
+                        <a href="<?= SessionManager::isUserConnected() ? "/Settings/ManageAccount" : "/Auth/Login"; ?>">
                             <img src="/media/users/Profil.png" alt="Logo Cyphub" class="menu-img">
                         </a>
                     </li>

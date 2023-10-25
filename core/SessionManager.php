@@ -2,6 +2,13 @@
 
 class SessionManager
 {
+    public static function isUserConnected(): bool
+    {
+        if (isset($_SESSION["UserId"])) {
+            return true;
+        }
+        return false;
+    }
     //private $sessionID;
     private static ?USERSiteModel $userObject = null;
 
