@@ -1,11 +1,20 @@
-function maxTextSize() {
-    let classTexteResponsive = document.getElementsByClassName("responsive-text");
-    let text = classTexteResponsive[0].textContent;
-    let textSize = text.length;
-    let textBien = text.slice(0, 260) + " <b>See more...</b>";
-    console.log(text, textSize, textBien);
-    classTexteResponsive[0].innerHTML = textBien;
-
+maxTextLength = 260;
+maxTitleLength = 35;
+function maxTextSizeForContent() {
+    let classTextResponsive = document.getElementsByClassName("responsive-text");
+    let text = classTextResponsive[0].textContent;
+    if (text.length > maxTextLength) {
+        classTextResponsive[0].innerHTML = text.slice(0, maxTextLength) + " <b>See more...</b>";
+    }
 }
 
-maxTextSize();
+function maxTextSizeForTitle() {
+    let classTitleResponsive = document.getElementsByClassName("responsiveTitle");
+    let text = classTitleResponsive[0].textContent;
+    if (text.length > maxTitleLength) {
+        classTitleResponsive[0].innerHTML = text.slice(0, maxTitleLength) + "...";
+    }
+}
+
+maxTextSizeForContent();
+maxTextSizeForTitle();
