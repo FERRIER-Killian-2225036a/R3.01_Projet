@@ -24,8 +24,12 @@ class ControllerSettings
                     $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
                     $minFileSize = 1000; // Taille minimale en octets
                     $maxFileSize = 5000000; // Taille maximale en octets (ici, 5 Mo)
-                    $uploadDirectory = Constants::MEDIA_DIRECTORY_USERS . "/" . $_SESSION["UserID"] . "/";
-                    error_log("On va demander la verif d'image");
+                    $uploadDirectory = Constants::MEDIA_DIRECTORY_USERS  . $_SESSION["UserId"] . "/";
+                    if (!is_dir($uploadDirectory)){
+                        mkdir($uploadDirectory);
+                    }
+
+                        error_log("On va demander la verif d'image");
                     try {
                         $result = PictureVerificator::handleFileUpload($_FILES['ProfilePicture'], $uploadDirectory,
                                                                        $allowedExtensions, $minFileSize, $maxFileSize);
