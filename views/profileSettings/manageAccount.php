@@ -17,18 +17,21 @@
                     <div class="btn-group">
                         <form action="/Settings/ManageAccount" method="POST" enctype="multipart/form-data">
 
-                            <button class="btn btn-outline-dark mr-2" name="ChangeProfilePicture" onclick="document.getElementById('file').click();" type="button">Modifier</button>
+                            <button class="btn btn-outline-dark mr-2" name="ChangeProfilePicture" type="submit">Modifier</button>
                             <input id="file" class="hiddenInput" type="file" name="ProfilePicture"  accept=".jpg, .jpeg, .png, .gif" onchange="this.form.submit();">
                             <!--
-                            <label for="fileInput">Modifier</label>
+                            <label for="fileInput">Modifier</label> (moche)
                             <input type="file" name="ProfilePicture" id="fileInput">
                             <input type="submit" name="ChangeProfilePicture" value="Envoyer">
                             -->
                         </form>
                         <script>
                             // Lorsque le bouton "Modifier" est cliqué
-                            document.getElementById('file').addEventListener('click', function () {
-                                document.getElementById('file').click(); // Cliquez sur l'input de fichier caché
+                            document.querySelector('.btn[name="ChangeProfilePicture"]').addEventListener('click', function (event) { //TODO a mettre dans un fichier js
+                                // Empêche le comportement par défaut du bouton
+                                event.preventDefault();
+                                // Clique sur l'input de fichier caché pour validé l'envoi du fichier
+                                document.getElementById('file').click();
                             });
                         </script>
                         <button class="btn btn-outline-danger" type="submit">Supprimer</button>
