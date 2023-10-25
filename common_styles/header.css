@@ -39,4 +39,7 @@ a > img {
     .navbar{
         padding-inline: 2em;
     }
+    .navbar-collapse {
+        padding-top: 0.7em;
+    }
 }
