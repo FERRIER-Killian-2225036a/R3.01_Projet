@@ -2,12 +2,18 @@
     background: var(--background-color);
 }
 .inputBackground {
-    background-color: var(--gris);
+    background-color: var(--grey-light);
 }
 .custom-input {
     width: 40px;  /* Hauteur par défaut pour tous les écrans */
 }
+.col-lg-4 {
+    width: 80%;
+}
 
+.input-group-append > .btn {
+    margin-left: 1em!important;
+}
 
 .input-group:not(.has-validation)>:not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
     border-top-right-radius: 5em;
@@ -23,7 +29,7 @@
 }
 
 .shadow {
-    box-shadow: var(--shadow-default) 0px 3px 8px;
+    box-shadow: var(--shadow-default) 0 3px 8px;
 }
 
 .btn {
@@ -37,9 +43,11 @@
 }
 
 .responsive-image {
-    max-width: 30%;
-    height: auto;
+    max-width: 40%;
+    height: 243px;
     flex-shrink: 0;
+    width: 100%!important;
+    object-fit: cover;
 }
 
 .text-content {
@@ -79,8 +87,18 @@
 
 .grow-button:hover {
     transform: scale(1.03);
-    box-shadow: 0px 3px 8px var(--shadow-hover);
+    box-shadow: 0 3px 8px var(--shadow-hover);
 }
 a > img {
     width: auto!important;
+}
+
+.lead {
+    font-size: 1em;
+}
+
+#signetImg {
+    height: 30px;
+    width: 30px;
+    margin-left: 2em;
 }
