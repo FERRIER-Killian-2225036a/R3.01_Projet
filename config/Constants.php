@@ -12,7 +12,7 @@ final class Constants
     const UserIdForItArticle = 238;
     const DECONNEXION_TIME = 86400;
     const PICTURE_URL_DEFAULT = "";
-    const PDP_URL_DEFAULT = "";
+    const PDP_URL_DEFAULT = "/media/users/Profil.png";
     const PEPPER = "mjOlvxisvFdxMDpecFwc1d";
     const MAIL_FROM_EMAIL = "noreply@cyphub.tech";
     public static $BDD_PASSWORD = '';
