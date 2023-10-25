@@ -92,8 +92,8 @@ a:hover {
     height: auto;
 }
 .iconSize {
-    height: 70px;
-    width: 70px;
+    height: 10em;
+    width: 10em;
 }
 
 .card {
@@ -113,7 +113,7 @@ a:hover {
 }
 
 .grow-button:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 .row {
@@ -121,7 +121,7 @@ a:hover {
 }
 
 .col, .grow-button {
-    width: 12em;
+    width: 19em;
 }
 
 #buttonContainer {
@@ -158,7 +158,7 @@ a:hover {
     #buttonContainer {
         display: inline-block;
     }
-    #buttonContainer>.col{
+    #buttonContainer>.col-md-4{
         padding-block: 1em;
     }
     .col, .grow-button {
