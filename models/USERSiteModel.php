@@ -3,6 +3,7 @@
 class USERSiteModel
 {
     private $Id;
+    private $UrlPicture;
     private $Mail;
     private $Pseudo;
     private $DateFirstLogin;
@@ -94,6 +95,14 @@ class USERSiteModel
     {
         $this->NumberOfConnection = $NumberOfConnection;
     }
+    public function getUrlPicture(): mixed
+    {
+        return $this->UrlPicture;
+    }
+    public function setUrlPicture(mixed $UrlPicture): void
+    {
+        $this->UrlPicture = $UrlPicture;
+    }
     public function getId()
     {
         return $this->Id;
@@ -116,6 +125,7 @@ class USERSiteModel
         $this->Status=$temp_array["Status"];
         $this->lastIpAdress=$temp_array["LastIpAdress"];
         $this->NumberOfConnection=$temp_array["NumberOfConnection"];
+        $this->UrlPicture=$temp_array["UrlPicture"];
 
     }
 

@@ -16,7 +16,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="<?= SessionManager::isUserConnected() ? "/Settings/ManageAccount" : "/Auth/Login"; ?>">
-                            <img src="/media/users/Profil.png" alt="Logo Cyphub" class="menu-img">
+                            <img src="<?= SessionManager::isUserConnected() && $_SESSION['UrlPicture']!==null ? $_SESSION['UrlPicture'] : Constants::PDP_URL_DEFAULT; ?>" alt="Logo Cyphub" class="menu-img">
                         </a>
                     </li>
                     <li class="nav-item">
