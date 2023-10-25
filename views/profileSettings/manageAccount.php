@@ -17,8 +17,8 @@
                     <div class="btn-group">
                         <form action="/Settings/ManageAccount" method="POST" enctype="multipart/form-data">
 
-                            <button class="btn btn-outline-dark mr-2" onclick="document.getElementById('file').click();" type="button">Modifier</button>
-                            <input id="file" class="hiddenInput" type="file" name="ChangeProfilePicture"  accept=".jpg, .jpeg, .png, .gif" onchange="this.form.submit();">
+                            <button class="btn btn-outline-dark mr-2" name="ChangeProfilePicture" onclick="document.getElementById('file').click();" type="button">Modifier</button>
+                            <input id="file" class="hiddenInput" type="file" name="ProfilePicture"  accept=".jpg, .jpeg, .png, .gif" onchange="this.form.submit();">
                             <!--
                             <label for="fileInput">Modifier</label>
                             <input type="file" name="ProfilePicture" id="fileInput">
