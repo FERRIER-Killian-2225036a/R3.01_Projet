@@ -36,6 +36,14 @@ final class Constants
     {
         return self::rootDirectory() . self::EXCEPTION_DIRECTORY;
     }
+    public static function mediaDirectory(): string
+    {
+        return self::rootDirectory() . self::MEDIA_DIRECTORY;
+    }
+    public static function mediaDirectoryUsers(): string
+    {
+        return self::rootDirectory() . self::MEDIA_DIRECTORY_USERS;
+    }
 
     public static function viewsDirectory(): string
     {

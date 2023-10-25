@@ -24,7 +24,8 @@ class ControllerSettings
                     $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
                     $minFileSize = 1000; // Taille minimale en octets
                     $maxFileSize = 5000000; // Taille maximale en octets (ici, 5 Mo)
-                    $uploadDirectory = Constants::MEDIA_DIRECTORY_USERS  . $_SESSION["UserId"] ;
+
+                    $uploadDirectory = Constants::mediaDirectoryUsers()  . $_SESSION["UserId"] ;
                     echo "$uploadDirectory";
                     error_log($uploadDirectory);
 
@@ -38,7 +39,7 @@ class ControllerSettings
                             echo "Une erreur est survenue lors de la création du dossier.";
                         }
                     }
-                        error_log("On va demander la verif d'image");
+                    error_log("On va demander la verif d'image");
                     try {
                         $result = PictureVerificator::handleFileUpload($_FILES['ProfilePicture'], $uploadDirectory,
                                                                        $allowedExtensions, $minFileSize, $maxFileSize);
