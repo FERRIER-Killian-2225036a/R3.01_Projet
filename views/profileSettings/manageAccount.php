@@ -1,81 +1,8 @@
-<head>
-    <link rel="stylesheet" href="../../common_styles/profileSettings.css    ">
-</head>
-<body>
-<div class="container-fluid">
-    <div class="row">
-        <div class="d-flex flex-column flex-shrink-0 bg-body-tertiary shadow rounded" style="width: 280px;"> <!-- Ajout de la classe 'shadow' ici -->
-
-            <!-- Mon compte -->
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none text-dark"> <!-- Ajout de 'text-dark' ici -->
-                <img src="https://github.com/mdo.png" alt="Profil Image" width="40" height="40" class="rounded-circle me-2">
-                <span class="fs-4">Mon compte</span>
-            </a>
-            <hr>
-            <ul class="nav nav-pills flex-column mb-auto align-items-center">
-                <!-- Information personnel-->
-                <li class="nav-item">
-                    <a href="#" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
-                        Informations personnelles
-                    </a>
-                </li>
-                <!-- Support -->
-                <li>
-                    <a href="#" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
-                        Support
-                    </a>
-                </li>
-                <!-- Langue -->
-                <li>
-                    <a href="#" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
-                        Langue
-                    </a>
-                </li>
-                <!-- Thème -->
-                <li>
-                    <a href="#" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
-                        Thème
-                    </a>
-                </li>
-            </ul>
-            <hr>
-            <ul class="nav nav-pills flex-column mb-auto align-items-center">
-                <!-- Mes enregistrements -->
-                <li class="nav-item">
-                    <a href="#" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
-                        Mes enregistrements
-                    </a>
-                </li>
-                <!-- Personnes suivies -->
-                <li>
-                    <a href="#" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
-                        Personnes suivies
-                    </a>
-                </li>
-                <!-- Mes commentaires -->
-                <li>
-                    <a href="#" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
-                        Mes commentaires
-                    </a>
-                </li>
-                <!-- Mes posts -->
-                <li>
-                    <a href="#" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
-                        Mes posts
-                    </a>
-                </li>
-            </ul>
-            <hr>
-            <a href="#" class="d-flex align-items-center mb-3 link-body-emphasis text-danger text-decoration-none">
-                Se déconnecter
-            </a>
-        </div>
-
-
+<?php require 'sideBar.php'; ?>
         <div class="col container">
 
             <!-- Section pour la photo de profil -->
-            <div class="row mb-2">
+            <div class="row mb-2 mt-2">
                 <div class="col-md-6">
                     <h1>Votre compte</h1>
                     <h2>Photo de profil</h2>
@@ -92,7 +19,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Section pour le pseudo -->
 
             <div class="row mb-2">
@@ -128,7 +54,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Section pour le mot de passe -->
 
             <div class="row mb-2">
@@ -152,8 +77,7 @@
                     <button class="btn btn-custom" onclick="updatePassword()">Modifier</button>
                 </div>
             </div>
-
-
+            <hr class="hr-custom hr-color">
             <!-- Section pour supprimer le compte -->
             <div class="row mt-4">
                 <div class="col-md-6">
@@ -162,10 +86,4 @@
                     <button class="btn btn-outline-danger" onclick="deleteAccount()">Supprimer le compte</button>
                 </div>
             </div>
-
-
         </div>
-
-    </div>
-</div>
-</body>
