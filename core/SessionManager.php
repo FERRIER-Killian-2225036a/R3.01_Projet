@@ -23,7 +23,7 @@ class SessionManager
         $_SESSION['Ip']=self::$userObject->getLastIpAdress();
         $_SESSION['Status']=self::$userObject->getStatus();
         $_SESSION['LastConnexion']=self::$userObject->getDateLastLogin();
-        $_SESSION['UrlPicture']=self::$userObject->getUrlPicture();
+        $_SESSION['UrlPicture']=self::$userObject->getUrlPicture(); //TODO SECURISER IMAGES
     }
     public static function SignUp($A_postParams): string
     {
