@@ -5,7 +5,7 @@
 <body>
 <div class="container-fluid ">
     <div class="row">
-        <div class="d-flex flex-column flex-shrink-0 bg-body-tertiary shadow round mt-3 ml-custom p-2" style="width: 280px;"> <!-- Ajout de la classe 'shadow' ici -->
+        <div class="d-flex flex-column flex-shrink-0 shadow round mt-3 ml-custom p-2" style="width: 280px;"> <!-- Ajout de la classe 'shadow' ici -->
 
             <!-- Mon compte -->
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none text-dark"> <!-- Ajout de 'text-dark' ici -->
@@ -38,10 +38,7 @@
                         Thème
                     </a>
                 </li>
-            </ul>
-            <hr>
-            <ul class="nav nav-pills flex-column mb-auto align-items-center">
-                <!-- Mes enregistrements -->
+                <hr class="my-3">
                 <li class="nav-item">
                     <a href="#" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
                         Mes enregistrements
@@ -66,8 +63,10 @@
                     </a>
                 </li>
             </ul>
-            <hr>
-            <a href="#" class="d-flex align-items-center mb-3 link-body-emphasis text-danger text-decoration-none">
+            <hr class="hr-color">
+            <a href="#" class="d-flex align-items-center justify-content-center mb-3 link-body-emphasis text-danger text-decoration-none">
+                <img src="../../media/public_assets/icone/iconeSeDeconnecter.png" alt="Logo de déconnexion" class="me-2">
                 Se déconnecter
             </a>
+
         </div>

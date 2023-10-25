@@ -14,3 +14,15 @@
     color: white;              /* Texte blanc lors du survol */
     background-color: black;     /* Fond rouge lors du survol */
 }
+.ml-custom{
+    margin-left: 10rem!important;
+}
+.hr-custom {
+    max-width: calc(50% + 100px); /* 50% pour la moitié de la grille, 150px pour la largeur approximative des boutons */
+    margin-left: 0;
+    border-width: 2px 0 0 0;
+}
+.hr-color{
+    border-color: red;  /* Colorie le haut de la ligne en rouge */
+    background-color: red;
+}
