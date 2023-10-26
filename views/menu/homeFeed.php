@@ -1,9 +1,5 @@
-<head>
-    <link rel="stylesheet" href="../../common_styles/general.css">
-    <link rel="stylesheet" href="../../common_styles/homeFeed.css">
-</head>
-<body>
-
+<link rel="stylesheet" href="../../common_styles/general.css">
+<link rel="stylesheet" href="../../common_styles/homeFeed.css">
 <section class = "background">
     <section class="padding text-left">
         <div class="row">  <!-- Ajout d'une rangée -->
@@ -48,7 +44,7 @@
                 </a>
             </div>
             <div class="col-md-4 d-flex justify-content-center">
-                <a href="blogFeed.php" type="button" class="w-20 rounded-4 btn btn-lg text-center colorButton shadow-gn grow-button">
+                <a href="/Menu/BlogFeed" type="button" class="w-20 rounded-4 btn btn-lg text-center colorButton shadow-gn grow-button">
                     <img class="iconSize" src="../../media/public_assets/icone/iconeBlogWhite.png" alt="Icone Blog">
                     <p class="colorText responsiveText">Blog</p>
                 </a>
