@@ -90,7 +90,11 @@ class ControllerSettings
                             $_SESSION['Username'] = $A_postParams["username"];
                             header("Location: /Settings/ManageAccount"); // actualisation de la page
                         }
+                        else {
+                            throw $status;
+                        }
                     } catch (ExceptionsDatabase $e) { //TODO il faudra afficher erreurs sur le site
+                        //echo $e->getMessage();
                         error_log( "Error : " . $e->getMessage());
                     }
                 }
