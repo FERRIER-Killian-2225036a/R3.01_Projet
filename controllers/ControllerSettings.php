@@ -121,7 +121,7 @@ class ControllerSettings
                     try {
                         $status = (new UserSite)->update_mail($_SESSION["UserId"],$A_postParams["mail"]);
                         if (! ($status instanceof ExceptionsDatabase) ) {
-                            //$_SESSION['Mail'] = $A_postParams["mail"];
+                            $_SESSION['Mail'] = $A_postParams["mail"];
                             header("Location: /Settings/ManageAccount"); // actualisation de la page
                         }
                         else {
@@ -189,7 +189,7 @@ class ControllerSettings
     {
         MotorView::show('profileSettings/theme');
     }
-    
+
 }
 
 ?>

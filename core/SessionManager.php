@@ -24,6 +24,7 @@ class SessionManager
         $_SESSION['Status']=self::$userObject->getStatus();
         $_SESSION['LastConnexion']=self::$userObject->getDateLastLogin();
         $_SESSION['UrlPicture']=self::$userObject->getUrlPicture(); //TODO SECURISER IMAGES
+        $_SESSION['Mail']=self::$userObject->getMail();
     }
     public static function SignUp($A_postParams): string
     {
