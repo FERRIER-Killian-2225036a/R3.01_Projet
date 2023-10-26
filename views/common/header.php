@@ -44,5 +44,5 @@
             </div>
         </div>
     </nav>
-    <!--<script src="../../common_scripts/navLinks.js"></script>-->
+    <script src="../../common_scripts/navLinks.js"></script>
 </body>
