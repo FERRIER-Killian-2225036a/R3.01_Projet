@@ -74,7 +74,6 @@
 
     <div class="row mb-2">
         <div class="col-md-6">
-<<<<<<< HEAD
             <h2>
                 <label for="email-input">
                     Modifier l'adresse mail
