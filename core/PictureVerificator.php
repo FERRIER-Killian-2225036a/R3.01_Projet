@@ -41,9 +41,9 @@ class PictureVerificator
             list($width, $height) = getimagesize($fileTmpName);
             if ($width != $height) {
                 return "Erreur : L'image n'est pas carrée.";
-            }
+            } 
         }
-        else {
+
 
             //destruction données exif
             if (in_array(strtolower($fileExtension), ['jpg', 'jpeg'])) { //TODO a voir si on garde des tests sur les
@@ -97,7 +97,6 @@ class PictureVerificator
 
                 return "Erreur : problème de téléchargement du fichier.";
             }
-        }
-        return "Erreur : problème inconnu.";
+
     }
 }
