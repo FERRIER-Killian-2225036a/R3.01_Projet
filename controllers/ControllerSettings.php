@@ -47,7 +47,9 @@ class ControllerSettings
                                                                        $allowedExtensions, $minFileSize, $maxFileSize,true);
                         if ($result[0] != "success") {
                             // TODO appel script js pour modifier la page avec un message d'erreur
-                            throw new ExceptionsUpload($result);
+                            $temp ='<script type="text/javascript">ShowLoginErrorMessage("'.$result[0].'")</script>';
+                            echo $result;
+                            // throw new ExceptionsUpload($result);
                         }
                         else {
                             (new UserSite)->update_picture($_SESSION["UserId"],
@@ -94,15 +96,54 @@ class ControllerSettings
                             throw $status;
                         }
                     } catch (ExceptionsDatabase $e) { //TODO il faudra afficher erreurs sur le site
+                        echo $e->getMessage();
+                        $temp ='<script type="text/javascript">ShowLoginErrorMessage("'.$e->getMessage().'")</script>';
+                        // error_log( "Error : " . $e->getMessage());
+                    }
+                }
+
+                // quatrieme post, on change le mail
+                elseif (isset($A_postParams["ChangeMail"])){
+                    try {
+                        $status = (new UserSite)->update_mail($_SESSION["UserId"],$A_postParams["mail"]);
+                        if (! ($status instanceof ExceptionsDatabase) ) {
+                            //$_SESSION['Mail'] = $A_postParams["mail"];
+                            header("Location: /Settings/ManageAccount"); // actualisation de la page
+                        }
+                        else {
+                            throw $status;
+                        }
+
+                    } catch (ExceptionsDatabase $e) {
                         //echo $e->getMessage();
                         error_log( "Error : " . $e->getMessage());
                     }
                 }
 
-                // quatrieme post, on change le mail
+
+                // quatrieme post, on change le mot de passe apres avoir verifier le mot de passe actuel
+                elseif (isset($A_postParams["ChangePassword"])){
+                    try {
+                        // on verif si l'ancien mdp est le bon
+                        $result = (new UserSite)->checkPassword($_SESSION["UserId"],$A_postParams["oldPassword"]);
+                        if (!$result){
+                            throw new ExceptionsDatabase("mot de passe incorrect");
+                        }
+                        // on essai de changer le mdp
+                        $status = (new UserSite)->update_password($_SESSION["UserId"],$A_postParams["newPassword"]);
+                        if (! ($status instanceof ExceptionsDatabase) ) {
+                            header("Location: /Settings/ManageAccount"); // actualisation de la page
+                        }
+                        else {
+                            throw $status;
+                        }
 
 
-                // quatrieme post, on change le mot de passe
+                    } catch (ExceptionsDatabase $e) {
+                        //echo $e->getMessage();
+                        error_log( "Error : " . $e->getMessage());
+                    }
+                }
 
                 // cinquieme post, on supprime le compte
 

@@ -17,20 +17,19 @@ class DBBrain
         //FONCTIONNE CORRECTEMENT
 
         $hashedPassword = strtoupper(sha1($password_a));
-        // Prenez les 5 premiers caractères du hachage (préfixe)
+        // Prend les 5 premiers caractères du hachage (préfixe)
         $prefix = substr($hashedPassword, 0, 5);
-        // Faites une requête à l'API Have I Been Pwned
+        // Fais une requête à l'API Have I Been Pwned
         $apiUrl = "https://api.pwnedpasswords.com/range/" . $prefix;
         $response = file_get_contents($apiUrl);
-        // Recherchez le reste du hachage dans la réponse
+        // Recherche le reste du hachage dans la réponse
         $searchTerm = substr($hashedPassword, 5);
         $searchResult = preg_match('/' . $searchTerm . ':(\d+)/', $response, $matches);
-        // Si le mot de passe est apparu dans une fuite, retournez false
+        // Si le mot de passe est apparu dans une fuite, retourne false
         if ($searchResult) {
             return true;
         }
-        // Si le mot de passe est suffisamment fort, retournez true
-        // Vous pouvez ajouter d'autres critères de force ici
+        // Si le mot de passe est suffisamment fort, retourne true
         return false;
     }
     public function isValidEmail($mail_a): bool
@@ -60,7 +59,7 @@ class DBBrain
             return false;
         }
         //verifie que le pseudo est uniquement composé de caractère alphanumérique ou d'espace, avec au moins un caractère
-        if (!preg_match('/^[a-zA-Z0-9 ]+$/', $new_pseudo)) {
+        if (!preg_match('/^[a-zA-Z0-9 _]+$/', $new_pseudo)) {
             return false;
         }
         // remplace les espaces par des underscore

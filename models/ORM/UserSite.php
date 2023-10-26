@@ -17,8 +17,6 @@ class UserSite
     {
         try {
 
-            $pwd_peppered = hash_hmac("sha256", $password_a, Constants::PEPPER);
-
             if (!$this->DBBrain->isValidEmail($mail_a)) { // si l'email n'a pas un format valide
                 throw new ExceptionsDatabase("This email format is not valid");
             }
@@ -38,23 +36,11 @@ class UserSite
             */
             $userId = $result['UserId'];
 
-            $stmt2 = $this->conn->prepare("SELECT Password FROM PASSWORD WHERE UserId = ?");
-            $stmt2->bindParam(1, $userId, PDO::PARAM_INT);
-            $stmt2->execute();
-            $result2 = $stmt2->fetch(PDO::FETCH_ASSOC);
-            $stmt2->closeCursor();
-            $userPassword = $result2['Password'];
-
-
-            if (!password_verify($pwd_peppered, $userPassword)) { // si le mot de passe ne correspond pas
-                //      throw new ExceptionsDatabase("Email or password does not match");
-                //echo "do not match";
-                //TODO LOG DANS LA BASE DE LOG (tentative de connexion échouée avec l'ip)
-                //TODO INCREMENTER LE NIVEAU D'ALERTE
-                //TODO BLOQUER LE COMPTE SI NIVEAU D'ALERTE TROP ELEVE
-                $this->incrementAlertLevelUser($userId);
+            if(!$this->checkPassword($userId, $password_a))
+            {
                 throw new ExceptionsDatabase("Email or password does not match");
             }
+
             /* //TODO : a voir si on laisse cette partie
             if ($userStatus !== 'disconnected') { // not normal user status ? on peut supposer que c'est un attaquant OU
                 // que l'utilisateur essai de se connecter depuis un autre appareil , dans les deux cas on déconnecte
@@ -421,7 +407,7 @@ class UserSite
             if ($this->DBBrain->isPasswordNotSafe($new_password)) {
                 //TODO on pensera a affiché une erreur dans la page de profil pour dire que le mot de passe n'est pas assez fort
                 //TODO et qu'il faut en choisir un autre
-                throw new ExceptionsDatabase("Password not valid");
+                throw new ExceptionsDatabase("Password not valid, you need to choose another one");
             }
 
             $argonifiedPassword = $this->DBBrain->argonifiedPassword($new_password);
@@ -520,6 +506,29 @@ class UserSite
             return $e;
         }
 
+    }
+
+    public function checkPassword(int $UserId, string $oldPassword)
+    {
+        $pwd_peppered = hash_hmac("sha256", $oldPassword, Constants::PEPPER);
+
+        $stmt2 = $this->conn->prepare("SELECT Password FROM PASSWORD WHERE UserId = ?");
+        $stmt2->bindParam(1, $UserId, PDO::PARAM_INT);
+        $stmt2->execute();
+        $result2 = $stmt2->fetch(PDO::FETCH_ASSOC);
+        $stmt2->closeCursor();
+        $userPassword = $result2['Password'];
+
+        if (!password_verify($pwd_peppered, $userPassword)) { // si le mot de passe ne correspond pas
+            //      throw new ExceptionsDatabase("Email or password does not match");
+            //echo "do not match";
+            //TODO LOG DANS LA BASE DE LOG (tentative de connexion échouée avec l'ip)
+            //TODO INCREMENTER LE NIVEAU D'ALERTE
+            //TODO BLOQUER LE COMPTE SI NIVEAU D'ALERTE TROP ELEVE
+            $this->incrementAlertLevelUser($UserId);
+            return false;
+        }
+        return true;
     }
 
 

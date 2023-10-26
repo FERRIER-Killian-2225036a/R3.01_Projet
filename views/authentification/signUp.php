@@ -37,7 +37,7 @@
                                             <input type="password" id="confirmPassword" class="form-control" oninput="checkPasswordsEquality()" placeholder="********"/>
                                         </label>
                                         <span id="passwordFeedback"></span>
-                                        <label id="wrongInfo">L'identifiant ou le mot de passe est incorrecte</label>
+                                        <label id="wrongInfo"></label>
                                     </div>
 
                                     <div class="text-center pt-1 mb-5 pb-1">
