@@ -5,6 +5,7 @@ class ControllerMenu
     public function DefaultAction(): void
     {
         header("Location: /");
+        exit;
     }
     public function ActualityFeedAction(Array $A_parametres = null, Array $A_postParams = null): void
     {

@@ -7,6 +7,7 @@ class ControllerSettings
     public function DefaultAction(): void
     {
         header("Location: /Settings/ManageAccount");
+        exit;
         //MotorView::show('profileSettings/manageAccount.php');
     }
 
@@ -53,6 +54,7 @@ class ControllerSettings
                                                 Constants::MEDIA_DIRECTORY_USERS.$_SESSION["UserId"]."/".$result[1]);
                             $_SESSION['UrlPicture'] = Constants::MEDIA_DIRECTORY_USERS.$_SESSION["UserId"]."/".$result[1];
                             //synchronisation de la session au niveau de l'image
+                            header ("Location: /Settings/ManageAccount"); // actualisation de la page
                         } // maj bdd de l'image
 
                     } catch (ExceptionsUpload $e) {
@@ -78,6 +80,7 @@ class ControllerSettings
             } else {
                 error_log( "warning : nobody is connected"); // TODO log
                 header("Location: / ");
+                exit;
             }
         }
 

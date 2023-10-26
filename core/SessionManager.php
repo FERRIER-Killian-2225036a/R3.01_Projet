@@ -84,17 +84,19 @@ class SessionManager
     public static function disconnect(): void
     {
         if (isset($_SESSION["UserId"])) { // self::$userObject!==null ? a remplacer ???
-                $id = $_SESSION["UserId"];
-                ((new UserSite)->disconnectUser($id));
-                session_unset();
-                session_destroy();
-                header("Location: /");
+            $id = $_SESSION["UserId"];
+            ((new UserSite)->disconnectUser($id));
+            session_unset();
+            session_destroy();
+            header("Location: /");
+            exit;
 
         }else {
             session_start();
             session_unset();
             session_destroy();
             header("Location: /");
+            exit;
         }
     }
     public static function logout(): void //alias

@@ -23,6 +23,7 @@ class ControllerAuth
                 if ($status=="success"){
                     //redirection vers page de login
                     header("Location: /");
+                    exit;
                 }
                 else{
                     // affichage message d'erreur a deplacé ?
@@ -50,6 +51,7 @@ class ControllerAuth
                 if ($status=="success"){
                     //redirection vers page de login
                     header("Location: /");
+                    exit;
                 }
                 else{
                     // affichage message d'erreur a deplacé ?

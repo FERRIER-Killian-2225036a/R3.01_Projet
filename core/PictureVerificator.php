@@ -41,7 +41,7 @@ class PictureVerificator
             list($width, $height) = getimagesize($fileTmpName);
             if ($width != $height) {
                 return "Erreur : L'image n'est pas carrée.";
-            } 
+            }
         }
 
 
