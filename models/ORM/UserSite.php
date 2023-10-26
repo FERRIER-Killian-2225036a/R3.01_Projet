@@ -122,7 +122,6 @@ class UserSite
             // recupération de UserId
             $userId = $this->conn->lastInsertId();
             // Insert password into PASSWORD
-            error_log('pourquoi somme nous ici?');
 
             $insertPasswordSQL = "INSERT INTO PASSWORD (Password, UserId) VALUES (?, ?)";
             $stmt2 = $this->conn->prepare($insertPasswordSQL);

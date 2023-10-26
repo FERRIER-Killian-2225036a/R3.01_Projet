@@ -2,9 +2,8 @@
 
 class PictureVerificator
 {
-    public static function VerifyPDP($file, $uploadDirectory, $allowedExtensions, $minFileSize, $maxFileSize)
+    public static function VerifyImg($file, $uploadDirectory, $allowedExtensions, $minFileSize, $maxFileSize,$square = false) //TODO mettre a jour l'indice de suspicion
     {
-        error_log('handleFileUpload');
         if ($file['error'] !== UPLOAD_ERR_OK) {
             return "Une erreur est survenue lors de l'upload du fichier.";
         }
@@ -21,7 +20,6 @@ class PictureVerificator
         // Désinfection du nom du fichier
         $fileName = preg_replace('/[^A-Za-z0-9_\-.]/', '', $fileName);
         $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
-        error_log("desinfection du nom du fichier");
         // Liste blanche des extensions
         if (!in_array(strtolower($fileExtension), $allowedExtensions)) {
             return "Erreur : Extension de fichier non autorisée.";
@@ -38,13 +36,14 @@ class PictureVerificator
         // Génération d'un nom de fichier unique
         $uniqueFileName = uniqid() . '.' . $fileExtension;
         $targetPath = $uploadDirectory . "/" . $uniqueFileName;
-        error_log($targetPath);
-        error_log("generation d'un nom de fichier unique");
 
-        list($width, $height) = getimagesize($fileTmpName);
-        if ($width != $height) {
-            return "Erreur : L'image n'est pas carrée.";
-        } else {
+        if ( $square ) {
+            list($width, $height) = getimagesize($fileTmpName);
+            if ($width != $height) {
+                return "Erreur : L'image n'est pas carrée.";
+            }
+        }
+        else {
 
             //destruction données exif
             if (in_array(strtolower($fileExtension), ['jpg', 'jpeg'])) { //TODO a voir si on garde des tests sur les
@@ -67,7 +66,7 @@ class PictureVerificator
             if (move_uploaded_file($fileTmpName, $targetPath)) {
                 // Vérification de la sécurité avec Google Cloud Vision
                 $imageContent = file_get_contents($targetPath);
-                error_log('usage api');
+                //error_log('usage api');
                 $url = 'https://vision.googleapis.com/v1/images:annotate?key=' . Constants::API_KEY_GOOGLE_VISION;
 
                 $requestData = ['requests' => [['image' => ['content' => base64_encode($imageContent)],
@@ -79,7 +78,7 @@ class PictureVerificator
 
                 $context = stream_context_create($options);
                 $response = file_get_contents($url, false, $context);
-                error_log($response);
+                //error_log($response);
                 $responseData = json_decode($response, true);
                 //  error_log($responseData);
                 if (isset($responseData['responses'][0]['safeSearchAnnotation']['adult'])) {
@@ -99,5 +98,6 @@ class PictureVerificator
                 return "Erreur : problème de téléchargement du fichier.";
             }
         }
+        return "Erreur : problème inconnu.";
     }
 }

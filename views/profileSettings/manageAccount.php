@@ -10,7 +10,7 @@
             </div>
             <div class="row mb-4">
                 <div class="col-md-6">
-                    <img id="profile-image" src="../../media/public_assets/favicon.png" alt="Photo de profil" class="img-thumbnail w-10">
+                    <img id="profile-image" src="<?= (SessionManager::isUserConnected() && $_SESSION['UrlPicture']!==null ) ? $_SESSION['UrlPicture'] : Constants::PDP_URL_DEFAULT; ?>" alt="Photo de profil" class="img-thumbnail w-10">
                 </div>
                 <div class="col-md-6 d-flex align-items-center"> <!-- Notez ici que nous utilisons align-items-center pour centrer les boutons verticalement -->
 

@@ -9,7 +9,7 @@
 
             <!-- Mon compte -->
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none text-dark"> <!-- Ajout de 'text-dark' ici -->
-                <img src="https://github.com/mdo.png" alt="Profil Image" width="40" height="40" class="rounded-circle me-2">
+                <img src="<?= (SessionManager::isUserConnected() && $_SESSION['UrlPicture']!==null ) ? $_SESSION['UrlPicture'] : Constants::PDP_URL_DEFAULT; ?>" alt="Profil Image" width="40" height="40" class="rounded-circle me-2">
                 <span class="fs-4">Mon compte</span>
             </a>
             <hr class="my-3">
