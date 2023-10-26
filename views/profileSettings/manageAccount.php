@@ -55,7 +55,7 @@
                 </div>
                 <div class="col-md-6 d-flex align-items-center"> <!-- Notez ici que nous utilisons align-items-center pour centrer les boutons verticalement -->
                     <div class="btn-group">
-                        <button class="btn btn-outline-dark" name="ChangeUsername" type="submit">Modifier</button>
+                        <button class="btn btn-outline-dark" name="ChangeUsername" value="1" type="submit">Modifier</button>
                     </div>
                 </div>
                 </form>
