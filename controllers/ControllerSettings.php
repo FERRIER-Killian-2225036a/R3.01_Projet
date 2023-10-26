@@ -15,7 +15,7 @@ class ControllerSettings
     {
         MotorView::show('profileSettings/manageAccount');
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            if (SessionManager::isUserConnected()) { //TODO reflechir a plus de sécurisation
+            if (SessionManager::isUserConnected()) { //TODO reflechir a encore plus de sécurisation
                 // premier post, on change l'image de profil de l'utilisateur dans le model par le fichier uploader
                 if (isset($A_postParams["ChangeProfilePicture"])) {
                     $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
@@ -100,6 +100,7 @@ class ControllerSettings
                 }
 
                 // quatrieme post, on change le mail
+
 
                 // quatrieme post, on change le mot de passe
 

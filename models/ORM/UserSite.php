@@ -97,17 +97,24 @@ class UserSite
     {
         try {
             // désensibilisation a la casse pour le pseudo
-            $pseudo_a = strtolower($pseudo_a);
+
+            $ValidPseudo = $this->DBBrain->isValidPseudo($pseudo_a);
+            if ($ValidPseudo === false) {
+                throw new ExceptionsDatabase("Pseudo not valid");
+            }
 
             if (!$this->DBBrain->isValidEmail($mail_a)) {
                 throw new ExceptionsDatabase("This email format is not valid");
             }
-            if ($this->isUserExists($mail_a, $pseudo_a)) {
+            if ($this->isUserExists($mail_a, $ValidPseudo)) {
                 throw new ExceptionsDatabase("User with this email or pseudo already exists");
             }
             if ($this->DBBrain->isPasswordNotSafe($password_a)) {
                 throw new ExceptionsDatabase("This Password is not strong enough, please choose another one");
             }
+
+            $ValidPseudo = strtolower($ValidPseudo);
+
 
             $argonifiedPassword = $this->DBBrain->argonifiedPassword($password_a);
 
@@ -116,7 +123,7 @@ class UserSite
             $insertUserSQL = "INSERT INTO USERSite (Mail, Pseudo, DateFirstLogin, DateLastLogin, Role, AlertLevelUser, NumberOfAction, Status, LastIpAdress, NumberOfConnection) VALUES (?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'registered', 0, 0, 'connected', ?, 1)";
             $stmt1 = $this->conn->prepare($insertUserSQL);
             $stmt1->bindParam(1, $mail_a, PDO::PARAM_STR);
-            $stmt1->bindParam(2, $pseudo_a, PDO::PARAM_STR);
+            $stmt1->bindParam(2, $ValidPseudo, PDO::PARAM_STR);
             $stmt1->bindParam(3, $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
             $stmt1->execute();
             // recupération de UserId
@@ -135,7 +142,7 @@ class UserSite
 
 
             $subject = "Bienvenue sur Cyphub !";
-            $message = "Bonjour ".$pseudo_a.",\n\nBienvenue sur Cyphub !\n\nNous sommes heureux de vous compter parmi nous !\n\nL'équipe Cyphub.";
+            $message = "Bonjour ".$ValidPseudo.",\n\nBienvenue sur Cyphub !\n\nNous sommes heureux de vous compter parmi nous !\n\nL'équipe Cyphub.";
             (new mailSender($mail_a,$subject,$message  )); // on peut ajouter getstatus si on veut savoir si le mail a été envoyé
             //TODO on pourra améliorer le system de mail pour avoir des templates automatique
             //TODO et des mails plus jolie, mais pour l'instant on fait simple
@@ -334,6 +341,10 @@ class UserSite
     public function update_pseudo($CurrentUserId, $new_pseudo): bool|ExceptionsDatabase
     {
         try {
+            $ValidPseudo = $this->DBBrain->isValidPseudo($new_pseudo);
+            if ($ValidPseudo === false) {
+                throw new ExceptionsDatabase("Pseudo not valid");
+            }
             // Check the user status*
             if (!$this->isUserIDExists($CurrentUserId)) {
                 throw new ExceptionsDatabase("User not exist");
@@ -341,15 +352,17 @@ class UserSite
             if ($this->getStatusOfUser($CurrentUserId) == "Disconnected") {
                 throw new ExceptionsDatabase("User status not valid");
             }
-            if ($this->isPseudoUse( $new_pseudo)) {
+            if ($this->isPseudoUse( $ValidPseudo)) {
                 throw new ExceptionsDatabase("User with this pseudo already exists");
             }
+
+
             // nettoyage du pseudo
-            $new_pseudo = strtolower($new_pseudo);
+            $ValidPseudo = strtolower($ValidPseudo);
 
             // Change pseudo
             $stmt = $this->conn->prepare("UPDATE USERSite SET Pseudo = ? WHERE UserId = ?");
-            $stmt->bindParam(1, $new_pseudo);
+            $stmt->bindParam(1, $ValidPseudo);
             $stmt->bindParam(2, $CurrentUserId);
             $stmt->execute();
             $stmt->closeCursor();
@@ -508,4 +521,6 @@ class UserSite
         }
 
     }
+
+
 }
