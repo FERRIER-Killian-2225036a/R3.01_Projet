@@ -121,7 +121,7 @@
                 <span id="passwordFeedback"></span>
             </div>
             <div class="col-md-6 d-flex align-items-end justify-content-start">
-                <button class="btn btn-custom" type="submit" onclick="updatePassword()">Modifier</button>
+                <button class="btn btn-custom" name="ChangePassword" type="submit" onclick="updatePassword()">Modifier</button>
             </div>
         </form>
     </div>
