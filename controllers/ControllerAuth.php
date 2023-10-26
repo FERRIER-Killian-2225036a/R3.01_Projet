@@ -55,7 +55,8 @@ class ControllerAuth
                 }
                 else{
                     // affichage message d'erreur a deplacé ?
-                    echo $status;
+                    $temp ='<script type="text/javascript">ShowLoginErrorMessage("'.$status.'")</script>';
+                    echo $temp;
                 }
             }
             else {
