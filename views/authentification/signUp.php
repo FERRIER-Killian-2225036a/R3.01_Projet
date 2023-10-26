@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="../../common_styles/authentification.css">
+<script src="/common_scripts/showErrorMessage.js"></script>
+<script src="/common_scripts/checkPassword.js"></script>
 <section class="h-100 gradient-form">
     <div class="container py-2 ">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -61,5 +63,4 @@
             </div>
         </div>
     </div>
-    <script src="/common_scripts/showErrorMessage.js"></script>
 </section>
