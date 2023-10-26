@@ -12,7 +12,7 @@
 
 .btn-custom:hover {
     color: white;              /* Texte blanc lors du survol */
-    background-color: black;     /* Fond rouge lors du survol */
+    background-color: black;
 }
 .ml-custom{
     margin-left: 10rem!important;
@@ -28,4 +28,20 @@
 }
 .hiddenInput{
     display: none;
+}
+.custom-round{
+    border-radius: 5em;
+}
+.custom-form{
+    border-radius: 0.25em!important;
+}
+.btn-custom-green {
+    color: green;
+    border-color: green;
+    background-color: transparent;
+}
+
+.btn-custom-green:hover {
+    color: black;
+    background-color: green;
 }

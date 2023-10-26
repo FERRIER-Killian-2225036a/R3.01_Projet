@@ -53,5 +53,21 @@ class DBBrain
         // lors de la connexion
         return password_hash($pwd_peppered, PASSWORD_ARGON2ID, $options);
     }
+    public function isValidPseudo($new_pseudo)
+    {
+        // fixe une limite de caractère
+        if (strlen($new_pseudo) > 20 && strlen($new_pseudo) < 3) {
+            return false;
+        }
+        //verifie que le pseudo est uniquement composé de caractère alphanumérique ou d'espace, avec au moins un caractère
+        if (!preg_match('/^[a-zA-Z0-9 ]+$/', $new_pseudo)) {
+            return false;
+        }
+        // remplace les espaces par des underscore
+        if (preg_match('/\s/', $new_pseudo)) {
+            $new_pseudo = str_replace(' ', '_', $new_pseudo);
+        }
+        return $new_pseudo;
 
+    }
 }
