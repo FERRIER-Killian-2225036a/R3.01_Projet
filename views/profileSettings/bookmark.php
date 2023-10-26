@@ -1,6 +1,7 @@
 <?php require 'sideBar.php' ?>
 <script src="../../common_scripts/dropdown.js"></script>
 <div class="col container">
+    <!--Pas sur que sa fonctionne à voir avec Killian et Tom -->
 
     <!-- Section pour le titre -->
     <div class="row mb-2 mt-2">
