@@ -1,6 +1,9 @@
 .background {
     background: var(--grey-light);
 }
+.inputBackground {
+    background-color: var(--grey-light);
+}
 
 .colorText{
     color: var(--white);

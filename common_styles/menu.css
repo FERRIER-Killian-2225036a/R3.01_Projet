@@ -1,9 +1,6 @@
 .background {
     background: var(--background-color);
 }
-.inputBackground {
-    background-color: var(--grey-light);
-}
 .custom-input {
     width: 40px;  /* Hauteur par défaut pour tous les écrans */
 }
