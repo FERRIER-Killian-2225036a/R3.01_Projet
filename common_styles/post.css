@@ -1,15 +1,49 @@
 #title {
     display: flex;
-    width: 100%;
     justify-content: space-between;
-    padding-block: 2em;
+    margin-block: 1em;
 }
 #title > button {
     float: right;
 }
+#title > h2 {
+    padding-right: 1em;
+}
 
-textarea {
+#input , #chooseFileLabel {
     width: 100%;
-    border: none;
-    height: 5em;
+    background: inherit;
+}
+
+.bg-body-tertiary {
+    margin-block: 2em;
+}
+
+#chooseFileLabel{
+    height: 4em;
+    text-align: center;
+}
+
+#chooseFileLabel > P {
+    color: #727272;
+    margin: 0;
+}
+
+.textInput, .textInput > textarea {
+    height: 15em;
+}
+
+#publishButtonContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#publishButton {
+    color: var(--purple);
+    border-color: var(--purple);
+}
+
+#publishButton:hover {
+    background-color: var(--purple-light);
 }
