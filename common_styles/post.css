@@ -10,23 +10,35 @@
     padding-right: 1em;
 }
 
-#input , #chooseFileLabel {
+.input , #chooseFileLabel {
     width: 100%;
-    background: inherit;
+    background: inherit!important;
+}
+
+#categoriesLabel {
+    display: flow-root;
+}
+#categoriesLabel > p {
+    margin-inline: 1em;
+    margin-block: .4em;
 }
 
 .bg-body-tertiary {
     margin-block: 2em;
+    color: #727272;
 }
 
 #chooseFileLabel{
-    height: 4em;
     text-align: center;
 }
 
-#chooseFileLabel > P {
+#chooseFileLabel > p {
     color: #727272;
     margin: 0;
+}
+
+#chooseFileLabel > img {
+    padding-block: .5em 2em;
 }
 
 .textInput, .textInput > textarea {
