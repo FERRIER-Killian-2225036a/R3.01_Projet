@@ -22,9 +22,4 @@ function deleteAccount(){
     alert('Fonctionnalité pour modifier supprimer le compte à implémenter');
 }
 
-$(document).ready(function() {
-    $(".custom-nav-link").click(function() {
-        $(".custom-nav-link.active").removeClass("active"); // Supprimer les autres classes actives
-        $(this).addClass("active"); // Ajouter la classe active à l'élément cliqué
-    });
-});
+
