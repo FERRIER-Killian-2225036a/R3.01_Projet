@@ -35,6 +35,28 @@ a > img {
     height : 37px;
 }
 
+/* Annimation des boutons de sélection de page */
+.active {
+    color: black!important;
+    background: linear-gradient(to top, var(--purple-light) 0%, var(--purple-light) 10%, transparent 10.01%) no-repeat left bottom / 0 100%;
+    background-size: 99%!important;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: var(--purple-light);
+}
+.nav-link {
+    position: relative;
+    text-decoration: none;
+    background: linear-gradient(to top, var(--purple-light) 0%, var(--purple-light) 10%, transparent 10.01%) no-repeat left bottom / 0 100%;
+    transition: background-size .3s;
+}
+.nav-link:hover::after {
+    transform: scaleX(1);
+}
+.nav-link:hover {
+    background-size: 99% 100%;
+}
+
 @media (max-width: 660px) {
     .navbar{
         padding-inline: 2em;
