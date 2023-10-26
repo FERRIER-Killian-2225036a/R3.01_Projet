@@ -328,6 +328,8 @@ class UserSite
             if ($this->getStatusOfUser($CurrentUserId) == "Disconnected") {
                 throw new ExceptionsDatabase("User status not valid");
             }
+            // nettoyage du pseudo
+            $new_pseudo = strtolower($new_pseudo);
 
             // Change pseudo
             $stmt = $this->conn->prepare("UPDATE USERSite SET Pseudo = ? WHERE UserId = ?");

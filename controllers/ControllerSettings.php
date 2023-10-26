@@ -85,13 +85,14 @@ class ControllerSettings
 
                 // troisieme post, on change le pseudo
                 if (isset($A_postParams["ChangeUsername"])) {
-                    $status = (new UserSite)->update_pseudo($_SESSION["UserId"],$A_postParams["username"]);
-                    if ($status instanceof ExceptionsDatabase) { //TODO il faudra afficher erreurs sur le site
-                        error_log( "Error : " . $status->getMessage());
-                    }
-                    else {
-                        $_SESSION['Username'] = $A_postParams["username"];
-                        header ("Location: /Settings/ManageAccount"); // actualisation de la page
+                    try {
+                        $status = (new UserSite)->update_pseudo($_SESSION["UserId"],$A_postParams["username"]);
+                        if (! ($status instanceof ExceptionsDatabase) ) {
+                            $_SESSION['Username'] = $A_postParams["username"];
+                            header("Location: /Settings/ManageAccount"); // actualisation de la page
+                        }
+                    } catch (ExceptionsDatabase $e) { //TODO il faudra afficher erreurs sur le site
+                        error_log( "Error : " . $e->getMessage());
                     }
                 }
 
