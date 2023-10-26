@@ -29,3 +29,6 @@
 .hiddenInput{
     display: none;
 }
+.custom-round{
+    border-radius: 5em;
+}
