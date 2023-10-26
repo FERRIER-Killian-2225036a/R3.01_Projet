@@ -179,8 +179,21 @@ class UserSite
         $count = $stmt->fetchColumn();
         //echo $count > 0;
         return $count > 0;
-
     }
+    private function isPseudoUse($pseudo_a): bool
+    {
+        //FONCTIONNE CORRECTEMENT
+
+        $checkUserSQL = "SELECT COUNT(*) FROM USERSite OR Pseudo = ?";
+        $stmt = $this->conn->prepare($checkUserSQL);
+        $stmt->bindParam(1, $pseudo_a, PDO::PARAM_STR);
+        $stmt->execute();
+        $count = $stmt->fetchColumn();
+        //echo $count > 0;
+        return $count > 0;
+    }
+
+
     private function isUserIDExists(int $id): bool
     {
         $checkUserSQL = "SELECT COUNT(*) FROM USERSite WHERE UserId = ? ";
@@ -327,6 +340,9 @@ class UserSite
             }
             if ($this->getStatusOfUser($CurrentUserId) == "Disconnected") {
                 throw new ExceptionsDatabase("User status not valid");
+            }
+            if ($this->isPseudoUse( $new_pseudo)) {
+                throw new ExceptionsDatabase("User with this pseudo already exists");
             }
             // nettoyage du pseudo
             $new_pseudo = strtolower($new_pseudo);
