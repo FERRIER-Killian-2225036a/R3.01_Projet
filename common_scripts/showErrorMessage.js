@@ -1,12 +1,13 @@
 function ShowLoginErrorMessage(status) {
     const errorMessage = document.getElementById('wrongInfo');
     errorMessage.style.display = 'inherit';
-    let errorMessageText = errorMessage[0].textContent;
-    console.log(status, errorMessageText);
+    console.log(status);
     if (status!=="success") {
         errorMessage.style.display = 'inherit';
     } else {
-        errorMessageText.innerHTML = status;
+        console.log("Avant" + errorMessage.textContent);
+        errorMessage.textContent = status;
+        console.log("Après" + errorMessage.textContent);
         errorMessage.style.display = 'none';
     }
 }
