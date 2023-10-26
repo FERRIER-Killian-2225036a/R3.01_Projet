@@ -70,7 +70,7 @@ class ControllerSettings
                     $nomFichier = $_SESSION["UrlPicture"];
                     if ( $nomFichier !== null ){ // on fait de la place sur le serveur
                         // on supprime toutes images sauf celle en cours d'utilisations
-                        $files = glob($uploadDirectory . '/*'); // recup tout les noms des fichiers
+                        $files = glob(Constants::mediaDirectoryUsers()  . $_SESSION["UserId"] . '/*'); // recup tout les noms des fichiers
                         foreach($files as $file){ // parcours fichiers
                             if(is_file($file) && $file !== $nomFichier)
                                 unlink($file); // suppression
@@ -83,6 +83,7 @@ class ControllerSettings
 
                 // troisieme post, on change le pseudo
                 elseif (isset($A_postParams["ChangeUsername"])) {
+
                     try {
                         $status = (new UserSite)->update_pseudo($_SESSION["UserId"],$A_postParams["username"]);
                         if (! ($status instanceof ExceptionsDatabase) ) {
