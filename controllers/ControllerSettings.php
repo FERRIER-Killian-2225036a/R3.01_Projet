@@ -48,7 +48,8 @@ class ControllerSettings
                         if ($result[0] != "success") {
                             // TODO appel script js pour modifier la page avec un message d'erreur
                             $temp ='<script type="text/javascript">ShowLoginErrorMessage("'.$result[0].'")</script>';
-                            throw new ExceptionsUpload($result);
+                            echo $result;
+                            // throw new ExceptionsUpload($result);
                         }
                         else {
                             (new UserSite)->update_picture($_SESSION["UserId"],
@@ -95,9 +96,9 @@ class ControllerSettings
                             throw $status;
                         }
                     } catch (ExceptionsDatabase $e) { //TODO il faudra afficher erreurs sur le site
-                        //echo $e->getMessage();
+                        echo $e->getMessage();
                         $temp ='<script type="text/javascript">ShowLoginErrorMessage("'.$e->getMessage().'")</script>';
-                        error_log( "Error : " . $e->getMessage());
+                        // error_log( "Error : " . $e->getMessage());
                     }
                 }
 
