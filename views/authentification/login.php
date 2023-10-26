@@ -26,7 +26,7 @@
                                             <input type="password" id="form2Example22" class="form-control"
                                                    placeholder="********" name="password"/>
                                         </label>
-                                        <label id="wrongInfo">L'identifiant ou le mot de passe est incorrecte</label>
+                                        <label id="wrongInfo"></label>
                                     </div>
 
 

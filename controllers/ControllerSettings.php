@@ -47,6 +47,7 @@ class ControllerSettings
                                                                        $allowedExtensions, $minFileSize, $maxFileSize,true);
                         if ($result[0] != "success") {
                             // TODO appel script js pour modifier la page avec un message d'erreur
+                            $temp ='<script type="text/javascript">ShowLoginErrorMessage("'.$result[0].'")</script>';
                             throw new ExceptionsUpload($result);
                         }
                         else {
@@ -95,6 +96,7 @@ class ControllerSettings
                         }
                     } catch (ExceptionsDatabase $e) { //TODO il faudra afficher erreurs sur le site
                         //echo $e->getMessage();
+                        $temp ='<script type="text/javascript">ShowLoginErrorMessage("'.$e->getMessage().'")</script>';
                         error_log( "Error : " . $e->getMessage());
                     }
                 }
