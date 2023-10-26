@@ -2,7 +2,7 @@ function ShowLoginErrorMessage(status) {
     const errorMessage = document.getElementById('wrongInfo');
     errorMessage.style.display = 'inherit';
     console.log(status);
-    if (status!=="success") {
+    if (status==="success") {
         errorMessage.style.display = 'inherit';
     } else {
         console.log("Avant" + errorMessage.textContent);
