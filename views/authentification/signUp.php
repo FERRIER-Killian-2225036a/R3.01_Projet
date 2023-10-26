@@ -61,5 +61,5 @@
             </div>
         </div>
     </div>
-    <script src="../../common_scripts/checkPassword.js"></script>
+    <script src="/common_scripts/showErrorMessage.js"></script>
 </section>
