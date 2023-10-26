@@ -11,6 +11,21 @@ class ControllerSettings
         //MotorView::show('profileSettings/manageAccount.php');
     }
 
+    public function BookmarkAction(): void
+    {
+        MotorView::show('profileSettings/bookmark');
+    }
+
+    public function FollowAction(): void
+    {
+        MotorView::show('profileSettings/follow');
+    }
+
+    public function LanguageAction(): void
+    {
+        MotorView::show('profileSettings/language');
+    }
+
     public function ManageAccountAction(Array $A_parametres = null,array $A_postParams = null): void
     {
         MotorView::show('profileSettings/manageAccount');
@@ -44,7 +59,7 @@ class ControllerSettings
 
                     try {
                         $result = PictureVerificator::VerifyImg($_FILES['ProfilePicture'], $uploadDirectory,
-                                                                       $allowedExtensions, $minFileSize, $maxFileSize,true);
+                            $allowedExtensions, $minFileSize, $maxFileSize,true);
                         if ($result[0] != "success") {
                             // TODO appel script js pour modifier la page avec un message d'erreur
                             $temp ='<script type="text/javascript">ShowLoginErrorMessage("'.$result[0].'")</script>';
@@ -53,7 +68,7 @@ class ControllerSettings
                         }
                         else {
                             (new UserSite)->update_picture($_SESSION["UserId"],
-                                                Constants::MEDIA_DIRECTORY_USERS.$_SESSION["UserId"]."/".$result[1]);
+                                Constants::MEDIA_DIRECTORY_USERS.$_SESSION["UserId"]."/".$result[1]);
                             $_SESSION['UrlPicture'] = Constants::MEDIA_DIRECTORY_USERS.$_SESSION["UserId"]."/".$result[1];
                             //synchronisation de la session au niveau de l'image
                             header ("Location: /Settings/ManageAccount"); // actualisation de la page
@@ -65,7 +80,6 @@ class ControllerSettings
                     }
 
                 }
-
 
                 // deuxieme post, on supprime la photo
                 elseif (isset($A_postParams["DeleteProfilePicture"])) {
@@ -120,7 +134,6 @@ class ControllerSettings
                     }
                 }
 
-
                 // quatrieme post, on change le mot de passe apres avoir verifier le mot de passe actuel
                 elseif (isset($A_postParams["ChangePassword"])){
                     try {
@@ -145,7 +158,8 @@ class ControllerSettings
                     }
                 }
 
-                // cinquieme post, on supprime le compte
+                // cinquieme post, on supprime le compte //TODO implementer plus tard
+                // $status = (new UserSite)->remove_user($_SESSION["UserId"])); soucis, il faudrait verifier son mdp
 
 
             } else {
@@ -157,11 +171,25 @@ class ControllerSettings
 
     }
 
-
-    public function LanguageAction(): void
+    public function MyCommentAction(): void
     {
-        MotorView::show('profileSettings/language');
+        MotorView::show('profileSettings/myComment');
     }
+
+    public function MyPostAction(): void
+    {
+        MotorView::show('profileSettings/myPost');
+    }
+
+    public function SupportAction(): void
+    {
+        MotorView::show('profileSettings/support');
+    }
+    public function ThemeAction(): void
+    {
+        MotorView::show('profileSettings/theme');
+    }
+    
 }
 
 ?>
