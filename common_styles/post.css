@@ -1,0 +1,15 @@
+#title {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-block: 2em;
+}
+#title > button {
+    float: right;
+}
+
+textarea {
+    width: 100%;
+    border: none;
+    height: 5em;
+}

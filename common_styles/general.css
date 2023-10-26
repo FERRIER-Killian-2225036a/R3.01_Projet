@@ -19,7 +19,7 @@
 }
 
 .shadow {
-    box-shadow: var(--shadow-default) 0px 3px 8px;
+    box-shadow: var(--shadow-default) 0 3px 8px;
 }
 
 .btn {
