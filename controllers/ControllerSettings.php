@@ -58,21 +58,19 @@ class ControllerSettings
                         } // maj bdd de l'image
 
                     } catch (ExceptionsUpload $e) {
-                        // on pensera a afficher un message d'erreur sur le site
+                        //TODO on pensera a afficher un message d'erreur sur le site
                         error_log( $e->getMessage());
                     }
 
                 }
-                else {
-                    echo "Une erreur est survenue lors de l'upload du fichier.";
-                }
+
 
                 // deuxieme post, on supprime la photo
-                if (isset($A_postParams["DeleteProfilePicture"])) {
+                elseif (isset($A_postParams["DeleteProfilePicture"])) {
                     $nomFichier = $_SESSION["UrlPicture"];
                     if ( $nomFichier !== null ){ // on fait de la place sur le serveur
                         // on supprime toutes images sauf celle en cours d'utilisations
-                        $files = glob($uploadDirectory . '/*'); // recup tout les noms des fichiers
+                        $files = glob(Constants::mediaDirectoryUsers()  . $_SESSION["UserId"] . '/*'); // recup tout les noms des fichiers
                         foreach($files as $file){ // parcours fichiers
                             if(is_file($file) && $file !== $nomFichier)
                                 unlink($file); // suppression
@@ -84,7 +82,8 @@ class ControllerSettings
                 }
 
                 // troisieme post, on change le pseudo
-                if (isset($A_postParams["ChangeUsername"])) {
+                elseif (isset($A_postParams["ChangeUsername"])) {
+
                     try {
                         $status = (new UserSite)->update_pseudo($_SESSION["UserId"],$A_postParams["username"]);
                         if (! ($status instanceof ExceptionsDatabase) ) {

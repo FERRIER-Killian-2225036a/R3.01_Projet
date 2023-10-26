@@ -184,7 +184,7 @@ class UserSite
     {
         //FONCTIONNE CORRECTEMENT
 
-        $checkUserSQL = "SELECT COUNT(*) FROM USERSite OR Pseudo = ?";
+        $checkUserSQL = "SELECT COUNT(*) FROM USERSite WHERE Pseudo = ?";
         $stmt = $this->conn->prepare($checkUserSQL);
         $stmt->bindParam(1, $pseudo_a, PDO::PARAM_STR);
         $stmt->execute();
