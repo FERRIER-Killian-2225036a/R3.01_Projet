@@ -47,7 +47,9 @@ class ControllerSettings
                                                                        $allowedExtensions, $minFileSize, $maxFileSize,true);
                         if ($result[0] != "success") {
                             // TODO appel script js pour modifier la page avec un message d'erreur
-                            throw new ExceptionsUpload($result);
+                            $temp ='<script type="text/javascript">ShowLoginErrorMessage("'.$result[0].'")</script>';
+                            echo $result;
+                            // throw new ExceptionsUpload($result);
                         }
                         else {
                             (new UserSite)->update_picture($_SESSION["UserId"],
@@ -94,8 +96,9 @@ class ControllerSettings
                             throw $status;
                         }
                     } catch (ExceptionsDatabase $e) { //TODO il faudra afficher erreurs sur le site
-                        //echo $e->getMessage();
-                        error_log( "Error : " . $e->getMessage());
+                        echo $e->getMessage();
+                        $temp ='<script type="text/javascript">ShowLoginErrorMessage("'.$e->getMessage().'")</script>';
+                        // error_log( "Error : " . $e->getMessage());
                     }
                 }
 

@@ -1,8 +1,8 @@
 #bouee {
-    position: fixed;
-    float: right;
-    bottom: 2em;
-    right: 2em;
+    position: fixed!important;
+    float: right!important;
+    bottom: 2em!important;
+    right: 2em!important;
 }
 
 #bouee > img {

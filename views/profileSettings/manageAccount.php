@@ -26,8 +26,8 @@
                     <input id="file" type="file" name="ProfilePicture" accept=".jpg, .jpeg, .png, .gif"
                            style="display: none;">
                     <input type="hidden" name="ChangeProfilePicture" value="1">
-                </form>
 
+                </form>
                 <script> //TODO déplacé le script dans un fichier js
                     // Lorsque le label "Modifier" est cliqué
                     document.querySelector('label[for="file"]').addEventListener('click', function () {
@@ -44,6 +44,7 @@
                 <form action="/Settings/ManageAccount" method="POST">
                     <button class="btn btn-outline-danger" name="DeleteProfilePicture" type="submit">Supprimer</button>
                 </form>
+                <label id="wrongInfo"></label>
             </div>
         </div>
     </div>
@@ -73,6 +74,7 @@
 
     <div class="row mb-2">
         <div class="col-md-6">
+<<<<<<< HEAD
             <h2>
                 <label for="email-input">
                     Modifier l'adresse mail

@@ -1,17 +1,18 @@
 <?php require 'sideBar.php' ?>
 <div class="col container">
 
-    <!-- Section pour la photo de profil -->
+    <!-- Section pour le titre avec le bouton de création -->
     <div class="row mb-2 mt-2">
         <div class="col-md-6">
             <h1>Demande de support</h1>
         </div>
-        <div class="col-md-6 d-flex align-items-center justify-content-center"> <!-- Notez ici que nous utilisons align-items-center pour centrer les boutons verticalement -->
+        <div class="col-md-6 d-flex align-items-center justify-content-center">
             <div class="btn-group">
                 <button class="btn btn-outline-dark" name="createTicket" value="1" type="submit">Créer un ticket</button>
             </div>
         </div>
         <hr class="my-3">
+        <!-- Section pour la table -->
         <table class="table table-striped">
             <thead>
             <tr>
@@ -43,6 +44,9 @@
             </tbody>
         </table>
         <hr class="my-3">
+
+        <!--Section pour le signalement-->
+
         <div class="row mb-2">
             <div class="col-md-6">
                 <h2>Signalement</h2>
@@ -60,7 +64,7 @@
                 <textarea class="form-control custom-form inputBackground" rows="5" id="contenu-input" placeholder="Entrez votre contenu ici..."></textarea>
             </div>
         </div>
-        <div class="col-md-12 d-flex align-items-center justify-content-center"> <!-- Notez ici que nous utilisons align-items-center pour centrer les boutons verticalement -->
+        <div class="col-md-12 d-flex align-items-center justify-content-center">
             <div class="btn-group">
                 <button class="btn btn-custom-green" name="ChangeUsername" value="1" type="submit">Envoyer</button>
             </div>
