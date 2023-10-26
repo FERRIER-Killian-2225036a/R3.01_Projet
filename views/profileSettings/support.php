@@ -1,7 +1,7 @@
 <?php require 'sideBar.php' ?>
 <div class="col container">
 
-    <!-- Section pour la photo de profil -->
+    <!-- Section pour le titre avec le bouton de création -->
     <div class="row mb-2 mt-2">
         <div class="col-md-6">
             <h1>Demande de support</h1>
@@ -12,6 +12,7 @@
             </div>
         </div>
         <hr class="my-3">
+        <!-- Section pour la table -->
         <table class="table table-striped">
             <thead>
             <tr>
@@ -43,6 +44,9 @@
             </tbody>
         </table>
         <hr class="my-3">
+
+        <!--Section pour le signalement-->
+
         <div class="row mb-2">
             <div class="col-md-6">
                 <h2>Signalement</h2>
