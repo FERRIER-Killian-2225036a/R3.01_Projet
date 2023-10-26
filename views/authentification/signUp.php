@@ -1,9 +1,4 @@
-<head xmlns="http://www.w3.org/1999/html">
-    <link rel="stylesheet" href="../../common_styles/general.css">
-    <link rel="stylesheet" href="../../common_styles/authentification.css">
-    <script src="../../common_scripts/checkPasswordEqualty.js"></script>
-
-</head>
+<link rel="stylesheet" href="../../common_styles/authentification.css">
 <body>
 <section class="h-100 gradient-form">
     <div class="container py-2 ">
@@ -21,22 +16,27 @@
 
                                 <form action="/Auth/SignUp" method="post" name="SignUp">
                                     <div class="form-outline mb-4">
-                                        <label class="form-label" for="form2Example11">Pseudo</label>
-                                        <input type="text" class="form-control" placeholder="krokmou" name="pseudo" />
+                                        <label class="form-label" for="form2Example11">Pseudo
+                                            <input type="text" class="form-control" placeholder="krokmou" name="pseudo" />
+                                        </label>
                                     </div>
                                     <div class="form-outline mb-4">
-                                        <label class="form-label" for="form2Example11">Adresse mail</label>
-                                        <input type="email" class="form-control" placeholder="krokmou@exemple.fr" name = "mail"/>
+                                        <label class="form-label" for="form2Example11">Adresse mail
+                                            <input type="email" class="form-control" placeholder="krokmou@exemple.fr" name = "mail"/>
+                                        </label>
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <label class="form-label" for="form2Example22">Mot de passe</label>
-                                        <input type="password" class="form-control" id="passwordStrength" placeholder="********" name="password" onkeyup="checkPasswordStrength(this.value)" />
+                                        <label class="form-label" for="form2Example22">Mot de passe
+                                            <input type="password" class="form-control" id="passwordStrength" placeholder="********" name="password" onkeyup="checkPasswordStrength(this.value)" />
+                                        </label>
                                     </div>
                                     <div class="form-outline mb-4">
-                                        <label class="form-label" for="form2Example22">Comfirmer votre mot de passe</label>
-                                        <input type="password" id="confirmPassword" class="form-control" oninput="checkPasswordsEquality()" placeholder="********"/>
+                                        <label class="form-label" for="form2Example22">Comfirmer votre mot de passe
+                                            <input type="password" id="confirmPassword" class="form-control" oninput="checkPasswordsEquality()" placeholder="********"/>
+                                        </label>
                                         <span id="passwordFeedback"></span>
+                                        <label id="wrongInfo">L'identifiant ou le mot de passe est incorrecte</label>
                                     </div>
 
                                     <div class="text-center pt-1 mb-5 pb-1">
@@ -62,6 +62,6 @@
             </div>
         </div>
     </div>
-    <script src="../../common_scripts/checkPasswordStrength.js"></script>
+    <script src="../../common_scripts/checkPassword.js"></script>
 </section>
 </body>

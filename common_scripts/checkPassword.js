@@ -19,7 +19,6 @@ function checkPasswordStrength(password) {
     }
 }
 
-
 // Fonction pour calculer la solidité du mot de passe
 function calculatePasswordStrength(password) {
     // Initialiser un score de solidité
@@ -50,8 +49,35 @@ function calculatePasswordStrength(password) {
 
     // Calculez la largeur de la barre en pourcentage en fonction du score
     const maxScore = 4; // Remplacez par le nombre total de critères
-    const percentage = (score / maxScore) * 100;
-
-    return percentage;
+    return (score / maxScore) * 100;
 }
 
+function checkPasswordsEquality() {
+    const passwordElement = document.getElementById('passwordStrength');
+    const confirmPasswordElement = document.getElementById('confirmPassword');
+    const feedbackElement = document.getElementById('passwordFeedback');
+
+    const password = passwordElement.value;
+    const confirmPassword = confirmPasswordElement.value;
+
+    if (password && confirmPassword) {
+        if (password === confirmPassword) {
+            confirmPasswordElement.setCustomValidity('');
+            feedbackElement.textContent = "Les mots de passe correspondent.";
+            feedbackElement.style.color = "green";
+            confirmPasswordElement.classList.add('valid');
+            confirmPasswordElement.classList.remove('invalid');
+        } else {
+            confirmPasswordElement.setCustomValidity('Les mots de passe ne correspondent pas !');
+            feedbackElement.textContent = "Les mots de passe ne correspondent pas.";
+            feedbackElement.style.color = "red";
+            confirmPasswordElement.classList.add('invalid');
+            confirmPasswordElement.classList.remove('valid');
+        }
+    } else {
+        confirmPasswordElement.setCustomValidity('');
+        feedbackElement.textContent = "";
+        confirmPasswordElement.classList.remove('valid');
+        confirmPasswordElement.classList.remove('invalid');
+    }
+}
