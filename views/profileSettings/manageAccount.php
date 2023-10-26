@@ -21,7 +21,7 @@
                             <input type="hidden" name="ChangeProfilePicture" value="1">
                         </form>
 
-                        <script>
+                        <script> //TODO déplacé le script dans un fichier js
                             // Lorsque le label "Modifier" est cliqué
                             document.querySelector('label[for="file"]').addEventListener('click', function () {
                                 // Clique sur l'input de fichier caché pour permettre à l'utilisateur de choisir un fichier
@@ -34,8 +34,9 @@
                                 this.parentNode.submit(); // Cela enverra le formulaire avec le fichier sélectionné
                             });
                         </script>
-
-                        <button class="btn btn-outline-danger" type="submit">Supprimer</button>
+                        <form action="/Settings/ManageAccount" method="POST" >
+                            <button class="btn btn-outline-danger" name="DeleteProfilePicture" type="submit">Supprimer</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -47,14 +48,17 @@
                 </div>
             </div>
             <div class="row mb-4">
+                <form action="/Settings/ManageAccount" method="POST">
                 <div class="col-md-6">
-                    <input type="text" class="form-control" id="username-input" value="VotrePseudo">
+                    <label for="username-input">Entrez votre nouveau pseudo</label>
+                    <input type="text" class="form-control" name="username" id="username-input" value="VotrePseudo">
                 </div>
                 <div class="col-md-6 d-flex align-items-center"> <!-- Notez ici que nous utilisons align-items-center pour centrer les boutons verticalement -->
                     <div class="btn-group">
-                        <button class="btn btn-outline-dark" onclick="updateUsername()">Modifier</button>
+                        <button class="btn btn-outline-dark" name="ChangeUsername" type="submit">Modifier</button>
                     </div>
                 </div>
+                </form>
             </div>
 
             <!-- Section pour l'adresse email -->

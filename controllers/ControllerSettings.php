@@ -62,13 +62,39 @@ class ControllerSettings
                         error_log( $e->getMessage());
                     }
 
-                } else {
-
+                }
+                else {
                     echo "Une erreur est survenue lors de l'upload du fichier.";
                 }
+
                 // deuxieme post, on supprime la photo
+                if (isset($A_postParams["DeleteProfilePicture"])) {
+                    $nomFichier = $_SESSION["UrlPicture"];
+                    if ( $nomFichier !== null ){ // on fait de la place sur le serveur
+                        // on supprime toutes images sauf celle en cours d'utilisations
+                        $files = glob($uploadDirectory . '/*'); // recup tout les noms des fichiers
+                        foreach($files as $file){ // parcours fichiers
+                            if(is_file($file) && $file !== $nomFichier)
+                                unlink($file); // suppression
+                        }
+                    }
+                    (new UserSite)->remove_picture($_SESSION["UserId"]);
+                    $_SESSION['UrlPicture'] = null;
+                    header ("Location: /Settings/ManageAccount"); // actualisation de la page
+                }
 
                 // troisieme post, on change le pseudo
+                if (isset($A_postParams["ChangeUsername"])) {
+                    try {
+                        $status = (new UserSite)->update_pseudo($_SESSION["UserId"],$A_postParams["username"]);
+                        if (! ($status instanceof ExceptionsDatabase) ) {
+                            $_SESSION['Username'] = $A_postParams["username"];
+                            header("Location: /Settings/ManageAccount"); // actualisation de la page
+                        }
+                    } catch (ExceptionsDatabase $e) { //TODO il faudra afficher erreurs sur le site
+                        error_log( "Error : " . $e->getMessage());
+                    }
+                }
 
                 // quatrieme post, on change le mail
 
