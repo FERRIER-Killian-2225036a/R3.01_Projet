@@ -6,7 +6,7 @@
         <div class="col-md-6">
             <h1>Demande de support</h1>
         </div>
-        <div class="col-md-6 d-flex align-items-center justify-content-center"> <!-- Notez ici que nous utilisons align-items-center pour centrer les boutons verticalement -->
+        <div class="col-md-6 d-flex align-items-center justify-content-center">
             <div class="btn-group">
                 <button class="btn btn-outline-dark" name="createTicket" value="1" type="submit">Créer un ticket</button>
             </div>
@@ -64,7 +64,7 @@
                 <textarea class="form-control custom-form inputBackground" rows="5" id="contenu-input" placeholder="Entrez votre contenu ici..."></textarea>
             </div>
         </div>
-        <div class="col-md-12 d-flex align-items-center justify-content-center"> <!-- Notez ici que nous utilisons align-items-center pour centrer les boutons verticalement -->
+        <div class="col-md-12 d-flex align-items-center justify-content-center">
             <div class="btn-group">
                 <button class="btn btn-custom-green" name="ChangeUsername" value="1" type="submit">Envoyer</button>
             </div>
