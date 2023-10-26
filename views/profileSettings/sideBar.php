@@ -16,49 +16,50 @@
             <ul class="nav nav-pills flex-column mb-auto align-items-center">
                 <!-- Information personnel-->
                 <li class="nav-item">
-                    <a href="#" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
+                    <a href="manageAccount.php" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
                         Informations personnelles
                     </a>
                 </li>
                 <!-- Support -->
                 <li>
-                    <a href="#" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
+                    <a href="support.php" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
                         Support
                     </a>
                 </li>
                 <!-- Langue -->
                 <li>
-                    <a href="#" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
+                    <a href="language.php" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
                         Langue
                     </a>
                 </li>
                 <!-- Thème -->
                 <li>
-                    <a href="#" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
+                    <a href="theme.php" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
                         Thème
                     </a>
                 </li>
                 <hr class="my-3">
+                <!--Mes enregistrements -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
+                    <a href="bookmark.php" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
                         Mes enregistrements
                     </a>
                 </li>
                 <!-- Personnes suivies -->
                 <li>
-                    <a href="#" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
+                    <a href="follow.php" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
                         Personnes suivies
                     </a>
                 </li>
                 <!-- Mes commentaires -->
                 <li>
-                    <a href="#" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
+                    <a href="myComment.php" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
                         Mes commentaires
                     </a>
                 </li>
                 <!-- Mes posts -->
                 <li>
-                    <a href="#" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
+                    <a href="myPost.php" class="nav-link custom-nav-link text-dark"> <!-- Ajout de 'text-dark' ici -->
                         Mes posts
                     </a>
                 </li>
