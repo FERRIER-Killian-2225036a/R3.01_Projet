@@ -40,6 +40,23 @@
                     <a class="nav-link" href="/Menu/ActualityFeed">Veille Tech</a>
                     <a class="nav-link" href="/Menu/BlogFeed">Blogs</a>
                     <!--<a class="nav-link" href="/Menu/ForumFeed">Forum</a>-->
+                    <?php //si c'est bon on affiche
+                    if (SessionManager::isUserConnected()) {
+                        //si la page est /Menu/BlogFeed
+                        if ( $this->_mapOfSplitUrl['controller'] === 'ControllerMenu' && $this->_mapOfSplitUrl['action'] === 'BlogFeedAction') {
+                            $leliendelarequete = "/Post/BlogEdit";
+                            $nomTypePost = "Blog";
+                        } else if ($this->_mapOfSplitUrl['controller'] === 'ControllerMenu' && $this->_mapOfSplitUrl['action'] === 'ForumFeedAction') {
+                            $leliendelarequete = "/Post/ForumEdit";
+                            $nomTypePost = "Forum";
+                        }
+                    }
+                     //si on est connecté, et dans la page /Menu/BlogFeed $leliendelarequete = "/Post/BlogEdit";
+                    // et $nomTypePost = "Blog"
+                    // si on est connecté et dans la page /Menu/ForumFeed $leliendelarequete = "/Post/ForumEdit";
+                    // et $nomTypePost = "Forum"
+                    echo '<a class="NewPost" href="'.$leliendelarequete.'">Nouveau' .$nomTypePost.' </a>'
+                    ?>
                 </div>
             </div>
         </div>
