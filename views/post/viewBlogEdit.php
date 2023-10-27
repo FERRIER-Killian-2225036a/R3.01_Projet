@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/common_styles/post.css">
+<link rel="stylesheet" href="/common_styles/simple-tags.css" >
 <main class="container p-5">
     <div class="p-3">
         <div id="title">
@@ -16,6 +17,11 @@
             <input type="text" class="form-control custom-input round inputBackground input" id="categoriesInput" placeholder="Entrez vos catégories">
             <p id="categoriesOutput">Vos catégories s'afficherons ici</p>
         </label>
+
+        <div
+                class="simple-tags"
+                data-simple-tags="Article, Blog, Page, Post, Category, Updates" >
+        </div>
 
         <!-- Input d'image -->
         <form action="/Settings/ManageAccount" method="POST" enctype="multipart/form-data" class="background round">
@@ -37,5 +43,7 @@
         </span>
     </div>
     <script src="../../common_scripts/blog.js"></script>
+    <script src="../../common_scripts/simple-tags.js"></script>
+
 </main>
 
