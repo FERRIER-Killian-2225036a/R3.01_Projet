@@ -1,3 +1,4 @@
+/*
 document.getElementById("categoriesInput").addEventListener("keydown", function(event) {
     if (event.key === "Enter" || event.keyCode === 13) {
         saveCategories();
@@ -18,3 +19,4 @@ function saveCategories() {
     output.style.color = 'black';
     output.innerHTML = outputTab.toString();
 }
+*/

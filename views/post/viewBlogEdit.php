@@ -32,12 +32,27 @@
 
             <!-- Input d'image -->
             <!--<form enctype="multipart/form-data" class="background round">-->
-            <label for="file" class="btn mr-2 round" id="chooseFileLabel">Entrez votre miniature</label>
-            <input id="file" type="file" name="BlogPicture" accept=".jpg, .jpeg, .png, .gif"
-                   style="display: none;">
+            <button id="PictureButton">
+                <label for="file" class="btn mr-2 round" id="chooseFileLabel">Entrez votre miniature</label>
+                <input id="file" type="file" name="BlogPicture" accept=".jpg, .jpeg, .png, .gif"
+                       style="display: none;">
 
-            <img src="../../media/public_assets/icone/iconeBlogUploadImg.png" width="300" height="300" alt="logo pour l'upload d'image">
+                <img src="../../media/public_assets/icone/iconeBlogUploadImg.png" width="300" height="300"
+                     alt="logo pour l'upload d'image">
+            </button>
+            <script> //TODO déplacé le script dans un fichier js
+                // Lorsque le bouton est cliqué
+                document.getElementById('fileButton').addEventListener('click', function () {
+                    // Clique sur le label pour ouvrir le gestionnaire de fichiers
+                    document.querySelector('label[for="file"]').click();
+                });
 
+                // Lorsque le champ de fichier est modifié (un fichier est sélectionné)
+                document.getElementById('file').addEventListener('change', function () {
+                    // Soumet automatiquement le formulaire lorsque l'utilisateur sélectionne un fichier
+                    this.parentNode.submit(); // Cela enverra le formulaire avec le fichier sélectionné
+                });
+            </script>
             <!--</form>-->
 
             <!-- Texte -->
