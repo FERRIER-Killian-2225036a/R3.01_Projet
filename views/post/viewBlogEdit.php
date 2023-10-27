@@ -42,7 +42,7 @@
             </button>
             <script> //TODO déplacé le script dans un fichier js
                 // Lorsque le bouton est cliqué
-                document.getElementById('fileButton').addEventListener('click', function () {
+                document.getElementById('PictureButton').addEventListener('click', function () {
                     // Clique sur le label pour ouvrir le gestionnaire de fichiers
                     document.querySelector('label[for="file"]').click();
                 });
