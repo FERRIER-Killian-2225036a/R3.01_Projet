@@ -49,12 +49,12 @@
                         // et $nomTypePost = "Blog"
                         // si on est connecté et dans la page /Menu/ForumFeed $leliendelarequete = "/Post/ForumEdit";
                         // et $nomTypePost = "Forum"
-                        if ($_SERVER['REQUEST_URI'] === "/Post/BlogEdit") {
+                        if ($_SERVER['REQUEST_URI'] === "/Post/BlogFeed") {
                             $leliendelarequete = "/Post/BlogEdit";
                             $nomTypePost = "Blog";
                             echo '<a class="NewPost" href="'.$leliendelarequete.'">Nouveau' .$nomTypePost.' </a>';
 
-                        } elseif ($_SERVER['REQUEST_URI'] === "/Post/ForumEdit") {
+                        } elseif ($_SERVER['REQUEST_URI'] === "/Post/ForumFeed") {
                             $leliendelarequete = "/Post/ForumEdit";
                             $nomTypePost = "Forum";
                             echo '<a class="NewPost" href="'.$leliendelarequete.'">Nouveau' .$nomTypePost.' </a>';
