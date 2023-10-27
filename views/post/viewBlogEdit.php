@@ -32,7 +32,7 @@
 
             <!-- Input d'image -->
             <!--<form enctype="multipart/form-data" class="background round">-->
-                <label for="file"  class="btn mr-2 round" id="chooseFileLabel">Entrez votre miniature
+                <label for="file"  class="btn btn-outline-dark mr-2 round" id="chooseFileLabel">Entrez votre miniature
 
                     <input id="file" type="file" name="BlogPicture" accept=".jpg, .jpeg, .png, .gif"
                            style="display: none;">
@@ -40,7 +40,7 @@
                     <img src="../../media/public_assets/icone/iconeBlogUploadImg.png" width="300" height="300"
                          alt="logo pour l'upload d'image">
                 </label>
-                
+
 
             <script> //TODO déplacé le script dans un fichier js
                 // Lorsque le bouton est cliqué
