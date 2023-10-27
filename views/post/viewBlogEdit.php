@@ -32,20 +32,23 @@
 
             <!-- Input d'image -->
             <!--<form enctype="multipart/form-data" class="background round">-->
-            <button id="PictureButton" class="btn btn-outline-dark">
-                <label for="file" class="btn mr-2 round" id="chooseFileLabel">Entrez votre miniature</label>
-                <input id="file" type="file" name="BlogPicture" accept=".jpg, .jpeg, .png, .gif"
-                       style="display: none;">
+                <label for="file"  class="btn mr-2 round" id="chooseFileLabel">Entrez votre miniature
 
-                <img src="../../media/public_assets/icone/iconeBlogUploadImg.png" width="300" height="300"
-                     alt="logo pour l'upload d'image">
-            </button>
+                    <input id="file" type="file" name="BlogPicture" accept=".jpg, .jpeg, .png, .gif"
+                           style="display: none;">
+
+                    <img src="../../media/public_assets/icone/iconeBlogUploadImg.png" width="300" height="300"
+                         alt="logo pour l'upload d'image">
+                </label>
+                
+
             <script> //TODO déplacé le script dans un fichier js
                 // Lorsque le bouton est cliqué
-                document.getElementById('PictureButton').addEventListener('click', function () {
-                    // Clique sur le label pour ouvrir le gestionnaire de fichiers
-                    document.querySelector('label[for="file"]').click();
+                document.querySelector('label[for="file"]').addEventListener('click', function () {
+                    // Clique sur l'input de fichier caché pour permettre à l'utilisateur de choisir un fichier
+                    document.getElementById('file').click();
                 });
+
             </script>
             <!--</form>-->
 
