@@ -21,16 +21,10 @@
 
 
         <!--test selecteur-->
-        <div class="col-md-4">
-            <label for="validationTags" class="form-label">Tags</label>
-            <select class="form-select" id="validationTags" name="tags[]" multiple="" style="display: none;">
+        <h2>text input</h2>
+        <input name='tags' placeholder='write some tags' value='foo, bar,buzz, bar'>
 
-                <option value="1" data-init="1">Apple</option>
-                <option value="2">Banana</option>
-                <option value="3">Orange</option>
-            </select><div class="form-control dropdown"><div><input type="text" autocomplete="off" style="border: 0px; outline: 0px; max-width: 100%;" aria-label="Type a value" placeholder="Choose a tag..." size="15"></div><ul class="dropdown-menu p-0" style="max-height: 280px; overflow-y: auto;"><li><a class="dropdown-item" data-value="1" href="#">Apple</a></li><li><a class="dropdown-item" data-value="2" href="#">Banana</a></li><li><a class="dropdown-item" data-value="3" href="#">Orange</a></li></ul></div>
-            <div class="invalid-feedback">Please select a valid tag.</div>
-        </div>
+
 
         <!-- Input d'image -->
         <form action="/Settings/ManageAccount" method="POST" enctype="multipart/form-data" class="background round">
