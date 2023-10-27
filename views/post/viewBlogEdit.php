@@ -46,12 +46,6 @@
                     // Clique sur le label pour ouvrir le gestionnaire de fichiers
                     document.querySelector('label[for="file"]').click();
                 });
-
-                // Lorsque le champ de fichier est modifié (un fichier est sélectionné)
-                document.getElementById('file').addEventListener('change', function () {
-                    // Soumet automatiquement le formulaire lorsque l'utilisateur sélectionne un fichier
-                    this.parentNode.submit(); // Cela enverra le formulaire avec le fichier sélectionné
-                });
             </script>
             <!--</form>-->
 
