@@ -21,9 +21,8 @@
 
 
         <!--test selecteur-->
-        <h2>text input</h2>
-        <input name='tags' placeholder='write some tags' value='foo, bar,buzz, bar'>
-
+        <h2>Tags Input</h2>
+        <input type="text" id="tag-input1">
 
 
         <!-- Input d'image -->
