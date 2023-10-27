@@ -25,7 +25,6 @@
              -->
 
             <!--Categorie new -->
-            <h2>Tags Input</h2>
             <label for="tag-input1">Entrez les tags de votre publication</label>
             <input type="text" name="Tags" id="tag-input1">
 
