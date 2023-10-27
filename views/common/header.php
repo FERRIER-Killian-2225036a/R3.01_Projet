@@ -51,7 +51,7 @@
                         // et $nomTypePost = "Forum"
 
                         if ($_SERVER['REQUEST_URI'] === "/Menu/BlogFeed") {
-                            $leliendelarequete = "/Post/BlogEdit";
+                            $leliendelarequete = "/Menu/BlogEdit";
                             $nomTypePost = "Blog";
                             echo '<a class="NewPost" href="'.$leliendelarequete.'">Nouveau' .$nomTypePost.' </a>';
 
