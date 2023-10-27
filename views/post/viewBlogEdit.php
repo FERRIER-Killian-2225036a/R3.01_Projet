@@ -32,7 +32,7 @@
 
             <!-- Input d'image -->
             <!--<form enctype="multipart/form-data" class="background round">-->
-            <button id="PictureButton">
+            <button id="PictureButton" class="btn btn-outline-dark">
                 <label for="file" class="btn mr-2 round" id="chooseFileLabel">Entrez votre miniature</label>
                 <input id="file" type="file" name="BlogPicture" accept=".jpg, .jpeg, .png, .gif"
                        style="display: none;">
