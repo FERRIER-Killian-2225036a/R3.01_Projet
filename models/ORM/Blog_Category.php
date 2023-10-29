@@ -27,7 +27,7 @@ class Blog_Category
             $stmt->bindParam(1, $label);
             $stmt->bindParam(2, $description);
             return $this->createCategory($label); // recursivité pour revenir au premier if; c'est pas forcement utile
-            // mais c'est stylé
+            // mais c'est stylé & un easter egg
             // on renvoi l'id de la category
         }
     }
@@ -54,7 +54,7 @@ class Blog_Category
         // renvoie le label d'une category selon son identifiant
     }
 
-    private function doesCategoryIdExist($id)
+    public function doesCategoryIdExist($id)
     {
         $stmt = $this->conn->prepare("SELECT count(*) FROM BLOG_Category WHERE CategoryId = ?");
         $stmt->bindParam(1, $id, PDO::PARAM_STR);

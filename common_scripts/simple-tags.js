@@ -123,7 +123,7 @@
         this.initialized = false;
     }
 
-    // Private function to initialize the tag input plugin
+    // function to initialize the tag input plugin
     function init(tags){
         tags.wrapper.append(tags.input);
         tags.wrapper.classList.add(tags.options.wrapperClass);

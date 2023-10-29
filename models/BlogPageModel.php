@@ -89,5 +89,10 @@ class BlogPageModel
         $this->PostEditUrl = "/Post/BlogEdit/".$this->PageId;
     }
 
+    public function getTags()
+    {
+        return (new Blog_categoryPage())->getCategoryByPageId($this->PageId);
+    }
+
 
 }

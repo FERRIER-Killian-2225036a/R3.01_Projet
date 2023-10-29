@@ -11,11 +11,13 @@ final class Constants
     const ORM_DIRECTORY = '/models/ORM/';
     const MEDIA_DIRECTORY = '/media/';
     const MEDIA_DIRECTORY_USERS = '/media/users/';
+    const MEDIA_DIRECTORY_POSTS = '/media/posts/';
     const UserIdForItArticle = 238;
     const DECONNEXION_TIME = 86400;
     const PICTURE_URL_DEFAULT = "/media/public_assets/imageTest.jpeg";
     const PDP_URL_DEFAULT = "/media/users/Profil.png";
     const MAIL_FROM_EMAIL = "noreply@cyphub.tech";
+    const MEDIA_DIRECTORY_BLOGS = '/media/posts/blogs/';
 
     public static $BDD_PASSWORD = '';
     public static $DB; // TODO : mettre une image par défaut
@@ -43,6 +45,10 @@ final class Constants
     public static function mediaDirectoryUsers(): string
     {
         return self::rootDirectory() . self::MEDIA_DIRECTORY_USERS;
+    }
+    public static function mediaDirectoryPosts(): string
+    {
+        return self::rootDirectory() . self::MEDIA_DIRECTORY_POSTS;
     }
 
     public static function viewsDirectory(): string
@@ -107,6 +113,12 @@ final class Constants
     public static function setApiKey($ApiKey): void
     {
         self::$API_KEY_GOOGLE_VISION = $ApiKey;
+    }
+
+    public static function mediaDirectoryblogs()
+    {
+        return self::rootDirectory() . self::MEDIA_DIRECTORY_BLOGS;
+
     }
 }
 

@@ -27,7 +27,9 @@ class Blog_Page
             $stmt->bindParam(8, $statusP, PDO::PARAM_STR);
             $stmt->execute();
             $stmt->closeCursor();
-            return true;
+
+            $id = $this->conn->lastInsertId();
+            return $id;
         } catch (ExceptionsDatabase $e) {
             return $e;
         }
@@ -41,8 +43,8 @@ class Blog_Page
         // ou alors on pourra imaginé a le mettre en innactive
     }
 
-    public function updatePage($PageId, $TITLE, $content, $author, $UserId, $dateP = "CURRENT_TIMESTAMP",
-                               $NumberOfLikes = 0, $UrlPicture = Constants::PICTURE_URL_DEFAULT, $statusP = "hidden")
+    public function updatePage($PageId, $TITLE, $content, $author, $UserId, $UrlPicture = Constants::PICTURE_URL_DEFAULT, $dateP = "CURRENT_TIMESTAMP",
+                               $NumberOfLikes = 0,  $statusP = "hidden")
     {
         // comme create page sauf que l'id est aussi renseigné en param
         if ($this->doesPageIdExist($PageId)) {
@@ -62,7 +64,7 @@ class Blog_Page
         } else return false;
     }
 
-    private function doesPageIdExist($PageId)
+    public function doesPageIdExist($PageId)
     {
         $stmt = $this->conn->prepare("SELECT count(*) FROM BLOG_Page WHERE PageId = ?");
         $stmt->bindParam(1, $PageId, PDO::PARAM_STR);
@@ -199,7 +201,7 @@ class Blog_Page
         return $mapArrayOfPageValues; // Retourne le tableau avec les valeurs de la requete
     }
 
-    private function isPageIdExist($Id)
+    public function isPageIdExist($Id)
     {
         $stmt = $this->conn->prepare("SELECT count(*) FROM BLOG_Page WHERE PageId = ?");
         $stmt->bindParam(1, $Id, PDO::PARAM_STR);
@@ -230,5 +232,18 @@ class Blog_Page
         return $mapArrayOfPageValues; // Retourne le tableau avec les valeurs de la requete
     }
 */
+    public function doesPageIdBelongToUser(mixed $idPost, mixed $UserId)
+    {
+        $stmt = $this->conn->prepare("SELECT count(*) FROM BLOG_Page WHERE PageId = ? AND UserId = ?");
+        $stmt->bindParam(1, $idPost, PDO::PARAM_STR);
+        $stmt->bindParam(2, $UserId, PDO::PARAM_STR);
+        $stmt->execute();
+        $count = $stmt->fetchColumn();
+        return $count > 0;
+    }
+
+    public function update_img(mixed $idPost, $newImg)
+    {
+    }
 
 }

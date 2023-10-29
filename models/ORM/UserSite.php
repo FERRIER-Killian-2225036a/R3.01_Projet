@@ -160,7 +160,7 @@ class UserSite
     }
 
     // ----------- UTILITAIRE ------------
-    private function isUserExists($mail_a, $pseudo_a): bool
+    public function isUserExists($mail_a, $pseudo_a): bool
     {
         //FONCTIONNE CORRECTEMENT
 
@@ -173,7 +173,7 @@ class UserSite
         //echo $count > 0;
         return $count > 0;
     }
-    private function isPseudoUse($pseudo_a): bool
+    public function isPseudoUse($pseudo_a): bool
     {
         //FONCTIONNE CORRECTEMENT
 
@@ -197,7 +197,7 @@ class UserSite
         //echo $count > 0;
         return $count > 0;
     }
-    private function isEmailUse($mail_a): bool
+    public function isEmailUse($mail_a): bool
     {
         //FONCTIONNE CORRECTEMENT
 
@@ -285,7 +285,7 @@ class UserSite
             return $e;
         }
     }
-    private function incrementNumberOfAction($CurrentUserId): bool|ExceptionsDatabase
+    public function incrementNumberOfAction($CurrentUserId): bool|ExceptionsDatabase
     {
 
         try {
@@ -305,7 +305,7 @@ class UserSite
         }
 
     }
-    private function incrementAlertLevelUser($CurrentUserId): bool|ExceptionsDatabase
+    public function incrementAlertLevelUser($CurrentUserId): bool|ExceptionsDatabase
     {
         try {
             if (!$this->isUserIDExists($CurrentUserId)) {

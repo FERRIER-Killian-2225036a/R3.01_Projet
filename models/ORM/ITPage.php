@@ -84,7 +84,7 @@ class ITPage
         return $mapArrayOfUserValues; // Retourne le tableau avec les valeurs de la requete
     }
 
-    private function isArticleIdExist($Id)
+    public function isArticleIdExist($Id)
     {
         $stmt = $this->conn->prepare("SELECT COUNT(*) FROM IT_Article WHERE ArticleId = ?");
         $stmt->bindParam(1, $Id, PDO::PARAM_STR);

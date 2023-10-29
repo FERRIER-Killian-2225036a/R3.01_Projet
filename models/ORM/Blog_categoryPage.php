@@ -36,7 +36,7 @@ public function __construct()
 
     }
 
-    private function linkBetweenCategoryAndPageExist($cat_id, $page_id)
+    public function linkBetweenCategoryAndPageExist($cat_id, $page_id)
     {
         $stmt = $this->conn->prepare("SELECT count(*) FROM BLOG_categoryPage WHERE CategoryId = ? AND PageId = ?");
         $stmt->bindParam(1, $cat_id, PDO::PARAM_STR);
@@ -44,6 +44,20 @@ public function __construct()
         $stmt->execute();
         $count = $stmt->fetchColumn();
         return $count > 0;
+    }
+
+    public function getCategoryByPageId(mixed $idPost)
+    {
+        $stmt = $this->conn->prepare("SELECT CategoryId FROM BLOG_categoryPage WHERE PageId = ?");
+        $stmt->bindParam(1, $idPost, PDO::PARAM_STR);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        $arrayOfCategoryId = array();
+        foreach ($result as $row){
+            array_push($arrayOfCategoryId,(new Blog_Category())->getCategoryById($row['CategoryId']));
+        }
+        return $arrayOfCategoryId;
     }
 
 }
