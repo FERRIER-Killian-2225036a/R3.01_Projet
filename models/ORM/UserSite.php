@@ -479,7 +479,7 @@ class UserSite
                 throw new ExceptionsDatabase("User status not valid");
             }
             $this->remove_picture($CurrentUserId);
-            $hashId= hash_hmac("sha256", $CurrentUserId, Constants::PEPPER);
+            $hashId= hash_hmac("sha256", $CurrentUserId, Constants::$PEPPER);
             $account_name = "Deleted_User_".$hashId;
             $mail_name = $account_name."@cyphub.tech"; // reflechir a si on change le mail ou
             // pas pour permettre un restoration de compte
@@ -510,7 +510,7 @@ class UserSite
 
     public function checkPassword(int $UserId, string $oldPassword)
     {
-        $pwd_peppered = hash_hmac("sha256", $oldPassword, Constants::PEPPER);
+        $pwd_peppered = hash_hmac("sha256", $oldPassword, Constants::$PEPPER);
 
         $stmt2 = $this->conn->prepare("SELECT Password FROM PASSWORD WHERE UserId = ?");
         $stmt2->bindParam(1, $UserId, PDO::PARAM_INT);

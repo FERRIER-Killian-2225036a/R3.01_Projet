@@ -67,7 +67,7 @@ class PictureVerificator
                 // Vérification de la sécurité avec Google Cloud Vision
                 $imageContent = file_get_contents($targetPath);
                 //error_log('usage api');
-                $url = 'https://vision.googleapis.com/v1/images:annotate?key=' . Constants::API_KEY_GOOGLE_VISION;
+                $url = 'https://vision.googleapis.com/v1/images:annotate?key=' . Constants::$API_KEY_GOOGLE_VISION;
 
                 $requestData = ['requests' => [['image' => ['content' => base64_encode($imageContent)],
                     'features' => [['type' => 'SAFE_SEARCH_DETECTION']]]]];

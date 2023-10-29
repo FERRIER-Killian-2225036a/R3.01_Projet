@@ -40,7 +40,7 @@ class DBBrain
     public function argonifiedPassword($password_a): string
     {
         // on ajoute un poivre
-        $pwd_peppered = hash_hmac("sha256", $password_a, Constants::PEPPER);
+        $pwd_peppered = hash_hmac("sha256", $password_a, Constants::$PEPPER);
         // on utilise l'algo de hachage ARGON2ID
         $options = [ // configuration minimale recommandé par OWASP TOP 10 (cheat sheet)
             'memory_cost' => 65536, // 19 MiB en kibibytes (1024 * 19)
