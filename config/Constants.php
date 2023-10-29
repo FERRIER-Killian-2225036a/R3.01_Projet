@@ -15,13 +15,13 @@ final class Constants
     const DECONNEXION_TIME = 86400;
     const PICTURE_URL_DEFAULT = "/media/public_assets/imageTest.jpeg";
     const PDP_URL_DEFAULT = "/media/users/Profil.png";
-    const PEPPER = "mjOlvxisvFdxMDpecFwc1d";
     const MAIL_FROM_EMAIL = "noreply@cyphub.tech";
 
-    const API_KEY_GOOGLE_VISION = "AIzaSyBNrZVaFRcSEXqlE1qEDFQO5Y_2AJ3HVCY";
     public static $BDD_PASSWORD = '';
     public static $DB; // TODO : mettre une image par défaut
+    public static mixed $API_KEY_GOOGLE_VISION;
 
+    public static mixed $PEPPER;
     public static function coreDirectory(): string
     {
         return self::rootDirectory() . self::CORE_DIRECTORY;
@@ -70,7 +70,6 @@ final class Constants
         $chemin_pwd_bdd = dirname(__FILE__, 2) . "/../CONSTANTES_MDP.txt";
         if (file_exists($chemin_pwd_bdd)) {
             $mot_de_passe = file_get_contents($chemin_pwd_bdd);
-            // Assurez-vous de nettoyer ou valider le mot de passe lu depuis le fichier, par exemple, en utilisant trim() ou d'autres validations.
             Constants::setBDDPASSWORD($mot_de_passe);
             Constants::setDB(array(
                 "dbname" => "cyphubte_db",
@@ -78,6 +77,16 @@ final class Constants
                 "usr" => "cyphubte_normal_user",
                 "pwd" => Constants::$BDD_PASSWORD, // TODO on changera le mot de passe quand ce sera en prod, (mot de passe temporaire)
                 "charset" => "utf8mb4"));
+        }
+        $chemin_apiKey = dirname(__FILE__, 2) . "/../APIKEY.txt";
+        if (file_exists($chemin_apiKey)) {
+            $API = file_get_contents($chemin_apiKey);
+            Constants::setApiKey($API);
+        }
+        $chemin_pepper = dirname(__FILE__, 2) . "/../PEPPER.txt";
+        if (file_exists($chemin_pepper)) {
+            $Pepper = file_get_contents($chemin_pepper);
+            Constants::setPepper($Pepper);
         }
 
     }
@@ -90,6 +99,14 @@ final class Constants
     public static function setDB($DB): void
     {
         self::$DB = $DB;
+    }
+    public static function setPepper($Pepper): void
+    {
+        self::$PEPPER = $Pepper;
+    }
+    public static function setApiKey($ApiKey): void
+    {
+        self::$API_KEY_GOOGLE_VISION = $ApiKey;
     }
 }
 
