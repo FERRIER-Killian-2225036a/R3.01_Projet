@@ -7,7 +7,8 @@ class ControllerMenu
         header("Location: /");
         exit;
     }
-    public function ActualityFeedAction(Array $A_parametres = null, Array $A_postParams = null): void
+
+    public function ActualityFeedAction(array $A_parametres = null, array $A_postParams = null): void
     {
         //print_r($A_parametres);
         //print_r($A_postParams);
@@ -22,11 +23,12 @@ class ControllerMenu
         }
 
         foreach ($ArrayOfITPageModel as $obj) {
-            MotorView::show('menu/actualityFeed', array("actualityTitle"=>$obj->getTitle(), "actualityContent"=>$obj->getContent(), "actualityAuthor"=>$obj->getAuthor(), "actualityDate"=>$obj->getDate(), "actualityUrlPicture"=>$obj->getUrlPicture(), "actualityLien"=>$obj->getLien()));
+            MotorView::show('menu/actualityFeed', array("actualityTitle" => $obj->getTitle(), "actualityContent" => $obj->getContent(), "actualityAuthor" => $obj->getAuthor(), "actualityDate" => $obj->getDate(), "actualityUrlPicture" => $obj->getUrlPicture(), "actualityLien" => $obj->getLien()));
         }
 
     }
-    public function BlogFeedAction(Array $A_parametres = null, Array $A_postParams = null): void
+
+    public function BlogFeedAction(array $A_parametres = null, array $A_postParams = null): void
     {
         // TODO : récupérer les paramètres (afin de charger d'autres Blogs)
         //la requete ressemble à : GET /Menu/BlogFeed/More
@@ -49,10 +51,13 @@ class ControllerMenu
         }
 
         foreach ($ArrayOfBlogPageModel as $obj) {
-            MotorView::show('menu/blogFeed', array("blogTitle"=>$obj->getTitle(), "blogContent"=>$obj->getContent(), "blogAuthor"=>$obj->getAuthor(), "blogDate"=>$obj->getDate(), "blogUrlPicture"=>$obj->getUrlPicture() )); // plus tard il faudra mettre si l'user a bien liké ou non
+            if ($obj->getStatusP() == "active") {
+                MotorView::show('menu/blogFeed', array("blogTitle" => $obj->getTitle(), "blogContent" => $obj->getContent(), "blogAuthor" => $obj->getAuthor(), "blogDate" => $obj->getDate(), "blogUrlPicture" => $obj->getUrlPicture())); // plus tard il faudra mettre si l'user a bien liké ou non
+            }
         }
     }
-    public function ForumFeedAction(Array $A_parametres = null, Array $A_postParams = null): void
+
+    public function ForumFeedAction(array $A_parametres = null, array $A_postParams = null): void
     {
         // TODO : récupérer les paramètres (afin de charger d'autres Forums)
         //la requete ressemble à : GET /Menu/ForumFeed/More
