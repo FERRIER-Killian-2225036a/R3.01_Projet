@@ -1,8 +1,9 @@
 <link rel="stylesheet" href="../../common_styles/menu.css">
 <main class="container p-5">
     <div class="p-3">
-        <div class="btn bg-body-tertiary round background grow-button" role="button">
-            <a href="<?php echo $mapView['blogPostUrl'] ?>">
+        <a href="<?php echo $mapView['blogPostUrl'] ?>">
+
+            <div class="btn bg-body-tertiary round background grow-button" role="button">
                 <img src="<?php echo $mapView['blogUrlPicture'] ?>" alt="Logo" class="responsive-image round p-1">
                 <div class="text-content">
                     <h1 class="responsiveTitle"><?php echo $mapView['blogTitle'] ?></h1>
@@ -23,8 +24,9 @@
                         </div>
                     </div>
                 </div>
-            </a>
-        </div>
+
+            </div>
+        </a>
     </div>
     <script src="../../common_scripts/maxTextSize.js"></script>
 </main>
