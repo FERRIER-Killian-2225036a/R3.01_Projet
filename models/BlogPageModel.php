@@ -81,6 +81,9 @@ class BlogPageModel
         $this->dateP = $arrayOfValues['dateP'];
         $this->NumberOfLikes = $arrayOfValues['NumberOfLikes'];
         $this->UrlPicture = $arrayOfValues['UrlPicture'];
+        if ( $this->UrlPicture == null || $this->UrlPicture == ""){ // TODO ou si la photo n'existe pas sur le serveur ?
+            $this->UrlPicture =Constants::PICTURE_URL_DEFAULT;
+        }
         $this->statusP = $arrayOfValues['statusP'];
         $this->PostUrl = "/Post/Blog/".$this->PageId;
         $this->PostEditUrl = "/Post/BlogEdit/".$this->PageId;

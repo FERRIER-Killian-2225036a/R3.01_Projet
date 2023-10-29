@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="../../common_styles/menu.css">
 <main class="container p-5">
     <div class="p-3">
-        <a href="<?php echo $mapView['blogPostUrl'] ?>" class="btn bg-body-tertiary round background grow-button" role="button">
+        <a class="btn bg-body-tertiary round background grow-button" role="button" href="<?php echo $mapView['blogPostUrl'] ?>">
             <img src="<?php echo $mapView['blogUrlPicture'] ?>" alt="Logo" class="responsive-image round p-1">
             <div class="text-content">
                 <h1 class="responsiveTitle" ><?php echo $mapView['blogTitle'] ?></h1>

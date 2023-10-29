@@ -6,7 +6,7 @@
                        target="_blank">
                         <div class="d-flex justify-content-center mb-2">
                             <img src="<?php echo $mapView['blogUrlPicture'] ?>" alt="Logo"
-                                 class="responsive-image-setting round p-1">blogPostEditUrl
+                                 class="responsive-image-setting round p-1">
                         </div>
                         <div class="text-content">
                             <h1 class="responsiveTitle"><?php echo $mapView['blogTitle'] ?></h1>
