@@ -189,7 +189,7 @@ class ControllerPost
             // on passe a la modification
             // on va donc update model blogPage, categoryPage, Category
             // sinon ca veut dire que c'est pas cohérent donc report
-        } elseif ($_SERVER["REQUEST_METHOD"] == "GET") {
+        } elseif (true)  // test //$_SERVER["REQUEST_METHOD"] == "GET") {
             if (SessionManager::isUserConnected()) {
 
                 if ($A_parametres == null || $A_parametres[0] == null) {
