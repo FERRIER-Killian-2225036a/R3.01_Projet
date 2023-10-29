@@ -185,7 +185,17 @@ class ControllerSettings
 
 
         MotorView::show('profileSettings/myPost');
-
+        $pageBlog = new Blog_Page();
+        $ArrayOf5IdByDate = $pageBlog->get5PagesByDate(null,$_SESSION["UserId"]);
+        $ArrayOfBlogPageModel = array();
+        foreach ($ArrayOf5IdByDate as $id) {
+            $ArrayOfBlogPageModel[] = new BlogPageModel($id);
+        }
+        foreach ($ArrayOfBlogPageModel as $obj) {
+            if ($obj->getStatusP()!="inactive"){
+                MotorView::show('pofileSettings/postBlog', array("blogTitle" => $obj->getTITLE(), "blogContent" => $obj->getContent(), "blogAuthor" => $obj->getAuthor(), "blogDate" => $obj->getDateP(), "blogUrlPicture" => $obj->getUrlPicture()));
+            }
+        }
 
         // recup requete, verif connexion + droits + propriétés
         // si la requete est une demande de modification de post, on va le rediriger selon l'identifiant de son poste
