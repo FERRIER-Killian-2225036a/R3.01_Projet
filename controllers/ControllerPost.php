@@ -12,7 +12,8 @@ class ControllerPost
         // $A_postParams["Content"] contient le contenu
         // $A_postParams["Tags"] contient la liste des tags séparé par des ,
 
-
+        print_r($A_parametres);
+        print_r($A_postParams);
         // si la methode de requete est post
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $post = new Blog_Page;
@@ -170,31 +171,12 @@ class ControllerPost
 
                             } else {
                                 (new UserSite())->incrementAlertLevelUser($_SESSION['UserId']);
-                                header("Location: /Post/Blog/" . $idPost);
+                                header ("Location: /Post/Blog/".$idPost);
                                 die();
                             }
                         }
                     }
-                }
-            } else {
-                // (new UserSite())->incrementAlertLevelUser($_SESSION['UserId']); //TODO changer systeme suspission sur couple ip / id  voir plus
-                header("Location: /");
-            }
-
-            //MotorView::show('post/viewBlogEdit');
-            // si la requete est, post/blogEdit sans rien derriere on a a faire a la création d'un nouveau post
-
-
-            // si la requete contient un identifiant on verifie qu'il est valide et cohérent,
-            // on passe a la modification
-            // on va donc update model blogPage, categoryPage, Category
-            // sinon ca veut dire que c'est pas cohérent donc report
-        } elseif (true)  // test //$_SERVER["REQUEST_METHOD"] == "GET") {
-            if (SessionManager::isUserConnected()) {
-
-                if ($A_parametres == null || $A_parametres[0] == null) {
-                    $post = new Blog_Page;
-
+                } else {
                     $newTitle = null;
                     $newContent = null;
                     $newTags = null;
@@ -279,15 +261,28 @@ class ControllerPost
                         }
 
 
-                    } catch
-                    (ExceptionsBlog $e) {
-                        //TODO on pensera a afficher un message d'erreur sur le site
-                        error_log($e->getMessage());
                     }
+            catch
+                (ExceptionsBlog $e) {
+                    //TODO on pensera a afficher un message d'erreur sur le site
+                    error_log($e->getMessage());
+                }
 
                 }
-            }
-
+        } else {
+            // (new UserSite())->incrementAlertLevelUser($_SESSION['UserId']); //TODO changer systeme suspission sur couple ip / id  voir plus
+            header("Location: /");
         }
+
+        //MotorView::show('post/viewBlogEdit');
+        // si la requete est, post/blogEdit sans rien derriere on a a faire a la création d'un nouveau post
+
+
+        // si la requete contient un identifiant on verifie qu'il est valide et cohérent,
+        // on passe a la modification
+        // on va donc update model blogPage, categoryPage, Category
+        // sinon ca veut dire que c'est pas cohérent donc report
     }
+}
+
 }
