@@ -39,7 +39,18 @@ class ControllerMenu
 
         // TODO : récuperer les params (tri) pour filtrer les résultats
         //la requete ressemble à :  POST /Menu/BlogFeed/Filter
-        MotorView::show('menu/blogFeed');
+
+        $page = new Blog_page;
+
+        $ArrayOf5IdByDate = $page->get5PagesByDate();
+        $ArrayOfBlogPageModel = array();
+        foreach ($ArrayOf5IdByDate as $id) {
+            $ArrayOfBlogPageModel[] = new BlogPageModel($id);
+        }
+
+        foreach ($ArrayOfBlogPageModel as $obj) {
+            MotorView::show('menu/blogFeed', array("blogTitle"=>$obj->getTitle(), "blogContent"=>$obj->getContent(), "blogAuthor"=>$obj->getAuthor(), "blogDate"=>$obj->getDate(), "blogUrlPicture"=>$obj->getUrlPicture() )); // plus tard il faudra mettre si l'user a bien liké ou non
+        }
     }
     public function ForumFeedAction(Array $A_parametres = null, Array $A_postParams = null): void
     {

@@ -176,4 +176,59 @@ class Blog_Page
             return $e;
         }
     }
+
+    public function getValuesById($Id)
+    {
+        $mapArrayOfPageValues = null;
+        try {
+            if (!$this->isPageIdExist($Id)) {
+                throw new ExceptionsDatabase("This page doesn't exist");
+            }
+
+            $stmt = $this->conn->prepare("SELECT * FROM BLOG_Page WHERE PageId = ?");
+            $stmt->bindParam(1, $Id, PDO::PARAM_STR);
+            $stmt->execute();
+            $mapArrayOfPageValues = $stmt->fetch(PDO::FETCH_ASSOC); // Stocke le résultat dans le tableau
+
+            $stmt->closeCursor();
+        } catch (ExceptionsDatabase $e) {
+            //echo $e->getMessage();
+            return $e;
+        }
+
+        return $mapArrayOfPageValues; // Retourne le tableau avec les valeurs de la requete
+    }
+
+    private function isPageIdExist($Id)
+    {
+        $stmt = $this->conn->prepare("SELECT count(*) FROM BLOG_Page WHERE PageId = ?");
+        $stmt->bindParam(1, $Id, PDO::PARAM_STR);
+        $stmt->execute();
+        $count = $stmt->fetchColumn();
+        return $count > 0;
+    }
+/*
+    public function getValuesByUserId(mixed $UserId)
+    {
+        $mapArrayOfPageValues = null;
+        try {
+            if (!(new UserSite)->isUserIDExists($UserId)) {
+                throw new ExceptionsDatabase("This user doesn't exist");
+            }
+
+            $stmt = $this->conn->prepare("SELECT * FROM BLOG_Page WHERE UserId = ?");
+            $stmt->bindParam(1, $UserId, PDO::PARAM_STR);
+            $stmt->execute();
+            $mapArrayOfPageValues = $stmt->fetch(PDO::FETCH_ASSOC); // Stocke le résultat dans le tableau
+
+            $stmt->closeCursor();
+        } catch (ExceptionsDatabase $e) {
+            //echo $e->getMessage();
+            return $e;
+        }
+
+        return $mapArrayOfPageValues; // Retourne le tableau avec les valeurs de la requete
+    }
+*/
+
 }

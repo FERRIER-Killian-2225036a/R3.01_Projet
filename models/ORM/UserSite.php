@@ -187,7 +187,7 @@ class UserSite
     }
 
 
-    private function isUserIDExists(int $id): bool
+    public function isUserIDExists(int $id): bool
     {
         $checkUserSQL = "SELECT COUNT(*) FROM USERSite WHERE UserId = ? ";
         $stmt = $this->conn->prepare($checkUserSQL);
