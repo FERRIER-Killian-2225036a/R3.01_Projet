@@ -93,12 +93,12 @@ class Blog_Page
         $arrayOfId = null;
         if ($date == null) {
             if ($UserId == null) {
-                $stmt = $this->conn->prepare("SELECT PageId FROM BLOG_Page ORDER BY dateP DESC LIMIT 5");
+                $stmt = $this->conn->prepare("SELECT DISTINCT PageId FROM BLOG_Page ORDER BY dateP DESC LIMIT 5");
                 $stmt->execute();
                 $arrayOfId = $stmt->fetchAll(PDO::FETCH_COLUMN); // Stocke le résultat dans le tableau
                 $stmt->closeCursor();
             } else {
-                $stmt = $this->conn->prepare("SELECT PageId FROM BLOG_Page WHERE UserId = ? ORDER BY dateP DESC LIMIT 5");
+                $stmt = $this->conn->prepare("SELECT DISTINCT PageId FROM BLOG_Page WHERE UserId = ? ORDER BY dateP DESC LIMIT 5");
                 $stmt->bindParam(1, $UserId, PDO::PARAM_STR);
                 $stmt->execute();
                 $arrayOfId = $stmt->fetchAll(PDO::FETCH_COLUMN); // Stocke le résultat dans le tableau
@@ -106,13 +106,13 @@ class Blog_Page
             }
         } else {
             if ($UserId == null) {
-                $stmt = $this->conn->prepare("SELECT PageId FROM BLOG_Page WHERE dateP < ? ORDER BY dateP DESC LIMIT 5");
+                $stmt = $this->conn->prepare("SELECT DISTINCT PageId FROM BLOG_Page WHERE dateP < ? ORDER BY dateP DESC LIMIT 5");
                 $stmt->bindParam(1, $date, PDO::PARAM_STR);
                 $stmt->execute();
                 $arrayOfId = $stmt->fetchAll(PDO::FETCH_COLUMN); // Stocke le résultat dans le tableau
                 $stmt->closeCursor();
             } else {
-                $stmt = $this->conn->prepare("SELECT PageId FROM BLOG_Page WHERE dateP < ? AND UserId = ? ORDER BY dateP DESC LIMIT 5");
+                $stmt = $this->conn->prepare("SELECT DISTINCT PageId FROM BLOG_Page WHERE dateP < ? AND UserId = ? ORDER BY dateP DESC LIMIT 5");
                 $stmt->bindParam(1, $date, PDO::PARAM_STR);
                 $stmt->bindParam(2, $UserId, PDO::PARAM_STR);
                 $stmt->execute();

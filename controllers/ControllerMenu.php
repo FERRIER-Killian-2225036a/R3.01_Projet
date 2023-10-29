@@ -46,6 +46,7 @@ class ControllerMenu
 
         $ArrayOf5IdByDate = $page->get5PagesByDate();
         $ArrayOfBlogPageModel = array();
+        error_log(print_r($ArrayOf5IdByDate));
         foreach ($ArrayOf5IdByDate as $id) {
             $ArrayOfBlogPageModel[] = new BlogPageModel($id);
         }
