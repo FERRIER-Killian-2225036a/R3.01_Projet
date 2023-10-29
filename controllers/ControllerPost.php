@@ -171,7 +171,7 @@ class ControllerPost
 
                             } else {
                                 (new UserSite())->incrementAlertLevelUser($_SESSION['UserId']);
-                                header ("Location: /Post/Blog/".$idPost);
+                                header("Location: /Post/Blog/" . $idPost);
                                 die();
                             }
                         }
@@ -261,28 +261,27 @@ class ControllerPost
                         }
 
 
+                    } catch
+                    (ExceptionsBlog $e) {
+                        //TODO on pensera a afficher un message d'erreur sur le site
+                        error_log($e->getMessage());
                     }
-            catch
-                (ExceptionsBlog $e) {
-                    //TODO on pensera a afficher un message d'erreur sur le site
-                    error_log($e->getMessage());
-                }
 
                 }
-        } else {
-            // (new UserSite())->incrementAlertLevelUser($_SESSION['UserId']); //TODO changer systeme suspission sur couple ip / id  voir plus
-            header("Location: /");
+            } else {
+                // (new UserSite())->incrementAlertLevelUser($_SESSION['UserId']); //TODO changer systeme suspission sur couple ip / id  voir plus
+                header("Location: /");
+            }
+
+            // si la requete est, post/blogEdit sans rien derriere on a a faire a la création d'un nouveau post
+
+
+            // si la requete contient un identifiant on verifie qu'il est valide et cohérent,
+            // on passe a la modification
+            // on va donc update model blogPage, categoryPage, Category
+            // sinon ca veut dire que c'est pas cohérent donc report
         }
 
-        //MotorView::show('post/viewBlogEdit');
-        // si la requete est, post/blogEdit sans rien derriere on a a faire a la création d'un nouveau post
-
-
-        // si la requete contient un identifiant on verifie qu'il est valide et cohérent,
-        // on passe a la modification
-        // on va donc update model blogPage, categoryPage, Category
-        // sinon ca veut dire que c'est pas cohérent donc report
+        MotorView::show('post/viewBlogEdit');
     }
-}
-
 }
