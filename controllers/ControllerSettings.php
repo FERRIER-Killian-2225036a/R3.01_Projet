@@ -178,7 +178,21 @@ class ControllerSettings
 
     public function MyPostAction(): void
     {
+
+
+        // on va recupere du model les blogs (plus tard les forums)
+        // d'un membre selon son identifiant et les afficher sur sa page,
+
+
         MotorView::show('profileSettings/myPost');
+
+
+        // recup requete, verif connexion + droits + propriétés
+        // si la requete est une demande de modification de post, on va le rediriger selon l'identifiant de son poste
+        // on aura donc notre logique de controlleur dans /Post/blog(ou forum)Edit
+
+        // si la requete est une demande de changement de visibilité, on va changer la visibilité du model blogPage apres verif
+
     }
 
     public function SupportAction(): void
