@@ -40,7 +40,7 @@ class ControllerMenu
         // TODO : récuperer les params (tri) pour filtrer les résultats
         //la requete ressemble à :  POST /Menu/BlogFeed/Filter
 
-        $page = new Blog_page;
+        $page = new Blog_Page;
 
         $ArrayOf5IdByDate = $page->get5PagesByDate();
         $ArrayOfBlogPageModel = array();
