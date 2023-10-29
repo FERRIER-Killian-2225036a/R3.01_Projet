@@ -12,6 +12,17 @@ class BlogPageModel
     private $NumberOfLikes;
     private $UrlPicture;
     private $statusP;
+    private $PostUrl;
+    private $PostEditUrl;
+
+    public function getPostUrl(): mixed
+    {
+        return $this->PostUrl;
+    }
+    public function getPostEditUrl(): mixed
+    {
+        return $this->PostEditUrl;
+    }
 
     public function getPageId(): mixed
     {
@@ -71,6 +82,8 @@ class BlogPageModel
         $this->NumberOfLikes = $arrayOfValues['NumberOfLikes'];
         $this->UrlPicture = $arrayOfValues['UrlPicture'];
         $this->statusP = $arrayOfValues['statusP'];
+        $this->PostUrl = "/Post/Blog/".$this->PageId;
+        $this->PostEditUrl = "/Post/BlogEdit/".$this->PageId;
     }
 
 
