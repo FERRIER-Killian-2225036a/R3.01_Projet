@@ -17,9 +17,9 @@ class ControllerPost
         // $A_postParams["Tags"] contient la liste des tags séparé par des ,
 
         print_r($A_parametres);
-        error_log("DEBUG : url résiduel : ".$A_parametres);
+        error_log("DEBUG : url résiduel : ".print_r($A_parametres,true));
         print_r($A_postParams);
-        error_log("DEBUG : params posts : ".$A_postParams);
+        error_log("DEBUG : params posts : ".print_r($A_postParams,true));
         // si la methode de requete est post
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $post = new Blog_Page;
