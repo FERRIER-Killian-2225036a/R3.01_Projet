@@ -219,23 +219,15 @@ class ControllerPost
                                 // ensuite on traite les categories
                                 $CategoryPageFormOrm = new Blog_categoryPage();
                                 if ($newTags != null && empty($newTags)) { // on apporte une modifs aux tags en suppression
-                                    $idTags = ($CategoryPageFormOrm)->getCategoryByPageId($idPost);
+                                    $idTags = $CategoryPageFormOrm->getCategoryByPageId($idPost);
                                     foreach ($idTags as $idtag) {
-                                        ($CategoryPageFormOrm)->removeLinkBetweenCategoryAndPage($idtag, $idPost);
+                                        $CategoryPageFormOrm->removeLinkBetweenCategoryAndPage($idtag, $idPost);
                                     }
                                 } else if (!empty($newTags)) { // on a de potentiels modifications dans les tags
                                     foreach ($newTags as $tag) { //TODO faut remove si y'en a qui ont changé
-                                        if ((new Blog_Category())->doesCategoryExist($tag) == false) {
-                                            $id = (new Blog_Category())->createCategory($tag);
-                                            // on link la page au nouvel id.
-                                            error_log("DEBUG Crash  :".$id.$tag.$idPost);
-                                            ($CategoryPageFormOrm)->createLinkBetweenCategoryAndPage($id, $idPost);
-                                        } else {
-                                            $id = (new Blog_Category())->getCategoryByLabel($tag);
-                                            if (($CategoryPageFormOrm)->linkBetweenCategoryAndPageExist($id, $idPost) == false) {
-                                                ($CategoryPageFormOrm)->createLinkBetweenCategoryAndPage($id, $idPost);
-                                            }
-                                        }
+                                        $id = (new Blog_Category())->createCategory($tag); // renvoi l'id de la nouvelle/existante page
+                                        error_log("DEBUG Crash  :" . $id . $tag . $idPost);
+                                        $CategoryPageFormOrm->createLinkBetweenCategoryAndPage($id, $idPost);// on link la page au nouvel id.
                                     }
                                 }
 
