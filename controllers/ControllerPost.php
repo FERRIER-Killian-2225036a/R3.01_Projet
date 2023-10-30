@@ -230,7 +230,8 @@ class ControllerPost
                                 else { // on a de potentiels modifications dans les tags
                                     foreach ($newTags as $tag) { //TODO faut remove si y'en a qui ont changé
                                         $id = (new Blog_Category())->createCategory($tag); // renvoi l'id de la nouvelle/existante page
-                                        error_log("est ce que id == false ? :".$id == false);
+                                        error_log("label of id $id " .(new Blog_Category())->getCategoryById($id));
+                                        error_log("est ce que id == false ? :". $id == false);
                                         error_log("DEBUG Crash  idCat :" . $id ." label ". $tag ." idPost". $idPost);
                                         $CategoryPageFormOrm->createLinkBetweenCategoryAndPage($id, $idPost);// on link la page au nouvel id.
                                     }
