@@ -96,30 +96,33 @@ class ControllerPost
 
                                 if (isset($A_postParams["Title"])) {
                                     $title = $A_postParams["Title"];
-                                    if ($title !== $existingPost->getTitle() && $title != "" && $title !== null) {
+                                    $title = htmlspecialchars($title);
+                                    if ($title !== $existingPost->getTitle() && $title != "" && $title != null) {
                                         $newTitle = $title;
                                     }
                                 }
                                 if (isset($A_postParams["Content"])) {
                                     $content = $A_postParams["Content"];
-                                    //$escapedContent = htmlspecialchars($content); // j'enleve le nettoyage d'input
+                                    $escapedContent = htmlspecialchars($content); // j'enleve le nettoyage d'input
                                     // car PDO est déjà en train d'empecher les injections sql.
                                     // deplus il détruit les symboles spéciaux, type ' é à ...
                                     // on pourra penser dans le futur faire un moteur de blog ou on peut comme sur
                                     // notion ajouté des blogs de code, des images , des liens ...
 
-                                    if ($content !== $existingPost->getContent() && $content != "") {
-                                        $newContent = $content;
+                                    if ($escapedContent !== $existingPost->getContent() && $escapedContent != "") {
+                                        $newContent = $escapedContent;
                                     }
                                 }
                                 if (isset($A_postParams["Tags"])) {
                                     $tags = $A_postParams["Tags"];
+                                    $tags = htmlspecialchars($tags);
+
                                     $realTagsId = $existingPost->getTags();
                                     $realTags[] = null;
                                     foreach ($realTagsId as $id) {
                                         $realTags[] = (new Blog_Category())->getCategoryById($id);
                                     }
-                                    if ($tags !== $realTags && $tags != "" && $tags !== null) {
+                                    if ($tags != $realTags && $tags != "" && $tags != null) {
                                         $arrayOfTags = explode(",", $tags);
                                         $newTags = $arrayOfTags;
                                     }
@@ -231,17 +234,14 @@ class ControllerPost
 
                     if (isset($A_postParams["Title"])) {
                         $title = $A_postParams["Title"];
+                        $title = htmlspecialchars($title);
                         if ( $title != "" && $title != null) {
                             $newTitle = $title;
                         }
                     }
                     if (isset($A_postParams["Content"])) {
                         $content = $A_postParams["Content"];
-                        //$escapedContent = htmlspecialchars($content); // j'enleve le nettoyage d'input
-                        // car PDO est déjà en train d'empecher les injections sql.
-                        // deplus il détruit les symboles spéciaux, type ' é à ...
-                        // on pourra penser dans le futur faire un moteur de blog ou on peut comme sur
-                        // notion ajouté des blogs de code, des images , des liens ...
+                        $content = htmlspecialchars($content); 
 
                         if ($content != "") {
                             $newContent = $content;
@@ -249,6 +249,7 @@ class ControllerPost
                     }
                     if (isset($A_postParams["Tags"])) {
                         $tags = $A_postParams["Tags"];
+                        $tags = htmlspecialchars($tags);
                         if ($tags != "" && $tags != null) {
                             $arrayOfTags = explode(",", $tags);
                             $newTags = $arrayOfTags;
@@ -267,7 +268,9 @@ class ControllerPost
                             $_SESSION['Username'],
                             $_SESSION['UserId']);
                         if (!$idNewPost instanceof Exception && $idNewPost !== false) //todo mettre le bon type de class
-
+                        {
+                            throw new ExceptionsBlog($idNewPost); // erreur survenue lors de la création
+                        }
                             // et la on va update l'image
 
                             // on doit recuperer l'id du post pour pouvoir creer le dossier
@@ -314,12 +317,11 @@ class ControllerPost
                     } catch
                     (ExceptionsBlog $e) {
                         error_log($e->getMessage());
-                        //TODO on pensera a afficher un message d'erreur sur le site
+                        // TODO on pensera a afficher un message d'erreur sur le site
                         // TODO fonction javascript pour empecher submit coté client si titre null
                         header("Location: /Settings/MyPost");
                         die();
                     }
-
                 }
             } else {
                 // (new UserSite())->incrementAlertLevelUser($_SESSION['UserId']); //TODO changer systeme suspission sur couple ip / id  voir plus
