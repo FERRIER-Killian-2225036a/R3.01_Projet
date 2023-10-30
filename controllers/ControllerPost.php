@@ -228,7 +228,7 @@ class ControllerPost
                                         if ((new Blog_Category())->doesCategoryExist($tag) == false) {
                                             $id = (new Blog_Category())->createCategory($tag);
                                             // on link la page au nouvel id.
-                                            error_log("DEBUG Crash  :".$id.$tag.$$idPost);
+                                            error_log("DEBUG Crash  :".$id.$tag.$idPost);
                                             (new Blog_categoryPage())->createLinkBetweenCategoryAndPage($id, $idPost);
                                         } else {
                                             $id = (new Blog_Category())->getCategoryByLabel($tag);
