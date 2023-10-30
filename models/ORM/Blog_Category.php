@@ -26,11 +26,11 @@ class Blog_Category
             $stmt = $this->conn->prepare("INSERT INTO BLOG_Category (label,description) VALUES (?,?)");
             $stmt->bindParam(1, $label);
             $stmt->bindParam(2, $description);
-            return $this->createCategory($label); // recursivité pour revenir au premier if; c'est pas forcement utile
-            // mais c'est stylé & un easter egg
+            return $this->conn->lastInsertId();
+            // l'easter egg recursif était une mauvaise idée, note a moi meme ne plus refaire
             // on renvoi l'id de la category
         }
-    }
+    }   
 
     public function doesCategoryExist($label)
     {
