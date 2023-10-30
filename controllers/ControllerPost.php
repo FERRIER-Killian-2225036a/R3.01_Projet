@@ -220,13 +220,13 @@ class ControllerPost
                                 // ensuite on traite les categories
                                 $CategoryPageFormOrm = new Blog_categoryPage();
                                 error_log("DEBUG BEFORE INSERT TAG" );
-                                error_log("new tag potentielement null ou array :". $newTags);
+                                error_log("new tag potentielement null ou array :". print_r($newTags,true));
                                 if (empty($newTags)) { // on apporte une modifs aux tags en suppression
                                     $idTags = $CategoryPageFormOrm->getCategoryByPageId($idPost);
                                     foreach ($idTags as $idtag) {
                                         $CategoryPageFormOrm->removeLinkBetweenCategoryAndPage($idtag, $idPost);
                                     }
-                                } 
+                                }
                                 else { // on a de potentiels modifications dans les tags
                                     foreach ($newTags as $tag) { //TODO faut remove si y'en a qui ont changé
                                         $id = (new Blog_Category())->createCategory($tag); // renvoi l'id de la nouvelle/existante page
