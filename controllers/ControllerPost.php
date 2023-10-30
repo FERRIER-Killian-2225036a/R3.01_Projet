@@ -18,9 +18,9 @@ class ControllerPost
         // $A_postParams["Tags"] contient la liste des tags séparé par des ,
 
 
-        print_r($A_parametres);
+        //print_r($A_parametres);
         //error_log("DEBUG : url résiduel : " . print_r($A_parametres, true));
-        print_r($A_postParams);
+        //print_r($A_postParams);
         //error_log("DEBUG : params posts : " . print_r($A_postParams, true));
 
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -233,6 +233,8 @@ class ControllerPost
                                         $CategoryPageFormOrm->createLinkBetweenCategoryAndPage($id, $idPost);// on link la page au nouvel id.
                                     }
                                 }
+                                header("Location: /Settings/MyPost");
+                                die();
 
                             } else {
                                 (new UserSite())->incrementAlertLevelUser($_SESSION['UserId']);
@@ -323,8 +325,8 @@ class ControllerPost
                                 $CategoryPageFormOrm->createLinkBetweenCategoryAndPage($id, $idNewPost);// on link la page au nouvel id.
                             }
                         }
-                        //MotorView::show('post/viewBlogEdit');
-
+                        header("Location: /Settings/MyPost");
+                        die();
 
                     } catch
                     (ExceptionsBlog $e) {
