@@ -4,6 +4,7 @@ class ControllerPost
 {
     public function BlogEditAction(array $A_parametres = null, array $A_postParams = null): void
     {
+        error_log("DEBUGING ============================");
         //TODO on poura potentiellement ameliorer le filtre / modération input
         // en plus de cela il faudra avoir un max de catégories pour les tags
 
@@ -18,9 +19,9 @@ class ControllerPost
 
 
         print_r($A_parametres);
-        error_log("DEBUG : url résiduel : " . print_r($A_parametres, true));
+        //error_log("DEBUG : url résiduel : " . print_r($A_parametres, true));
         print_r($A_postParams);
-        error_log("DEBUG : params posts : " . print_r($A_postParams, true));
+        //error_log("DEBUG : params posts : " . print_r($A_postParams, true));
 
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             // on va devoir determiner si on a faire a une modification ou une création
@@ -42,6 +43,7 @@ class ControllerPost
                 $post = new Blog_Page;
                 if ($post->doesPageIdExist($idPost)) { // on procede donc a la verification de si l'identifiant est attribué
                     if ($post->doesPageIdBelongToUser($idPost, $_SESSION['UserId'])) {
+                        error_log("cas d'affichage pour modification");
                         // la page appartient bien au user, on va donc pouvoir l'afficher, en complétant
                         // les différents champs d'input avec les informations déjà présente dans la bdd.
                         $existingPost = new BlogPageModel($idPost); // on crée un nouvelle objet qui contient les
@@ -51,10 +53,13 @@ class ControllerPost
                         $img = $existingPost->getUrlPicture();
                         $TempTags = $existingPost->getTags();
                         // transformation de la liste d'identifiant de tag, en un string sous forme de label1,label2,label3
+                        error_log("tempTags : ".print_r($TempTags,true));
                         $TempTagsLabel = array();
                         foreach ($TempTags as $tags) {
                             $TempTagsLabel[] = (new Blog_Category())->getCategoryById($tags);
                         }
+                        error_log("tempTagsLabel : ".print_r($TempTagsLabel,true));
+
                         $tagsStringForInput = "";
                         foreach ($TempTagsLabel as $tags) {
                             $tagsStringForInput .= $tags . ",";
@@ -72,6 +77,8 @@ class ControllerPost
 
             } else {
                 // cas d'affichage création d'un nouveau blog
+                error_log("cas d'affichage pour création");
+
                 MotorView::show('post/viewBlogEdit');
             }
 
@@ -83,9 +90,6 @@ class ControllerPost
             $post = new Blog_Page;
 
             if (SessionManager::isUserConnected()) { //verification que le client est connecté
-                error_log("DEBUG ON RENTRE JAMAIS ICI CEST PAS NORMAL " . !empty($A_parametres) && $A_parametres[0] !== null);
-                error_log("DEBUG : url résiduel : " . print_r($A_parametres, true));
-                error_log($A_parametres[0]);
 
                 if (!empty($A_parametres) && $A_parametres[0] !== null) { // si l'url a un identifiant ex : /post/blogEdit/1
                     $idPost = filter_var($A_parametres[0], FILTER_VALIDATE_INT); // on recupere l'identifiant dans l'url
@@ -241,6 +245,8 @@ class ControllerPost
                         }
                     }
                 } else {
+                    error_log("debug : on est dans le cas de création d'un post");
+
                     $newTitle = null;
                     $newContent = null;
                     $newTags = null;
