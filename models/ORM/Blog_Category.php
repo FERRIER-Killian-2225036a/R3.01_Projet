@@ -45,12 +45,12 @@ class Blog_Category
     public function getCategoryById($id)
     {
         if ($this->doesCategoryIdExist($id)) {
-            $stmt = $this->conn->prepare("SELECT CategoryId FROM BLOG_Category WHERE CategoryId = ?");
+            $stmt = $this->conn->prepare("SELECT label FROM BLOG_Category WHERE CategoryId = ?");
             $stmt->bindParam(1, $id, PDO::PARAM_STR);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $stmt->closeCursor();
-            error_log(print_r($result,true));
+            //error_log(print_r($result,true));
             return $result['label'];
         } else return false;
         // renvoie le label d'une category selon son identifiant
