@@ -14,7 +14,7 @@ class Blog_categoryPage
     public function createLinkBetweenCategoryAndPage($cat_id, $page_id): void
     {
         //nouveau tuple dans la bdd dans table categoryPage
-        if (!$this->linkBetweenCategoryAndPageExist($cat_id, $page_id)) {
+        if (!$this->linkBetweenCategoryAndPageExist($cat_id, $page_id ) && $this->NumberOfLinkBtwnCatAndPage($cat_id,$page_id) < 3) {
             $sql = "INSERT INTO BLOG_categoryPage (PageId, CategoryId) VALUES (?,?)";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(1, $page_id, PDO::PARAM_STR);
@@ -37,7 +37,6 @@ class Blog_categoryPage
             $stmt->execute();
             $stmt->closeCursor();
         }
-
     }
 
     public function linkBetweenCategoryAndPageExist($cat_id, $page_id)
@@ -59,9 +58,26 @@ class Blog_categoryPage
         $stmt->closeCursor();
         $arrayOfCategoryId = array();
         foreach ($result as $row) {
-            array_push($arrayOfCategoryId, (new Blog_Category())->getCategoryById($row['CategoryId']));
+            $arrayOfCategoryId[] = (new Blog_Category())->getCategoryById($row['CategoryId']);
         }
         return $arrayOfCategoryId;
     }
 
+    public function NumberOfLinkBtwnCatAndPage($cat_id, $page_id)
+    { // on renvoie le nombre de catégorie
+        $stmt = $this->conn->prepare("SELECT count(*) FROM BLOG_categoryPage WHERE CategoryId = ? AND PageId = ?");
+        $stmt->bindParam(1, $cat_id, PDO::PARAM_STR);
+        $stmt->bindParam(2, $page_id, PDO::PARAM_STR);
+        $stmt->execute();
+        $count = $stmt->fetchColumn();
+        return $count;
+    }
+    public function removeAllLinkBetweenCategoryAndPage($page_id){
+        $sql = "DELETE FROM BLOG_categoryPage WHERE PageId = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(1, $page_id, PDO::PARAM_STR);
+        $stmt->execute();
+        $stmt->closeCursor();
+
+    }
 }

@@ -193,7 +193,14 @@ class ControllerSettings
         }
         foreach ($ArrayOfBlogPageModel as $obj) {
             if ($obj->getStatusP()!="inactive"){ // on va rajouter le lien d'édition
-                MotorView::show('profileSettings/postBlog', array("blogPostEditUrl"=>$obj->getPostEditUrl(),"blogTitle" => $obj->getTITLE(), "blogContent" => $obj->getContent(), "blogAuthor" => $obj->getAuthor(), "blogDate" => $obj->getDateP(), "blogUrlPicture" => $obj->getUrlPicture()));
+                $tagsList = "";
+                foreach ($obj->getTags() as $tags ){
+                    $tagsList .= $tags ." - ";
+                }
+                MotorView::show('profileSettings/postBlog', array("blogPostEditUrl"=>$obj->getPostEditUrl(),"blogTitle" => $obj->getTITLE(),
+                                                                            "blogContent" => $obj->getContent(), "blogAuthor" => $obj->getAuthor(),
+                                                                            "blogDate" => $obj->getDateP(), "blogUrlPicture" => $obj->getUrlPicture(),
+                                                                            "blogTags"=>$tagsList));
             }
         }
 

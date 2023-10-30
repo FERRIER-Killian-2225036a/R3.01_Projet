@@ -53,11 +53,11 @@ class ControllerPost
                         $img = $existingPost->getUrlPicture();
                         $TempTags = $existingPost->getTags();
                         // transformation de la liste d'identifiant de tag, en un string sous forme de label1,label2,label3
-                        error_log("tempTags : ".print_r($TempTags,true));
+                        error_log("tempTags : " . print_r($TempTags, true));
 
                         $tagsStringForInput = "";
                         foreach ($TempTags as $tags) {
-                            $tagsStringForInput .= "'".$tags ."'".", ";
+                            $tagsStringForInput .= "'" . $tags . "'" . ", ";
                         }
                         $tagsStringForInput = substr($tagsStringForInput, 0, strlen($tagsStringForInput) - 1);
                         error_log("DEBUG taginput : $tagsStringForInput");
@@ -133,7 +133,7 @@ class ControllerPost
                                         $newTags = $arrayOfTags;
                                         error_log("les tags ont bien recu changement");
                                     }
-                                    error_log("Les nouveaux tags a inserer sont :".print_r($newTags),true);
+                                    error_log("Les nouveaux tags a inserer sont :" . print_r($newTags), true);
                                 }
 
 
@@ -195,9 +195,6 @@ class ControllerPost
                                 // affiché au mec
 
 
-                                if ($newImg !== null) {
-                                    $post->update_img($idPost, $newImg);
-                                }
                                 $tempArray = $post->getValuesById($idPost);
 
                                 if ($newTitle == null) {
@@ -217,22 +214,22 @@ class ControllerPost
                                     $tempArray['NumberOfLikes'],
                                     $tempArray['statusP']);
 
+                                if ($newImg !== null && $newImg !== $tempArray['UrlPicture']) {
+                                    $post->update_img($idPost, $newImg);
+                                }
                                 // ensuite on traite les categories
                                 $CategoryPageFormOrm = new Blog_categoryPage();
-                                error_log("DEBUG BEFORE INSERT TAG" );
-                                error_log("new tag potentielement null ou array :". print_r($newTags,true));
+                                error_log("DEBUG BEFORE INSERT TAG");
+                                error_log("new tag potentielement null ou array :" . print_r($newTags, true));
                                 if (empty($newTags)) { // on apporte une modifs aux tags en suppression
-                                    $idTags = $CategoryPageFormOrm->getCategoryByPageId($idPost);
-                                    foreach ($idTags as $idtag) {
-                                        $CategoryPageFormOrm->removeLinkBetweenCategoryAndPage($idtag, $idPost);
-                                    }
-                                }
-                                else { // on a de potentiels modifications dans les tags
+                                    $CategoryPageFormOrm->removeAllLinkBetweenCategoryAndPage($idPost);
+                                } else { // on a de potentiels modifications dans les tags
+                                    $CategoryPageFormOrm->removeAllLinkBetweenCategoryAndPage($idPost);
                                     foreach ($newTags as $tag) { //TODO faut remove si y'en a qui ont changé
                                         $id = (new Blog_Category())->createCategory($tag); // renvoi l'id de la nouvelle/existante page
-                                        error_log("label of id $id " .(new Blog_Category())->getCategoryById($id));
-                                        error_log("est ce que id == false ? :". $id == false);
-                                        error_log("DEBUG Crash  idCat :" . $id ." label ". $tag ." idPost". $idPost);
+                                        error_log("label of id $id " . (new Blog_Category())->getCategoryById($id));
+                                        error_log("est ce que id == false ? :" . $id == false);
+                                        error_log("DEBUG Crash  idCat :" . $id . " label " . $tag . " idPost" . $idPost);
                                         $CategoryPageFormOrm->createLinkBetweenCategoryAndPage($id, $idPost);// on link la page au nouvel id.
                                     }
                                 }
@@ -315,6 +312,7 @@ class ControllerPost
                                 throw new ExceptionsBlog($idNewPost); // erreur survenue lors de la création
                             }
                             $post->update_img($idNewPost, $newImg);
+                            error_log("DEBUG : on reussi a changer l'image");
                         }
 
                         $CategoryPageFormOrm = new Blog_categoryPage();
