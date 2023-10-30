@@ -11,7 +11,7 @@ class Blog_Page
         $this->conn = $this->DBBrain->getConn();
     }
 
-    public function createPage($TITLE, $content, $author, $UserId, $dateP = "CURRENT_TIMESTAMP",
+    public function createPage($TITLE, $content, $author, $UserId, $dateP = 'CURRENT_TIMESTAMP',
                                $NumberOfLikes = 0, $UrlPicture = Constants::PICTURE_URL_DEFAULT, $statusP = "hidden")
     {
         // on crée une page
