@@ -26,7 +26,8 @@
 
             <!--Categorie new -->
             <label for="tag-input1">Entrez les tags de votre publication</label>
-            <input type="text" name="<?php echo $mapView["Tags"]?>" id="tag-input1">
+            <input type="text" name="Tags" id="tag-input1">
+            <script>tagInput1.addData([<?php echo $mapView["Tags"]?>])</script>
 
 
             <!-- Input d'image -->

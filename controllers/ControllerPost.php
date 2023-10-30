@@ -232,7 +232,7 @@ class ControllerPost
                                         }
                                     }
                                 }
-                                
+
                             } else {
                                 (new UserSite())->incrementAlertLevelUser($_SESSION['UserId']);
                                 header("Location: /Post/Blog/" . $idPost);
