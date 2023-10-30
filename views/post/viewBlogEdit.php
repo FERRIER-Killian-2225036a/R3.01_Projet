@@ -9,7 +9,7 @@
                     onclick="window.location.href='https://cyphub.tech/Menu/BlogFeed';">Quitter
             </button>
         </div>
-        <form action="/Post/BlogEdit" method="post" enctype="multipart/form-data">
+        <form action="/Post/BlogEdit<?= "/".$mapView["UrlForm"] ?>" method="post" enctype="multipart/form-data">
             <!-- Titre -->
             <label class="bg-body-tertiary round background">
                 <input name="Title" type="text" class="form-control custom-input round inputBackground input"

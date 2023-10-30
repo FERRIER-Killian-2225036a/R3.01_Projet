@@ -57,10 +57,11 @@ class ControllerPost
                         foreach ($TempTagsLabel as $tags){ $tagsStringForInput .= $tags.",";}
                         $tagsStringForInput = substr($tagsStringForInput,0,strlen($tagsStringForInput)-1);
                         // $tagsStringForInput sera fourni dans l'input dans l'input de la vue,
-                        MotorView::show('post/viewBlogEdit',Array("Title"=>$title,
-                                                                           "Content"=>$content,
+                        MotorView::show('post/viewBlogEdit', Array("Title"=>$title,
+                                                                            "Content"=>$content,
                                                                             "Tags"=>$tagsStringForInput,
-                                                                            "Img"=>$img));
+                                                                            "Img"=>$img,
+                                                                            "UrlForm"=>$idPost));
                     }
                 }
 
