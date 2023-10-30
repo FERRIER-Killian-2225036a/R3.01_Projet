@@ -57,7 +57,7 @@ class ControllerPost
 
                         $tagsStringForInput = "";
                         foreach ($TempTags as $tags) {
-                            $tagsStringForInput .= $tags . ",";
+                            $tagsStringForInput .= "'".$tags ."'".", ";
                         }
                         $tagsStringForInput = substr($tagsStringForInput, 0, strlen($tagsStringForInput) - 1);
                         error_log("DEBUG taginput : $tagsStringForInput");
