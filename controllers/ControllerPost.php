@@ -16,12 +16,65 @@ class ControllerPost
         // $A_postParams["Content"] contient le contenu
         // $A_postParams["Tags"] contient la liste des tags séparé par des ,
 
+
         print_r($A_parametres);
         error_log("DEBUG : url résiduel : ".print_r($A_parametres,true));
         print_r($A_postParams);
         error_log("DEBUG : params posts : ".print_r($A_postParams,true));
+
+        if ($_SERVER['REQUEST_METHOD'] === 'GET'){
+            // on va devoir determiner si on a faire a une modification ou une création
+            // on va devoir determiner si l'utilisateur a les droits de voir la page de modification
+
+            if (!SessionManager::isUserConnected()){
+                header("Location: /Auth/Login");
+                die();
+            }
+            if ( !empty($A_parametres) && $A_parametres[0] !==null ){
+                $idPost = filter_var($A_parametres[0], FILTER_VALIDATE_INT); // on recupere l'identifiant dans l'url
+                if ($idPost === false){
+                    error_log("valeur $idPost du post n'existe pas/ n'est pas valide");
+                    header("Location: /");
+                    die();
+                }
+                // l'identifiant est valide, on va verifier qu'il existe et qu'il appartient au user,
+                // afin de lui afficher la page de modification
+                $post = new Blog_Page;
+                if ($post->doesPageIdExist($idPost)) { // on procede donc a la verification de si l'identifiant est attribué
+                    if ($post->doesPageIdBelongToUser($idPost, $_SESSION['UserId'])){
+                        // la page appartient bien au user, on va donc pouvoir l'afficher, en complétant
+                        // les différents champs d'input avec les informations déjà présente dans la bdd.
+                        $existingPost = new BlogPageModel($idPost); // on crée un nouvelle objet qui contient les
+
+                        $title = $existingPost->getTITLE();
+                        $content = $existingPost->getContent();
+                        $img = $existingPost->getUrlPicture();
+                        $TempTags = $existingPost->getTags();
+                        // transformation de la liste d'identifiant de tag, en un string sous forme de label1,label2,label3
+                        $TempTagsLabel = array();
+                        foreach ($TempTags as $tags){ $TempTagsLabel[]=(new Blog_Category())->getCategoryById($tags);}
+                        $tagsStringForInput = "";
+                        foreach ($TempTagsLabel as $tags){ $tagsStringForInput .= $tags.",";}
+                        $tagsStringForInput = substr($tagsStringForInput,0,strlen($tagsStringForInput)-1);
+                        // $tagsStringForInput sera fourni dans l'input dans l'input de la vue,
+                        MotorView::show('post/viewBlogEdit',Array("Title"=>$title,
+                                                                           "Content"=>$content,
+                                                                            "Tags"=>$tagsStringForInput,
+                                                                            "Img"=>$img));
+                    }
+                }
+
+            } else {
+                // cas d'affichage création d'un nouveau blog
+                MotorView::show('post/viewBlogEdit');
+            }
+
+
+        }
         // si la methode de requete est post
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        elseif ($_SERVER['REQUEST_METHOD'] === 'POST') { //TODO l'hypothese d'hier sur le type de methode etait correct,
+            //get sert a l'affichage ? a t'ont le droit de voir la page, post sert a la modification/création via le
+            //formulaire de la page qui submit
             $post = new Blog_Page;
 
             if (SessionManager::isUserConnected()) { //verification que le client est connecté

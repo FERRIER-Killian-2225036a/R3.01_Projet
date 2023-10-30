@@ -13,7 +13,7 @@
             <!-- Titre -->
             <label class="bg-body-tertiary round background">
                 <input name="Title" type="text" class="form-control custom-input round inputBackground input"
-                       placeholder="Entrez votre titre">
+                       placeholder="Entrez votre titre" value="<?php echo $mapView["Title"]?>">
             </label>
 
             <!-- Catégories OLD
@@ -26,7 +26,7 @@
 
             <!--Categorie new -->
             <label for="tag-input1">Entrez les tags de votre publication</label>
-            <input type="text" name="Tags" id="tag-input1">
+            <input type="text" name="<?php echo $mapView["Tags"]?>" id="tag-input1">
 
 
             <!-- Input d'image -->
@@ -36,7 +36,7 @@
                     <input id="file" type="file" name="BlogPicture" accept=".jpg, .jpeg, .png, .gif"
                            style="display: none;">
 
-                    <img src="../../media/public_assets/icone/iconeBlogUploadImg.png" width="300" height="300"
+                    <img src="<?= ($mapView["Img"]!=null) ? $mapView["Img"] : "../../media/public_assets/icone/iconeBlogUploadImg.png" ?>" width="300" height="300"
                          alt="logo pour l'upload d'image">
                 </label>
 
@@ -54,7 +54,7 @@
             <!-- Texte -->
             <label class="bg-body-tertiary round background textInput">
                 <textarea name="Content" class="form-control custom-input round inputBackground input"
-                          placeholder="Entrez le contenue"></textarea>
+                          placeholder="Entrez le contenue" ><?php echo $mapView["Content"]?></textarea>
             </label>
 
             <!-- Bouton publier -->
