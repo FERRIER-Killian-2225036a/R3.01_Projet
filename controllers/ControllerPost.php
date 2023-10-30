@@ -54,14 +54,9 @@ class ControllerPost
                         $TempTags = $existingPost->getTags();
                         // transformation de la liste d'identifiant de tag, en un string sous forme de label1,label2,label3
                         error_log("tempTags : ".print_r($TempTags,true));
-                        $TempTagsLabel = array();
-                        foreach ($TempTags as $tags) {
-                            $TempTagsLabel[] = (new Blog_Category())->getCategoryById($tags);
-                        }
-                        error_log("tempTagsLabel : ".print_r($TempTagsLabel,true));
-
+                        
                         $tagsStringForInput = "";
-                        foreach ($TempTagsLabel as $tags) {
+                        foreach ($TempTags as $tags) {
                             $tagsStringForInput .= $tags . ",";
                         }
                         $tagsStringForInput = substr($tagsStringForInput, 0, strlen($tagsStringForInput) - 1);
