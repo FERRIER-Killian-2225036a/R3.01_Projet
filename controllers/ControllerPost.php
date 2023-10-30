@@ -217,11 +217,11 @@ class ControllerPost
                                     $tempArray['statusP']);
 
                                 // ensuite on traite les categories
-
+                                $CategoryPageFormOrm = new Blog_categoryPage();
                                 if ($newTags != null && empty($newTags)) { // on apporte une modifs aux tags en suppression
-                                    $idTags = (new Blog_categoryPage())->getCategoryByPageId($idPost);
+                                    $idTags = ($CategoryPageFormOrm)->getCategoryByPageId($idPost);
                                     foreach ($idTags as $idtag) {
-                                        (new Blog_categoryPage())->removeLinkBetweenCategoryAndPage($idtag, $idPost);
+                                        ($CategoryPageFormOrm)->removeLinkBetweenCategoryAndPage($idtag, $idPost);
                                     }
                                 } else if (!empty($newTags)) { // on a de potentiels modifications dans les tags
                                     foreach ($newTags as $tag) { //TODO faut remove si y'en a qui ont changé
@@ -229,11 +229,11 @@ class ControllerPost
                                             $id = (new Blog_Category())->createCategory($tag);
                                             // on link la page au nouvel id.
                                             error_log("DEBUG Crash  :".$id.$tag.$idPost);
-                                            (new Blog_categoryPage())->createLinkBetweenCategoryAndPage($id, $idPost);
+                                            ($CategoryPageFormOrm)->createLinkBetweenCategoryAndPage($id, $idPost);
                                         } else {
                                             $id = (new Blog_Category())->getCategoryByLabel($tag);
-                                            if ((new Blog_categoryPage())->linkBetweenCategoryAndPageExist($id, $idPost) == false) {
-                                                (new Blog_categoryPage())->createLinkBetweenCategoryAndPage($id, $idPost);
+                                            if (($CategoryPageFormOrm)->linkBetweenCategoryAndPageExist($id, $idPost) == false) {
+                                                ($CategoryPageFormOrm)->createLinkBetweenCategoryAndPage($id, $idPost);
                                             }
                                         }
                                     }

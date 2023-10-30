@@ -26,6 +26,7 @@ class Blog_Category
             $stmt = $this->conn->prepare("INSERT INTO BLOG_Category (label,description) VALUES (?,?)");
             $stmt->bindParam(1, $label);
             $stmt->bindParam(2, $description);
+            error_log("debug : Sucess for insertion");
             return $this->conn->lastInsertId();
             // l'easter egg recursif était une mauvaise idée, note a moi meme ne plus refaire
             // on renvoi l'id de la category
