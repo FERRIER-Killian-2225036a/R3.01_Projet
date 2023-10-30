@@ -5,10 +5,8 @@ class ControllerPost
     public function BlogEditAction(array $A_parametres = null, array $A_postParams = null): void
     {
         error_log("DEBUGING ============================");
-        //TODO on poura potentiellement ameliorer le filtre / modération input
-        // en plus de cela il faudra avoir un max de catégories pour les tags
-
-        // TODO fix date, Fix affichage posts sur page settings, bouton changement de visibilité dans post
+        // TODO on poura potentiellement ameliorer le filtre / modération input
+        // TODO bouton changement de visibilité dans post
 
         // $A_parametres[0] contient l'identifiant du post a édité
         // si $A_parametres[0] est null alors on est dans le cas de la création d'un nouveau post
@@ -17,11 +15,6 @@ class ControllerPost
         // $A_postParams["Content"] contient le contenu
         // $A_postParams["Tags"] contient la liste des tags séparé par des ,
 
-
-        //print_r($A_parametres);
-        //error_log("DEBUG : url résiduel : " . print_r($A_parametres, true));
-        //print_r($A_postParams);
-        //error_log("DEBUG : params posts : " . print_r($A_postParams, true));
 
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             // on va devoir determiner si on a faire a une modification ou une création
@@ -43,7 +36,6 @@ class ControllerPost
                 $post = new Blog_Page;
                 if ($post->doesPageIdExist($idPost)) { // on procede donc a la verification de si l'identifiant est attribué
                     if ($post->doesPageIdBelongToUser($idPost, $_SESSION['UserId'])) {
-                        error_log("cas d'affichage pour modification");
                         // la page appartient bien au user, on va donc pouvoir l'afficher, en complétant
                         // les différents champs d'input avec les informations déjà présente dans la bdd.
                         $existingPost = new BlogPageModel($idPost); // on crée un nouvelle objet qui contient les
@@ -53,14 +45,12 @@ class ControllerPost
                         $img = $existingPost->getUrlPicture();
                         $TempTags = $existingPost->getTags();
                         // transformation de la liste d'identifiant de tag, en un string sous forme de label1,label2,label3
-                        error_log("tempTags : " . print_r($TempTags, true));
 
                         $tagsStringForInput = "";
                         foreach ($TempTags as $tags) {
                             $tagsStringForInput .= "'" . $tags . "'" . ", ";
                         }
                         $tagsStringForInput = substr($tagsStringForInput, 0, strlen($tagsStringForInput) - 1);
-                        error_log("DEBUG taginput : $tagsStringForInput");
                         // $tagsStringForInput sera fourni dans l'input dans l'input de la vue,
                         MotorView::show('post/viewBlogEdit', array("Title" => $title,
                             "Content" => $content,
@@ -72,8 +62,6 @@ class ControllerPost
 
             } else {
                 // cas d'affichage création d'un nouveau blog
-                error_log("cas d'affichage pour création");
-
                 MotorView::show('post/viewBlogEdit');
             }
 
@@ -97,7 +85,6 @@ class ControllerPost
                             // si l'id de post appartient au user id de la session en cours
                             if ($post->doesPageIdBelongToUser($idPost, $_SESSION['UserId'])) {
                                 // on est dans le cas de la modification d'un post
-                                error_log("debug : on est dans le cas de modification d'un post");
                                 $existingPost = new BlogPageModel($idPost); // on crée un nouvelle objet qui contient les
                                 // valeurs d'une blogPage de la bdd pour un identifiant unique donnée
 
@@ -108,21 +95,25 @@ class ControllerPost
                                 // phase de sécurisation des inputs, on va verifier que c'est pas des inputs pas net
 
                                 if (isset($A_postParams["Title"])) {
-                                    $title = filter_input(INPUT_POST, 'Title', FILTER_SANITIZE_SPECIAL_CHARS);
+                                    $title = $A_postParams["Title"];
                                     if ($title !== $existingPost->getTitle() && $title != "" && $title !== null) {
                                         $newTitle = $title;
                                     }
                                 }
                                 if (isset($A_postParams["Content"])) {
-                                    $content = filter_input(INPUT_POST, 'Content', FILTER_SANITIZE_SPECIAL_CHARS);
-                                    $escapedContent = htmlspecialchars($content);
+                                    $content = $A_postParams["Content"];
+                                    //$escapedContent = htmlspecialchars($content); // j'enleve le nettoyage d'input
+                                    // car PDO est déjà en train d'empecher les injections sql.
+                                    // deplus il détruit les symboles spéciaux, type ' é à ...
+                                    // on pourra penser dans le futur faire un moteur de blog ou on peut comme sur
+                                    // notion ajouté des blogs de code, des images , des liens ...
 
-                                    if ($escapedContent !== $existingPost->getContent() && $escapedContent != "") {
-                                        $newContent = $escapedContent;
+                                    if ($content !== $existingPost->getContent() && $content != "") {
+                                        $newContent = $content;
                                     }
                                 }
                                 if (isset($A_postParams["Tags"])) {
-                                    $tags = filter_input(INPUT_POST, 'Tags', FILTER_SANITIZE_SPECIAL_CHARS);
+                                    $tags = $A_postParams["Tags"];
                                     $realTagsId = $existingPost->getTags();
                                     $realTags[] = null;
                                     foreach ($realTagsId as $id) {
@@ -131,9 +122,7 @@ class ControllerPost
                                     if ($tags !== $realTags && $tags != "" && $tags !== null) {
                                         $arrayOfTags = explode(",", $tags);
                                         $newTags = $arrayOfTags;
-                                        error_log("les tags ont bien recu changement");
                                     }
-                                    error_log("Les nouveaux tags a inserer sont :" . print_r($newTags), true);
                                 }
 
 
@@ -144,7 +133,6 @@ class ControllerPost
                                 $minFileSize = 1000; // Taille minimale en octets
                                 $maxFileSize = 5000000; // Taille maximale en octets (ici, 5 Mo)
                                 $uploadDirectory = Constants::mediaDirectoryblogs() . $idPost;
-                                error_log("dir d'upload : " . $uploadDirectory);
                                 //TODO verifier une dimension HxV ? format paysage
 
                                 if (!is_dir($uploadDirectory)) {
@@ -164,9 +152,7 @@ class ControllerPost
                                         // echo $result;
                                         throw new ExceptionsUpload($result);
                                     } else {
-                                        error_log("DEBUG : on est sensé rentré ici car l'image est success");
                                         $newImg = Constants::MEDIA_DIRECTORY_BLOGS . $idPost . "/" . $result[1];
-                                        error_log("dir + files name : " . $newImg);
 
                                         //$post->update_img($idPost,$newImg);
 
@@ -219,17 +205,12 @@ class ControllerPost
 
                                 // ensuite on traite les categories
                                 $CategoryPageFormOrm = new Blog_categoryPage();
-                                error_log("DEBUG BEFORE INSERT TAG");
-                                error_log("new tag potentielement null ou array :" . print_r($newTags, true));
                                 if (empty($newTags)) { // on apporte une modifs aux tags en suppression
                                     $CategoryPageFormOrm->removeAllLinkBetweenCategoryAndPage($idPost);
                                 } else { // on a de potentiels modifications dans les tags
                                     $CategoryPageFormOrm->removeAllLinkBetweenCategoryAndPage($idPost);
                                     foreach ($newTags as $tag) { //TODO faut remove si y'en a qui ont changé
                                         $id = (new Blog_Category())->createCategory($tag); // renvoi l'id de la nouvelle/existante page
-                                        error_log("label of id $id " . (new Blog_Category())->getCategoryById($id));
-                                        error_log("est ce que id == false ? :" . $id == false);
-                                        error_log("DEBUG Crash  idCat :" . $id . " label " . $tag . " idPost" . $idPost);
                                         $CategoryPageFormOrm->createLinkBetweenCategoryAndPage($id, $idPost);// on link la page au nouvel id.
                                     }
                                 }
@@ -244,29 +225,31 @@ class ControllerPost
                         }
                     }
                 } else {
-                    error_log("debug : on est dans le cas de création d'un post");
-
                     $newTitle = null;
                     $newContent = null;
                     $newTags = null;
 
                     if (isset($A_postParams["Title"])) {
-                        $title = filter_input(INPUT_POST, 'Title', FILTER_SANITIZE_SPECIAL_CHARS);
-                        if ($title != "" && $title !== null) {
+                        $title = $A_postParams["Title"];
+                        if ( $title != "" && $title != null) {
                             $newTitle = $title;
                         }
                     }
                     if (isset($A_postParams["Content"])) {
-                        $content = filter_input(INPUT_POST, 'Content', FILTER_SANITIZE_SPECIAL_CHARS);
-                        $escapedContent = htmlspecialchars($content);
+                        $content = $A_postParams["Content"];
+                        //$escapedContent = htmlspecialchars($content); // j'enleve le nettoyage d'input
+                        // car PDO est déjà en train d'empecher les injections sql.
+                        // deplus il détruit les symboles spéciaux, type ' é à ...
+                        // on pourra penser dans le futur faire un moteur de blog ou on peut comme sur
+                        // notion ajouté des blogs de code, des images , des liens ...
 
-                        if ($escapedContent != "" && $escapedContent !== null) {
-                            $newContent = $escapedContent;
+                        if ($content != "") {
+                            $newContent = $content;
                         }
                     }
                     if (isset($A_postParams["Tags"])) {
-                        $tags = filter_input(INPUT_POST, 'Tags', FILTER_SANITIZE_SPECIAL_CHARS);
-                        if ($tags != "" && $tags !== null) {
+                        $tags = $A_postParams["Tags"];
+                        if ($tags != "" && $tags != null) {
                             $arrayOfTags = explode(",", $tags);
                             $newTags = $arrayOfTags;
                         }
@@ -275,7 +258,6 @@ class ControllerPost
 
                     try {
                         // cas de création
-                        error_log("DEBUG : cas de création ");
                         if ($newTitle == null || $newContent == null) {
                             throw new ExceptionsBlog("Le titre ou le contenu est vide");
                         }
@@ -317,14 +299,12 @@ class ControllerPost
                                 throw new ExceptionsBlog($idNewPost); // erreur survenue lors de la création
                             }
                             $post->update_img($idNewPost, $newImg);
-                            //error_log("DEBUG : on reussi a changer l'image");
                         }
 
                         $CategoryPageFormOrm = new Blog_categoryPage();
                         if (!empty($newTags)) { // on a de potentiels modifications dans les tags
                             foreach ($newTags as $tag) {
                                 $id = (new Blog_Category())->createCategory($tag); // renvoi l'id de la nouvelle/existante page
-                                //error_log("DEBUG Crash  :" . $id . $tag . $idPost);
                                 $CategoryPageFormOrm->createLinkBetweenCategoryAndPage($id, $idNewPost);// on link la page au nouvel id.
                             }
                         }
@@ -333,9 +313,9 @@ class ControllerPost
 
                     } catch
                     (ExceptionsBlog $e) {
-                        error_log($e->getMessage());//TODO on pensera a afficher un message d'erreur sur le site
+                        error_log($e->getMessage());
+                        //TODO on pensera a afficher un message d'erreur sur le site
                         // TODO fonction javascript pour empecher submit coté client si titre null
-
                         header("Location: /Settings/MyPost");
                         die();
                     }
@@ -345,15 +325,6 @@ class ControllerPost
                 // (new UserSite())->incrementAlertLevelUser($_SESSION['UserId']); //TODO changer systeme suspission sur couple ip / id  voir plus
                 header("Location: /");
             }
-
-            // si la requete est, post/blogEdit sans rien derriere on a a faire a la création d'un nouveau post
-
-
-            // si la requete contient un identifiant on verifie qu'il est valide et cohérent,
-            // on passe a la modification
-            // on va donc update model blogPage, categoryPage, Category
-            // sinon ca veut dire que c'est pas cohérent donc report
         }
-
     }
 }
