@@ -11,20 +11,19 @@ class Blog_Page
         $this->conn = $this->DBBrain->getConn();
     }
 
-    public function createPage($TITLE, $content, $author, $UserId, $dateP = 'CURRENT_TIMESTAMP',
+    public function createPage($TITLE, $content, $author, $UserId,
                                $NumberOfLikes = 0, $UrlPicture = Constants::PICTURE_URL_DEFAULT, $statusP = "hidden")
     {
         // on crée une page
         try {
-            $stmt = $this->conn->prepare("INSERT INTO BLOG_Page (TITLE,content,author,UserId,dateP,NumberOfLikes,UrlPicture,statusP) VALUES (?,?,?,?,?,?,?,?)");
+            $stmt = $this->conn->prepare("INSERT INTO BLOG_Page (TITLE,content,author,UserId,dateP,NumberOfLikes,UrlPicture,statusP) VALUES (?,?,?,?,CURRENT_TIMESTAMP,?,?,?)");
             $stmt->bindParam(1, $TITLE, PDO::PARAM_STR);
             $stmt->bindParam(2, $content, PDO::PARAM_STR);
             $stmt->bindParam(3, $author, PDO::PARAM_STR);
             $stmt->bindParam(4, $UserId, PDO::PARAM_STR);
-            $stmt->bindParam(5, $dateP, PDO::PARAM_STR);
-            $stmt->bindParam(6, $NumberOfLikes, PDO::PARAM_STR);
-            $stmt->bindParam(7, $UrlPicture, PDO::PARAM_STR);
-            $stmt->bindParam(8, $statusP, PDO::PARAM_STR);
+            $stmt->bindParam(5, $NumberOfLikes, PDO::PARAM_STR);
+            $stmt->bindParam(6, $UrlPicture, PDO::PARAM_STR);
+            $stmt->bindParam(7, $statusP, PDO::PARAM_STR);
             $stmt->execute();
             $stmt->closeCursor();
 
@@ -43,21 +42,20 @@ class Blog_Page
         // ou alors on pourra imaginé a le mettre en innactive
     }
 
-    public function updatePage($PageId, $TITLE, $content, $author, $UserId, $UrlPicture = Constants::PICTURE_URL_DEFAULT, $dateP = "CURRENT_TIMESTAMP",
+    public function updatePage($PageId, $TITLE, $content, $author, $UserId, $UrlPicture = Constants::PICTURE_URL_DEFAULT,
                                $NumberOfLikes = 0,  $statusP = "hidden")
     {
         // comme create page sauf que l'id est aussi renseigné en param
         if ($this->doesPageIdExist($PageId)) {
-            $stmt = $this->conn->prepare("UPDATE BLOG_Page SET TITLE = ?, content = ?, author = ?, UserId = ?, dateP = ?, NumberOfLikes = ?, UrlPicture = ?, statusP = ? WHERE PageId = ?");
+            $stmt = $this->conn->prepare("UPDATE BLOG_Page SET TITLE = ?, content = ?, author = ?, UserId = ?, NumberOfLikes = ?, UrlPicture = ?, statusP = ? WHERE PageId = ?");
             $stmt->bindParam(1, $TITLE, PDO::PARAM_STR);
             $stmt->bindParam(2, $content, PDO::PARAM_STR);
             $stmt->bindParam(3, $author, PDO::PARAM_STR);
             $stmt->bindParam(4, $UserId, PDO::PARAM_STR);
-            $stmt->bindParam(5, $dateP, PDO::PARAM_STR);
-            $stmt->bindParam(6, $NumberOfLikes, PDO::PARAM_STR);
-            $stmt->bindParam(7, $UrlPicture, PDO::PARAM_STR);
-            $stmt->bindParam(8, $statusP, PDO::PARAM_STR);
-            $stmt->bindParam(9, $PageId, PDO::PARAM_STR);
+            $stmt->bindParam(5, $NumberOfLikes, PDO::PARAM_STR);
+            $stmt->bindParam(6, $UrlPicture, PDO::PARAM_STR);
+            $stmt->bindParam(7, $statusP, PDO::PARAM_STR);
+            $stmt->bindParam(8, $PageId, PDO::PARAM_STR);
             $stmt->execute();
             $stmt->closeCursor();
             return true;
