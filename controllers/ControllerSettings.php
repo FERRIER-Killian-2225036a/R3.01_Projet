@@ -200,7 +200,7 @@ class ControllerSettings
                 MotorView::show('profileSettings/postBlog', array("blogPostEditUrl"=>$obj->getPostEditUrl(),"blogTitle" => $obj->getTITLE(),
                                                                             "blogContent" => $obj->getContent(), "blogAuthor" => $obj->getAuthor(),
                                                                             "blogDate" => $obj->getDateP(), "blogUrlPicture" => $obj->getUrlPicture(),
-                                                                            "blogTags"=>$tagsList, "id"=>$obj->getPageId()));
+                                                                            "blogTags"=>$tagsList, "id"=>$obj->getPageId(),"statusP"=>$obj->getStatusP ));
             }
         }
 

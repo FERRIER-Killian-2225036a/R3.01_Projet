@@ -23,8 +23,8 @@
                 </svg>
                 <div class="dropdown-content">
                     <a href="<?php echo $mapView['blogPostEditUrl'] ?>">Modifier</a>
-                    <a onclick="sendPostShowOrHide('<?php echo $mapView['id'] ?>')">Afficher/Cacher</a>
-                    <a onclick="sendPostDelete('<?php echo $mapView['id'] ?>')">Supprimer</a>
+                    <a onclick="sendPostShowOrHide('<?php echo $mapView['id'] ?>')"> <?php if ($mapView['statusP']!="innactive") { echo ($mapView['statusP']=="active") ? "cacher" : "publier" ;} ?></a>
+                    <a onclick="sendPostDelete('<?php echo $mapView['id'] ?>')">Supprimer</a> <!-- De toute facon on affiche pas la publication si innactive + test dans le controller pour la requete post-->
                 </div>
             </div>
             <script>
