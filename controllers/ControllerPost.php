@@ -156,6 +156,7 @@ class ControllerPost
                                         // echo $result;
                                         throw new ExceptionsUpload($result);
                                     } else {
+                                        error_log("DEBUG : on est sensé rentré ici car l'image est success");
                                         $newImg = Constants::mediaDirectoryBlogs() . $idPost . "/" . $result[1];
                                         error_log("dir + files name : ".$newImg);
 
