@@ -78,6 +78,9 @@ class ControllerPost
             $post = new Blog_Page;
 
             if (SessionManager::isUserConnected()) { //verification que le client est connecté
+                error_log("DEBUG ON RENTRE JAMAIS ICI CEST PAS NORMAL ".!empty($A_parametres) && $A_parametres[0] !== null) ;
+                error_log("DEBUG : url résiduel : ".print_r($A_parametres,true));
+                error_log($A_parametres[0]);
 
                 if ( !empty($A_parametres) && $A_parametres[0] !== null) { // si l'url a un identifiant ex : /post/blogEdit/1
                     $idPost = filter_var($A_parametres[0], FILTER_VALIDATE_INT); // on recupere l'identifiant dans l'url
