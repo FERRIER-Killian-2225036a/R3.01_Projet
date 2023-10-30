@@ -18,21 +18,21 @@ class ControllerPost
 
 
         print_r($A_parametres);
-        error_log("DEBUG : url résiduel : ".print_r($A_parametres,true));
+        error_log("DEBUG : url résiduel : " . print_r($A_parametres, true));
         print_r($A_postParams);
-        error_log("DEBUG : params posts : ".print_r($A_postParams,true));
+        error_log("DEBUG : params posts : " . print_r($A_postParams, true));
 
-        if ($_SERVER['REQUEST_METHOD'] === 'GET'){
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             // on va devoir determiner si on a faire a une modification ou une création
             // on va devoir determiner si l'utilisateur a les droits de voir la page de modification
 
-            if (!SessionManager::isUserConnected()){
+            if (!SessionManager::isUserConnected()) {
                 header("Location: /Auth/Login");
                 die();
             }
-            if ( !empty($A_parametres) && $A_parametres[0] !==null ){
+            if (!empty($A_parametres) && $A_parametres[0] !== null) {
                 $idPost = filter_var($A_parametres[0], FILTER_VALIDATE_INT); // on recupere l'identifiant dans l'url
-                if ($idPost === false){
+                if ($idPost === false) {
                     error_log("valeur $idPost du post n'existe pas/ n'est pas valide");
                     header("Location: /");
                     die();
@@ -41,7 +41,7 @@ class ControllerPost
                 // afin de lui afficher la page de modification
                 $post = new Blog_Page;
                 if ($post->doesPageIdExist($idPost)) { // on procede donc a la verification de si l'identifiant est attribué
-                    if ($post->doesPageIdBelongToUser($idPost, $_SESSION['UserId'])){
+                    if ($post->doesPageIdBelongToUser($idPost, $_SESSION['UserId'])) {
                         // la page appartient bien au user, on va donc pouvoir l'afficher, en complétant
                         // les différents champs d'input avec les informations déjà présente dans la bdd.
                         $existingPost = new BlogPageModel($idPost); // on crée un nouvelle objet qui contient les
@@ -52,16 +52,20 @@ class ControllerPost
                         $TempTags = $existingPost->getTags();
                         // transformation de la liste d'identifiant de tag, en un string sous forme de label1,label2,label3
                         $TempTagsLabel = array();
-                        foreach ($TempTags as $tags){ $TempTagsLabel[]=(new Blog_Category())->getCategoryById($tags);}
+                        foreach ($TempTags as $tags) {
+                            $TempTagsLabel[] = (new Blog_Category())->getCategoryById($tags);
+                        }
                         $tagsStringForInput = "";
-                        foreach ($TempTagsLabel as $tags){ $tagsStringForInput .= $tags.",";}
-                        $tagsStringForInput = substr($tagsStringForInput,0,strlen($tagsStringForInput)-1);
+                        foreach ($TempTagsLabel as $tags) {
+                            $tagsStringForInput .= $tags . ",";
+                        }
+                        $tagsStringForInput = substr($tagsStringForInput, 0, strlen($tagsStringForInput) - 1);
                         // $tagsStringForInput sera fourni dans l'input dans l'input de la vue,
-                        MotorView::show('post/viewBlogEdit', Array("Title"=>$title,
-                                                                            "Content"=>$content,
-                                                                            "Tags"=>$tagsStringForInput,
-                                                                            "Img"=>$img,
-                                                                            "UrlForm"=>$idPost));
+                        MotorView::show('post/viewBlogEdit', array("Title" => $title,
+                            "Content" => $content,
+                            "Tags" => $tagsStringForInput,
+                            "Img" => $img,
+                            "UrlForm" => $idPost));
                     }
                 }
 
@@ -71,26 +75,24 @@ class ControllerPost
             }
 
 
-        }
-        // si la methode de requete est post
+        } // si la methode de requete est post
         elseif ($_SERVER['REQUEST_METHOD'] === 'POST') { //TODO l'hypothese d'hier sur le type de methode etait correct,
             //get sert a l'affichage ? a t'ont le droit de voir la page, post sert a la modification/création via le
             //formulaire de la page qui submit
             $post = new Blog_Page;
 
             if (SessionManager::isUserConnected()) { //verification que le client est connecté
-                error_log("DEBUG ON RENTRE JAMAIS ICI CEST PAS NORMAL ".!empty($A_parametres) && $A_parametres[0] !== null) ;
-                error_log("DEBUG : url résiduel : ".print_r($A_parametres,true));
+                error_log("DEBUG ON RENTRE JAMAIS ICI CEST PAS NORMAL " . !empty($A_parametres) && $A_parametres[0] !== null);
+                error_log("DEBUG : url résiduel : " . print_r($A_parametres, true));
                 error_log($A_parametres[0]);
 
-                if ( !empty($A_parametres) && $A_parametres[0] !== null) { // si l'url a un identifiant ex : /post/blogEdit/1
+                if (!empty($A_parametres) && $A_parametres[0] !== null) { // si l'url a un identifiant ex : /post/blogEdit/1
                     $idPost = filter_var($A_parametres[0], FILTER_VALIDATE_INT); // on recupere l'identifiant dans l'url
                     if ($idPost === false) {
                         error_log("valeur $idPost du post n'existe pas/ n'est pas valide");
                         header("Location: /");
                         die();
-                    }
-                    else { // l'identifiant dans l'url est valide
+                    } else { // l'identifiant dans l'url est valide
                         if ($post->doesPageIdExist($idPost)) { // on procede donc a la verification de si l'identifiant est attribué
                             // si l'id de post appartient au user id de la session en cours
                             if ($post->doesPageIdBelongToUser($idPost, $_SESSION['UserId'])) {
@@ -140,7 +142,7 @@ class ControllerPost
                                 $minFileSize = 1000; // Taille minimale en octets
                                 $maxFileSize = 5000000; // Taille maximale en octets (ici, 5 Mo)
                                 $uploadDirectory = Constants::mediaDirectoryblogs() . $idPost;
-                                error_log("dir d'upload : ".$uploadDirectory);
+                                error_log("dir d'upload : " . $uploadDirectory);
                                 //TODO verifier une dimension HxV ? format paysage
 
                                 if (!is_dir($uploadDirectory)) {
@@ -162,7 +164,7 @@ class ControllerPost
                                     } else {
                                         error_log("DEBUG : on est sensé rentré ici car l'image est success");
                                         $newImg = Constants::mediaDirectoryBlogs() . $idPost . "/" . $result[1];
-                                        error_log("dir + files name : ".$newImg);
+                                        error_log("dir + files name : " . $newImg);
 
                                         //$post->update_img($idPost,$newImg);
 
@@ -172,9 +174,6 @@ class ControllerPost
                                     //TODO on pensera a afficher un message d'erreur sur le site
                                     error_log($e->getMessage());
                                 }
-
-
-
 
 
                                 if ($existingPost->getUrlPicture() !== null && $newImg !== null) { // si une nouvelle image a été fournis et qu'il y en avait deja une,
@@ -274,13 +273,13 @@ class ControllerPost
                             $newContent,
                             $_SESSION['Username'],
                             $_SESSION['UserId']);
-                        if (!$idNewPost instanceof Exception && $idNewPost!==false) //todo mettre le bon type de class
+                        if (!$idNewPost instanceof Exception && $idNewPost !== false) //todo mettre le bon type de class
 
-                        // et la on va update l'image
+                            // et la on va update l'image
 
-                        // on doit recuperer l'id du post pour pouvoir creer le dossier
+                            // on doit recuperer l'id du post pour pouvoir creer le dossier
 
-                        $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+                            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
                         $minFileSize = 1000; // Taille minimale en octets
                         $maxFileSize = 5000000; // Taille maximale en octets (ici, 5 Mo)
                         $uploadDirectory = Constants::mediaDirectoryBlogs() . $idNewPost . "/";
@@ -309,18 +308,12 @@ class ControllerPost
                             $post->update_img($idNewPost, $newImg);
                         }
 
-
-
-                        if (!empty($newTags)) { // on a des potentiels ajout de nouveaux tags
+                        $CategoryPageFormOrm = new Blog_categoryPage();
+                        if (!empty($newTags)) { // on a de potentiels modifications dans les tags
                             foreach ($newTags as $tag) {
-                                if ((new Blog_Category())->doesCategoryExist($tag) == false) {
-                                    $id = (new Blog_Category())->createCategory($tag);
-                                    // on link la page au nouvel id.
-                                    (new Blog_categoryPage())->createLinkBetweenCategoryAndPage($id, $idNewPost);
-                                } else {
-                                    $id = (new Blog_Category())->getCategoryByLabel($tag);
-                                    (new Blog_categoryPage())->createLinkBetweenCategoryAndPage($id, $idNewPost);
-                                }
+                                $id = (new Blog_Category())->createCategory($tag); // renvoi l'id de la nouvelle/existante page
+                                //error_log("DEBUG Crash  :" . $id . $tag . $idPost);
+                                $CategoryPageFormOrm->createLinkBetweenCategoryAndPage($id, $idNewPost);// on link la page au nouvel id.
                             }
                         }
                         //MotorView::show('post/viewBlogEdit');

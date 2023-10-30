@@ -11,11 +11,11 @@ class Blog_categoryPage
         $this->conn = $this->DBBrain->getConn();
     }
 
-    public function createLinkBetweenCategoryAndPage($cat_id, $page_id)
+    public function createLinkBetweenCategoryAndPage($cat_id, $page_id): void
     {
         //nouveau tuple dans la bdd dans table categoryPage
         if (!$this->linkBetweenCategoryAndPageExist($cat_id, $page_id)) {
-            $sql = "INSERT INTO BLOG_categoryPage (PageId,CategoryId) VALUES (?,?)";
+            $sql = "INSERT INTO BLOG_categoryPage (PageId, CategoryId) VALUES (?,?)";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(1, $page_id, PDO::PARAM_STR);
             $stmt->bindParam(2, $cat_id, PDO::PARAM_STR);
