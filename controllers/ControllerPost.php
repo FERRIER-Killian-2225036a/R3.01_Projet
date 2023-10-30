@@ -193,7 +193,9 @@ class ControllerPost
                                 // cela se fait tout seul car on modifiera la page blogEdit de base
                                 // qui viendra fournir en input les valeurs apres avoir verifier que la page était okay a
                                 // affiché au mec
-
+                                if ($newImg !== null ) {
+                                    $post->update_img($idPost, $newImg);
+                                }
 
                                 $tempArray = $post->getValuesById($idPost);
 
@@ -214,9 +216,7 @@ class ControllerPost
                                     $tempArray['NumberOfLikes'],
                                     $tempArray['statusP']);
 
-                                if ($newImg !== null && $newImg !== $tempArray['UrlPicture']) {
-                                    $post->update_img($idPost, $newImg);
-                                }
+
                                 // ensuite on traite les categories
                                 $CategoryPageFormOrm = new Blog_categoryPage();
                                 error_log("DEBUG BEFORE INSERT TAG");
@@ -312,7 +312,7 @@ class ControllerPost
                                 throw new ExceptionsBlog($idNewPost); // erreur survenue lors de la création
                             }
                             $post->update_img($idNewPost, $newImg);
-                            error_log("DEBUG : on reussi a changer l'image");
+                            //error_log("DEBUG : on reussi a changer l'image");
                         }
 
                         $CategoryPageFormOrm = new Blog_categoryPage();

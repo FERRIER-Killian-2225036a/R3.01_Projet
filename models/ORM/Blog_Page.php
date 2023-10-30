@@ -244,6 +244,11 @@ class Blog_Page
 
     public function update_img(mixed $idPost, $newImg)
     {
+        $stmt = $this->conn->prepare("UPDATE BLOG_Page SET UrlPicture = ? WHERE PageId = ?");
+        $stmt->bindParam(1, $newImg, PDO::PARAM_STR);
+        $stmt->bindParam(2, $idPost, PDO::PARAM_STR);
+        $stmt->execute();
+        $stmt->closeCursor();
     }
 
 }
