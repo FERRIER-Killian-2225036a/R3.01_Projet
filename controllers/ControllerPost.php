@@ -4,6 +4,10 @@ class ControllerPost
 {
     public function BlogEditAction(array $A_parametres = null, array $A_postParams = null): void
     {
+        //TODO on poura potentiellement ameliorer le filtre / modération input
+        // en plus de cela il faudra avoir un max de catégories pour les tags
+
+        // TODO fix date, Fix affichage posts sur page settings, bouton changement de visibilité dans post
 
         // $A_parametres[0] contient l'identifiant du post a édité
         // si $A_parametres[0] est null alors on est dans le cas de la création d'un nouveau post
@@ -13,26 +17,30 @@ class ControllerPost
         // $A_postParams["Tags"] contient la liste des tags séparé par des ,
 
         print_r($A_parametres);
+        error_log("DEBUG : url résiduel : ".$A_parametres);
         print_r($A_postParams);
+        error_log("DEBUG : params posts : ".$A_postParams);
         // si la methode de requete est post
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $post = new Blog_Page;
 
-            if (SessionManager::isUserConnected()) {
+            if (SessionManager::isUserConnected()) { //verification que le client est connecté
 
-                if ($A_parametres[0] !== null) {
-                    $idPost = filter_var($A_parametres[0], FILTER_VALIDATE_INT);
+                if ( !empty($A_parametres) && $A_parametres[0] !== null) { // si l'url a un identifiant ex : /post/blogEdit/1
+                    $idPost = filter_var($A_parametres[0], FILTER_VALIDATE_INT); // on recupere l'identifiant dans l'url
                     if ($idPost === false) {
                         error_log("valeur $idPost du post n'existe pas/ n'est pas valide");
                         header("Location: /");
                         die();
-                    } else {
-                        if ($post->doesPageIdExist($idPost)) {
-                            // si l'id de post appartient au user id
+                    }
+                    else { // l'identifiant dans l'url est valide
+                        if ($post->doesPageIdExist($idPost)) { // on procede donc a la verification de si l'identifiant est attribué
+                            // si l'id de post appartient au user id de la session en cours
                             if ($post->doesPageIdBelongToUser($idPost, $_SESSION['UserId'])) {
                                 // on est dans le cas de la modification d'un post
-                                $existingPost = new BlogPageModel($idPost);
-
+                                error_log("debug : on est dans le cas de modification d'un post");
+                                $existingPost = new BlogPageModel($idPost); // on crée un nouvelle objet qui contient les
+                                // valeurs d'une blogPage de la bdd pour un identifiant unique donnée
 
                                 $newTitle = null;
                                 $newContent = null;
@@ -41,21 +49,21 @@ class ControllerPost
                                 // phase de sécurisation des inputs, on va verifier que c'est pas des inputs pas net
 
                                 if (isset($A_postParams["Title"])) {
-                                    $title = filter_input(INPUT_POST, 'Title', FILTER_SANITIZE_STRING);
+                                    $title = filter_input(INPUT_POST, 'Title', FILTER_SANITIZE_SPECIAL_CHARS);
                                     if ($title !== $existingPost->getTitle() && $title != "" && $title !== null) {
                                         $newTitle = $title;
                                     }
                                 }
                                 if (isset($A_postParams["Content"])) {
-                                    $content = filter_input(INPUT_POST, 'Content', FILTER_SANITIZE_STRING);
+                                    $content = filter_input(INPUT_POST, 'Content', FILTER_SANITIZE_SPECIAL_CHARS);
                                     $escapedContent = htmlspecialchars($content);
 
-                                    if ($escapedContent !== $existingPost->getContent() && $escapedContent != "" && $escapedContent !== null) {
+                                    if ($escapedContent !== $existingPost->getContent() && $escapedContent != "") {
                                         $newContent = $escapedContent;
                                     }
                                 }
                                 if (isset($A_postParams["Tags"])) {
-                                    $tags = filter_input(INPUT_POST, 'Tags', FILTER_SANITIZE_STRING);
+                                    $tags = filter_input(INPUT_POST, 'Tags', FILTER_SANITIZE_SPECIAL_CHARS);
                                     $realTagsId = $existingPost->getTags();
                                     $realTags[] = null;
                                     foreach ($realTagsId as $id) {
@@ -72,10 +80,10 @@ class ControllerPost
 
                                 // si il y a une image, on va la traiter avec la méthode de PictureVerificator
                                 $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
-                                $minFileSize = 1000; // Taille minimale en octets
+                                $minFileSize = 100000; // Taille minimale en octets (ici 100 Ko, on veut pas une image flou)
                                 $maxFileSize = 5000000; // Taille maximale en octets (ici, 5 Mo)
                                 $uploadDirectory = Constants::mediaDirectoryblogs() . $idPost;
-
+                                //TODO verifier une dimension HxV ? format paysage
 
                                 try {
                                     $result = PictureVerificator::VerifyImg($_FILES['BlogPicture'], $uploadDirectory,
@@ -106,8 +114,8 @@ class ControllerPost
                                 }
 
 
-                                if ($existingPost->getUrlPicture() !== null && $newImg !== null) {
-                                    // on supprime l'ancienne image
+                                if ($existingPost->getUrlPicture() !== null && $newImg !== null) { // si une nouvelle image a été fournis et qu'il y en avait deja une,
+                                    // on supprime l'ancienne image en conservant la nouvelle afin de faire de la place
                                     $uploadDirectory = $uploadDirectory . "/" . $existingPost->getUrlPicture();
                                     $files = glob($uploadDirectory . '/*'); // recup tout les noms des fichiers
                                     foreach ($files as $file) { // parcours fichiers
@@ -168,6 +176,8 @@ class ControllerPost
                                         }
                                     }
                                 }
+                                MotorView::show('post/viewBlogEdit',array());// todo ajouté les infos pour la vue
+                                // todo :hypothese on pourrait penser qu'il faut mettre la vue en premier, et le séparé
 
                             } else {
                                 (new UserSite())->incrementAlertLevelUser($_SESSION['UserId']);
@@ -182,13 +192,13 @@ class ControllerPost
                     $newTags = null;
 
                     if (isset($A_postParams["Title"])) {
-                        $title = filter_input(INPUT_POST, 'Title', FILTER_SANITIZE_STRING);
+                        $title = filter_input(INPUT_POST, 'Title', FILTER_SANITIZE_SPECIAL_CHARS);
                         if ($title != "" && $title !== null) {
                             $newTitle = $title;
                         }
                     }
                     if (isset($A_postParams["Content"])) {
-                        $content = filter_input(INPUT_POST, 'Content', FILTER_SANITIZE_STRING);
+                        $content = filter_input(INPUT_POST, 'Content', FILTER_SANITIZE_SPECIAL_CHARS);
                         $escapedContent = htmlspecialchars($content);
 
                         if ($escapedContent != "" && $escapedContent !== null) {
@@ -196,7 +206,7 @@ class ControllerPost
                         }
                     }
                     if (isset($A_postParams["Tags"])) {
-                        $tags = filter_input(INPUT_POST, 'Tags', FILTER_SANITIZE_STRING);
+                        $tags = filter_input(INPUT_POST, 'Tags', FILTER_SANITIZE_SPECIAL_CHARS);
                         if ($tags != "" && $tags !== null) {
                             $arrayOfTags = explode(",", $tags);
                             $newTags = $arrayOfTags;
@@ -206,12 +216,13 @@ class ControllerPost
 
                     try {
                         // cas de création
-                        $idNewPost = (new Blog_Page())->createPage(
+                        error_log("DEBUG : cas de création ");
+                        $idNewPost = (new Blog_Page())->createPage( // on va creer une page et recuper son identifiant si ca reussi
                             $newTitle,
                             $newContent,
                             $_SESSION['Username'],
                             $_SESSION['UserId']);
-
+                        if (!$idNewPost instanceof Exception && $idNewPost!==false) //todo mettre le bon type de class
 
                         // et la on va update l'image
 
@@ -259,6 +270,7 @@ class ControllerPost
                                 }
                             }
                         }
+                        MotorView::show('post/viewBlogEdit');
 
 
                     } catch
@@ -282,6 +294,5 @@ class ControllerPost
             // sinon ca veut dire que c'est pas cohérent donc report
         }
 
-        MotorView::show('post/viewBlogEdit');
     }
 }
