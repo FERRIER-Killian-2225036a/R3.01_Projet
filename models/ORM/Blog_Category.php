@@ -30,7 +30,7 @@ class Blog_Category
             // l'easter egg recursif était une mauvaise idée, note a moi meme ne plus refaire
             // on renvoi l'id de la category
         }
-    }   
+    }
 
     public function doesCategoryExist($label)
     {

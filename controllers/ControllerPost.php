@@ -137,7 +137,7 @@ class ControllerPost
 
                                 // si il y a une image, on va la traiter avec la méthode de PictureVerificator
                                 $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
-                                $minFileSize = 100000; // Taille minimale en octets (ici 100 Ko, on veut pas une image flou)
+                                $minFileSize = 1000; // Taille minimale en octets
                                 $maxFileSize = 5000000; // Taille maximale en octets (ici, 5 Mo)
                                 $uploadDirectory = Constants::mediaDirectoryblogs() . $idPost;
                                 error_log("dir d'upload : ".$uploadDirectory);
@@ -203,7 +203,7 @@ class ControllerPost
                                     $newTitle = $tempArray['TITLE'];
                                 }
                                 if ($newContent == null) {
-                                    $newContent = $tempArray['Content'];
+                                    $newContent = $tempArray['content'];
                                 }
 
                                 $post->updatePage($idPost,
