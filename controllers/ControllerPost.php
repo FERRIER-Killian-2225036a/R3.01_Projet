@@ -54,7 +54,7 @@ class ControllerPost
                         $TempTags = $existingPost->getTags();
                         // transformation de la liste d'identifiant de tag, en un string sous forme de label1,label2,label3
                         error_log("tempTags : ".print_r($TempTags,true));
-                        
+
                         $tagsStringForInput = "";
                         foreach ($TempTags as $tags) {
                             $tagsStringForInput .= $tags . ",";
@@ -131,6 +131,7 @@ class ControllerPost
                                     if ($tags !== $realTags && $tags != "" && $tags !== null) {
                                         $arrayOfTags = explode(",", $tags);
                                         $newTags = $arrayOfTags;
+                                        error_log("les tags ont bien recu changement");
                                     }
                                     error_log("Les nouveaux tags a inserer sont :".print_r($newTags),true);
                                 }
@@ -218,16 +219,19 @@ class ControllerPost
 
                                 // ensuite on traite les categories
                                 $CategoryPageFormOrm = new Blog_categoryPage();
-                                if ($newTags != null && empty($newTags)) { // on apporte une modifs aux tags en suppression
+                                error_log("DEBUG BEFORE INSERT TAG" );
+                                error_log("new tag potentielement null ou array :". $newTags);
+                                if (empty($newTags)) { // on apporte une modifs aux tags en suppression
                                     $idTags = $CategoryPageFormOrm->getCategoryByPageId($idPost);
                                     foreach ($idTags as $idtag) {
                                         $CategoryPageFormOrm->removeLinkBetweenCategoryAndPage($idtag, $idPost);
                                     }
-                                } else if (!empty($newTags)) { // on a de potentiels modifications dans les tags
+                                } 
+                                else { // on a de potentiels modifications dans les tags
                                     foreach ($newTags as $tag) { //TODO faut remove si y'en a qui ont changé
                                         $id = (new Blog_Category())->createCategory($tag); // renvoi l'id de la nouvelle/existante page
                                         error_log("est ce que id == false ? :".$id == false);
-                                        error_log("DEBUG Crash  :" . $id . $tag . $idPost);
+                                        error_log("DEBUG Crash  idCat :" . $id ." label ". $tag ." idPost". $idPost);
                                         $CategoryPageFormOrm->createLinkBetweenCategoryAndPage($id, $idPost);// on link la page au nouvel id.
                                     }
                                 }
