@@ -53,12 +53,17 @@ class ControllerMenu
         foreach ($ArrayOfBlogPageModel as $obj) {
             error_log("statusP : " . $obj->getStatusP());
             if ($obj->getStatusP() == "active") {
+                $tagsList = "";
+                foreach ($obj->getTags() as $tags ){
+                    $tagsList .= "#".$tags ." - ";
+                }
                 MotorView::show('menu/blogFeed', array("blogPostUrl"=>$obj->getPostUrl(),
                                                                 "blogTitle" => $obj->getTITLE(),
                                                                 "blogContent" => $obj->getContent(),
                                                                 "blogAuthor" => $obj->getAuthor(),
                                                                 "blogDate" => $obj->getDateP(),
-                                                                "blogUrlPicture" => $obj->getUrlPicture())); // plus tard il faudra mettre si l'user a bien liké ou non
+                                                                "blogUrlPicture" => $obj->getUrlPicture(),
+                                                                "Tags"=>$tagsList)); // plus tard il faudra mettre si l'user a bien liké ou non
             }
         }
     }

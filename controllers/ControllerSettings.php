@@ -195,7 +195,7 @@ class ControllerSettings
             if ($obj->getStatusP()!="inactive"){ // on va rajouter le lien d'édition
                 $tagsList = "";
                 foreach ($obj->getTags() as $tags ){
-                    $tagsList .= $tags ." - ";
+                    $tagsList .= "#".$tags ." - ";
                 }
                 MotorView::show('profileSettings/postBlog', array("blogPostEditUrl"=>$obj->getPostEditUrl(),"blogTitle" => $obj->getTITLE(),
                                                                             "blogContent" => $obj->getContent(), "blogAuthor" => $obj->getAuthor(),

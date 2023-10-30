@@ -6,7 +6,7 @@
                 <img src="<?php echo $mapView['blogUrlPicture'] ?>" alt="Logo" class="responsive-image round p-1">
                 <div class="text-content">
                     <h1 class="responsiveTitle"><?php echo $mapView['blogTitle'] ?></h1>
-                    <p class="lead"> <?php echo $mapView['blogAuthor'] ?> - <?php echo $mapView['blogDate'] ?> </p>
+                    <p class="lead"><?php echo $mapView['Tags'] ?> <?php echo $mapView['blogAuthor'] ?> - <?php echo $mapView['blogDate'] ?> </p>
                     <p class="responsive-text"><?php echo $mapView['blogContent'] ?></p>
                 </div>
             </a>

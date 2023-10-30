@@ -10,7 +10,7 @@
                         </div>
                         <div class="text-content">
                             <h1 class="responsiveTitle"><?php echo $mapView['blogTitle'] ?></h1>
-                            <p class="lead responsiveText"><?php echo $mapView['blogTags']?>> <?php echo $mapView['blogDate'] ?> - Par <?php echo $mapView['blogAuthor'] ?></p>
+                            <p class="lead responsiveText"><?php echo $mapView['blogTags']?> <?php echo $mapView['blogDate'] ?> - Par <?php echo $mapView['blogAuthor'] ?></p>
                             <p class="responsiveText"><?php echo $mapView['blogContent'] ?></p> <!-- ajouté categories-->
                         </div>
                     </a>
