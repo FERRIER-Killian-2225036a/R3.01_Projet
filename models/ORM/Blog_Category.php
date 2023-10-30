@@ -50,7 +50,7 @@ class Blog_Category
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $stmt->closeCursor();
-            error_log(print_r($result,true));
+            //error_log(print_r($result,true));
             return $result['label'];
         } else return false;
         // renvoie le label d'une category selon son identifiant

@@ -60,6 +60,7 @@ class ControllerPost
                             $tagsStringForInput .= $tags . ",";
                         }
                         $tagsStringForInput = substr($tagsStringForInput, 0, strlen($tagsStringForInput) - 1);
+                        error_log("DEBUG taginput : $tagsStringForInput");
                         // $tagsStringForInput sera fourni dans l'input dans l'input de la vue,
                         MotorView::show('post/viewBlogEdit', array("Title" => $title,
                             "Content" => $content,
@@ -132,6 +133,7 @@ class ControllerPost
                                         $arrayOfTags = explode(",", $tags);
                                         $newTags = $arrayOfTags;
                                     }
+                                    error_log("Les nouveaux tags a inserer sont :".print_r($newTags),true);
                                 }
 
 
@@ -225,6 +227,7 @@ class ControllerPost
                                 } else if (!empty($newTags)) { // on a de potentiels modifications dans les tags
                                     foreach ($newTags as $tag) { //TODO faut remove si y'en a qui ont changé
                                         $id = (new Blog_Category())->createCategory($tag); // renvoi l'id de la nouvelle/existante page
+                                        error_log("est ce que id == false ? :".$id == false);
                                         error_log("DEBUG Crash  :" . $id . $tag . $idPost);
                                         $CategoryPageFormOrm->createLinkBetweenCategoryAndPage($id, $idPost);// on link la page au nouvel id.
                                     }
