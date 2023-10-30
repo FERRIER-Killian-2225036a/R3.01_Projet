@@ -276,6 +276,9 @@ class ControllerPost
                     try {
                         // cas de création
                         error_log("DEBUG : cas de création ");
+                        if ($newTitle == null || $newContent == null) {
+                            throw new ExceptionsBlog("Le titre ou le contenu est vide");
+                        }
                         $idNewPost = (new Blog_Page())->createPage( // on va creer une page et recuper son identifiant si ca reussi
                             $newTitle,
                             $newContent,
@@ -330,8 +333,11 @@ class ControllerPost
 
                     } catch
                     (ExceptionsBlog $e) {
-                        //TODO on pensera a afficher un message d'erreur sur le site
-                        error_log($e->getMessage());
+                        error_log($e->getMessage());//TODO on pensera a afficher un message d'erreur sur le site
+                        // TODO fonction javascript pour empecher submit coté client si titre null
+
+                        header("Location: /Settings/MyPost");
+                        die();
                     }
 
                 }
