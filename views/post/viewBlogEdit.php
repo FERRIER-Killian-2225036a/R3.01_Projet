@@ -27,7 +27,6 @@
             <!--Categorie new -->
             <label for="tag-input1">Entrez les tags de votre publication</label>
             <input type="text" name="Tags" id="tag-input1">
-            <script>tagInput1.addData([<?php echo $mapView["Tags"]?>])</script>
 
 
             <!-- Input d'image -->
@@ -66,6 +65,8 @@
     </div>
     <script src="../../common_scripts/blog.js"></script>
     <script src="../../common_scripts/simple-tags.js"></script>
+    <script>tagInput1.addData([<?php echo $mapView["Tags"]?>])</script>
+
 
 </main>
 
