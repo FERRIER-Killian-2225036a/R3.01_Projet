@@ -165,7 +165,7 @@ class ControllerPost
                                         throw new ExceptionsUpload($result);
                                     } else {
                                         error_log("DEBUG : on est sensé rentré ici car l'image est success");
-                                        $newImg = Constants::mediaDirectoryBlogs() . $idPost . "/" . $result[1];
+                                        $newImg = Constants::MEDIA_DIRECTORY_BLOGS . $idPost . "/" . $result[1];
                                         error_log("dir + files name : " . $newImg);
 
                                         //$post->update_img($idPost,$newImg);
@@ -307,7 +307,7 @@ class ControllerPost
                             // echo $result;
                             throw new ExceptionsBlog($idNewPost);
                         } else {
-                            $newImg = Constants::mediaDirectoryBlogs() . $idNewPost . "/" . $result[1];
+                            $newImg = Constants::MEDIA_DIRECTORY_BLOGS . $idNewPost . "/" . $result[1];
                             if ($idNewPost instanceof ExceptionsBlog) {
                                 throw new ExceptionsBlog($idNewPost); // erreur survenue lors de la création
                             }
