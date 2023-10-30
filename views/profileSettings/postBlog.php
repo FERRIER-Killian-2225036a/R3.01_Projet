@@ -23,8 +23,8 @@
                 </svg>
                 <div class="dropdown-content">
                     <a href="<?php echo $mapView['blogPostEditUrl'] ?>">Modifier</a>
-                    <a onclick="sendPostShowOrHide('id')">Afficher/Cacher</a>
-                    <a onclick="sendPostDelete('id')">Supprimer</a>
+                    <a onclick="sendPostShowOrHide('<?php echo $mapView['id'] ?>')">Afficher/Cacher</a>
+                    <a onclick="sendPostDelete('<?php echo $mapView['id'] ?>')">Supprimer</a>
                 </div>
             </div>
             <script>
