@@ -84,6 +84,28 @@ class ControllerPost
                         if ($post->doesPageIdExist($idPost)) { // on procede donc a la verification de si l'identifiant est attribué
                             // si l'id de post appartient au user id de la session en cours
                             if ($post->doesPageIdBelongToUser($idPost, $_SESSION['UserId'])) {
+
+                                // le cas des appels des petits boutons de la page de settings
+                                if (isset($A_postParams["DeleteBlog"])) {
+                                    $post->deletePage($idPost);
+                                    header("Location: /Settings/MyPost");
+                                    die();
+                                }
+                                elseif (isset($A_postParams["ChangeVisibilityBlog"])) {
+                                    $status = (new BlogPageModel($idPost))->getStatusP($idPost);
+                                    if ($status == "hidden"){
+                                        $status = "active";
+                                    }
+                                    elseif ($status == "active"){
+                                        $status = "hidden";
+                                    }
+                                    $post->changeVisibility($idPost,$status);
+                                    header("Location: /Settings/MyPost");
+                                    die();
+                                } else {
+
+
+
                                 // on est dans le cas de la modification d'un post
                                 $existingPost = new BlogPageModel($idPost); // on crée un nouvelle objet qui contient les
                                 // valeurs d'une blogPage de la bdd pour un identifiant unique donnée
@@ -219,7 +241,7 @@ class ControllerPost
                                 }
                                 header("Location: /Settings/MyPost");
                                 die();
-
+                                }
                             } else {
                                 (new UserSite())->incrementAlertLevelUser($_SESSION['UserId']);
                                 header("Location: /Post/Blog/" . $idPost);
@@ -241,7 +263,7 @@ class ControllerPost
                     }
                     if (isset($A_postParams["Content"])) {
                         $content = $A_postParams["Content"];
-                        $content = htmlspecialchars($content); 
+                        $content = htmlspecialchars($content);
 
                         if ($content != "") {
                             $newContent = $content;

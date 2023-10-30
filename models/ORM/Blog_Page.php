@@ -38,6 +38,16 @@ class Blog_Page
 
     public function deletePage($PageId)
     {
+        if ($this->doesPageIdExist($PageId)) {
+            // on supprime les liens vers les categories de la page
+            (new Blog_categoryPage())->removeAllLinkBetweenCategoryAndPage($PageId);
+
+            $stmt = $this->conn->prepare("DELETE FROM BLOG_Page WHERE PageId = ?");
+            $stmt->bindParam(1, $PageId, PDO::PARAM_STR);
+            $stmt->execute();
+            $stmt->closeCursor();
+            return true;
+        } else return false;
         // on supprime les categoriesPage liés a pageId, puis on supprime l'article
         // ou alors on pourra imaginé a le mettre en innactive
     }
