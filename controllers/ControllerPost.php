@@ -136,7 +136,16 @@ class ControllerPost
                                 $minFileSize = 100000; // Taille minimale en octets (ici 100 Ko, on veut pas une image flou)
                                 $maxFileSize = 5000000; // Taille maximale en octets (ici, 5 Mo)
                                 $uploadDirectory = Constants::mediaDirectoryblogs() . $idPost;
+                                error_log("dir d'upload : ".$uploadDirectory);
                                 //TODO verifier une dimension HxV ? format paysage
+
+                                if (!is_dir($uploadDirectory)) {
+                                    if (mkdir($uploadDirectory)) { // création dossier
+                                        error_log("Le dossier a été créé avec succès.");
+                                    } else {
+                                        error_log("Une erreur est survenue lors de la création du dossier.");
+                                    }
+                                }
 
                                 try {
                                     $result = PictureVerificator::VerifyImg($_FILES['BlogPicture'], $uploadDirectory,
@@ -148,6 +157,8 @@ class ControllerPost
                                         throw new ExceptionsUpload($result);
                                     } else {
                                         $newImg = Constants::mediaDirectoryBlogs() . $idPost . "/" . $result[1];
+                                        error_log("dir + files name : ".$newImg);
+
                                         //$post->update_img($idPost,$newImg);
 
                                     }
@@ -158,13 +169,7 @@ class ControllerPost
                                 }
 
 
-                                if (!is_dir($uploadDirectory)) {
-                                    if (mkdir($uploadDirectory)) { // création dossier
-                                        error_log("Le dossier a été créé avec succès.");
-                                    } else {
-                                        error_log("Une erreur est survenue lors de la création du dossier.");
-                                    }
-                                }
+
 
 
                                 if ($existingPost->getUrlPicture() !== null && $newImg !== null) { // si une nouvelle image a été fournis et qu'il y en avait deja une,
@@ -174,8 +179,6 @@ class ControllerPost
                                     foreach ($files as $file) { // parcours fichiers
                                         if (is_file($file) && $file !== $existingPost->getUrlPicture())
                                             unlink($file); // suppression
-
-
                                     }
                                 }
 
@@ -229,9 +232,7 @@ class ControllerPost
                                         }
                                     }
                                 }
-                                MotorView::show('post/viewBlogEdit',array());// todo ajouté les infos pour la vue
-                                // todo :hypothese on pourrait penser qu'il faut mettre la vue en premier, et le séparé
-
+                                
                             } else {
                                 (new UserSite())->incrementAlertLevelUser($_SESSION['UserId']);
                                 header("Location: /Post/Blog/" . $idPost);
@@ -287,6 +288,14 @@ class ControllerPost
                         $uploadDirectory = Constants::mediaDirectoryBlogs() . $idNewPost . "/";
 
 
+                        if (!is_dir($uploadDirectory)) {
+                            if (mkdir($uploadDirectory)) { // création dossier
+                                error_log("Le dossier a été créé avec succès.");
+                            } else {
+                                error_log("Une erreur est survenue lors de la création du dossier.");
+                            }
+                        }
+
                         $result = PictureVerificator::VerifyImg($_FILES['BlogPicture'], $uploadDirectory,
                             $allowedExtensions, $minFileSize, $maxFileSize);
                         if ($result[0] != "success") {
@@ -303,13 +312,6 @@ class ControllerPost
                         }
 
 
-                        if (!is_dir($uploadDirectory)) {
-                            if (mkdir($uploadDirectory)) { // création dossier
-                                error_log("Le dossier a été créé avec succès.");
-                            } else {
-                                error_log("Une erreur est survenue lors de la création du dossier.");
-                            }
-                        }
 
                         if (!empty($newTags)) { // on a des potentiels ajout de nouveaux tags
                             foreach ($newTags as $tag) {
@@ -323,7 +325,7 @@ class ControllerPost
                                 }
                             }
                         }
-                        MotorView::show('post/viewBlogEdit');
+                        //MotorView::show('post/viewBlogEdit');
 
 
                     } catch
