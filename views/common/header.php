@@ -44,7 +44,7 @@
                 -->
                 <?php // Si l'utilisateur est connecté et sur la page Blog, vous pouvez générer des liens spécifiques ici
                 if (SessionManager::isUserConnected() && $_SERVER['REQUEST_URI'] === "/Menu/BlogFeed") {
-                    echo '<a class="btn btn-outline-dark ml-auto" href="/Post/BlogEdit">Nouveau Blog</a>';
+                    echo '<a class="btn btn-outline-dark ms-auto" href="/Post/BlogEdit">Nouveau Blog</a>';
                 }
                 ?>
             </div>
