@@ -8,7 +8,8 @@
         </div>
         <div class="col-md-6 d-flex align-items-center justify-content-center">
             <div class="btn-group">
-                <button class="btn btn-outline-dark" name="createTicket" value="1" type="submit">Créer un ticket</button>
+                <button class="btn btn-outline-dark" name="createTicket" value="1" type="submit">Créer un ticket
+                </button>
             </div>
         </div>
         <hr class="my-3">
@@ -23,24 +24,15 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Aliquam laoreet vitae laoreet.</td>
-                <td>2022-03-17</td>
-                <td>En cours de traitement</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Vestibulum ut libero nec orci.</td>
-                <td>2022-03-17</td>
-                <td>En attentes</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Nunc id vehicula elit gravida.</td>
-                <td>2022-03-17</td>
-                <td>Fermé</td>
-            </tr>
+            <?php foreach ($mapView["ArrayOfTicket"] as $obj) {
+                echo "<tr>";
+                echo "<th scope=\"row\">" . $obj->getTicketId() . "</th>";
+                echo "<td>" . $obj->getSubject() . "</td>";
+                echo "<td>" . $obj->getDate() . "</td>";
+                echo "<td>" . $obj->getStatus() . "</td>";
+                echo "</tr>";
+            }
+                ?>
             </tbody>
         </table>
         <hr class="my-3">
@@ -52,20 +44,24 @@
                 <h2>Signalement</h2>
             </div>
         </div>
-        <div class="row mb-4">
+        <form method="post" action="/Settings/Support">
+            <div class="row mb-4">
                 <label for="object-input"></label>
                 <div class="col-md-12">
-                    <input type="text" class="form-control inputBackground" name="username" id="object-input" placeholder="Objet">
+                    <input type="text" class="form-control inputBackground" name="Subject" id="object-input"
+                           placeholder="Objet">
                 </div>
-        </div>
-        <div class="row mb-4">
-            <label for="contenu-input"></label>
-            <div class="col-md-12">
-                <textarea class="form-control custom-form inputBackground" rows="5" id="contenu-input" placeholder="Entrez votre contenu ici..."></textarea>
             </div>
-        </div>
-        <div class="col-md-12 d-flex align-items-center justify-content-center">
-            <div class="btn-group">
-                <button class="btn btn-custom-green" name="ChangeUsername" value="1" type="submit">Envoyer</button>
+            <div class="row mb-4">
+                <label for="contenu-input"></label>
+                <div class="col-md-12">
+                    <textarea class="form-control custom-form inputBackground" name="Content" rows="5" id="contenu-input"
+                              placeholder="Entrez votre contenu ici..."></textarea>
+                </div>
             </div>
-        </div>
+            <div class="col-md-12 d-flex align-items-center justify-content-center">
+                <div class="btn-group">
+                    <button class="btn btn-custom-green" name="SubmitSupport" value="1" type="submit">Envoyer</button>
+                </div>
+            </div>
+        </form>
