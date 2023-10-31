@@ -235,10 +235,8 @@ class ControllerSettings
             $ArrayOfTicketId = $tempTicket->getAllTicketIdOfUser($_SESSION["UserId"]);
             $ArrayOfTicket = array();
             foreach ($ArrayOfTicketId as $id) {
-                error_log("id :".$id)  ;
                 $ArrayOfTicket[] = new TicketModel($id);
             }
-            error_log("aticket obj :".print_r($ArrayOfTicket, true));
             MotorView::show('profileSettings/support', array("ArrayOfTicket" => $ArrayOfTicket));
         } else {
             header("Location: / ");

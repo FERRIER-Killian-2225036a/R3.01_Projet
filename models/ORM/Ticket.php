@@ -81,7 +81,7 @@ class Ticket
             $stmt->execute();
         }
     }
-
+    /* on ne fais pas ca car pour la plus part des autres objet on a tjrs fait par rapport a clé primaire
     public function getValuesByUserId($UserId)
     {
         error_log("UserId in getValuesByUserId = ".$UserId);
@@ -89,6 +89,15 @@ class Ticket
         $sql = "SELECT * FROM TICKET WHERE UserId = ?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(1, $UserId);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }*/
+
+    public function getValuesById($Id)
+    {
+        $sql = "SELECT * FROM TICKET WHERE TicketId = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(1, $Id);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }

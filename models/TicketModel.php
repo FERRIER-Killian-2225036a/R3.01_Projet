@@ -49,8 +49,7 @@ class TicketModel
     public function __construct($UserId)
     {
         $tempObj = new Ticket();
-        $arrayOfValues = $tempObj->getValuesByUserId($UserId);
-        error_log("array of values in ticket model = ".print_r($arrayOfValues, true));
+        $arrayOfValues = $tempObj->getValuesById($UserId);
         $this->TicketId = $arrayOfValues['TicketId'];
         $this->mail = $arrayOfValues['mail'];
         $this->date = $arrayOfValues['date'];
