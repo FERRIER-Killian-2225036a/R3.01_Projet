@@ -84,19 +84,12 @@ class Ticket
 
     public function getValuesByUserId($UserId)
     {
-
-
-
-        $arrayOfValues = array();
-        $sql = "SELECT * FROM TICKET WHERE UserId = :UserId";
+        //$arrayOfValues = array();
+        $sql = "SELECT * FROM TICKET WHERE UserId = ?";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':UserId', $UserId);
+        $stmt->bindParam(1, $UserId);
         $stmt->execute();
-        $arrayOfValues = $stmt->fetch(PDO::FETCH_ASSOC);
-        $stmt->closeCursor();
-
-        error_log("ARRAY OF VALUES : ".print_r($arrayOfValues, true));
-        return $arrayOfValues;
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
 }

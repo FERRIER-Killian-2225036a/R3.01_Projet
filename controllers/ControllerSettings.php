@@ -231,13 +231,14 @@ class ControllerSettings
             }
         }
         if (SessionManager::isUserConnected()) {
-            $ArrayOfTicketId = (new Ticket())->getAllTicketIdOfUser($_SESSION["UserId"]);
-            error_log("ArrayOfTicketId :".print_r($ArrayOfTicketId, true));
+            $tempTicket = new Ticket();
+            $ArrayOfTicketId = $tempTicket->getAllTicketIdOfUser($_SESSION["UserId"]);
             $ArrayOfTicket = array();
             foreach ($ArrayOfTicketId as $id) {
+                error_log("id :".$id)  ;
                 $ArrayOfTicket[] = new TicketModel($id);
             }
-            error_log(print_r($ArrayOfTicket, true));
+            error_log("aticket obj :".print_r($ArrayOfTicket, true));
             MotorView::show('profileSettings/support', array("ArrayOfTicket" => $ArrayOfTicket));
         } else {
             header("Location: / ");
