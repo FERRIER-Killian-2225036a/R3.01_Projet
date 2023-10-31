@@ -27,13 +27,6 @@
                         <img src="/media/public_assets/logout.png" alt="Logo logout" class="menu-img me-2">
                     </a>
                 </li>
-
-                <!-- Le bouton "Nouveau blog" est généré ici s'il est sur la page Blog -->
-                <?php if ($_SERVER['REQUEST_URI'] === "/Menu/BlogFeed"): ?>
-                    <li class="nav-item">
-                        <a href="/Post/BlogEdit" class="btn btn-primary">Nouveau Blog</a>
-                    </li>
-                <?php endif; ?>
             </ul>
         </div>
     </div>
@@ -54,6 +47,12 @@
                     echo '<a class="NewPost" href="/Post/BlogEdit">Nouveau Blog</a>';
                 }
                 ?>
+                <!-- Le bouton "Nouveau blog" est généré ici s'il est sur la page Blog -->
+                <?php if ($_SERVER['REQUEST_URI'] === "/Menu/BlogFeed"): ?>
+                    <li class="nav-item">
+                        <a href="/Post/BlogEdit" class="btn btn-primary">Nouveau Blog</a>
+                    </li>
+                <?php endif; ?>
             </div>
         </div>
     </div>
