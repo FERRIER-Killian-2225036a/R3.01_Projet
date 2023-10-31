@@ -25,7 +25,7 @@
             </thead>
             <tbody>
             <?php
-            error_log(print_r($mapView, true)));
+            //error_log(print_r($mapView, true)));
             foreach ($mapView["ArrayOfTicket"] as $obj) {
                 echo "<tr>";
                 echo "<th scope=\"row\">" . $obj->getTicketId() . "</th>";

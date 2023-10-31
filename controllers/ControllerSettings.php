@@ -236,7 +236,7 @@ class ControllerSettings
             foreach ($ArrayOfTicketId as $id) {
                 $ArrayOfTicket[] = new TicketModel($id);
             }
-
+            error_log(print_r($ArrayOfTicket, true));
             MotorView::show('profileSettings/support', array("ArrayOfTicket" => $ArrayOfTicket));
         } else {
             header("Location: / ");
