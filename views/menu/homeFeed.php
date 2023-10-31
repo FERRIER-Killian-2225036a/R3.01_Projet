@@ -5,7 +5,7 @@
         <div class="row">  <!-- Ajout d'une rangée -->
             <div class="col-lg-6 col-md-8">
                 <h1 class="homeTitle">Bienvenue chez Cyphub !</h1>
-                <p class="colorText lead text-body-secondary">Ici est le début de la page home avec juste une phrase qui finira par être modifiée.</p>
+                <p class="colorText lead text-body-secondary">Connectez-vous à l'avenir de la cybersécurité avec CybHub : Actualités, Blogs et Forums pour les passionnés de la cybersécurité</p>
 
                 <div class="col-lg-8 col-md-8 mx-left">
                     <a href="/Auth/Login" class="cta colorText noneColor text-left block">
