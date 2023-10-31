@@ -14,7 +14,7 @@ class Ticket
     public function createTicket($mail, $description, $statusT, $title, $UserId)
     {
         //$mail, $date, $description, $statusT, $title, $UserId
-        $sql = "INSERT INTO Ticket (mail, date, description, statusT, title, UserId) VALUES (:mail, CURRENT_TIMESTAMP, :description, :statusT, :title, :UserId)";
+        $sql = "INSERT INTO TICKET (mail, date, description, statusT, title, UserId) VALUES (:mail, CURRENT_TIMESTAMP, :description, :statusT, :title, :UserId)";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':mail', $mail);
         $stmt->bindParam(':description', $description);
@@ -28,7 +28,7 @@ class Ticket
     public function getTicket($TicketId)
     {
         if ($this->isTicketExist($TicketId)) {
-            $sql = "SELECT * FROM Ticket WHERE TicketId = :TicketId";
+            $sql = "SELECT * FROM TICKET WHERE TicketId = :TicketId";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':TicketId', $TicketId);
             $stmt->execute();
@@ -40,7 +40,7 @@ class Ticket
     public function getAllTicketIdOfUser($UserId)
     {
         $ArrayOfTicketId = array();
-        $sql = "SELECT TicketId FROM Ticket WHERE UserId = :UserId";
+        $sql = "SELECT TicketId FROM TICKET WHERE UserId = :UserId";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':UserId', $UserId);
         $stmt->execute();
@@ -53,7 +53,7 @@ class Ticket
     public function updateStatusT($TicketId, $StatusT)
     {
         if ($this->isTicketExist($TicketId)) {
-            $sql = "UPDATE Ticket SET StatusT = :StatusT WHERE TicketId = :TicketId";
+            $sql = "UPDATE TICKET SET StatusT = :StatusT WHERE TicketId = :TicketId";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':StatusT', $StatusT);
             $stmt->bindParam(':TicketId', $TicketId);
@@ -64,7 +64,7 @@ class Ticket
 
     public function isTicketExist($TicketId): bool
     {
-        $sql = "SELECT count(*) FROM Ticket WHERE TicketId = :TicketId";
+        $sql = "SELECT count(*) FROM TICKET WHERE TicketId = :TicketId";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':TicketId', $TicketId);
         $stmt->execute();
@@ -75,7 +75,7 @@ class Ticket
     public function deleteTicket($TicketId)
     {
         if ($this->isTicketExist($TicketId)) {
-            $sql = "DELETE FROM Ticket WHERE TicketId = :TicketId";
+            $sql = "DELETE FROM TICKET WHERE TicketId = :TicketId";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':TicketId', $TicketId);
             $stmt->execute();
@@ -84,7 +84,7 @@ class Ticket
 
     public function getValuesByUserId($UserId)
     {
-        $sql = "SELECT * FROM Ticket WHERE UserId = :UserId";
+        $sql = "SELECT * FROM TICKET WHERE UserId = :UserId";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':UserId', $UserId);
         $stmt->execute();
