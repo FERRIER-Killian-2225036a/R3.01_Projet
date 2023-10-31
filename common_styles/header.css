@@ -65,3 +65,13 @@ a > img {
         padding-top: 0.7em;
     }
 }
+.btn-custom-purple {
+    color: var(--purple);
+    border-color: var(--purple);
+    background-color: transparent;
+}
+
+.btn-custom-purple:hover {
+    color: black;
+    background-color: var(--purple);
+}
