@@ -19,8 +19,8 @@
         $conn = DatabaseManager::getInstance();
     }
     catch (ExceptionsDatabase $O_exception) {
-        echo ('Une erreur s\'est produite lors de la connexion a la base: ' . $O_exception->getMessage());
-        // TODO LOG CA
+        //echo ('Une erreur s\'est produite lors de la connexion a la base: ' . $O_exception->getMessage());
+        error_log('Une erreur s\'est produite lors de la connexion a la base: ' . $O_exception->getMessage());
     }
 
     MotorView::openBuffer(); // on ouvre le tampon d'affichage, les contrôleurs qui appellent des vues les mettront dedans
@@ -31,7 +31,9 @@
     }
     catch (ExceptionsController $O_exception)
     {
-        echo ('Une erreur s\'est produite : ' . $O_exception->getMessage());
+        header("HTTP/1.0 404 Not Found");
+        //echo ('Une erreur s\'est produite : ' . $O_exception->getMessage());
+        error_log('Une erreur s\'est produite : ' . $O_exception->getMessage());
 
     }
 
