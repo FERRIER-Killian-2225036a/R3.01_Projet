@@ -84,6 +84,7 @@ class Ticket
 
     public function getValuesByUserId($UserId)
     {
+        error_log("UserId in getValuesByUserId = ".$UserId);
         //$arrayOfValues = array();
         $sql = "SELECT * FROM TICKET WHERE UserId = ?";
         $stmt = $this->conn->prepare($sql);
