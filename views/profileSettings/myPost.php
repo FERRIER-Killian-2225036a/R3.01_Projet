@@ -54,4 +54,7 @@
                 </div>
             </div>
         </div>
+    </div>
+    <script src="../../common_scripts/maxTextSize.js"></script>
+</div>
 
