@@ -80,3 +80,6 @@
     display: block;   /* Élimine l'espace supplémentaire en bas pour aligner l'image avec le texte autour */
     margin: 0 auto;   /* Centrer l'image horizontalement si son conteneur est plus large que l'image */
 }
+.hidden{
+    display: none;
+}
