@@ -32,6 +32,7 @@
     catch (ExceptionsController $O_exception)
     {
         header("HTTP/1.0 404 Not Found");
+        //TODO page 404
         //echo ('Une erreur s\'est produite : ' . $O_exception->getMessage());
         error_log('Une erreur s\'est produite : ' . $O_exception->getMessage());
 
