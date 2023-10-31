@@ -24,7 +24,9 @@
             </tr>
             </thead>
             <tbody>
-            <?php foreach ($mapView["ArrayOfTicket"] as $obj) {
+            <?php
+            error_log(print_r($mapView, true)));
+            foreach ($mapView["ArrayOfTicket"] as $obj) {
                 echo "<tr>";
                 echo "<th scope=\"row\">" . $obj->getTicketId() . "</th>";
                 echo "<td>" . $obj->getTitle() . "</td>";
@@ -32,7 +34,7 @@
                 echo "<td>" . $obj->getStatusT() . "</td>";
                 echo "</tr>";
             }
-                ?>
+            ?>
             </tbody>
         </table>
         <hr class="my-3">
@@ -55,7 +57,8 @@
             <div class="row mb-4">
                 <label for="contenu-input"></label>
                 <div class="col-md-12">
-                    <textarea class="form-control custom-form inputBackground" name="Content" rows="5" id="contenu-input"
+                    <textarea class="form-control custom-form inputBackground" name="Content" rows="5"
+                              id="contenu-input"
                               placeholder="Entrez votre contenu ici..."></textarea>
                 </div>
             </div>
