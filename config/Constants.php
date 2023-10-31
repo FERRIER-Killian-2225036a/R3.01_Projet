@@ -11,7 +11,7 @@
  * @since 1.0
  * @package config
  * @version 1.0
- * @author Tom Carvajal & Killian Ferrier
+ * @author Tom Carvajal And Killian Ferrier
  */
 final class Constants
 {
