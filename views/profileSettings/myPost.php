@@ -49,8 +49,8 @@
                 </div>
                 <div class="text-content">
                     <h1 class="responsiveTitle">Test de myPost</h1>
-                    <p class="lead responsiveText">Catégorie - 00-00-00 - Par l'auteur</p>
-                    <p class="responsiveText">ça va parler chinois : Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit neskwik... VOIR PLUS</p>
+                    <p class="lead responsive-text">Catégorie - 00-00-00 - Par l'auteur</p>
+                    <p class="responsive-text">ça va parler chinois : Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit neskwik ça va parler chinois : Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit neskwik ça va parler chinois : Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit neskwik ça va parler chinois : Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit neskwik</p>
                 </div>
             </div>
         </div>
