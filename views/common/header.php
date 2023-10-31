@@ -27,41 +27,33 @@
                         <img src="/media/public_assets/logout.png" alt="Logo logout" class="menu-img me-2">
                     </a>
                 </li>
-            </ul>
 
+                <!-- Le bouton "Nouveau blog" est généré ici s'il est sur la page Blog -->
+                <?php if ($_SERVER['REQUEST_URI'] === "/Menu/BlogFeed"): ?>
+                    <li class="nav-item">
+                        <a href="/Post/BlogEdit" class="btn btn-primary">Nouveau Blog</a>
+                    </li>
+                <?php endif; ?>
+            </ul>
         </div>
     </div>
 </nav>
 
-
 <nav class="navbar navbar-bottom navbar-expand navbar-light bg-light">
     <div class="container-fluid">
-
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-link" aria-current="page" href="/">Home</a>
                 <a class="nav-link" href="/Menu/ActualityFeed">Veille Tech</a>
                 <a class="nav-link" href="/Menu/BlogFeed">Blogs</a>
-                <!--<a class="nav-link" href="/Menu/ForumFeed">Forum</a>-->
-                <?php //si c'est bon on affiche
-                    if (SessionManager::isUserConnected()) {
-                        //si on est connecté, et dans la page /Menu/BlogFeed $leliendelarequete = "/Post/BlogEdit";
-                        // et $nomTypePost = "Blog"
-                        // si on est connecté et dans la page /Menu/ForumFeed $leliendelarequete = "/Post/ForumEdit";
-                        // et $nomTypePost = "Forum"
-
-                        if ($_SERVER['REQUEST_URI'] === "/Menu/BlogFeed") {
-                            $leliendelarequete = "/Post/BlogEdit";
-                            $nomTypePost = "Blog";
-                            echo '<a class="NewPost" href="'.$leliendelarequete.'">Nouveau ' .$nomTypePost.' </a>';
-
-                        } elseif ($_SERVER['REQUEST_URI'] === "/Post/ForumFeed") {
-                            $leliendelarequete = "/Post/ForumEdit";
-                            $nomTypePost = "Forum";
-                            echo '<a class="NewPost " href="'.$leliendelarequete.'">Nouveau ' .$nomTypePost.' </a>';
-
-                        }
-                    }?>
+                <!--
+                <a class="nav-link" href="/Menu/ForumFeed">Forum</a>
+                -->
+                <?php // Si l'utilisateur est connecté et sur la page Blog, vous pouvez générer des liens spécifiques ici
+                if (SessionManager::isUserConnected() && $_SERVER['REQUEST_URI'] === "/Menu/BlogFeed") {
+                    echo '<a class="NewPost" href="/Post/BlogEdit">Nouveau Blog</a>';
+                }
+                ?>
             </div>
         </div>
     </div>
