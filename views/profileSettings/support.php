@@ -27,9 +27,9 @@
             <?php foreach ($mapView["ArrayOfTicket"] as $obj) {
                 echo "<tr>";
                 echo "<th scope=\"row\">" . $obj->getTicketId() . "</th>";
-                echo "<td>" . $obj->getSubject() . "</td>";
+                echo "<td>" . $obj->getTitle() . "</td>";
                 echo "<td>" . $obj->getDate() . "</td>";
-                echo "<td>" . $obj->getStatus() . "</td>";
+                echo "<td>" . $obj->getStatusT() . "</td>";
                 echo "</tr>";
             }
                 ?>
