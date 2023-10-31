@@ -44,15 +44,9 @@
                 -->
                 <?php // Si l'utilisateur est connecté et sur la page Blog, vous pouvez générer des liens spécifiques ici
                 if (SessionManager::isUserConnected() && $_SERVER['REQUEST_URI'] === "/Menu/BlogFeed") {
-                    echo '<a class="NewPost" href="/Post/BlogEdit">Nouveau Blog</a>';
+                    echo '<a class="btn btn-outline-dark ml-auto" href="/Post/BlogEdit">Nouveau Blog</a>';
                 }
                 ?>
-                <!-- Le bouton "Nouveau blog" est généré ici s'il est sur la page Blog -->
-                <?php if ($_SERVER['REQUEST_URI'] === "/Menu/BlogFeed"): ?>
-                    <li class="nav-item">
-                        <a href="/Post/BlogEdit" class="btn btn-primary">Nouveau Blog</a>
-                    </li>
-                <?php endif; ?>
             </div>
         </div>
     </div>
