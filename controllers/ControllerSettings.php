@@ -232,6 +232,7 @@ class ControllerSettings
         }
         if (SessionManager::isUserConnected()) {
             $ArrayOfTicketId = (new Ticket())->getAllTicketIdOfUser($_SESSION["UserId"]);
+            error_log("ArrayOfTicketId :".print_r($ArrayOfTicketId, true));
             $ArrayOfTicket = array();
             foreach ($ArrayOfTicketId as $id) {
                 $ArrayOfTicket[] = new TicketModel($id);

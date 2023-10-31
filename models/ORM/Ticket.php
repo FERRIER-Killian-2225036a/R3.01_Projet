@@ -94,7 +94,7 @@ class Ticket
         $stmt->execute();
         $arrayOfValues = $stmt->fetch(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
-        
+
         error_log("ARRAY OF VALUES : ".print_r($arrayOfValues, true));
         return $arrayOfValues;
     }
