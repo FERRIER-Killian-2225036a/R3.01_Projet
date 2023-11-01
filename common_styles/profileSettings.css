@@ -4,6 +4,10 @@
     outline-offset: 2px;
     background-color: rgba(0, 0, 0, 0.05); /* Légère coloration de fond pour une meilleure visibilité */
 }
+.nav-pills .nav-link{
+    margin-block: 0.2em;
+}
+
 .btn-custom {
     color: black;               /* Texte noir */
     border-color: red;          /* Contour rouge */
