@@ -19,7 +19,7 @@
                 <li class="nav-item">
                     <a href="<?= SessionManager::isUserConnected() ? "/Settings/ManageAccount" : "/Auth/Login"; ?>">
                         <img src="<?= (SessionManager::isUserConnected() && $_SESSION['UrlPicture'] !== null) ? $_SESSION['UrlPicture'] : Constants::PDP_URL_DEFAULT; ?>"
-                             alt="Logo profil" class="menu-img">
+                             alt="Logo profil" class="menu-img" id="profileImg">
                     </a>
                 </li>
                 <li class="nav-item">

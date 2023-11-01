@@ -61,6 +61,10 @@ a > img {
     width: 100%;
 }
 
+#profile-image {
+    border-radius: 50%;
+}
+
 @media (max-width: 660px) {
     .navbar{
         padding-inline: 2em;
