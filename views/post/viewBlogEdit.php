@@ -17,7 +17,7 @@
 
             <!--Categorie new -->
             <label for="tag-input1">Entrez les tags de votre publication</label>
-            <input type="text" name="Tags" id="tag-input1">
+            <input type="text" name="Tags" id="tag-input1 form-control custom-input round inputBackground">
 
             <!-- Input d'image -->
             <label for="file"  class="btn btn-outline-dark mr-2 round" id="chooseFileLabel">Entrez votre miniature
