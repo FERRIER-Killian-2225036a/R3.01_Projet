@@ -1,8 +1,4 @@
-<head>
-    <link rel="stylesheet" href="../../common_styles/profileSettings.css">
-    <link rel="stylesheet" href="../../common_styles/general.css">
-</head>
-<body>
+<link rel="stylesheet" href="../../common_styles/profileSettings.css">
 <div class="container-fluid ">
     <div class="row">
         <div class="d-flex flex-column flex-shrink-0 shadow round mt-3 ml-custom p-2" id="sideBarContent"> <!-- Ajout de la classe 'shadow' ici -->
@@ -70,5 +66,6 @@
                 <img src="/media/public_assets/icone/iconeSeDeconnecter.png" alt="Logo de déconnexion" class="me-2">
                 Se déconnecter
             </a>
-
         </div>
+    </div>
+</div>
