@@ -20,7 +20,7 @@
             <input type="text" name="Tags" id="tag-input1 form-control custom-input round inputBackground">
 
             <!-- Input d'image -->
-            <label for="file"  class="btn btn-outline-dark mr-2 round" id="chooseFileLabel">Entrez votre miniature
+            <label for="file"  class="btn btn bg-body-tertiary round background" id="chooseFileLabel">Entrez votre miniature
                 <input id="file" type="file" name="BlogPicture" accept=".jpg, .jpeg, .png, .gif" style="display: none;">
                 <img src="<?= ($mapView["Img"]!=null) ? $mapView["Img"] : "../../media/public_assets/icone/iconeBlogUploadImg.png" ?>" width="260" height="300"
                      alt="logo pour l'upload d'image">
