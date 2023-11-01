@@ -83,3 +83,7 @@
 .hidden{
     display: none;
 }
+
+#sideBarContent {
+    width: 280px;
+}
