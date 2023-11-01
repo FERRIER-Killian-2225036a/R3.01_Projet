@@ -16,7 +16,7 @@
                  src="<?= (SessionManager::isUserConnected() && $_SESSION['UrlPicture'] !== null) ? $_SESSION['UrlPicture'] : Constants::PDP_URL_DEFAULT; ?>"
                  alt="Photo de profil" class="img-thumbnail w-10">
         </div>
-        <div class="col-md-6 d-flex align-items-center">
+        <div class="col-md-6 d-flex align-items-center justify-content-end">
             <!-- Notez ici que nous utilisons align-items-center pour centrer les boutons verticalement -->
 
             <div class="btn-group">
@@ -60,7 +60,7 @@
             <div class="col-md-6">
                 <input type="text" class="form-control" name="username" id="username-input" placeholder="NouveauPseudo">
             </div>
-            <div class="col-md-6 d-flex align-items-center">
+            <div class="col-md-6 d-flex align-items-center justify-content-end">
                 <!-- Notez ici que nous utilisons align-items-center pour centrer les boutons verticalement -->
                 <div class="btn-group">
                     <button class="btn btn-outline-dark" name="ChangeUsername" value="1" type="submit">Modifier</button>
@@ -85,7 +85,7 @@
             <div class="col-md-6">
                 <input type="email" name="mail" class="form-control" id="email-input" placeholder="votre@email.com">
             </div>
-            <div class="col-md-6 d-flex align-items-center">
+            <div class="col-md-6 d-flex align-items-center justify-content-end">
                 <!-- Notez ici que nous utilisons align-items-center pour centrer les boutons verticalement -->
                 <div class="btn-group">
                     <button class="btn btn-outline-dark" name="ChangeMail" type="submit">Modifier</button>
@@ -119,7 +119,7 @@
                 </div>
                 <span id="passwordFeedback"></span>
             </div>
-            <div class="col-md-6 d-flex align-items-end justify-content-start">
+            <div class="col-md-6 d-flex align-items-end justify-content-end">
                 <button class="btn btn-custom" name="ChangePassword" type="submit" onclick="updatePassword()">Modifier</button>
             </div>
         </form>
