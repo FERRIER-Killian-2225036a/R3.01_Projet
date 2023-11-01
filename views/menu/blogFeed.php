@@ -29,7 +29,7 @@
     <script src="../../common_scripts/maxTextSize.js"></script>
     <script>
         document.getElementById("divButtonRole").addEventListener("click", function() {
-            if (event.target === this) {
+            if (!event.target.classList.contains("input-group")) {
                 window.location.href = "<?php echo $mapView['blogPostUrl'] ?>";
             }
         });
