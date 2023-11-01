@@ -1,7 +1,8 @@
 <link rel="stylesheet" href="../../common_styles/profileSettings.css">
+<link rel="stylesheet" href="../../common_styles/general.css">
 <div class="container-fluid ">
     <div class="row">
-        <div class="d-flex flex-column flex-shrink-0 shadow round mt-3 ml-custom p-2" id="sideBarContent"> <!-- Ajout de la classe 'shadow' ici -->
+        <div class="d-flex flex-column flex-shrink-0 shadow round mt-3 ml-custom p-2" style="width: 280px;"> <!-- Ajout de la classe 'shadow' ici -->
 
             <!-- Mon compte -->
             <a href="/Settings/" class="align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none text-dark"> <!-- Ajout de 'text-dark' ici -->
