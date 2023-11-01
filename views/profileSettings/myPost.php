@@ -2,11 +2,11 @@
 <script src="../../common_scripts/dropdown.js"></script>
 <link rel="stylesheet" href="../../common_styles/dropdown.css">
 
-<div class="col container" id="myPostContent">
+<div class="col container">
     <!--Pas sur que sa fonctionne à voir avec Killian et Tom -->
 
     <!-- Section pour le titre -->
-    <div class="row mb-2 mt-2">
+    <div class="row mb-2 mt-2" id="myPostContent">
         <div class="col-md-6">
             <h1>Mes Posts </h1>
         </div>
