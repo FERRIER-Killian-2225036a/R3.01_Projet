@@ -83,6 +83,7 @@
     TagsInput.prototype.anyErrors = function(string){
         if( this.options.max != null && this.arr.length >= this.options.max ){
             console.log('max tags limit reached');
+            print('Maximum de tags entré'); //TODO : rendre l'affichage plus jolie
             return true;
         }
 
