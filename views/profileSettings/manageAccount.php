@@ -1,5 +1,4 @@
 <?php require 'sideBar.php'; ?>
-<link rel="stylesheet" href="../../common_styles/authentification.css"
 <script src="/common_scripts/showErrorMessage.js"></script>
 <script src="/common_scripts/checkPassword.js"></script>
 <div class="col container">
