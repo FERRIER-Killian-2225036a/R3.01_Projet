@@ -156,7 +156,7 @@
     // Set All the Default Values
     TagsInput.defaults = {
         selector : '',
-        wrapperClass : 'tags-input-wrapper' + 'form-control' + 'custom-input' + 'round' + 'inputBackground',
+        wrapperClass : 'tags-input-wrapper' + ' form-control' + ' custom-input' + ' round' + ' inputBackground',
         tagClass : 'tag',
         max : null,
         duplicate: false
