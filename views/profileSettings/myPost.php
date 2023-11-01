@@ -38,7 +38,7 @@
                 <div class="text-content">
                     <h1 class="responsive-title">Test de myPost avec un titre grand pour vérifier que le js marche bien sinon ca serait très decevant quand mm tu ne trouves pas ?? moi je trouve que si après je parle tout seul donc bon c'est triste</h1>
                     <p class="lead responsive-text">Catégorie - 00-00-00 - Par l'auteur</p>
-                    <p class="responsive-text">ça va parler chinois : Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit neskwik... VOIR PLUS</p>
+                    <p class="responsive-text">ça va parler chinois : Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit neskwik</p>
                 </div>
             </div>
         </div>
