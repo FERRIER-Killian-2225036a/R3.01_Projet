@@ -13,10 +13,10 @@
     </head>
     <body>
         <?php
-            motorView::show('common/header');
+            MotorView::show('common/header');
             echo $mapView['body'];
-            motorView::show('common/help');
-            motorView::show('common/footer');
+            MotorView::show('common/help');
+            MotorView::show('common/footer');
             require 'common_scripts/general_scripts.php';
         ?>
     </body>

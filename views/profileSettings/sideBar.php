@@ -8,7 +8,7 @@
         <div class="d-flex flex-column flex-shrink-0 shadow round mt-3 ml-custom p-2" style="width: 280px;"> <!-- Ajout de la classe 'shadow' ici -->
 
             <!-- Mon compte -->
-            <a href="/Settings/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none text-dark"> <!-- Ajout de 'text-dark' ici -->
+            <a href="/Settings/" class="align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none text-dark"> <!-- Ajout de 'text-dark' ici -->
                 <img src="<?= (SessionManager::isUserConnected() && $_SESSION['UrlPicture']!==null ) ? $_SESSION['UrlPicture'] : Constants::PDP_URL_DEFAULT; ?>" alt="Profil Image" width="40" height="40" class="rounded-circle me-2">
                 <span class="fs-4"><?php echo $_SESSION["Username"]; ?></span>
                 <span class="fs-4"><?php echo $_SESSION['Mail'];     ?></span>
