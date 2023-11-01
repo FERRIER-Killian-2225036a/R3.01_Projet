@@ -14,9 +14,6 @@
     color: white;              /* Texte blanc lors du survol */
     background-color: black;
 }
-.ml-custom{
-    margin-left: 10rem!important;
-}
 /* Pour les écrans de grande taille (par exemple, des ordinateurs de bureau) */
 @media (min-width: 1200px) {
     .ml-custom {
@@ -85,11 +82,5 @@
 }
 
 #container {
-    padding-inline: 12em;
+    padding-inline: 11em;
 }
-
-/*
-#rightSide {
-    padding-right: 12em;
-}
-
