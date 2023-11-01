@@ -57,6 +57,10 @@ a > img {
     background-size: 99% 100%;
 }
 
+.subNavbar {
+    width: 100%;
+}
+
 @media (max-width: 660px) {
     .navbar{
         padding-inline: 2em;

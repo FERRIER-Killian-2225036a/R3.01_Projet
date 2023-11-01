@@ -35,7 +35,7 @@
 <nav class="navbar navbar-bottom navbar-expand navbar-light bg-light">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
+            <div class="navbar-nav subNavbar">
                 <a class="nav-link" aria-current="page" href="/">Home</a>
                 <a class="nav-link" href="/Menu/ActualityFeed">Veille Tech</a>
                 <a class="nav-link" href="/Menu/BlogFeed">Blogs</a>
