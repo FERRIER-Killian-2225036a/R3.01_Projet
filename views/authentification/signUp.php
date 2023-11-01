@@ -36,6 +36,7 @@
                                         <label class="form-label" for="form2Example22">Comfirmer votre mot de passe
                                             <input type="password" id="confirmPassword" class="form-control" oninput="checkPasswordsEquality()" placeholder="********"/>
                                         </label>
+                                        <br>
                                         <span id="passwordFeedback"></span>
                                         <label id="wrongInfo"></label>
                                     </div>
