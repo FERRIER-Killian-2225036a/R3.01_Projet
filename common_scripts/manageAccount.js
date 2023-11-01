@@ -22,4 +22,14 @@ function deleteAccount(){
     alert('Fonctionnalité pour modifier supprimer le compte à implémenter');
 }
 
+// Lorsque le label "Modifier" est cliqué
+document.querySelector('label[for="file"]').addEventListener('click', function () {
+    // Clique sur l'input de fichier caché pour permettre à l'utilisateur de choisir un fichier
+    document.getElementById('file').click();
+});
 
+// Lorsque le champ de fichier est modifié (un fichier est sélectionné)
+document.getElementById('file').addEventListener('change', function () {
+    // Soumet automatiquement le formulaire lorsque l'utilisateur sélectionne un fichier
+    this.parentNode.submit(); // Cela enverra le formulaire avec le fichier sélectionné
+});

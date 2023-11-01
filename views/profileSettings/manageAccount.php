@@ -1,6 +1,7 @@
 <?php require 'sideBar.php'; ?>
 <script src="/common_scripts/showErrorMessage.js"></script>
 <script src="/common_scripts/checkPassword.js"></script>
+<link rel="stylesheet" href="/common_styles/password.css">
 <div class="col container">
 
     <!-- Section pour la photo de profil -->
@@ -25,21 +26,7 @@
                     <input id="file" type="file" name="ProfilePicture" accept=".jpg, .jpeg, .png, .gif"
                            style="display: none;">
                     <input type="hidden" name="ChangeProfilePicture" value="1">
-
                 </form>
-                <script> //TODO déplacé le script dans un fichier js
-                    // Lorsque le label "Modifier" est cliqué
-                    document.querySelector('label[for="file"]').addEventListener('click', function () {
-                        // Clique sur l'input de fichier caché pour permettre à l'utilisateur de choisir un fichier
-                        document.getElementById('file').click();
-                    });
-
-                    // Lorsque le champ de fichier est modifié (un fichier est sélectionné)
-                    document.getElementById('file').addEventListener('change', function () {
-                        // Soumet automatiquement le formulaire lorsque l'utilisateur sélectionne un fichier
-                        this.parentNode.submit(); // Cela enverra le formulaire avec le fichier sélectionné
-                    });
-                </script>
                 <form action="/Settings/ManageAccount" method="POST">
                     <button class="btn btn-outline-danger" name="DeleteProfilePicture" type="submit">Supprimer</button>
                 </form>
@@ -133,4 +120,5 @@
             <button class="btn btn-outline-danger" onclick="deleteAccount()">Supprimer le compte</button>
         </div>
     </div>
+    <script src="/common_scripts/manageAccount.js"></script>
 </div>
