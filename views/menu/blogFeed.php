@@ -5,9 +5,9 @@
         <div class="btn bg-body-tertiary round background grow-button" id="divButtonRole" role="button">
             <img src="<?php echo $mapView['blogUrlPicture'] ?>" alt="Logo" class="responsive-image round p-1">
             <div class="text-content">
-                <h1 class="responsiveTitle"><?php echo $mapView['blogTitle'] ?></h1>
+                <h1 class="responsive-title"><?php echo $mapView['blogTitle'] ?></h1>
                 <p class="lead responsiveText"><?php echo $mapView['Tags'] ?> <?php echo $mapView['blogAuthor'] ?> - <?php echo $mapView['blogDate'] ?> </p>
-                <p class="responsiveText"><?php echo $mapView['blogContent'] ?></p>
+                <p class="responsive-text"><?php echo $mapView['blogContent'] ?></p>
                 <!-- Début de la section commentaire -->
                 <div class="row">
                     <div class="col-12 col-md-6 col-lg-4">
