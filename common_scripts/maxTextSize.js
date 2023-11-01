@@ -1,5 +1,5 @@
-const maxTextLength = 220;
-const maxTitleLength = 45;
+let maxTextLength = 220;
+let maxTitleLength = 45;
 
 
 let classTextResponsive = document.getElementsByClassName("responsive-text");
