@@ -6,7 +6,7 @@ function maxTextSizeForContent() {
     for (let i = 0; i < classTextResponsive.length; i++) {
         let text = classTextResponsive[i].textContent;
         if (text.length > maxTextLength) {
-            classTextResponsive[i].innerHTML = text.slice(0, maxTextLength) + " <b>See more...</b>";
+            classTextResponsive[i].innerHTML = text.slice(0, maxTextLength) + "... <b>See more...</b>";
         }
     }
 }

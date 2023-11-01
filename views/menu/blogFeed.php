@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="../../common_styles/menu.css">
-<link rel="stylesheet" href="../../common_styles/general.css">
 <main class="container">
     <div class="p-3">
         <div class="btn bg-body-tertiary round background grow-button" id="divButtonRole" role="button">
@@ -30,8 +29,9 @@
     <script src="../../common_scripts/maxTextSize.js"></script>
     <script>
         document.getElementById("divButtonRole").addEventListener("click", function() {
-            event.stopPropagation();
-            window.location.href = "<?php echo $mapView['blogPostUrl'] ?>";
+            if (event.target === this) {
+                window.location.href = "<?php echo $mapView['blogPostUrl'] ?>";
+            }
         });
     </script>
 </main>
