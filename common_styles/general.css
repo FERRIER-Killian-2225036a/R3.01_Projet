@@ -5,10 +5,6 @@
     background-color: var(--grey-light)!important;
 }
 
-.tag {
-    margin: 0;
-}
-
 .colorText{
     color: var(--white);
 }

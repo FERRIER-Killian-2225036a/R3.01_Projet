@@ -22,8 +22,13 @@
         }
 
         this.arr = [];
-        this.wrapper = document.createElement('div');
-        this.input = document.createElement('input');
+        //this.wrapper = document.createElement('div');
+        //this.input = document.createElement('input');
+        let wrapper = document.createElement('div');
+        let input = document.createElement('input');
+        wrapper.classList.add('form-control', 'custom-input', 'round', 'inputBackground');
+
+
         init(this);
         initEvents(this);
 
