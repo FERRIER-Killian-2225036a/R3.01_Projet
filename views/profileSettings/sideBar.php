@@ -8,7 +8,7 @@
             <a href="/Settings/" class="align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none text-dark"> <!-- Ajout de 'text-dark' ici -->
                 <img src="<?= (SessionManager::isUserConnected() && $_SESSION['UrlPicture']!==null ) ? $_SESSION['UrlPicture'] : Constants::PDP_URL_DEFAULT; ?>" alt="Profil Image" width="40" height="40" class="rounded-circle me-2">
                 <span class="fs-4"><?php echo $_SESSION["Username"]; ?></span>
-                <span class="fs-4"><?php echo $_SESSION['Mail'];     ?></span>
+                <p class="fs-4" id="mail"><?php echo $_SESSION['Mail'];?></p>
             </a>
             <hr class="my-3">
             <ul class="nav nav-pills flex-column mb-auto align-items-center">

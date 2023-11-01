@@ -14,33 +14,6 @@
     color: white;              /* Texte blanc lors du survol */
     background-color: black;
 }
-/* Pour les écrans de grande taille (par exemple, des ordinateurs de bureau) */
-@media (min-width: 1200px) {
-    .ml-custom {
-        margin-left: 10rem!important;
-    }
-}
-
-/* Pour les écrans de taille moyenne (par exemple, des tablettes) */
-@media (min-width: 768px) and (max-width: 1199px) {
-    .ml-custom {
-        margin-left: 5rem!important;
-    }
-}
-
-/* Pour les écrans de petite taille (par exemple, des téléphones en mode paysage) */
-@media (min-width: 576px) and (max-width: 767px) {
-    .ml-custom {
-        margin-left: 3rem!important;
-    }
-}
-
-/* Pour les écrans très petits (par exemple, des téléphones en mode portrait) */
-@media (max-width: 575px) {
-    .ml-custom {
-        margin-left: 1rem!important;
-    }
-}
 
 .hr-custom {
     max-width: calc(50% + 100px); /* 50% pour la moitié de la grille, 150px pour la largeur approximative des boutons */
@@ -83,4 +56,16 @@
 
 #container {
     padding-inline: 11em;
+}
+
+@media (max-width: 660px) {
+    #container {
+        padding-inline: 3em;
+    }
+}
+
+#mail {
+    margin-top: 0.5em!important;
+    margin: 0;
+    font-size: 16px!important;
 }
