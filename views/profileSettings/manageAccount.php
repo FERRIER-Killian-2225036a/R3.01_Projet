@@ -5,7 +5,7 @@
 <div class="col container">
 
     <!-- Section pour la photo de profil -->
-    <div class="row mb-2 mt-2">
+    <div class="row mb-2 mt-2" id="rightSide">
         <div class="col-md-6">
             <h1>Votre compte</h1>
             <h2>Photo de profil</h2>

@@ -1,7 +1,7 @@
 <?php require 'sideBar.php'; ?>
 <div class="col container">
     <!-- Section pour le titre -->
-    <div class="row mb-2 mt-2">
+    <div class="row mb-2 mt-2" id="rightSide">
         <div class="col-md-5">
             <h1>Vos Commentaires </h1>
         </div>

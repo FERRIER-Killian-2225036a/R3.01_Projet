@@ -1,5 +1,5 @@
 <?php require 'sideBar.php' ?>
-<div class="col container">
+<div class="col container" id="rightSide">
     <!-- Section pour le titre -->
     <div class="row mb-2 mt-2">
         <div class="col-md-5">

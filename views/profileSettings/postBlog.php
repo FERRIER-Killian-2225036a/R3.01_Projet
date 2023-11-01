@@ -1,7 +1,7 @@
 <main class="container">
     <div class="row">
         <!-- Premier élément -->
-        <div class="col-md-6 p-3">
+        <div class="col-md-6 p-3" id="rightSide">
 
             <a class="btn bg-body-tertiary round background grow-button d-block" role="button"
                href="<?php echo $mapView['blogPostEditUrl'] ?>"

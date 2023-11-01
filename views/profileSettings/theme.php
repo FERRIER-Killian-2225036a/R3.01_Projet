@@ -1,6 +1,6 @@
 <?php require "sideBar.php"; ?>
     <body>
-    <div class="col-md-6">
+    <div class="col-md-6" id="rightSide">
         <h1 class="responsive-title">Choix du Thèmes</h1>
         <br>
         <div class="col"> <!-- Ajout de la classe 'col-md-8' -->

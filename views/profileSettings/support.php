@@ -2,7 +2,7 @@
 <div class="col container">
 
     <!-- Section pour le titre avec le bouton de création -->
-    <div class="row mb-2 mt-2">
+    <div class="row mb-2 mt-2" id="rightSide">
         <div class="col-md-6">
             <h1>Demande de support</h1>
         </div>
