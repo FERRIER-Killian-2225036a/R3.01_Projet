@@ -1,22 +1,7 @@
-/*
-document.getElementById("categoriesInput").addEventListener("keydown", function(event) {
-    if (event.key === "Enter" || event.keyCode === 13) {
-        saveCategories();
-    }
+// Lorsque le bouton est cliqué
+document.querySelector('label[for="file"]').addEventListener('click', function () {
+    // Clique sur l'input de fichier caché pour permettre à l'utilisateur de choisir un fichier
+    document.getElementById('file').click();
 });
-let outputTab = [];
-function saveCategories() {
-    let input = document.getElementById("categoriesInput");
-    let output = document.getElementById("categoriesOutput");
-    let contentInput = input.value;
-    let contentOutput = output.textContent;
 
-    console.log(input.value, output.textContent)
 
-    outputTab.push(" " + contentInput);
-    input.value = "";
-    console.log(outputTab);
-    output.style.color = 'black';
-    output.innerHTML = outputTab.toString();
-}
-*/

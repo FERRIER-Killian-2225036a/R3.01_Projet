@@ -2,7 +2,7 @@
     background: var(--grey-light);
 }
 .inputBackground {
-    background-color: var(--grey-light);
+    background-color: var(--grey-light)!important;
 }
 
 .colorText{
