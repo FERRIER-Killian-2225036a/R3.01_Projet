@@ -36,9 +36,9 @@
                     <img src="../../media/public_assets/imageTest.jpeg" alt="Logo" class="responsive-image-setting round p-1">
                 </div>
                 <div class="text-content">
-                    <h1 class="responsiveTitle">Test de myPost</h1>
-                    <p class="lead responsiveText">Catégorie - 00-00-00 - Par l'auteur</p>
-                    <p class="responsiveText">ça va parler chinois : Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit neskwik... VOIR PLUS</p>
+                    <h1 class="responsive-title">Test de myPost</h1>
+                    <p class="lead responsive-text">Catégorie - 00-00-00 - Par l'auteur</p>
+                    <p class="responsive-text">ça va parler chinois : Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit neskwik... VOIR PLUS</p>
                 </div>
             </div>
         </div>
@@ -48,7 +48,7 @@
                     <img src="../../media/public_assets/imageTest.jpeg" alt="Logo" class="responsive-image-setting round p-1">
                 </div>
                 <div class="text-content">
-                    <h1 class="responsiveTitle">Test de myPost</h1>
+                    <h1 class="responsive-title">Test de myPost</h1>
                     <p class="lead responsive-text">Catégorie - 00-00-00 - Par l'auteur</p>
                     <p class="responsive-text">ça va parler chinois : Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit neskwik ça va parler chinois : Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit neskwik ça va parler chinois : Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit neskwik ça va parler chinois : Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit neskwik</p>
                 </div>
