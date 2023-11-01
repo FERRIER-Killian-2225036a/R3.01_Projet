@@ -11,6 +11,7 @@ for (let i = 0; i < classTextResponsive.length; i++) {
 }
 
 let classTitleResponsive = document.getElementsByClassName("responsive-title");
+console.log(classTitleResponsive[0].textContent)
 for (let i = 0; i < classTitleResponsive.length; i++) {
     let text = classTitleResponsive[i].textContent;
     if (text.length > maxTitleLength) {
