@@ -6,7 +6,7 @@
         <div class="col-md-6">
             <h1>Demande de support</h1>
         </div>
-        <div class="col-md-6 d-flex align-items-center justify-content-center hidden">
+        <div class="col-md-6 d-flex align-items-center justify-content-end hidden">
             <div class="btn-group">
                 <button class="btn btn-outline-dark" name="createTicket" value="1" type="submit">Créer un ticket
                 </button>

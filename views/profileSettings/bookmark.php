@@ -9,7 +9,7 @@
             <h1>Mes enregistrements </h1>
         </div>
         <!-- Section pour le dropdown filtrer -->
-        <div class="col-md-6 d-flex align-items-center justify-content-center">
+        <div class="col-md-6 d-flex align-items-center justify-content-end">
             <div class="dropdown">
                 <button type="button" class="btn btn-primary">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
@@ -18,7 +18,7 @@
                     Filtrer
                 </button>
                 <ul class="dropdown-menu">
-                    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                    <label><input class="form-control" id="myInput" type="text" placeholder="Search.."></label>
                     <li><a href="#">Data</a></li>
                     <li><a href="#">Cybersec</a></li>
                     <li><a href="#">IDK</a></li>
@@ -26,7 +26,7 @@
             </div>
         </div>
         <hr class="my-3">
-        !--Section pour les articles enregistrer -->
+        <!--Section pour les articles enregistrer -->
         <main class="container">
             <div class="row">
                 <!-- Premier élément -->

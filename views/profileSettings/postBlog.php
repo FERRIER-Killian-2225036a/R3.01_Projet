@@ -6,7 +6,7 @@
             <a class="btn bg-body-tertiary round background grow-button d-block" role="button"
                href="<?php echo $mapView['blogPostEditUrl'] ?>"
                target="_blank">
-                <div class="d-flex justify-content-center mb-2">
+                <div class="d-flex justify-content-end mb-2">
                     <img src="<?php echo $mapView['blogUrlPicture'] ?>" alt="Logo"
                          class="responsive-image-setting round p-1">
                 </div>
