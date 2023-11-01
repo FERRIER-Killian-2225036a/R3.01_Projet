@@ -11,7 +11,7 @@
             <h1>Mes Posts </h1>
         </div>
         <!-- Section pour le dropdown filtrer -->
-        <div class="col-md-6 d-flex align-items-center justify-content-center">
+        <div class="col-md-6 d-flex align-items-center justify-content-end">
             <div class="dropdown">
                 <button type="button" class="btn btn-primary" id="filterButton">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
