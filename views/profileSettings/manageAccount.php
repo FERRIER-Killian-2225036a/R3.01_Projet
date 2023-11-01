@@ -55,7 +55,7 @@
         </div>
     </div>
     <div class="row mb-4">
-        <form action="/Settings/ManageAccount" method="POST">
+        <form action="/Settings/ManageAccount" method="POST" class="lineInputAndButton">
             <label for="username-input"></label>
             <div class="col-md-6">
                 <input type="text" class="form-control" name="username" id="username-input" placeholder="NouveauPseudo">
@@ -81,7 +81,7 @@
         </div>
     </div>
     <div class="row mb-4">
-        <form action="/Settings/ManageAccount" method="POST">
+        <form action="/Settings/ManageAccount" method="POST" class="lineInputAndButton">
             <div class="col-md-6">
                 <input type="email" name="mail" class="form-control" id="email-input" placeholder="votre@email.com">
             </div>
@@ -102,7 +102,7 @@
         </div>
     </div>
     <div class="row mb-2">
-        <form action="/Settings/ManageAccount" method="POST">
+        <form action="/Settings/ManageAccount" method="POST" class="lineInputAndButton">
             <div class="col-md-6">
                 <div class="input-group mb-3">
                     <input type="password" class="form-control" name="oldPassword" id="password-input" placeholder="Ancien mot de passe">
