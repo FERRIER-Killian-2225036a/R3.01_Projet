@@ -29,7 +29,10 @@
     <script src="../../common_scripts/maxTextSize.js"></script>
     <script>
         document.getElementById("divButtonRole").addEventListener("click", function() {
-            if (!event.target.classList.contains("input-group") || !event.target.classList.contains("custom-input")) {
+            const isInput = event.target.closest('.input-group');
+            const isCustomInput = event.target.classList.contains('custom-input');
+
+            if (!isInput && !isCustomInput) {
                 window.location.href = "<?php echo $mapView['blogPostUrl'] ?>";
             }
         });

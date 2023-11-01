@@ -2,7 +2,7 @@
     background: var(--background-color);
 }
 .custom-input {
-    width: 40px;  /* Hauteur par défaut pour tous les écrans */
+    width: 20em;  /* Hauteur par défaut pour tous les écrans */
 }
 .col-lg-4 {
     width: 80%;
