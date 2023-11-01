@@ -2,7 +2,7 @@
 <script src="../../common_scripts/dropdown.js"></script>
 <link rel="stylesheet" href="../../common_styles/dropdown.css">
 
-<div class="col container">
+<div class="col container" id="myPostContent">
     <!--Pas sur que sa fonctionne à voir avec Killian et Tom -->
 
     <!-- Section pour le titre -->

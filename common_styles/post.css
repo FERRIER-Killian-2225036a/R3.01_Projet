@@ -65,3 +65,7 @@
 .tag {
     margin-bottom: 0!important;
 }
+
+#myPostContent {
+    padding-right: 12em;
+}
