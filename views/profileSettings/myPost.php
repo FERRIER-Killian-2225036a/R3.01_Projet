@@ -6,7 +6,7 @@
     <!--Pas sur que sa fonctionne à voir avec Killian et Tom -->
 
     <!-- Section pour le titre -->
-    <div class="row mb-2 mt-2" id="myPostContent">
+    <div class="row mb-2 mt-2">
         <div class="col-md-6">
             <h1>Mes Posts </h1>
         </div>
@@ -21,7 +21,7 @@
                     Filtrer
                 </button>
                 <ul class="dropdown-menu">
-                    <label><input class="form-control" id="myInput" type="text" placeholder="Search.."></label>
+                    <input class="form-control" id="myInput" type="text" placeholder="Search..">
                     <li><a href="#">Data</a></li>
                     <li><a href="#">Cybersec</a></li>
                     <li><a href="#">IDK</a></li>
