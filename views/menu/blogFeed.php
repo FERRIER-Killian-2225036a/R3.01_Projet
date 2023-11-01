@@ -2,8 +2,8 @@
 <link rel="stylesheet" href="../../common_styles/general.css">
 <main class="container">
     <div class="p-3">
-        <div class="btn bg-body-tertiary round background grow-button" role="button">
-            <img src="../../media/public_assets/imageTest.jpeg" alt="Logo" class="responsive-image round p-1">
+        <div class="btn bg-body-tertiary round background grow-button" id="divButtonRole" role="button">
+            <img src="<?php echo $mapView['blogUrlPicture'] ?>" alt="Logo" class="responsive-image round p-1">
             <div class="text-content">
                 <h1 class="responsiveTitle"><?php echo $mapView['blogTitle'] ?></h1>
                 <p class="lead responsiveText"><?php echo $mapView['Tags'] ?> <?php echo $mapView['blogAuthor'] ?> - <?php echo $mapView['blogDate'] ?> </p>
@@ -28,4 +28,9 @@
         </div>
     </div>
     <script src="../../common_scripts/maxTextSize.js"></script>
+    <script>
+        document.getElementById("divButtonRole").addEventListener("click", function() {
+            window.location.href = "<?php echo $mapView['blogPostUrl'] ?>";
+        });
+    </script>
 </main>
