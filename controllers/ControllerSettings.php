@@ -1,9 +1,34 @@
 <?php
 
 // correspond a controller profil
+
+/**
+ * Classe du controller de la gestion des informations utilisateurs et du paramétrage du compte
+ *
+ * on gere au niveau des parametres :
+ * - gestion informations personnelles (Pseudo, mail, mdp, image de profil, [suppression du compte])
+ * - gestions des tickets utilisateurs (demande de support & listes des tickets actifs selon leurs status)
+ * - gestions de la langue (futur passage en anglais)
+ * - gestions des themes (futur passage en theme sombre, voir changement des couleurs)
+ *
+ * - gestion des enregistrements (like)
+ * - gestion des abonnements (follow)
+ * - gestion des commentaires de l'utilisateur et des commentaires cités en réponse
+ * - gestion des posts de l'utilisateur (suppression, changement de visibilité et redirection vers édition)
+ *
+ * @since 1.0
+ * @package controller
+ * @version 1.0
+ * @category Settings
+ * @author Tom Carvjal & Killian Ferrier
+ */
 class ControllerSettings
 {
-
+    /**
+     * redirection lors de l'url null (ex : domaine/auth/ ? )
+     *
+     * @return void
+     */
     public function DefaultAction(): void
     {
         header("Location: /Settings/ManageAccount");
@@ -11,21 +36,52 @@ class ControllerSettings
         //MotorView::show('profileSettings/manageAccount.php');
     }
 
+    /**
+     * Méthode pour afficher avec liaison du model (dans le futur) la vue bookmark (enregistrement)
+     *
+     * @return void
+     */
     public function BookmarkAction(): void
     {
+        //TODO ajouté verification et logique d'affichage des enregistrements (post+forum)
         MotorView::show('profileSettings/bookmark');
     }
 
+    /**
+     * Méthode pour afficher avec liaison du model (dans le futur) la vue follow (abonnement)
+     *
+     * @return void
+     */
     public function FollowAction(): void
     {
+        //TODO ajouté verification et logique d'affichage des abonnements
         MotorView::show('profileSettings/follow');
     }
 
+    /**
+     * Méthode pour afficher avec liaison du model (dans le futur) la vue language (langue)
+     * on pourra changer la langue du site (futur passage en anglais) ?
+     * il faudra implementer un mécanisme type fichier.po pour la traduction
+     * Demande une grande refactorisation des vues, voir une implémentation des liens pour le contenu a traduire
+     * stocké dans la base de donnée ?
+     *
+     * @return void
+     */
     public function LanguageAction(): void
     {
+        //TODO ajouté verification et remodeler tout l'affichage pour la traduction
         MotorView::show('profileSettings/language');
     }
 
+    /**
+     * Méthode pour afficher avec liaison du model (dans le futur) la vue manageAccount (gestion du compte)
+     * on peut changer le pseudo, le mail, le mot de passe, l'image de profil
+     * {et supprimer le compte (pas encore sure car contrainte bdd)}
+     *
+     * @param array|null $A_parametres
+     * @param array|null $A_postParams
+     * @return void
+     */
     public function ManageAccountAction(array $A_parametres = null, array $A_postParams = null): void
     {
         MotorView::show('profileSettings/manageAccount');
@@ -158,18 +214,30 @@ class ControllerSettings
 
     }
 
+    /**
+     * Méthode pour afficher avec liaison du model (dans le futur) la vue myComment (commentaire)
+     *
+     * @return void
+     */
     public function MyCommentAction(): void
     {
+        //TODO ajouté verification et logique d'affichage des commentaires
         MotorView::show('profileSettings/myComment');
     }
 
+
+    /**
+     * Méthode pour afficher avec liaison du model la vue myPost (post blog & plus tard aussi forum)
+     *
+     * @see /models/BlogPageModel.php
+     * @see /models/Orm/Blog_Page.php
+     * @return void
+     */
     public function MyPostAction(): void
     {
 
-
         // on va recupere du model les blogs (plus tard les forums)
         // d'un membre selon son identifiant et les afficher sur sa page,
-
 
         MotorView::show('profileSettings/myPost');
         $pageBlog = new Blog_Page();
@@ -199,6 +267,16 @@ class ControllerSettings
 
     }
 
+    /**
+     * Méthode de gestion coté utilisateur des tickets de support depuis la vue des parametres
+     * on peut créer un ticket de support, voir les tickets actifs, voir les tickets clos
+     * on verifie que l'utilisateur est connecté, on verifie que la requete est bien un post,
+     * on sécurise les inputs et on les envois au model pour créer un ticket de support
+     *
+     * @param array|null $A_parametres
+     * @param array|null $A_postParams
+     * @return void
+     */
     public function SupportAction(array $A_parametres = null, array $A_postParams = null): void
     {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -250,5 +328,3 @@ class ControllerSettings
     }
 
 }
-
-?>

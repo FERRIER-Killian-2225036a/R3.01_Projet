@@ -1,10 +1,51 @@
 <?php
 
+/**
+ * Classe du controller de la gestion des blogs / forums et leurs éditions
+ *
+ * la gestion se fait au niveau de la logique de l'interaction utilisateurs dans 4 tâches principales
+ * Blog → recuperation du model pour afficher un blog (entier pas sous forme de feed) en tant que spéctateur
+ * BlogEdit → création ou modification d'un blog par l'auteur, par rapport a la requete en liaison a la bdd
+ * Forum → comme blog pour les forums
+ * ForumEdit → comme blog edit pour les forums
+ *
+ * @see /views/post/viewBlog.php
+ * @see /views/post/viewBlogEdit.php
+ * @see /views/post/viewForum.php
+ * @see /views/post/viewForumEdit.php
+ * @see /models/BlogPageModel.php
+ * @see /models/Orm/Blog_*.php
+ *
+ * @since 1.0
+ * @package controller
+ * @version 1.0
+ * @category Post
+ * @author Tom Carvjal & killian ferrier
+ */
 class ControllerPost
 {
+    /**
+     * Méthode pour éditer un blog
+     *
+     * on procède d'abord à l'affichage (GET) de la page selon les droits utilisateurs ou a la redirection
+     * sur les critères de la connexion, et l'appartenance du blog a l'utilisateur (ou son existence)
+     * on analyse si la demande sera donc plutot de la création ou de la modification, auquel cas on affichera
+     * les données deja présente dans la bdd dans les champs d'input
+     *
+     * ensuite, on va traiter les requetes de mise a jour de la base (POST) en verifiant de la meme maniere
+     * les droits utilisateurs et l'appartenance du blog a l'utilisateur (ou son existence)
+     * on va ensuite traiter les données d'input et traiter les images,
+     * en les sécurisant et en les mettant a jour dans la bdd
+     *
+     * on s'occupe aussi de rediriger / logger si des comportements sont inattendus
+     * (ex : tentative de modification sans droits)
+     *
+     * @var array|null $A_parametres
+     * @var array|null $A_postParams
+     * @return void
+     */
     public function BlogEditAction(array $A_parametres = null, array $A_postParams = null): void
     {
-        error_log("DEBUGING ============================");
         // TODO on poura potentiellement ameliorer le filtre / modération input
         // TODO bouton changement de visibilité dans post
 
