@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="../../common_styles/profileSettings.css">
 <link rel="stylesheet" href="../../common_styles/general.css">
 <div class="container-fluid ">
-    <div class="row">
+    <div class="row" id="container">
         <div class="d-flex flex-column flex-shrink-0 shadow round mt-3 ml-custom p-2" style="width: 280px;"> <!-- Ajout de la classe 'shadow' ici -->
 
             <!-- Mon compte -->

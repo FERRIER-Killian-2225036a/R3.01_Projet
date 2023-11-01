@@ -84,3 +84,12 @@
     display: none;
 }
 
+#container {
+    padding-inline: 12em;
+}
+
+/*
+#rightSide {
+    padding-right: 12em;
+}
+
