@@ -50,17 +50,17 @@
     <!-- Section pour le pseudo -->
 
     <div class="row mb-2">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <h2>Changer votre pseudo</h2>
         </div>
     </div>
     <div class="row mb-4">
         <form action="/Settings/ManageAccount" method="POST" class="lineInputAndButton">
             <label for="username-input"></label>
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <input type="text" class="form-control" name="username" id="username-input" placeholder="NouveauPseudo">
             </div>
-            <div class="col-md-6 d-flex align-items-center justify-content-end">
+            <div class="col-md-4 d-flex align-items-center justify-content-end">
                 <!-- Notez ici que nous utilisons align-items-center pour centrer les boutons verticalement -->
                 <div class="btn-group">
                     <button class="btn btn-outline-dark" name="ChangeUsername" value="1" type="submit">Modifier</button>
@@ -82,10 +82,10 @@
     </div>
     <div class="row mb-4">
         <form action="/Settings/ManageAccount" method="POST" class="lineInputAndButton">
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <input type="email" name="mail" class="form-control" id="email-input" placeholder="votre@email.com">
             </div>
-            <div class="col-md-6 d-flex align-items-center justify-content-end">
+            <div class="col-md-4 d-flex align-items-center justify-content-end">
                 <!-- Notez ici que nous utilisons align-items-center pour centrer les boutons verticalement -->
                 <div class="btn-group">
                     <button class="btn btn-outline-dark" name="ChangeMail" type="submit">Modifier</button>
@@ -96,14 +96,14 @@
 
     <!-- Section pour le mot de passe -->
     <div class="row mb-2">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <h2>Modifier le mot de passe</h2>
             <label for="password-input"></label>
         </div>
     </div>
     <div class="row mb-2">
         <form action="/Settings/ManageAccount" method="POST" class="lineInputAndButton">
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <div class="input-group mb-3">
                     <input type="password" class="form-control" name="oldPassword" id="password-input" placeholder="Ancien mot de passe">
                 </div>
@@ -119,7 +119,7 @@
                 </div>
                 <span id="passwordFeedback"></span>
             </div>
-            <div class="col-md-6 d-flex align-items-end justify-content-end">
+            <div class="col-md-4 d-flex align-items-end justify-content-end">
                 <button class="btn btn-custom" name="ChangePassword" type="submit" onclick="updatePassword()">Modifier</button>
             </div>
         </form>
