@@ -11,7 +11,7 @@
  * @package controller
  * @version 1.0
  * @category User
- * @author Tom Carvjal & Killian Ferrier
+ * @author Tom Carvajal & Killian Ferrier
  */
 class ControllerUser
 {

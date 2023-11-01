@@ -13,14 +13,16 @@
  * @see /views/post/viewBlogEdit.php
  * @see /views/post/viewForum.php
  * @see /views/post/viewForumEdit.php
- * @see /models/BlogPageModel.php
- * @see /models/Orm/Blog_*.php
+ * @see BlogPageModel
+ * @see Blog_Page
+ * @see Blog_Category
+ * @see Blog_categoryPage
  *
  * @since 1.0
  * @package controller
  * @version 1.0
  * @category Post
- * @author Tom Carvjal & killian ferrier
+ * @author Tom Carvajal & killian ferrier
  */
 class ControllerPost
 {

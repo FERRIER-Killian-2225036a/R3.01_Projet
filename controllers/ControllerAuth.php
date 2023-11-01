@@ -7,7 +7,7 @@
  * elle est en étroite collaboration avec l'utilitaire du noyau SessionManager, on s'occupe aussi de la récupération
  * des messages d'erreurs pour les afficher dans les vues
  *
- * @see /core/SessionManager.php
+ * @see SessionManager
  * @since 1.0
  * @package controller
  * @category authentification
@@ -103,7 +103,7 @@ class ControllerAuth
      */
     public function LogOutAction(): void
     {
-        SessionManager::disconnect();
+        SessionManager::logout();
     }
 
     /**

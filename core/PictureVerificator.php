@@ -1,8 +1,39 @@
 <?php
 
+/**
+ * classe utilitaire pour la vérification des images uploadées
+ *
+ * cette classe s'occupe de vérifier les images uploadées par les utilisateurs, elle vérifie la taille
+ * si elle sont safe, au niveau du contenu (par ai via l'api google cloud vision) [adulte, violence, etc...]
+ * ou encore du type ( verification Mime type, extension, Magic Number)
+ * gere aussi l'unicité du nom du fichier (pour éviter les collisions)
+ * on détruit les données exif des images pour éviter les attaques de type exif injection
+ * et l'usage d'osint qui pourrait ammener a de potentiel leak d'informations
+ *
+ * @see ControllerSettings
+ * @see ControllerPost
+ *
+ * @package core
+ * @since 1.0
+ * @version 1.0
+ * @category PictureVerificator
+ * @author Tom Carvajal
+ */
 class PictureVerificator
 {
-    public static function VerifyImg($file, $uploadDirectory, $allowedExtensions, $minFileSize, $maxFileSize,$square = false) //TODO mettre a jour l'indice de suspicion
+    /**
+     * Méthode pour vérifier sur la sécurisation des images uploadées
+     *
+     * @param $file
+     * @param string $uploadDirectory
+     * @param array $allowedExtensions
+     * @param int $minFileSize
+     * @param int $maxFileSize
+     * @param bool $square
+     * @return array|string
+     */
+    public static function VerifyImg($file, string $uploadDirectory, array $allowedExtensions,
+                                     int $minFileSize, int $maxFileSize, bool $square = false): array|string //TODO mettre a jour l'indice de suspicion
     {
         if ($file['error'] !== UPLOAD_ERR_OK) {
             return "Une erreur est survenue lors de l'upload du fichier.";
@@ -25,7 +56,7 @@ class PictureVerificator
             return "Erreur : Extension de fichier non autorisée.";
         }
 
-        // Vérification de la magie (Magic Number)
+        // Vérification du "Magic Number"
         $fileMimeType = mime_content_type($fileTmpName);
         $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
 

@@ -15,7 +15,7 @@
  * @package controller
  * @version 1.0
  * @category modération
- * @author Killian Ferrier & Tom Carvjal
+ * @author Killian Ferrier & Tom Carvajal
  */
 class ControllerModo
 {

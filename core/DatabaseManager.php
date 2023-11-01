@@ -1,15 +1,45 @@
 <?php
 
+/**
+ * La classe Database Manager integre un singleton pour la connexion a la base de donnée,
+ *
+ * cette classe permet de se connecter a la base de donnée. Et rejeter des exceptions si la connexion echoue
+ * elle cherche les authentifiants dans le fichier constant
+ *
+ * @see Constants
+ *
+ * @package core
+ * @since 1.0
+ * @version 1.0
+ * @category DatabaseManager
+ * @author Tom Carvajal
+ */
 class DatabaseManager
 {
+    /**
+     * @var PDO (contient la connexion a la base de donnée)
+     */
     private PDO $conn;
 
+    /**
+     * getter de la connexion pdo
+     * @return PDO
+     */
     public function getConn(): PDO
     {
         return $this->conn;
     }
+
+    /**
+     * @var DatabaseManager (contient l'instance de la classe qui est un singleton)
+     */
     private static DatabaseManager $instance;
 
+    /**
+     * getter de l'instance  (singleton)
+     *
+     * @return PDO
+     */
     public static function getInstance(): PDO
     {
         if(empty(self::$instance)){
@@ -18,6 +48,11 @@ class DatabaseManager
         return self::$instance->conn;
     }
 
+    /**
+     * Constructeur de la classe DatabaseManager
+     *
+     * @throws ExceptionsDatabase
+     */
     public function __construct() {
         try {
             // d'apres https://phpdelusions.net/pdo

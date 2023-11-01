@@ -1,15 +1,56 @@
 <?php
+
+/**
+ * classe PRINCIPALE du framework, elle est responsable de l'appelle dynamique du bon controlleur selon l'url
+ *
+ * elle joue le role de routeur, (elle est le point d'entrée de l'application) juste apres l'index
+ * on check les sessions a l'entrée de cette classe, et les droits d'acces aux pages afin de rediriger
+ *
+ * note : on l'appelle souvent routoController
+ * note2 : on pourra penser a afficher du message d'erreur sous forme de 404 si la page n'existe pas
+ * @see index.php
+ * @see /controllers
+ * @see SessionManager
+ *
+ * @package core
+ * @since 1.0
+ * @version 1.0
+ * @category motorController
+ * @author Tom Carvajal & Killian Ferrier
+ */
 final class MotorController
 {
+    /**
+     * @var array (contient le tableau de l'url dont chaque élement était séparé par un /)
+     */
     private array $_mapOfSplitUrl;
 
+    /**
+     * @var array (contient le tableau des parametres résiduels) (apres le controller et l'action)
+     */
     private array $_mapOfResidualParameters;
 
-    private $_mapOfPostParameters;
+    /**
+     * @var array (contient le tableau des parametres post)
+     */
+    private array $_mapOfPostParameters;
 
+    /**
+     * @var bool (contient un booléen qui indique si on doit rediriger vers la page d'authentification)
+     */
     private bool $_redirectionNeededBecauseOfAuthentification;
 
-    public function __construct($S_url, $mapOfPostParameters)
+
+    /**
+     * Constructeur de la classe MotorController
+     *
+     * on crée une session et on verifie si elle est pas perimé
+     *
+     *
+     * @param mixed|null $S_url
+     * @param array|null $mapOfPostParameters
+     */
+    public function __construct(mixed $S_url, ?array $mapOfPostParameters)
     {
         SessionManager::createSession();
         SessionManager::checkValiditySessionTime();
@@ -54,8 +95,8 @@ final class MotorController
 
         // regle de redirection
         if (!isset($_SESSION['UserId']) && ($this->_mapOfSplitUrl['controller'] !== 'ControllerAuth' &&
-            $this->_mapOfSplitUrl['controller'] !== 'ControllerDefault') &&
-            ($this->_mapOfSplitUrl['controller'] !== 'ControllerMenu' )) {
+                $this->_mapOfSplitUrl['controller'] !== 'ControllerDefault') &&
+            ($this->_mapOfSplitUrl['controller'] !== 'ControllerMenu')) {
             // TODO A ameliorer avec les roles, voir ce faire des regles d'acces dans un fichier json
             // on verifie si session + page accessible ou non .
 
@@ -67,6 +108,14 @@ final class MotorController
 
     // On exécute notre triplet
 
+    /**
+     * methode run qui permet d'appeller les bons controlleur selon nos conventions de nommage
+     * on verifie si le controlleur existe, si l'action existe, si l'utilisateur a le droit d'acceder a la page
+     * et on appelle la bonne methode
+     * et si une erreur survient on la renvoie
+     *
+     * @throws ExceptionsController
+     */
     public function run(): void
     {
         if (!class_exists($this->_mapOfSplitUrl['controller'])) {

@@ -7,7 +7,7 @@
  * ainsi que des constantes pour l'authentification ou clé d'api.
  * on s'en sert pas mal pour les chemins de fichiers qui seront utilisé dans notre autoloader
  *
- * @see AutoLoad.php
+ * @see AutoLoad
  * @since 1.0
  * @package config
  * @version 1.0

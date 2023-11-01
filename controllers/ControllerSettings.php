@@ -20,7 +20,7 @@
  * @package controller
  * @version 1.0
  * @category Settings
- * @author Tom Carvjal & Killian Ferrier
+ * @author Tom Carvajal & Killian Ferrier
  */
 class ControllerSettings
 {
@@ -229,8 +229,8 @@ class ControllerSettings
     /**
      * Méthode pour afficher avec liaison du model la vue myPost (post blog & plus tard aussi forum)
      *
-     * @see /models/BlogPageModel.php
-     * @see /models/Orm/Blog_Page.php
+     * @see BlogPageModel
+     * @see Blog_Page
      * @return void
      */
     public function MyPostAction(): void
