@@ -16,7 +16,7 @@
         </div>
         <!-- Section des peronnes suivis -->
         <div class="row mb-4">
-            <div class="col-md-6 d-flex align-items-center">
+            <div class="col-md-6 d-flex align-items-center justify-content-end">
                 <img src="../../media/public_assets/favicon.png" alt="image" class="rounded-circle mr-3">
                 <div>
                     <p class="mb-0">KrokmouLeFurynocturne</p>
