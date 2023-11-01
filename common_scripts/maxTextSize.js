@@ -1,4 +1,4 @@
-maxTextLength = 260;
+maxTextLength = 240;
 maxTitleLength = 45;
 
 
