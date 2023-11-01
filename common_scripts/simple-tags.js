@@ -28,6 +28,8 @@
         let input = document.createElement('input');
         wrapper.classList.add('form-control', 'custom-input', 'round', 'inputBackground');
 
+        this.wrapper = wrapper;
+        this.input = input;
 
         init(this);
         initEvents(this);
