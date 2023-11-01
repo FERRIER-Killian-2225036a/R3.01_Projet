@@ -59,5 +59,6 @@
 }
 
 #publishButton:hover {
-    background-color: var(--purple-light);
+    background-color: var(--purple);
+    color: white;
 }
