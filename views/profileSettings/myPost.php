@@ -38,7 +38,6 @@
                 <div class="text-content">
                     <span class="d-flex">
                     <h1 class="responsive-title"><?php echo $mapView['blogTitle'] ?></h1>
-                    <?php echo "Titre = ", $mapView['blogTitle'] ?>
                     <div class="dropdown">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                              class="bi bi-three-dots" viewBox="0 0 16 16">
@@ -86,6 +85,10 @@
                 window.location.href = "<?php echo $mapView['blogPostEditUrl'] ?>";
             });
             const urlImg = document.getElementById('responsive-title');
+            console.log(urlImg.textContent);
+            if (urlImg.textContent==="") {
+                console.log('Titre vide');
+            }
 
         </script>
 
