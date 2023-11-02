@@ -80,3 +80,7 @@
 .lineInputAndButton {
     display: flex!important;
 }
+
+span.d-flex > .dropdown {
+    margin-inline: 0.2em;
+}
