@@ -13,12 +13,12 @@
                             </svg>
                             <div class="dropdown-content">
                                 <a href="<?php echo $mapView['blogPostEditUrl'] ?>">Modifier</a>
-                                <a onclick="sendPostShowOrHide('<?php echo $mapView['id'] ?>')"> <?php if ($mapView['statusP'] != "innactive") {
-                                        echo ($mapView['statusP'] == "active") ? "Mettre en visibilité public" : "Mettre en visibilité privé";
+                                <a id="modifyVisibilityButton" > <?php if ($mapView['statusP'] != "innactive") {
+                                        echo ($mapView['statusP'] == "active") ? "Mettre en visibilité privé" : "Mettre en visibilité public";
                                     } ?></a>
                                 <!-- De toute facon on affiche pas la publication si innactive + test dans le controller pour la requete post-->
 
-                                <a onclick="sendPostDelete('<?php echo $mapView['id'] ?>')">Supprimer</a>
+                                <a id="deleteButton" >Supprimer</a>
                             </div>
                         </div>
                     </span>
@@ -29,8 +29,9 @@
     </div>
 </div>
 <script>
-    function sendPostShowOrHide(id) {
-        fetch('/Post/BlogEdit/' + id, {
+
+    document.getElementById('modifyVisibilityButton').addEventListener("click", function() {
+        fetch('/Post/BlogEdit/' + '<?php echo $mapView['id'] ?>', {
             method: 'POST',
             body: 'ChangeVisibilityBlog',
             headers: {
@@ -40,8 +41,9 @@
         window.location.href = "https://cyphub.tech/Settings/MyPost";
     }
 
-    function sendPostDelete(id) {
-        fetch('/Post/BlogEdit/' + id, {
+
+    document.getElementById('deleteButton').addEventListener("click", function() {
+        fetch('/Post/BlogEdit/' + '<?php echo $mapView['id'] ?>', {
             method: 'POST',
             body: 'DeleteBlog',
             headers: {
