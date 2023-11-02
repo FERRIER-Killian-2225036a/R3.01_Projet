@@ -168,4 +168,25 @@ class Blog_PageLike
             $stmt->bindParam(':UserId', $UserId);
             $stmt->execute();
     }
+
+
+    /**
+     * Cette méthode permet de savoir si un post est liker par un user
+     *
+     * @param int $PageId
+     * @param int $UserId
+     * @return bool
+     */
+    public function isBookmarkExist(int $PageId, int $UserId) : bool
+    {
+        $sql = "SELECT * FROM BLOG_PageLike WHERE PageId = :PageId AND UserId = :UserId";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':PageId', $PageId);
+        $stmt->bindParam(':UserId', $UserId);
+        $stmt->execute();
+        if ($stmt->rowCount() > 0) {
+            return true;
+        }
+        return false;
+    }
 }

@@ -197,5 +197,16 @@ class BlogPageModel
         return (new Blog_categoryPage())->getCategoryByPageId($this->PageId);
     }
 
+    /**
+     * verifier si un user a liker un poste
+     *
+     * @param int $UserId
+     * @return bool
+     */
+    public function isPostBookmarked(int $UserId): bool
+    {
+        return (new Blog_PageLike())->isBookmarkExist($this->PageId, $UserId);
+    }
+
 
 }

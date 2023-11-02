@@ -458,6 +458,8 @@ class ControllerPost
                                                                     "Author" => $author,
                                                                     "NumberOfFollower" => $numberOfFollower,
                                                                     "ImgProfil" => $imgProfil,
+                                                                    "BoolIsFollowed" => $boolIsFollowed,
+                                                                    "BoolIsPostBookmarked" => $boolIsPostBookmarked
                     ));
                 }
             }
