@@ -4,10 +4,10 @@
 
 
     // Plugin Constructor
-    var TagsInput = function(opts){
-        this.options = Object.assign(TagsInput.defaults , opts);
+    const TagsInput = function (opts) {
+        this.options = Object.assign(TagsInput.defaults, opts);
         this.init();
-    }
+    };
 
     // Initialize the plugin
     TagsInput.prototype.init = function(opts){
@@ -22,8 +22,6 @@
         }
 
         this.arr = [];
-        //this.wrapper = document.createElement('div');
-        //this.input = document.createElement('input');
         let wrapper = document.createElement('div');
         let input = document.createElement('input');
         wrapper.classList.add('form-control', 'custom-input', 'round', 'inputBackground');
@@ -45,22 +43,22 @@
             return ;
 
         this.arr.push(string);
-        var tagInput = this;
+        const tagInput = this;
 
-        var tag = document.createElement('span');
+        const tag = document.createElement('span');
         tag.className = this.options.tagClass;
         tag.innerText = string;
 
-        var closeIcon = document.createElement('a');
+        const closeIcon = document.createElement('a');
         closeIcon.innerHTML = '&times;';
 
         // delete the tag when icon is clicked
         closeIcon.addEventListener('click' , function(e){
             e.preventDefault();
-            var tag = this.parentNode;
+            const tag = this.parentNode;
 
-            for(var i =0 ;i < tagInput.wrapper.childNodes.length ; i++){
-                if(tagInput.wrapper.childNodes[i] == tag)
+            for(let i =0 ; i < tagInput.wrapper.childNodes.length ; i++){
+                if(tagInput.wrapper.childNodes[i] === tag)
                     tagInput.deleteTag(tag , i);
             }
         })
@@ -84,14 +82,12 @@
     // Make sure input string have no error with the plugin
     TagsInput.prototype.anyErrors = function(string){
         if( this.options.max != null && this.arr.length >= this.options.max ){
-            console.log('max tags limit reached');
-            //alert('Maximum de tags entré'); //TODO : rendre l'affichage plus jolie
             ShowLoginErrorMessage("Maximum de tags entré");
             return true;
         }
 
         if(!this.options.duplicate && this.arr.indexOf(string) !== -1 ){
-            console.log('duplicate found " '+string+' " ')
+            ShowLoginErrorMessage("L'élément " + string + " est déjà entré");
             return true;
         }
 
@@ -100,7 +96,7 @@
 
     // Add tags programmatically 
     TagsInput.prototype.addData = function(array){
-        var plugin = this;
+        const plugin = this;
 
         array.forEach(function(string){
             plugin.addTag(string);
@@ -119,7 +115,7 @@
         this.orignal_input.removeAttribute('hidden');
 
         delete this.orignal_input;
-        var self = this;
+        const self = this;
 
         Object.keys(this).forEach(function(key){
             if(self[key] instanceof HTMLElement)
@@ -148,7 +144,7 @@
 
 
         tags.input.addEventListener('keydown' , function(e){
-            var str = tags.input.value.trim();
+            const str = tags.input.value.trim();
 
             if( !!(~[9 , 13 , 188].indexOf( e.keyCode ))  )
             {
@@ -175,8 +171,8 @@
 
 })();
 
-var tagInput1 = new TagsInput({
+const tagInput1 = new TagsInput({
     selector: 'tag-input1',
-    duplicate : false,
-    max : 3
+    duplicate: false,
+    max: 3
 });
