@@ -42,9 +42,9 @@ class ControllerPost
      * on s'occupe aussi de rediriger / logger si des comportements sont inattendus
      * (ex : tentative de modification sans droits)
      *
-     * @var array|null $A_parametres
-     * @var array|null $A_postParams
      * @return void
+     * @var array|null $A_postParams
+     * @var array|null $A_parametres
      */
     public function BlogEditAction(array $A_parametres = null, array $A_postParams = null): void
     {
@@ -133,156 +133,153 @@ class ControllerPost
                                     $post->deletePage($idPost);
                                     header("Location: /Settings/MyPost");
                                     die();
-                                }
-                                elseif (isset($A_postParams["ChangeVisibilityBlog"])) {
+                                } elseif (isset($A_postParams["ChangeVisibilityBlog"])) {
                                     $status = (new BlogPageModel($idPost))->getStatusP($idPost);
-                                    if ($status == "hidden"){
+                                    if ($status == "hidden") {
                                         $status = "active";
-                                    }
-                                    elseif ($status == "active"){
+                                    } elseif ($status == "active") {
                                         $status = "hidden";
                                     }
-                                    $post->changeVisibility($idPost,$status);
+                                    $post->changeVisibility($idPost, $status);
                                     header("Location: /Settings/MyPost");
                                     die();
                                 } else {
 
 
+                                    // on est dans le cas de la modification d'un post
+                                    $existingPost = new BlogPageModel($idPost); // on crée un nouvelle objet qui contient les
+                                    // valeurs d'une blogPage de la bdd pour un identifiant unique donnée
 
-                                // on est dans le cas de la modification d'un post
-                                $existingPost = new BlogPageModel($idPost); // on crée un nouvelle objet qui contient les
-                                // valeurs d'une blogPage de la bdd pour un identifiant unique donnée
+                                    $newTitle = null;
+                                    $newContent = null;
+                                    $newTags = null;
 
-                                $newTitle = null;
-                                $newContent = null;
-                                $newTags = null;
+                                    // phase de sécurisation des inputs, on va verifier que c'est pas des inputs pas net
 
-                                // phase de sécurisation des inputs, on va verifier que c'est pas des inputs pas net
-
-                                if (isset($A_postParams["Title"])) {
-                                    $title = $A_postParams["Title"];
-                                    $title = htmlspecialchars($title);
-                                    if ($title !== $existingPost->getTitle() && $title != "" && $title != null) {
-                                        $newTitle = $title;
+                                    if (isset($A_postParams["Title"])) {
+                                        $title = $A_postParams["Title"];
+                                        $title = htmlspecialchars($title);
+                                        if ($title !== $existingPost->getTitle() && $title != "" && $title != null) {
+                                            $newTitle = $title;
+                                        }
                                     }
-                                }
-                                if (isset($A_postParams["Content"])) {
-                                    $content = $A_postParams["Content"];
-                                    $escapedContent = htmlspecialchars($content); // j'enleve le nettoyage d'input
-                                    // car PDO est déjà en train d'empecher les injections sql.
-                                    // deplus il détruit les symboles spéciaux, type ' é à ...
-                                    // on pourra penser dans le futur faire un moteur de blog ou on peut comme sur
-                                    // notion ajouté des blogs de code, des images , des liens ...
+                                    if (isset($A_postParams["Content"])) {
+                                        $content = $A_postParams["Content"];
+                                        $escapedContent = htmlspecialchars($content); // j'enleve le nettoyage d'input
+                                        // car PDO est déjà en train d'empecher les injections sql.
+                                        // deplus il détruit les symboles spéciaux, type ' é à ...
+                                        // on pourra penser dans le futur faire un moteur de blog ou on peut comme sur
+                                        // notion ajouté des blogs de code, des images , des liens ...
 
-                                    if ($escapedContent !== $existingPost->getContent() && $escapedContent != "") {
-                                        $newContent = $escapedContent;
+                                        if ($escapedContent !== $existingPost->getContent() && $escapedContent != "") {
+                                            $newContent = $escapedContent;
+                                        }
                                     }
-                                }
-                                if (isset($A_postParams["Tags"])) {
-                                    $tags = $A_postParams["Tags"];
-                                    $tags = htmlspecialchars($tags);
+                                    if (isset($A_postParams["Tags"])) {
+                                        $tags = $A_postParams["Tags"];
+                                        $tags = htmlspecialchars($tags);
 
-                                    $realTagsId = $existingPost->getTags();
-                                    $realTags[] = null;
-                                    foreach ($realTagsId as  $id) {
-                                        $realTags[] = (new Blog_Category())->getCategoryById(intval($id));
-                                    }
-                                    if ($tags != $realTags && $tags != "" && $tags != null) {
-                                        $arrayOfTags = explode(",", $tags);
-                                        $newTags = $arrayOfTags;
-                                    }
-                                }
-
-
-                                $newImg = null;
-
-                                // si il y a une image, on va la traiter avec la méthode de PictureVerificator
-                                $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
-                                $minFileSize = 1000; // Taille minimale en octets
-                                $maxFileSize = 5000000; // Taille maximale en octets (ici, 5 Mo)
-                                $uploadDirectory = Constants::mediaDirectoryblogs() . $idPost;
-                                //TODO verifier une dimension HxV ? format paysage
-
-                                if (!is_dir($uploadDirectory)) {
-                                    if (mkdir($uploadDirectory)) { // création dossier
-                                        error_log("Le dossier a été créé avec succès.");
-                                    } else {
-                                        error_log("Une erreur est survenue lors de la création du dossier.");
-                                    }
-                                }
-
-                                try {
-                                    $result = PictureVerificator::VerifyImg($_FILES['BlogPicture'], $uploadDirectory,
-                                        $allowedExtensions, $minFileSize, $maxFileSize);
-                                    if ($result[0] != "success") {
-                                        // TODO appel script js pour modifier la page avec un message d'erreur
-                                        // $temp ='<script type="text/javascript">ShowLoginErrorMessage("'.$result[0].'")</script>';
-                                        // echo $result;
-                                        throw new ExceptionsUpload($result);
-                                    } else {
-                                        $newImg = Constants::MEDIA_DIRECTORY_BLOGS . $idPost . "/" . $result[1];
-
-                                        //$post->update_img($idPost,$newImg);
-
+                                        $realTagsId = $existingPost->getTags();
+                                        $realTags[] = null;
+                                        foreach ($realTagsId as $id) {
+                                            $realTags[] = (new Blog_Category())->getCategoryById(intval($id));
+                                        }
+                                        if ($tags != $realTags && $tags != "" && $tags != null) {
+                                            $arrayOfTags = explode(",", $tags);
+                                            $newTags = $arrayOfTags;
+                                        }
                                     }
 
-                                } catch (ExceptionsUpload $e) {
-                                    //TODO on pensera a afficher un message d'erreur sur le site
-                                    error_log($e->getMessage());
-                                }
 
+                                    $newImg = null;
 
-                                if ($existingPost->getUrlPicture() !== null && $newImg !== null) { // si une nouvelle image a été fournis et qu'il y en avait deja une,
-                                    // on supprime l'ancienne image en conservant la nouvelle afin de faire de la place
-                                    $uploadDirectory = $uploadDirectory . "/" . $existingPost->getUrlPicture();
-                                    $files = glob($uploadDirectory . '/*'); // recup tout les noms des fichiers
-                                    foreach ($files as $file) { // parcours fichiers
-                                        if (is_file($file) && $file !== $existingPost->getUrlPicture())
-                                            unlink($file); // suppression
+                                    // si il y a une image, on va la traiter avec la méthode de PictureVerificator
+                                    $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+                                    $minFileSize = 1000; // Taille minimale en octets
+                                    $maxFileSize = 5000000; // Taille maximale en octets (ici, 5 Mo)
+                                    $uploadDirectory = Constants::mediaDirectoryblogs() . $idPost;
+                                    //TODO verifier une dimension HxV ? format paysage
+
+                                    if (!is_dir($uploadDirectory)) {
+                                        if (mkdir($uploadDirectory)) { // création dossier
+                                            error_log("Le dossier a été créé avec succès.");
+                                        } else {
+                                            error_log("Une erreur est survenue lors de la création du dossier.");
+                                        }
                                     }
-                                }
 
-                                // phase de logique, on va regarder d'ou viens les modifications. on pourra donc modifier
-                                // les champs qui ont été modifié seulement, et laissé telquel les autres, normalement
-                                // cela se fait tout seul car on modifiera la page blogEdit de base
-                                // qui viendra fournir en input les valeurs apres avoir verifier que la page était okay a
-                                // affiché au mec
-                                if ($newImg !== null ) {
-                                    $post->update_img($idPost, $newImg);
-                                }
+                                    try {
+                                        $result = PictureVerificator::VerifyImg($_FILES['BlogPicture'], $uploadDirectory,
+                                            $allowedExtensions, $minFileSize, $maxFileSize);
+                                        if ($result[0] != "success") {
+                                            // TODO appel script js pour modifier la page avec un message d'erreur
+                                            // $temp ='<script type="text/javascript">ShowLoginErrorMessage("'.$result[0].'")</script>';
+                                            // echo $result;
+                                            throw new ExceptionsUpload($result);
+                                        } else {
+                                            $newImg = Constants::MEDIA_DIRECTORY_BLOGS . $idPost . "/" . $result[1];
 
-                                $tempArray = $post->getValuesById($idPost);
+                                            //$post->update_img($idPost,$newImg);
 
-                                if ($newTitle == null) {
-                                    $newTitle = $tempArray['TITLE'];
-                                }
-                                if ($newContent == null) {
-                                    $newContent = $tempArray['content'];
-                                }
+                                        }
 
-                                $post->updatePage($idPost,
-                                    $newTitle,
-                                    $newContent,
-                                    $_SESSION['Username'],
-                                    $_SESSION['UserId'],
-                                    $tempArray['UrlPicture'], // la photo est changé que si newImg est pas null
-                                    intval($tempArray['NumberOfLikes']),
-                                    $tempArray['statusP']);
-
-
-                                // ensuite on traite les categories
-                                $CategoryPageFormOrm = new Blog_categoryPage();
-                                if (empty($newTags)) { // on apporte une modifs aux tags en suppression
-                                    $CategoryPageFormOrm->removeAllLinkBetweenCategoryAndPage($idPost);
-                                } else { // on a de potentiels modifications dans les tags
-                                    $CategoryPageFormOrm->removeAllLinkBetweenCategoryAndPage($idPost);
-                                    foreach ($newTags as $tag) { //TODO faut remove si y'en a qui ont changé
-                                        $id = (new Blog_Category())->createCategory($tag); // renvoi l'id de la nouvelle/existante page
-                                        $CategoryPageFormOrm->createLinkBetweenCategoryAndPage($id, $idPost);// on link la page au nouvel id.
+                                    } catch (ExceptionsUpload $e) {
+                                        //TODO on pensera a afficher un message d'erreur sur le site
+                                        error_log($e->getMessage());
                                     }
-                                }
-                                header("Location: /Settings/MyPost");
-                                die();
+
+
+                                    if ($existingPost->getUrlPicture() !== null && $newImg !== null) { // si une nouvelle image a été fournis et qu'il y en avait deja une,
+                                        // on supprime l'ancienne image en conservant la nouvelle afin de faire de la place
+                                        $uploadDirectory = $uploadDirectory . "/" . $existingPost->getUrlPicture();
+                                        $files = glob($uploadDirectory . '/*'); // recup tout les noms des fichiers
+                                        foreach ($files as $file) { // parcours fichiers
+                                            if (is_file($file) && $file !== $existingPost->getUrlPicture())
+                                                unlink($file); // suppression
+                                        }
+                                    }
+
+                                    // phase de logique, on va regarder d'ou viens les modifications. on pourra donc modifier
+                                    // les champs qui ont été modifié seulement, et laissé telquel les autres, normalement
+                                    // cela se fait tout seul car on modifiera la page blogEdit de base
+                                    // qui viendra fournir en input les valeurs apres avoir verifier que la page était okay a
+                                    // affiché au mec
+                                    if ($newImg !== null) {
+                                        $post->update_img($idPost, $newImg);
+                                    }
+
+                                    $tempArray = $post->getValuesById($idPost);
+
+                                    if ($newTitle == null) {
+                                        $newTitle = $tempArray['TITLE'];
+                                    }
+                                    if ($newContent == null) {
+                                        $newContent = $tempArray['content'];
+                                    }
+
+                                    $post->updatePage($idPost,
+                                        $newTitle,
+                                        $newContent,
+                                        $_SESSION['Username'],
+                                        $_SESSION['UserId'],
+                                        $tempArray['UrlPicture'], // la photo est changé que si newImg est pas null
+                                        intval($tempArray['NumberOfLikes']),
+                                        $tempArray['statusP']);
+
+
+                                    // ensuite on traite les categories
+                                    $CategoryPageFormOrm = new Blog_categoryPage();
+                                    if (empty($newTags)) { // on apporte une modifs aux tags en suppression
+                                        $CategoryPageFormOrm->removeAllLinkBetweenCategoryAndPage($idPost);
+                                    } else { // on a de potentiels modifications dans les tags
+                                        $CategoryPageFormOrm->removeAllLinkBetweenCategoryAndPage($idPost);
+                                        foreach ($newTags as $tag) { //TODO faut remove si y'en a qui ont changé
+                                            $id = (new Blog_Category())->createCategory($tag); // renvoi l'id de la nouvelle/existante page
+                                            $CategoryPageFormOrm->createLinkBetweenCategoryAndPage($id, $idPost);// on link la page au nouvel id.
+                                        }
+                                    }
+                                    header("Location: /Settings/MyPost");
+                                    die();
                                 }
                             } else {
                                 (new UserSite())->incrementAlertLevelUser($_SESSION['UserId']);
@@ -299,7 +296,7 @@ class ControllerPost
                     if (isset($A_postParams["Title"])) {
                         $title = $A_postParams["Title"];
                         $title = htmlspecialchars($title);
-                        if ( $title != "" && $title != null) {
+                        if ($title != "" && $title != null) {
                             $newTitle = $title;
                         }
                     }
@@ -335,11 +332,11 @@ class ControllerPost
                         {
                             throw new ExceptionsBlog($idNewPost); // erreur survenue lors de la création
                         }
-                            // et la on va update l'image
+                        // et la on va update l'image
 
-                            // on doit recuperer l'id du post pour pouvoir creer le dossier
+                        // on doit recuperer l'id du post pour pouvoir creer le dossier
 
-                            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+                        $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
                         $minFileSize = 1000; // Taille minimale en octets
                         $maxFileSize = 5000000; // Taille maximale en octets (ici, 5 Mo)
                         $uploadDirectory = Constants::mediaDirectoryBlogs() . $idNewPost . "/";
@@ -392,5 +389,77 @@ class ControllerPost
                 header("Location: /");
             }
         }
+    }
+
+    /**
+     * Méthode pour afficher un blog en tant que spéctateur
+     *
+     * Si /Post/Blog/ nombre alors on affiche le blog lorsque l'utilisateur est connecter
+     *
+     * @return void
+     * @var array|null $A_postParams
+     * @var array|null $A_parametres
+     */
+    public function BlogAction(array $A_parametres = null, array $A_postParams = null): void
+    {
+        // $A_parametres[0] contient l'identifiant du post a édité
+        // si $A_parametres[0] est null alors on est dans le cas de la création d'un nouveau post
+        // $A_postParams; contient les données pour la modif/ création de page
+        // $A_postParams["Title"] contient le titre
+        // $A_postParams["Content"] contient le contenu
+        // $A_postParams["Tags"] contient la liste des tags séparé par des ,
+
+        if (SessionManager::isUserConnected()) {
+            if ($A_postParams === null || empty($A_parametres)) {
+                header("Location: /Menu/BlogFeed");
+                die();
+            } else {
+                $idPost = filter_var($A_parametres[0], FILTER_VALIDATE_INT); // on recupere l'identifiant dans l'url
+                if ($idPost === false) {
+                    error_log("valeur $idPost du post n'existe pas/ n'est pas valide");
+                    header("Location: /Menu/BlogFeed");
+                    die();
+                }
+                $post = new Blog_Page;
+                if ($post->doesPageIdExist($idPost)) { // on procede donc a la verification de si l'identifiant est attribué
+
+                    $existingPost = new BlogPageModel($idPost); // on crée un nouvelle objet qui contient les
+
+                    $title = $existingPost->getTITLE();
+                    $content = $existingPost->getContent();
+                    $img = $existingPost->getUrlPicture();
+                    $TempTags = $existingPost->getTags();
+                    $author = $existingPost->getAuthor();
+
+                    $userId = $existingPost->getUserId();
+
+                    $userModel = (new USERSiteModel($userId));
+                    $numberOfFollower = $userModel->getNumberOfFollower();
+                    $imgProfil = $userModel->getUrlPicture();
+                    $urlBookmark = "/Post/Blog/" . $idPost; // TODO on regardera les parametres POST
+
+
+                    // transformation de la liste d'identifiant de tag, en un string sous forme de label1,label2,label3
+
+                    $tagsStringForInput = "";
+                    foreach ($TempTags as $tags) {
+                        $tagsStringForInput .= "'" . $tags . "'" . ", ";
+                    }
+                    $tagsStringForInput = substr($tagsStringForInput, 0, strlen($tagsStringForInput) - 1);
+                    // $tagsStringForInput sera fourni dans l'input dans l'input de la vue,
+                    MotorView::show('post/viewBlog', array("Title" => $title, //KILLIAN
+                                                                    "Content" => $content,
+                                                                    "Tags" => $tagsStringForInput,
+                                                                    "Img" => $img,
+                                                                    "UrlForm" => $idPost,
+                                                                    "Author" => $author,
+                                                                    "NumberOfFollower" => $numberOfFollower,
+                                                                    "ImgProfil" => $imgProfil,
+                    ));
+                }
+            }
+
+        }
+
     }
 }

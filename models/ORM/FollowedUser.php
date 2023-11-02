@@ -21,5 +21,38 @@
  */
 class FollowedUser
 {
+    /**
+     * @var PDO $conn variable de connexion a la base de données
+     */
+    private PDO $conn;
 
+    /**
+     * @var DBBrain $DBBrain variable pour recuperer le cerveau de la bdd (méthodes utiles)
+     */
+    private DBBrain $DBBrain;
+
+    /**
+     * Blog_PageLike constructor.
+     */
+    public function __construct()
+    {
+        $this->DBBrain = new DBBrain();
+        $this->conn = $this->DBBrain->getConn();
+    }
+
+    /**
+     * cette methode renvoie le nombre d'abonnée d'un utilisateur;
+     *
+     * @param int $UserID
+     * @return int|false
+     */
+    public function getNumberOfFollower(int $UserID): bool|int
+    {
+        $sql = "SELECT COUNT(FollowId) FROM FollowedUser WHERE UserFollow = :Id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(':Id', $UserID, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }

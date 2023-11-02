@@ -195,5 +195,15 @@ class USERSiteModel
         return $this->NumberOfConnection;
     }
 
+    /**
+     * méthode pour recuperer le nombre de follower d'un utilisateur (pas le nombre d'abonnement de l'utilisateur)
+     *
+     * @return bool|int
+     */
+    public function getNumberOfFollower(): bool|int
+    {
+        return (new FollowedUser)->getNumberOfFollower($this->Id);
+    }
+
 
 }
