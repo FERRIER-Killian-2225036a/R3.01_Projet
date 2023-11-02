@@ -35,7 +35,7 @@
 
         <div class="row justify-content-center mt-4">
             <div class="col-8">
-                <p>
+                <p style="text-align: justify;">
                     <?php echo $mapView['Content'] ?>
                 </p>
             </div>
