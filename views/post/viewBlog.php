@@ -5,7 +5,11 @@
             <div class="col-md-6 d-flex align-items-center">
                 <img src="<?php echo $mapView['$imgProfil'] ?>" alt="image" class="rounded-circle mr-3">
                 <div>
-                    <p class="mb-0"><?php echo $mapView['author'] ?> <a class="btn btn-custom-purple">Suivre</a></p>
+                    <form action="  CURRENT URL EN JS STP (avec l'id) " method="post" >
+                    <p class="mb-0"><?php echo $mapView['author'] ?>
+                        <button type="submit" name="Follow" class="btn btn-custom-purple">Suivre</button>
+                    </p>
+                    </form>
                     <small><?php echo $mapView['numberOfFollower'] ?></small>
                 </div>
             </div>
@@ -13,9 +17,11 @@
                 <a href="#" title="Partager">
                     <img src="../../media/public_assets/icone/partager.png" alt="Partager" class="icon">
                 </a>
-                <a href="#" title="Signet">
+                <form action="  CURRENT URL EN JS STP (avec l'id) " method="post">
+                <button name="bookmark" title="Signet" type="submit">
                     <img src="../../media/public_assets/icone/signet.png" alt="Signet" class="icon">
-                </a>
+                </button>
+                </form>
             </div>
         </div>
         <hr>
