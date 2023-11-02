@@ -18,8 +18,8 @@
                 <a href="#" title="Partager">
                     <img src="../../media/public_assets/icone/partager.png" alt="Partager" class="icon">
                 </a>
-                <form action="<?php echo $mapView["CurentUrlPost"]?>" method="post">
-                    <button name="bookmark" title="Signet" type="submit" id="formSignet">
+                <form action="<?php echo $mapView["CurentUrlPost"]?>" method="post" id="myForm">
+                    <button name="bookmark" title="Signet" type="button" id="formSignet">
                         <img src="../../media/public_assets/icone/signet.png" alt="Signet" class="icon" id="signetImg">
                     </button>
                 </form>
