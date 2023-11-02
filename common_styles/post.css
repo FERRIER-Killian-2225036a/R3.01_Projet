@@ -88,3 +88,13 @@
 #textUser > p {
     height: 18px;
 }
+
+#postBlogContainer {
+    padding-inline: 11em;
+}
+
+@media (max-width: 660px) {
+    #postBlogContainer {
+        padding-inline: 3.2em;
+    }
+}

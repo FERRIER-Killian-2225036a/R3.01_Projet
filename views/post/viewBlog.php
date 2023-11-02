@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/common_styles/post.css">
-<div style="padding-inline: 11em;">
+<div style="padding-inline: 11em;" id="postBlogContainer">
     <div class="text-left mt-4">
         <h1><?php echo $mapView['Title'] ?></h1>
         <div class="row mb-4">
