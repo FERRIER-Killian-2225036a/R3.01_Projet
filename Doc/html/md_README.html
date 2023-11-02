@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Cyphub.tech: R3.01_Projet</title>
+<title>Cyphub.tech: R3.01_Projet - Réseau Social de Cybersécurité</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -84,12 +84,82 @@ $(document).ready(function(){initNavTree('md_README.html',''); initResizable(); 
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">R3.01_Projet </div>  </div>
+<div class="title">R3.01_Projet - Réseau Social de Cybersécurité </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Caron Pierrick, Carvajal Tom, Ferrier Killian, Nardi Fabio, Guil Vanessa</p>
-<p>Lien vers notion ( organisation, recherche, conception ) : <a href="https://www.notion.so/R301-DEV-WEB-CR-ATION-D-UN-BLOG-3e0c15adb99845c3888fdd2f2bcb4bd5">https://www.notion.so/R301-DEV-WEB-CR-ATION-D-UN-BLOG-3e0c15adb99845c3888fdd2f2bcb4bd5</a></p>
-<p>Lien vers le site : <a href="http://cyphub.tech">http://cyphub.tech</a> </p>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md1"></a>
+Équipe de développement</h1>
+<ul>
+<li>Caron Pierrick</li>
+<li>Carvajal Tom</li>
+<li>Ferrier Killian</li>
+<li>Nardi Fabio</li>
+<li>Guil Vanessa</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Description du Projet</h1>
+<p>Le projet R3.01_Projet est un réseau social axé sur la cybersécurité, développé en PHP 8.1 avec une architecture MVC. Ce réseau social se concentre sur la sécurité en ligne en intégrant des fonctionnalités telles que :</p><ul>
+<li>un onglet de veille informatique pour suivre les dernières actualités en termes de cybersécurité, d'hacking et d'informatique en général</li>
+<li>un onglet blog, pour publier vos meilleurs tutoriels afin de partager vos connaissances avec le reste de la communauté</li>
+<li>un onglet forum, pour poser vos questions et obtenir de l'aide dans les domaines du development, du hacking et de la défense</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Liens Importants</h1>
+<ul>
+<li><a href="https://www.notion.so/R301-DEV-WEB-CR-ATION-D-UN-BLOG-3e0c15adb99845c3888fdd2f2bcb4bd5">Notion - Organisation, Recherche, Conception</a></li>
+<li><a href="http://cyphub.tech">Site Web du Projet</a></li>
+<li><a href="https://github.com/FERRIER-Killian-2225036a/R3.01_Projet">Repository</a></li>
+</ul>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Caractéristiques</h1>
+<ul>
+<li>Langage : PHP 8.1.2 / 8.2.0</li>
+<li>Architecture : Framework MVC</li>
+<li>Modules Externes : Aucun</li>
+<li>Utilisation des API :<ul>
+<li><a href="https://haveibeenpwned.com">Have I Been Pwned</a> pour la vérification des fuites de données des mots de passes.</li>
+<li><a href="https://cloud.google.com/vision">Google Cloud Vision</a> pour l'analyse d'images posté par les utilisateurs.</li>
+</ul>
+</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md5"></a>
+Hébergement</h1>
+<p>L'application est hébergée chez FastComet.</p>
+<h1><a class="anchor" id="autotoc_md6"></a>
+Instructions pour Exécution en Local avec XAMPP</h1>
+<p>Si vous souhaitez exécuter le projet sur un serveur XAMPP, suivez ces étapes :</p>
+<ol type="1">
+<li><b>Téléchargement et Installation de XAMPP :</b><ul>
+<li>Téléchargez et installez XAMPP depuis <a href="https://www.apachefriends.org">le site officiel de Apache Friends</a>.</li>
+</ul>
+</li>
+<li><b>Clonage du Dépôt du Projet :</b><ul>
+<li>Clonez le dépôt du projet depuis le gestionnaire de contrôle de version ou téléchargez-le au format ZIP.</li>
+</ul>
+</li>
+<li><b>Configuration de XAMPP :</b><ul>
+<li>Démarrez XAMPP et assurez-vous que les services Apache et MySQL sont actifs.</li>
+</ul>
+</li>
+<li><b>Base de Données :</b><ul>
+<li>Importez le schéma de la base de données fourni dans la documentation Notion dans votre serveur MySQL.</li>
+</ul>
+</li>
+<li><b>Configuration du Projet :</b><ul>
+<li>Placez les fichiers du projet dans le répertoire <code>htdocs</code> de XAMPP (situé dans le dossier d'installation de XAMPP).</li>
+</ul>
+</li>
+<li><b>Lancement du Serveur :</b><ul>
+<li>Ouvrez votre navigateur web et accédez à l'URL : <code><a href="http://localhost/nom-du-projet">http://localhost/nom-du-projet</a></code>.</li>
+</ul>
+</li>
+<li><b>Accès à l'Application :</b><ul>
+<li>Vous devriez maintenant pouvoir accéder à l'application à partir de votre navigateur en utilisant l'URL locale.</li>
+</ul>
+</li>
+</ol>
+<p>Assurez-vous d'adapter le chemin et le nom du répertoire du projet (<code>nom-du-projet</code>) en fonction de votre structure de dossiers dans XAMPP.</p>
+<p>Cette méthode vous permettra de lancer le projet sur votre serveur XAMPP localement, prêt à être testé et exploré via votre navigateur web. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

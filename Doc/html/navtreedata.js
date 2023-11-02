@@ -25,7 +25,14 @@
 var NAVTREE =
 [
   [ "Cyphub.tech", "index.html", [
-    [ "R3.01_Projet", "md_README.html", null ],
+    [ "R3.01_Projet - Réseau Social de Cybersécurité", "md_README.html", [
+      [ "Équipe de développement", "md_README.html#autotoc_md1", null ],
+      [ "Description du Projet", "md_README.html#autotoc_md2", null ],
+      [ "Liens Importants", "md_README.html#autotoc_md3", null ],
+      [ "Caractéristiques", "md_README.html#autotoc_md4", null ],
+      [ "Hébergement", "md_README.html#autotoc_md5", null ],
+      [ "Instructions pour Exécution en Local avec XAMPP", "md_README.html#autotoc_md6", null ]
+    ] ],
     [ "Espaces de nommage", "namespaces.html", [
       [ "Liste des espaces de nommage", "namespaces.html", "namespaces_dup" ]
     ] ],
