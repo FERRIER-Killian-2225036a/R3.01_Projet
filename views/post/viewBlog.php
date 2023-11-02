@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/common_styles/post.css">
-<div class="container">
+<div style="padding-inline: 11em;">
     <div class="text-left mt-4">
         <h1><?php echo $mapView['Title'] ?></h1>
         <div class="row mb-4">
@@ -57,12 +57,10 @@
             // Copiez le texte dans le presse-papiers de l'utilisateur
             navigator.clipboard.writeText(texteACopier)
                 .then(() => {
-                    copyLabel.innerHTML = 'Texte copié avec succès !';
-                    console.log('Texte copié avec succès !');
+                    copyLabel.innerHTML = 'Texte copié avec succès !   ';
                 })
                 .catch((err) => {
                     copyLabel.innerHTML = 'Erreur lors de la copie : ' + err;
-                    console.error('Erreur lors de la copie :', err);
                 });
         });
     </script>
