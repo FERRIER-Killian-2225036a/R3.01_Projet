@@ -5,8 +5,9 @@
             <div class="col-md-6 d-flex align-items-center">
                 <img src="<?php echo $mapView['ImgProfil'] ?>" alt="image" class="rounded-circle mr-3">
                 <div>
-                    <p class="mb-0"><?php echo $mapView['Author'] ?> <a class="btn btn-custom-purple">Suivre</a></p>
+                    <p class="mb-0"><?php echo $mapView['Author'] ?> </p>
                     <small><?php echo $mapView['NumberOfFollower'] ?></small>
+                    <a class="btn btn-custom-purple">Suivre</a>
                 </div>
             </div>
             <div class="col-md-6 d-flex align-items-center justify-content-end">
