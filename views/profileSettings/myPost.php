@@ -1,5 +1,6 @@
 <?php require 'sideBar.php' ?>
 <script src="/common_scripts/dropdown.js"></script>
+<script src="/common_scripts/myPostDisplay.js"></script>
 <link rel="stylesheet" href="/common_styles/dropdown.css">
 
 <div class="col container" id="rightSide">
@@ -65,6 +66,6 @@
     </div>
     <script src="/common_scripts/maxTextSize.js"></script>
     <script src="/common_scripts/postOptions.js"></script>
-    <script src="/common_scripts/myPostDisplay.js"></script>
+
 
 
