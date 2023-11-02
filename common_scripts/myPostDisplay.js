@@ -9,6 +9,7 @@ const noBlogMessage = document.getElementById('noBlogMessage');
 
 noBlogMessage.style.display = "none";
 if (blogTitle === null) {
-    divButtonRole.style.setProperty("display", "none", "important");
-    noBlogMessage.style.display = "flex";
+    console.log(blogTitle);
+    //divButtonRole.style.setProperty("display", "none", "important");
+    //noBlogMessage.style.display = "flex";
 }
