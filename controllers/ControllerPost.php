@@ -436,6 +436,9 @@ class ControllerPost
                     $userModel = (new USERSiteModel($userId));
                     $numberOfFollower = $userModel->getNumberOfFollower();
                     $imgProfil = $userModel->getUrlPicture();
+                    $boolIsFollowed = $userModel->isFollowed($_SESSION['UserId']);
+                    $boolIsPostBookmarked = $existingPost->isPostBookmarked($_SESSION['UserId']);
+
                     $urlBookmark = "/Post/Blog/" . $idPost; // TODO on regardera les parametres POST
 
 

@@ -44,13 +44,33 @@ class FollowedUser
      * cette methode renvoie le nombre d'abonnée d'un utilisateur;
      *
      * @param int $UserID
-     * @return int|false
+     * @return int|array|false
      */
-    public function getNumberOfFollower(int $UserID): bool|int
+    public function getNumberOfFollower(int $UserID): bool|int|array
     {
         $sql = "SELECT COUNT(FollowId) FROM FollowedUser WHERE UserFollow = :Id";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(':Id', $UserID, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetchColumn();
+        error_log("getNumberOfFollower : " . print_r($result, true));
+        return $result;
+    }
+
+    /**
+     *
+     * Méthode pour savoir si un utilisateur est abonné à un autre
+     *
+     * @param int $Id
+     * @param int $UserId
+     * @return bool
+     */
+    public function isFollowed(int $Id, int $UserId): bool
+    {
+        $sql = "SELECT COUNT(FollowId) FROM FollowedUser WHERE UserId = :Id AND UserFollow = :UserId";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(':Id', $Id, PDO::PARAM_INT); // verifier si il faut pas inverser ces deux lignes
+        $stmt->bindValue(':UserId', $UserId, PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetchColumn();
         return $result;
