@@ -29,8 +29,9 @@
             </div>
         </div>
         <hr class="my-3">
-
-
+        <!--Section pour les articles enregistrer -->
+        <div class="col-md-6 p-3">
+        </div>
 
 
 
