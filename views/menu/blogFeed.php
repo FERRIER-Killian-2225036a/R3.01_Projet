@@ -26,6 +26,15 @@
             </div>
         </div>
     </div>
+    <script>
+        document.getElementById("divButtonRole").addEventListener("click", function() {
+            const isInput = event.target.closest('.input-group');
+            const isCustomInput = event.target.classList.contains('custom-input');
+
+            if (!isInput && !isCustomInput) {
+                window.location.href = "<?php echo $mapView['blogPostUrl'] ?>";
+            }
+        });
+    </script>
     <script src="/common_scripts/maxTextSize.js"></script>
-    <script src="/common_scripts/divClickable.js"></script>
 </main>
