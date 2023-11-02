@@ -1,3 +1,3 @@
 const noPost = document.getElementById('noPost');
 
-noPost.setProperty("display", "none", "important");
+noPost.style.setProperty("display", "none", "important");
