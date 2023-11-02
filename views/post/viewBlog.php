@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/common_styles/post.css">
 <div class="container">
     <div class="text-left mt-4">
         <h1><?php echo $mapView['Title'] ?></h1>
