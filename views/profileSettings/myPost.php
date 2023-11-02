@@ -86,7 +86,7 @@
             });
             const urlImg = document.getElementById('responsive-title');
             console.log(urlImg.textContent);
-            if (urlImg.textContent==="") {
+            if (urlImg.textContent === null) {
                 console.log('Titre vide');
             }
 
