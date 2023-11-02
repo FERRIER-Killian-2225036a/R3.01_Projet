@@ -29,7 +29,8 @@
             </div>
         </div>
         <hr class="my-3">
-        <label id="noPost">Pas de post</label>
+        <label id="noPost">Pas de post</div>
+        </div></label>
 
 
 
