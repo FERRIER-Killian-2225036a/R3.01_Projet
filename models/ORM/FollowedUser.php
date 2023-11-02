@@ -52,7 +52,7 @@ class FollowedUser
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(1, $UserID, PDO::PARAM_INT);
         $stmt->execute();
-        $result = $stmt->fetchColumn();
+        $result = $stmt->rowCount();
         return $result;
     }
 
@@ -102,7 +102,7 @@ class FollowedUser
     {
         // si Userid n'est pas deja abonné a Id
         if (!$this->isFollowed($Id, $UserId)) {
-            $sql = "INSERT INTO FollowedUser (UserId, UserFollow) VALUES (?, ?)";
+            $sql = "INSERT INTO FollowedUser (UserId, UserFollow,dateF) VALUES (?, ?,CURRENT_TIMESTAMP)";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindValue(1, $Id, PDO::PARAM_INT); // verifier ordre bdd
             $stmt->bindValue(2, $UserId, PDO::PARAM_INT);
