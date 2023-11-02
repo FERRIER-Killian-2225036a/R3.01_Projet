@@ -184,8 +184,8 @@ class ControllerPost
 
                                     $realTagsId = $existingPost->getTags();
                                     $realTags[] = null;
-                                    foreach ($realTagsId as $id) {
-                                        $realTags[] = (new Blog_Category())->getCategoryById($id);
+                                    foreach ($realTagsId as  $id) {
+                                        $realTags[] = (new Blog_Category())->getCategoryById(intval($id));
                                     }
                                     if ($tags != $realTags && $tags != "" && $tags != null) {
                                         $arrayOfTags = explode(",", $tags);
