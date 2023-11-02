@@ -1,5 +1,4 @@
-
-    <label id="noBlogMessage" style="display: none">Vous n'avez pas d'articles</label>
+<div class="col-md-6 p-3">
     <div class="btn bg-body-tertiary round background grow-button d-block" role="button" id="divButtonRole">
         <div class="d-flex justify-content-center mb-2">
             <img src="<?php echo $mapView['blogUrlPicture'] ?>" alt="Logo" class="responsive-image-setting round p-1">
@@ -29,8 +28,13 @@
         </div>
     </div>
 </div>
+<script>
+    document.getElementById('divButtonRole').addEventListener("click", function() {
+        window.location.href = "<?php echo $mapView['blogPostEditUrl'] ?>";
+    });
+</script>
 </div>
-
+</div>
 <script src="/common_scripts/myPostDisplay.js"></script>
 <script src="/common_scripts/maxTextSize.js"></script>
 <script src="/common_scripts/postOptions.js"></script>
