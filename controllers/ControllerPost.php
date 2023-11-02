@@ -451,7 +451,6 @@ class ControllerPost
                                                                     "Content" => $content,
                                                                     "Tags" => $tagsStringForInput,
                                                                     "Img" => $img,
-                                                                    "UrlForm" => $idPost,
                                                                     "Author" => $author,
                                                                     "NumberOfFollower" => $numberOfFollower,
                                                                     "ImgProfil" => $imgProfil,
