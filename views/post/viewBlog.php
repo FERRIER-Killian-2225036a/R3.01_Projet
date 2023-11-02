@@ -46,7 +46,7 @@
         const lienPartager = document.getElementById('lienPartager');
 
         // Sélectionnez le texte que vous souhaitez copier
-        const texteACopier = '<?php echo $mapView['CurentUrlPost'] ?>';
+        const texteACopier = 'https://cyphub.tech<?php echo $mapView['CurentUrlPost'] ?>';
 
         const copyLabel = document.getElementById('copyLabel');
 
