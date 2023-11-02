@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="../../common_styles/authentification.css">
 <link rel="stylesheet" href="/common_styles/password.css">
+<link rel="stylesheet" href="/common_styles/wrongInfo.css">
 <script src="/common_scripts/showErrorMessage.js"></script>
 <script src="/common_scripts/checkPassword.js"></script>
 <section class="h-100 gradient-form">

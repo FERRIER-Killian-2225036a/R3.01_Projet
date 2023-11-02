@@ -1,0 +1,5 @@
+#wrongInfo {
+    display: none;
+    color: var(--red);
+    font-size: 13px;
+}

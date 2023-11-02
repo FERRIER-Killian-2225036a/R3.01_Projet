@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/common_styles/post.css">
+<link rel="stylesheet" href="/common_styles/wrongInfo.css">
 <link rel="stylesheet" href="/common_styles/simple-tags.css">
 <main class="container p-5">
     <div class="p-3">
@@ -35,11 +36,11 @@
 
             <!-- Bouton publier -->
             <span id="publishButtonContainer">
-                <button class="btn btn-outline" type="submit" id="publishButton">Publier</button>
+                <button class="btn btn-outline" type="submit" id="publishButton" style="resize: none;">Publier</button>
             </span>
         </form>
     </div>
-    <script src="../../common_scripts/blog.js"></script>
+    <script src="../../common_scripts/selectFiles.js"></script>
     <script src="../../common_scripts/simple-tags.js"></script>
     <script src="/common_scripts/showErrorMessage.js"></script>
     <script>tagInput1.addData([<?php echo $mapView["Tags"]?>])</script>
