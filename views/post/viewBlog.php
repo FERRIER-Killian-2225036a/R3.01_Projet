@@ -29,7 +29,7 @@
 
         <div class="row justify-content-center mt-4">
             <div class="col-8">
-                <img src="<?php echo $mapView['Img'] ?>" class="img-fluid" alt="Image du Blog">
+                <img src="<?php echo $mapView['Img'] ?>" class="img-fluid" alt="Image du Blog" id="imgBlog">
             </div>
         </div>
 
