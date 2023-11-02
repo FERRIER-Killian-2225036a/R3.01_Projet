@@ -32,12 +32,6 @@ section {
     width: 200px;
 }
 
-#wrongInfo {
-    display: none;
-    color: var(--red);
-    font-size: 13px;
-}
-
 @media (min-width: 769px) {
     #rightSide {
         border-top-right-radius: .7rem;

@@ -1,6 +1,6 @@
 <?php require 'sideBar.php' ?>
-<script src="../../common_scripts/dropdown.js"></script>
-<link rel="stylesheet" href="../../common_styles/dropdown.css">
+<script src="/common_scripts/dropdown.js"></script>
+<link rel="stylesheet" href="/common_styles/dropdown.css">
 
 <div class="col container" id="rightSide">
     <!--Pas sur que sa fonctionne à voir avec Killian et Tom -->

@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/common_styles/post.css">
+<link rel="stylesheet" href="/common_styles/wrongInfo.css">
 <link rel="stylesheet" href="/common_styles/simple-tags.css">
 <main class="container p-5">
     <div class="p-3">
