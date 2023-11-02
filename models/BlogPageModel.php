@@ -208,5 +208,27 @@ class BlogPageModel
         return (new Blog_PageLike())->isBookmarkExist($this->PageId, $UserId);
     }
 
+    /**
+     * permet de supprimer un enregistrement d'un user d'une page
+     *
+     * @param int $UserId
+     * @return void
+     */
+    public function removeBookmark(int $UserId): void
+    {
+        (new Blog_PageLike())->deletePageLike($this->PageId, $UserId);
+    }
+
+    /**
+     * permet d'ajouter un enregistrement d'un user pour un post
+     *
+     * @param int $UserId
+     * @return void
+     */
+    public function addBookmark(int $UserId): void
+    {
+        (new Blog_PageLike())->createPageLike($this->PageId, $UserId);
+    }
+
 
 }

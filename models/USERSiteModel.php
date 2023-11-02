@@ -217,4 +217,28 @@ class USERSiteModel
     }
 
 
+    /**
+     * méthode pour supprimer un utilisateur de ses abonnées
+     *
+     * @param int $UserId
+     * @return void
+     */
+    public function removeFollower(int $UserId): void
+    {
+        (new FollowedUser())->removeFollower($this->Id, $UserId);
+    }
+
+
+    /**
+     * méthode pour ajouter un utilisateur a ses abonnées
+     *
+     * @param int $UserId
+     * @return void
+     */
+    public function addFollower(int $UserId): void
+    {
+        (new FollowedUser())->addFollower($this->Id, $UserId);
+    }
+
+
 }
