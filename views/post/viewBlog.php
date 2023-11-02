@@ -15,11 +15,11 @@
             </div>
             <div class="col-md-6 d-flex align-items-center justify-content-end">
                 <label id="copyLabel" style="display: none"></label>
-                <a href="#" title="Partager">
+                <a href="#" title="Partager" id="lienPartager">
                     <img src="../../media/public_assets/icone/partager.png" alt="Partager" class="icon">
                 </a>
-                <form action="<?php echo $mapView["CurentUrlPost"]?>" method="post" id="myForm">
-                    <button name="bookmark" title="Signet" type="button" id="formSignet">
+                <form action="<?php echo $mapView["CurentUrlPost"]?>" method="post">
+                    <button name="bookmark" title="Signet" type="submit" id="formSignet">
                         <img src="../../media/public_assets/icone/signet.png" alt="Signet" class="icon" id="signetImg">
                     </button>
                 </form>
@@ -43,7 +43,7 @@
     </div>
     <script>
         // Sélectionnez le bouton par son ID
-        const boutonSignet = document.getElementById('formSignet');
+        const lienPartager = document.getElementById('lienPartager');
 
         // Sélectionnez le texte que vous souhaitez copier
         const texteACopier = '<?php echo $mapView['CurentUrlPost'] ?>';
@@ -51,7 +51,7 @@
         const copyLabel = document.getElementById('copyLabel');
 
         // Ajoutez un gestionnaire d'événements de clic au bouton
-        boutonSignet.addEventListener('click', (e) => {
+        lienPartager.addEventListener('click', (e) => {
             e.preventDefault(); // Empêche le formulaire de se soumettre
             copyLabel.style.display = 'flex';
             // Copiez le texte dans le presse-papiers de l'utilisateur
