@@ -267,7 +267,7 @@ class ControllerPost
                                     $_SESSION['UserId'],
                                     $tempArray['UrlPicture'], // la photo est changé que si newImg est pas null
                                     $tempArray['dateP'],
-                                    $tempArray['NumberOfLikes'],
+                                    intval($tempArray['NumberOfLikes']),
                                     $tempArray['statusP']);
 
 
