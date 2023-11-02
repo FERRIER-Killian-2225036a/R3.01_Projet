@@ -2,11 +2,11 @@
 <div class="col container">
     <!-- Section pour le titre -->
     <div class="row mb-2 mt-2" id="rightSide">
-        <div class="col-md-5">
+        <div class="col-md-7">
             <h1>Vos Commentaires </h1>
         </div>
         <!-- Section pour le champs de recherche -->
-        <div class="col-md-6 d-flex align-items-end">
+        <div class="col-md-5 d-flex align-items-end">
             <label><input class="form-control" type="text" name="query" placeholder="Rechercher..."></label>
         </div>
         <hr class="my-3">
