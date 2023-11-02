@@ -1,50 +1,57 @@
 <?php
 
+/**
+ * Classe du model directement en lien avec l'orm , on a cette classe pour eviter de trop faire
+ * de requete de lecture sur les données des tickets.
+ *
+ * Cette classe principale concerne les données des tickets dans la base de données
+ *
+ * @see ControllerModo
+ * @see ControllerSettings
+ * @see Ticket
+ *
+ * @package models
+ * @since 1.0
+ * @version 1.0
+ * @category support
+ * @author Tom Carvajal
+ */
 class TicketModel
 {
-    private $TicketId;
-    private $mail;
-    private $date;
-    private $description;
-    private $statusT;
-    private $title;
-    private $UserId;
+    /**
+     * @var int L'identifiant du ticket.
+     */
+    private int $TicketId;
 
-    public function getTicketId(): mixed
-    {
-        return $this->TicketId;
-    }
+    /**
+     * @var string L'adresse mail de l'utilisateur ayant écrit le ticket.
+     */
+    private string $mail;
 
-    public function getMail(): mixed
-    {
-        return $this->mail;
-    }
+    /**
+     * @var string La date de création du ticket.
+     */
+    private string $date;
 
-    public function getDate(): mixed
-    {
-        return $this->date;
-    }
+    /**
+     * @var string La description du ticket.
+     */
+    private string $description;
 
-    public function getDescription(): mixed
-    {
-        return $this->description;
-    }
+    /**
+     * @var string Le statut du ticket.
+     */
+    private string $statusT;
 
-    public function getStatusT(): mixed
-    {
-        return $this->statusT;
-    }
+    /**
+     * @var string Le titre du ticket.
+     */
+    private string $title;
 
-    public function getTitle(): mixed
-    {
-        return $this->title;
-    }
-
-    public function getUserId(): mixed
-    {
-        return $this->UserId;
-    }
-
+    /**
+     * @var int L'identifiant de l'utilisateur ayant écrit le ticket.
+     */
+    private int $UserId;
 
     public function __construct($UserId)
     {
@@ -57,5 +64,61 @@ class TicketModel
         $this->statusT = $arrayOfValues['statusT'];
         $this->title = $arrayOfValues['title'];
         $this->UserId = $arrayOfValues['UserId'];
+    }
+
+    /**
+     * @return int
+     */
+    public function getTicketId(): int
+    {
+        return $this->TicketId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMail(): string
+    {
+        return $this->mail;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDate(): string
+    {
+        return $this->date;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatusT(): string
+    {
+        return $this->statusT;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUserId(): int
+    {
+        return $this->UserId;
     }
 }

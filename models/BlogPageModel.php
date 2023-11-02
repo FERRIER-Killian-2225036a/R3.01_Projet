@@ -1,76 +1,86 @@
 <?php
 
+/**
+ * Classe de du model directement en lien avec l'orm , on a cette classe pour eviter de trop faire
+ * de requete de lecture sur les données des blogs
+ *
+ * Cette classe principale concerne les données des articles scrapé que l'on charge de la bdd
+ *
+ * @see UserSite
+ * @see ControllerMenu
+ * @see ControllerPost
+ * @see ControllerSettings
+ * @see Blog_Page
+ *
+ * @package models
+ * @since 1.0
+ * @version 1.0
+ * @category blog
+ * @author Tom Carvajal & Killian Ferrier
+ */
 class BlogPageModel
 {
-//PageId 	TITLE 	content 	author 	UserId 	dateP 	NumberOfLikes 	UrlPicture 	statusP
-    private $PageId;
-    private $TITLE;
-    private $content;
-    private $author;
-    private $UserId;
-    private $dateP;
-    private $NumberOfLikes;
-    private $UrlPicture;
-    private $statusP;
-    private $PostUrl;
-    private $PostEditUrl;
+    /**
+     * @var int
+     */
+    private int $PageId;
 
-    public function getPostUrl(): mixed
+    /**
+     * @var string
+     */
+    private string $TITLE;
+
+    /**
+     * @var string
+     */
+    private string $content;
+
+    /**
+     * @var string
+     */
+    private string $author;
+
+    /**
+     * @var int
+     */
+    private int $UserId;
+
+    /**
+     * @var string
+     */
+    private string $dateP;
+
+    /**
+     * @var int
+     */
+    private int $NumberOfLikes;
+
+    /**
+     * @var string
+     */
+    private string $UrlPicture;
+
+    /**
+     * @var string
+     */
+    private string $statusP;
+
+    /**
+     * @var string
+     */
+    private string $PostUrl;
+
+    /**
+     * @var string
+     */
+    private string $PostEditUrl;
+
+    /**
+     * BlogPageModel constructor.
+     * @param int $Id
+     */
+    public function __construct(int $Id)
     {
-        return $this->PostUrl;
-    }
-    public function getPostEditUrl(): mixed
-    {
-        return $this->PostEditUrl;
-    }
-
-    public function getPageId(): mixed
-    {
-        return $this->PageId;
-    }
-
-    public function getTITLE(): mixed
-    {
-        return $this->TITLE;
-    }
-
-    public function getContent(): mixed
-    {
-        return $this->content;
-    }
-
-    public function getAuthor(): mixed
-    {
-        return $this->author;
-    }
-
-    public function getUserId(): mixed
-    {
-        return $this->UserId;
-    }
-
-    public function getDateP(): mixed
-    {
-        return $this->dateP;
-    }
-
-    public function getNumberOfLikes(): mixed
-    {
-        return $this->NumberOfLikes;
-    }
-
-    public function getUrlPicture(): mixed
-    {
-        return $this->UrlPicture;
-    }
-
-    public function getStatusP(): mixed
-    {
-        return $this->statusP;
-    }
-
-
-    public function __construct($Id){
 
         $arrayOfValues = (new Blog_Page())->getValuesById($Id);
         $this->PageId = $arrayOfValues['PageId'];
@@ -81,15 +91,108 @@ class BlogPageModel
         $this->dateP = $arrayOfValues['dateP'];
         $this->NumberOfLikes = $arrayOfValues['NumberOfLikes'];
         $this->UrlPicture = $arrayOfValues['UrlPicture'];
-        if ( $this->UrlPicture == null || $this->UrlPicture == ""){ // TODO ou si la photo n'existe pas sur le serveur ?
-            $this->UrlPicture =Constants::PICTURE_URL_DEFAULT;
+        if ($this->UrlPicture == null || $this->UrlPicture == "") { // TODO ou si la photo n'existe pas sur le serveur ?
+            $this->UrlPicture = Constants::PICTURE_URL_DEFAULT;
         }
         $this->statusP = $arrayOfValues['statusP'];
-        $this->PostUrl = "/Post/Blog/".$this->PageId;
-        $this->PostEditUrl = "/Post/BlogEdit/".$this->PageId;
+        $this->PostUrl = "/Post/Blog/" . $this->PageId;
+        $this->PostEditUrl = "/Post/BlogEdit/" . $this->PageId;
     }
 
-    public function getTags()
+    /**
+     * @return int
+     */
+    public function getPageId(): int
+    {
+        return $this->PageId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTITLE(): string
+    {
+        return $this->TITLE;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContent(): string
+    {
+        return $this->content;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAuthor(): string
+    {
+        return $this->author;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUserId(): int
+    {
+        return $this->UserId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDateP(): string
+    {
+        return $this->dateP;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNumberOfLikes(): int
+    {
+        return $this->NumberOfLikes;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrlPicture(): string
+    {
+        return $this->UrlPicture;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatusP(): string
+    {
+        return $this->statusP;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPostUrl(): string
+    {
+        return $this->PostUrl;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPostEditUrl(): string
+    {
+        return $this->PostEditUrl;
+    }
+
+    /**
+     * getter pour recuperer les tags d'un article
+     *
+     * @return array
+     */
+    public function getTags(): array
     {
         return (new Blog_categoryPage())->getCategoryByPageId($this->PageId);
     }

@@ -1,10 +1,55 @@
 <?php
 
+/**
+ * Classe de l'orm pour faire les acces a la base de données et recuperer les valeurs de la table USERSite
+ *
+ * les attributs de la table USERSite sont :
+ * - UserId : int
+ * - Mail : varchar(50)
+ * - Pseudo : varchar(20)
+ * - DateFirstLogin : datetime
+ * - DateLastLogin : datetime
+ * - Role : enum('registered','moderator','admin','superadmin') DEFAULT 'registered'
+ * - AlertLevelUser : int
+ * - NumberOfAction : int
+ * - Status : enum('connected','disconnected','banned','muted') DEFAULT 'disconnected'
+ * - UrlPicture : text
+ * - LastIpAdress : text
+ * - NumberOfConnection : int
+ *
+ * Cette classe principale concerne les données de tout les utilisateurs de notre site dans notre base de donnée.
+ *
+ * @see USERSiteModel
+ * @see ControllerSettings
+ * @see ControllerUser
+ * @see ControllerAuth
+ * @see UserSite
+ * @see SessionManager
+ * @see PictureVerificator
+ * @see mailSender
+ * @see DBBrain
+ *
+ * @package models/ORM
+ * @since 1.0
+ * @version 1.0
+ * @category User
+ * @author Tom Carvajal & Vanessa Guil
+ */
 class UserSite
 {
+    /**
+     * @var PDO $conn variable de connexion a la base de données
+     */
     private PDO $conn;
+
+    /**
+     * @var DBBrain $DBBrain variable pour recuperer le cerveau de la bdd (méthodes utiles)
+     */
     private DBBrain $DBBrain;
 
+    /**
+     * UserSite constructor.
+     */
     public function __construct()
     {
         $this->DBBrain = new DBBrain();
@@ -13,7 +58,14 @@ class UserSite
 
     // ----------- AUTHENTIFICATION ------------
 
-    public function loginUser($mail_a, $password_a): ExceptionsDatabase|string
+    /**
+     * Méthode pour verifier si les données dans la base de donnée correspondent a l'input recup par le controlleur
+     *
+     * @param string $mail_a
+     * @param string $password_a
+     * @return ExceptionsDatabase|string
+     */
+    public function loginUser(string $mail_a, string $password_a): ExceptionsDatabase|string
     {
         try {
 
@@ -26,7 +78,7 @@ class UserSite
             }
 
             $stmt = $this->conn->prepare("SELECT UserId FROM USERSite WHERE Mail = ?");
-            $stmt->bindParam(1, $mail_a, PDO::PARAM_STR);
+            $stmt->bindParam(1, $mail_a);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $stmt->closeCursor();
@@ -62,7 +114,7 @@ class UserSite
             // Change lastIpAddress
             $updateQuery = "UPDATE USERSite SET LastIpAdress = ? WHERE UserId = ?";
             $stmt = $this->conn->prepare($updateQuery);
-            $stmt->bindParam(1, $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
+            $stmt->bindParam(1, $_SERVER['REMOTE_ADDR']);
             $stmt->bindParam(2, $userId, PDO::PARAM_INT);
             $stmt->execute();
             $stmt->closeCursor();
@@ -75,11 +127,19 @@ class UserSite
             return $userId;
 
         } catch (ExceptionsDatabase $e) {
-            //echo "Error login user: " . $e->getMessage();
             return $e;
         }
     }
-    public function createUser($pseudo_a, $mail_a, $password_a): ExceptionsDatabase|string
+
+    /**
+     * Cette methode permet de créer un utilisateur
+     *
+     * @param string $pseudo_a
+     * @param string $mail_a
+     * @param string $password_a
+     * @return ExceptionsDatabase|string
+     */
+    public function createUser(string $pseudo_a, string $mail_a, string $password_a): ExceptionsDatabase|string
     {
         try {
             // désensibilisation a la casse pour le pseudo
@@ -108,9 +168,9 @@ class UserSite
             // Insert user into USERSite
             $insertUserSQL = "INSERT INTO USERSite (Mail, Pseudo, DateFirstLogin, DateLastLogin, Role, AlertLevelUser, NumberOfAction, Status, LastIpAdress, NumberOfConnection) VALUES (?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'registered', 0, 0, 'connected', ?, 1)";
             $stmt1 = $this->conn->prepare($insertUserSQL);
-            $stmt1->bindParam(1, $mail_a, PDO::PARAM_STR);
-            $stmt1->bindParam(2, $ValidPseudo, PDO::PARAM_STR);
-            $stmt1->bindParam(3, $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
+            $stmt1->bindParam(1, $mail_a);
+            $stmt1->bindParam(2, $ValidPseudo);
+            $stmt1->bindParam(3, $_SERVER['REMOTE_ADDR']);
             $stmt1->execute();
             // recupération de UserId
             $userId = $this->conn->lastInsertId();
@@ -118,7 +178,7 @@ class UserSite
 
             $insertPasswordSQL = "INSERT INTO PASSWORD (Password, UserId) VALUES (?, ?)";
             $stmt2 = $this->conn->prepare($insertPasswordSQL);
-            $stmt2->bindParam(1, $argonifiedPassword, PDO::PARAM_STR);
+            $stmt2->bindParam(1, $argonifiedPassword);
             $stmt2->bindParam(2, $userId, PDO::PARAM_INT);
             $stmt2->execute();
             // Commit de la transaction
@@ -137,10 +197,16 @@ class UserSite
             // TODO : limiter taille
 
         } catch (ExceptionsDatabase $e) {
-            //echo "Error creating user: " . $e->getMessage();
             return $e;
         }
     }
+
+    /**
+     * cette méthode met a jour les infos d'un utilisateur lorsqu'il se deconnecte
+     *
+     * @param int $id
+     * @return ExceptionsDatabase|string
+     */
     public function disconnectUser(int $id): ExceptionsDatabase|string
     {
         try {
@@ -152,7 +218,6 @@ class UserSite
             $stmt = $this->conn->prepare("UPDATE USERSite SET Status = 'disconnected' WHERE UserId = ?");
             $stmt->bindParam(1, $id, PDO::PARAM_INT);
             $stmt->execute();
-            //error_log("disconnectUser".$id); debug only
             return "success";
         } catch (ExceptionsDatabase $e) {
             return $e;
@@ -160,50 +225,77 @@ class UserSite
     }
 
     // ----------- UTILITAIRE ------------
-    public function isUserExists($mail_a, $pseudo_a): bool
+
+
+    /**
+     * methode pour savoir si un utilisateur existe avec un mail ou un pseudo donnée
+     *
+     * @param string $mail_a
+     * @param string $pseudo_a
+     * @return bool
+     */
+    public function isUserExists(string $mail_a, string $pseudo_a): bool
     {
         //FONCTIONNE CORRECTEMENT
 
         $checkUserSQL = "SELECT COUNT(*) FROM USERSite WHERE Mail = ? OR Pseudo = ?";
         $stmt = $this->conn->prepare($checkUserSQL);
-        $stmt->bindParam(1, $mail_a, PDO::PARAM_STR);
-        $stmt->bindParam(2, $pseudo_a, PDO::PARAM_STR);
+        $stmt->bindParam(1, $mail_a);
+        $stmt->bindParam(2, $pseudo_a);
         $stmt->execute();
         $count = $stmt->fetchColumn();
         //echo $count > 0;
         return $count > 0;
     }
-    public function isPseudoUse($pseudo_a): bool
+
+    /**
+     * methode pour savoir si un pseudo est utilisé
+     *
+     * @param string $pseudo_a
+     * @return bool
+     */
+    public function isPseudoUse(string $pseudo_a): bool
     {
         //FONCTIONNE CORRECTEMENT
 
         $checkUserSQL = "SELECT COUNT(*) FROM USERSite WHERE Pseudo = ?";
         $stmt = $this->conn->prepare($checkUserSQL);
-        $stmt->bindParam(1, $pseudo_a, PDO::PARAM_STR);
+        $stmt->bindParam(1, $pseudo_a);
         $stmt->execute();
         $count = $stmt->fetchColumn();
         //echo $count > 0;
         return $count > 0;
     }
 
-
+    /**
+     * cette methode permet de verifier si un utilisateur existe avec un id donnée
+     *
+     * @param int $id
+     * @return bool
+     */
     public function isUserIDExists(int $id): bool
     {
         $checkUserSQL = "SELECT COUNT(*) FROM USERSite WHERE UserId = ? ";
         $stmt = $this->conn->prepare($checkUserSQL);
-        $stmt->bindParam(1, $id, PDO::PARAM_STR);
+        $stmt->bindParam(1, $id);
         $stmt->execute();
         $count = $stmt->fetchColumn();
-        //echo $count > 0;
         return $count > 0;
     }
-    public function isEmailUse($mail_a): bool
+
+    /**
+     * cette methode verifie si un email est utilisé.
+     *
+     * @param string $mail_a
+     * @return bool
+     */
+    public function isEmailUse(string $mail_a): bool
     {
         //FONCTIONNE CORRECTEMENT
 
         $checkUserSQL = "SELECT COUNT(*) FROM USERSite WHERE Mail = ? ";
         $stmt = $this->conn->prepare($checkUserSQL);
-        $stmt->bindParam(1, $mail_a, PDO::PARAM_STR);
+        $stmt->bindParam(1, $mail_a);
         $stmt->execute();
         $count = $stmt->fetchColumn();
         //echo $count > 0;
@@ -213,28 +305,40 @@ class UserSite
 
     // ----------- GETTERS ------------
 
-    public function getValuesById($Id)
+    /**
+     * Cette methode permet de recupere tout les champs d'un utilisateur par rapport a son id
+     * on s'en sert pour la construction de son model, afin de limiter le nombre d'appel dans la bdd
+     *
+     * @param int $Id
+     * @return Exception|ExceptionsDatabase|array|false
+     */
+    public function getValuesById(int $Id): bool|ExceptionsDatabase|Exception|array
     {
-        //$mapArrayOfUserValues = null;
         try {
             if (!$this->isUserIDExists($Id)) {
                 throw new ExceptionsDatabase("This user doesn't exist");
             }
 
             $stmt = $this->conn->prepare("SELECT * FROM USERSite WHERE UserID = ?");
-            $stmt->bindParam(1, $Id, PDO::PARAM_STR);
+            $stmt->bindParam(1, $Id);
             $stmt->execute();
             $mapArrayOfUserValues = $stmt->fetch(PDO::FETCH_ASSOC); // Stocke le résultat dans le tableau
 
             $stmt->closeCursor();
         } catch (ExceptionsDatabase $e) {
-            //echo $e->getMessage();
             return $e;
         }
-
         return $mapArrayOfUserValues; // Retourne le tableau avec les valeurs de la requete
     }
-    public function getPseudoOfUser($UserId)
+
+
+    /**
+     * Cette methode permet de recuperer le pseudo d'un user selon son id
+     *
+     * @param int $UserId
+     * @return string|Exception|PDOException
+     */
+    public function getPseudoOfUser(int $UserId): PDOException|Exception|string
     {
         try {
             $query = "SELECT Pseudo FROM USERSite WHERE UserId = :userId";
@@ -245,11 +349,17 @@ class UserSite
             $stmt->closeCursor(); // Fermez le curseur (si nécessaire)
             return $data['Pseudo'];
         } catch (PDOException $e) {//TODO ExceptionsDatabase ?
-            echo "Error: " . $e->getMessage();
-            return null;
+            return $e;
         }
     }
-    public function getStatusOfUser($UserId)
+
+    /**
+     * Cette methode permet de recuperer le status d'un user selon son id
+     *
+     * @param int $UserId
+     * @return string|null
+     */
+    public function getStatusOfUser(int $UserId): string|null
     {
         try {
             $query = "SELECT Status FROM USERSite WHERE UserId = :userId";
@@ -260,14 +370,19 @@ class UserSite
             $stmt->closeCursor(); // Fermez le curseur (si nécessaire)
             return $data['Status'];
         } catch (PDOException $e) { //TODO ExceptionsDatabase ?
-            echo "Error: " . $e->getMessage();
             return null;
         }
     }
 
     // ----------- UPDATERS ------------
 
-    public function incrementNumberOfConnexion($UserId): Bool|ExceptionsDatabase
+    /**
+     * cette methode permet d'incrementer d'un, le nombre de connexions d'un user par rapport a son id
+     *
+     * @param int $UserId
+     * @return true|ExceptionsDatabase
+     */
+    public function incrementNumberOfConnexion(int $UserId): bool|ExceptionsDatabase
     {
         try {
             // Increment the value and update the database
@@ -281,18 +396,23 @@ class UserSite
             $stmt->closeCursor();
             return true;
         } catch (ExceptionsDatabase $e) {
-            //echo "Error: " . $e->getMessage();
             return $e;
         }
     }
-    public function incrementNumberOfAction($CurrentUserId): bool|ExceptionsDatabase
-    {
 
+    /**
+     * cette méthode increment le nombre d'action d'un utilisateur par rapport a son id
+     * //TODO : mettre bien plus en place l'utilisation de cette methode pour verifier la suspicion de bot/spam
+     *
+     * @param int $CurrentUserId
+     * @return bool|ExceptionsDatabase
+     */
+    public function incrementNumberOfAction(int $CurrentUserId): bool|ExceptionsDatabase
+    {
         try {
             if (!$this->isUserIDExists($CurrentUserId)) {
                 throw new ExceptionsDatabase("User not exist");
             }
-            // Increment the value and update the database
             $updateQuery = "UPDATE USERSite SET NumberOfAction = NumberOfAction + 1 WHERE UserId = ?";
             $stmt = $this->conn->prepare($updateQuery);
             $stmt->bindParam(1, $CurrentUserId);
@@ -300,12 +420,17 @@ class UserSite
             $stmt->closeCursor();
             return true;
         } catch (ExceptionsDatabase $e) {
-            //echo "Error: " . $e->getMessage();
             return $e;
         }
-
     }
-    public function incrementAlertLevelUser($CurrentUserId): bool|ExceptionsDatabase
+
+    /**
+     * Cette méthode permet d'incrementer le niveau d'alerte d'un utilisateur par rapport a son id
+     *
+     * @param int $CurrentUserId
+     * @return bool|ExceptionsDatabase
+     */
+    public function incrementAlertLevelUser(int $CurrentUserId): bool|ExceptionsDatabase
     {
         try {
             if (!$this->isUserIDExists($CurrentUserId)) {
@@ -319,12 +444,19 @@ class UserSite
             $stmt->closeCursor();
             return true;
         } catch (ExceptionsDatabase $e) {
-            //echo "Error: " . $e->getMessage();
             return $e;
         }
 
     }
-    public function update_pseudo($CurrentUserId, $new_pseudo): bool|ExceptionsDatabase
+
+    /**
+     * Cette methode permet de mettre a jour le pseudo d'un utilisateur par rapport a son id
+     *
+     * @param int $CurrentUserId
+     * @param string $new_pseudo
+     * @return bool|ExceptionsDatabase
+     */
+    public function update_pseudo(int $CurrentUserId, string $new_pseudo): bool|ExceptionsDatabase
     {
         try {
             $ValidPseudo = $this->DBBrain->isValidPseudo($new_pseudo);
@@ -341,7 +473,6 @@ class UserSite
             if ($this->isPseudoUse( $ValidPseudo)) {
                 throw new ExceptionsDatabase("User with this pseudo already exists");
             }
-
 
             // nettoyage du pseudo
             $ValidPseudo = strtolower($ValidPseudo);
@@ -362,11 +493,18 @@ class UserSite
 
             return true;
         } catch (ExceptionsDatabase $e) {
-            //echo "Error: " . $e->getMessage();
             return $e;
         }
     }
-    public function update_mail($CurrentUserId, $new_mail): bool|ExceptionsDatabase
+
+    /**
+     * Cette methode permet de mettre a jour le mail d'un utilisateur par rapport a son id
+     *
+     * @param int $CurrentUserId
+     * @param string $new_mail
+     * @return bool|ExceptionsDatabase
+     */
+    public function update_mail(int $CurrentUserId, string $new_mail): bool|ExceptionsDatabase
     {
         try {
             // Check the user status
@@ -389,11 +527,18 @@ class UserSite
             $this->incrementNumberOfAction($CurrentUserId);
             return true;
         } catch (ExceptionsDatabase $e) {
-            //echo "Error: " . $e->getMessage();
             return $e;
         }
     }
-    public function update_password($CurrentUserId, $new_password): bool|ExceptionsDatabase
+
+    /**
+     * Cette methode permet de mettre a jour le mot de passe d'un utilisateur par rapport a son id
+     *
+     * @param int $CurrentUserId
+     * @param string $new_password
+     * @return bool|ExceptionsDatabase
+     */
+    public function update_password(int $CurrentUserId, string $new_password): bool|ExceptionsDatabase
     {
         try {
             // Check the user status
@@ -421,12 +566,19 @@ class UserSite
 
             return true;
         } catch (ExceptionsDatabase $e) {
-            //echo "Error: " . $e->getMessage();
             return $e;
         }
 
     }
-    public function update_picture($CurrentUserId, $new_picture): bool|ExceptionsDatabase
+
+    /**
+     * Cette methode permet de mettre a jour l'image de profil d'un user (chemin de l'image)
+     *
+     * @param int $CurrentUserId
+     * @param string $new_picture
+     * @return bool|ExceptionsDatabase
+     */
+    public function update_picture(int $CurrentUserId, string $new_picture): bool|ExceptionsDatabase
     {
         error_log("update_picture");
         try {
@@ -448,26 +600,39 @@ class UserSite
 
             return true;
         } catch (ExceptionsDatabase $e) {
-            //echo "Error: " . $e->getMessage();
             return $e;
         }
     }
 
     // ----------- REMOVERS ------------
-    public function remove_picture($CurrentUserId): bool|ExceptionsDatabase
+
+    /**
+     * Cette méthode permet de supprimer l'image de profil d'un utilisateur par rapport a son id
+     * (on remet l'image par defaut)
+     *
+     * @param string $CurrentUserId
+     * @return bool|ExceptionsDatabase
+     */
+    public function remove_picture(string $CurrentUserId): bool|ExceptionsDatabase
     {
         try {
             $this->update_picture($CurrentUserId, Constants::PICTURE_URL_DEFAULT);
             return true;// on incrémente pas car on le fait deja dans update_picture
         }
         catch (ExceptionsDatabase $e) {
-            //echo "Error: " . $e->getMessage();
             return $e;
         }
     }
-    public function remove_user ($CurrentUserId): bool|ExceptionsDatabase{
+
+    /**
+     * Cette methode permet de supprimer un utilisateur par rapport a son id
+     * on supprime pour l'instant pas vraiment car contrainte de la bdd
+     *
+     * @param int $CurrentUserId
+     * @return bool|ExceptionsDatabase
+     */
+    public function remove_user (int $CurrentUserId): bool|ExceptionsDatabase{
         // TODO refaire cette fonction car très problématique au niveau de la bdd
-        // TODO suppression impossible avec utilisateurs bdd par defaut, (concept de permissions)
         // la suppresion revient a changer le pseudo & mail en deleted user.
         // (on pourrait imaginer une suppression définitive)
         try {
@@ -502,15 +667,21 @@ class UserSite
             return true;
         }
         catch (ExceptionsDatabase $e) {
-            //echo "Error: " . $e->getMessage();
             return $e;
         }
 
     }
 
-    public function checkPassword(int $UserId, string $oldPassword)
+    /**
+     * méthode utiliser pour verifier si un mot de passe match bien avec celui de la bdd
+     *
+     * @param int $UserId
+     * @param string $password
+     * @return bool
+     */
+    public function checkPassword(int $UserId, string $password): bool
     {
-        $pwd_peppered = hash_hmac("sha256", $oldPassword, Constants::$PEPPER);
+        $pwd_peppered = hash_hmac("sha256", $password, Constants::$PEPPER);
 
         $stmt2 = $this->conn->prepare("SELECT Password FROM PASSWORD WHERE UserId = ?");
         $stmt2->bindParam(1, $UserId, PDO::PARAM_INT);
