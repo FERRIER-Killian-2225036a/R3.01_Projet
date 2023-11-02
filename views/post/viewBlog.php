@@ -1,16 +1,16 @@
 <div class="container">
     <div class="text-left mt-4">
-        <h1>Titre du Blog</h1>
+        <h1><?php echo $mapView['Title'] ?></h1>
         <div class="row mb-4">
             <div class="col-md-6 d-flex align-items-center">
-                <img src="<?php echo $mapView['$imgProfil'] ?>" alt="image" class="rounded-circle mr-3">
+                <img src="<?php echo $mapView['ImgProfil'] ?>" alt="image" class="rounded-circle mr-3">
                 <div>
                     <form action="  CURRENT URL EN JS STP (avec l'id) " method="post" >
-                    <p class="mb-0"><?php echo $mapView['author'] ?>
+                    <p class="mb-0"><?php echo $mapView['Author'] ?>
                         <button type="submit" name="Follow" class="btn btn-custom-purple">Suivre</button>
                     </p>
                     </form>
-                    <small><?php echo $mapView['numberOfFollower'] ?></small>
+                    <small><?php echo $mapView['NumberOfFollower'] ?></small>
                 </div>
             </div>
             <div class="col-md-6 d-flex align-items-center justify-content-end">
@@ -28,22 +28,14 @@
 
         <div class="row justify-content-center mt-4">
             <div class="col-8">
-                <img src="<?php echo $mapView['img'] ?>" class="img-fluid" alt="Image du Blog">
-            </div>
-        </div>
-
-        <div class="row justify-content-center mt-4">
-            <div class="col-8">
-                <h1>
-                    <?php echo $mapView['title'] ?>
-                </h1>
+                <img src="<?php echo $mapView['Img'] ?>" class="img-fluid" alt="Image du Blog">
             </div>
         </div>
 
         <div class="row justify-content-center mt-4">
             <div class="col-8">
                 <p>
-                    <?php echo $mapView['content'] ?>
+                    <?php echo $mapView['Content'] ?>
                 </p>
             </div>
         </div>
