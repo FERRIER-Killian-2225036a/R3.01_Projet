@@ -96,6 +96,12 @@
     object-position: center center;
 }
 
+#copyLabel {
+    display: none;
+    padding-right: 0.7em;
+    transition: 3s;
+}
+
 #postBlogContainer {
     padding-inline: 11em;
 }

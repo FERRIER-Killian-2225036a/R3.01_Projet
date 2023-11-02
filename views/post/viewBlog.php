@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/common_styles/post.css">
-<div style="padding-inline: 11em;" id="postBlogContainer">
+<div id="postBlogContainer">
     <div class="text-left mt-4">
         <h1><?php echo $mapView['Title'] ?></h1>
         <div class="row mb-4">
@@ -14,7 +14,7 @@
                 </form>
             </div>
             <div class="col-md-6 d-flex align-items-center justify-content-end">
-                <label id="copyLabel" style="display: none; padding-right: 0.7em"></label>
+                <label id="copyLabel"></label>
                 <a href="#" title="Partager" id="lienPartager">
                     <img src="../../media/public_assets/icone/partager.png" alt="Partager" class="icon">
                 </a>
