@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe de l'orm Principal avec des utilitaires contenant des méthodes utiles pour la base de données
+ * la Classe DBBrain de l'orm Principal avec des utilitaires contenant des méthodes utiles pour la base de données
  * Ainsi que que l'attribut de connexion à la base de données
  *
  * //TODO on pourrait dans le futur faire en sorte que toutes les classes de l'orm hérite de celle ci,

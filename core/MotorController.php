@@ -1,7 +1,7 @@
 <?php
 
 /**
- * classe PRINCIPALE du framework, elle est responsable de l'appelle dynamique du bon controlleur selon l'url
+ * la classe MotorController est la classe PRINCIPALE du framework, elle est responsable de l'appelle dynamique du bon controlleur selon l'url
  *
  * elle joue le role de routeur, (elle est le point d'entrée de l'application) juste apres l'index
  * on check les sessions a l'entrée de cette classe, et les droits d'acces aux pages afin de rediriger

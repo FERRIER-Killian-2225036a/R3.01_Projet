@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Cyphub.tech: UserSite\remove_user</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="favicon.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Cyphub.tech
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classUserSite_acd6c54a70316f032b7421ff202be1cf0.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="contents">
+<a id="acd6c54a70316f032b7421ff202be1cf0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd6c54a70316f032b7421ff202be1cf0">&#9670;&nbsp;</a></span>remove_user()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UserSite::remove_user </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>$CurrentUserId</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Cette methode permet de supprimer un utilisateur par rapport a son id on supprime pour l'instant pas vraiment car contrainte de la bdd</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramtype">int</td><td class="paramname">$CurrentUserId</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>bool|ExceptionsDatabase </dd></dl>
+<div class="fragment"><div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;                                                    : <span class="keywordtype">bool</span>|<a class="code" href="classExceptionsDatabase.html">ExceptionsDatabase</a>{</div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;        <span class="comment">// TODO refaire cette fonction car très problématique au niveau de la bdd</span></div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;        <span class="comment">// la suppresion revient a changer le pseudo &amp; mail en deleted user.</span></div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;        <span class="comment">// (on pourrait imaginer une suppression définitive)</span></div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;            <span class="comment">// Check the user status</span></div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;            <span class="keywordflow">if</span> (!$this-&gt;<a class="code" href="classUserSite_a167329aac0a5111b97de903d7ecf0971.html#a167329aac0a5111b97de903d7ecf0971">isUserIDExists</a>($CurrentUserId)) {</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="classExceptionsDatabase.html">ExceptionsDatabase</a>(<span class="stringliteral">&quot;User not exist&quot;</span>);</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;            }</div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;            <span class="keywordflow">if</span> ($this-&gt;<a class="code" href="classUserSite_a9b577a33d176a2246eee1e99a55f4db8.html#a9b577a33d176a2246eee1e99a55f4db8">getStatusOfUser</a>($CurrentUserId) == <span class="stringliteral">&quot;Disconnected&quot;</span>) {</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="classExceptionsDatabase.html">ExceptionsDatabase</a>(<span class="stringliteral">&quot;User status not valid&quot;</span>);</div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;            }</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;            $this-&gt;<a class="code" href="classUserSite_a0383c63f53c3f30a2c2bb3212af3d334.html#a0383c63f53c3f30a2c2bb3212af3d334">remove_picture</a>($CurrentUserId);</div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;            $hashId= hash_hmac(<span class="stringliteral">&quot;sha256&quot;</span>, $CurrentUserId, Constants::$PEPPER);</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;            $account_name = <span class="stringliteral">&quot;Deleted_User_&quot;</span>.$hashId;</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;            $mail_name = $account_name.<span class="stringliteral">&quot;@cyphub.tech&quot;</span>; <span class="comment">// reflechir a si on change le mail ou</span></div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;            <span class="comment">// pas pour permettre un restoration de compte</span></div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160; </div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160; </div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160; </div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;            $this-&gt;<a class="code" href="classUserSite_a90eb8666b381fdab5322061fa919da54.html#a90eb8666b381fdab5322061fa919da54">update_password</a>($CurrentUserId, $hashId); <span class="comment">// en changeant le mot de passe on empeche</span></div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;            <span class="comment">// d&#39;ailleurs la réstoration du compte;</span></div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160; </div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;            $stmt = $this-&gt;conn-&gt;prepare(<span class="stringliteral">&quot;UPDATE USERSite </span></div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;<span class="stringliteral">                                                SET </span></div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;<span class="stringliteral">                                                Pseudo = ?,</span></div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;<span class="stringliteral">                                                Mail = ?,</span></div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;<span class="stringliteral">                                                WHERE UserId = ?;&quot;</span>);</div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;            $stmt-&gt;bindParam(1, $account_name);</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;            $stmt-&gt;bindParam(2, $mail_name);</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;            $stmt-&gt;bindParam(3, $CurrentUserId);</div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;            $stmt-&gt;execute();</div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160; </div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;        }</div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;        <span class="keywordflow">catch</span> (<a class="code" href="classExceptionsDatabase.html">ExceptionsDatabase</a> $e) {</div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;            <span class="keywordflow">return</span> $e;</div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;        }</div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160; </div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;    }</div>
+<div class="ttc" id="aclassExceptionsDatabase_html"><div class="ttname"><a href="classExceptionsDatabase.html">ExceptionsDatabase</a></div><div class="ttdef"><b>Definition:</b> ExceptionsDatabase.php:16</div></div>
+<div class="ttc" id="aclassUserSite_a0383c63f53c3f30a2c2bb3212af3d334_html_a0383c63f53c3f30a2c2bb3212af3d334"><div class="ttname"><a href="classUserSite_a0383c63f53c3f30a2c2bb3212af3d334.html#a0383c63f53c3f30a2c2bb3212af3d334">UserSite\remove_picture</a></div><div class="ttdeci">remove_picture(string $CurrentUserId)</div><div class="ttdef"><b>Definition:</b> UserSite.php:616</div></div>
+<div class="ttc" id="aclassUserSite_a167329aac0a5111b97de903d7ecf0971_html_a167329aac0a5111b97de903d7ecf0971"><div class="ttname"><a href="classUserSite_a167329aac0a5111b97de903d7ecf0971.html#a167329aac0a5111b97de903d7ecf0971">UserSite\isUserIDExists</a></div><div class="ttdeci">isUserIDExists(int $id)</div><div class="ttdef"><b>Definition:</b> UserSite.php:276</div></div>
+<div class="ttc" id="aclassUserSite_a90eb8666b381fdab5322061fa919da54_html_a90eb8666b381fdab5322061fa919da54"><div class="ttname"><a href="classUserSite_a90eb8666b381fdab5322061fa919da54.html#a90eb8666b381fdab5322061fa919da54">UserSite\update_password</a></div><div class="ttdeci">update_password(int $CurrentUserId, string $new_password)</div><div class="ttdef"><b>Definition:</b> UserSite.php:541</div></div>
+<div class="ttc" id="aclassUserSite_a9b577a33d176a2246eee1e99a55f4db8_html_a9b577a33d176a2246eee1e99a55f4db8"><div class="ttname"><a href="classUserSite_a9b577a33d176a2246eee1e99a55f4db8.html#a9b577a33d176a2246eee1e99a55f4db8">UserSite\getStatusOfUser</a></div><div class="ttdeci">getStatusOfUser(int $UserId)</div><div class="ttdef"><b>Definition:</b> UserSite.php:362</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classUserSite.html">UserSite</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

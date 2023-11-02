@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "Cyphub", "index.html", [
+  [ "Cyphub.tech", "index.html", [
     [ "R3.01_Projet", "md_README.html", null ],
     [ "Espaces de nommage", "namespaces.html", [
       [ "Liste des espaces de nommage", "namespaces.html", "namespaces_dup" ]
@@ -44,7 +44,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"classTicketModel.html#ac2b2adf589ce564bbb5d399460113354"
+"classTicket_ac3a2c2e1ee36ea5ba1fbd15801687b7b.html#ac3a2c2e1ee36ea5ba1fbd15801687b7b"
 ];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Cyphub: Référence de l&#39;espace de nommage controller</title>
+<title>Cyphub.tech: Référence de l&#39;espace de nommage controller</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -17,6 +17,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -26,7 +27,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="favicon.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Cyphub
+   <div id="projectname">Cyphub.tech
    </div>
   </td>
  </tr>
@@ -87,22 +88,22 @@ $(document).ready(function(){initNavTree('namespacecontroller.html',''); initRes
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Classe du controller responsable du lien vue/model de l'onglet administrateur</p>
+<div class="textblock"><p>Classe <a class="el" href="classControllerAdmin.html">ControllerAdmin</a> est le controller responsable du lien vue/model de l'onglet administrateur</p>
 <p>On s'occupera ici de la logique d'interaction de l'administrateur sur son dashboard, afin de voir les logs la vue modérateur, les permissions et roles des utilisateurs, les statistiques du serveur et autres graphs de divers indicateurs (performance, activité, etc...).</p>
 <dl class="section see"><dt>Voir également</dt><dd>/views/admin/dashboard.php </dd></dl>
 <dl class="section since"><dt>Depuis</dt><dd>1.0</dd></dl>
-<p>Classe du controller responsable du lien vue/model de l'authentification, ainsi que la récupération d'input</p>
+<p>La classe <a class="el" href="classControllerAuth.html">ControllerAuth</a> est responsable du lien vue/model de l'authentification, ainsi que la récupération d'input</p>
 <p>cette classe s'occupe de permettre l'authentification (login/sign up/log out) et la récupération de mot de passe, elle est en étroite collaboration avec l'utilitaire du noyau <a class="el" href="classSessionManager.html">SessionManager</a>, on s'occupe aussi de la récupération des messages d'erreurs pour les afficher dans les vues</p>
 <dl class="section see"><dt>Voir également</dt><dd><a class="el" href="classSessionManager.html">SessionManager</a> </dd></dl>
 <dl class="section since"><dt>Depuis</dt><dd>1.0</dd></dl>
-<p>Classe du controller responsable du lien vue/model de l'onglet menu (page par défault lorsque l'url est vide)</p>
+<p>La classe <a class="el" href="classControllerDefault.html">ControllerDefault</a> est responsable du lien vue/model de l'onglet menu (page par défault lorsque l'url est vide)</p>
 <dl class="section since"><dt>Depuis</dt><dd>1.0</dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
-<p>Classe du controller responsable du lien vue/model de l'onglet menu mais surtout des différents feeds</p>
+<p>la classe <a class="el" href="classControllerMenu.html">ControllerMenu</a> est responsable du lien vue/model de l'onglet menu mais surtout des différents feeds</p>
 <p>on gère ici le feed Actualité, le feed Blog (et le feed Forum pas encore implémenté)</p>
 <dl class="section since"><dt>Depuis</dt><dd>1.0</dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
-<p>Classe du controller responsable du lien vue/model pour la modération</p>
+<p>la Classe <a class="el" href="classControllerModo.html">ControllerModo</a> est responsable du lien vue/model pour la modération</p>
 <p>on développera plusieurs sous vu tel que :</p><ul>
 <li>la modération des utilisateurs</li>
 <li>la modération des posts</li>
@@ -113,7 +114,7 @@ $(document).ready(function(){initNavTree('namespacecontroller.html',''); initRes
 </ul>
 <dl class="section since"><dt>Depuis</dt><dd>1.0</dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
-<p>Classe du controller de la gestion des blogs / forums et leurs éditions</p>
+<p>la Classe <a class="el" href="classControllerPost.html">ControllerPost</a> gere la gestion des blogs / forums et leurs éditions</p>
 <p>la gestion se fait au niveau de la logique de l'interaction utilisateurs dans 4 tâches principales Blog → recuperation du model pour afficher un blog (entier pas sous forme de feed) en tant que spéctateur BlogEdit → création ou modification d'un blog par l'auteur, par rapport a la requete en liaison a la bdd Forum → comme blog pour les forums ForumEdit → comme blog edit pour les forums</p>
 <dl class="section see"><dt>Voir également</dt><dd>/views/post/viewBlog.php </dd>
 <dd>
@@ -132,7 +133,7 @@ $(document).ready(function(){initNavTree('namespacecontroller.html',''); initRes
 <a class="el" href="classBlog__categoryPage.html">Blog_categoryPage</a></dd></dl>
 <dl class="section since"><dt>Depuis</dt><dd>1.0</dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
-<p>Classe du controller de la gestion des informations utilisateurs et du paramétrage du compte</p>
+<p>la Classe <a class="el" href="classControllerSettings.html">ControllerSettings</a> gere la gestion des informations utilisateurs et du paramétrage du compte</p>
 <p>on gere au niveau des parametres :</p><ul>
 <li>gestion informations personnelles (Pseudo, mail, mdp, image de profil, [suppression du compte])</li>
 <li>gestions des tickets utilisateurs (demande de support &amp; listes des tickets actifs selon leurs status)</li>
@@ -145,7 +146,8 @@ $(document).ready(function(){initNavTree('namespacecontroller.html',''); initRes
 </ul>
 <dl class="section since"><dt>Depuis</dt><dd>1.0</dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
-<p>Classe du controller de la gestion des profils des autres utilisateurs ainsi, on se servira dans le futur de ce controller pour afficher les profils des autres utilisateurs afin de voir leurs postes, leurs profils, pour pouvoir s'abonner, de filtrer le contenu... Pour voir le nombre d'abonnées, de posts, d'abonnement. On pourra liker depuis la page, copier les liens et accéder aux vues des postes</p>
+<p>la classe <a class="el" href="classControllerUser.html">ControllerUser</a> gere les profils des autres utilisateurs</p>
+<p>ainsi, on se servira dans le futur de ce controller pour afficher les profils des autres utilisateurs afin de voir leurs postes, leurs profils, pour pouvoir s'abonner, de filtrer le contenu... Pour voir le nombre d'abonnées, de posts, d'abonnement. On pourra liker depuis la page, copier les liens et accéder aux vues des postes</p>
 <dl class="section since"><dt>Depuis</dt><dd>1.0</dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 </div></div><!-- contents -->

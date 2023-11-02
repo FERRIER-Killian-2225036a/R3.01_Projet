@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Cette classe est une classe d'exception pour les erreurs du routo controller / montor Controller
+ * la classe ExceptionsController est une classe d'exception pour les erreurs du routo controller / montor Controller
  *
  * @see Exception
  * @see MotorController

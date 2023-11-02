@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Cyphub.tech: Constants\defineFakeConst</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="favicon.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Cyphub.tech
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classConstants_a237f60277867c64f6d0810399ebaf345.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="contents">
+<a id="a237f60277867c64f6d0810399ebaf345"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a237f60277867c64f6d0810399ebaf345">&#9670;&nbsp;</a></span>defineFakeConst()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static Constants::defineFakeConst </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>methode pour charger les fausses constantes depuis les fichiers liés </p><dl class="section see"><dt>Voir également</dt><dd>$BDD_PASSWORD </dd>
+<dd>
+$DB </dd>
+<dd>
+$API_KEY_GOOGLE_VISION </dd>
+<dd>
+$PEPPER</dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
+<div class="fragment"><div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                                            : <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    {</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        $chemin_pwd_bdd = dirname(__FILE__, 2) . <span class="stringliteral">&quot;/../CONSTANTES_MDP.txt&quot;</span>;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        <span class="keywordflow">if</span> (file_exists($chemin_pwd_bdd)) {</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            $mot_de_passe = file_get_contents($chemin_pwd_bdd);</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            <a class="code" href="classConstants_a833e21827e6bf348470c59f278ef7f52.html#a833e21827e6bf348470c59f278ef7f52">Constants::setBDDPASSWORD</a>($mot_de_passe);</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            <a class="code" href="classConstants_a2c40b678978cce4933223176fbd88be8.html#a2c40b678978cce4933223176fbd88be8">Constants::setDB</a>(array(</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                <span class="stringliteral">&quot;dbname&quot;</span> =&gt; <span class="stringliteral">&quot;cyphubte_db&quot;</span>,</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                <span class="stringliteral">&quot;host&quot;</span> =&gt; <span class="stringliteral">&quot;localhost&quot;</span>,</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                <span class="stringliteral">&quot;usr&quot;</span> =&gt; <span class="stringliteral">&quot;cyphubte_normal_user&quot;</span>,</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                <span class="stringliteral">&quot;pwd&quot;</span> =&gt; Constants::$BDD_PASSWORD, <span class="comment">// TODO on changera le mot de passe quand ce sera en prod, (mot de passe temporaire)</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                <span class="stringliteral">&quot;charset&quot;</span> =&gt; <span class="stringliteral">&quot;utf8mb4&quot;</span>));</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        }</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        $chemin_apiKey = dirname(__FILE__, 2) . <span class="stringliteral">&quot;/../APIKEY.txt&quot;</span>;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        <span class="keywordflow">if</span> (file_exists($chemin_apiKey)) {</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            $API = file_get_contents($chemin_apiKey);</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            <a class="code" href="classConstants_af8489ed21ec3a9ef1a91f2278ca85680.html#af8489ed21ec3a9ef1a91f2278ca85680">Constants::setApiKey</a>($API);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        }</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        $chemin_pepper = dirname(__FILE__, 2) . <span class="stringliteral">&quot;/../PEPPER.txt&quot;</span>;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        <span class="keywordflow">if</span> (file_exists($chemin_pepper)) {</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;            $Pepper = file_get_contents($chemin_pepper);</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;            <a class="code" href="classConstants_acbd8e6c6c20334b14bb55b122bd81340.html#acbd8e6c6c20334b14bb55b122bd81340">Constants::setPepper</a>($Pepper);</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        }</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160; </div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    }</div>
+<div class="ttc" id="aclassConstants_a2c40b678978cce4933223176fbd88be8_html_a2c40b678978cce4933223176fbd88be8"><div class="ttname"><a href="classConstants_a2c40b678978cce4933223176fbd88be8.html#a2c40b678978cce4933223176fbd88be8">Constants\setDB</a></div><div class="ttdeci">static setDB(array $DB)</div><div class="ttdef"><b>Definition:</b> Constants.php:324</div></div>
+<div class="ttc" id="aclassConstants_a833e21827e6bf348470c59f278ef7f52_html_a833e21827e6bf348470c59f278ef7f52"><div class="ttname"><a href="classConstants_a833e21827e6bf348470c59f278ef7f52.html#a833e21827e6bf348470c59f278ef7f52">Constants\setBDDPASSWORD</a></div><div class="ttdeci">static setBDDPASSWORD(string $BDD_PASSWORD)</div><div class="ttdef"><b>Definition:</b> Constants.php:313</div></div>
+<div class="ttc" id="aclassConstants_acbd8e6c6c20334b14bb55b122bd81340_html_acbd8e6c6c20334b14bb55b122bd81340"><div class="ttname"><a href="classConstants_acbd8e6c6c20334b14bb55b122bd81340.html#acbd8e6c6c20334b14bb55b122bd81340">Constants\setPepper</a></div><div class="ttdeci">static setPepper(string $Pepper)</div><div class="ttdef"><b>Definition:</b> Constants.php:346</div></div>
+<div class="ttc" id="aclassConstants_af8489ed21ec3a9ef1a91f2278ca85680_html_af8489ed21ec3a9ef1a91f2278ca85680"><div class="ttname"><a href="classConstants_af8489ed21ec3a9ef1a91f2278ca85680.html#af8489ed21ec3a9ef1a91f2278ca85680">Constants\setApiKey</a></div><div class="ttdeci">static setApiKey(string $ApiKey)</div><div class="ttdef"><b>Definition:</b> Constants.php:335</div></div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="classConstants_af8489ed21ec3a9ef1a91f2278ca85680.html#af8489ed21ec3a9ef1a91f2278ca85680">setApiKey()</a>, <a class="el" href="classConstants_a833e21827e6bf348470c59f278ef7f52.html#a833e21827e6bf348470c59f278ef7f52">setBDDPASSWORD()</a>, <a class="el" href="classConstants_a2c40b678978cce4933223176fbd88be8.html#a2c40b678978cce4933223176fbd88be8">setDB()</a>, et <a class="el" href="classConstants_acbd8e6c6c20334b14bb55b122bd81340.html#acbd8e6c6c20334b14bb55b122bd81340">setPepper()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classConstants.html">Constants</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

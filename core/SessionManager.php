@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe utilitaire de gestion des sessions
+ * la Classe SessionManager utilitaire de gestion des sessions
  *
  * cette classe est responsable de la gestion des sessions est en lien avec tout les mécanisme d'authentification entre
  * le model et le controller d'authentification, ainsi qu'au niveau du motor controller afin de verifier si

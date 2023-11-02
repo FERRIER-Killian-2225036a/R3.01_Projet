@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe de du model directement en lien avec l'orm , on a cette classe pour eviter de trop faire
+ * la Classe ITPageModel du model directement en lien avec l'orm , on a cette classe pour eviter de trop faire
  * de requete de lecture sur les données de l'actualité (IT).
  *
  * Cette classe principale concerne les données des articles scrapé que l'on charge de la bdd

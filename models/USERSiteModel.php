@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe du model directement en lien avec l'orm , on a cette classe pour eviter de trop faire
+ * la Classe USERSiteModel du model directement en lien avec l'orm , on a cette classe pour eviter de trop faire
  * de requete de lecture sur les données d'un utilisateur.
  *
  * Cette classe principale concerne les données de tout les utilisateurs de notre site dans notre base de donnée.

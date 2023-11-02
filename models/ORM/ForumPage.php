@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe de l'orm pour faire les acces a la base de données et recuperer les valeurs de la table FORUM_Page
+ * la Classe ForumPage de l'orm pour faire les acces a la base de données et recuperer les valeurs de la table FORUM_Page
  *
  * les attributs de la table FORUM_Page sont :
  * - PageId : int

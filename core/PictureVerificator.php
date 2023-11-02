@@ -1,7 +1,7 @@
 <?php
 
 /**
- * classe utilitaire pour la vérification des images uploadées
+ * la classe PictureVerificator est un utilitaire pour la vérification des images uploadées
  *
  * cette classe s'occupe de vérifier les images uploadées par les utilisateurs, elle vérifie la taille
  * si elle sont safe, au niveau du contenu (par ai via l'api google cloud vision) [adulte, violence, etc...]

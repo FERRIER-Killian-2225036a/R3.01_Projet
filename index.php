@@ -1,6 +1,6 @@
 <?php
 /**
- * Fichier point d'entrée de l'application.
+ * Fichier index.php ( index ) point d'entrée de l'application.
  *
  * Ce fichier est le point d'entrée de l'application web.
  * Il initialise les ressources nécessaires, capture les paramètres d'URL et POST,

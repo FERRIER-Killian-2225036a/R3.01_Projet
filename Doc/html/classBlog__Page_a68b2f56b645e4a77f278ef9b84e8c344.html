@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Cyphub.tech: Blog_Page\getValuesById</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="favicon.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Cyphub.tech
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classBlog__Page_a68b2f56b645e4a77f278ef9b84e8c344.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="contents">
+<a id="a68b2f56b645e4a77f278ef9b84e8c344"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68b2f56b645e4a77f278ef9b84e8c344">&#9670;&nbsp;</a></span>getValuesById()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Blog_Page::getValuesById </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>$Id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Méthode pour recuperer toutes les valeurs d'un post par rapport a son identifiant</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramtype">int</td><td class="paramname">$Id</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Exception|ExceptionsDatabase|false|array </dd></dl>
+<div class="fragment"><div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                                          : <span class="keywordtype">bool</span>|<a class="code" href="classExceptionsDatabase.html">ExceptionsDatabase</a>|Exception|array</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    {</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            <span class="keywordflow">if</span> (!$this-&gt;<a class="code" href="classBlog__Page_a64efc15717eee5999da0c74ffd0465c8.html#a64efc15717eee5999da0c74ffd0465c8">isPageIdExist</a>($Id)) {</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="classExceptionsDatabase.html">ExceptionsDatabase</a>(<span class="stringliteral">&quot;This page doesn&#39;t exist&quot;</span>);</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            }</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160; </div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            $stmt = $this-&gt;conn-&gt;prepare(<span class="stringliteral">&quot;SELECT * FROM BLOG_Page WHERE PageId = ?&quot;</span>);</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            $stmt-&gt;bindParam(1, $Id);</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            $stmt-&gt;execute();</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            $mapArrayOfPageValues = $stmt-&gt;fetch(PDO::FETCH_ASSOC); <span class="comment">// Stocke le résultat dans le tableau</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            $stmt-&gt;closeCursor();</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        } <span class="keywordflow">catch</span> (<a class="code" href="classExceptionsDatabase.html">ExceptionsDatabase</a> $e) {</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            <span class="keywordflow">return</span> $e;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        }</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        <span class="keywordflow">return</span> $mapArrayOfPageValues; <span class="comment">// Retourne le tableau avec les valeurs de la requete</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    }</div>
+<div class="ttc" id="aclassBlog__Page_a64efc15717eee5999da0c74ffd0465c8_html_a64efc15717eee5999da0c74ffd0465c8"><div class="ttname"><a href="classBlog__Page_a64efc15717eee5999da0c74ffd0465c8.html#a64efc15717eee5999da0c74ffd0465c8">Blog_Page\isPageIdExist</a></div><div class="ttdeci">isPageIdExist(int $Id)</div><div class="ttdef"><b>Definition:</b> Blog_Page.php:308</div></div>
+<div class="ttc" id="aclassExceptionsDatabase_html"><div class="ttname"><a href="classExceptionsDatabase.html">ExceptionsDatabase</a></div><div class="ttdef"><b>Definition:</b> ExceptionsDatabase.php:16</div></div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="classBlog__Page_a64efc15717eee5999da0c74ffd0465c8.html#a64efc15717eee5999da0c74ffd0465c8">isPageIdExist()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classBlog__Page.html">Blog_Page</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

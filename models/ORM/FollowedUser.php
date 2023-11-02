@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe de l'orm pour faire les acces a la base de données et recuperer les valeurs de la table FollowedUser
+ * la Classe FollowedUser de l'orm pour faire les acces a la base de données et recuperer les valeurs de la table FollowedUser
  *
  * les attributs de la table FollowedUser sont :
  * - FollowId : int

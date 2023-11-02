@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe de l'orm pour faire les acces a la base de données et recuperer les valeurs de la table BLOG_Comment
+ * la Classe Blog_Comment de l'orm pour faire les acces a la base de données et recuperer les valeurs de la table BLOG_Comment
  *
  * les attributs de la table BLOG_Comment sont :
  * - CommentId : int

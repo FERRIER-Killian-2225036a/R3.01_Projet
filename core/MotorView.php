@@ -1,7 +1,7 @@
 <?php
 
 /**
- * classe PRINCIPALE du framework, elle est responsable de l'affichage en buffer et appelle les différentes vues
+ * la classe MotorView est une classe PRINCIPALE du framework, elle est responsable de l'affichage en buffer et appelle les différentes vues
  * depuis les controllers
  *
  * @see index.php

@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Cyphub.tech: UserSite\createUser</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="favicon.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Cyphub.tech
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classUserSite_ae18324b39a41c7ded0a2f4b97ab73289.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="contents">
+<a id="ae18324b39a41c7ded0a2f4b97ab73289"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae18324b39a41c7ded0a2f4b97ab73289">&#9670;&nbsp;</a></span>createUser()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UserSite::createUser </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>$pseudo_a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>$mail_a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>$password_a</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Cette methode permet de créer un utilisateur</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramtype">string</td><td class="paramname">$pseudo_a</td><td></td></tr>
+    <tr><td class="paramtype">string</td><td class="paramname">$mail_a</td><td></td></tr>
+    <tr><td class="paramtype">string</td><td class="paramname">$password_a</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>ExceptionsDatabase|string </dd></dl>
+<div class="fragment"><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                                                                                    : <a class="code" href="classExceptionsDatabase.html">ExceptionsDatabase</a>|<span class="keywordtype">string</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="comment">// désensibilisation a la casse pour le pseudo</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            $ValidPseudo = $this-&gt;<a class="code" href="classDBBrain.html">DBBrain</a>-&gt;<a class="code" href="classDBBrain_ac2dfce7fbbc722a54fbc4744565322f1.html#ac2dfce7fbbc722a54fbc4744565322f1">isValidPseudo</a>($pseudo_a);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <span class="keywordflow">if</span> ($ValidPseudo === <span class="keyword">false</span>) {</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="classExceptionsDatabase.html">ExceptionsDatabase</a>(<span class="stringliteral">&quot;Pseudo not valid&quot;</span>);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            <span class="keywordflow">if</span> (!$this-&gt;<a class="code" href="classDBBrain.html">DBBrain</a>-&gt;<a class="code" href="classDBBrain_a5bcf88f67d4e1caf1b2107ce6e2b5fda.html#a5bcf88f67d4e1caf1b2107ce6e2b5fda">isValidEmail</a>($mail_a)) {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="classExceptionsDatabase.html">ExceptionsDatabase</a>(<span class="stringliteral">&quot;This email format is not valid&quot;</span>);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            }</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            <span class="keywordflow">if</span> ($this-&gt;<a class="code" href="classUserSite_a19804026587a838fc685eda07bd62097.html#a19804026587a838fc685eda07bd62097">isUserExists</a>($mail_a, $ValidPseudo)) {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="classExceptionsDatabase.html">ExceptionsDatabase</a>(<span class="stringliteral">&quot;User with this email or pseudo already exists&quot;</span>);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            <span class="keywordflow">if</span> ($this-&gt;<a class="code" href="classDBBrain.html">DBBrain</a>-&gt;<a class="code" href="classDBBrain_a028a5ba779f32832be1dbcddf3e743ed.html#a028a5ba779f32832be1dbcddf3e743ed">isPasswordNotSafe</a>($password_a)) {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="classExceptionsDatabase.html">ExceptionsDatabase</a>(<span class="stringliteral">&quot;This Password is not strong enough, please choose another one&quot;</span>);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            }</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            $ValidPseudo = strtolower($ValidPseudo);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            $argonifiedPassword = $this-&gt;<a class="code" href="classDBBrain.html">DBBrain</a>-&gt;<a class="code" href="classDBBrain_a3c3b6a0c8494bc23ff68a208e4e665dc.html#a3c3b6a0c8494bc23ff68a208e4e665dc">argonifiedPassword</a>($password_a);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            $this-&gt;conn-&gt;beginTransaction();</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            <span class="comment">// Insert user into USERSite</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            $insertUserSQL = <span class="stringliteral">&quot;INSERT INTO USERSite (Mail, Pseudo, DateFirstLogin, DateLastLogin, Role, AlertLevelUser, NumberOfAction, Status, LastIpAdress, NumberOfConnection) VALUES (?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, &#39;registered&#39;, 0, 0, &#39;connected&#39;, ?, 1)&quot;</span>;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            $stmt1 = $this-&gt;conn-&gt;prepare($insertUserSQL);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            $stmt1-&gt;bindParam(1, $mail_a);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            $stmt1-&gt;bindParam(2, $ValidPseudo);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            $stmt1-&gt;bindParam(3, $_SERVER[<span class="stringliteral">&#39;REMOTE_ADDR&#39;</span>]);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            $stmt1-&gt;execute();</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            <span class="comment">// recupération de UserId</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            $userId = $this-&gt;conn-&gt;lastInsertId();</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <span class="comment">// Insert password into PASSWORD</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            $insertPasswordSQL = <span class="stringliteral">&quot;INSERT INTO PASSWORD (Password, UserId) VALUES (?, ?)&quot;</span>;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            $stmt2 = $this-&gt;conn-&gt;prepare($insertPasswordSQL);</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            $stmt2-&gt;bindParam(1, $argonifiedPassword);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            $stmt2-&gt;bindParam(2, $userId, PDO::PARAM_INT);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            $stmt2-&gt;execute();</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            <span class="comment">// Commit de la transaction</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            $this-&gt;conn-&gt;commit();</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            <span class="comment">// renvoi l&#39;identifiant du nouvel utilisateur</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            $subject = <span class="stringliteral">&quot;Bienvenue sur Cyphub !&quot;</span>;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            $message = <span class="stringliteral">&quot;Bonjour &quot;</span>.$ValidPseudo.<span class="stringliteral">&quot;,\n\nBienvenue sur Cyphub !\n\nNous sommes heureux de vous compter parmi nous !\n\nL&#39;équipe Cyphub.&quot;</span>;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            (<span class="keyword">new</span> <a class="code" href="classmailSender.html">mailSender</a>($mail_a,$subject,$message  )); <span class="comment">// on peut ajouter getstatus si on veut savoir si le mail a été envoyé</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            <span class="comment">//TODO on pourra améliorer le system de mail pour avoir des templates automatique</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            <span class="comment">//TODO et des mails plus jolie, mais pour l&#39;instant on fait simple</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            <span class="keywordflow">return</span> $userId;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            <span class="comment">// TODO : limiter taille</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        } <span class="keywordflow">catch</span> (<a class="code" href="classExceptionsDatabase.html">ExceptionsDatabase</a> $e) {</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            <span class="keywordflow">return</span> $e;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        }</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    }</div>
+<div class="ttc" id="aclassDBBrain_a028a5ba779f32832be1dbcddf3e743ed_html_a028a5ba779f32832be1dbcddf3e743ed"><div class="ttname"><a href="classDBBrain_a028a5ba779f32832be1dbcddf3e743ed.html#a028a5ba779f32832be1dbcddf3e743ed">DBBrain\isPasswordNotSafe</a></div><div class="ttdeci">isPasswordNotSafe(string $password_a)</div><div class="ttdef"><b>Definition:</b> DBBrain.php:47</div></div>
+<div class="ttc" id="aclassDBBrain_a3c3b6a0c8494bc23ff68a208e4e665dc_html_a3c3b6a0c8494bc23ff68a208e4e665dc"><div class="ttname"><a href="classDBBrain_a3c3b6a0c8494bc23ff68a208e4e665dc.html#a3c3b6a0c8494bc23ff68a208e4e665dc">DBBrain\argonifiedPassword</a></div><div class="ttdeci">argonifiedPassword(string $password_a)</div><div class="ttdef"><b>Definition:</b> DBBrain.php:81</div></div>
+<div class="ttc" id="aclassDBBrain_a5bcf88f67d4e1caf1b2107ce6e2b5fda_html_a5bcf88f67d4e1caf1b2107ce6e2b5fda"><div class="ttname"><a href="classDBBrain_a5bcf88f67d4e1caf1b2107ce6e2b5fda.html#a5bcf88f67d4e1caf1b2107ce6e2b5fda">DBBrain\isValidEmail</a></div><div class="ttdeci">isValidEmail(string $mail_a)</div><div class="ttdef"><b>Definition:</b> DBBrain.php:69</div></div>
+<div class="ttc" id="aclassDBBrain_ac2dfce7fbbc722a54fbc4744565322f1_html_ac2dfce7fbbc722a54fbc4744565322f1"><div class="ttname"><a href="classDBBrain_ac2dfce7fbbc722a54fbc4744565322f1.html#ac2dfce7fbbc722a54fbc4744565322f1">DBBrain\isValidPseudo</a></div><div class="ttdeci">isValidPseudo(string $new_pseudo)</div><div class="ttdef"><b>Definition:</b> DBBrain.php:103</div></div>
+<div class="ttc" id="aclassDBBrain_html"><div class="ttname"><a href="classDBBrain.html">DBBrain</a></div><div class="ttdef"><b>Definition:</b> DBBrain.php:18</div></div>
+<div class="ttc" id="aclassExceptionsDatabase_html"><div class="ttname"><a href="classExceptionsDatabase.html">ExceptionsDatabase</a></div><div class="ttdef"><b>Definition:</b> ExceptionsDatabase.php:16</div></div>
+<div class="ttc" id="aclassUserSite_a19804026587a838fc685eda07bd62097_html_a19804026587a838fc685eda07bd62097"><div class="ttname"><a href="classUserSite_a19804026587a838fc685eda07bd62097.html#a19804026587a838fc685eda07bd62097">UserSite\isUserExists</a></div><div class="ttdeci">isUserExists(string $mail_a, string $pseudo_a)</div><div class="ttdef"><b>Definition:</b> UserSite.php:237</div></div>
+<div class="ttc" id="aclassmailSender_html"><div class="ttname"><a href="classmailSender.html">mailSender</a></div><div class="ttdef"><b>Definition:</b> MailSender.php:18</div></div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="classDBBrain_a3c3b6a0c8494bc23ff68a208e4e665dc.html#a3c3b6a0c8494bc23ff68a208e4e665dc">DBBrain\argonifiedPassword()</a>, <a class="el" href="classDBBrain_a028a5ba779f32832be1dbcddf3e743ed.html#a028a5ba779f32832be1dbcddf3e743ed">DBBrain\isPasswordNotSafe()</a>, <a class="el" href="classUserSite_a19804026587a838fc685eda07bd62097.html#a19804026587a838fc685eda07bd62097">isUserExists()</a>, <a class="el" href="classDBBrain_a5bcf88f67d4e1caf1b2107ce6e2b5fda.html#a5bcf88f67d4e1caf1b2107ce6e2b5fda">DBBrain\isValidEmail()</a>, et <a class="el" href="classDBBrain_ac2dfce7fbbc722a54fbc4744565322f1.html#ac2dfce7fbbc722a54fbc4744565322f1">DBBrain\isValidPseudo()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classUserSite.html">UserSite</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

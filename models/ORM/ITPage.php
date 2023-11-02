@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe de l'orm pour faire les acces a la base de données et recuperer les valeurs de la table IT_Article
+ * la Classe ITPage de l'orm pour faire les acces a la base de données et recuperer les valeurs de la table IT_Article
  *
  * les attributs de la table IT_Article sont :
  * - ArticleId : int

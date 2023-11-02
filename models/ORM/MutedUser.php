@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe de l'orm pour faire les acces a la base de données et recuperer les valeurs de la table MUTE
+ * la Classe MutedUser de l'orm pour faire les acces a la base de données et recuperer les valeurs de la table MUTE
  *
  * les attributs de la table MUTE sont :
  * - idMute : int

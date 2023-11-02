@@ -1,7 +1,7 @@
 <?php
 
 /**
- * La classe Database Manager integre un singleton pour la connexion a la base de donnée,
+ * La classe DatabaseManager integre un singleton pour la connexion a la base de donnée,
  *
  * cette classe permet de se connecter a la base de donnée. Et rejeter des exceptions si la connexion echoue
  * elle cherche les authentifiants dans le fichier constant

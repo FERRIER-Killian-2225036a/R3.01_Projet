@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Cette classe a pour but de gérer l'envoi de mail, lors de la création de compte par exemple
+ * la classe MailSender a pour but de gérer l'envoi de mail, lors de la création de compte par exemple
  *
  * on pourrait penser dans le futur qu'on crée des methodes ou on envoie des mails a des utilisateurs
  * directement dans cette classe afin d'améliorer la maintenabilité de l'application

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe du model directement en lien avec l'orm , on a cette classe pour eviter de trop faire
+ * la Classe TicketModel du model directement en lien avec l'orm , on a cette classe pour eviter de trop faire
  * de requete de lecture sur les données des tickets.
  *
  * Cette classe principale concerne les données des tickets dans la base de données

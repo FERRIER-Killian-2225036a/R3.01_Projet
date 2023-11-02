@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe de l'orm pour faire les acces a la base de données et recuperer les valeurs de la table USERSite
+ * la Classe UserSite de l'orm pour faire les acces a la base de données et recuperer les valeurs de la table USERSite
  *
  * les attributs de la table USERSite sont :
  * - UserId : int

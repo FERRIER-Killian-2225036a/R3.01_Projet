@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Cette classe est une classe d'exception pour les erreurs du a l'upload de fichier/image d'un user vers le serveur
+ * Cette classe ExceptionsUpload est une classe d'exception pour les erreurs du a l'upload de fichier/image d'un user vers le serveur
  *
  * @see Exception
  * @see PictureVerificator

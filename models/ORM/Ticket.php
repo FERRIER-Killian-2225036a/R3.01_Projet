@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe de l'orm pour faire les acces a la base de données et recuperer les valeurs de la table TICKET
+ * la Classe Ticket de l'orm pour faire les acces a la base de données et recuperer les valeurs de la table TICKET
  *
  * les attributs de la table TICKET sont :
  * - TicketId : int

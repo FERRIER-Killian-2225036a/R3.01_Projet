@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Cette classe est une classe d'exception pour les erreurs de blog.
+ * la classe ExceptionsBlog est une classe d'exception pour les erreurs de blog.
  *
  * @see Exception
  * @see Blog_Page

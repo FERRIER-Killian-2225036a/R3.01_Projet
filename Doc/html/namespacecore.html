@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Cyphub: Référence de l&#39;espace de nommage core</title>
+<title>Cyphub.tech: Référence de l&#39;espace de nommage core</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -17,6 +17,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -26,7 +27,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="favicon.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Cyphub
+   <div id="projectname">Cyphub.tech
    </div>
   </td>
  </tr>
@@ -99,16 +100,16 @@ $(document).ready(function(){initNavTree('namespacecore.html',''); initResizable
 <dl class="section see"><dt>Voir également</dt><dd><a class="el" href="classConstants.html">Constants</a></dd></dl>
 <dl class="section since"><dt>Depuis</dt><dd>1.0 </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
-<p>La classe Database Manager integre un singleton pour la connexion a la base de donnée,</p>
+<p>La classe <a class="el" href="classDatabaseManager.html">DatabaseManager</a> integre un singleton pour la connexion a la base de donnée,</p>
 <p>cette classe permet de se connecter a la base de donnée. Et rejeter des exceptions si la connexion echoue elle cherche les authentifiants dans le fichier constant</p>
 <dl class="section see"><dt>Voir également</dt><dd><a class="el" href="classConstants.html">Constants</a></dd></dl>
 <dl class="section since"><dt>Depuis</dt><dd>1.0 </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
-<p>Cette classe a pour but de gérer l'envoi de mail, lors de la création de compte par exemple</p>
+<p>la classe MailSender a pour but de gérer l'envoi de mail, lors de la création de compte par exemple</p>
 <p>on pourrait penser dans le futur qu'on crée des methodes ou on envoie des mails a des utilisateurs directement dans cette classe afin d'améliorer la maintenabilité de l'application ainsi le moteur de mail concentrera tout les messages dans cette classe afin de pouvoir envoyer des mails de facon simplifier, pour l'oublie de mail par exemple, ou dans le cas de newsletter et notifications.</p>
 <dl class="section since"><dt>Depuis</dt><dd>1.0 </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
-<p>classe PRINCIPALE du framework, elle est responsable de l'appelle dynamique du bon controlleur selon l'url</p>
+<p>la classe <a class="el" href="classMotorController.html">MotorController</a> est la classe PRINCIPALE du framework, elle est responsable de l'appelle dynamique du bon controlleur selon l'url</p>
 <p>elle joue le role de routeur, (elle est le point d'entrée de l'application) juste apres l'index on check les sessions a l'entrée de cette classe, et les droits d'acces aux pages afin de rediriger</p>
 <p>note : on l'appelle souvent routoController note2 : on pourra penser a afficher du message d'erreur sous forme de 404 si la page n'existe pas </p><dl class="section see"><dt>Voir également</dt><dd>index.php </dd>
 <dd>
@@ -117,20 +118,20 @@ $(document).ready(function(){initNavTree('namespacecore.html',''); initResizable
 <a class="el" href="classSessionManager.html">SessionManager</a></dd></dl>
 <dl class="section since"><dt>Depuis</dt><dd>1.0 </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
-<p>classe PRINCIPALE du framework, elle est responsable de l'affichage en buffer et appelle les différentes vues depuis les controllers</p>
+<p>la classe <a class="el" href="classMotorView.html">MotorView</a> est une classe PRINCIPALE du framework, elle est responsable de l'affichage en buffer et appelle les différentes vues depuis les controllers</p>
 <dl class="section see"><dt>Voir également</dt><dd>index.php </dd>
 <dd>
 /views</dd></dl>
 <dl class="section since"><dt>Depuis</dt><dd>1.0 </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
-<p>classe utilitaire pour la vérification des images uploadées</p>
+<p>la classe <a class="el" href="classPictureVerificator.html">PictureVerificator</a> est un utilitaire pour la vérification des images uploadées</p>
 <p>cette classe s'occupe de vérifier les images uploadées par les utilisateurs, elle vérifie la taille si elle sont safe, au niveau du contenu (par ai via l'api google cloud vision) [adulte, violence, etc...] ou encore du type ( verification Mime type, extension, Magic Number) gere aussi l'unicité du nom du fichier (pour éviter les collisions) on détruit les données exif des images pour éviter les attaques de type exif injection et l'usage d'osint qui pourrait ammener a de potentiel leak d'informations</p>
 <dl class="section see"><dt>Voir également</dt><dd><a class="el" href="classControllerSettings.html">ControllerSettings</a> </dd>
 <dd>
 <a class="el" href="classControllerPost.html">ControllerPost</a></dd></dl>
 <dl class="section since"><dt>Depuis</dt><dd>1.0 </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
-<p>Classe utilitaire de gestion des sessions</p>
+<p>la Classe <a class="el" href="classSessionManager.html">SessionManager</a> utilitaire de gestion des sessions</p>
 <p>cette classe est responsable de la gestion des sessions est en lien avec tout les mécanisme d'authentification entre le model et le controller d'authentification, ainsi qu'au niveau du motor controller afin de verifier si un utilisateur est connecter ou non.</p>
 <dl class="section see"><dt>Voir également</dt><dd><a class="el" href="classControllerAuth.html">ControllerAuth</a> </dd>
 <dd>

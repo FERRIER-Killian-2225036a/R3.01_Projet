@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe de l'orm pour faire les acces a la base de données et recuperer les valeurs de la table BLOG_Category
+ * la Classe Blog_Category de l'orm pour faire les acces a la base de données et recuperer les valeurs de la table BLOG_Category
  *
  * les attributs de la table BLOG_Category sont :
  * - CategoryId : int
