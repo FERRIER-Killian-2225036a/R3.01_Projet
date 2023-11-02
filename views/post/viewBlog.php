@@ -6,17 +6,15 @@
             <div class="col-md-6 d-flex align-items-center">
                 <img src="<?php echo $mapView['ImgProfil'] ?>" alt="image" class="rounded-circle mr-3">
                 <div id="textUser">
-
                     <p class="mb-0"><?php echo $mapView['Author'] ?></p>
-
-
                     <small><?php echo $mapView['NumberOfFollower'] ?></small>
                 </div>
                 <form action="<?php echo $mapView["CurentUrlPost"]?>" method="post" >
-                <button class="btn btn-custom-purple" name="follow" type="submit">Suivre</button>
+                    <button class="btn btn-custom-purple" name="follow" type="submit">Suivre</button>
                 </form>
             </div>
             <div class="col-md-6 d-flex align-items-center justify-content-end">
+                <label id="copyLabel" style="display: none"></label>
                 <a href="#" title="Partager">
                     <img src="../../media/public_assets/icone/partager.png" alt="Partager" class="icon">
                 </a>
@@ -43,4 +41,29 @@
             </div>
         </div>
     </div>
+    <script>
+        // Sélectionnez le bouton par son ID
+        const boutonSignet = document.getElementById('formSignet');
+
+        // Sélectionnez le texte que vous souhaitez copier
+        const texteACopier = '<?php echo $mapView['CurentUrlPost'] ?>';
+
+        const copyLabel = document.getElementById('copyLabel');
+
+        // Ajoutez un gestionnaire d'événements de clic au bouton
+        boutonSignet.addEventListener('click', (e) => {
+            e.preventDefault(); // Empêche le formulaire de se soumettre
+            copyLabel.style.display = 'flex';
+            // Copiez le texte dans le presse-papiers de l'utilisateur
+            navigator.clipboard.writeText(texteACopier)
+                .then(() => {
+                    copyLabel.innerHTML = 'Texte copié avec succès !';
+                    console.log('Texte copié avec succès !');
+                })
+                .catch((err) => {
+                    copyLabel.innerHTML = 'Erreur lors de la copie : ' + err;
+                    console.error('Erreur lors de la copie :', err);
+                });
+        });
+    </script>
 </div>
