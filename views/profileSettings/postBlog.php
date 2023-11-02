@@ -55,9 +55,10 @@
 
     document.getElementById('divButtonRole').addEventListener("click", function() {
         //const isInput = event.target.closest('.input-group');
-        const dropdown = event.target.classList.contains('dropdown');
+        //const dropdown = event.target.classList.contains('dropdown');
+        const dropdown = event.target.closest('.dropdown');
         //!isInput &&
-        if ( !dropdown) {
+        if (!dropdown) {
             window.location.href = "<?php echo $mapView['blogPostEditUrl'] ?>";
         }
 
