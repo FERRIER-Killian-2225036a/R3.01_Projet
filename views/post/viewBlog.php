@@ -14,7 +14,7 @@
                 </form>
             </div>
             <div class="col-md-6 d-flex align-items-center justify-content-end">
-                <label id="copyLabel" style="display: none"></label>
+                <label id="copyLabel" style="display: none; padding-right: 0.7em"></label>
                 <a href="#" title="Partager" id="lienPartager">
                     <img src="../../media/public_assets/icone/partager.png" alt="Partager" class="icon">
                 </a>
