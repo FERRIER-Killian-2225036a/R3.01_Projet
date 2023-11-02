@@ -466,7 +466,6 @@ class ControllerPost
                     }
                 }
                 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-                    error_log("post");
                     // on va verifier les parametres Post pour savoir si c'est un bookmark ou un follow
                     // on verifie d'abord si les parametres post sont vide, ou a quoi ils correspondent
                     $idPost = filter_var($A_parametres[0], FILTER_VALIDATE_INT); // on recupere l'identifiant dans l'url
@@ -476,7 +475,6 @@ class ControllerPost
                         die();
                     }
                     $existingPost = new BlogPageModel($idPost);
-                    error_log("post2");
 
                     if (isset($A_postParams["bookmark"])) {
                         // si le post est deja bookmark, on le supprime
@@ -487,7 +485,6 @@ class ControllerPost
                         } else {// sinon on le crée
                             $existingPost->addBookmark($_SESSION['UserId']);
                         }
-                        error_log("post3.1");
 
                         header("Location: /Post/Blog/" . $idPost);
 
@@ -500,7 +497,6 @@ class ControllerPost
                         } else {// sinon on le crée
                             $Author->addFollower($_SESSION['UserId']);
                         }
-                        error_log("post3.2");
 
                         header("Location: /Post/Blog/" . $idPost);
 
