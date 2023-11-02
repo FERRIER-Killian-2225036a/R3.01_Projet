@@ -7,9 +7,7 @@
                 <div>
 
                     <form action="<?php echo $mapView["CurentUrlPost"]?>" method="post" >
-                    <p class="mb-0"><?php echo $mapView['Author'] ?>
-                        <button type="submit" name="Follow" class="btn btn-custom-purple">Suivre</button>
-                    </p>
+                    <p class="mb-0"><?php echo $mapView['Author'] ?></p>
                     </form>
 
                     <small><?php echo $mapView['NumberOfFollower'] ?></small>
@@ -20,10 +18,10 @@
                 <a href="#" title="Partager">
                     <img src="../../media/public_assets/icone/partager.png" alt="Partager" class="icon">
                 </a>
-                <form action="<?php echo $mapView["CurentUrlPost"]?>" method="post">
-                <button name="bookmark" title="Signet" type="submit">
-                    <img src="../../media/public_assets/icone/signet.png" alt="Signet" class="icon">
-                </button>
+                <form action="<?php echo $mapView["CurentUrlPost"]?>" method="post" id="formSignet">
+                    <button name="bookmark" title="Signet" type="submit">
+                        <img src="../../media/public_assets/icone/signet.png" alt="Signet" class="icon">
+                    </button>
                 </form>
             </div>
         </div>
