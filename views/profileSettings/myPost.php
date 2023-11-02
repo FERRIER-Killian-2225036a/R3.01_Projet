@@ -94,7 +94,7 @@
 
             noBlogMessage.style.display = "none";
             if (blogTitle === null) {
-                divButtonRole.style.display = "none!important";
+                divButtonRole.style.setProperty("display", "none", "important");
                 noBlogMessage.style.display = "flex";
             }
 
