@@ -18,6 +18,7 @@
             <!--Categorie new -->
             <label for="tag-input1">Entrez les tags de votre publication</label>
             <input type="text" name="Tags" id="tag-input1" class="form-control custom-input round inputBackground">
+            <label id="wrongInfo"></label>
 
             <!-- Input d'image -->
             <label for="file"  class="btn btn bg-body-tertiary round background" id="chooseFileLabel">Entrez votre miniature
@@ -40,6 +41,7 @@
     </div>
     <script src="../../common_scripts/blog.js"></script>
     <script src="../../common_scripts/simple-tags.js"></script>
+    <script src="/common_scripts/showErrorMessage.js"></script>
     <script>tagInput1.addData([<?php echo $mapView["Tags"]?>])</script>
 
 
