@@ -29,6 +29,11 @@
         </div>
     </div>
 </div>
+<script>
+    document.getElementById('divButtonRole').addEventListener("click", function() {
+        window.location.href = "<?php echo $mapView['blogPostEditUrl'] ?>";
+    });
+</script>
 </div>
 </div>
 <script src="/common_scripts/myPostDisplay.js"></script>
