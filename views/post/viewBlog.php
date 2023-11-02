@@ -6,13 +6,14 @@
                 <img src="<?php echo $mapView['ImgProfil'] ?>" alt="image" class="rounded-circle mr-3">
                 <div>
 
-                    <form action="<?php echo $mapView["CurentUrlPost"]?>" method="post" >
                     <p class="mb-0"><?php echo $mapView['Author'] ?></p>
-                    </form>
+
 
                     <small><?php echo $mapView['NumberOfFollower'] ?></small>
                 </div>
-                <a class="btn btn-custom-purple">Suivre</a>
+                <form action="<?php echo $mapView["CurentUrlPost"]?>" method="post" >
+                <button class="btn btn-custom-purple" name="follow" type="submit">Suivre</button>
+                </form>
             </div>
             <div class="col-md-6 d-flex align-items-center justify-content-end">
                 <a href="#" title="Partager">
