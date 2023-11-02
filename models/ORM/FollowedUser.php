@@ -48,9 +48,9 @@ class FollowedUser
      */
     public function getNumberOfFollower(int $UserID): bool|int|array
     {
-        $sql = "SELECT COUNT(FollowId) FROM FollowedUser WHERE UserFollow = :Id";
+        $sql = "SELECT COUNT(*) FROM FollowedUser WHERE UserFollow = ?";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindValue(':Id', $UserID, PDO::PARAM_INT);
+        $stmt->bindValue(1, $UserID, PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetchColumn();
         error_log("getNumberOfFollower : " . print_r($result, true));
@@ -67,12 +67,12 @@ class FollowedUser
      */
     public function isFollowed(int $Id, int $UserId): bool
     {
-        $sql = "SELECT COUNT(FollowId) FROM FollowedUser WHERE UserId = :Id AND UserFollow = :UserId";
+        $sql = "SELECT COUNT(*) FROM FollowedUser WHERE UserId = ? AND UserFollow = ?";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindValue(':Id', $Id, PDO::PARAM_INT); // verifier si il faut pas inverser ces deux lignes
-        $stmt->bindValue(':UserId', $UserId, PDO::PARAM_INT);
+        $stmt->bindValue(1, $Id, PDO::PARAM_INT); // verifier si il faut pas inverser ces deux lignes
+        $stmt->bindValue(2, $UserId, PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetchColumn();
-        return $result;
+        return $result > 0;
     }
 }
