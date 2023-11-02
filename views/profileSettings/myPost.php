@@ -61,47 +61,10 @@
                 </div>
             </div>
         </div>
-
-        <script>
-            function sendPostShowOrHide(id) {
-                fetch('/Post/BlogEdit/' + id, {
-                    method: 'POST',
-                    body: 'ChangeVisibilityBlog',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    }
-                });
-            }
-
-            function sendPostDelete(id) {
-                fetch('/Post/BlogEdit/' + id, {
-                    method: 'POST',
-                    body: 'DeleteBlog',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    }
-                });
-            }
-
-            const divButtonRole = document.getElementById('divButtonRole');
-            divButtonRole.style.display = "inherit";
-
-            divButtonRole.addEventListener("click", function() {
-                window.location.href = "<?php echo $mapView['blogPostEditUrl'] ?>";
-            });
-            const blogTitle = document.getElementById('responsive-title');
-            const noBlogMessage = document.getElementById('noBlogMessage');
-
-            noBlogMessage.style.display = "none";
-            if (blogTitle === null) {
-                divButtonRole.style.setProperty("display", "none", "important");
-                noBlogMessage.style.display = "flex";
-            }
-
-        </script>
-
         </div>
     </div>
-    <script src="../../common_scripts/maxTextSize.js"></script>
+    <script src="/common_scripts/maxTextSize.js"></script>
+    <script src="/common_scripts/postOptions.js"></script>
+    <script src="/common_scripts/myPostDisplay.js"></script>
 
 

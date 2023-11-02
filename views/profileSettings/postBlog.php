@@ -32,29 +32,9 @@
                     <a onclick="sendPostDelete('<?php echo $mapView['id'] ?>')">Supprimer</a>
                 </div>
             </div>
-            <script>
-                function sendPostShowOrHide(id) {
-                    fetch('/Post/BlogEdit/' + id, {
-                        method: 'POST',
-                        body: 'ChangeVisibilityBlog',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        }
-                    });
-                }
-
-                function sendPostDelete(id) {
-                    fetch('/Post/BlogEdit/' + id, {
-                        method: 'POST',
-                        body: 'DeleteBlog',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        }
-                    });
-                }
-            </script>
 
         </div>
-        <script src="../../common_scripts/maxTextSize.js"></script>
+        <script src="/common_scripts/maxTextSize.js"></script>
+        <script src="/common_scripts/postOptions.js"></script>
 </main>
 

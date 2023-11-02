@@ -39,7 +39,7 @@
             </span>
         </form>
     </div>
-    <script src="../../common_scripts/blog.js"></script>
+    <script src="../../common_scripts/selectFiles.js"></script>
     <script src="../../common_scripts/simple-tags.js"></script>
     <script src="/common_scripts/showErrorMessage.js"></script>
     <script>tagInput1.addData([<?php echo $mapView["Tags"]?>])</script>
