@@ -53,7 +53,6 @@ class FollowedUser
         $stmt->bindValue(1, $UserID, PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetchColumn();
-        error_log("getNumberOfFollower : " . print_r($result, true));
         return $result;
     }
 

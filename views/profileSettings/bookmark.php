@@ -18,7 +18,9 @@
                     Filtrer
                 </button>
                 <ul class="dropdown-menu">
-                    <label><input class="form-control" id="myInput" type="text" placeholder="Search.."></label>
+                    <label for="myInput">
+                        <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                    </label>
                     <li><a href="#">Data</a></li>
                     <li><a href="#">Cybersec</a></li>
                     <li><a href="#">IDK</a></li>
@@ -26,10 +28,9 @@
             </div>
         </div>
         <hr class="my-3">
-        <!--Section pour les articles enregistrer -->
+        <!-- Section pour les articles enregistrer
         <main class="container">
             <div class="row">
-                <!-- Premier élément -->
                 <div class="col-md-6 p-3">
                     <a class="btn bg-body-tertiary round background grow-button d-block" role="button" href="#" target="_blank">
                         <div class="d-flex justify-content-center mb-2">
@@ -44,7 +45,6 @@
                 </div>
 
 
-                <!-- Deuxième élément (Dupliquez ce bloc pour chaque élément supplémentaire) -->
                 <div class="col-md-6 p-3">
                     <a class="btn bg-body-tertiary round background grow-button d-block" role="button" href="#" target="_blank">
                         <div class="d-flex justify-content-center mb-2">
@@ -61,4 +61,4 @@
 
             <script src="../../common_scripts/maxTextSize.js"></script>
         </main>
-
+        -->
