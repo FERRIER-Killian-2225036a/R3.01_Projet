@@ -52,7 +52,7 @@ class FollowedUser
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(':Id', $UserID, PDO::PARAM_INT);
         $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->fetchColumn();
         return $result;
     }
 }

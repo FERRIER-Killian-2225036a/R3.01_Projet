@@ -439,6 +439,7 @@ class ControllerPost
                     $urlBookmark = "/Post/Blog/" . $idPost; // TODO on regardera les parametres POST
 
 
+
                     // transformation de la liste d'identifiant de tag, en un string sous forme de label1,label2,label3
 
                     $tagsStringForInput = "";
