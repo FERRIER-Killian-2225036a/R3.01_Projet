@@ -7,8 +7,8 @@
                 <div>
                     <p class="mb-0"><?php echo $mapView['Author'] ?> </p>
                     <small><?php echo $mapView['NumberOfFollower'] ?></small>
-                    <a class="btn btn-custom-purple">Suivre</a>
                 </div>
+                <a class="btn btn-custom-purple">Suivre</a>
             </div>
             <div class="col-md-6 d-flex align-items-center justify-content-end">
                 <a href="#" title="Partager">
