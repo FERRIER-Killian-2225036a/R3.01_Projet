@@ -1,0 +1,26 @@
+var classUserSite =
+[
+    [ "__construct", "classUserSite.html#adef439de64ac0b57eac264fb7a3173aa", null ],
+    [ "checkPassword", "classUserSite.html#a37c8b17ef78558d489e03db8f16880d6", null ],
+    [ "createUser", "classUserSite.html#ae18324b39a41c7ded0a2f4b97ab73289", null ],
+    [ "disconnectUser", "classUserSite.html#a1a36d1dbda91510bc7a1fc6e8c064c58", null ],
+    [ "getPseudoOfUser", "classUserSite.html#a3f3090fc36c10dcb5337bcf783cf6dd3", null ],
+    [ "getStatusOfUser", "classUserSite.html#a9b577a33d176a2246eee1e99a55f4db8", null ],
+    [ "getValuesById", "classUserSite.html#a6481bf49c11affd4f2837737bac65a8c", null ],
+    [ "incrementAlertLevelUser", "classUserSite.html#a0fbfc4b69770ff5fabade85436ba68da", null ],
+    [ "incrementNumberOfAction", "classUserSite.html#ae42bf4e4ec625022bd6c29d922bc76ec", null ],
+    [ "incrementNumberOfConnexion", "classUserSite.html#a66b87a6d19cba467685a4a090b67f436", null ],
+    [ "isEmailUse", "classUserSite.html#ae57937eaff986c03f53ad716f20c056b", null ],
+    [ "isPseudoUse", "classUserSite.html#ac8d416da250a7f377299dc1960e97008", null ],
+    [ "isUserExists", "classUserSite.html#a19804026587a838fc685eda07bd62097", null ],
+    [ "isUserIDExists", "classUserSite.html#a167329aac0a5111b97de903d7ecf0971", null ],
+    [ "loginUser", "classUserSite.html#ad18b50d59c9455723f2fe35cc155a917", null ],
+    [ "remove_picture", "classUserSite.html#a0383c63f53c3f30a2c2bb3212af3d334", null ],
+    [ "remove_user", "classUserSite.html#acd6c54a70316f032b7421ff202be1cf0", null ],
+    [ "update_mail", "classUserSite.html#a9518ada1002e5e876b83c8b856da6f33", null ],
+    [ "update_password", "classUserSite.html#a90eb8666b381fdab5322061fa919da54", null ],
+    [ "update_picture", "classUserSite.html#a0e56945c232df3526ab60b9c23c2a5ca", null ],
+    [ "update_pseudo", "classUserSite.html#a8f92eb3775301acea8963721cdacd99e", null ],
+    [ "$conn", "classUserSite.html#ad7e4672bdcf33bfcc9a186f3ad36a51d", null ],
+    [ "$DBBrain", "classUserSite.html#a094b04d3162ca1c9aed0d02084802e46", null ]
+];

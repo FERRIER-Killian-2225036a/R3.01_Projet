@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe du controller responsable du lien vue/model de l'onglet administrateur
+ * Classe ControllerAdmin est le controller responsable du lien vue/model de l'onglet administrateur
  *
  * On s'occupera ici de la logique d'interaction de l'administrateur sur son dashboard, afin de voir les logs
  * la vue modérateur, les permissions et roles des utilisateurs, les statistiques du serveur et autres graphs

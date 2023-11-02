@@ -1,0 +1,27 @@
+var classBlogPageModel =
+[
+    [ "__construct", "classBlogPageModel.html#a512446f8997c552525b2211fc667069c", null ],
+    [ "getAuthor", "classBlogPageModel.html#ab128fb08642e559cc955b4b949631ae9", null ],
+    [ "getContent", "classBlogPageModel.html#ad2107901968208789b8592ec9f052e12", null ],
+    [ "getDateP", "classBlogPageModel.html#ae1d9d7c89836a65ce3828d10a7af43c8", null ],
+    [ "getNumberOfLikes", "classBlogPageModel.html#ab0191c818149998cd735944be986499a", null ],
+    [ "getPageId", "classBlogPageModel.html#a70326cf13963134b71c3a4dd62b53702", null ],
+    [ "getPostEditUrl", "classBlogPageModel.html#a1f54cb7142cc365cf462c4ac10c81f81", null ],
+    [ "getPostUrl", "classBlogPageModel.html#a4482fd753393747da9d44629782e872d", null ],
+    [ "getStatusP", "classBlogPageModel.html#aa3876f37db9ea1d971ea90f635331e92", null ],
+    [ "getTags", "classBlogPageModel.html#a6955487fd98f37b7d28116b8c632f3fa", null ],
+    [ "getTITLE", "classBlogPageModel.html#a7519a447a62d7ae676a089d1fd3b57b7", null ],
+    [ "getUrlPicture", "classBlogPageModel.html#a84e41552ee0fff4c16aa9b939dedfb78", null ],
+    [ "getUserId", "classBlogPageModel.html#a843156586c13463663fee24289c01066", null ],
+    [ "$author", "classBlogPageModel.html#a70b36b405a14b532c369d24870bfd5da", null ],
+    [ "$content", "classBlogPageModel.html#a5284c3c152d45cff9b44fe5ae634e37e", null ],
+    [ "$dateP", "classBlogPageModel.html#a6b1fe2feee356a8dc07762b20b839bc5", null ],
+    [ "$NumberOfLikes", "classBlogPageModel.html#a9c37d6230b9aff77686ee7370d39b4b5", null ],
+    [ "$PageId", "classBlogPageModel.html#a0ab95d5a1853cce26444debfff6628f5", null ],
+    [ "$PostEditUrl", "classBlogPageModel.html#a36072bbc0e7d8fd0c2c0fcfa0ff04324", null ],
+    [ "$PostUrl", "classBlogPageModel.html#ac09b5cd563ada6d4a1cf9eb096f48136", null ],
+    [ "$statusP", "classBlogPageModel.html#a12ee963c07e2b8ee40b28e7b1696c4d2", null ],
+    [ "$TITLE", "classBlogPageModel.html#a411feb34005a52c9f17c6fa62d56bf77", null ],
+    [ "$UrlPicture", "classBlogPageModel.html#a9e3986fd4ba6729700f9f161c1232476", null ],
+    [ "$UserId", "classBlogPageModel.html#afca60c3b1639d497f1f411a1eb7e3703", null ]
+];

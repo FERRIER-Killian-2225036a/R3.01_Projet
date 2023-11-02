@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe de constantes pour la config assez globale
+ * la classe Constants est pour la config assez globale
  *
  * définit des constantes et des méthodes pour la gestion des répertoires, des chemins et des paramètres
  * ainsi que des constantes pour l'authentification ou clé d'api.

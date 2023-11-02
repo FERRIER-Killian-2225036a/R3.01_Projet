@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe du controller de la gestion des blogs / forums et leurs éditions
+ * la Classe ControllerPost gere la gestion des blogs / forums et leurs éditions
  *
  * la gestion se fait au niveau de la logique de l'interaction utilisateurs dans 4 tâches principales
  * Blog → recuperation du model pour afficher un blog (entier pas sous forme de feed) en tant que spéctateur

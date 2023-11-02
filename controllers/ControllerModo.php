@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe du controller responsable du lien vue/model pour la modération
+ * la Classe ControllerModo est responsable du lien vue/model pour la modération
  *
  * on développera plusieurs sous vu tel que :
  * - la modération des utilisateurs

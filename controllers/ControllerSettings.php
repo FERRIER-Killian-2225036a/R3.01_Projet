@@ -3,7 +3,7 @@
 // correspond a controller profil
 
 /**
- * Classe du controller de la gestion des informations utilisateurs et du paramétrage du compte
+ * la Classe ControllerSettings gere  la gestion des informations utilisateurs et du paramétrage du compte
  *
  * on gere au niveau des parametres :
  * - gestion informations personnelles (Pseudo, mail, mdp, image de profil, [suppression du compte])

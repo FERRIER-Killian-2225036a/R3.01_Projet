@@ -1,7 +1,7 @@
 <?php
 
 /**
- *  Classe du controller responsable du lien vue/model de l'onglet menu mais surtout des différents feeds
+ *  la classe ControllerMenu est responsable du lien vue/model de l'onglet menu mais surtout des différents feeds
  *
  * on gère ici le feed Actualité, le feed Blog (et le feed Forum pas encore implémenté)
  *

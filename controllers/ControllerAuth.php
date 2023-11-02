@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe du controller responsable du lien vue/model de l'authentification, ainsi que la récupération d'input
+ * La classe ControllerAuth est responsable du lien vue/model de l'authentification, ainsi que la récupération d'input
  *
  * cette classe s'occupe de permettre l'authentification (login/sign up/log out) et la récupération de mot de passe,
  * elle est en étroite collaboration avec l'utilitaire du noyau SessionManager, on s'occupe aussi de la récupération

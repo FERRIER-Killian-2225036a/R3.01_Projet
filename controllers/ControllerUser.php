@@ -1,7 +1,8 @@
 <?php
 
 /**
- * Classe du controller de la gestion des profils des autres utilisateurs
+ * la classe ControllerUser gere les profils des autres utilisateurs
+ *
  * ainsi, on se servira dans le futur de ce controller pour afficher les profils des autres utilisateurs
  * afin de voir leurs postes, leurs profils, pour pouvoir s'abonner, de filtrer le contenu...
  * Pour voir le nombre d'abonnées, de posts, d'abonnement. On pourra liker depuis la page, copier les liens

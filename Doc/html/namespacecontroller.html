@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Cyphub: Référence de l&#39;espace de nommage controller</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="favicon.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Cyphub
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('namespacecontroller.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Référence de l'espace de nommage controller</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Classe du controller responsable du lien vue/model de l'onglet administrateur</p>
+<p>On s'occupera ici de la logique d'interaction de l'administrateur sur son dashboard, afin de voir les logs la vue modérateur, les permissions et roles des utilisateurs, les statistiques du serveur et autres graphs de divers indicateurs (performance, activité, etc...).</p>
+<dl class="section see"><dt>Voir également</dt><dd>/views/admin/dashboard.php </dd></dl>
+<dl class="section since"><dt>Depuis</dt><dd>1.0</dd></dl>
+<p>Classe du controller responsable du lien vue/model de l'authentification, ainsi que la récupération d'input</p>
+<p>cette classe s'occupe de permettre l'authentification (login/sign up/log out) et la récupération de mot de passe, elle est en étroite collaboration avec l'utilitaire du noyau <a class="el" href="classSessionManager.html">SessionManager</a>, on s'occupe aussi de la récupération des messages d'erreurs pour les afficher dans les vues</p>
+<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="classSessionManager.html">SessionManager</a> </dd></dl>
+<dl class="section since"><dt>Depuis</dt><dd>1.0</dd></dl>
+<p>Classe du controller responsable du lien vue/model de l'onglet menu (page par défault lorsque l'url est vide)</p>
+<dl class="section since"><dt>Depuis</dt><dd>1.0</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
+<p>Classe du controller responsable du lien vue/model de l'onglet menu mais surtout des différents feeds</p>
+<p>on gère ici le feed Actualité, le feed Blog (et le feed Forum pas encore implémenté)</p>
+<dl class="section since"><dt>Depuis</dt><dd>1.0</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
+<p>Classe du controller responsable du lien vue/model pour la modération</p>
+<p>on développera plusieurs sous vu tel que :</p><ul>
+<li>la modération des utilisateurs</li>
+<li>la modération des posts</li>
+<li>la modération des commentaires</li>
+<li>la gestion des tickets/signalements</li>
+<li>la gestion des bans</li>
+<li>la gestion des mutes</li>
+</ul>
+<dl class="section since"><dt>Depuis</dt><dd>1.0</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
+<p>Classe du controller de la gestion des blogs / forums et leurs éditions</p>
+<p>la gestion se fait au niveau de la logique de l'interaction utilisateurs dans 4 tâches principales Blog → recuperation du model pour afficher un blog (entier pas sous forme de feed) en tant que spéctateur BlogEdit → création ou modification d'un blog par l'auteur, par rapport a la requete en liaison a la bdd Forum → comme blog pour les forums ForumEdit → comme blog edit pour les forums</p>
+<dl class="section see"><dt>Voir également</dt><dd>/views/post/viewBlog.php </dd>
+<dd>
+/views/post/viewBlogEdit.php </dd>
+<dd>
+/views/post/viewForum.php </dd>
+<dd>
+/views/post/viewForumEdit.php </dd>
+<dd>
+<a class="el" href="classBlogPageModel.html">BlogPageModel</a> </dd>
+<dd>
+<a class="el" href="classBlog__Page.html">Blog_Page</a> </dd>
+<dd>
+<a class="el" href="classBlog__Category.html">Blog_Category</a> </dd>
+<dd>
+<a class="el" href="classBlog__categoryPage.html">Blog_categoryPage</a></dd></dl>
+<dl class="section since"><dt>Depuis</dt><dd>1.0</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
+<p>Classe du controller de la gestion des informations utilisateurs et du paramétrage du compte</p>
+<p>on gere au niveau des parametres :</p><ul>
+<li>gestion informations personnelles (Pseudo, mail, mdp, image de profil, [suppression du compte])</li>
+<li>gestions des tickets utilisateurs (demande de support &amp; listes des tickets actifs selon leurs status)</li>
+<li>gestions de la langue (futur passage en anglais)</li>
+<li>gestions des themes (futur passage en theme sombre, voir changement des couleurs)</li>
+<li>gestion des enregistrements (like)</li>
+<li>gestion des abonnements (follow)</li>
+<li>gestion des commentaires de l'utilisateur et des commentaires cités en réponse</li>
+<li>gestion des posts de l'utilisateur (suppression, changement de visibilité et redirection vers édition)</li>
+</ul>
+<dl class="section since"><dt>Depuis</dt><dd>1.0</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
+<p>Classe du controller de la gestion des profils des autres utilisateurs ainsi, on se servira dans le futur de ce controller pour afficher les profils des autres utilisateurs afin de voir leurs postes, leurs profils, pour pouvoir s'abonner, de filtrer le contenu... Pour voir le nombre d'abonnées, de posts, d'abonnement. On pourra liker depuis la page, copier les liens et accéder aux vues des postes</p>
+<dl class="section since"><dt>Depuis</dt><dd>1.0</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+</div></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacecontroller.html">controller</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

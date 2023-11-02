@@ -1,0 +1,28 @@
+var classUSERSiteModel =
+[
+    [ "__construct", "classUSERSiteModel.html#a04449db19f9e814a0ead47803354ef99", null ],
+    [ "getAlertLevelUser", "classUSERSiteModel.html#a032776814a3e83e0b03ee62390789f24", null ],
+    [ "getDateFirstLogin", "classUSERSiteModel.html#a3e0e33d75744d6c36c1d92c10639f425", null ],
+    [ "getDateLastLogin", "classUSERSiteModel.html#a8d09e972cdd7be09f7316c3648db423c", null ],
+    [ "getId", "classUSERSiteModel.html#a0fca4e48032120f9a87a0ed366dc34aa", null ],
+    [ "getLastIpAdress", "classUSERSiteModel.html#a079941bc80e4a65afe029c9fce6f423b", null ],
+    [ "getMail", "classUSERSiteModel.html#a921d457b3e26022b5519b799839b4faa", null ],
+    [ "getNumberOfAction", "classUSERSiteModel.html#a537e8f574ce107d7bbaf5a32fee4ec45", null ],
+    [ "getNumberOfConnection", "classUSERSiteModel.html#a0157bf3131604ffbdc0b862ea9acb887", null ],
+    [ "getPseudo", "classUSERSiteModel.html#a2e112999de4bf6caf804f2dfd6eb18c6", null ],
+    [ "getRole", "classUSERSiteModel.html#a1450b9e273794f005d4a8e1ade56b38d", null ],
+    [ "getStatus", "classUSERSiteModel.html#ac55d01851f8099b29ada87ce2a532970", null ],
+    [ "getUrlPicture", "classUSERSiteModel.html#aa97eaf890d2e5c55fee60066ab2f0026", null ],
+    [ "$AlertLevelUser", "classUSERSiteModel.html#afcf62da8d8a477e4ee748db5daff24f2", null ],
+    [ "$DateFirstLogin", "classUSERSiteModel.html#a8e31baf06c142ee05887cb1a14647f35", null ],
+    [ "$DateLastLogin", "classUSERSiteModel.html#a100e677b35ed7d4a456b109b37ba93e6", null ],
+    [ "$Id", "classUSERSiteModel.html#a9702d50c5ed4a4bc8b12883445b5d1aa", null ],
+    [ "$lastIpAdress", "classUSERSiteModel.html#a31436a07c9238558cdd818817a83afa5", null ],
+    [ "$Mail", "classUSERSiteModel.html#a1a49484da976a3d46b8f227695ff4094", null ],
+    [ "$NumberOfAction", "classUSERSiteModel.html#a319e2f08daf65c46e4dd60c5063f5e86", null ],
+    [ "$NumberOfConnection", "classUSERSiteModel.html#a4a498258cd9792b06c4916de4f4ee4bb", null ],
+    [ "$Pseudo", "classUSERSiteModel.html#a52d86195b5f6ae184ae75df0042adbee", null ],
+    [ "$Role", "classUSERSiteModel.html#a1677017819d08d0ff143f49f4249275f", null ],
+    [ "$Status", "classUSERSiteModel.html#a61e5cf7187f43db09883996046722588", null ],
+    [ "$UrlPicture", "classUSERSiteModel.html#a5d0cd8d9fc8fdaab2fe673dad84b5e8f", null ]
+];
