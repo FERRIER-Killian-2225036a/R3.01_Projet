@@ -93,7 +93,7 @@
             const noBlogMessage = document.getElementById('noBlogMessage');
 
             noBlogMessage.style.display = "none";
-            if (blogTitle.textContent === null) {
+            if (blogTitle === null) {
                 divButtonRole.style.display = "none";
                 noBlogMessage.style.display = "flex";
                 console.log("Titre vide");
@@ -104,5 +104,5 @@
         </div>
     </div>
     <script src="../../common_scripts/maxTextSize.js"></script>
-</div>
+
 
