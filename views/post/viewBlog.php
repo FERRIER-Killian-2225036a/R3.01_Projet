@@ -3,7 +3,7 @@
         <h1><?php echo $mapView['Title'] ?></h1>
         <div class="row mb-4">
             <div class="col-md-6 d-flex align-items-center">
-                <img src="<?php echo $mapView['$ImgProfil'] ?>" alt="image" class="rounded-circle mr-3">
+                <img src="<?php echo $mapView['ImgProfil'] ?>" alt="image" class="rounded-circle mr-3">
                 <div>
                     <p class="mb-0"><?php echo $mapView['Author'] ?> <a class="btn btn-custom-purple">Suivre</a></p>
                     <small><?php echo $mapView['NumberOfFollower'] ?></small>
