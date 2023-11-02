@@ -5,12 +5,15 @@
             <div class="col-md-6 d-flex align-items-center">
                 <img src="<?php echo $mapView['ImgProfil'] ?>" alt="image" class="rounded-circle mr-3">
                 <div>
+
                     <form action="  CURRENT URL EN JS STP (avec l'id) " method="post" >
                     <p class="mb-0"><?php echo $mapView['Author'] ?>
                         <button type="submit" name="Follow" class="btn btn-custom-purple">Suivre</button>
                     </p>
                     </form>
+
                     <small><?php echo $mapView['NumberOfFollower'] ?></small>
+                    <a class="btn btn-custom-purple">Suivre</a>
                 </div>
             </div>
             <div class="col-md-6 d-flex align-items-center justify-content-end">
