@@ -17,7 +17,7 @@
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="button">
                                     <i class="fas fa-save">#blog</i>
-                                </button>
+                                </button><?php echo $mapView['blogPostUrl'] ?>
                             </div>
                         </div>
                     </div>

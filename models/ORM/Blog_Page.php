@@ -116,16 +116,16 @@ class Blog_Page
      *
      * @param int $PageId
      * @param string $TITLE
-     * @param string $content
-     * @param string $author
+     * @param string|null $content
+     * @param string|null $author
      * @param int $UserId
-     * @param string $UrlPicture
+     * @param string|null $UrlPicture
      * @param int $NumberOfLikes
      * @param string $statusP
      * @return bool
      */
-    public function updatePage(int    $PageId, string $TITLE, string $content, string $author, int $UserId,
-                               string $UrlPicture = Constants::PICTURE_URL_DEFAULT,
+    public function updatePage(int    $PageId, string $TITLE, ?string $content, ?string $author, int $UserId,
+                               ?string $UrlPicture = Constants::PICTURE_URL_DEFAULT,
                                int    $NumberOfLikes = 0, string $statusP = "hidden"): bool
     {
         // comme create page sauf que l'id est aussi renseigné en param
