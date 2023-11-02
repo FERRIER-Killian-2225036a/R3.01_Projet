@@ -30,3 +30,8 @@
         </div>
     </div>
 </div>
+</div>
+</div>
+<script src="/common_scripts/myPostDisplay.js"></script>
+<script src="/common_scripts/maxTextSize.js"></script>
+<script src="/common_scripts/postOptions.js"></script>
