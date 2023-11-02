@@ -1,6 +1,6 @@
 <div class="container">
     <div class="text-left mt-4">
-        <h1>Titre du Blog</h1>
+        <h1><?php echo $mapView['title'] ?></h1>
         <div class="row mb-4">
             <div class="col-md-6 d-flex align-items-center">
                 <img src="<?php echo $mapView['$imgProfil'] ?>" alt="image" class="rounded-circle mr-3">
@@ -23,14 +23,6 @@
         <div class="row justify-content-center mt-4">
             <div class="col-8">
                 <img src="<?php echo $mapView['img'] ?>" class="img-fluid" alt="Image du Blog">
-            </div>
-        </div>
-
-        <div class="row justify-content-center mt-4">
-            <div class="col-8">
-                <h1>
-                    <?php echo $mapView['title'] ?>
-                </h1>
             </div>
         </div>
 
