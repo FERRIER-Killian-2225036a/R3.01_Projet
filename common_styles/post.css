@@ -84,3 +84,7 @@
 #textUser {
     padding-inline: 0.5em;
 }
+
+#textUser > p {
+    height: 18px;
+}
