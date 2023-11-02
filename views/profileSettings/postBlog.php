@@ -39,7 +39,7 @@
             }
         });
         window.location.href = "https://cyphub.tech/Settings/MyPost";
-    }
+    });
 
 
     document.getElementById('deleteButton').addEventListener("click", function() {
@@ -51,7 +51,7 @@
             }
         });
         window.location.href = "https://cyphub.tech/Settings/MyPost";
-    }
+    });
 
     document.getElementById('divButtonRole').addEventListener("click", function() {
         window.location.href = "<?php echo $mapView['blogPostEditUrl'] ?>";
