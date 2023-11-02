@@ -31,6 +31,7 @@
         <hr class="my-3">
         <!--Section pour les articles enregistrer -->
         <div class="col-md-6 p-3">
+            <label id="noBlogMessage" style="display: none">Vous n'avez pas d'articles</label>
             <div class="btn bg-body-tertiary round background grow-button d-block" role="button" id="divButtonRole">
                 <div class="d-flex justify-content-center mb-2">
                     <img src="<?php echo $mapView['blogUrlPicture'] ?>" alt="Logo" class="responsive-image-setting round p-1">
@@ -81,13 +82,21 @@
                     }
                 });
             }
-            document.getElementById("divButtonRole").addEventListener("click", function() {
+
+            const divButtonRole = document.getElementById('divButtonRole');
+            divButtonRole.style.display = "inherit";
+
+            divButtonRole.addEventListener("click", function() {
                 window.location.href = "<?php echo $mapView['blogPostEditUrl'] ?>";
             });
-            const urlImg = document.getElementById('responsive-title');
-            console.log(urlImg.textContent);
-            if (urlImg.textContent === null) {
-                console.log('Titre vide');
+            const blogTitle = document.getElementById('responsive-title');
+            const noBlogMessage = document.getElementById('noBlogMessage');
+
+            noBlogMessage.style.display = "none";
+            if (blogTitle.textContent === null) {
+                divButtonRole.style.display = "none";
+                noBlogMessage.style.display = "flex";
+                console.log("Titre vide");
             }
 
         </script>
