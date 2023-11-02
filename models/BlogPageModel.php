@@ -31,14 +31,14 @@ class BlogPageModel
     private string $TITLE;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private string $content;
+    private ?string $content;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private string $author;
+    private ?string $author;
 
     /**
      * @var int
@@ -56,9 +56,9 @@ class BlogPageModel
     private int $NumberOfLikes;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private string $UrlPicture;
+    private ?string $UrlPicture;
 
     /**
      * @var string

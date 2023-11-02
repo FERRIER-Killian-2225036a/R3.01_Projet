@@ -24,9 +24,9 @@ class USERSiteModel
     private int $Id;
 
     /**
-     * @var string L'URL de la photo de profil.
+     * @var string|null L'URL de la photo de profil.
      */
-    private string $UrlPicture;
+    private ?string $UrlPicture;
 
     /**
      * @var string L'adresse e-mail de l'utilisateur.

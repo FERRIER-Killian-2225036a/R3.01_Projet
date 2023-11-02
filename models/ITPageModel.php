@@ -49,9 +49,9 @@ class ITPageModel
     private string $date;
 
     /**
-     * @var string L'URL de l'image de l'article.
+     * @var string|null L'URL de l'image de l'article.
      */
-    private string $urlPicture;
+    private ?string $urlPicture;
 
     /**
      * @var string L'URL de l'article.
