@@ -29,6 +29,28 @@
     </div>
 </div>
 <script>
+    function sendPostShowOrHide(id) {
+        fetch('/Post/BlogEdit/' + id, {
+            method: 'POST',
+            body: 'ChangeVisibilityBlog',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        });
+        window.location.href = "https://cyphub.tech/Settings/MyPost";
+    }
+
+    function sendPostDelete(id) {
+        fetch('/Post/BlogEdit/' + id, {
+            method: 'POST',
+            body: 'DeleteBlog',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        });
+        window.location.href = "https://cyphub.tech/Settings/MyPost";
+    }
+
     document.getElementById('divButtonRole').addEventListener("click", function() {
         window.location.href = "<?php echo $mapView['blogPostEditUrl'] ?>";
     });
@@ -37,4 +59,3 @@
 </div>
 <script src="/common_scripts/myPostDisplay.js"></script>
 <script src="/common_scripts/maxTextSize.js"></script>
-<script src="/common_scripts/postOptions.js"></script>
