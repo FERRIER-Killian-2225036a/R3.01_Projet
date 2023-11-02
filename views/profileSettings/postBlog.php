@@ -50,7 +50,7 @@
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         });
-        window.location.href = "https://cyphub.tech/Settings/MyPost";
+        window.location.href = "https://cyphub.tech/Settings/ManageAccount";
     });
 
     document.getElementById('divButtonRole').addEventListener("click", function() {
