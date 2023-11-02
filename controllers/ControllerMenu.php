@@ -89,7 +89,6 @@ class ControllerMenu
         }
 
         foreach ($ArrayOfBlogPageModel as $obj) {
-            error_log("statusP : " . $obj->getStatusP());
             if ($obj->getStatusP() == "active") {
                 $tagsList = "";
                 foreach ($obj->getTags() as $tags ){
