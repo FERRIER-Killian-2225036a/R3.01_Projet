@@ -94,9 +94,8 @@
 
             noBlogMessage.style.display = "none";
             if (blogTitle === null) {
-                divButtonRole.style.display = "none";
+                divButtonRole.style.display = "none!important";
                 noBlogMessage.style.display = "flex";
-                console.log("Titre vide");
             }
 
         </script>
