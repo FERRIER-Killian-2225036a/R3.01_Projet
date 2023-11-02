@@ -459,7 +459,8 @@ class ControllerPost
                                                                     "NumberOfFollower" => $numberOfFollower,
                                                                     "ImgProfil" => $imgProfil,
                                                                     "BoolIsFollowed" => $boolIsFollowed,
-                                                                    "BoolIsPostBookmarked" => $boolIsPostBookmarked
+                                                                    "BoolIsPostBookmarked" => $boolIsPostBookmarked,
+                                                                    "CurentUrlPost" => $urlBookmark
                     ));
                 }
             }
