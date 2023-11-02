@@ -436,7 +436,11 @@ class ControllerPost
                     $userModel = (new USERSiteModel($userId));
                     $numberOfFollower = $userModel->getNumberOfFollower();
                     $imgProfil = $userModel->getUrlPicture();
+                    $boolIsFollowed = $userModel->isFollowed($_SESSION['UserId']);
+                    $boolIsPostBookmarked = $existingPost->isPostBookmarked($_SESSION['UserId']);
+
                     $urlBookmark = "/Post/Blog/" . $idPost; // TODO on regardera les parametres POST
+
 
 
                     // transformation de la liste d'identifiant de tag, en un string sous forme de label1,label2,label3
@@ -451,10 +455,11 @@ class ControllerPost
                                                                     "Content" => $content,
                                                                     "Tags" => $tagsStringForInput,
                                                                     "Img" => $img,
-                                                                    "UrlForm" => $idPost,
                                                                     "Author" => $author,
                                                                     "NumberOfFollower" => $numberOfFollower,
                                                                     "ImgProfil" => $imgProfil,
+                                                                    "BoolIsFollowed" => $boolIsFollowed,
+                                                                    "BoolIsPostBookmarked" => $boolIsPostBookmarked
                     ));
                 }
             }

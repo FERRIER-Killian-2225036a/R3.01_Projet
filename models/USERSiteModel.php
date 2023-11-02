@@ -205,5 +205,16 @@ class USERSiteModel
         return (new FollowedUser)->getNumberOfFollower($this->Id);
     }
 
+    /**
+     * méthode pour verifier si un utilisateur externe est abonné a l'utilisateur cournat
+     *
+     * @param int $UserId
+     * @return bool
+     */
+    public function isFollowed(int $UserId): bool
+    {
+        return (new FollowedUser)->isFollowed($this->Id, $UserId);
+    }
+
 
 }
