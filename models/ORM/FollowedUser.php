@@ -75,4 +75,39 @@ class FollowedUser
         $result = $stmt->fetchColumn();
         return $result > 0;
     }
+
+    /**
+     * Méthode pour supprimer un abonnée
+     *
+     * @param int $Id
+     * @param int $UserId
+     * @return void
+     */
+    public function removeFollower(int $Id, int $UserId): void
+    {
+        $sql = "DELETE FROM FollowedUser WHERE UserId = ? AND UserFollow = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(1, $Id, PDO::PARAM_INT); // verifier ordre bdd
+        $stmt->bindValue(2, $UserId, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    /**
+     * méthode pour ajouté un abonné a sa liste d'abonnée
+     *
+     * @param int $Id
+     * @param int $UserId
+     * @return void
+     */
+    public function addFollower(int $Id, int $UserId): void
+    {
+        // si Userid n'est pas deja abonné a Id
+        if (!$this->isFollowed($Id, $UserId)) {
+            $sql = "INSERT INTO FollowedUser (UserId, UserFollow) VALUES (?, ?)";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindValue(1, $Id, PDO::PARAM_INT); // verifier ordre bdd
+            $stmt->bindValue(2, $UserId, PDO::PARAM_INT);
+            $stmt->execute();
+        }
+    }
 }

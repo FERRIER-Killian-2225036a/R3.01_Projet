@@ -414,55 +414,97 @@ class ControllerPost
                 header("Location: /Menu/BlogFeed");
                 die();
             } else {
-                $idPost = filter_var($A_parametres[0], FILTER_VALIDATE_INT); // on recupere l'identifiant dans l'url
-                if ($idPost === false) {
-                    error_log("valeur $idPost du post n'existe pas/ n'est pas valide");
-                    header("Location: /Menu/BlogFeed");
+                if ($_SERVER["REQUEST_METHOD"] === "GET") {
+
+                    $idPost = filter_var($A_parametres[0], FILTER_VALIDATE_INT); // on recupere l'identifiant dans l'url
+                    if ($idPost === false) {
+                        error_log("valeur $idPost du post n'existe pas/ n'est pas valide");
+                        header("Location: /Menu/BlogFeed");
+                        die();
+                    }
+                    $post = new Blog_Page;
+                    if ($post->doesPageIdExist($idPost)) { // on procede donc a la verification de si l'identifiant est attribué
+
+                        $existingPost = new BlogPageModel($idPost); // on crée un nouvelle objet qui contient les
+
+                        $title = $existingPost->getTITLE();
+                        $content = $existingPost->getContent();
+                        $img = $existingPost->getUrlPicture();
+                        $TempTags = $existingPost->getTags();
+                        $author = $existingPost->getAuthor();
+
+                        $userId = $existingPost->getUserId();
+
+                        $userModel = (new USERSiteModel($userId));
+                        $numberOfFollower = $userModel->getNumberOfFollower();
+                        $imgProfil = $userModel->getUrlPicture();
+                        $boolIsFollowed = $userModel->isFollowed($_SESSION['UserId']);
+                        $boolIsPostBookmarked = $existingPost->isPostBookmarked($_SESSION['UserId']);
+
+                        $urlBookmark = "/Post/Blog/" . $idPost; // TODO on regardera les parametres POST
+
+
+                        // transformation de la liste d'identifiant de tag, en un string sous forme de label1,label2,label3
+
+                        $tagsStringForInput = "";
+                        foreach ($TempTags as $tags) {
+                            $tagsStringForInput .= "'" . $tags . "'" . ", ";
+                        }
+                        $tagsStringForInput = substr($tagsStringForInput, 0, strlen($tagsStringForInput) - 1);
+                        // $tagsStringForInput sera fourni dans l'input dans l'input de la vue,
+                        MotorView::show('post/viewBlog', array("Title" => $title, //KILLIAN
+                            "Content" => $content,
+                            "Tags" => $tagsStringForInput,
+                            "Img" => $img,
+                            "Author" => $author,
+                            "NumberOfFollower" => $numberOfFollower,
+                            "ImgProfil" => $imgProfil,
+                            "BoolIsFollowed" => $boolIsFollowed,
+                            "BoolIsPostBookmarked" => $boolIsPostBookmarked,
+                            "CurentUrlPost" => $urlBookmark
+                        ));
+                    }
+                } elseif ($_SERVER["REQUEST_METHOD"] === "POST") {
+                    // on va verifier les parametres Post pour savoir si c'est un bookmark ou un follow
+                    // on verifie d'abord si les parametres post sont vide, ou a quoi ils correspondent
+                    $idPost = filter_var($A_parametres[0], FILTER_VALIDATE_INT); // on recupere l'identifiant dans l'url
+                    if ($idPost === false) {
+                        error_log("valeur $idPost du post n'existe pas/ n'est pas valide");
+                        header("Location: /Menu/BlogFeed");
+                        die();
+                    }
+                    $existingPost = new BlogPageModel($idPost);
+
+                    if (isset($A_postParams["Bookmark"])) {
+                        // si le post est deja bookmark, on le supprime
+
+
+                        if ($existingPost->isPostBookmarked($_SESSION['UserId'])) {
+                            $existingPost->removeBookmark($_SESSION['UserId']);
+                        } else {// sinon on le crée
+                            $existingPost->addBookmark($_SESSION['UserId']);
+                        }
+                        header("Location: /Post/Blog/" . $idPost);
+
+                    } elseif (isset($A_postParams["Follow"])) {
+                        // si le post est deja bookmark, on le supprime
+
+                        $Author = new USERSiteModel($existingPost->getUserId());
+                        if ($Author->isFollowed($_SESSION['UserId'])) {
+                            $Author->removeFollower($_SESSION['UserId']);
+                        } else {// sinon on le crée
+                            $Author->addFollower($_SESSION['UserId']);
+                        }
+
+                        header("Location: /Post/Blog/" . $idPost);
+
+                    } else {
+                        (new UserSite())->incrementAlertLevelUser($_SESSION['UserId']);
+                        header("Location: /Menu/BlogFeed");
+                    }
                     die();
                 }
-                $post = new Blog_Page;
-                if ($post->doesPageIdExist($idPost)) { // on procede donc a la verification de si l'identifiant est attribué
 
-                    $existingPost = new BlogPageModel($idPost); // on crée un nouvelle objet qui contient les
-
-                    $title = $existingPost->getTITLE();
-                    $content = $existingPost->getContent();
-                    $img = $existingPost->getUrlPicture();
-                    $TempTags = $existingPost->getTags();
-                    $author = $existingPost->getAuthor();
-
-                    $userId = $existingPost->getUserId();
-
-                    $userModel = (new USERSiteModel($userId));
-                    $numberOfFollower = $userModel->getNumberOfFollower();
-                    $imgProfil = $userModel->getUrlPicture();
-                    $boolIsFollowed = $userModel->isFollowed($_SESSION['UserId']);
-                    $boolIsPostBookmarked = $existingPost->isPostBookmarked($_SESSION['UserId']);
-
-                    $urlBookmark = "/Post/Blog/" . $idPost; // TODO on regardera les parametres POST
-
-
-
-                    // transformation de la liste d'identifiant de tag, en un string sous forme de label1,label2,label3
-
-                    $tagsStringForInput = "";
-                    foreach ($TempTags as $tags) {
-                        $tagsStringForInput .= "'" . $tags . "'" . ", ";
-                    }
-                    $tagsStringForInput = substr($tagsStringForInput, 0, strlen($tagsStringForInput) - 1);
-                    // $tagsStringForInput sera fourni dans l'input dans l'input de la vue,
-                    MotorView::show('post/viewBlog', array("Title" => $title, //KILLIAN
-                                                                    "Content" => $content,
-                                                                    "Tags" => $tagsStringForInput,
-                                                                    "Img" => $img,
-                                                                    "Author" => $author,
-                                                                    "NumberOfFollower" => $numberOfFollower,
-                                                                    "ImgProfil" => $imgProfil,
-                                                                    "BoolIsFollowed" => $boolIsFollowed,
-                                                                    "BoolIsPostBookmarked" => $boolIsPostBookmarked,
-                                                                    "CurentUrlPost" => $urlBookmark
-                    ));
-                }
             }
 
         }
