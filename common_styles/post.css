@@ -76,3 +76,11 @@
     background: 0;
     border: 0;
 }
+
+#signetImg {
+    height: 2.3em;
+}
+
+#textUser {
+    padding-inline: 0.5em;
+}

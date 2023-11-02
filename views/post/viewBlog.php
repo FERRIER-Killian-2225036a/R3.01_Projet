@@ -5,7 +5,7 @@
         <div class="row mb-4">
             <div class="col-md-6 d-flex align-items-center">
                 <img src="<?php echo $mapView['ImgProfil'] ?>" alt="image" class="rounded-circle mr-3">
-                <div>
+                <div id="textUser">
 
                     <p class="mb-0"><?php echo $mapView['Author'] ?></p>
 
@@ -22,7 +22,7 @@
                 </a>
                 <form action="<?php echo $mapView["CurentUrlPost"]?>" method="post">
                     <button name="bookmark" title="Signet" type="submit" id="formSignet">
-                        <img src="../../media/public_assets/icone/signet.png" alt="Signet" class="icon">
+                        <img src="../../media/public_assets/icone/signet.png" alt="Signet" class="icon" id="signetImg">
                     </button>
                 </form>
             </div>
