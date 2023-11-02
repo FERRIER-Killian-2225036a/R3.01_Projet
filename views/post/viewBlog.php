@@ -7,7 +7,7 @@
                 <img src="<?php echo $mapView['ImgProfil'] ?>" alt="image" class="rounded-circle mr-3">
                 <div id="textUser">
                     <p class="mb-0"><?php echo $mapView['Author'] ?></p>
-                    <small><?php echo $mapView['NumberOfFollower'] ?></small>
+                    <small><?php echo $mapView['NumberOfFollower'] ?> abonnés</small>
                 </div>
                 <form action="<?php echo $mapView["CurentUrlPost"]?>" method="post" >
                     <button class="btn btn-custom-purple" name="follow" type="submit">Suivre</button>
