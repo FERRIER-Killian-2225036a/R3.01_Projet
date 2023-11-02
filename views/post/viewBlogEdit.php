@@ -36,7 +36,7 @@
 
             <!-- Bouton publier -->
             <span id="publishButtonContainer">
-                <button class="btn btn-outline" type="submit" id="publishButton">Publier</button>
+                <button class="btn btn-outline" type="submit" id="publishButton" style="resize: none;">Publier</button>
             </span>
         </form>
     </div>

@@ -29,6 +29,7 @@
             </div>
         </div>
         <hr class="my-3">
+
         <!--Section pour les articles enregistrer -->
         <div class="col-md-6 p-3">
             <label id="noBlogMessage" style="display: none">Vous n'avez pas d'articles</label>
