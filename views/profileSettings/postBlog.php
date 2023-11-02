@@ -1,4 +1,4 @@
-
+<div class="col-md-6 p-3">
     <label id="noBlogMessage" style="display: none">Vous n'avez pas d'articles</label>
     <div class="btn bg-body-tertiary round background grow-button d-block" role="button" id="divButtonRole">
         <div class="d-flex justify-content-center mb-2">
@@ -30,7 +30,7 @@
     </div>
 </div>
 </div>
-
+</div>
 <script src="/common_scripts/myPostDisplay.js"></script>
 <script src="/common_scripts/maxTextSize.js"></script>
 <script src="/common_scripts/postOptions.js"></script>
