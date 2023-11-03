@@ -1,56 +1,74 @@
-.navbar{
+/* Styles pour la barre de navigation en haut */
+.navbar {
     padding-inline: 10em;
 }
-.navbar-top{
-    background-color: var(--purple-light)!important;
+
+/* Style pour la barre de navigation supérieure */
+.navbar-top {
+    background-color: var(--purple-light) !important;
 }
-.navbar-bottom{
+
+/* Style pour la barre de navigation inférieure */
+.navbar-bottom {
     padding-block: 0;
     padding-inline: 11em;
     font-size: 14px;
 }
-.navbar-brand{
+
+/* Style pour le logo de la barre de navigation */
+.navbar-brand {
     padding: 0;
 }
 
-.responsive-menu{
-    flex-direction: initial!important;
+/* Style pour les éléments de menu responsifs */
+.responsive-menu {
+    flex-direction: initial !important;
     justify-content: center;
     margin-block: 0.2em;
 }
 
-.form-control{
+/* Style pour les zones de formulaire de recherche */
+.form-control {
     border-radius: 5em;
 }
 
-.menu-img{
+/* Style pour les images de menu */
+.menu-img {
     margin-left: 0.8em;
 }
+
+/* Style pour les images dans les liens */
 a > img {
-    width : 37px;
-    height : 37px;
+    width: 37px;
+    height: 37px;
 }
+
+/* Style pour le logo de l'entreprise */
 #logoImg {
-    width : auto;
-    height : 37px;
+    width: auto;
+    height: 37px;
 }
 
-/* Annimation des boutons de sélection de page */
+/* Animation des boutons de sélection de page actifs */
 .active {
-    color: black!important;
+    color: black !important;
     background: linear-gradient(to top, var(--purple-light) 0%, var(--purple-light) 10%, transparent 10.01%) no-repeat left bottom / 0 100%;
-    background-size: 99%!important;
+    background-size: 99% !important;
 }
 
-.navbar-light .navbar-nav .nav-link{
+/* Style pour les liens de navigation dans la barre supérieure */
+.navbar-light .navbar-nav .nav-link {
     color: var(--purple-light);
 }
 
+/* Style pour la couleur violette personnalisée */
 .bg-custom-purple {
     background-color: var(--purple-light); /* Couleur d'arrière-plan violette */
     color: white; /* Couleur du texte en blanc */
 }
-.text-white{
+
+/* Style pour les liens de navigation */
+.text-white {
     font-weight: bold;
 }
 
@@ -60,35 +78,44 @@ a > img {
     background: linear-gradient(to top, var(--purple-light) 0%, var(--purple-light) 10%, transparent 10.01%) no-repeat left bottom / 0 100%;
     transition: background-size .3s;
 }
+
+/* Style pour les liens de navigation lorsqu'ils sont survolés */
 .nav-link:hover::after {
     transform: scaleX(1);
 }
+
 .nav-link:hover {
     background-size: 99% 100%;
 }
 
+/* Style pour la sous-barre de navigation */
 .subNavbar {
     width: 100%;
 }
 
+/* Style pour l'image de profil */
 #profileImg {
     border-radius: 50%;
 }
 
+/* Media Query pour les écrans de petite taille (max-width: 660px) */
 @media (max-width: 660px) {
-    .navbar{
+    .navbar {
         padding-inline: 2em;
     }
     .navbar-collapse {
         padding-top: 0.7em;
     }
 }
+
+/* Style pour les boutons personnalisés violets */
 .btn-custom-purple {
     color: var(--purple);
     border-color: var(--purple);
     background-color: transparent;
 }
 
+/* Style pour les boutons personnalisés violets lorsqu'ils sont survolés */
 .btn-custom-purple:hover {
     color: black;
     background-color: var(--purple);

@@ -1,9 +1,9 @@
-<body>
+<!-- Barre de navigation supérieure -->
 <nav class="navbar navbar-top navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
-            <img src="/media/public_assets/CyphubLogo.png" alt="Logo Cyphub" id="logoImg"
-                 class="d-inline-block align-text-top">
+            <!-- Logo de Cyphub -->
+            <img src="/media/public_assets/CyphubLogo.png" alt="Logo Cyphub" id="logoImg" class="d-inline-block align-text-top">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,17 +13,20 @@
             <ul class="navbar-nav responsive-menu ml-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <form class="d-flex">
+                        <!-- Barre de recherche -->
                         <input class="form-control" type="search" placeholder="Search" aria-label="Search">
                     </form>
                 </li>
                 <li class="nav-item">
                     <a href="<?= SessionManager::isUserConnected() ? "/Settings/ManageAccount" : "/Auth/Login"; ?>">
+                        <!-- Image de profil -->
                         <img src="<?= (SessionManager::isUserConnected() && $_SESSION['UrlPicture'] !== null) ? $_SESSION['UrlPicture'] : Constants::PDP_URL_DEFAULT; ?>"
                              alt="Logo profil" class="menu-img" id="profileImg">
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="/Auth/LogOut">
+                        <!-- Bouton de déconnexion -->
                         <img src="/media/public_assets/logout.png" alt="Logo logout" class="menu-img me-2">
                     </a>
                 </li>
@@ -31,10 +34,13 @@
         </div>
     </div>
 </nav>
+
+<!-- Barre de navigation inférieure -->
 <nav class="navbar navbar-bottom navbar-expand navbar-light <?php echo ($_SERVER['REQUEST_URI'] === "/") ? 'bg-custom-purple' : 'bg-light'; ?>">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav subNavbar">
+                <!-- Liens de navigation -->
                 <a class="nav-link <?php echo ($_SERVER['REQUEST_URI'] === "/") ? 'text-white' : ''; ?>" aria-current="page" href="/">Home</a>
                 <a class="nav-link <?php echo ($_SERVER['REQUEST_URI'] === "/") ? 'text-white' : ''; ?>" href="/Menu/ActualityFeed">Veille Tech</a>
                 <a class="nav-link <?php echo ($_SERVER['REQUEST_URI'] === "/") ? 'text-white' : ''; ?>" href="/Menu/BlogFeed">Blogs</a>
@@ -50,5 +56,6 @@
         </div>
     </div>
 </nav>
+
+<!-- Script pour la gestion des liens de navigation -->
 <script src="../../common_scripts/navLinks.js"></script>
-</body>
