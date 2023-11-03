@@ -71,7 +71,7 @@
             <?php
 
             foreach ($mapView['Comments'] as $comment) {
-                $picture = $comment->getUser()->getgetUrlPicture();
+                $picture = $comment->getUser()->getUrlPicture();
                 if ($picture == null) {
                     $picture = "/media/users/Profil.png";
                 }
