@@ -94,7 +94,7 @@ class SearchModel
                     if ($value != false) {
                         $id = $value[0];
                         print_r($id);
-                        $arrayOfPagesId = (new Blog_PageLike())->get5pagesIdByCategoryId($id);
+                        $arrayOfPagesId = (new Blog_PageLike())->get5pagesIdByCategoryId($id[0]);
                         foreach ($arrayOfPagesId as $id) {
                             $arrayOfUrl[$key][] = "/Post/Blog/".$id;
                         }
