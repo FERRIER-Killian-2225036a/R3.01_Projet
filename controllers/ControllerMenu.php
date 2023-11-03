@@ -94,6 +94,8 @@ class ControllerMenu
                 foreach ($obj->getTags() as $tags ){
                     $tagsList .= "#".$tags ." - ";
                 }
+                $boolIsPostBookmarked = (new BlogPageModel($obj->getPageId()))->isPostBookmarked($_SESSION['UserId']);
+
                 $urlBookmark = "/Post/Blog/" . $obj->getPageId();
                 MotorView::show('menu/blogFeed', array("blogPostUrl"=>$obj->getPostUrl(),
                                                                 "blogTitle" => $obj->getTITLE(),
@@ -101,7 +103,9 @@ class ControllerMenu
                                                                 "blogAuthor" => $obj->getAuthor(),
                                                                 "blogDate" => $obj->getDateP(),
                                                                 "blogUrlPicture" => $obj->getUrlPicture(),
-                                                                "Tags"=>$tagsList,"CurentUrlPost"=> $urlBookmark)); // plus tard il faudra mettre si l'user a bien liké ou non
+                                                                "Tags"=>$tagsList,
+                                                                "CurentUrlPost"=> $urlBookmark,
+                                                                "BoolIsPostBookmarked"=>$boolIsPostBookmarked)); // plus tard il faudra mettre si l'user a bien liké ou non
             }
         }
     }
@@ -131,6 +135,9 @@ class ControllerMenu
 
     public function SearchAction(array $A_parametres = null, array $A_postParams = null): void
     {
+        if ($_SERVER["REQUEST_METHOD"]==="POST"){
+
+        }
 
     }
 }
