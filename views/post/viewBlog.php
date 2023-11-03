@@ -73,7 +73,7 @@
                     copyLabel.innerHTML = 'Erreur lors de la copie : ' + err;
                 });
         });
-        /*
+
         // Script pour le changement du bouton suivre
         // Sélection du bouton suivre
         const followedButton = document.getElementById('followButton');
@@ -88,7 +88,7 @@
             // On met le texte en blanc
             followedButton.style.color = 'white';
         }
-
+        /*
         // Script pour le changement du logo signet
         const boolIsPostBookmarked = <?php echo $mapView['BoolIsPostBookmarked']?>;
         const svgBookmarkAdd = document.getElementById('svgBookmarkAdd');
