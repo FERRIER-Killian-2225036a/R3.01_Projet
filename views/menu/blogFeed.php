@@ -65,28 +65,14 @@
             svgBookmarkDel.style.display = 'flex';
         }
 
-        // Sélection de tous les éléments avec la classe .formSignetClass
-        const elementsWithClass = document.querySelectorAll('.formSignetClass');
-
-        // Fonction pour gérer le clic sur ces éléments
-        function handleClick(event) {
-            event.stopPropagation();
-            // Votre code pour gérer le clic sur cet élément ici
-        }
-
-        // Ajout du gestionnaire d'événements à chaque élément
-        elementsWithClass.forEach((element) => {
-            element.addEventListener('click', handleClick);
-        });
-
         document.getElementById("divButtonRole").addEventListener("click", function() {
             const isInput = event.target.closest('.input-group');
             const isCustomInput = event.target.classList.contains('custom-input');
             const isFormSignetClass = event.target.closest('.formSignetClass');
-
-            if (!isInput && !isCustomInput && !isFormSignetClass) {
+            console.log(isInput, isCustomInput, isFormSignetClass);
+            /*if (!isInput && !isCustomInput && !isFormSignetClass) {
                 window.location.href = "<?php echo $mapView['blogPostUrl'] ?>";
-            }
+            }*/
         });
     </script>
 </main>
