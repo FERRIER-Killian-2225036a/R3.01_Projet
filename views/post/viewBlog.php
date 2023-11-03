@@ -148,3 +148,4 @@
         svgBookmarkDel.style.display = 'flex';
     }
 </script>
+<script src="/common_scripts/signetRedirection.js"></script>
