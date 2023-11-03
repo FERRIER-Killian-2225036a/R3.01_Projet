@@ -90,7 +90,7 @@
         }
 
         // Script pour le changement du logo signet
-        const boolIsPostBookmarked = '<?php echo $mapView['BoolIsPostBookmarked']?>';
+        const boolIsPostBookmarked = <?php echo $mapView['BoolIsPostBookmarked']?>;
         console.log(boolIsPostBookmarked);
         /*const svgBookmarkAdd = document.getElementById('svgBookmarkAdd');
         const svgBookmarkDel = document.getElementById('svgBookmarkDel');
