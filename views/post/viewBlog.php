@@ -91,13 +91,12 @@
 
         // Script pour le changement du logo signet
         /*const boolIsPostBookmarked = <?php echo $mapView['BoolIsPostBookmarked'] ? 1 : 0 ?>;
-        console.log(boolIsPostBookmarked);
+
         const svgBookmarkAdd = document.getElementById('svgBookmarkAdd');
         const svgBookmarkDel = document.getElementById('svgBookmarkDel');
         if (boolIsPostBookmarked === 1) {
             svgBookmarkAdd.style.display = 'none';
             svgBookmarkDel.style.display = 'flex';
         }
-        */
     </script>
 </div>
