@@ -349,7 +349,7 @@ class Blog_Page
     public function getPageIdByResearch(int|string $inputToSearch, string $status): false|array
     {
         if ($status == "all") {
-            $stmt = $this->conn->prepare("SELECT PageId FROM BLOG_Page WHERE (TITLE LIKE ? OR content LIKE ?) LIMIT 5");
+            $stmt = $this->conn->prepare("SELECT PageId FROM BLOG_Page WHERE TITLE LIKE ? OR content LIKE ? LIMIT 5");
             $stmt->bindValue(1, "%$inputToSearch%");
             $stmt->bindValue(2, "%$inputToSearch%");
         } else {

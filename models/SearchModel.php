@@ -80,10 +80,9 @@ class SearchModel
                     break;
                 case "BlOG_Page":
                     if ($value != false) {
-                        foreach ($value as $idPages) {
-                            foreach($idPages as $id){
+                        foreach ($value as $id) {
                                 $arrayOfUrl[$key][] = "/Post/Blog/" . $id;
-                            }
+
                         }
                     }
                     break;
