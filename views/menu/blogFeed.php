@@ -72,5 +72,4 @@
             }
         });
     </script>
-    <script src="/common_scripts/signetRedirection.js"></script>
 </main>
