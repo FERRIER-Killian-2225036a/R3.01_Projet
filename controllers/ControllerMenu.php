@@ -79,7 +79,7 @@ class ControllerMenu
 
         // TODO : récuperer les params (tri) pour filtrer les résultats
         //la requete ressemble à :  POST /Menu/BlogFeed/Filter
-
+        if (SessionManager::isUserConnected()){
         $page = new Blog_Page;
 
         $ArrayOf5IdByDate = $page->get5PagesByDate();
@@ -107,6 +107,9 @@ class ControllerMenu
                     "CurentUrlPost" => $urlBookmark,
                     "BoolIsPostBookmarked" => $boolIsPostBookmarked)); // plus tard il faudra mettre si l'user a bien liké ou non
             }
+        }} else {
+            header("Location: /Auth/login");
+            die();
         }
     }
 
