@@ -29,5 +29,3 @@
         <hr class="my-3"> <!-- Ligne horizontale pour la séparation -->
 
         <label id="noPost">Pas de post</label> <!-- Étiquette pour afficher "Pas de post" -->
-    </div>
-</div>
