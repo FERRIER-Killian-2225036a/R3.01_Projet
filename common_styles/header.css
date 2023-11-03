@@ -41,9 +41,15 @@ a > img {
     background: linear-gradient(to top, var(--purple-light) 0%, var(--purple-light) 10%, transparent 10.01%) no-repeat left bottom / 0 100%;
     background-size: 99%!important;
 }
-.navbar-light .navbar-nav .nav-link .bg-custom-purple{
+.navbar-light .navbar-nav .nav-link{
     color: var(--purple-light);
 }
+
+.bg-custom-purple {
+    background-color: var(--purple-light); /* Couleur d'arrière-plan violette */
+    color: white; /* Couleur du texte en blanc */
+}
+
 .nav-link {
     position: relative;
     text-decoration: none;
