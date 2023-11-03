@@ -41,12 +41,6 @@ a > img {
     background: linear-gradient(to top, var(--purple-light) 0%, var(--purple-light) 10%, transparent 10.01%) no-repeat left bottom / 0 100%;
     background-size: 99%!important;
 }
-/* Styles pour la classe .active uniquement sur la page d'accueil */
-body.home .active {
-    color: black !important;
-    background: linear-gradient(to top, var(--black) 0%, var(--black) 10%, transparent 10.01%) no-repeat left bottom / 0 100%;
-    background-size: 99% !important;
-}
 
 .navbar-light .navbar-nav .nav-link{
     color: var(--purple-light);

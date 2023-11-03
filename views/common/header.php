@@ -1,4 +1,4 @@
-<body class="home">
+<body>
 <nav class="navbar navbar-top navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
