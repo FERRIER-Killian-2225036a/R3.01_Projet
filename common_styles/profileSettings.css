@@ -88,3 +88,11 @@ span.d-flex {
 span.d-flex > .dropdown {
     margin-inline: 0.2em;
 }
+
+/* Styles pour #formSignet */
+#formSignet {
+    margin: 0;
+    padding: 0;
+    background: 0;
+    border: 0;
+}
