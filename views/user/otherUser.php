@@ -2,14 +2,16 @@
 <link rel="stylesheet" href="../../common_styles/general.css">
 <main class="container">
     <div class="row mb-4">
+        <!-- Colonne de gauche -->
         <div class="col-md-6 d-flex align-items-center">
             <img src="../../media/public_assets/favicon.png" alt="image" class="rounded-circle mr-3">
             <div>
                 <p class="mb-0">KrokmouLeFurynocturne</p>
-                <small>99 Abonnés     99 Abonnements     1K Posts</small>
-                <button class="btn btn-outline-dark">Se désabonnez</button>
+                <small>99 Abonnés 99 Abonnements 1K Posts</small>
+                <button class="btn btn-outline-dark">Se désabonner</button>
             </div>
         </div>
+        <!-- Colonne de droite -->
         <div class="col-md-6 d-flex align-items-center justify-content-end">
             <div class="dropdown">
                 <button type="button" class="btn btn-primary">
@@ -19,6 +21,7 @@
                     Filtrer
                 </button>
                 <ul class="dropdown-menu">
+                    <label for="myInput"></label>
                     <input class="form-control" id="myInput" type="text" placeholder="Search..">
                     <li><a href="#">Data</a></li>
                     <li><a href="#">Cybersec</a></li>
@@ -49,25 +52,23 @@
                 <div class="d-flex justify-content-center mb-2">
                     <img src="../../media/public_assets/imageTest.jpeg" alt="Logo" class="responsive-image-user round p-1">
                 </div>
-                <div class="text-content">
-                    <h1 class="responsiveTitle">Informatique nous rend dépendant</h1>
-                    <p class="lead responsiveText">Catégorie - 00-00-00 - Par l'auteur</p>
-                    <p class="responsiveText">ça va parler chinois : Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit neskwik... VOIR PLUS</p>
-                </div>
-            </a>
+                <div class "text-content">
+                <h1 class="responsiveTitle">Informatique nous rend dépendant</h1>
+                <p class="lead responsiveText">Catégorie - 00-00-00 - Par l'auteur</p>
+                <p class="responsiveText">ça va parler chinois : Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit neskwik... VOIR PLUS</p>
         </div>
-        <!-- Troisième élément -->
-        <div class="col-md-4 p-3">
-            <a class="btn bg-body-tertiary round background grow-button d-block" role="button" href="#" target="_blank">
-                <div class="d-flex justify-content-center mb-2">
-                    <img src="../../media/public_assets/imageTest.jpeg" alt="Logo" class="responsive-image-user round p-1">
-                </div>
-                <div class="text-content">
-                    <h1 class="responsiveTitle">Informatique nous rend dépendant</h1>
-                    <p class="lead responsiveText">Catégorie - 00-00-00 - Par l'auteur</p>
-                    <p class="responsiveText">ça va parler chinois : Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit neskwik... VOIR PLUS</p>
-                </div>
-            </a>
-        </div>
+    </div>
+    <!-- Troisième élément -->
+    <div class="col-md-4 p-3">
+        <a class="btn bg-body-tertiary round background grow-button d-block" role="button" href="#" target="_blank">
+            <div class="d-flex justify-content-center mb-2">
+                <img src="../../media/public_assets/imageTest.jpeg" alt="Logo" class="responsive-image-user round p-1">
+            </div>
+            <div class="text-content">
+                <h1 class="responsiveTitle">Informatique nous rend dépendant</h1>
+                <p class="lead responsiveText">Catégorie - 00-00-00 - Par l'auteur</p>
+                <p class="responsiveText">ça va parler chinois : Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit neskwik... VOIR PLUS</p>
+            </div>
+        </a>
     </div>
 </main>
