@@ -67,9 +67,8 @@
 
         document.getElementById("divButtonRole").addEventListener("click", function() {
             const isInput = event.target.closest('.input-group');
-            //const isFormSignetClass = event.target.closest('.formSignetClass');
             console.log(isInput, !isInput);
-            /*if (!isInput && !isCustomInput && isFormSignetClass) {
+            /*if (!isInput) {
                 window.location.href = "<?php echo $mapView['blogPostUrl'] ?>";
             }*/
         });
