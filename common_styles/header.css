@@ -41,7 +41,7 @@ a > img {
     background: linear-gradient(to top, var(--purple-light) 0%, var(--purple-light) 10%, transparent 10.01%) no-repeat left bottom / 0 100%;
     background-size: 99%!important;
 }
-.navbar-light .navbar-nav .nav-link {
+.navbar-light .navbar-nav .nav-link .bg-custom-purple{
     color: var(--purple-light);
 }
 .nav-link {
