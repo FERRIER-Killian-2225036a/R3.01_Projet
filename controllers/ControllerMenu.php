@@ -127,4 +127,9 @@ class ControllerMenu
 
         MotorView::show('menu/forumFeed');
     }
+
+    public function SearchAction(array $A_parametres = null, array $A_postParams = null): void
+    {
+        
+    }
 }

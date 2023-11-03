@@ -148,10 +148,10 @@ class Blog_PageLike
      */
     public function deleteAllPageLikeOfPage(int $PageId): void
     {
-            $sql = "DELETE FROM BLOG_PageLike WHERE PageId = :PageId";
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':PageId', $PageId);
-            $stmt->execute();
+        $sql = "DELETE FROM BLOG_PageLike WHERE PageId = :PageId";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':PageId', $PageId);
+        $stmt->execute();
 
     }
 
@@ -163,10 +163,10 @@ class Blog_PageLike
      */
     public function deleteAllPageLikeOfUser(int $UserId): void
     {
-            $sql = "DELETE FROM BLOG_PageLike WHERE UserId = :UserId";
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':UserId', $UserId);
-            $stmt->execute();
+        $sql = "DELETE FROM BLOG_PageLike WHERE UserId = :UserId";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':UserId', $UserId);
+        $stmt->execute();
     }
 
 
@@ -177,7 +177,7 @@ class Blog_PageLike
      * @param int $UserId
      * @return bool
      */
-    public function isBookmarkExist(int $PageId, int $UserId) : bool
+    public function isBookmarkExist(int $PageId, int $UserId): bool
     {
         $sql = "SELECT * FROM BLOG_PageLike WHERE PageId = :PageId AND UserId = :UserId";
         $stmt = $this->conn->prepare($sql);
@@ -188,5 +188,24 @@ class Blog_PageLike
             return true;
         }
         return false;
+    }
+
+
+    /**
+     * méthode pour recuperer 5 pages ou moins selon leur catégorie
+     *
+     * @param int|string $id
+     * @return false|array
+     */
+    public function get5pagesIdByCategoryId(int|string $id): false|array
+    {
+
+        $stmt = $this->conn->prepare("SELECT PageId FROM BLOG_Page WHERE CategoryId = ? ORDER BY DateBlog DESC LIMIT 5");
+        $stmt->bindParam(1, $id);
+        $stmt->execute();
+        $arrayOfId = $stmt->fetchAll(PDO::FETCH_COLUMN);
+        $stmt->closeCursor();
+        return $arrayOfId;
+
     }
 }

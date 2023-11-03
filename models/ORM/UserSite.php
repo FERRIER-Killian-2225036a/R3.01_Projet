@@ -702,5 +702,53 @@ class UserSite
         return true;
     }
 
+    /**
+     * méthode pour recuperer les identifiants des pseudos qui match avec l'input donné
+     *
+     * @param int|string $inputToSearch
+     * @param bool $BLACKLIST
+     * @return false|array
+     */
+    public function getUserIdByPseudo(int|string $inputToSearch, bool $BLACKLIST): false|array
+    {
+        if ($BLACKLIST) { // on cherche meme les users bannis
+            $stmt = $this->conn->prepare("SELECT UserId FROM USERSite WHERE Pseudo = ?");
+        } else {
+            $stmt = $this->conn->prepare("SELECT UserId FROM USERSite WHERE Pseudo = ? AND Status != 'banned'");
+
+        }
+        $stmt->bindValue(1, '%'.$inputToSearch.'%');
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $result;
+
+    }
+
+    /**
+     * méthode pour chercher a travers plusieurs attributs d'un user et voir si son input match avec l'un d'eux pour recuperer l'id
+     *
+     * @param int|string $inputToSearch
+     * @param bool $BLACKLIST
+     * @return false|array
+     */
+    public function getUserIdByResearch(int|string $inputToSearch, bool $BLACKLIST): false|array
+    {
+        if ($BLACKLIST){
+            $stmt = $this->conn->prepare("SELECT UserId FROM USERSite WHERE UserID = ? OR Pseudo LIKE ? OR Mail LIKE ? OR LastIpAdress LIKE ?");
+        }
+        else{
+            $stmt = $this->conn->prepare("SELECT UserId FROM USERSite WHERE UserID = ? OR Pseudo LIKE ? OR Mail LIKE ? OR LastIpAdress LIKE ? AND Status != 'banned'");
+        }
+        $stmt->bindValue(1, '%'.$inputToSearch.'%');
+        $stmt->bindValue(2, '%'.$inputToSearch.'%');
+        $stmt->bindValue(3, '%'.$inputToSearch.'%');
+        $stmt->bindValue(4, '%'.$inputToSearch.'%');
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $result;
+    }
+
 
 }

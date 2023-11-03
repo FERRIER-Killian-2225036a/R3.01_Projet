@@ -154,4 +154,21 @@ class Blog_Category
     }
     */
 
+    /**
+     * renvoie un tableau de toutes les identifiants de categorie ou l'input est dans la chaine du lable ou description
+     *
+     * @param int|string $inputToSearch
+     * @return bool|array
+     */
+    public function getCategoryIdByResearch(int|string $inputToSearch): bool|array
+    {
+        $sql = "SELECT CategoryId FROM BLOG_Category WHERE label LIKE :inputToSearch OR description LIKE :inputToSearch";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(':inputToSearch', '%' . $inputToSearch . '%');
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $result;
+    }
+
 }

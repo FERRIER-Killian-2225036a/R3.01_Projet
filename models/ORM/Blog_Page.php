@@ -112,6 +112,21 @@ class Blog_Page
     }
 
     /**
+     * Méthode pour verifier si une page existe par rapport a son id
+     *
+     * @param int $PageId
+     * @return bool
+     */
+    public function doesPageIdExist(int $PageId): bool
+    {
+        $stmt = $this->conn->prepare("SELECT count(*) FROM BLOG_Page WHERE PageId = ?");
+        $stmt->bindParam(1, $PageId);
+        $stmt->execute();
+        $count = $stmt->fetchColumn();
+        return $count > 0;
+    }
+
+    /**
      * Cette méthode permet de mettre a jour une page de blog
      *
      * @param int $PageId
@@ -124,9 +139,9 @@ class Blog_Page
      * @param string $statusP
      * @return bool
      */
-    public function updatePage(int    $PageId, string $TITLE, ?string $content, ?string $author, int $UserId,
+    public function updatePage(int     $PageId, string $TITLE, ?string $content, ?string $author, int $UserId,
                                ?string $UrlPicture = Constants::PICTURE_URL_DEFAULT,
-                               int    $NumberOfLikes = 0, string $statusP = "hidden"): bool
+                               int     $NumberOfLikes = 0, string $statusP = "hidden"): bool
     {
         // comme create page sauf que l'id est aussi renseigné en param
         if ($this->doesPageIdExist($PageId)) {
@@ -143,22 +158,6 @@ class Blog_Page
             $stmt->closeCursor();
             return true;
         } else return false;
-    }
-
-
-    /**
-     * Méthode pour verifier si une page existe par rapport a son id
-     *
-     * @param int $PageId
-     * @return bool
-     */
-    public function doesPageIdExist(int $PageId): bool
-    {
-        $stmt = $this->conn->prepare("SELECT count(*) FROM BLOG_Page WHERE PageId = ?");
-        $stmt->bindParam(1, $PageId);
-        $stmt->execute();
-        $count = $stmt->fetchColumn();
-        return $count > 0;
     }
 
     /**
@@ -313,29 +312,29 @@ class Blog_Page
         $count = $stmt->fetchColumn();
         return $count > 0;
     }
-/*
-    public function getValuesByUserId(mixed $UserId)
-    {
-        $mapArrayOfPageValues = null;
-        try {
-            if (!(new UserSite)->isUserIDExists($UserId)) {
-                throw new ExceptionsDatabase("This user doesn't exist");
+    /*
+        public function getValuesByUserId(mixed $UserId)
+        {
+            $mapArrayOfPageValues = null;
+            try {
+                if (!(new UserSite)->isUserIDExists($UserId)) {
+                    throw new ExceptionsDatabase("This user doesn't exist");
+                }
+
+                $stmt = $this->conn->prepare("SELECT * FROM BLOG_Page WHERE UserId = ?");
+                $stmt->bindParam(1, $UserId, PDO::PARAM_STR);
+                $stmt->execute();
+                $mapArrayOfPageValues = $stmt->fetch(PDO::FETCH_ASSOC); // Stocke le résultat dans le tableau
+
+                $stmt->closeCursor();
+            } catch (ExceptionsDatabase $e) {
+                //echo $e->getMessage();
+                return $e;
             }
 
-            $stmt = $this->conn->prepare("SELECT * FROM BLOG_Page WHERE UserId = ?");
-            $stmt->bindParam(1, $UserId, PDO::PARAM_STR);
-            $stmt->execute();
-            $mapArrayOfPageValues = $stmt->fetch(PDO::FETCH_ASSOC); // Stocke le résultat dans le tableau
-
-            $stmt->closeCursor();
-        } catch (ExceptionsDatabase $e) {
-            //echo $e->getMessage();
-            return $e;
+            return $mapArrayOfPageValues; // Retourne le tableau avec les valeurs de la requete
         }
-
-        return $mapArrayOfPageValues; // Retourne le tableau avec les valeurs de la requete
-    }
-*/
+    */
 
     /**
      * méthode pour dire si une page appartient a un utilisateur
@@ -361,13 +360,38 @@ class Blog_Page
      * @param string $newImg
      * @return void
      */
-    public function update_img(int $idPost,string $newImg): void
+    public function update_img(int $idPost, string $newImg): void
     {
         $stmt = $this->conn->prepare("UPDATE BLOG_Page SET UrlPicture = ? WHERE PageId = ?");
         $stmt->bindParam(1, $newImg);
         $stmt->bindParam(2, $idPost);
         $stmt->execute();
         $stmt->closeCursor();
+    }
+
+    /**
+     * Cette méthode permet de recuperer l'identifiant des pages dont la recherche correspond a l'input
+     *
+     * @param int|string $inputToSearch
+     * @param string $status
+     * @return false|array
+     */
+    public function getPageIdByResearch(int|string $inputToSearch, string $status): false|array
+    {
+        if ($status == "all") {
+            $stmt = $this->conn->prepare("SELECT PageId FROM BLOG_Page WHERE (TITLE LIKE ? OR content LIKE ?) LIMIT 5");
+            $stmt->bindValue(1, "%$inputToSearch%");
+            $stmt->bindValue(2, "%$inputToSearch%");
+        } else {
+            $stmt = $this->conn->prepare("SELECT PageId FROM BLOG_Page WHERE (TITLE LIKE ? OR content LIKE ?) AND statusP = ? LIMIT 5");
+            $stmt->bindValue(1, "%$inputToSearch%");
+            $stmt->bindValue(2, "%$inputToSearch%");
+            $stmt->bindValue(3, $status);
+        }
+        $stmt->execute();
+        $arrayOfId = $stmt->fetchAll(PDO::FETCH_COLUMN);
+        $stmt->closeCursor();
+        return $arrayOfId;
     }
 
 }

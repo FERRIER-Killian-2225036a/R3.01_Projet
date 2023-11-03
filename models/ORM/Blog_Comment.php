@@ -202,4 +202,44 @@ class Blog_Comment
             $this->deleteComment($CommentId);
         }
     }
+
+    /**
+     * Cette méthode retourne les identifiants des commentaires d'une page avec un status donné et qui contiennent un mot dans son texte
+     *
+     * @param int|string $inputToSearch
+     * @param string $status
+     * @return false|array
+     */
+    public function getCommentIdByResearch(int|string $inputToSearch, string $status): false|array
+    {
+        if ($status == 'all') {
+            $sql = "SELECT CommentId FROM BLOG_Comment WHERE textC LIKE ? LIMIT 5";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindValue(1, '%' . $inputToSearch . '%');
+        } else {
+            $sql = "SELECT CommentId FROM BLOG_Comment,BLOG_Page WHERE BLOG_Comment.PageId = BLOG_Page.PageId 
+                AND BLOG_Page.statusP = ? AND textC LIKE ? LIMIT 5";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(1, $status);
+            $stmt->bindValue(2, '%' . $inputToSearch . '%');
+        }
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+        // si la pageId a un status 'inactive/hidden' on ne recupere pas l'id du commentaire
+
+    }
+
+    /**
+     * @param string|int $id
+     * @return array|false
+     */
+    public function getPageIdByCommentId(string|int $id): false|array
+    {
+        $sql = "SELECT PageId FROM BLOG_Comment WHERE CommentId = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(1, $id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }

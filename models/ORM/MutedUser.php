@@ -28,4 +28,55 @@
 class MutedUser
 {
 
+
+    /**
+     * @var PDO $conn variable de connexion a la base de données
+     */
+    private PDO $conn;
+
+    /**
+     * @var DBBrain $DBBrain variable pour recuperer le cerveau de la bdd (méthodes utiles)
+     */
+    private DBBrain $DBBrain;
+
+    /**
+     * ITPage constructor.
+     */
+    public function __construct()
+    {
+        $this->DBBrain = new DBBrain();
+        $this->conn = $this->DBBrain->getConn();
+    }
+
+    /**
+     * pour rechercher un utilisateur banni par son id ou sa raison
+     *
+     * @param $inputToSearch
+     * @return array|false
+     */
+    public function getIdMuteByResearch($inputToSearch): false|array
+    {
+        $sql = "SELECT idMute FROM MUTE WHERE UserID = ? OR Reason LIKE ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(1, $inputToSearch, PDO::PARAM_INT);
+        $stmt->bindValue(2, $inputToSearch, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * méthode pour recuperer l'userId d'un mute
+     *
+     * @param string|int $id
+     * @return false|array
+     */
+    public function getUserIdByMuteId(string|int $id) :false|array
+    {
+        $sql = "SELECT UserID FROM MUTE WHERE idMute = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(1, $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
 }

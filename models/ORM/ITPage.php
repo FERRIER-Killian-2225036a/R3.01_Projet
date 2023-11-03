@@ -141,5 +141,32 @@ class ITPage
     // on pense aussi a mettre une limite (5 par 5)
     }*/
 
+    /**
+     * Cette methode renvoie les id des articles ou la recherche dans le titre ou contenu match
+     *
+     * @param int|string $inputToSearch
+     * @return false|array
+     */
+    public function getArticleIDByResearch(int|string $inputToSearch): false|array
+    {
+        $stmt = $this->conn->prepare("SELECT ArticleId FROM IT_Article WHERE title LIKE ? OR content LIKE ? LIMIT 5");
+        $stmt->bindValue(1, '%' . $inputToSearch . '%');
+        $stmt->bindValue(2, '%' . $inputToSearch . '%');
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_COLUMN);
+        $stmt->closeCursor();
+        return $result;
+    }
+
+    public function getLinkById(int $Id): string
+    {
+        $stmt = $this->conn->prepare("SELECT Lien FROM IT_Article WHERE ArticleId = ?");
+        $stmt->bindParam(1, $Id);
+        $stmt->execute();
+        $result = $stmt->fetchColumn();
+        $stmt->closeCursor();
+        return $result;
+    }
+
 
 }
