@@ -13,7 +13,7 @@
                 </div>
                 <!-- Formulaire pour suivre l'auteur -->
                 <form action="<?php echo $mapView["CurentUrlPost"]?>" method="post" >
-                    <button class="btn btn-custom-purple" name="follow" type="submit" id="followButton">Suivre</button>
+                    <button class="btn btn-custom-purple followButton" name="follow" type="submit">Suivre</button>
                 </form>
             </div>
             <!-- Section de partage et signet -->
@@ -71,7 +71,7 @@
         </div>
         <!-- Formulaire pour suivre l'auteur -->
         <form action="<?php echo $mapView["CurentUrlPost"]?>" method="post" >
-            <button class="btn btn-custom-purple" name="follow" type="submit" id="followButton">Suivre</button>
+            <button class="btn btn-custom-purple followButton" name="follow" type="submit" id="followButton">Suivre</button>
         </form>
     </div>
     <p>Contenu du commentaire de l'utilisateur</p>
@@ -99,7 +99,7 @@
 
         // Script pour le changement du bouton suivre
         // Sélection du bouton suivre
-        const followedButton = document.getElementById('followButton');
+        const followedButton = document.getElementsByClassName('followButton');
         // Récupération du boolen pour savoir si on suit l'utilisateur qui a posté
         const boolIsFollowed = <?php echo $mapView['BoolIsFollowed']? 1 : 0 ?>;
         // Condition si l'utilisateur est suivi
