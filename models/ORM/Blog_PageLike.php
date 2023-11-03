@@ -201,7 +201,6 @@ class Blog_PageLike
      */
     public function get5pagesIdByCategoryId(int|string $id): false|array
     {
-
         $stmt = $this->conn->prepare("SELECT PageId FROM BLOG_Page WHERE CategoryId = ? ORDER BY DateBlog DESC LIMIT 5");
         $stmt->bindParam(1, $id);
         $stmt->execute();

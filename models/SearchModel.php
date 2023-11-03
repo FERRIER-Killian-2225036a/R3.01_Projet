@@ -93,6 +93,7 @@ class SearchModel
                 case "BLOG_Category":
                     if ($value != false) {
                         $id = $value[0];
+                        print_r($id);
                         $arrayOfPagesId = (new Blog_PageLike())->get5pagesIdByCategoryId($id);
                         foreach ($arrayOfPagesId as $id) {
                             $arrayOfUrl[$key][] = "/Post/Blog/".$id;
