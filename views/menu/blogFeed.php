@@ -68,9 +68,9 @@
         document.getElementById("divButtonRole").addEventListener("click", function() {
             const isInput = event.target.closest('.input-group');
             console.log(isInput, !isInput);
-            /*if (!isInput) {
+            if (!isInput) {
                 window.location.href = "<?php echo $mapView['blogPostUrl'] ?>";
-            }*/
+            }
         });
     </script>
 </main>
