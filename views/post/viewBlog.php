@@ -48,18 +48,18 @@
     <script>
         // Sélectionnez le bouton par son ID
         const lienPartager = document.getElementById('lienPartager');
-
         // Sélectionnez le texte que vous souhaitez copier
         const texteACopier = 'https://cyphub.tech<?php echo $mapView['CurentUrlPost'] ?>';
-
+        // Sélectionnez le label par son ID
         const copyLabel = document.getElementById('copyLabel');
-
         // Ajoutez un gestionnaire d'événements de clic au bouton
         lienPartager.addEventListener('click', (e) => {
             e.preventDefault(); // Empêche le formulaire de se soumettre
+            // affichage du label
             copyLabel.style.display = 'flex';
             // Copiez le texte dans le presse-papiers de l'utilisateur
             navigator.clipboard.writeText(texteACopier)
+                // text affiché en fonction de l'état de la copie
                 .then(() => {
                     copyLabel.innerHTML = 'Texte copié avec succès !   ';
                 })
@@ -67,5 +67,8 @@
                     copyLabel.innerHTML = 'Erreur lors de la copie : ' + err;
                 });
         });
+
+        const boolIsFollowed = <?php echo $mapView['BoolIsFollowed']?>;
+        console.log(boolIsFollowed);
     </script>
 </div>
