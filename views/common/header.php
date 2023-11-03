@@ -31,14 +31,13 @@
         </div>
     </div>
 </nav>
-
-<nav class="navbar navbar-bottom navbar-expand navbar-light bg-light">
+<nav class="navbar navbar-bottom navbar-expand navbar-light <?php echo ($_SERVER['REQUEST_URI'] === "/") ? 'bg-custom-purple' : 'bg-light'; ?>">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav subNavbar">
-                <a class="nav-link" aria-current="page" href="/">Home</a>
-                <a class="nav-link" href="/Menu/ActualityFeed">Veille Tech</a>
-                <a class="nav-link" href="/Menu/BlogFeed">Blogs</a>
+                <a class="nav-link <?php echo ($_SERVER['REQUEST_URI'] === "/") ? 'text-white' : ''; ?>" aria-current="page" href="/">Home</a>
+                <a class="nav-link <?php echo ($_SERVER['REQUEST_URI'] === "/") ? 'text-white' : ''; ?>" href="/Menu/ActualityFeed">Veille Tech</a>
+                <a class="nav-link <?php echo ($_SERVER['REQUEST_URI'] === "/") ? 'text-white' : ''; ?>" href="/Menu/BlogFeed">Blogs</a>
                 <!--
                 <a class="nav-link" href="/Menu/ForumFeed">Forum</a>
                 -->
