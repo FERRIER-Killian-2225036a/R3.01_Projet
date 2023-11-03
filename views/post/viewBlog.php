@@ -68,8 +68,8 @@
                 });
         });
 
-        const followedButton = document.getElementById('followButton')
-        const boolIsFollowed = <?php echo $mapView['BoolIsFollowed']?>
+        const followedButton = document.getElementById('followButton');
+        const boolIsFollowed = <?php echo $mapView['BoolIsFollowed']?>;
         if (boolIsFollowed === 1) {
             followedButton.innerHTML = 'Suivie'
         }
