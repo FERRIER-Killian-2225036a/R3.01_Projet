@@ -73,6 +73,7 @@
         if (boolIsFollowed === 1) {
             followedButton.innerHTML = 'Suivie'
             followedButton.style.backgroundColor = 'var(--purple)';
+            followedButton.style.color = 'white';
         }
     </script>
 </div>
