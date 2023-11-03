@@ -140,11 +140,23 @@ class ControllerMenu
     {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if (isset($A_postParams["Search"])) {
+                $input = $A_postParams["Search"];
+                $input = htmlspecialchars($input);
+                $input = trim($input);
+                $result = null;
+
                 if (SessionManager::isUserConnected()) {
+                    if ( (new USERSiteModel($_SESSION["UserId"]))->getRole()=="registered"  ){
+                        $result = (new SearchModel())->researchAsUser($input);
+                    } else{
+                        $result = (new SearchModel())->researchAsStaff($input);
+                    }
 
                 } else {
+                    $result = (new SearchModel())->researchAsNobody($input);
 
                 }
+                print_r($result);
             }
         }
 
