@@ -162,9 +162,11 @@ class Blog_Category
      */
     public function getCategoryIdByResearch(int|string $inputToSearch): bool|array
     {
-        $sql = "SELECT CategoryId FROM BLOG_Category WHERE label LIKE :inputToSearch OR description LIKE :inputToSearch";
+        $sql = "SELECT CategoryId FROM BLOG_Category WHERE label LIKE ? OR description LIKE ?";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindValue(':inputToSearch', '%' . $inputToSearch . '%');
+        $stmt->bindValue(1, '%' . $inputToSearch . '%');
+        $stmt->bindValue(2, '%' . $inputToSearch . '%');
+
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
