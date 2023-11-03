@@ -79,56 +79,56 @@
             <p>Contenu du commentaire de l'utilisateur</p>
         </div>
     </div>
-    <script>
-        // Script pour le bouton de partage
-        // Sélection du bouton par son ID
-        const lienPartager = document.getElementById('lienPartager');
-        // Sélection du texte qu'on souhaite copier
-        const texteACopier = 'https://cyphub.tech<?php echo $mapView['CurentUrlPost'] ?>';
-        // Sélection du label par son ID
-        const copyLabel = document.getElementById('copyLabel');
-        // Ajoutez un gestionnaire d'événements de clic au bouton
-        lienPartager.addEventListener('click', (e) => {
-            e.preventDefault(); // Empêche le formulaire de se soumettre
-            copyLabel.style.display = 'flex';
-            // Copiez le texte dans le presse-papiers de l'utilisateur
-            navigator.clipboard.writeText(texteACopier)
-                .then(() => {
-                    copyLabel.innerHTML = 'Texte copié avec succès !   ';
-                })
-                .catch((err) => {
-                    copyLabel.innerHTML = 'Erreur lors de la copie : ' + err;
-                });
-        });
-
-        // Script pour le changement du bouton suivre
-        // Sélection du bouton suivre
-        const followedButton = document.getElementsByClassName('followButton');
-        // Récupération du boolen pour savoir si on suit l'utilisateur qui a posté
-        const boolIsFollowed = <?php echo $mapView['BoolIsFollowed']? 1 : 0 ?>;
-        // Condition si l'utilisateur est suivi
-        if (boolIsFollowed === 1) {
-            // On change le texte du bouton
-            followedButton.innerHTML = 'Suivi';
-            // On met le fond en violet
-            followedButton.style.backgroundColor = 'var(--purple)';
-            // On met le texte en blanc
-            followedButton.style.color = 'white';
-        }
-
-        // Script pour le changement du logo signet
-        // Récupération du booleen pour savoir si le post est enregistré ou pas
-        const boolIsPostBookmarked = <?php echo $mapView['BoolIsPostBookmarked'] ? 1 : 0 ?>;
-        // Sélection du signet d'ajout
-        const svgBookmarkAdd = document.getElementById('svgBookmarkAdd');
-        // Sélection du signet de suppression
-        const svgBookmarkDel = document.getElementById('svgBookmarkDel');
-        // Condition si l'utilisateur a enregistré le post
-        if (boolIsPostBookmarked === 1) {
-            // On cache le signet d'ajout
-            svgBookmarkAdd.style.display = 'none';
-            // On affiche le signet de suppression
-            svgBookmarkDel.style.display = 'flex';
-        }
-    </script>
 </div>
+<script>
+    // Script pour le bouton de partage
+    // Sélection du bouton par son ID
+    const lienPartager = document.getElementById('lienPartager');
+    // Sélection du texte qu'on souhaite copier
+    const texteACopier = 'https://cyphub.tech<?php echo $mapView['CurentUrlPost'] ?>';
+    // Sélection du label par son ID
+    const copyLabel = document.getElementById('copyLabel');
+    // Ajoutez un gestionnaire d'événements de clic au bouton
+    lienPartager.addEventListener('click', (e) => {
+        e.preventDefault(); // Empêche le formulaire de se soumettre
+        copyLabel.style.display = 'flex';
+        // Copiez le texte dans le presse-papiers de l'utilisateur
+        navigator.clipboard.writeText(texteACopier)
+            .then(() => {
+                copyLabel.innerHTML = 'Texte copié avec succès !   ';
+            })
+            .catch((err) => {
+                copyLabel.innerHTML = 'Erreur lors de la copie : ' + err;
+            });
+    });
+
+    // Script pour le changement du bouton suivre
+    // Sélection du bouton suivre
+    const followedButton = document.getElementsByClassName('followButton');
+    // Récupération du boolen pour savoir si on suit l'utilisateur qui a posté
+    const boolIsFollowed = <?php echo $mapView['BoolIsFollowed']? 1 : 0 ?>;
+    // Condition si l'utilisateur est suivi
+    if (boolIsFollowed === 1) {
+        // On change le texte du bouton
+        followedButton.innerHTML = 'Suivi';
+        // On met le fond en violet
+        followedButton.style.backgroundColor = 'var(--purple)';
+        // On met le texte en blanc
+        followedButton.style.color = 'white';
+    }
+
+    // Script pour le changement du logo signet
+    // Récupération du booleen pour savoir si le post est enregistré ou pas
+    const boolIsPostBookmarked = <?php echo $mapView['BoolIsPostBookmarked'] ? 1 : 0 ?>;
+    // Sélection du signet d'ajout
+    const svgBookmarkAdd = document.getElementById('svgBookmarkAdd');
+    // Sélection du signet de suppression
+    const svgBookmarkDel = document.getElementById('svgBookmarkDel');
+    // Condition si l'utilisateur a enregistré le post
+    if (boolIsPostBookmarked === 1) {
+        // On cache le signet d'ajout
+        svgBookmarkAdd.style.display = 'none';
+        // On affiche le signet de suppression
+        svgBookmarkDel.style.display = 'flex';
+    }
+</script>
