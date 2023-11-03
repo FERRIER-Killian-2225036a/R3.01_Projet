@@ -13,7 +13,7 @@
                 </div>
                 <!-- Formulaire pour suivre l'auteur -->
                 <form action="<?php echo $mapView["CurentUrlPost"]?>" method="post" >
-                    <button class="btn btn-custom-purple" name="follow" type="submit">Suivre</button>
+                    <button class="btn btn-custom-purple" name="follow" type="submit" id="followButton">Suivre</button>
                 </form>
             </div>
             <!-- Section de partage et signet -->
@@ -68,7 +68,10 @@
                 });
         });
 
-        const boolIsFollowed = <?php echo $mapView['BoolIsFollowed']?>;
-        console.log(boolIsFollowed);
+        const followedButton = document.getElementById('followButton')
+        const boolIsFollowed = <?php echo $mapView['BoolIsFollowed']?>
+        if (boolIsFollowed === 1) {
+            followedButton.innerHTML = 'Suivie'
+        }
     </script>
 </div>
