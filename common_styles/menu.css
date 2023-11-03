@@ -1,58 +1,72 @@
+/* Styles pour la classe .background */
 .background {
     background: var(--background-color);
 }
+
+/* Styles pour la classe .custom-input */
 .custom-input {
-    width: 20em;  /* Hauteur par défaut pour tous les écrans */
+    width: 20em; /* Largeur par défaut pour tous les écrans */
 }
+
+/* Styles pour la classe .col-lg-4 */
 .col-lg-4 {
     width: 80%;
 }
 
+/* Styles pour les boutons dans .input-group-append */
 .input-group-append > .btn {
-    margin-left: 1em!important;
+    margin-left: 1em !important;
 }
 
+/* Styles pour .input-group, sauf les éléments spécifiés */
 .input-group:not(.has-validation)>:not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
     border-top-right-radius: 5em;
     border-bottom-right-radius: 5em;
 }
+
+/* Styles pour les éléments avec la classe .round */
 .round {
     border-radius: var(--border-radius-large) !important;
 }
 
+/* Styles pour la classe .padding */
 .padding {
     padding-top: var(--large-padding) !important;
     padding-bottom: var(--large-padding) !important;
 }
 
+/* Styles pour l'ombre */
 .shadow {
     box-shadow: var(--shadow-default) 0 3px 8px;
 }
 
+/* Styles pour les boutons */
 .btn {
     text-align: left;
 }
 
-/* General styles */
+/* Styles généraux */
 .bg-body-tertiary {
     display: flex;
     align-items: center;
 }
 
+/* Styles pour les images responsives */
 .responsive-image {
     max-width: 40%;
     height: 243px;
     flex-shrink: 0;
-    width: 100%!important;
+    width: 100% !important;
     object-fit: cover;
 }
 
+/* Styles pour le contenu texte */
 .text-content {
     margin-left: 1rem;
     flex-grow: 1;
 }
 
-/* Responsive styles */
+/* Styles responsifs */
 @media (max-width: 768px) {
     .bg-body-tertiary {
         flex-direction: column;
@@ -71,7 +85,7 @@
     }
 }
 
-/* Hover effect */
+/* Effet de survol des boutons */
 .grow-button {
     padding: 10px 20px;
     font-size: 16px;
@@ -86,16 +100,24 @@
     transform: scale(1.03);
     box-shadow: 0 3px 8px var(--shadow-hover);
 }
+
+/* Styles pour les images dans des liens */
 a > img {
-    width: auto!important;
+    width: auto !important;
 }
 
+/* Styles pour les éléments avec la classe .lead */
 .lead {
     font-size: 1em;
 }
 
+/* Styles pour l'élément avec l'ID #signetImg */
 #signetImg {
     height: 30px;
     width: 30px;
     margin-left: 2em;
 }
+
+/* Styles pour le menu */
+
+/* Fin des styles pour le menu */
