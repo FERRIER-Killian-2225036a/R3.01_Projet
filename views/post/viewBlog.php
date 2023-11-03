@@ -54,14 +54,12 @@
     </div>
     <script>
         // Script pour le bouton de partage
-        // Sélectionnez le bouton par son ID
+        // Sélection du bouton par son ID
         const lienPartager = document.getElementById('lienPartager');
-
-        // Sélectionnez le texte que vous souhaitez copier
+        // Sélection du texte qu'on souhaite copier
         const texteACopier = 'https://cyphub.tech<?php echo $mapView['CurentUrlPost'] ?>';
-
+        // Sélection du label par son ID
         const copyLabel = document.getElementById('copyLabel');
-
         // Ajoutez un gestionnaire d'événements de clic au bouton
         lienPartager.addEventListener('click', (e) => {
             e.preventDefault(); // Empêche le formulaire de se soumettre
@@ -79,12 +77,12 @@
         // Script pour le changement du bouton suivre
         // Sélection du bouton suivre
         const followedButton = document.getElementById('followButton');
-        // Récupération du booleen pour savoir si on suit l'utilisateur qui a posté
+        // Récupération du boolen pour savoir si on suit l'utilisateur qui a posté
         const boolIsFollowed = <?php echo $mapView['BoolIsFollowed']?>;
-        // Condition si l'utilisateur est suivie
+        // Condition si l'utilisateur est suivi
         if (boolIsFollowed === 1) {
             // On change le texte du bouton
-            followedButton.innerHTML = 'Suivie';
+            followedButton.innerHTML = 'Suivi';
             // On met le fond en violet
             followedButton.style.backgroundColor = 'var(--purple)';
             // On met le texte en blanc
@@ -92,7 +90,6 @@
         }
 
         // Script pour le changement du logo signet
-
         const boolIsPostBookmarked = <?php echo $mapView['BoolIsPostBookmarked']?>;
         const svgBookmarkAdd = document.getElementById('svgBookmarkAdd');
         const svgBookmarkDel = document.getElementById('svgBookmarkDel');
@@ -100,5 +97,6 @@
             svgBookmarkAdd.style.display = 'none';
             svgBookmarkDel.style.display = 'flex';
         }
+
     </script>
 </div>
