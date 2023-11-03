@@ -1,6 +1,4 @@
 <link rel="stylesheet" href="../../common_styles/menu.css">
-<link rel="stylesheet" href="../../common_styles/general.css">
-
 <!-- Élément principal de la page -->
 <main class="container">
     <div class="p-3">
@@ -19,7 +17,4 @@
             </div>
         </a>
     </div>
-
-    <!-- Inclusion d'un script JavaScript -->
-    <script src="../../common_scripts/maxTextSize.js"></script>
 </main>
