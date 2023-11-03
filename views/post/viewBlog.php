@@ -78,7 +78,7 @@
         // Sélection du bouton suivre
         const followedButton = document.getElementById('followButton');
         // Récupération du boolen pour savoir si on suit l'utilisateur qui a posté
-        const boolIsFollowed = <?php echo $mapView['BoolIsFollowed']? 0 : 1 ?>;
+        const boolIsFollowed = <?php echo $mapView['BoolIsFollowed']? 1 : 0 ?>;
         // Condition si l'utilisateur est suivi
         if (boolIsFollowed === 1) {
             // On change le texte du bouton
@@ -90,7 +90,7 @@
         }
 
         // Script pour le changement du logo signet
-        /*const boolIsPostBookmarked = <?php echo $mapView['BoolIsPostBookmarked'] ? 0 : 1 ?>;
+        /*const boolIsPostBookmarked = <?php echo $mapView['BoolIsPostBookmarked'] ? 1 : 0 ?>;
         console.log(boolIsPostBookmarked);
         const svgBookmarkAdd = document.getElementById('svgBookmarkAdd');
         const svgBookmarkDel = document.getElementById('svgBookmarkDel');
