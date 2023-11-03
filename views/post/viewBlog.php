@@ -77,8 +77,22 @@
                 </form>
             </div>
             <p>Contenu du commentaire de l'utilisateur</p>
+            <hr>
+            <div class="col-md-6 d-flex align-items-center">
+                <img src="<?php echo $mapView['ImgProfil'] ?>" alt="image" class="rounded-circle mr-3">
+                <div id="textUser">
+                    <p class="mb-0"><?php echo $mapView['Author'] ?></p>
+                    <small><?php echo $mapView['NumberOfFollower'] ?> abonnés</small>
+                </div>
+                <!-- Formulaire pour suivre l'auteur -->
+                <form action="<?php echo $mapView["CurentUrlPost"]?>" method="post" >
+                    <button class="btn btn-custom-purple followButton" name="follow" type="submit">Suivre</button>
+                </form>
+            </div>
+            <p>Contenu du commentaire de l'utilisateur</p>
         </div>
     </div>
+
 </div>
 <script>
     // Script pour le bouton de partage
