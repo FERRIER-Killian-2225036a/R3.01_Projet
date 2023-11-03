@@ -122,12 +122,14 @@
     const boolIsPostBookmarked = <?php echo $mapView['BoolIsPostBookmarked'] ? 1 : 0 ?>;
     // Sélection du signet d'ajout
     const svgBookmarkAdd = document.getElementById('svgBookmarkAdd');
+    console.log(svgBookmarkAdd);
     // Sélection du signet de suppression
     const svgBookmarkDel = document.getElementById('svgBookmarkDel');
     // Condition si l'utilisateur a enregistré le post
     if (boolIsPostBookmarked === 1) {
         // On cache le signet d'ajout
-        svgBookmarkAdd.style.display = 'none';
+        //svgBookmarkAdd.style.display = 'none';
+        svgBookmarkAdd.setProperty("display", 'none');
         // On affiche le signet de suppression
         svgBookmarkDel.style.display = 'flex';
     }
