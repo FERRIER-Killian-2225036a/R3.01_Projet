@@ -54,7 +54,7 @@
     </div>
     <hr>
     <div class="input-group align-items-center">
-        <label>
+        <label style="width: 100%">
             <input type="text" class="form-control custom-input inputBackground" placeholder="Commenter">
         </label>
     </div>
