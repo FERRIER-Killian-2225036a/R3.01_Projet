@@ -53,7 +53,6 @@
         // Script pour le changement du logo signet
         // Récupération du booleen pour savoir si le post est enregistré ou pas
         const boolIsPostBookmarked = <?php echo $mapView['BoolIsPostBookmarked'] ? 1 : 0 ?>;
-        console.log(boolIsPostBookmarked);
         // Sélection du signet d'ajout
         const svgBookmarkAdd = document.getElementById('svgBookmarkAdd');
         // Sélection du signet de suppression
@@ -66,13 +65,16 @@
             svgBookmarkDel.style.display = 'flex';
         }
 
+        /*
         // Gestionnaire d'événements pour le signet
         document.getElementById("formSignet").addEventListener("click", function(event) {
             // Empêche la propagation de l'événement au parent (divButtonRole)
             event.stopPropagation();
         });
-        const elementsWithClass = document.querySelectorAll('.formSignetClass');
+        */
 
+        //const elementsWithClass = document.querySelectorAll('.formSignetClass');
+        const elementsWithClass = document.getElementsByClassName('formSignetClass');
         elementsWithClass.forEach((element) => {
             element.addEventListener('click', function(event) {
                 event.stopPropagation();
