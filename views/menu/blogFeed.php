@@ -65,21 +65,18 @@
             svgBookmarkDel.style.display = 'flex';
         }
 
-        /*
-        // Gestionnaire d'événements pour le signet
-        document.getElementById("formSignet").addEventListener("click", function(event) {
-            // Empêche la propagation de l'événement au parent (divButtonRole)
-            event.stopPropagation();
-        });
-        */
+        // Sélection de tous les éléments avec la classe .formSignetClass
+        const elementsWithClass = document.querySelectorAll('.formSignetClass');
 
-        //const elementsWithClass = document.querySelectorAll('.formSignetClass');
-        const elementsWithClass = document.getElementsByClassName('formSignetClass');
+        // Fonction pour gérer le clic sur ces éléments
+        function handleClick(event) {
+            event.stopPropagation();
+            // Votre code pour gérer le clic sur cet élément ici
+        }
+
+        // Ajout du gestionnaire d'événements à chaque élément
         elementsWithClass.forEach((element) => {
-            element.addEventListener('click', function(event) {
-                event.stopPropagation();
-                // Votre code pour gérer le clic sur cet élément ici
-            });
+            element.addEventListener('click', handleClick);
         });
 
         document.getElementById("divButtonRole").addEventListener("click", function() {
