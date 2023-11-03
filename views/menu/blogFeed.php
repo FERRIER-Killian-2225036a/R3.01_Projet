@@ -69,7 +69,7 @@
             const isInput = event.target.closest('.input-group');
             const isCustomInput = event.target.classList.contains('custom-input');
             const isFormSignetClass = event.target.closest('.formSignetClass');
-            console.log(isInput, isCustomInput, !isFormSignetClass);
+            console.log(isFormSignetClass, !isFormSignetClass);
             /*if (!isInput && !isCustomInput && isFormSignetClass) {
                 window.location.href = "<?php echo $mapView['blogPostUrl'] ?>";
             }*/
