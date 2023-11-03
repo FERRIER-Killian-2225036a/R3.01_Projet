@@ -20,5 +20,6 @@
             MotorView::show('common/footer');
             require 'common_scripts/general_scripts.php';
         ?>
+        <script src="/common_scripts/maxTextSize.js"></script>
     </body>
 </html>
