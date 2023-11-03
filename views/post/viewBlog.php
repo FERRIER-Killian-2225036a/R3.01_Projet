@@ -25,11 +25,11 @@
                 <!-- Formulaire pour ajouter aux signets -->
                 <form action="<?php echo $mapView["CurentUrlPost"]?>" method="post">
                     <button name="bookmark" title="Signet" type="submit" id="formSignet">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="2.3em" height="2.3em" fill="currentColor" class="bi bi-bookmark-plus" viewBox="0 0 16 16">
+                        <svg xmlns="http://www.w3.org/2000/svg" id="svgBookmarkAdd" width="2.3em" height="2.3em" fill="currentColor" class="bi bi-bookmark-plus" viewBox="0 0 16 16">
                             <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
                             <path d="M8 4a.5.5 0 0 1 .5.5V6H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V7H6a.5.5 0 0 1 0-1h1.5V4.5A.5.5 0 0 1 8 4z"/>
                         </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="2.3em" height="2.3em" fill="currentColor" class="bi bi-bookmark-x" viewBox="0 0 16 16" style="display: none">
+                        <svg xmlns="http://www.w3.org/2000/svg" id="svgBookmarkDel" width="2.3em" height="2.3em" fill="currentColor" class="bi bi-bookmark-x" viewBox="0 0 16 16" style="display: none">
                             <path fill-rule="evenodd" d="M6.146 5.146a.5.5 0 0 1 .708 0L8 6.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 7l1.147 1.146a.5.5 0 0 1-.708.708L8 7.707 6.854 8.854a.5.5 0 1 1-.708-.708L7.293 7 6.146 5.854a.5.5 0 0 1 0-.708z"/>
                             <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
                         </svg>
@@ -53,20 +53,19 @@
         </div>
     </div>
     <script>
-        // Sélectionnez le bouton par son ID
+        // Script pour le bouton de partage
+        // Sélection du bouton par son ID lienPartager
         const lienPartager = document.getElementById('lienPartager');
-        // Sélectionnez le texte que vous souhaitez copier
-        const texteACopier = 'https://cyphub.tech<?php echo $mapView['CurentUrlPost'] ?>';
         // Sélectionnez le label par son ID
         const copyLabel = document.getElementById('copyLabel');
-        // Ajoutez un gestionnaire d'événements de clic au bouton
+        // Ajout d'un gestionnaire d'événements de clic au bouton
         lienPartager.addEventListener('click', (e) => {
             e.preventDefault(); // Empêche le formulaire de se soumettre
-            // affichage du label
+            // Affichage du label
             copyLabel.style.display = 'flex';
-            // Copiez le texte dans le presse-papiers de l'utilisateur
-            navigator.clipboard.writeText(texteACopier)
-                // text affiché en fonction de l'état de la copie
+            // Copie du texte dans le presse-papiers de l'utilisateur
+            navigator.clipboard.writeText('https://cyphub.tech<?php echo $mapView['CurentUrlPost'] ?>')
+                // Text affiché en fonction de l'état de la copie
                 .then(() => {
                     copyLabel.innerHTML = 'Texte copié avec succès !   ';
                 })
@@ -75,12 +74,29 @@
                 });
         });
 
+        // Script pour le changement du bouton suivre
+        // Sélection du bouton suivre
         const followedButton = document.getElementById('followButton');
+        // Récupération du booleen pour savoir si on suit l'utilisateur qui a posté
         const boolIsFollowed = <?php echo $mapView['BoolIsFollowed']?>;
+        // Condition si l'utilisateur est suivie
         if (boolIsFollowed === 1) {
+            // On change le texte du bouton
             followedButton.innerHTML = 'Suivie'
+            // On met le fond en violet
             followedButton.style.backgroundColor = 'var(--purple)';
+            // On met le texte en blanc
             followedButton.style.color = 'white';
+        }
+
+        // Script pour le changement du logo signet
+
+        const boolIsPostBookmarked = <?php echo $mapView['BoolIsPostBookmarked']?>;
+        const svgBookmarkAdd = document.getElementById('svgBookmarkAdd');
+        const svgBookmarkDel = document.getElementById('svgBookmarkDel');
+        if (boolIsPostBookmarked === 1) {
+            svgBookmarkAdd.style.display = 'none';
+            svgBookmarkDel.style.display = 'flex';
         }
     </script>
 </div>
