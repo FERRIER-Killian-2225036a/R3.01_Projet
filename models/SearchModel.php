@@ -99,7 +99,7 @@ class SearchModel
 
                         foreach ($value as $catIdList){
                             foreach($catIdList as $catId){
-                                $pages[] = (new Blog_Page())->get5PagesByCategory($catId);
+                                $pages[] = (new Blog_categoryPage())->get5PagesByCategory($catId);
                             }
                             // on recupere les 5 pages les plus récentes qui ont la catégorie donnée
                         }
