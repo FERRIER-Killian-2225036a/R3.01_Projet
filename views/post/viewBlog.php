@@ -116,7 +116,8 @@
         followedButton[0].style.backgroundColor = 'var(--purple)';
         followedButton[1].style.backgroundColor = 'var(--purple)';
         // On met le texte en blanc
-        followedButton.style.color = 'white';
+        followedButton[0].style.color = 'white';
+        followedButton[1].style.color = 'white';
     }
 
     // Script pour le changement du logo signet
