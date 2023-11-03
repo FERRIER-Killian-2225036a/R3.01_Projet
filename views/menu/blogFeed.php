@@ -89,7 +89,4 @@
             }
         });
     </script>
-
-    <!-- Inclusion d'un script JavaScript externe -->
-    <script src="/common_scripts/maxTextSize.js"></script>
 </main>
