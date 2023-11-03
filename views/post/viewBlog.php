@@ -88,7 +88,7 @@
             // On met le texte en blanc
             followedButton.style.color = 'white';
         }
-        /*
+
         // Script pour le changement du logo signet
         const boolIsPostBookmarked = <?php echo $mapView['BoolIsPostBookmarked']?>;
         const svgBookmarkAdd = document.getElementById('svgBookmarkAdd');
@@ -97,6 +97,6 @@
             svgBookmarkAdd.style.display = 'none';
             svgBookmarkDel.style.display = 'flex';
         }
-        */
+        /**/
     </script>
 </div>
