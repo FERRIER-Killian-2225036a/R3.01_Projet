@@ -125,7 +125,8 @@
     // Condition si l'utilisateur est suivi
     if (boolIsFollowed === 1) {
         // On change le texte du bouton
-        followedButton.innerHTML = 'Suivi';
+        followedButton[0].innerHTML = 'Suivi';
+        followedButton[1].innerHTML = 'Suivi';
         // On met le fond en violet
         followedButton[0].style.backgroundColor = 'var(--purple)';
         followedButton[1].style.backgroundColor = 'var(--purple)';
