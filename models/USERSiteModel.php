@@ -108,9 +108,9 @@ class USERSiteModel
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getUrlPicture(): string
+    public function getUrlPicture(): ?string
     {
         return $this->UrlPicture;
     }
