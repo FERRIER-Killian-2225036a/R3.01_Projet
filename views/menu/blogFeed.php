@@ -58,6 +58,21 @@
                 window.location.href = "<?php echo $mapView['blogPostUrl'] ?>";
             }
         });
+
+        // Script pour le changement du logo signet
+        // Récupération du booleen pour savoir si le post est enregistré ou pas
+        const boolIsPostBookmarked = <?php echo $mapView['BoolIsPostBookmarked'] ? 1 : 0 ?>;
+        // Sélection du signet d'ajout
+        const svgBookmarkAdd = document.getElementById('svgBookmarkAdd');
+        // Sélection du signet de suppression
+        const svgBookmarkDel = document.getElementById('svgBookmarkDel');
+        // Condition si l'utilisateur a enregistré le post
+        if (boolIsPostBookmarked === 1) {
+            // On cache le signet d'ajout
+            svgBookmarkAdd.style.display = 'none';
+            // On affiche le signet de suppression
+            svgBookmarkDel.style.display = 'flex';
+        }
     </script>
 
     <!-- Inclusion d'un script JavaScript externe -->
