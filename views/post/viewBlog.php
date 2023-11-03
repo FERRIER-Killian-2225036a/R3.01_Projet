@@ -54,10 +54,12 @@
     </div>
     <hr>
     <div class="row justify-content-center mt-4">
-        <div class="input-group align-items-center col-8">
+        <div class="col-8">
+        <div class="input-group align-items-center">
             <label style="width: 100%">
                 <input type="text" class="form-control custom-input inputBackground" placeholder="Commenter">
             </label>
+        </div>
         </div>
     </div>
     <hr>
