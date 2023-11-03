@@ -721,7 +721,6 @@ class UserSite
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
-        print_r($result);
         return $result;
 
     }
