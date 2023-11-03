@@ -118,3 +118,7 @@ a > img {
     background: 0;
     border: 0;
 }
+
+#searchContainer {
+    padding-inline: 11em;
+}
