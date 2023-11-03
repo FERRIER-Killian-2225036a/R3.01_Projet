@@ -46,7 +46,7 @@ class SearchModel
     public function researchAsNobody(string|int $inputToSearch): array
     {
         $arrayOfResult["IT_Articles"] = (new ITPage())->getArticleIDByResearch($inputToSearch);
-        $arrayOfResult["USERSite"] = (new USERSite())->getUserIdByPseudo($inputToSearch, false); // deuxieme arguement enlever les blackLists
+        $arrayOfResult["USERSite"] = (new UserSite())->getUserIdByPseudo($inputToSearch, false); // deuxieme arguement enlever les blackLists
         $arrayOfUrl = $this->transformSearchResultToUrl($arrayOfResult);
         return $arrayOfUrl;
     }
@@ -81,6 +81,7 @@ class SearchModel
                 case "BlOG_Page":
                     if ($value != false) {
                         foreach ($value as $id) {
+                                error_log("id : " . $id);
                                 $arrayOfUrl[$key][] = "/Post/Blog/" . $id;
 
                         }
@@ -151,7 +152,7 @@ class SearchModel
     public function researchAsUser(string|int $inputToSearch): array
     {
         $arrayOfResult["IT_Articles"] = (new ITPage())->getArticleIDByResearch($inputToSearch);
-        $arrayOfResult["USERSite"] = (new USERSite())->getUserIdByPseudo($inputToSearch, false);
+        $arrayOfResult["USERSite"] = (new UserSite())->getUserIdByPseudo($inputToSearch, false);
         //$arrayOfResult["FORUM_Page"] = (new ForumPage())->getPageIdByResearch($inputToSearch,'active');
         //$arrayOfResult["FORUM_Comment"] = (new ForumComment())->getCommentIdByResearch($inputToSearch,'active');
         //$arrayOfResult["FORUM_Category"] = (new ForumCategory())->getCategoryIdByResearch($inputToSearch);
@@ -171,7 +172,7 @@ class SearchModel
     public function researchAsStaff(int|string $inputToSearch): array
     {
         $arrayOfResult["IT_Articles"] = (new ITPage())->getArticleIDByResearch($inputToSearch);
-        $arrayOfResult["USERSite"] = (new USERSite())->getUserIdByResearch($inputToSearch, true);
+        $arrayOfResult["USERSite"] = (new UserSite())->getUserIdByResearch($inputToSearch, true);
         //$arrayOfResult["FORUM_Page"] = (new ForumPage())->getPageIdByResearch($inputToSearch,'all');
         //$arrayOfResult["FORUM_Comment"] = (new ForumComment())->getCommentIdByResearch($inputToSearch,'all');
         //$arrayOfResult["FORUM_Category"] = (new ForumCategory())->getCategoryIdByResearch($inputToSearch);
