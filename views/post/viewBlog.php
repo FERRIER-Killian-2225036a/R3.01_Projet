@@ -120,7 +120,7 @@
     // Sélection du bouton suivre
     const followedButton = document.getElementsByClassName('followButton');
     // Récupération du boolen pour savoir si on suit l'utilisateur qui a posté
-    const boolIsFollowed = <?php echo $mapView['BoolIsFollowed'] ? 1 : 0 ?>;
+    let boolIsFollowed = <?php echo $mapView['BoolIsFollowed'] ? 1 : 0 ?>; // TODO php mauvais user, a changer (author au lieu de user) pas sure a verif ?
     // Condition si l'utilisateur est suivi
     if (boolIsFollowed === 1) {
         for (let i = 0; i < followedButton.length; ++i) {
@@ -135,7 +135,7 @@
 
     // Script pour le changement du logo signet
     // Récupération du booleen pour savoir si le post est enregistré ou pas
-    const boolIsPostBookmarked = <?php echo $mapView['BoolIsPostBookmarked'] ? 1 : 0 ?>;
+    let boolIsPostBookmarked = <?php echo $mapView['BoolIsPostBookmarked'] ? 1 : 0 ?>; //TODO same ici mais pas sure
     // Sélection du signet d'ajout
     const svgBookmarkAdd = document.getElementById('svgBookmarkAdd');
     // Sélection du signet de suppression
