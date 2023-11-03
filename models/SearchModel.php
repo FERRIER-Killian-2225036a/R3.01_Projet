@@ -71,22 +71,28 @@ class SearchModel
                     break;
                 case "USERSite":
                     if ($value != false) {
-                        foreach ($value as $id) {
-                            $arrayOfUrl[$key][] = "/User/Profil/" . $id;
+                        foreach ($value as $idUsers) {
+                            foreach ($idUsers as $id) {
+                                $arrayOfUrl[$key][] = "/User/Profil/" . $id;
+                            }
                         }
                     }
                     break;
                 case "BlOG_Page":
                     if ($value != false) {
-                        foreach ($value as $id) {
-                            $arrayOfUrl[$key][] = "/Post/Blog/" . $id;
+                        foreach ($value as $idPages) {
+                            foreach($idPages as $id){
+                                $arrayOfUrl[$key][] = "/Post/Blog/" . $id;
+                            }
                         }
                     }
                     break;
                 case "BLOG_Comment":
                     if ($value != false) {
-                        foreach ($value as $id) {
-                            $arrayOfUrl[$key][] = "/Post/Blog/" . (new Blog_Comment())->getPageIdByCommentId($id);
+                        foreach ($value as $idComments) {
+                            foreach ($idComments as $id) {
+                                $arrayOfUrl[$key][] = "/Post/Blog/" . (new Blog_Comment())->getPageIdByCommentId($id);
+                            }
                         }
                     }
                     break;
@@ -113,15 +119,20 @@ class SearchModel
                     break;
                 case "BLACKLIST":
                     if ($value != false) {
-                        foreach ($value as $id) {
-                            $arrayOfUrl[$key][] = "/User/Profil/" . (new BlacklistUser())->getUserIdByBlacklistId($id);
+                        foreach ($value as $idBlackList) {
+                            foreach ($idBlackList as $id) {
+                                $arrayOfUrl[$key][] = "/User/Profil/" . (new BlacklistUser())->getUserIdByBlacklistId($id);
+                            }
                         }
                     }
                     break;
                 case "MUTE":
                     if ($value != false) {
-                        foreach ($value as $id) {
-                            $arrayOfUrl[$key][] = "/User/Profil/" . (new MutedUser())->getUserIdByMuteId($id);
+                        foreach ($value as $idMute) {
+                            foreach ($idMute as $id){
+                                $arrayOfUrl[$key][] = "/User/Profil/" . (new MutedUser())->getUserIdByMuteId($id);
+
+                            }
                         }
                     }
                     break;
