@@ -1,1 +1,1 @@
-<?php
+<?php require 'sideBarModo.php' ?>
