@@ -113,8 +113,8 @@
         // On change le texte du bouton
         followedButton.innerHTML = 'Suivi';
         // On met le fond en violet
-        //followedButton.style.backgroundColor = 'var(--purple)';
-        followedButton.style.backgroundColor = 'purple';
+        followedButton[0].style.backgroundColor = 'var(--purple)';
+        followedButton[1].style.backgroundColor = 'var(--purple)';
         // On met le texte en blanc
         followedButton.style.color = 'white';
     }
