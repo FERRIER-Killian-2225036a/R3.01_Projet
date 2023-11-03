@@ -124,15 +124,14 @@
     const boolIsFollowed = <?php echo $mapView['BoolIsFollowed']? 1 : 0 ?>;
     // Condition si l'utilisateur est suivi
     if (boolIsFollowed === 1) {
-        // On change le texte du bouton
-        followedButton[0].innerHTML = 'Suivi';
-        followedButton[1].innerHTML = 'Suivi';
-        // On met le fond en violet
-        followedButton[0].style.backgroundColor = 'var(--purple)';
-        followedButton[1].style.backgroundColor = 'var(--purple)';
-        // On met le texte en blanc
-        followedButton[0].style.color = 'white';
-        followedButton[1].style.color = 'white';
+        for (let i=0; i<followedButton.length; ++i){
+            // On change le texte du bouton
+            followedButton[i].innerHTML = 'Suivi';
+            // On met le fond en violet
+            followedButton[i].style.backgroundColor = 'var(--purple)';
+            // On met le texte en blanc
+            followedButton[i].style.color = 'white';
+        }
     }
 
     // Script pour le changement du logo signet
