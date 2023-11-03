@@ -414,6 +414,48 @@ class ControllerPost
                 header("Location: /Menu/BlogFeed");
                 die();
             } else {
+                if ($_SERVER["REQUEST_METHOD"] === "POST") {
+                    // on va verifier les parametres Post pour savoir si c'est un bookmark ou un follow
+                    // on verifie d'abord si les parametres post sont vide, ou a quoi ils correspondent
+                    $idPost = filter_var($A_parametres[0], FILTER_VALIDATE_INT); // on recupere l'identifiant dans l'url
+                    if ($idPost === false) {
+                        error_log("valeur $idPost du post n'existe pas/ n'est pas valide");
+                        header("Location: /Menu/BlogFeed");
+                        die();
+                    }
+                    $existingPost = new BlogPageModel($idPost);
+
+                    if (isset($A_postParams["bookmark"])) {
+                        // si le post est deja bookmark, on le supprime
+
+
+                        if ($existingPost->isPostBookmarked($_SESSION['UserId'])) {
+                            $existingPost->removeBookmark($_SESSION['UserId']);
+                        } else {// sinon on le crée
+                            $existingPost->addBookmark($_SESSION['UserId']);
+                        }
+
+                        //header("Location: /Post/Blog/" . $idPost);
+
+                    } elseif (isset($A_postParams["follow"])) {
+                        // si le post est deja bookmark, on le supprime
+
+                        $Author = new USERSiteModel($existingPost->getUserId());
+                        if ($Author->isFollowed($_SESSION['UserId'])) {
+                            $Author->removeFollower($_SESSION['UserId']);
+                        } else {// sinon on le crée
+                            $Author->addFollower($_SESSION['UserId']);
+                        }
+
+                        //header("Location: /Post/Blog/" . $idPost);
+
+                    } else {
+                        (new UserSite())->incrementAlertLevelUser($_SESSION['UserId']);
+                        header("Location: /Menu/BlogFeed");
+                        die();
+                    }
+
+                }
                 if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
                     $idPost = filter_var($A_parametres[0], FILTER_VALIDATE_INT); // on recupere l'identifiant dans l'url
@@ -465,48 +507,7 @@ class ControllerPost
                         ));
                     }
                 }
-                if ($_SERVER["REQUEST_METHOD"] === "POST") {
-                    // on va verifier les parametres Post pour savoir si c'est un bookmark ou un follow
-                    // on verifie d'abord si les parametres post sont vide, ou a quoi ils correspondent
-                    $idPost = filter_var($A_parametres[0], FILTER_VALIDATE_INT); // on recupere l'identifiant dans l'url
-                    if ($idPost === false) {
-                        error_log("valeur $idPost du post n'existe pas/ n'est pas valide");
-                        header("Location: /Menu/BlogFeed");
-                        die();
-                    }
-                    $existingPost = new BlogPageModel($idPost);
 
-                    if (isset($A_postParams["bookmark"])) {
-                        // si le post est deja bookmark, on le supprime
-
-
-                        if ($existingPost->isPostBookmarked($_SESSION['UserId'])) {
-                            $existingPost->removeBookmark($_SESSION['UserId']);
-                        } else {// sinon on le crée
-                            $existingPost->addBookmark($_SESSION['UserId']);
-                        }
-
-                        //header("Location: /Post/Blog/" . $idPost);
-
-                    } elseif (isset($A_postParams["follow"])) {
-                        // si le post est deja bookmark, on le supprime
-
-                        $Author = new USERSiteModel($existingPost->getUserId());
-                        if ($Author->isFollowed($_SESSION['UserId'])) {
-                            $Author->removeFollower($_SESSION['UserId']);
-                        } else {// sinon on le crée
-                            $Author->addFollower($_SESSION['UserId']);
-                        }
-
-                        //header("Location: /Post/Blog/" . $idPost);
-
-                    } else {
-                        (new UserSite())->incrementAlertLevelUser($_SESSION['UserId']);
-                        header("Location: /Menu/BlogFeed");
-                        die();
-                    }
-
-                }
 
             }
 
