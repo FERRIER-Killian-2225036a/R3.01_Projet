@@ -1,75 +1,95 @@
+/* Styles pour l'élément #title */
 #title {
     display: flex;
     justify-content: space-between;
     margin-block: 1em;
 }
+
+/* Styles pour le bouton dans #title */
 #title > button {
     float: right;
 }
+
+/* Styles pour le titre dans #title */
 #title > h2 {
     padding-right: 1em;
 }
 
-.input , #chooseFileLabel {
+/* Styles pour les éléments .input et #chooseFileLabel */
+.input, #chooseFileLabel {
     width: 100%;
 }
 
+/* Styles pour l'élément #categoriesLabel */
 #categoriesLabel {
     display: flow-root;
 }
+
+/* Styles pour les paragraphes dans #categoriesLabel */
 #categoriesLabel > p {
     margin-inline: 1em;
     margin-block: .4em;
 }
 
+/* Styles pour les éléments avec la classe .bg-body-tertiary */
 .bg-body-tertiary {
     margin-block: 2em;
     color: #727272;
 }
 
-#chooseFileLabel{
+/* Styles pour #chooseFileLabel */
+#chooseFileLabel {
     text-align: center;
     display: grid;
     justify-content: center;
 }
 
+/* Styles pour le paragraphe dans #chooseFileLabel */
 #chooseFileLabel > p {
     color: #727272;
     margin: 0;
 }
 
+/* Styles pour l'image dans #chooseFileLabel */
 #chooseFileLabel > img {
     padding-block: .5em 2em;
 }
 
+/* Styles pour les éléments avec la classe .textInput et textarea à l'intérieur */
 .textInput, .textInput > textarea {
     height: 15em;
 }
 
+/* Styles pour #publishButtonContainer */
 #publishButtonContainer {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
+/* Styles pour #publishButton */
 #publishButton {
     color: var(--purple);
     border-color: var(--purple);
 }
 
+/* Styles pour #publishButton lorsqu'il est survolé */
 #publishButton:hover {
     background-color: var(--purple);
     color: white;
 }
 
+/* Styles pour les éléments avec la classe .tag */
 .tag {
     margin-bottom: 0!important;
 }
 
+/* Styles pour #myPostContent */
 #myPostContent {
     padding-right: 12em;
 }
 
+/* Styles pour #formSignet */
 #formSignet {
     margin: 0;
     padding: 0;
@@ -77,18 +97,22 @@
     border: 0;
 }
 
+/* Styles pour #signetImg */
 #signetImg {
     height: 2.3em;
 }
 
+/* Styles pour #textUser */
 #textUser {
     padding-inline: 0.5em;
 }
 
+/* Styles pour le paragraphe dans #textUser */
 #textUser > p {
     height: 18px;
 }
 
+/* Styles pour l'image #imgBlog */
 #imgBlog {
     height: 24em;
     width: 100%;
@@ -96,15 +120,18 @@
     object-position: center center;
 }
 
+/* Styles pour #copyLabel */
 #copyLabel {
     display: none;
     padding-right: 0.7em;
 }
 
+/* Styles pour #postBlogContainer */
 #postBlogContainer {
     padding-inline: 11em;
 }
 
+/* Styles responsifs pour #postBlogContainer */
 @media (max-width: 660px) {
     #postBlogContainer {
         padding-inline: 3.2em;
