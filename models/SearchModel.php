@@ -92,8 +92,20 @@ class SearchModel
                     break;
                 case "BLOG_Category":
                     if ($value != false) {
-                        foreach ($value as $id) {
-                            $arrayOfUrl[$key][] = (new Blog_PageLike())->get5pagesIdByCategoryId($id);
+                        // a ce niveau la on a donc des categories id
+
+                        //nous on veut les urls des pages
+                        $pages = array();
+
+                        foreach ($value as $catIdList){
+                            foreach($catIdList as $catId){
+                                $pages[] = (new Blog_Page())->get5PagesByCategory($catId);
+                            }
+                            // on recupere les 5 pages les plus récentes qui ont la catégorie donnée
+                        }
+                        foreach ($pages as $page){
+                                $arrayOfUrl[$key][] = "/Post/Blog/" . $page;
+
                         }
 
                     }
