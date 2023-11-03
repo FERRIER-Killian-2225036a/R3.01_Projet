@@ -70,6 +70,7 @@
             <button class="btn btn-custom-purple" name="follow" type="submit" id="followButton">Suivre</button>
         </form>
     </div>
+    <p>Contenu du commentaire de l'utilisateur</p>
     <script>
         // Script pour le bouton de partage
         // Sélection du bouton par son ID
