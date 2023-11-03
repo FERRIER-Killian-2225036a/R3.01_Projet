@@ -72,7 +72,7 @@
             const isFormSignetClass = event.target.closest('.formSignetClass');
             const isFormSignet = event.target.id.contains('formSignet');
 
-            if (!isInput && !isCustomInput && !isFormSignetClass) {
+            if (!isInput && !isCustomInput && !isFormSignetClass && !isFormSignet) {
                 window.location.href = "<?php echo $mapView['blogPostUrl'] ?>";
             }
         });
