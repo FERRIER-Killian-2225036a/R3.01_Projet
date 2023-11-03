@@ -13,12 +13,11 @@
                     </svg>
                     <div class="dropdown-content">
                         <a href="<?php echo $mapView['blogPostEditUrl'] ?>">Modifier</a>
-                        <a id="modifyVisibilityButton" > <?php if ($mapView['statusP'] != "innactive") {
+                        <a id="modifyVisibilityButton"> <?php if ($mapView['statusP'] != "innactive") {
                                 echo ($mapView['statusP'] == "active") ? "Mettre en visibilité privé" : "Mettre en visibilité public";
                             } ?></a>
-                        <!-- De toute facon on affiche pas la publication si innactive + test dans le controller pour la requete post-->
-
-                        <a id="deleteButton" >Supprimer</a>
+                        <!-- De toute façon on n'affiche pas la publication si innactive + test dans le contrôleur pour la requête post -->
+                        <a id="deleteButton">Supprimer</a>
                     </div>
                 </div>
             </span>
@@ -28,40 +27,3 @@
         </div>
     </div>
 </div>
-<script>
-
-    document.getElementById('modifyVisibilityButton').addEventListener("click", function() {
-        fetch('/Post/BlogEdit/' + '<?php echo $mapView['id'] ?>', {
-            method: 'POST',
-            body: 'ChangeVisibilityBlog',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        });
-        window.location.href = "https://cyphub.tech/Settings/MyPost";
-    });
-
-
-    document.getElementById('deleteButton').addEventListener("click", function() {
-        fetch('/Post/BlogEdit/' + '<?php echo $mapView['id'] ?>', {
-            method: 'POST',
-            body: 'DeleteBlog',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        });
-        window.location.href = "https://cyphub.tech/Settings/ManageAccount";
-    });
-
-    document.getElementById('divButtonRole').addEventListener("click", function() {
-        const dropdown = event.target.closest('.dropdown');
-        if (!dropdown) {
-            window.location.href = "<?php echo $mapView['blogPostEditUrl'] ?>";
-        }
-
-    });
-</script>
-</div>
-</div>
-<script src="/common_scripts/myPostDisplay.js"></script>
-<script src="/common_scripts/maxTextSize.js"></script>

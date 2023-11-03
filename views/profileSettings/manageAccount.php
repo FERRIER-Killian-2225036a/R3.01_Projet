@@ -1,8 +1,10 @@
 <?php require 'sideBar.php'; ?>
-<script src="/common_scripts/showErrorMessage.js"></script>
-<script src="/common_scripts/checkPassword.js"></script>
+
+<!-- Inclusion de fichiers CSS -->
 <link rel="stylesheet" href="/common_styles/password.css">
 <link rel="stylesheet" href="/common_styles/wrongInfo.css">
+
+<!-- Conteneur principal -->
 <div class="col container">
 
     <!-- Section pour la photo de profil -->
@@ -19,8 +21,6 @@
                  alt="Photo de profil" class="img-thumbnail w-10">
         </div>
         <div class="col-md-6 d-flex align-items-center justify-content-end">
-            <!-- Notez ici que nous utilisons align-items-center pour centrer les boutons verticalement -->
-
             <div class="btn-group">
                 <form action="/Settings/ManageAccount" method="POST" enctype="multipart/form-data">
                     <label for="file" class="btn btn-outline-dark mr-2">Modifier</label>
@@ -35,8 +35,8 @@
             </div>
         </div>
     </div>
-    <!-- Section pour le pseudo -->
 
+    <!-- Section pour le pseudo -->
     <div class="row mb-2">
         <div class="col-md-8">
             <h2>Changer votre pseudo</h2>
@@ -49,7 +49,6 @@
                 <input type="text" class="form-control" name="username" id="username-input" placeholder="NouveauPseudo">
             </div>
             <div class="col-md-4 d-flex align-items-center justify-content-end">
-                <!-- Notez ici que nous utilisons align-items-center pour centrer les boutons verticalement -->
                 <div class="btn-group">
                     <button class="btn btn-outline-dark" name="ChangeUsername" value="1" type="submit">Modifier</button>
                 </div>
@@ -58,7 +57,6 @@
     </div>
 
     <!-- Section pour l'adresse email -->
-
     <div class="row mb-2">
         <div class="col-md-6">
             <h2>
@@ -74,7 +72,6 @@
                 <input type="email" name="mail" class="form-control" id="email-input" placeholder="votre@email.com">
             </div>
             <div class="col-md-4 d-flex align-items-center justify-content-end">
-                <!-- Notez ici que nous utilisons align-items-center pour centrer les boutons verticalement -->
                 <div class="btn-group">
                     <button class="btn btn-outline-dark" name="ChangeMail" type="submit">Modifier</button>
                 </div>
@@ -102,7 +99,7 @@
                 </div>
                 <label for="confirmPassword"></label>
                 <div class="input-group">
-                    <input type="password" id="confirmPassword" class="form-control" oninput="checkPasswordsEquality()"
+                    <input type password="password" id="confirmPassword" class="form-control" oninput="checkPasswordsEquality()"
                            placeholder="********"/>
                 </div>
                 <span id="passwordFeedback"></span>
@@ -113,6 +110,7 @@
         </form>
     </div>
     <hr class="hr-custom hr-color">
+
     <!-- Section pour supprimer le compte -->
     <div class="row mt-4">
         <div class="col-md-6">
@@ -121,5 +119,9 @@
             <button class="btn btn-outline-danger" onclick="deleteAccount()">Supprimer le compte</button>
         </div>
     </div>
-    <script src="/common_scripts/manageAccount.js"></script>
 </div>
+<!-- Inclusion du script JavaScript pour la gestion du compte -->
+<script src="/common_scripts/manageAccount.js"></script>
+<!-- Inclusion de scripts JavaScript -->
+<script src="/common_scripts/showErrorMessage.js"></script>
+<script src="/common_scripts/checkPassword.js"></script>

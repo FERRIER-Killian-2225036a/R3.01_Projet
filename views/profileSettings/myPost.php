@@ -1,14 +1,12 @@
-<?php require 'sideBar.php' ?>
-<script src="/common_scripts/dropdown.js"></script>
-<link rel="stylesheet" href="/common_styles/dropdown.css">
+<?php require 'sideBar.php'; ?> <!-- Inclusion de la barre latérale -->
+<script src="/common_scripts/dropdown.js"></script> <!-- Inclusion du script de dropdown -->
+<link rel="stylesheet" href="/common_styles/dropdown.css"> <!-- Inclusion de la feuille de style pour le dropdown -->
 
 <div class="col container" id="rightSide">
-    <!--Pas sur que sa fonctionne à voir avec Killian et Tom -->
-
     <!-- Section pour le titre -->
     <div class="row mb-2 mt-2">
         <div class="col-md-6">
-            <h1>Mes Posts </h1>
+            <h1>Mes Posts</h1> <!-- Titre de la section "Mes Posts" -->
         </div>
         <!-- Section pour le dropdown filtrer -->
         <div class="col-md-6 d-flex align-items-center justify-content-end">
@@ -28,9 +26,8 @@
                 </ul>
             </div>
         </div>
-        <hr class="my-3">
-        <label id="noPost">Pas de post</label>
+        <hr class="my-3"> <!-- Ligne horizontale pour la séparation -->
 
-
-
-
+        <label id="noPost">Pas de post</label> <!-- Étiquette pour afficher "Pas de post" -->
+    </div>
+</div>

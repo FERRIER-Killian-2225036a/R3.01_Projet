@@ -1,7 +1,6 @@
 <?php require 'sideBar.php' ?>
 <script src="../../common_scripts/dropdown.js"></script>
 <div class="col container" id="rightSide">
-    <!--Pas sur que sa fonctionne à voir avec Killian et Tom -->
 
     <!-- Section pour le titre -->
     <div class="row mb-2 mt-2">
@@ -28,7 +27,8 @@
             </div>
         </div>
         <hr class="my-3">
-        <!-- Section pour les articles enregistrer
+        <!-- Section pour les articles enregistrés -->
+        <!--
         <main class="container">
             <div class="row">
                 <div class="col-md-6 p-3">
@@ -44,9 +44,8 @@
                     </a>
                 </div>
 
-
                 <div class="col-md-6 p-3">
-                    <a class="btn bg-body-tertiary round background grow-button d-block" role="button" href="#" target="_blank">
+                    <a class "btn bg-body-tertiary round background grow-button d-block" role="button" href="#" target="_blank">
                         <div class="d-flex justify-content-center mb-2">
                             <img src="../../media/public_assets/imageTest.jpeg" alt="Logo" class="responsive-image-setting round p-1">
                         </div>
@@ -58,7 +57,8 @@
                     </a>
                 </div>
             </div>
-
             <script src="../../common_scripts/maxTextSize.js"></script>
         </main>
         -->
+    </div>
+</div>
