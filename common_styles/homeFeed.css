@@ -1,0 +1,174 @@
+/* CSS pour la classe .homeTitle */
+.homeTitle {
+    font-weight: bold;
+    justify-content: left;
+    color: var(--white);  /* Couleur du texte en utilisant la variable --white */
+}
+
+/* CSS pour la classe .background */
+.background {
+    background-color: var(--purple-light) !important; /* Couleur de fond en utilisant la variable --purple-light */
+}
+
+/* CSS pour la classe .block */
+.block {
+    display: block;
+}
+
+/* CSS pour la classe .btn */
+.btn {
+    text-align: left;
+}
+
+/* CSS pour la classe .cta */
+.cta {
+    position: relative;
+    margin: auto;
+    padding: 19px 22px;
+    transition: all 0.2s ease;
+}
+
+/* CSS pour la pseudo-classe :before de .cta */
+.cta:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 0;
+    display: block;
+    border-radius: 28px;
+    background: rgba(255, 171, 157, 0);
+    width: 56px;
+    height: 56px;
+    transition: all 0.3s ease;
+}
+
+/* CSS pour la classe .cta .visual */
+.cta .visual {
+    position: relative;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 900;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    vertical-align: middle;
+}
+
+/* CSS pour la classe .cta .svg1 */
+.cta .svg1 {
+    position: relative;
+    top: 0;
+    margin-left: 10px;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: var(--white);  /* Couleur du trait en utilisant la variable --white */
+    stroke-width: 2;
+    transform: translateX(-5px);
+    transition: all 0.3s ease;
+}
+
+/* CSS pour le survol de .cta */
+.cta:hover:before {
+    width: 100%;
+    color: var(--white); /* Couleur de fond en utilisant la variable --white */
+    background: var(--purple); /* Couleur de fond en utilisant la variable --purple */
+    box-shadow: var(--shadow-default) 0 5px 15px;
+}
+
+/* CSS pour le survol de .cta .svg1 */
+.cta:hover .svg1 {
+    transform: translateX(0);
+}
+
+/* CSS pour la classe .cta :active */
+.cta:active {
+    transform: scale(0.96);
+}
+
+/* CSS pour les liens (a) au survol */
+a:hover {
+    color: var(--white); /* Couleur du texte en utilisant la variable --white */
+}
+
+/* CSS pour la classe .noneColor */
+.noneColor {
+    text-decoration: none;
+    color: var(--white); /* Couleur du texte en utilisant la variable --white */
+}
+
+/* CSS pour la classe .colorButton */
+.colorButton {
+    background: var(--purple); /* Couleur de fond en utilisant la variable --purple */
+}
+
+/* CSS pour la classe .sizeRs */
+.sizeRs {
+    max-width: 80%;
+    height: auto;
+}
+
+/* CSS pour la classe .iconSize */
+.iconSize {
+    height: 10em;
+    width: 10em;
+}
+
+/* CSS pour la classe .card */
+.card {
+    border: none !important; /* Suppression des bordures */
+}
+
+/* CSS pour la classe .padding */
+.padding {
+    padding-block: 7rem!important;
+    padding-inline: 10.9em!important;
+}
+
+/* CSS pour la classe .grow-button */
+.grow-button {
+    padding: 3.5em 0;
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+/* CSS pour le survol de .grow-button */
+.grow-button:hover {
+    transform: scale(1.1);
+}
+
+/* CSS pour les éléments .row pour l'espacement */
+.row {
+    justify-content: space-around;
+}
+
+/* CSS pour les éléments .col et .grow-button pour la largeur */
+.col, .grow-button {
+    width: 19em;
+}
+
+/* CSS pour l'ID #buttonContainer */
+#buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1.5em;
+}
+
+/* CSS pour l'ID #decorationImg (media query) */
+#decorationImg {
+    display: none;
+}
+
+/* CSS pour les écrans jusqu'à 991px de large (media query) */
+@media (max-width: 991px) {
+    /* ... Modifications pour les écrans de taille maximale de 991px ... */
+}
+
+/* CSS pour les écrans jusqu'à 767px de large (media query) */
+@media (max-width: 767px) {
+    /* ... Modifications pour les écrans de taille maximale de 767px ... */
+}
+
+/* CSS pour les écrans jusqu'à 660px de large (media query) */
+@media (max-width: 660px) {
+    /* ... Modifications pour les écrans de taille maximale de 660px ... */
+}

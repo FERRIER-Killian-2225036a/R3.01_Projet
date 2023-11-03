@@ -1,6 +1,6 @@
  <!-- Inclusion des feuilles de style CSS -->
  <link rel="stylesheet" href="../../common_styles/general.css">
- <link rel="stylesheet" href="../../common_styles/menu.css">
+ <link rel="stylesheet" href="../../common_styles/homeFeed.css">
 
 <!-- Section principale avec un arrière-plan -->
 <section class="background">
