@@ -185,8 +185,10 @@ class Blog_PageLike
         $stmt->bindParam(':UserId', $UserId);
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
+            error_log("bookmark : true");
             return true;
         }
+        error_log("bookmark : false");
         return false;
     }
 
