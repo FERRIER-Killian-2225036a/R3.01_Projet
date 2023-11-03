@@ -18,8 +18,8 @@ class ControllerMenu
     /**
      * Méthode par défaut du controller, on redirige vers la page d'accueil
      *
-     * @see /controllers/ControllerDefault.php
      * @return void
+     * @see /controllers/ControllerDefault.php
      */
     public function DefaultAction(): void
     {
@@ -63,11 +63,11 @@ class ControllerMenu
      * on gère ici les request pour liker/enregistrer un blog
      *
      *
-     * @see /models/BlogPageModel.php
-     * @see /models/Orm/Blog_Page.php
      * @param array|null $A_parametres
      * @param array|null $A_postParams
      * @return void
+     * @see /models/Orm/Blog_Page.php
+     * @see /models/BlogPageModel.php
      */
     public function BlogFeedAction(array $A_parametres = null, array $A_postParams = null): void
     {
@@ -91,21 +91,21 @@ class ControllerMenu
         foreach ($ArrayOfBlogPageModel as $obj) {
             if ($obj->getStatusP() == "active") {
                 $tagsList = "";
-                foreach ($obj->getTags() as $tags ){
-                    $tagsList .= "#".$tags ." - ";
+                foreach ($obj->getTags() as $tags) {
+                    $tagsList .= "#" . $tags . " - ";
                 }
                 $boolIsPostBookmarked = (new BlogPageModel($obj->getPageId()))->isPostBookmarked($_SESSION['UserId']);
 
                 $urlBookmark = "/Post/Blog/" . $obj->getPageId();
-                MotorView::show('menu/blogFeed', array("blogPostUrl"=>$obj->getPostUrl(),
-                                                                "blogTitle" => $obj->getTITLE(),
-                                                                "blogContent" => $obj->getContent(),
-                                                                "blogAuthor" => $obj->getAuthor(),
-                                                                "blogDate" => $obj->getDateP(),
-                                                                "blogUrlPicture" => $obj->getUrlPicture(),
-                                                                "Tags"=>$tagsList,
-                                                                "CurentUrlPost"=> $urlBookmark,
-                                                                "BoolIsPostBookmarked"=>$boolIsPostBookmarked)); // plus tard il faudra mettre si l'user a bien liké ou non
+                MotorView::show('menu/blogFeed', array("blogPostUrl" => $obj->getPostUrl(),
+                    "blogTitle" => $obj->getTITLE(),
+                    "blogContent" => $obj->getContent(),
+                    "blogAuthor" => $obj->getAuthor(),
+                    "blogDate" => $obj->getDateP(),
+                    "blogUrlPicture" => $obj->getUrlPicture(),
+                    "Tags" => $tagsList,
+                    "CurentUrlPost" => $urlBookmark,
+                    "BoolIsPostBookmarked" => $boolIsPostBookmarked)); // plus tard il faudra mettre si l'user a bien liké ou non
             }
         }
     }
@@ -135,8 +135,14 @@ class ControllerMenu
 
     public function SearchAction(array $A_parametres = null, array $A_postParams = null): void
     {
-        if ($_SERVER["REQUEST_METHOD"]==="POST"){
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            if (isset($A_postParams["Search"])) {
+                if (SessionManager::isUserConnected()) {
 
+                } else {
+
+                }
+            }
         }
 
     }

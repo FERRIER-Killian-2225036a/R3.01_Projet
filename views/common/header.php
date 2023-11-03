@@ -12,9 +12,10 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav responsive-menu ml-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <form class="d-flex">
+                    <form action="/Menu/Search" method="POST" class="d-flex">
                         <!-- Barre de recherche -->
-                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+
+                        <input class="form-control" name="Search" type="search" placeholder="Search" aria-label="Search">
                     </form>
                 </li>
                 <li class="nav-item">
