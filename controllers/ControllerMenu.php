@@ -136,6 +136,13 @@ class ControllerMenu
         MotorView::show('menu/forumFeed');
     }
 
+    /**
+     * Controller pour la gestion de la barre de recherche dans le site
+     *
+     * @param array|null $A_parametres
+     * @param array|null $A_postParams
+     * @return void
+     */
     public function SearchAction(array $A_parametres = null, array $A_postParams = null): void
     {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -156,7 +163,7 @@ class ControllerMenu
                     $result = (new SearchModel())->researchAsNobody($input);
 
                 }
-                print_r($result);
+                MotorView::show('menu/search', array("result" => $result, "input" => $input));
             }
         }
 
