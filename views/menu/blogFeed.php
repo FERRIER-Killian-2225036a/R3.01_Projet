@@ -78,6 +78,7 @@
         function handleClick(event) {
             event.stopPropagation();
             // Redirection vers l'URL du blog
+            currentPath = window.location.pathname;
             window.location.href = "https://cyphub.tech" + currentPath;
         }
         // Ajout du gestionnaire d'événements à chaque élément

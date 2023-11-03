@@ -1,5 +1,5 @@
 // Récupérez le chemin de l'URL actuelle
-const currentPath = window.location.pathname;
+let currentPath = window.location.pathname;
 
 // Récupérez tous les éléments de navigation (liens)
 const navLinks = document.querySelectorAll('.nav-link');
