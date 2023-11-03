@@ -119,7 +119,6 @@
     // Script pour le changement du bouton suivre
     // Sélection du bouton suivre
     const followedButton = document.getElementsByClassName('followButton');
-    console.log(followedButton);
     // Récupération du boolen pour savoir si on suit l'utilisateur qui a posté
     const boolIsFollowed = <?php echo $mapView['BoolIsFollowed']? 1 : 0 ?>;
     // Condition si l'utilisateur est suivi
