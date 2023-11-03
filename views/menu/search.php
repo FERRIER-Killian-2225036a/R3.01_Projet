@@ -3,9 +3,9 @@
 <?php
 //array("result" => $result, "input" => $input)
 
-echo "<h1>Resultat de la recherche pour : " . $mapView["input"] . "</h1>";
+echo "<h1>Resultat de la recherche pour : " . $mapView["input"] . "</h1><hr>";
 if (isset($mapView["result"]["IT_Articles"])) {
-    echo "<h2>Articles</h2>";
+    echo "<h3>Articles :</h3>";
     foreach ($mapView["result"]["IT_Articles"] as $url) {
         echo "<a href='" . $url . "'>" . $url . "</a><hr>";
     }
@@ -14,7 +14,7 @@ if (isset($mapView["result"]["IT_Articles"])) {
 
 <?php
 if (isset($mapView["result"]["USERSite"])) {
-    echo "<h2>Utilisateurs</h2>";
+    echo "<h3>Utilisateurs :</h3>";
     foreach ($mapView["result"]["USERSite"] as $url) {
         echo "<a href='" . $url . "'>" . $url . "</a><hr>";
     }
@@ -23,7 +23,7 @@ if (isset($mapView["result"]["USERSite"])) {
 
 <?php
 if (isset($mapView["result"]["BLOG_Page"])) {
-    echo "<h2>Posts de blog</h2>";
+    echo "<h3>Posts de blog :</h3>";
     foreach ($mapView["result"]["BLOG_Page"] as $url) {
         echo "<a href='" . $url . "'>" . $url . "</a><hr>";
     }
@@ -32,7 +32,7 @@ if (isset($mapView["result"]["BLOG_Page"])) {
 
 <?php
 if (isset($mapView["result"]["BLOG_Comment"])) {
-    echo "<h2>Commentaires</h2>";
+    echo "<h3>Commentaires :</h3>";
     foreach ($mapView["result"]["BLOG_Comment"] as $url) {
         echo "<a href='" . $url . "'>" . $url . "</a><hr>";
     }
@@ -40,19 +40,19 @@ if (isset($mapView["result"]["BLOG_Comment"])) {
 
 /*
 if (isset($mapView["result"]["FORUM_Page"])) {
-    echo "<h2>Posts de forum</h2>";
+    echo "<h3>Posts de forum :</h3>";
     foreach ($mapView["result"]["FORUM_Page"] as $url) {
         echo "<a href='" . $url . "'>" . $url . "</a><hr>";
     }
 }
 if (isset($mapView["result"]["FORUM_Comment"])) {
-    echo "<h2>Commentaires</h2>";
+    echo "<h3>Commentaires :</h3>";
     foreach ($mapView["result"]["FORUM_Comment"] as $url) {
         echo "<a href='" . $url . "'>" . $url . "</a><hr>";
     }
 }
 if (isset($mapView["result"]["FORUM_Category"])) {
-    echo "<h2>Categories</h2>";
+    echo "<h3>Categories :</h3>";
     foreach ($mapView["result"]["FORUM_Category"] as $url) {
         echo "<a href='" . $url . "'>" . $url . "</a><hr>";
     }
@@ -61,7 +61,7 @@ if (isset($mapView["result"]["FORUM_Category"])) {
 
 <?php
 if (isset($mapView["result"]["BLOG_Category"])) {
-    echo "<h2>blogs avec la catégorie : ". $mapView["input"]." </h2>";
+    echo "<h3>blogs avec la catégorie : ". $mapView["input"]."  :</h3>";
     foreach ($mapView["result"]["BLOG_Category"] as $url) {
         echo "<a href='" . $url . "'>" . $url . "</a><hr>";
     }
@@ -70,7 +70,7 @@ if (isset($mapView["result"]["BLOG_Category"])) {
 
 <?php
 if (isset($mapView["result"]["BLACKLIST"])) {
-    echo "<h2>BlackList</h2>";
+    echo "<h3>BlackList :</h3>";
     foreach ($mapView["result"]["BLACKLIST"] as $url) {
         echo "<a href='" . $url . "'>" . $url . "</a><hr>";
     }
@@ -79,7 +79,7 @@ if (isset($mapView["result"]["BLACKLIST"])) {
 
 <?php
 if (isset($mapView["result"]["MUTE"])) {
-    echo "<h2>Muted User</h2>";
+    echo "<h3>Muted User :</h3>";
     foreach ($mapView["result"]["MUTE"] as $url) {
         echo "<a href='" . $url . "'>" . $url . "</a><hr>";
     }
