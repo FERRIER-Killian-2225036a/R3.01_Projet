@@ -72,6 +72,7 @@
         const boolIsFollowed = <?php echo $mapView['BoolIsFollowed']?>;
         if (boolIsFollowed === 1) {
             followedButton.innerHTML = 'Suivie'
+            followedButton.style.backgroundColor = 'var(--purple)';
         }
     </script>
 </div>
