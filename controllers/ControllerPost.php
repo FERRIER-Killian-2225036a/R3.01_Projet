@@ -485,7 +485,11 @@ class ControllerPost
                         $boolIsPostBookmarked = $existingPost->isPostBookmarked($_SESSION['UserId']);
 
                         $urlBookmark = "/Post/Blog/" . $idPost; // TODO on regardera les parametres POST
-
+                        $arrayOfCommentsId = $existingPost->getCommentsId();
+                        $arrayOfComments = array();
+                        foreach ($arrayOfCommentsId as $id) {
+                            $arrayOfComments[] =  (new BlogCommentModel($id));
+                        }
 
                         // transformation de la liste d'identifiant de tag, en un string sous forme de label1,label2,label3
 
@@ -504,7 +508,8 @@ class ControllerPost
                             "ImgProfil" => $imgProfil,
                             "BoolIsFollowed" => $boolIsFollowed,
                             "BoolIsPostBookmarked" => $boolIsPostBookmarked,
-                            "CurentUrlPost" => $urlBookmark
+                            "CurentUrlPost" => $urlBookmark,
+                            "Comments" => $arrayOfComments,
                         ));
                     }
                 }

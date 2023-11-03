@@ -242,4 +242,29 @@ class Blog_Comment
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    /**
+     * Cette méthode permet de recuperer tout les attributs d'un commentaire par rapport a son id
+     *
+     * @param int $CommentId
+     * @return array|ExceptionsDatabase|false
+     */
+    public function getValuesById(int $CommentId) : array|ExceptionsDatabase|false
+    {
+        try {
+            if (!$this->isCommentExist($CommentId)) {
+                throw new ExceptionsDatabase("This comment doesn't exist");
+            }
+            $stmt = $this->conn->prepare("SELECT * FROM BLOG_Comment WHERE CommentId = ?");
+            $stmt->bindParam(1, $CommentId);
+            $stmt->execute();
+            $mapArrayOfPageValues = $stmt->fetch(PDO::FETCH_ASSOC); // Stocke le résultat dans le tableau
+            $stmt->closeCursor();
+        } catch (ExceptionsDatabase $e) {
+            return $e;
+        }
+        return $mapArrayOfPageValues;
+    }
+
+
 }
