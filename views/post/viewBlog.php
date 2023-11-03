@@ -66,7 +66,7 @@
                 .catch((err) => {
                     copyLabel.innerHTML = 'Erreur lors de la copie : ' + err;
                 });
-        })
+        });
 
         const followedButton = document.getElementById('followButton')
         const boolIsFollowed = <?php echo $mapView['BoolIsFollowed']?>
