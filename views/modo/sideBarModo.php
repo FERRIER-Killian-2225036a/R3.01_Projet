@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../../common_styles/modo.css">
 <div class="container-fluid">
     <div class="row" id="container">
         <div class="d-flex flex-column flex-shrink-0 shadow round mt-3 p-2" style="width: 280px;"> <!-- Ajout de la classe 'shadow' ici -->
