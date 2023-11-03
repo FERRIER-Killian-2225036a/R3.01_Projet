@@ -50,15 +50,6 @@
 
     <!-- Script JavaScript pour gérer le comportement du bouton avec rôle de bouton -->
     <script>
-        document.getElementById("divButtonRole").addEventListener("click", function() {
-            const isInput = event.target.closest('.input-group');
-            const isCustomInput = event.target.classList.contains('custom-input');
-
-            if (!isInput && !isCustomInput) {
-                window.location.href = "<?php echo $mapView['blogPostUrl'] ?>";
-            }
-        });
-
         // Script pour le changement du logo signet
         // Récupération du booleen pour savoir si le post est enregistré ou pas
         const boolIsPostBookmarked = <?php echo $mapView['BoolIsPostBookmarked'] ? 1 : 0 ?>;
@@ -73,6 +64,16 @@
             // On affiche le signet de suppression
             svgBookmarkDel.style.display = 'flex';
         }
+
+        document.getElementById("divButtonRole").addEventListener("click", function() {
+            const isInput = event.target.closest('.input-group');
+            const isCustomInput = event.target.classList.contains('custom-input');
+            const formSignet = event.target.closest('#formSignet')
+
+            if (!isInput && !isCustomInput && !formSignet) {
+                window.location.href = "<?php echo $mapView['blogPostUrl'] ?>";
+            }
+        });
     </script>
 
     <!-- Inclusion d'un script JavaScript externe -->
