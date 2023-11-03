@@ -72,8 +72,13 @@ class FollowedUser
         $stmt->bindValue(2, $UserId, PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetchColumn();
-        error_log("isFollowed : " . $result>0);
-        return $result > 0;
+        if ($result > 0) {
+            error_log("isFollowed : true");
+            return true;
+        }
+        error_log("isFollowed : false");
+        return false;
+
     }
 
     /**
