@@ -486,7 +486,7 @@ class ControllerPost
                             $existingPost->addBookmark($_SESSION['UserId']);
                         }
 
-                        header("Location: /Post/Blog/" . $idPost);
+                        //header("Location: /Post/Blog/" . $idPost);
 
                     } elseif (isset($A_postParams["follow"])) {
                         // si le post est deja bookmark, on le supprime
@@ -498,13 +498,14 @@ class ControllerPost
                             $Author->addFollower($_SESSION['UserId']);
                         }
 
-                        header("Location: /Post/Blog/" . $idPost);
+                        //header("Location: /Post/Blog/" . $idPost);
 
                     } else {
                         (new UserSite())->incrementAlertLevelUser($_SESSION['UserId']);
                         header("Location: /Menu/BlogFeed");
+                        die();
                     }
-                    die();
+
                 }
 
             }
