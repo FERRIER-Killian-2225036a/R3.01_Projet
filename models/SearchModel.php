@@ -104,8 +104,9 @@ class SearchModel
                             // on recupere les 5 pages les plus récentes qui ont la catégorie donnée
                         }
                         foreach ($pages as $page){
-                                $arrayOfUrl[$key][] = "/Post/Blog/" . $page;
-
+                            foreach ($page as $id) {
+                                $arrayOfUrl[$key][] = "/Post/Blog/" . $id;
+                            }
                         }
 
                     }
