@@ -66,7 +66,7 @@ class Blog_Page
      */
     public function createPage(string $TITLE, string $content, string $author, int $UserId,
                                int    $NumberOfLikes = 0, string $UrlPicture = Constants::PICTURE_URL_DEFAULT,
-                               string $statusP = "hidden"): bool|ExceptionsDatabase|Exception|string
+                               string $statusP = "active"): bool|ExceptionsDatabase|Exception|string
     {
         // on crée une page
         try {
@@ -242,37 +242,7 @@ class Blog_Page
         }
     }*/
 
-    /**
-     * méthode pour recuperer les 5 pages de blog les plus récentes qui ont les categories correspondantes
-     *
-     * @param array $arrayOfLabel
-     * @return array|Exception|ExceptionsDatabase|false
-     */
-    public function get5pagesByCategory(array $arrayOfLabel): bool|ExceptionsDatabase|Exception|array
-    {
-        // on recupere les id de la liste de label fournis en param
-        // on renvoie les 5 page de blog les plus récentes qui ont les categories correspondantes
-        try {
-            $arrayOfId = null;
-            //getCategoryByLabel renvoie l'id de la category selon le label
-            // renvoi false lorsque la category n'existe pas
-            for ($i = 0; $i < count($arrayOfLabel); $i++) {
-                $res = (new Blog_Category())->getCategoryByLabel($arrayOfLabel[$i]);
-                if ($res == false) {
-                    return false;
-                } else {
-                    $arrayOfId[$i] = $res;
-                }
-            }
-            // on a maintenant un tableau d'id de category qu'on va utiliser pour recuperer les id des pages dans la requete sql
-            $stmt = $this->conn->prepare("SELECT PageId FROM BLOG_categoryPage WHERE CategoryId IN ? ORDER BY dateP DESC LIMIT 5");
-            $stmt->bindParam(1, $arrayOfId);
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_COLUMN); // Stocke le résultat dans le tableau
-        } catch (ExceptionsDatabase $e) {
-            return $e;
-        }
-    }
+
 
     /**
      * Méthode pour recuperer toutes les valeurs d'un post par rapport a son identifiant
