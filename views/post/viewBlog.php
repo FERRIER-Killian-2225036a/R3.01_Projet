@@ -58,13 +58,15 @@
         const lienPartager = document.getElementById('lienPartager');
         // Sélectionnez le label par son ID
         const copyLabel = document.getElementById('copyLabel');
+        // Texte a copié dans le presse papier
+        const texteACopier = 'https://cyphub.tech<?php echo $mapView['CurentUrlPost'] ?>';
         // Ajout d'un gestionnaire d'événements de clic au bouton
         lienPartager.addEventListener('click', (e) => {
             e.preventDefault(); // Empêche le formulaire de se soumettre
             // Affichage du label
             copyLabel.style.display = 'flex';
             // Copie du texte dans le presse-papiers de l'utilisateur
-            navigator.clipboard.writeText('https://cyphub.tech<?php echo $mapView['CurentUrlPost'] ?>')
+            navigator.clipboard.writeText(texteACopier)
                 // Text affiché en fonction de l'état de la copie
                 .then(() => {
                     copyLabel.innerHTML = 'Texte copié avec succès !   ';
@@ -82,7 +84,7 @@
         // Condition si l'utilisateur est suivie
         if (boolIsFollowed === 1) {
             // On change le texte du bouton
-            followedButton.innerHTML = 'Suivie'
+            followedButton.innerHTML = 'Suivie';
             // On met le fond en violet
             followedButton.style.backgroundColor = 'var(--purple)';
             // On met le texte en blanc
