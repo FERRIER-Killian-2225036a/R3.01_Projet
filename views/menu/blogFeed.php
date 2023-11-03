@@ -71,6 +71,14 @@
             // Empêche la propagation de l'événement au parent (divButtonRole)
             event.stopPropagation();
         });
+        const elementsWithClass = document.querySelectorAll('.formSignetClass');
+
+        elementsWithClass.forEach((element) => {
+            element.addEventListener('click', function(event) {
+                event.stopPropagation();
+                // Votre code pour gérer le clic sur cet élément ici
+            });
+        });
 
         document.getElementById("divButtonRole").addEventListener("click", function() {
             const isInput = event.target.closest('.input-group');
