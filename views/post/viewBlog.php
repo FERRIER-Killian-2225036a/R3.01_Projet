@@ -19,7 +19,7 @@
             <!-- Section de partage et signet -->
             <div class="col-md-6 d-flex align-items-center justify-content-end">
                 <label id="copyLabel"></label>
-                <a href="#" title="Partager" id="lienPartager">
+                <a href="" title="Partager" id="lienPartager">
                     <img src="../../media/public_assets/icone/partager.png" alt="Partager" class="icon">
                 </a>
                 <!-- Formulaire pour ajouter aux signets -->
