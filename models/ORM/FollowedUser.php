@@ -48,7 +48,7 @@ class FollowedUser
      */
     public function getNumberOfFollower(int $UserID): bool|int|array
     {
-        $sql = "SELECT COUNT(*) FROM FollowedUser WHERE UserFollow = ?";
+        $sql = "SELECT COUNT(*) FROM FollowedUser WHERE UserId = ?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(1, $UserID, PDO::PARAM_INT);
         $stmt->execute();
