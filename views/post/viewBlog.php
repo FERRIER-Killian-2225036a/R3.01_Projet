@@ -73,7 +73,7 @@
                     copyLabel.innerHTML = 'Erreur lors de la copie : ' + err;
                 });
         });
-
+        /*
         // Script pour le changement du bouton suivre
         // Sélection du bouton suivre
         const followedButton = document.getElementById('followButton');
@@ -97,6 +97,6 @@
             svgBookmarkAdd.style.display = 'none';
             svgBookmarkDel.style.display = 'flex';
         }
-
+        */
     </script>
 </div>
