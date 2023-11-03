@@ -37,7 +37,16 @@
     </div>
 
     <!-- Script JavaScript pour gérer le comportement du bouton avec rôle de bouton -->
-    <script src="/common_scripts/blogButton.js"></script>
+    <script>
+        document.getElementById("divButtonRole").addEventListener("click", function() {
+            const isInput = event.target.closest('.input-group');
+            const isCustomInput = event.target.classList.contains('custom-input');
+
+            if (!isInput && !isCustomInput) {
+                window.location.href = "<?php echo $mapView['blogPostUrl'] ?>";
+            }
+        });
+    </script>
 
     <!-- Inclusion d'un script JavaScript externe -->
     <script src="/common_scripts/maxTextSize.js"></script>
