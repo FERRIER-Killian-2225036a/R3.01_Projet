@@ -79,25 +79,23 @@ class SearchModel
                 case "BlOG_Page":
                     if ($value != false) {
                         foreach ($value as $id) {
-                            $arrayOfUrl[$key][] = "/Post/Blog/".$id;
+                            $arrayOfUrl[$key][] = "/Post/Blog/" . $id;
                         }
                     }
                     break;
                 case "BLOG_Comment":
                     if ($value != false) {
                         foreach ($value as $id) {
-                            $arrayOfUrl[$key][] = "/Post/Blog/".(new Blog_Comment())->getPageIdByCommentId($id);
+                            $arrayOfUrl[$key][] = "/Post/Blog/" . (new Blog_Comment())->getPageIdByCommentId($id);
                         }
                     }
                     break;
                 case "BLOG_Category":
                     if ($value != false) {
-                        $id = $value[0];
-                        print_r($id);
-                        $arrayOfPagesId = (new Blog_PageLike())->get5pagesIdByCategoryId($id[0]);
-                        foreach ($arrayOfPagesId as $id) {
-                            $arrayOfUrl[$key][] = "/Post/Blog/".$id;
+                        foreach ($value as $id) {
+                            $arrayOfUrl[$key][] = (new Blog_PageLike())->get5pagesIdByCategoryId($id);
                         }
+
                     }
                     break;
                 case "BLACKLIST":
