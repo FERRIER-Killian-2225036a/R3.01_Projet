@@ -78,7 +78,7 @@ class SearchModel
                         }
                     }
                     break;
-                case "BlOG_Page":
+                case "BLOG_Page":
                     if ($value != false) {
                         foreach ($value as $id) {
                                 error_log("id : " . $id);
@@ -156,7 +156,7 @@ class SearchModel
         //$arrayOfResult["FORUM_Page"] = (new ForumPage())->getPageIdByResearch($inputToSearch,'active');
         //$arrayOfResult["FORUM_Comment"] = (new ForumComment())->getCommentIdByResearch($inputToSearch,'active');
         //$arrayOfResult["FORUM_Category"] = (new ForumCategory())->getCategoryIdByResearch($inputToSearch);
-        $arrayOfResult["BlOG_Page"] = (new Blog_Page())->getPageIdByResearch($inputToSearch, 'active');
+        $arrayOfResult["BLOG_Page"] = (new Blog_Page())->getPageIdByResearch($inputToSearch, 'active');
         $arrayOfResult["BLOG_Comment"] = (new Blog_Comment())->getCommentIdByResearch($inputToSearch, 'active');
         $arrayOfResult["BLOG_Category"] = (new Blog_Category())->getCategoryIdByResearch($inputToSearch);
         $arrayOfUrl = $this->transformSearchResultToUrl($arrayOfResult);
@@ -176,7 +176,7 @@ class SearchModel
         //$arrayOfResult["FORUM_Page"] = (new ForumPage())->getPageIdByResearch($inputToSearch,'all');
         //$arrayOfResult["FORUM_Comment"] = (new ForumComment())->getCommentIdByResearch($inputToSearch,'all');
         //$arrayOfResult["FORUM_Category"] = (new ForumCategory())->getCategoryIdByResearch($inputToSearch);
-        $arrayOfResult["BlOG_Page"] = (new Blog_Page())->getPageIdByResearch($inputToSearch, 'all');
+        $arrayOfResult["BLOG_Page"] = (new Blog_Page())->getPageIdByResearch($inputToSearch, 'all');
         $arrayOfResult["BLOG_Comment"] = (new Blog_Comment())->getCommentIdByResearch($inputToSearch, 'all');
         $arrayOfResult["BLOG_Category"] = (new Blog_Category())->getCategoryIdByResearch($inputToSearch);
         $arrayOfResult["BLACKLIST"] = (new BlacklistUser())->getIdBlacklistByResearch($inputToSearch);

@@ -14,7 +14,7 @@ if (isset($mapView["result"]["USERSite"])) {
         echo "<a href='" . $url . "'>" . $url . "</a><br>";
     }
 }
-if (isset($mapView["result"]["BlOG_Page"])) {
+if (isset($mapView["result"]["BLOG_Page"])) {
     echo "<h2>Posts de blog</h2>";
     foreach ($mapView["result"]["BLOG_Page"] as $url) {
         echo "<a href='" . $url . "'>" . $url . "</a><br>";
