@@ -71,5 +71,19 @@
                 window.location.href = "<?php echo $mapView['blogPostUrl'] ?>";
             }
         });
+
+        // Sélection de tous les éléments avec la classe .formSignetClass
+        const elementsWithClass = document.querySelectorAll('.formSignetClass');
+        // Fonction pour gérer le clic sur ces éléments
+        function handleClick(event) {
+            event.stopPropagation();
+            // Redirection vers l'URL du blog
+            currentPath = window.location.pathname;
+            window.location.href = "https://cyphub.tech" + currentPath;
+        }
+        // Ajout du gestionnaire d'événements à chaque élément
+        elementsWithClass.forEach((element) => {
+            element.addEventListener('click', handleClick);
+        });
     </script>
 </main>
