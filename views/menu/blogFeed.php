@@ -29,7 +29,7 @@
                                 </button>
                             </div>
                             <form action="<?php echo $mapView["CurentUrlPost"]?>" method="post" class="formSignetClass">
-                                <button name="bookmark" title="Signet" type="submit" id="formSignet">
+                                <button name="bookmark" title="Signet" type="submit" id="formSignet" class="formSignetClass">
                                     <svg xmlns="http://www.w3.org/2000/svg" id="svgBookmarkAdd" width="2.3em" height="2.3em" fill="currentColor" class="bi bi-bookmark-plus formSignetClass" viewBox="0 0 16 16">
                                         <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
                                         <path d="M8 4a.5.5 0 0 1 .5.5V6H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V7H6a.5.5 0 0 1 0-1h1.5V4.5A.5.5 0 0 1 8 4z"/>
@@ -70,9 +70,8 @@
             const isInput = event.target.closest('.input-group');
             const isCustomInput = event.target.classList.contains('custom-input');
             const isFormSignetClass = event.target.closest('.formSignetClass');
-            const isFormSignet = event.target.id.contains('formSignet');
 
-            if (!isInput && !isCustomInput && !isFormSignetClass && !isFormSignet) {
+            if (!isInput && !isCustomInput && !isFormSignetClass) {
                 window.location.href = "<?php echo $mapView['blogPostUrl'] ?>";
             }
         });
