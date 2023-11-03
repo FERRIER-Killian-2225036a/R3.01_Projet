@@ -1,49 +1,54 @@
 section {
-    background-color: #eee;
+    background-color: #eee; /* Couleur de fond pour la section */
 }
-#signUpButton, #rightSide {
-    background-color: var(--purple);
+
+#signUpButton,
+#rightSide {
+    background-color: var(--purple); /* Couleur de fond pour les éléments avec les ID "signUpButton" et "rightSide" */
 }
-.btn-custom-purple{
-    color: var(--primary-color);
-    border-color: var(--primary-color);
+
+.btn-custom-purple {
+    color: var(--primary-color); /* Couleur du texte */
+    border-color: var(--primary-color); /* Couleur de la bordure */
 }
+
 .btn-custom-purple:hover {
-    color: #fff;
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-}
-.btn-check:focus+.btn-custom-purple, .btn-custom-purple:focus {
-    box-shadow: 0 0 0 0.25rem #9669F5;
+    color: #fff; /* Couleur du texte au survol */
+    background-color: var(--primary-color); /* Couleur de fond au survol */
+    border-color: var(--primary-color); /* Couleur de la bordure au survol */
 }
 
-.btn-custom-border{
-    border-radius: 1.5em;
+.btn-check:focus + .btn-custom-purple,
+.btn-custom-purple:focus {
+    box-shadow: 0 0 0 0.25rem #9669F5; /* Effet de mise au point sur le bouton */
 }
 
-#forgotPasswordSize{
-    font-size: 13px;
+.btn-custom-border {
+    border-radius: 1.5em; /* Arrondi des coins du bouton */
+}
+
+#forgotPasswordSize {
+    font-size: 13px; /* Taille de la police pour l'élément avec l'ID "forgotPasswordSize" */
 }
 
 #topImg {
-    width: 185px;
+    width: 185px; /* Largeur de l'image avec l'ID "topImg" */
 }
+
 #bottomImg {
-    width: 200px;
+    width: 200px; /* Largeur de l'image avec l'ID "bottomImg" */
 }
 
 @media (min-width: 769px) {
     #rightSide {
-        border-top-right-radius: .7rem;
-        border-bottom-right-radius: .7rem;
+        border-top-right-radius: .7rem; /* Arrondi du coin supérieur droit */
+        border-bottom-right-radius: .7rem; /* Arrondi du coin inférieur droit */
     }
 }
+
 @media (max-width: 991px) {
-    .removeRs{
-        visibility: hidden;
-        display: none!important;
+    .removeRs {
+        visibility: hidden; /* Masque l'élément avec la classe "removeRs" */
+        display: none !important; /* Cache l'élément avec la classe "removeRs" */
     }
 }
-
-
-
