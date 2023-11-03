@@ -94,13 +94,14 @@ class ControllerMenu
                 foreach ($obj->getTags() as $tags ){
                     $tagsList .= "#".$tags ." - ";
                 }
+                $urlBookmark = "/Post/Blog/" . $obj->getPageId();
                 MotorView::show('menu/blogFeed', array("blogPostUrl"=>$obj->getPostUrl(),
                                                                 "blogTitle" => $obj->getTITLE(),
                                                                 "blogContent" => $obj->getContent(),
                                                                 "blogAuthor" => $obj->getAuthor(),
                                                                 "blogDate" => $obj->getDateP(),
                                                                 "blogUrlPicture" => $obj->getUrlPicture(),
-                                                                "Tags"=>$tagsList)); // plus tard il faudra mettre si l'user a bien liké ou non
+                                                                "Tags"=>$tagsList,"CurentUrlPost"=> $urlBookmark)); // plus tard il faudra mettre si l'user a bien liké ou non
             }
         }
     }
