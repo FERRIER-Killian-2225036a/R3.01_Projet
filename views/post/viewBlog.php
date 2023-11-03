@@ -52,10 +52,23 @@
             </div>
         </div>
     </div>
+    <hr>
     <div class="input-group align-items-center">
         <label>
             <input type="text" class="form-control custom-input inputBackground" placeholder="Commenter">
         </label>
+    </div>
+    <hr>
+    <div class="col-md-6 d-flex align-items-center">
+        <img src="<?php echo $mapView['ImgProfil'] ?>" alt="image" class="rounded-circle mr-3">
+        <div id="textUser">
+            <p class="mb-0"><?php echo $mapView['Author'] ?></p>
+            <small><?php echo $mapView['NumberOfFollower'] ?> abonnés</small>
+        </div>
+        <!-- Formulaire pour suivre l'auteur -->
+        <form action="<?php echo $mapView["CurentUrlPost"]?>" method="post" >
+            <button class="btn btn-custom-purple" name="follow" type="submit" id="followButton">Suivre</button>
+        </form>
     </div>
     <script>
         // Script pour le bouton de partage
