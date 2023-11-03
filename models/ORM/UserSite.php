@@ -712,9 +712,9 @@ class UserSite
     public function getUserIdByPseudo(int|string $inputToSearch, bool $BLACKLIST): false|array
     {
         if ($BLACKLIST) { // on cherche meme les users bannis
-            $stmt = $this->conn->prepare("SELECT UserId FROM USERSite WHERE Pseudo = ?");
+            $stmt = $this->conn->prepare("SELECT UserId FROM USERSite WHERE Pseudo LIKE ?");
         } else {
-            $stmt = $this->conn->prepare("SELECT UserId FROM USERSite WHERE Pseudo = ? AND Status != 'banned'");
+            $stmt = $this->conn->prepare("SELECT UserId FROM USERSite WHERE Pseudo LIKE ? AND Status != 'banned'");
 
         }
         $stmt->bindValue(1, '%'.$inputToSearch.'%');
