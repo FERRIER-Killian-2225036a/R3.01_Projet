@@ -154,7 +154,7 @@ class Blog_categoryPage
      */
     public function get5PagesByCategory(int|string $catId): false|array
     {
-        $stmt = $this->conn->prepare("SELECT PageId FROM BLOG_categoryPage WHERE CategoryId = ? ORDER BY DateBlog DESC LIMIT 5");
+        $stmt = $this->conn->prepare("SELECT PageId FROM BLOG_categoryPage WHERE CategoryId = ? LIMIT 5");
         $stmt->bindParam(1, $catId);
         $stmt->execute();
         $arrayOfId = $stmt->fetchAll(PDO::FETCH_COLUMN);
