@@ -52,6 +52,11 @@
             </div>
         </div>
     </div>
+    <div class="input-group align-items-center">
+        <label>
+            <input type="text" class="form-control custom-input inputBackground" placeholder="Commenter">
+        </label>
+    </div>
     <script>
         // Script pour le bouton de partage
         // Sélection du bouton par son ID
