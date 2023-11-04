@@ -12,22 +12,20 @@
                         <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
                     </svg>
                     <?php if (isset($mapView["id"])){
-                        if ((new Blog_Page())->doesPageIdBelongToUser($mapView["id"],$_SESSION["UserId"])){
-                            echo '<div class="dropdown-content">';
-                            echo '<a href="'.$mapView['blogPostEditUrl'].'">Modifier</a>';
-                            echo '<a onclick="sendPostShowOrHide('.$mapView["id"].')" id="modifyVisibilityButton"> '.(($mapView['statusP'] != "innactive") ? (($mapView['statusP'] == "active") ? "Mettre en visibilité privé" : "Mettre en visibilité public") : "").'</a>';
-                            echo '<a onclick="sendPostDelete('.$mapView["id"].')" id="deleteButton">Supprimer</a>';
-                            echo '</div>';
-                        }
+                        echo '<div class="dropdown-content">';
+                        if ((new Blog_Page())->doesPageIdBelongToUser($mapView["id"],$_SESSION["UserId"])){?>
+                            <a href="'.$mapView['blogPostEditUrl'].'">Modifier</a>
+                            <a onclick="sendPostShowOrHide(<?php echo $mapView["id"]?>)" id="modifyVisibilityButton"> .(($mapView['statusP'] != "innactive") ? (($mapView['statusP'] == "active") ? "Mettre en visibilité privé" : "Mettre en visibilité public") : "").</a>;
+                            <a onclick="sendPostDelete(<?php echo $mapView["id"]?>)" id="deleteButton">Supprimer</a>;
+                        <?php }
                         else {
-                            echo '<div class="dropdown-content">';
-                            //echo '<a href="'.$mapView['blogPostUrl'].'">Signaler</a>';
-                            echo '<a id="seeBlog" href="'.$mapView['blogPostUrl'].'">Voir le blog</a>';
-                            echo '<a onclick="sendPostUnbookmark('.$mapView["id"].')" id="unBookmarkBlog"  >Désenregistrer</a>';
+                            //echo '<a href="'.$mapView['blogPostUrl'].'">Signaler</a>';?>
+                            <a id="seeBlog" href="<?php echo $mapView['blogPostUrl']?>">Voir le blog</a>';
+                            <a onclick="sendPostUnbookmark(<?php echo $mapView["id"]?>)" id="unBookmarkBlog"  >Désenregistrer</a>';
+                            <?php
                             //todo add function js to remove bookmark
-                            echo '</div>';
-
                         }
+                        echo '</div>';
 
                     } ?>
                 </div>
