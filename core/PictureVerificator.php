@@ -71,7 +71,13 @@ class PictureVerificator
         if ( $square ) {
             list($width, $height) = getimagesize($fileTmpName);
             if ($width != $height) {
-                return "Erreur : L'image n'est pas carrée.";
+                try {
+                $resizedImage = self::resizeToSquare($fileTmpName);
+                $fileTmpName = $resizedImage;
+                } catch (Exception $e) {
+                    error_log( "Erreur : Impossible de redimensionner l'image.");
+                    return "Erreur : Impossible de redimensionner l'image.".$e->getMessage();
+                }
             }
         }
 
@@ -129,5 +135,33 @@ class PictureVerificator
                 return "Erreur : problème de téléchargement du fichier.";
             }
 
+    }
+
+
+    /**
+     * Méthode pour redimensionner une image en carré
+     *
+     * @param $file
+     * @return bool|string
+     */
+    public static function resizeToSquare($file): bool|string
+    {
+        // Récupère les dimensions de l'image
+        list($width, $height) = getimagesize($file);
+        $newSize = min($width, $height);
+
+        $source = imagecreatefromstring(file_get_contents($file));
+        $square = imagecreatetruecolor($newSize, $newSize);
+
+        // Redimensionne l'image à la taille souhaitée
+        imagecopyresampled($square, $source, 0, 0, ($width - $newSize) / 2, ($height - $newSize) / 2, $newSize, $newSize, $newSize, $newSize);
+
+        $resizedFileName = tempnam(sys_get_temp_dir(), 'TMP_');
+        imagejpeg($square, $resizedFileName, 100);
+
+        imagedestroy($source);
+        imagedestroy($square);
+
+        return $resizedFileName;
     }
 }

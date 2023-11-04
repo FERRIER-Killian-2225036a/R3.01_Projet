@@ -164,7 +164,7 @@ class ControllerSettings
 
                     try {
                         $result = PictureVerificator::VerifyImg($_FILES['ProfilePicture'], $uploadDirectory,
-                            $allowedExtensions, $minFileSize, $maxFileSize); //TODO redimensionner l'image automatiquement
+                            $allowedExtensions, $minFileSize, $maxFileSize,true); //TODO redimensionner l'image automatiquement
                         if ($result[0] != "success") {
                             // TODO appel script js pour modifier la page avec un message d'erreur
                             $temp = '<script type="text/javascript">ShowLoginErrorMessage("' . $result[0] . '")</script>';
