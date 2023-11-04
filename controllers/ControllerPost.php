@@ -132,16 +132,19 @@ class ControllerPost
                                 if (isset($A_postParams["DeleteBlog"])) {
 
                                     $post->deletePage($idPost);
+                                    error_log("blog supprimé");
+
                                     header("Location: /Settings/MyPost");
                                     die();
                                 } elseif (isset($A_postParams["ChangeVisibilityBlog"])) {
-                                    $status = (new BlogPageModel($idPost))->getStatusP($idPost);
+                                    $status = (new BlogPageModel($idPost))->getStatusP();
                                     if ($status == "hidden") {
                                         $status = "active";
                                     } elseif ($status == "active") {
                                         $status = "hidden";
                                     }
                                     $post->changeVisibility($idPost, $status);
+                                    error_log("visibilité changé");
                                     header("Location: /Settings/MyPost");
                                     die();
                                 } else {
@@ -437,7 +440,7 @@ class ControllerPost
                     }
                     $existingPost = new BlogPageModel($idPost);
 
-                    if (isset($A_postParams["bookmark"])) {
+                    if (isset($A_postParams["Bookmark"])) {
                         // si le post est deja bookmark, on le supprime
 
 
