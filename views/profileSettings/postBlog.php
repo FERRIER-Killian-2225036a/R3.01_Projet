@@ -15,15 +15,16 @@
                         if ((new Blog_Page())->doesPageIdBelongToUser($mapView["id"],$_SESSION["UserId"])){
                             echo '<div class="dropdown-content">';
                             echo '<a href="'.$mapView['blogPostEditUrl'].'">Modifier</a>';
-                            echo '<a id="modifyVisibilityButton"> '.(($mapView['statusP'] != "innactive") ? (($mapView['statusP'] == "active") ? "Mettre en visibilité privé" : "Mettre en visibilité public") : "").'</a>';
-                            echo '<a id="deleteButton">Supprimer</a>';
+                            echo '<a onclick="sendPostShowOrHide('.$mapView["id"].')" id="modifyVisibilityButton"> '.(($mapView['statusP'] != "innactive") ? (($mapView['statusP'] == "active") ? "Mettre en visibilité privé" : "Mettre en visibilité public") : "").'</a>';
+                            echo '<a onclick="sendPostDelete('.$mapView["id"].')" id="deleteButton">Supprimer</a>';
                             echo '</div>';
                         }
                         else {
                             echo '<div class="dropdown-content">';
                             //echo '<a href="'.$mapView['blogPostUrl'].'">Signaler</a>';
-                            echo '<a id="signet" href="'.$mapView['blogPostUrl'].'">désenregistrer</a>';
-                            echo '<a id="signet" >désenregistrer</a>'; // todo add function js to remove bookmark
+                            echo '<a id="seeBlog" href="'.$mapView['blogPostUrl'].'">Voir le blog</a>';
+                            echo '<a onclick="sendPostUnbookmark('.$mapView["id"].')" id="unBookmarkBlog"  >Désenregistrer</a>';
+                            //todo add function js to remove bookmark
                             echo '</div>';
 
                         }

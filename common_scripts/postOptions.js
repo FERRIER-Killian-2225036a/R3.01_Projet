@@ -19,3 +19,14 @@ function sendPostDelete(id) {
     });
     window.location.href = "https://cyphub.tech/Settings/MyPost";
 }
+
+function sendPostUnbookmark(id)  {
+    fetch('/Post/Blog/' + id, {
+        method: 'POST',
+        body: 'DeleteComment="'+id+'"',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    });
+    window.location.href = "https://cyphub.tech/Settings/Bookmark";
+}

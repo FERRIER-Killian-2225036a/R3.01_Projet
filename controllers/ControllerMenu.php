@@ -79,35 +79,50 @@ class ControllerMenu
 
         // TODO : récuperer les params (tri) pour filtrer les résultats
         //la requete ressemble à :  POST /Menu/BlogFeed/Filter
-        if (SessionManager::isUserConnected()){
-        $page = new Blog_Page;
+        if (SessionManager::isUserConnected()) {
+            $page = new Blog_Page;
 
-        $ArrayOf5IdByDate = $page->get5PagesByDate();
-        $ArrayOfBlogPageModel = array();
-        foreach ($ArrayOf5IdByDate as $id) {
-            $ArrayOfBlogPageModel[] = new BlogPageModel($id);
-        }
-
-        foreach ($ArrayOfBlogPageModel as $obj) {
-            if ($obj->getStatusP() == "active") {
-                $tagsList = "";
-                foreach ($obj->getTags() as $tags) {
-                    $tagsList .= "#" . $tags . " - ";
-                }
-                $boolIsPostBookmarked = (new BlogPageModel($obj->getPageId()))->isPostBookmarked($_SESSION['UserId']);
-
-                $urlBookmark = "/Post/Blog/" . $obj->getPageId();
-                MotorView::show('menu/blogFeed', array("blogPostUrl" => $obj->getPostUrl(),
-                    "blogTitle" => $obj->getTITLE(),
-                    "blogContent" => $obj->getContent(),
-                    "blogAuthor" => $obj->getAuthor(),
-                    "blogDate" => $obj->getDateP(),
-                    "blogUrlPicture" => $obj->getUrlPicture(),
-                    "Tags" => $tagsList,
-                    "CurentUrlPost" => $urlBookmark,
-                    "BoolIsPostBookmarked" => $boolIsPostBookmarked)); // plus tard il faudra mettre si l'user a bien liké ou non
+            $ArrayOf5IdByDate = $page->get5PagesByDate();
+            $ArrayOfBlogPageModel = array();
+            foreach ($ArrayOf5IdByDate as $id) {
+                $ArrayOfBlogPageModel[] = new BlogPageModel($id);
             }
-        }} else {
+
+            $listOfPageId = "";
+            $listOfBoolIsPostBookmarked = "";
+
+            foreach ($ArrayOfBlogPageModel as $obj) {
+                if ($obj->getStatusP() == "active") {
+                    $tagsList = "";
+                    foreach ($obj->getTags() as $tags) {
+                        $tagsList .= "#" . $tags . " - ";
+                    }
+                    $boolIsPostBookmarked = (new BlogPageModel($obj->getPageId()))->isPostBookmarked($_SESSION['UserId']);
+                    if ($boolIsPostBookmarked) {
+                        $listOfBoolIsPostBookmarked .= "1";
+                    } else {
+                        $listOfBoolIsPostBookmarked .= "0";
+                    }
+                    $listOfPageId .= $obj->getPageId().",";
+                    $urlBookmark = "/Post/Blog/" . $obj->getPageId();
+                    MotorView::show('menu/blogFeed',
+                        array(
+                            "blogPostUrl" => $obj->getPostUrl(),
+                            "blogTitle" => $obj->getTITLE(),
+                            "blogContent" => $obj->getContent(),
+                            "blogAuthor" => $obj->getAuthor(),
+                            "blogDate" => $obj->getDateP(),
+                            "blogUrlPicture" => $obj->getUrlPicture(),
+                            "Tags" => $tagsList,
+                            "CurentUrlPost" => $urlBookmark,
+                            "BoolIsPostBookmarked" => $boolIsPostBookmarked)); // plus tard il faudra mettre si l'user a bien liké ou non
+                }
+            }
+            echo "<script src='/common_scripts/blogFeed.js' > redirect('".$listOfPageId."') ; ";
+            echo "bookmark('".$listOfBoolIsPostBookmarked.";') </script>";
+
+
+        } else {
             header("Location: /Auth/login");
             die();
         }
@@ -153,9 +168,9 @@ class ControllerMenu
                 $result = null;
 
                 if (SessionManager::isUserConnected()) {
-                    if ( (new USERSiteModel($_SESSION["UserId"]))->getRole()=="registered"  ){
+                    if ((new USERSiteModel($_SESSION["UserId"]))->getRole() == "registered") {
                         $result = (new SearchModel())->researchAsUser($input);
-                    } else{
+                    } else {
                         $result = (new SearchModel())->researchAsStaff($input);
                     }
 
