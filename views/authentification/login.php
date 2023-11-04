@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="/common_styles/wrongInfo.css">
 <script src="/common_scripts/showErrorMessage.js"></script>
 <!-- Section principale avec un dégradé de fond -->
+<!-- Section principale avec un dégradé de fond -->
 <section class="h-100 gradient-form">
     <div class="container py-2">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -32,6 +33,7 @@
                                             <input type="password" id="form2Example22" class="form-control"
                                                    placeholder="********" name="password"/>
                                         </label>
+                                        <i id="passwordToggle" class="fas fa-eye" style="position: absolute; top: 50%; right: 10px; cursor: pointer;"></i>
                                         <!-- Zone d'affichage des messages d'erreur -->
                                         <label id="wrongInfo"></label>
                                     </div>
