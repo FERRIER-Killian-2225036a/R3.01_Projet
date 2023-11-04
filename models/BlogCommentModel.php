@@ -50,6 +50,11 @@ class BlogCommentModel
      */
     private int $PageId;
 
+    /**
+     * @var BlogPageModel $BlogPage pour pouvoir recuperer le titre de la page du blog
+     */
+    private BlogPageModel $BlogPage;
+
     public function __construct($CommentId)
     {
         $arrayOfValues = (new Blog_Comment())->getValuesById($CommentId);
@@ -59,6 +64,7 @@ class BlogCommentModel
         $this->UserId = $arrayOfValues['UserId'];
         $this->PageId = $arrayOfValues['PageId'];
         $this->User = new USERSiteModel($this->UserId);
+        $this->BlogPage = new BlogPageModel($this->PageId);
 
     }
 
@@ -108,5 +114,13 @@ class BlogCommentModel
     public function getPageId(): int
     {
         return $this->PageId;
+    }
+
+    /**
+     * @return BlogPageModel
+     */
+    public function getBlogPage(): BlogPageModel
+    {
+        return $this->BlogPage;
     }
 }

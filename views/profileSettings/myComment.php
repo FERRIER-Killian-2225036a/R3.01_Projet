@@ -8,7 +8,8 @@
         </div>
         <!-- Section pour le champs de recherche -->
         <div class="col-md-5 d-flex align-items-end">
-            <label><input class="form-control" type="text" name="query" placeholder="Rechercher..."></label> <!-- Champ de recherche -->
+            <label><input class="form-control" type="text" name="query" placeholder="Rechercher..."></label>
+            <!-- Champ de recherche -->
         </div>
         <hr class="my-3"> <!-- Ligne de séparation -->
     </div>
@@ -30,10 +31,9 @@
         foreach ($mapView["ArrayOfComment"] as $comment) {
             echo '<tr>';
             echo '<th scope="row">' . $comment->getCommentId() . '</th>';
-            echo '<td><a href="'. "/Post/Blog/".$comment->getPageId().'">' . $comment->getTextC() . '</a></td>';
-            //echo '<td>' . $comment->getStatut() . '</td>';
+            echo '<td><a href="' . "/Post/Blog/" . $comment->getPageId() . '">' . $comment->getPage()->getTITLE() . '<br><small>' . $comment->getTextC() . '</small></a></td>';
             echo '<td>' . $comment->getDateC() . '</td>';
-            //TODO ajouter les boutons pour modifier et supprimer svp a géré apres ligne 23 
+            //TODO ajouter les boutons pour modifier et supprimer svp a géré apres ligne 23
             echo '</tr>';
 
         }
