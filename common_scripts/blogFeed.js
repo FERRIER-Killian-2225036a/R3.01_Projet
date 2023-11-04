@@ -37,7 +37,7 @@ function bookmark(listOfBooleen) {
     const svgBookmarkAdd = document.querySelectorAll('#svgBookmarkAdd');
     const svgBookmarkDel = document.querySelectorAll('#svgBookmarkDel');
     for (let i = 0; i < listOfBooleen.length; i++) {
-        if (listOfBooleen[i] === 1) {
+        if (listOfBooleen[i] === '1') {
             // On cache le signet d'ajout
             svgBookmarkAdd[i].style.display = 'none';
             // On affiche le signet de suppression
