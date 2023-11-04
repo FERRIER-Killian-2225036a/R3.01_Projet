@@ -69,6 +69,8 @@ class ControllerSettings
         }
         //TODO logique d'affichage des enregistrements (forum)
         echo '</div></div>';
+        echo '<script src="/common_scripts/myPostDisplay.js"></script>';
+        echo '<script src="/common_scripts/postOptions.js"></script>';
     }
 
     /**
@@ -312,6 +314,8 @@ class ControllerSettings
             }
         }
         echo '</div></div>';
+        echo '<script src="/common_scripts/myPostDisplay.js"></script>';
+        echo '<script src="/common_scripts/postOptions.js"></script>';
         // recup requete, verif connexion + droits + propriétés
         // si la requete est une demande de modification de post, on va le rediriger selon l'identifiant de son poste
         // on aura donc notre logique de controlleur dans /Post/blog(ou forum)Edit
