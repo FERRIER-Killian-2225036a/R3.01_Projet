@@ -12,7 +12,7 @@
                         <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
                     </svg>
                     <?php if (isset($mapView["id"])){
-                        echo '<div class="dropdown-content">';
+                        echo '<div class="dropdown-content exceptionButton-role">';
                         if ((new Blog_Page())->doesPageIdBelongToUser($mapView["id"],$_SESSION["UserId"])){?>
                             <a href="<?php echo $mapView['blogPostEditUrl']?>">Modifier</a>
                             <a onclick="sendPostShowOrHide(<?php echo $mapView["id"]?>)" id="modifyVisibilityButton"><?php

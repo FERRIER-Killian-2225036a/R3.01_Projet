@@ -19,7 +19,7 @@
                 <!-- Début de la section commentaire -->
                 <div class="row">
                     <div class="col-12 col-md-6 col-lg-4">
-                        <div class="input-group align-items-center">
+                        <div class="input-group align-items-center exceptionButton-role">
                             <form action="<?php echo $mapView["CurentUrlPost"] ?>" method ="POST">
                                 <label>
                                     <input type="text" name="Comment" class="form-control custom-input inputBackground" placeholder="Commenter">
