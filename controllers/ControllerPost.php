@@ -273,7 +273,7 @@ class ControllerPost
                                         $CategoryPageFormOrm->removeAllLinkBetweenCategoryAndPage($idPost);
                                     } else { // on a de potentiels modifications dans les tags
                                         $CategoryPageFormOrm->removeAllLinkBetweenCategoryAndPage($idPost);
-                                        foreach ($newTags as $tag) { //TODO faut remove si y'en a qui ont changé
+                                        foreach ($newTags as $tag) {
                                             $id = (new Blog_Category())->createCategory($tag); // renvoi l'id de la nouvelle/existante page
                                             $CategoryPageFormOrm->createLinkBetweenCategoryAndPage($id, $idPost);// on link la page au nouvel id.
                                         }
@@ -362,9 +362,10 @@ class ControllerPost
                             if ($idNewPost instanceof ExceptionsBlog) {
                                 throw new ExceptionsBlog($idNewPost); // erreur survenue lors de la création
                             }
+                            error_log("l'image a été uploadé avec succès.");
                             $post->update_img($idNewPost, $newImg);
                         }
-
+                        error_log("newTags : $newTags");
                         $CategoryPageFormOrm = new Blog_categoryPage();
                         if (!empty($newTags)) { // on a de potentiels modifications dans les tags
                             foreach ($newTags as $tag) {
@@ -373,7 +374,7 @@ class ControllerPost
                             }
                         }
                         //TODO verifier si ca a marché avecc img et tt
-                        
+
                         header("Location: /Settings/MyPost");
                         die();
 
@@ -512,7 +513,7 @@ class ControllerPost
                         }
                         $tagsStringForInput = substr($tagsStringForInput, 0, strlen($tagsStringForInput) - 1);
                         // $tagsStringForInput sera fourni dans l'input dans l'input de la vue,
-                        MotorView::show('post/viewBlog', array("Title" => $title, //KILLIAN
+                        MotorView::show('post/viewBlog', array("Title" => $title,
                             "Content" => $content,
                             "Tags" => $tagsStringForInput,
                             "Img" => $img,
