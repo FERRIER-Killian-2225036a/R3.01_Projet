@@ -1,14 +1,14 @@
 <?php
 
 /**
- * La classe PictureVerificator est un utilitaire pour la vérification des images uploadées.
+ * la classe PictureVerificator est un utilitaire pour la vérification des images uploadées
  *
- * Cette classe s'occupe de vérifier les images uploadées par les utilisateurs, elle vérifie la taille,
- * si elles sont sûres au niveau du contenu (via l'API Google Cloud Vision) [adulte, violence, etc...],
- * le type (vérification Mime type, extension, Magic Number),
- * gère aussi l'unicité du nom du fichier (pour éviter les collisions),
- * détruit les données EXIF des images pour éviter les attaques de type exif injection
- * et l'usage d'OSINT qui pourrait amener à des fuites potentielles d'informations.
+ * cette classe s'occupe de vérifier les images uploadées par les utilisateurs, elle vérifie la taille
+ * si elle sont safe, au niveau du contenu (par ai via l'api google cloud vision) [adulte, violence, etc...]
+ * ou encore du type ( verification Mime type, extension, Magic Number)
+ * gere aussi l'unicité du nom du fichier (pour éviter les collisions)
+ * on détruit les données exif des images pour éviter les attaques de type exif injection
+ * et l'usage d'osint qui pourrait ammener a de potentiel leak d'informations
  *
  * @see ControllerSettings
  * @see ControllerPost
@@ -22,9 +22,9 @@
 class PictureVerificator
 {
     /**
-     * Méthode pour vérifier la sécurisation des images uploadées.
+     * Méthode pour vérifier sur la sécurisation des images uploadées
      *
-     * @param array $file
+     * @param $file
      * @param string $uploadDirectory
      * @param array $allowedExtensions
      * @param int $minFileSize
@@ -32,7 +32,8 @@ class PictureVerificator
      * @param bool $square
      * @return array|string
      */
-    public static function VerifyImg(array $file, string $uploadDirectory, array $allowedExtensions, int $minFileSize, int $maxFileSize, bool $square = false): array|string
+    public static function VerifyImg($file, string $uploadDirectory, array $allowedExtensions,
+                                     int $minFileSize, int $maxFileSize, bool $square = false): array|string //TODO mettre a jour l'indice de suspicion
     {
         if ($file['error'] !== UPLOAD_ERR_OK) {
             return "Une erreur est survenue lors de l'upload du fichier.";
@@ -67,85 +68,67 @@ class PictureVerificator
         $uniqueFileName = uniqid() . '.' . $fileExtension;
         $targetPath = $uploadDirectory . "/" . $uniqueFileName;
 
-        // Destruction des données EXIF
-        $image = null;
-        if (in_array(strtolower($fileExtension), ['jpg', 'jpeg'])) {
-            $image = imagecreatefromjpeg($fileTmpName);
+
+        //destruction données exif
+        if (in_array(strtolower($fileExtension), ['jpg', 'jpeg'])) { //TODO a voir si on garde des tests sur les
+            $image = imagecreatefromjpeg($fileTmpName);             //extensions ou si on fait par rapport
+            imagejpeg($image, $targetPath, 100);            // au mime type
+            imagedestroy($image);
         } elseif (strtolower($fileExtension) == 'png') {
             $image = imagecreatefrompng($fileTmpName);
+            imagepng($image, $targetPath, 9);
+            imagedestroy($image);
         } elseif (strtolower($fileExtension) == 'gif') {
             $image = imagecreatefromgif($fileTmpName);
-        }
-
-        if ($image !== null) {
-            // Suppression des données EXIF
-            imagejpeg($image, $fileTmpName, 100);
+            imagegif($image, $targetPath);
             imagedestroy($image);
         } else {
-            return "Erreur : type de fichier non pris en charge";
+            return "Erreur : bypass du type detecter";
         }
 
-        if ($square) {
-            $image = imagecreatefromstring(file_get_contents($targetPath));
-            $imageWidth = imagesx($image);
-            $imageHeight = imagesy($image);
-            $size = min($imageWidth, $imageHeight);
+        
 
-            // Crée une nouvelle image carrée vide
-            $squareImage = imagecreatetruecolor($size, $size);
 
-            // Copie la partie centrale de l'image originale dans l'image carrée
-            $x = 0;
-            $y = 0;
-            if ($imageWidth > $imageHeight) {
-                $x = ($imageWidth - $imageHeight) / 2;
-            } elseif ($imageHeight > $imageWidth) {
-                $y = ($imageHeight - $imageWidth) / 2;
-            }
-            imagecopy($squareImage, $image, 0, 0, $x, $y, $size, $size);
-            imagejpeg($squareImage, $fileTmpName, 100);
-            imagedestroy($image);
-            imagedestroy($squareImage);
-        }
-
-        if (move_uploaded_file($fileTmpName, $targetPath)) {
+        if (move_uploaded_file($targetPath, $targetPath)) {
             // Vérification de la sécurité avec Google Cloud Vision
             $imageContent = file_get_contents($targetPath);
+            //error_log('usage api');
             $url = 'https://vision.googleapis.com/v1/images:annotate?key=' . Constants::$API_KEY_GOOGLE_VISION;
 
-            $requestData = [
-                'requests' => [
-                    [
-                        'image' => ['content' => base64_encode($imageContent)],
-                        'features' => [['type' => 'SAFE_SEARCH_DETECTION']]
-                    ]
-                ]
-            ];
+            $requestData = ['requests' => [['image' => ['content' => base64_encode($imageContent)],
+                'features' => [['type' => 'SAFE_SEARCH_DETECTION']]]]];
 
-            $options = [
-                'http' => [
-                    'header' => 'Content-Type: application/json',
-                    'method' => 'POST',
-                    'content' => json_encode($requestData)
-                ]
-            ];
+
+            $options = ['http' => ['header' => 'Content-Type: application/json',
+                'method' => 'POST', 'content' => json_encode($requestData)]];
 
             $context = stream_context_create($options);
             $response = file_get_contents($url, false, $context);
+            //error_log($response);
             $responseData = json_decode($response, true);
+            //  error_log($responseData);
+            if (isset($responseData['responses'][0]['safeSearchAnnotation']['adult'])) {
+                if ($responseData['responses'][0]['safeSearchAnnotation']['adult'] == 'VERY_LIKELY' || $responseData['responses'][0]['safeSearchAnnotation']['violence'] == 'VERY_LIKELY') {
+                    unlink($targetPath); // Supprimez l'image non sécurisée
+                    return "Erreur : L'image n'est pas sécurisée.";
+                } else {
+                    error_log('image securisee');
 
-            if (
-                isset($responseData['responses'][0]['safeSearchAnnotation']['adult']) &&
-                ($responseData['responses'][0]['safeSearchAnnotation']['adult'] === 'VERY_LIKELY' ||
-                    $responseData['responses'][0]['safeSearchAnnotation']['violence'] === 'VERY_LIKELY')
-            ) {
-                unlink($targetPath); // Supprimez l'image non sécurisée
-                return "Erreur : L'image n'est pas sécurisée.";
+
+
+                    return ["success", $uniqueFileName];
+                }
             } else {
-                return ["success", $uniqueFileName];
+                unlink($targetPath); // Supprimez l'image non sécurisée
+                return "Erreur : Impossible de vérifier la sécurité de l'image.";
             }
         } else {
+
             return "Erreur : problème de téléchargement du fichier.";
         }
+
     }
+
+
+
 }
