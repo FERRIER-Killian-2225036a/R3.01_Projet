@@ -22,15 +22,16 @@ divButtonRoles.forEach(function(divButtonRole) {
 function redirect(stringOfLikns) {
     // Sélectionnez tous les éléments avec l'ID "divButtonRole" (supposons qu'ils aient une classe "button-role" pour cette démonstration)
     const divButtonRoles = document.querySelectorAll('.button-role');
-
+    console.log(divButtonRoles);
     const listOfLikns = stringOfLikns.split(',');
     // Parcourez chaque élément et ajoutez l'événement
     for(let i=0; i<divButtonRoles.length; i++) {
         divButtonRoles[i].addEventListener("click", function(event) {
-            const isInput = event.target.closest('.input-group');
+            console.log('Appui sur bouton' + divButtonRoles[i]);
+            /*const isInput = event.target.closest('.input-group');
             if (!isInput) {
                 window.location.href = listOfLikns[i];
-            }
+            }*/
         });
     }
 }
