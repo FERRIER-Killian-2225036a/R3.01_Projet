@@ -103,7 +103,7 @@
                 </div>
                 <label for="confirmPassword"></label>
                 <div class="input-group">
-                    <input type password="password" id="confirmPassword" class="form-control" oninput="checkPasswordsEquality()"
+                    <input type="password" id="confirmPassword" class="form-control" oninput="checkPasswordsEquality()"
                            placeholder="********"/>
                 </div>
                 <span id="passwordFeedback"></span>
