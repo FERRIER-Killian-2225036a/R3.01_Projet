@@ -31,7 +31,7 @@
         foreach ($mapView["ArrayOfComment"] as $comment) {
             echo '<tr>';
             echo '<th scope="row">' . $comment->getCommentId() . '</th>';
-            echo '<td><a href="' . "/Post/Blog/" . $comment->getPageId() . '">' . $comment->getPage()->getTITLE() . '<br><small>' . $comment->getTextC() . '</small></a></td>';
+            echo '<td><a href="' . "/Post/Blog/" . $comment->getPageId() . '">' . $comment->getBlogPage()->getTITLE() . '<br><small>' . $comment->getTextC() . '</small></a></td>';
             echo '<td>' . $comment->getDateC() . '</td>';
             //TODO ajouter les boutons pour modifier et supprimer svp a géré apres ligne 23
             echo '</tr>';
