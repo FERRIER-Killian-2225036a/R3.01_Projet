@@ -1,29 +1,29 @@
 function sendPostShowOrHide(id) {
     fetch('/Post/BlogEdit/' + id, {
         method: 'POST',
-        body: 'ChangeVisibilityBlog',
+        body: 'ChangeVisibilityBlog=""',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
     });
-    window.location.href = "https://cyphub.tech/Settings/MyPost";
+    //window.location.href = "https://cyphub.tech/Settings/MyPost";
 }
 
 function sendPostDelete(id) {
     fetch('/Post/BlogEdit/' + id, {
         method: 'POST',
-        body: 'DeleteBlog',
+        body: 'DeleteBlog=""',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
     });
-    window.location.href = "https://cyphub.tech/Settings/MyPost";
+    //window.location.href = "https://cyphub.tech/Settings/MyPost";
 }
 
 function sendPostUnbookmark(id)  {
     fetch('/Post/Blog/' + id, {
         method: 'POST',
-        body: 'DeleteComment='+id+'',
+        body: 'Bookmark='+id+'',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
