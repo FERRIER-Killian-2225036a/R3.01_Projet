@@ -23,7 +23,7 @@ function sendPostDelete(id) {
 function sendPostUnbookmark(id)  {
     fetch('/Post/Blog/' + id, {
         method: 'POST',
-        body: 'DeleteComment="'+id+'"',
+        body: 'DeleteComment='+id+'',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         }

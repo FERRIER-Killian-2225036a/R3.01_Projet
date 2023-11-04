@@ -90,7 +90,6 @@ class SearchModel
                 case "BLOG_Page":
                     if ($value != false) {
                         foreach ($value as $id) {
-                                error_log("id : " . $id);
                                 $arrayOfUrl[$key][] = "/Post/Blog/" . $id;
 
                         }
