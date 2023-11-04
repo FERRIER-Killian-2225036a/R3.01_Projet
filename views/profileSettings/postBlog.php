@@ -14,7 +14,7 @@
                     <?php if (isset($mapView["id"])){
                         echo '<div class="dropdown-content">';
                         if ((new Blog_Page())->doesPageIdBelongToUser($mapView["id"],$_SESSION["UserId"])){?>
-                            <a href="'.$mapView['blogPostEditUrl'].'">Modifier</a>
+                            <a href="<?php echo $mapView['blogPostEditUrl']?>">Modifier</a>
                             <a onclick="sendPostShowOrHide(<?php echo $mapView["id"]?>)" id="modifyVisibilityButton"><?php
                                 if ($mapView['statusP'] != "innactive") {
                                     echo ($mapView['statusP'] == "active") ? "Mettre en visibilité privé" : "Mettre en visibilité public";
