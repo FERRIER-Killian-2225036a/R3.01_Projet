@@ -20,9 +20,11 @@
                 <div class="row">
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="input-group align-items-center">
-                            <label>
-                                <input type="text" class="form-control custom-input inputBackground" placeholder="Commenter">
-                            </label>
+                            <form action="<?php echo $mapView["CurentUrlPost"] ?>" method ="POST">
+                                <label  > <!-- TODO enlever style d'ici ? -->
+                                    <input type="text" name="Comment" class="form-control custom-input inputBackground" placeholder="Commenter">
+                                </label>
+                            </form>
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="button">
                                     <i class="fas fa-save">#blog</i>
@@ -68,7 +70,7 @@
         document.getElementById("divButtonRole").addEventListener("click", function() {
             const isInput = event.target.closest('.input-group');
             if (!isInput) {
-                window.location.href = "<?php echo $mapView['blogPostUrl'] ?>";
+                window.location.href = "<?php echo $mapView['blogPostUrl'] ?>"; //TODO changer php pcq le lien est que sur le premier
             }
         });
     </script>

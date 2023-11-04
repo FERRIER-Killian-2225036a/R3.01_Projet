@@ -372,6 +372,8 @@ class ControllerPost
                                 $CategoryPageFormOrm->createLinkBetweenCategoryAndPage($id, $idNewPost);// on link la page au nouvel id.
                             }
                         }
+                        //TODO verifier si ca a marché avecc img et tt
+                        
                         header("Location: /Settings/MyPost");
                         die();
 
@@ -449,7 +451,15 @@ class ControllerPost
 
                         header("Location: /Post/Blog/" . $idPost);
 
-                    } else {
+                    } elseif(isset($A_postParams["Comment"])){
+                        $textC = $A_postParams["Comment"];
+                        $textC = htmlspecialchars($textC);
+                        if ($textC != "" && $textC != null){
+                            (new Blog_Comment())->createComment($textC, $_SESSION['UserId'], $idPost);
+                        }
+                        header("Location: /Post/Blog/" . $idPost);
+                    }
+                    else {
                         (new UserSite())->incrementAlertLevelUser($_SESSION['UserId']);
                         header("Location: /Menu/BlogFeed");
 
@@ -481,11 +491,18 @@ class ControllerPost
                         $userModel = (new USERSiteModel($userId));
                         $numberOfFollower = $userModel->getNumberOfFollower();
                         $imgProfil = $userModel->getUrlPicture();
+                        if ($imgProfil == null) {
+                            $imgProfil = Constants::MEDIA_DIRECTORY_USERS . "Profil.png";
+                        }
                         $boolIsFollowed = $userModel->isFollowed($_SESSION['UserId']);
                         $boolIsPostBookmarked = $existingPost->isPostBookmarked($_SESSION['UserId']);
 
                         $urlBookmark = "/Post/Blog/" . $idPost; // TODO on regardera les parametres POST
-
+                        $arrayOfCommentsId = $existingPost->getCommentsId();
+                        $arrayOfComments = array();
+                        foreach ($arrayOfCommentsId as $id) {
+                            $arrayOfComments[] =  (new BlogCommentModel($id));
+                        }
 
                         // transformation de la liste d'identifiant de tag, en un string sous forme de label1,label2,label3
 
@@ -504,7 +521,8 @@ class ControllerPost
                             "ImgProfil" => $imgProfil,
                             "BoolIsFollowed" => $boolIsFollowed,
                             "BoolIsPostBookmarked" => $boolIsPostBookmarked,
-                            "CurentUrlPost" => $urlBookmark
+                            "CurentUrlPost" => $urlBookmark,
+                            "Comments" => $arrayOfComments,
                         ));
                     }
                 }

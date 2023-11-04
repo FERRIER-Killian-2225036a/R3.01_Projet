@@ -230,5 +230,15 @@ class BlogPageModel
         (new Blog_PageLike())->createPageLike($this->PageId, $UserId);
     }
 
+    /**
+     * permet de recuperer les commentaires id d'une page
+     *
+     * @return array|false
+     */
+    public function getCommentsId(): false|array
+    {
+        return (new Blog_Comment())->getAllCommentIdOfPage($this->PageId);
+    }
+
 
 }

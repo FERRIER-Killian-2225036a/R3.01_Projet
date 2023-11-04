@@ -2,7 +2,10 @@
 
 
 /**
+ * La classe SearchModel est responsable du lien Model / vue pour la recherche situé dans le header
  *
+ * On gere l'affichage de suggestion de lien selon le role utilisateur, ainsi un modo peut chercher
+ * une ip par exemple, mais un utilisateur lambda ne peut pas et est limité a certaines zone de la bdd
  *
  * Recherche -> (connecté & modo)
  * [IT_Articles] -> title, content.
@@ -29,6 +32,12 @@
  * Recherche -> (pas connecté)
  * [IT_Articles] -> title, content.
  * [USERSite] -> Pseudo                    si mec pas BlackList
+ *
+ * @package models
+ * @since 1.0
+ * @version 1.0
+ * @category search
+ * @author Tom Carvajal
  */
 class SearchModel
 {

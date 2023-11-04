@@ -49,17 +49,15 @@ class Blog_Comment
      * Cette methode permet de créer un commentaire
      *
      * @param string $textC
-     * @param string $dateC
      * @param int $UserId
      * @param int $PageId
      * @return string|false
      */
-    public function createComment(string $textC, string $dateC, int $UserId, int $PageId): string|false
+    public function createComment(string $textC, int $UserId, int $PageId): string|false
     {
-        $sql = "INSERT INTO BLOG_Comment (textC, dateC, UserId, PageId) VALUES (:textC, :dateC, :UserId, :PageId)";
+        $sql = "INSERT INTO BLOG_Comment (textC, dateC, UserId, PageId) VALUES (:textC, CURRENT_TIMESTAMP, :UserId, :PageId)";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':textC', $textC);
-        $stmt->bindParam(':dateC', $dateC);
         $stmt->bindParam(':UserId', $UserId);
         $stmt->bindParam(':PageId', $PageId);
         $stmt->execute();
@@ -242,4 +240,29 @@ class Blog_Comment
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    /**
+     * Cette méthode permet de recuperer tout les attributs d'un commentaire par rapport a son id
+     *
+     * @param int $CommentId
+     * @return array|ExceptionsDatabase|false
+     */
+    public function getValuesById(int $CommentId) : array|ExceptionsDatabase|false
+    {
+        try {
+            if (!$this->isCommentExist($CommentId)) {
+                throw new ExceptionsDatabase("This comment doesn't exist");
+            }
+            $stmt = $this->conn->prepare("SELECT * FROM BLOG_Comment WHERE CommentId = ?");
+            $stmt->bindParam(1, $CommentId);
+            $stmt->execute();
+            $mapArrayOfPageValues = $stmt->fetch(PDO::FETCH_ASSOC); // Stocke le résultat dans le tableau
+            $stmt->closeCursor();
+        } catch (ExceptionsDatabase $e) {
+            return $e;
+        }
+        return $mapArrayOfPageValues;
+    }
+
+
 }
