@@ -68,100 +68,86 @@ class PictureVerificator
         $uniqueFileName = uniqid() . '.' . $fileExtension;
         $targetPath = $uploadDirectory . "/" . $uniqueFileName;
 
-        if ( $square ) {
-            list($width, $height) = getimagesize($fileTmpName);
-            if ($width != $height) {
-                try {
-                $resizedImage = self::resizeToSquare($fileTmpName);
-                $fileTmpName = $resizedImage;
-                } catch (Exception $e) {
-                    error_log( "Erreur : Impossible de redimensionner l'image.");
-                    return "Erreur : Impossible de redimensionner l'image.".$e->getMessage();
-                }
+
+        //destruction données exif
+        if (in_array(strtolower($fileExtension), ['jpg', 'jpeg'])) { //TODO a voir si on garde des tests sur les
+            $image = imagecreatefromjpeg($fileTmpName);             //extensions ou si on fait par rapport
+            imagejpeg($image, $fileTmpName, 100);            // au mime type
+            imagedestroy($image);
+        } elseif (strtolower($fileExtension) == 'png') {
+            $image = imagecreatefrompng($fileTmpName);
+            imagepng($image, $fileTmpName, 9);
+            imagedestroy($image);
+        } elseif (strtolower($fileExtension) == 'gif') {
+            $image = imagecreatefromgif($fileTmpName);
+            imagegif($image, $fileTmpName);
+            imagedestroy($image);
+        } else {
+            return "Erreur : bypass du type detecter";
+        }
+
+        if ($square) {
+            $image = imagecreatefromstring(file_get_contents($targetPath));
+            $imageWidth = imagesx($image);
+            $imageHeight = imagesy($image);
+            $size = min($imageWidth, $imageHeight);
+
+            // Crée une nouvelle image carrée vide
+            $squareImage = imagecreatetruecolor($size, $size);
+
+            // Copie la partie centrale de l'image originale dans l'image carrée
+            $x = 0;
+            $y = 0;
+            if ($imageWidth > $imageHeight) {
+                $x = ($imageWidth - $imageHeight) / 2;
+            } elseif ($imageHeight > $imageWidth) {
+                $y = ($imageHeight - $imageWidth) / 2;
             }
+            imagecopy($squareImage, $image, 0, 0, $x, $y, $size, $size);
+            imagejpeg($squareImage, $fileTmpName, 100);
+            imagedestroy($image);
+            imagedestroy($squareImage);
         }
 
 
-            //destruction données exif
-            if (in_array(strtolower($fileExtension), ['jpg', 'jpeg'])) { //TODO a voir si on garde des tests sur les
-                $image = imagecreatefromjpeg($fileTmpName);             //extensions ou si on fait par rapport
-                imagejpeg($image, $targetPath, 100);            // au mime type
-                imagedestroy($image);
-            } elseif (strtolower($fileExtension) == 'png') {
-                $image = imagecreatefrompng($fileTmpName);
-                imagepng($image, $targetPath, 9);
-                imagedestroy($image);
-            } elseif (strtolower($fileExtension) == 'gif') {
-                $image = imagecreatefromgif($fileTmpName);
-                imagegif($image, $targetPath);
-                imagedestroy($image);
-            } else {
-                return "Erreur : bypass du type detecter" ;
-            }
+        if (move_uploaded_file($fileTmpName, $targetPath)) {
+            // Vérification de la sécurité avec Google Cloud Vision
+            $imageContent = file_get_contents($targetPath);
+            //error_log('usage api');
+            $url = 'https://vision.googleapis.com/v1/images:annotate?key=' . Constants::$API_KEY_GOOGLE_VISION;
+
+            $requestData = ['requests' => [['image' => ['content' => base64_encode($imageContent)],
+                'features' => [['type' => 'SAFE_SEARCH_DETECTION']]]]];
 
 
-            if (move_uploaded_file($fileTmpName, $targetPath)) {
-                // Vérification de la sécurité avec Google Cloud Vision
-                $imageContent = file_get_contents($targetPath);
-                //error_log('usage api');
-                $url = 'https://vision.googleapis.com/v1/images:annotate?key=' . Constants::$API_KEY_GOOGLE_VISION;
+            $options = ['http' => ['header' => 'Content-Type: application/json',
+                'method' => 'POST', 'content' => json_encode($requestData)]];
 
-                $requestData = ['requests' => [['image' => ['content' => base64_encode($imageContent)],
-                    'features' => [['type' => 'SAFE_SEARCH_DETECTION']]]]];
-
-
-                $options = ['http' => ['header' => 'Content-Type: application/json',
-                    'method' => 'POST', 'content' => json_encode($requestData)]];
-
-                $context = stream_context_create($options);
-                $response = file_get_contents($url, false, $context);
-                //error_log($response);
-                $responseData = json_decode($response, true);
-                //  error_log($responseData);
-                if (isset($responseData['responses'][0]['safeSearchAnnotation']['adult'])) {
-                    if ($responseData['responses'][0]['safeSearchAnnotation']['adult'] == 'VERY_LIKELY' || $responseData['responses'][0]['safeSearchAnnotation']['violence'] == 'VERY_LIKELY') {
-                        unlink($targetPath); // Supprimez l'image non sécurisée
-                        return "Erreur : L'image n'est pas sécurisée.";
-                    } else {
-                        error_log('image securisee');
-                        return ["success",$uniqueFileName];
-                    }
-                } else {
+            $context = stream_context_create($options);
+            $response = file_get_contents($url, false, $context);
+            //error_log($response);
+            $responseData = json_decode($response, true);
+            //  error_log($responseData);
+            if (isset($responseData['responses'][0]['safeSearchAnnotation']['adult'])) {
+                if ($responseData['responses'][0]['safeSearchAnnotation']['adult'] == 'VERY_LIKELY' || $responseData['responses'][0]['safeSearchAnnotation']['violence'] == 'VERY_LIKELY') {
                     unlink($targetPath); // Supprimez l'image non sécurisée
-                    return "Erreur : Impossible de vérifier la sécurité de l'image.";
+                    return "Erreur : L'image n'est pas sécurisée.";
+                } else {
+                    error_log('image securisee');
+
+
+                    return ["success", $uniqueFileName];
                 }
             } else {
-
-                return "Erreur : problème de téléchargement du fichier.";
+                unlink($targetPath); // Supprimez l'image non sécurisée
+                return "Erreur : Impossible de vérifier la sécurité de l'image.";
             }
+        } else {
+
+            return "Erreur : problème de téléchargement du fichier.";
+        }
 
     }
 
 
-    /**
-     * Méthode pour redimensionner une image en carré
-     *
-     * @param $file
-     * @return bool|string
-     */
-    public static function resizeToSquare($file): bool|string
-    {
-        // Récupère les dimensions de l'image
-        list($width, $height) = getimagesize($file);
-        $newSize = min($width, $height);
-
-        $source = imagecreatefromstring(file_get_contents($file));
-        $square = imagecreatetruecolor($newSize, $newSize);
-
-        // Redimensionne l'image à la taille souhaitée
-        imagecopyresampled($square, $source, 0, 0, ($width - $newSize) / 2, ($height - $newSize) / 2, $newSize, $newSize, $newSize, $newSize);
-
-        $resizedFileName = tempnam(sys_get_temp_dir(), 'TMP_');
-        imagejpeg($square, $resizedFileName, 100);
-
-        imagedestroy($source);
-        imagedestroy($square);
-
-        return $resizedFileName;
-    }
 }
