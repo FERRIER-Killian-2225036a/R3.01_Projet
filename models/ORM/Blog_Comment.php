@@ -85,10 +85,10 @@ class Blog_Comment
     /**
      * Cette méthode permet de verifier si une page existe par rapport a son id
      *
-     * @param int $CommentId
+     * @param int|string $CommentId
      * @return bool
      */
-    private function isCommentExist(int $CommentId): bool
+    private function isCommentExist(int|string $CommentId): bool
     {
         $sql = "SELECT * FROM BLOG_Comment WHERE CommentId = :CommentId";
         $stmt = $this->conn->prepare($sql);
@@ -267,11 +267,11 @@ class Blog_Comment
     /**
      * méthode pour verifier si un commentaire appartient a un user
      *
-     * @param int $CommentId
-     * @param int $UserId
+     * @param int|string $CommentId
+     * @param int|string $UserId
      * @return bool
      */
-    public function doesCommentIdBelongToUser(int $CommentId, int $UserId): bool
+    public function doesCommentIdBelongToUser(int|string $CommentId, int|string $UserId): bool
     {
         if ($this->isCommentExist($CommentId)) {
             $sql = "SELECT * FROM BLOG_Comment WHERE CommentId = :CommentId AND UserId = :UserId";

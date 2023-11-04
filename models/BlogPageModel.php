@@ -243,11 +243,11 @@ class BlogPageModel
     /**
      * méthode pour demander si le comment appartient a un user
      *
-     * @param int  $DeleteComment
-     * @param int $UserId
+     * @param int|string $DeleteComment
+     * @param int|string $UserId
      * @return bool
      */
-    public function doesCommentIdBelongToUser(int $DeleteComment, int $UserId): bool
+    public function doesCommentIdBelongToUser(int|string $DeleteComment, int|string $UserId): bool
     {
         return (new Blog_Comment())->doesCommentIdBelongToUser($DeleteComment, $UserId);
     }
