@@ -264,5 +264,27 @@ class Blog_Comment
         return $mapArrayOfPageValues;
     }
 
+    /**
+     * méthode pour verifier si un commentaire appartient a un user
+     *
+     * @param int $CommentId
+     * @param int $UserId
+     * @return bool
+     */
+    public function doesCommentIdBelongToUser(int $CommentId, int $UserId): bool
+    {
+        if ($this->isCommentExist($CommentId)) {
+            $sql = "SELECT * FROM BLOG_Comment WHERE CommentId = :CommentId AND UserId = :UserId";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':CommentId', $CommentId);
+            $stmt->bindParam(':UserId', $UserId);
+            $stmt->execute();
+            if ($stmt->rowCount() > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 }
