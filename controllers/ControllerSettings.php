@@ -44,7 +44,12 @@ class ControllerSettings
     public function BookmarkAction(): void
     {
         //TODO ajouté verification et logique d'affichage des enregistrements (post+forum)
-        MotorView::show('profileSettings/bookmark');
+        if (SessionManager::isUserConnected()){
+            MotorView::show('profileSettings/bookmark');
+        } else {
+            header("Location: /Auth/login ");
+            die();
+        }
     }
 
     /**
@@ -55,7 +60,12 @@ class ControllerSettings
     public function FollowAction(): void
     {
         //TODO ajouté verification et logique d'affichage des abonnements
-        MotorView::show('profileSettings/follow');
+        if (SessionManager::isUserConnected()){
+            MotorView::show('profileSettings/follow' );
+        } else {
+            header("Location: /Auth/login ");
+            die();
+        }
     }
 
     /**
@@ -70,7 +80,12 @@ class ControllerSettings
     public function LanguageAction(): void
     {
         //TODO ajouté verification et remodeler tout l'affichage pour la traduction
-        MotorView::show('profileSettings/language');
+        if (SessionManager::isUserConnected()){
+            MotorView::show('profileSettings/language');
+        } else {
+            header("Location: /Auth/login ");
+            die();
+        }
     }
 
     /**
@@ -84,7 +99,12 @@ class ControllerSettings
      */
     public function ManageAccountAction(array $A_parametres = null, array $A_postParams = null): void
     {
-        MotorView::show('profileSettings/manageAccount');
+        if (SessionManager::isUserConnected()) {
+            MotorView::show('profileSettings/manageAccount');
+        } else {
+            header("Location: /Auth/login");
+            die();
+        }
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if (SessionManager::isUserConnected()) { //TODO reflechir a encore plus de sécurisation
                 // premier post, on change l'image de profil de l'utilisateur dans le model par le fichier uploader
@@ -221,8 +241,19 @@ class ControllerSettings
      */
     public function MyCommentAction(): void
     {
-        //TODO ajouté verification et logique d'affichage des commentaires
-        MotorView::show('profileSettings/myComment');
+
+        if (SessionManager::isUserConnected()){
+            $arrayOfUserCommentId = (new Blog_Comment())->getAllCommentIdOfUser($_SESSION["UserId"]);
+            $comments = array();
+            foreach ($arrayOfUserCommentId as $commentId){
+                $comments[] = new BlogCommentModel($commentId);
+            }
+            MotorView::show('profileSettings/myComment', array("ArrayOfComment" => $comments));
+        } else {
+            header("Location: /Auth/login ");
+            die();
+        }
+        //TODO géré POST pour supprimer commentaire
     }
 
 
@@ -324,7 +355,12 @@ class ControllerSettings
 
     public function ThemeAction(): void
     {
-        MotorView::show('profileSettings/theme');
+        if (SessionManager::isUserConnected()){
+            MotorView::show('profileSettings/theme');
+        } else {
+            header("Location: /Auth/login ");
+            die();
+        }
     }
 
 }
