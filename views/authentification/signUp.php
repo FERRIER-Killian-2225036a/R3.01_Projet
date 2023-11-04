@@ -4,6 +4,7 @@
 <script src="/common_scripts/showErrorMessage.js"></script>
 <script src="/common_scripts/checkPassword.js"></script>
 <script src="/common_scripts/passwordVisibility.js"></script>
+<script src="https://kit.fontawesome.com/f8a6cc215e.js" crossorigin="anonymous"></script><!--Pour ajouter des icones -->
 <!-- Section principale avec un dégradé de fond -->
 <section class="h-100 gradient-form">
     <div class="container py-2">
@@ -38,20 +39,18 @@
 
 
                                     <!-- Champ de saisie pour le mot de passe avec vérification de la force du mot de passe -->
+
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example22">Mot de passe
                                             <div class="input-group">
-                                                <input type="password" id="form2Example22" class="form-control" placeholder="********" name="password" onkeyup="checkPasswordStrength(this.value)"/>
+                                                <input type="password" class="form-control" id="passwordStrength" placeholder="********" name="password" onkeyup="checkPasswordStrength(this.value)" />
                                                 <span class="input-group-text">
                                                     <i id="passwordToggle" class="fas fa-eye" style="cursor: pointer;"></i>
                                                     <i id="passwordToggleOff" class="fas fa-eye-slash" style="cursor: pointer; display: none;"></i>
                                                 </span>
                                             </div>
                                         </label>
-                                        <!-- Zone d'affichage des messages d'erreur -->
-                                        <label id="wrongInfo"></label>
                                     </div>
-
 
                                     <!-- Champ de saisie pour confirmer le mot de passe avec vérification de l'égalité -->
                                     <div class="form-outline mb-4">
@@ -66,7 +65,6 @@
                                         </label>
                                         <br>
                                         <span id="passwordFeedback"></span>
-                                        <!-- Zone d'affichage des messages d'erreur -->
                                         <label id="wrongInfo"></label>
                                     </div>
 
