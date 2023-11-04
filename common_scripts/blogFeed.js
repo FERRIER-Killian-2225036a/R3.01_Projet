@@ -33,6 +33,7 @@ function bookmark(listOfBooleen) {
         // On affiche le signet de suppression
         svgBookmarkDel.style.display = 'flex';
     }*/
+    console.log(listOfBooleen);
     const svgBookmarkAdd = document.querySelectorAll('#svgBookmarkAdd');
     const svgBookmarkDel = document.querySelectorAll('#svgBookmarkDel');
     for (let i = 0; i < listOfBooleen.length; i++) {
