@@ -33,13 +33,16 @@
                                         <label class="form-label" for="form2Example22">Mot de passe
                                             <div class="input-group">
                                                 <input type="password" id="form2Example22" class="form-control" placeholder="********" name="password"/>
-                                                <i id="passwordToggle" class="fas fa-eye" style="cursor: pointer;"></i>
-                                                <i id="passwordToggleOff" class="fas fa-eye-slash" style="cursor: pointer; display: none;"></i>
+                                                <span class="input-group-text">
+                                                    <i id="passwordToggle" class="fas fa-eye" style="cursor: pointer;"></i>
+                                                    <i id="passwordToggleOff" class="fas fa-eye-slash" style="cursor: pointer; display: none;"></i>
+                                                </span>
                                             </div>
                                         </label>
                                         <!-- Zone d'affichage des messages d'erreur -->
                                         <label id="wrongInfo"></label>
                                     </div>
+
 
 
                                     <div class="text-center pt-1 mb-5 pb-1">
