@@ -28,5 +28,5 @@ function sendPostUnbookmark(id)  {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
     });
-    window.location.href = "https://cyphub.tech/Settings/Bookmark";
+    //window.location.href = "https://cyphub.tech/Settings/Bookmark";
 }
