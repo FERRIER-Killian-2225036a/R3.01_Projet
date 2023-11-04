@@ -580,7 +580,6 @@ class UserSite
      */
     public function update_picture(int $CurrentUserId, string $new_picture): bool|ExceptionsDatabase
     {
-        error_log("update_picture");
         try {
             // Check the user status
             if (!$this->isUserIDExists($CurrentUserId)) {
