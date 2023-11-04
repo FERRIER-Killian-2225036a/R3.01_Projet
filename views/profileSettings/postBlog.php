@@ -19,13 +19,13 @@
                                 if ($mapView['statusP'] != "innactive") {
                                     echo ($mapView['statusP'] == "active") ? "Mettre en visibilité privé" : "Mettre en visibilité public";
                                 }
-                                ?></a>;
-                            <a onclick="sendPostDelete(<?php echo $mapView["id"]?>)" id="deleteButton">Supprimer</a>;
+                                ?></a>
+                            <a onclick="sendPostDelete(<?php echo $mapView["id"]?>)" id="deleteButton">Supprimer</a>
                         <?php }
                         else {
                             //echo '<a href="'.$mapView['blogPostUrl'].'">Signaler</a>';?>
-                            <a id="seeBlog" href="<?php echo $mapView['blogPostUrl']?>">Voir le blog</a>';
-                            <a onclick="sendPostUnbookmark(<?php echo $mapView["id"]?>)" id="unBookmarkBlog"  >Désenregistrer</a>';
+                            <a id="seeBlog" href="<?php echo $mapView['blogPostUrl']?>">Voir le blog</a>
+                            <a onclick="sendPostUnbookmark(<?php echo $mapView["id"]?>)" id="unBookmarkBlog"  >Désenregistrer</a>
                             <?php
                             //todo add function js to remove bookmark
                         }
