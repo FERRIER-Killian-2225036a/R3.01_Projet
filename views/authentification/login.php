@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="/common_styles/authentification.css">
 <link rel="stylesheet" href="/common_styles/wrongInfo.css">
 <script src="/common_scripts/showErrorMessage.js"></script>
+<script src="/common_scripts/passwordVisibility.js"></script>
 <!-- Section principale avec un dégradé de fond -->
 <!-- Section principale avec un dégradé de fond -->
 <section class="h-100 gradient-form">
