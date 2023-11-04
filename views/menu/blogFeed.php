@@ -56,12 +56,18 @@
         if (boolIsPostBookmarked === undefined) {
             let boolIsPostBookmarked = 0;
         }
+        if (svgBookmarkAdd === undefined) {
+            let svgBookmarkAdd;
+        }
+        if (svgBookmarkDel === undefined) {
+            let svgBookmarkDel;
+        }
         // Récupération du booleen pour savoir si le post est enregistré ou pas
         boolIsPostBookmarked = <?php echo $mapView['BoolIsPostBookmarked'] ? 1 : 0 ?>;
         // Sélection du signet d'ajout
-        const svgBookmarkAdd = document.getElementById('svgBookmarkAdd');
+        svgBookmarkAdd = document.getElementById('svgBookmarkAdd');
         // Sélection du signet de suppression
-        const svgBookmarkDel = document.getElementById('svgBookmarkDel');
+        svgBookmarkDel = document.getElementById('svgBookmarkDel');
         // Condition si l'utilisateur a enregistré le post
         if (boolIsPostBookmarked === 1) {
             // On cache le signet d'ajout
