@@ -5,7 +5,7 @@
 <main class="container">
     <div class="p-3">
         <!-- Conteneur du bouton avec rôle de bouton -->
-        <div class="btn bg-body-tertiary round background grow-button" id="divButtonRole" role="button">
+        <div class="btn bg-body-tertiary round background grow-button" id="<?php echo $mapView['blogPostUrl'] ?>" role="button">
             <!-- Image associée au bouton -->
             <img src="<?php echo $mapView['blogUrlPicture'] ?>" alt="Logo" class="responsive-image round p-1">
             <!-- Contenu textuel du bouton -->
@@ -21,7 +21,7 @@
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="input-group align-items-center">
                             <form action="<?php echo $mapView["CurentUrlPost"] ?>" method ="POST">
-                                <label  > <!-- TODO enlever style d'ici ? -->
+                                <label>
                                     <input type="text" name="Comment" class="form-control custom-input inputBackground" placeholder="Commenter">
                                 </label>
                             </form>
@@ -58,15 +58,6 @@
             let svgBookmarkAdd;
             let svgBookmarkDel;
         } catch {}
-        /*if (boolIsPostBookmarked === undefined) {
-            let boolIsPostBookmarked = 0;
-        }
-        if (svgBookmarkAdd === undefined) {
-            let svgBookmarkAdd;
-        }
-        if (svgBookmarkDel === undefined) {
-            let svgBookmarkDel;
-        }*/
         // Récupération du booleen pour savoir si le post est enregistré ou pas
         boolIsPostBookmarked = <?php echo $mapView['BoolIsPostBookmarked'] ? 1 : 0 ?>;
         // Sélection du signet d'ajout
