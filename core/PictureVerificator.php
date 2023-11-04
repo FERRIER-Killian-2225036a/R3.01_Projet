@@ -90,28 +90,51 @@ class PictureVerificator
             // $targetPath est le chemin du fichier
             // on doit resize l'image en carré et la remettre dans le fichier
             // on ne connait pas son type.
-            $image = imagecreatefromstring(file_get_contents($targetPath));
 
-            // recup dimmensions
-            $width = imagesx($image);
-            $height = imagesy($image);
+
+            // recup des dimensions
+            list($width, $height) = getimagesize($targetPath);
+            $imageType = exif_imagetype($targetPath); // recup type
+            switch ($imageType) {
+                case IMAGETYPE_JPEG:
+                    $sourceImage = imagecreatefromjpeg($targetPath);
+                    break;
+                case IMAGETYPE_PNG:
+                    $sourceImage = imagecreatefrompng($targetPath);
+                    break;
+                case IMAGETYPE_GIF:
+                    $sourceImage = imagecreatefromgif($targetPath);
+                    break;
+                default:
+                    return "Erreur type non supporter";
+            }
+
+            // Calcule des dimensions carré a prendre
             $squareSize = min($width, $height);
-            // on crée une image carré
             $squareImage = imagecreatetruecolor($squareSize, $squareSize);
+            imagecopyresampled($squareImage, $sourceImage, 0, 0, 0, 0, $squareSize, $squareSize, $width, $height);
 
-            imagecopyresampled($squareImage, $image, 0, 0, 0, 0, $squareSize, $squareSize, $width, $height);
+            //on remet dans le format
+            switch ($imageType) {
+                case IMAGETYPE_JPEG:
+                    imagejpeg($squareImage, $targetPath);
+                    break;
+                case IMAGETYPE_PNG:
+                    imagepng($squareImage, $targetPath);
+                    break;
+                case IMAGETYPE_GIF:
+                    imagegif($squareImage, $targetPath);
+                    break;
+                default:
+                    return "Erreur type non supporter";
+            }
 
-            imagepng($squareImage, $targetPath);
-            
-            imagedestroy($image);
+            imagedestroy($sourceImage);
             imagedestroy($squareImage);
-
-
         }
 
 
-
-            // Vérification de la sécurité avec Google Cloud Vision
+        // Vérification de la sécurité avec Google Cloud Vision
         $imageContent = file_get_contents($targetPath);
         //error_log('usage api');
         $url = 'https://vision.googleapis.com/v1/images:annotate?key=' . Constants::$API_KEY_GOOGLE_VISION;
