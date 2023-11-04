@@ -68,7 +68,7 @@ class ControllerSettings
             }
         }
         //TODO logique d'affichage des enregistrements (forum)
-
+        echo '</div></div>';
     }
 
     /**
@@ -311,7 +311,7 @@ class ControllerSettings
                     "blogTags" => $tagsList, "id" => $obj->getPageId(), "statusP" => $obj->getStatusP()));
             }
         }
-
+        echo '</div></div>';
         // recup requete, verif connexion + droits + propriétés
         // si la requete est une demande de modification de post, on va le rediriger selon l'identifiant de son poste
         // on aura donc notre logique de controlleur dans /Post/blog(ou forum)Edit
