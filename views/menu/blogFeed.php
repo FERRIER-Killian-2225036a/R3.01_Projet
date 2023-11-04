@@ -20,9 +20,11 @@
                 <div class="row">
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="input-group align-items-center">
-                            <label>
-                                <input type="text" class="form-control custom-input inputBackground" placeholder="Commenter">
-                            </label>
+                            <form action="<?php echo $mapView["CurentUrlPost"] ?>" method ="POST">
+                                <label  > <!-- TODO enlever style d'ici ? -->
+                                    <input type="text" name="Comment" class="form-control custom-input inputBackground" placeholder="Commenter">
+                                </label>
+                            </form>
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="button">
                                     <i class="fas fa-save">#blog</i>

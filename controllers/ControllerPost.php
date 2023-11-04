@@ -455,6 +455,7 @@ class ControllerPost
                         if ($textC != "" && $textC != null){
                             (new Blog_Comment())->createComment($textC, $_SESSION['UserId'], $idPost);
                         }
+                        header("Location: /Post/Blog/" . $idPost);
                     }
                     else {
                         (new UserSite())->incrementAlertLevelUser($_SESSION['UserId']);
