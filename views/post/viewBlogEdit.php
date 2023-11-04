@@ -4,7 +4,7 @@
 <main class="container p-5">
     <div class="p-3">
         <div id="title">
-            <h2>Edition nouveau blog</h2>
+            <h2>Edition blog</h2>
             <button class="btn btn-outline-danger" onclick="window.location.href='https://cyphub.tech/Menu/BlogFeed';">Quitter</button>
         </div>
         <form action="/Post/BlogEdit<?= "/".$mapView["UrlForm"] ?>" method="post" enctype="multipart/form-data">

@@ -53,8 +53,11 @@
     <!-- Script JavaScript pour gérer le comportement du bouton avec rôle de bouton -->
     <script>
         // Script pour le changement du logo signet
+        if (boolIsPostBookmarked === undefined) {
+            let boolIsPostBookmarked = 0;
+        }
         // Récupération du booleen pour savoir si le post est enregistré ou pas
-        const boolIsPostBookmarked = <?php echo $mapView['BoolIsPostBookmarked'] ? 1 : 0 ?>;
+        boolIsPostBookmarked = <?php echo $mapView['BoolIsPostBookmarked'] ? 1 : 0 ?>;
         // Sélection du signet d'ajout
         const svgBookmarkAdd = document.getElementById('svgBookmarkAdd');
         // Sélection du signet de suppression
