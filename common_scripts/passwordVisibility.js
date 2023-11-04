@@ -1,16 +1,14 @@
-// Function to toggle password visibility
-function togglePasswordVisibility() {
-    const passwordInput = document.getElementById('form2Example22');
-    const passwordIcon = document.getElementById('passwordToggleIcon');
+document.addEventListener("DOMContentLoaded", function () {
+    const passwordInput = document.getElementById("form2Example22");
+    const passwordToggle = document.getElementById("passwordToggle");
 
-    if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
-        passwordIcon.className = 'fas fa-eye-slash';
-    } else {
-        passwordInput.type = 'password';
-        passwordIcon.className = 'fas fa-eye';
+    if (passwordInput && passwordToggle) {
+        passwordToggle.addEventListener("click", function () {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        });
     }
-}
-
-// Add an event listener to the password visibility toggle button
-document.getElementById('passwordToggle').addEventListener('click', togglePasswordVisibility);
+});
