@@ -86,49 +86,65 @@ class PictureVerificator
             return "Erreur : bypass du type detecter";
         }
 
-        
+        if ($square) {
+            // $targetPath est le chemin du fichier
+            // on doit resize l'image en carré et la remettre dans le fichier
+            // on ne connait pas son type.
+            $image = imagecreatefromstring(file_get_contents($targetPath));
+
+            // recup dimmensions
+            $width = imagesx($image);
+            $height = imagesy($image);
+            $squareSize = min($width, $height);
+            // on crée une image carré
+            $squareImage = imagecreatetruecolor($squareSize, $squareSize);
+
+            imagecopyresampled($squareImage, $image, 0, 0, 0, 0, $squareSize, $squareSize, $width, $height);
+
+            imagepng($squareImage, $targetPath);
+            
+            imagedestroy($image);
+            imagedestroy($squareImage);
 
 
-        if (true) {
-            // Vérification de la sécurité avec Google Cloud Vision
-            $imageContent = file_get_contents($targetPath);
-            //error_log('usage api');
-            $url = 'https://vision.googleapis.com/v1/images:annotate?key=' . Constants::$API_KEY_GOOGLE_VISION;
-
-            $requestData = ['requests' => [['image' => ['content' => base64_encode($imageContent)],
-                'features' => [['type' => 'SAFE_SEARCH_DETECTION']]]]];
-
-
-            $options = ['http' => ['header' => 'Content-Type: application/json',
-                'method' => 'POST', 'content' => json_encode($requestData)]];
-
-            $context = stream_context_create($options);
-            $response = file_get_contents($url, false, $context);
-            //error_log($response);
-            $responseData = json_decode($response, true);
-            //  error_log($responseData);
-            if (isset($responseData['responses'][0]['safeSearchAnnotation']['adult'])) {
-                if ($responseData['responses'][0]['safeSearchAnnotation']['adult'] == 'VERY_LIKELY' || $responseData['responses'][0]['safeSearchAnnotation']['violence'] == 'VERY_LIKELY') {
-                    unlink($targetPath); // Supprimez l'image non sécurisée
-                    return "Erreur : L'image n'est pas sécurisée.";
-                } else {
-                    error_log('image securisee');
-
-
-
-                    return ["success", $uniqueFileName];
-                }
-            } else {
-                unlink($targetPath); // Supprimez l'image non sécurisée
-                return "Erreur : Impossible de vérifier la sécurité de l'image.";
-            }
-        } else {
-
-            return "Erreur : problème de téléchargement du fichier.";
         }
 
-    }
 
+
+            // Vérification de la sécurité avec Google Cloud Vision
+        $imageContent = file_get_contents($targetPath);
+        //error_log('usage api');
+        $url = 'https://vision.googleapis.com/v1/images:annotate?key=' . Constants::$API_KEY_GOOGLE_VISION;
+
+        $requestData = ['requests' => [['image' => ['content' => base64_encode($imageContent)],
+            'features' => [['type' => 'SAFE_SEARCH_DETECTION']]]]];
+
+
+        $options = ['http' => ['header' => 'Content-Type: application/json',
+            'method' => 'POST', 'content' => json_encode($requestData)]];
+
+        $context = stream_context_create($options);
+        $response = file_get_contents($url, false, $context);
+        //error_log($response);
+        $responseData = json_decode($response, true);
+        //  error_log($responseData);
+        if (isset($responseData['responses'][0]['safeSearchAnnotation']['adult'])) {
+            if ($responseData['responses'][0]['safeSearchAnnotation']['adult'] == 'VERY_LIKELY' || $responseData['responses'][0]['safeSearchAnnotation']['violence'] == 'VERY_LIKELY') {
+                unlink($targetPath); // Supprimez l'image non sécurisée
+                return "Erreur : L'image n'est pas sécurisée.";
+            } else {
+                error_log('image securisee');
+
+
+                return ["success", $uniqueFileName];
+            }
+        } else {
+            unlink($targetPath); // Supprimez l'image non sécurisée
+            return "Erreur : Impossible de vérifier la sécurité de l'image.";
+        }
+
+
+    }
 
 
 }
