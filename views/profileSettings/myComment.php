@@ -30,9 +30,10 @@
         foreach ($mapView["ArrayOfComment"] as $comment) {
             echo '<tr>';
             echo '<th scope="row">' . $comment->getCommentId() . '</th>';
-            echo '<td><a href"'. "/Post/Blog/".$comment->getPageId().'">' . $comment->getTextC() . '</a></td>';
+            echo '<td><a href="'. "/Post/Blog/".$comment->getPageId().'">' . $comment->getTextC() . '</a></td>';
             //echo '<td>' . $comment->getStatut() . '</td>';
             echo '<td>' . $comment->getDateC() . '</td>';
+            //TODO ajouter les boutons pour modifier et supprimer svp a géré apres ligne 23 
             echo '</tr>';
 
         }
