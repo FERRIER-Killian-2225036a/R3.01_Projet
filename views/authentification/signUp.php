@@ -55,13 +55,7 @@
                                     <!-- Champ de saisie pour confirmer le mot de passe avec vérification de l'égalité -->
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example22">Confirmer votre mot de passe
-                                            <div class="input-group">
                                                 <input type="password" id="confirmPassword" class="form-control" oninput="checkPasswordsEquality()" placeholder="********" />
-                                                <span class="input-group-text">
-                                                    <i id="passwordToggle" class="fas fa-eye" style="cursor: pointer;"></i>
-                                                    <i id="passwordToggleOff" class="fas fa-eye-slash" style="cursor: pointer; display: none;"></i>
-                                                </span>
-                                            </div>
                                         </label>
                                         <br>
                                         <span id="passwordFeedback"></span>

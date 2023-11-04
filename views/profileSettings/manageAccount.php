@@ -96,6 +96,10 @@
                 <div class="input-group mb-3">
                     <input type="password" class="form-control" id="passwordStrength" placeholder="********" name="newPassword"
                            onkeyup="checkPasswordStrength(this.value)"/>
+                    <span class="input-group-text">
+                        <i id="passwordToggle" class="fas fa-eye" style="cursor: pointer;"></i>
+                        <i id="passwordToggleOff" class="fas fa-eye-slash" style="cursor: pointer; display: none;"></i>
+                    </span>
                 </div>
                 <label for="confirmPassword"></label>
                 <div class="input-group">
@@ -125,3 +129,5 @@
 <!-- Inclusion de scripts JavaScript -->
 <script src="/common_scripts/showErrorMessage.js"></script>
 <script src="/common_scripts/checkPassword.js"></script>
+<script src="/common_scripts/passwordVisibility.js"></script>
+<script src="https://kit.fontawesome.com/f8a6cc215e.js" crossorigin="anonymous"></script><!--Pour ajouter des icones -->
