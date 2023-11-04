@@ -118,8 +118,13 @@ class ControllerMenu
                             "BoolIsPostBookmarked" => $boolIsPostBookmarked)); // plus tard il faudra mettre si l'user a bien liké ou non
                 }
             }
-            echo "<script src='/common_scripts/blogFeed.js' > redirect('".$listOfPageId."') ; ";
-            echo "bookmark('".$listOfBoolIsPostBookmarked.";') </script>";
+            ?>
+            <script src='/common_scripts/blogFeed.js'></script>
+            <script>
+                redirect('<?php echo $listOfPageId; ?>');
+                bookmark('<?php echo $listOfBoolIsPostBookmarked; ?>');
+            </script>
+            <?php
 
 
         } else {
