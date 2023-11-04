@@ -1,22 +1,3 @@
-/*document.getElementById("divButtonRole").addEventListener("click", function() {
-    const isInput = event.target.closest('.input-group');
-    if (!isInput) {
-        window.location.href = "<?php echo $mapView['blogPostUrl'] ?>"; //TODO changer php pcq le lien est que sur le premier
-    }
-});
-
-// Sélectionnez tous les éléments avec l'ID "divButtonRole" (supposons qu'ils aient une classe "button-role" pour cette démonstration)
-const divButtonRoles = document.querySelectorAll('.button-role');
-
-// Parcourez chaque élément et ajoutez l'événement
-divButtonRoles.forEach(function(divButtonRole) {
-    divButtonRole.addEventListener("click", function(event) {
-        const isInput = event.target.closest('.input-group');
-        if (!isInput) {
-            window.location.href = "<?php echo $mapView['blogPostUrl'] ?>";
-        }
-    });
-});*/
 function redirect(stringOfLikns) {
     // Sélectionnez tous les éléments avec l'ID "divButtonRole" (supposons qu'ils aient une classe "button-role" pour cette démonstration)
     const divButtonRoles = document.querySelectorAll('.button-role');
@@ -52,5 +33,14 @@ function bookmark(listOfBooleen) {
         // On affiche le signet de suppression
         svgBookmarkDel.style.display = 'flex';
     }*/
-    const divButtonRoles = document.querySelectorAll('.button-role');
+    const svgBookmarkAdd = document.querySelectorAll('#svgBookmarkAdd');
+    const svgBookmarkDel = document.querySelectorAll('#svgBookmarkDel');
+    for (let i = 0; i < listOfBooleen.length; i++) {
+        if (listOfBooleen[i] === 1) {
+            // On cache le signet d'ajout
+            svgBookmarkAdd[i].style.display = 'none';
+            // On affiche le signet de suppression
+            svgBookmarkDel[i].style.display = 'flex';
+        }
+    }
 }
