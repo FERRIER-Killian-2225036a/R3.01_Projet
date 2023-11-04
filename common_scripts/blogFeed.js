@@ -17,7 +17,7 @@ divButtonRoles.forEach(function(divButtonRole) {
         }
     });
 });*/
-
+console.log('le js est bien chargé')
 
 function redirect(stringOfLikns) {
     // Sélectionnez tous les éléments avec l'ID "divButtonRole" (supposons qu'ils aient une classe "button-role" pour cette démonstration)
