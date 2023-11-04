@@ -320,6 +320,7 @@ class ControllerPost
 
                     try {
                         // cas de création
+                        error_log("cas création");
                         if ($newTitle == null || $newContent == null) {
                             throw new ExceptionsBlog("Le titre ou le contenu est vide");
                         }
@@ -328,8 +329,11 @@ class ControllerPost
                             $newContent,
                             $_SESSION['Username'],
                             $_SESSION['UserId']);
+                        error_log ("blog crée sans image");
                         if (!$idNewPost instanceof Exception && $idNewPost !== false) //todo mettre le bon type de class
                         {
+                            error_log ("erreur lancé lors de la créa");
+
                             throw new ExceptionsBlog($idNewPost); // erreur survenue lors de la création
                         }
                         // et la on va update l'image
@@ -340,7 +344,7 @@ class ControllerPost
                         $minFileSize = 1000; // Taille minimale en octets
                         $maxFileSize = 5000000; // Taille maximale en octets (ici, 5 Mo)
                         $uploadDirectory = Constants::mediaDirectoryBlogs() . $idNewPost . "/";
-
+                        error_log("uploadDirectory : $uploadDirectory");
 
                         if (!is_dir($uploadDirectory)) {
                             if (mkdir($uploadDirectory)) { // création dossier
@@ -349,6 +353,9 @@ class ControllerPost
                                 error_log("Une erreur est survenue lors de la création du dossier.");
                             }
                         }
+                        error_log("directory  exist ? or created ");
+
+
 
                         $result = PictureVerificator::VerifyImg($_FILES['BlogPicture'], $uploadDirectory,
                             $allowedExtensions, $minFileSize, $maxFileSize);
@@ -356,6 +363,7 @@ class ControllerPost
                             // TODO appel script js pour modifier la page avec un message d'erreur
                             // $temp ='<script type="text/javascript">ShowLoginErrorMessage("'.$result[0].'")</script>';
                             // echo $result;
+                            error_log("erreur lancé lors de l'upload");
                             throw new ExceptionsBlog($idNewPost);
                         } else {
                             $newImg = Constants::MEDIA_DIRECTORY_BLOGS . $idNewPost . "/" . $result[1];
