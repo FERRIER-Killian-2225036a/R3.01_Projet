@@ -2,8 +2,7 @@
 <link rel="stylesheet" href="/common_styles/wrongInfo.css">
 <script src="/common_scripts/showErrorMessage.js"></script>
 <script src="/common_scripts/passwordVisibility.js"></script>
-<script src="https://kit.fontawesome.com/f8a6cc215e.js" crossorigin="anonymous"></script>
-<!-- Section principale avec un dégradé de fond -->
+<script src="https://kit.fontawesome.com/f8a6cc215e.js" crossorigin="anonymous"></script><!--Pour ajouter des icones -->
 <!-- Section principale avec un dégradé de fond -->
 <section class="h-100 gradient-form">
     <div class="container py-2">
@@ -34,8 +33,10 @@
                                         <label class="form-label" for="form2Example22">Mot de passe
                                             <input type="password" id="form2Example22" class="form-control"
                                                    placeholder="********" name="password"/>
+                                            <span class="input-group-addon">
+                                                <i id="passwordToggle" class="fas fa-eye" style="cursor: pointer;"></i>
+                                            </span><!--Ajout de l'oeil-->
                                         </label>
-                                        <i id="passwordToggle" class="fas fa-eye" style="position: absolute; top: 50%; right: 10px; cursor: pointer;"></i>
                                         <!-- Zone d'affichage des messages d'erreur -->
                                         <label id="wrongInfo"></label>
                                     </div>
