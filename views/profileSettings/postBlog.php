@@ -1,5 +1,5 @@
 <div class="col-md-6 p-3">
-    <div class="btn bg-body-tertiary round background grow-button d-block" role="button" id="divButtonRole">
+    <div class="btn bg-body-tertiary round background grow-button d-block button-role" role="button">
         <div class="d-flex justify-content-center mb-2">
             <img src="<?php echo $mapView['blogUrlPicture'] ?>" alt="Logo" class="responsive-image-setting round p-1">
         </div>
