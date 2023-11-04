@@ -49,7 +49,7 @@
                                         <a id="forgotPasswordSize" href="forgotPassword.php">Mot de passe oublié ?</a>
                                         <br>
                                         <!-- Bouton pour soumettre le formulaire de connexion -->
-                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                                        <button class="btn btn-primary btn-block gradient-custom-2 mb-3"
                                                 id="signUpButton" type="submit">Se connecter
                                         </button>
                                     </div>
