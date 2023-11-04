@@ -14,4 +14,16 @@ document.addEventListener("DOMContentLoaded", function () {
             toggleButtonOff.style.display = "none";
         }
     });
+
+    toggleButtonOff.addEventListener("click", function () {
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            toggleButton.style.display = "none";
+            toggleButtonOff.style.display = "block";
+        } else {
+            passwordInput.type = "password";
+            toggleButton.style.display = "block";
+            toggleButtonOff.style.display = "none";
+        }
+    });
 });

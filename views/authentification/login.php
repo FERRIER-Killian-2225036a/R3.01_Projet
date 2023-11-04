@@ -33,9 +33,8 @@
                                         <label class="form-label" for="form2Example22">Mot de passe
                                             <div class="input-group">
                                                 <input type="password" id="form2Example22" class="form-control" placeholder="********" name="password"/>
-                                                <button id="passwordToggle" type="button" style="cursor: pointer;">Montrer le mot de passe</button>
-                                                <button id="passwordToggleOff" type="button" style="cursor: pointer; display: none;">Cacher le mot de passe</button>
-
+                                                <i id="passwordToggle" class="fas fa-eye" style="cursor: pointer;"></i>
+                                                <i id="passwordToggleOff" class="fas fa-eye-slash" style="cursor: pointer; display: none;"></i>
                                             </div>
                                         </label>
                                         <!-- Zone d'affichage des messages d'erreur -->
