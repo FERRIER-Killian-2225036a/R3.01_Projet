@@ -1,6 +1,9 @@
 section {
     background-color: #eee; /* Couleur de fond pour la section */
 }
+.input-group-text{
+    border-radius: 0 5em 5em 0;
+}
 
 #signUpButton,
 #rightSide {
