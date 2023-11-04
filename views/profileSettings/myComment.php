@@ -38,13 +38,13 @@
         }
 
         ?>
-        <tr>
+        <!-- <tr>
             <th scope="row">1</th>
-            <td>CHAPI CHAPO QUESTION ( blablabla les premières lignes ) <!-- Contenu de la cellule -->
+            <td>CHAPI CHAPO QUESTION ( blablabla les premières lignes ) <-- Contenu de la cellule - ->
                 <br><small> -> vous à vous bonjour</small></td>
-            <!-- <td>Nouveau</td> -->
+            <-- <td>Nouveau</td> - ->
             <td>2022-03-17</td>
-        </tr>
+        </tr> -->
         </tbody>
     </table>
 </div>
