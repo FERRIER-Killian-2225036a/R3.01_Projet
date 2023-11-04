@@ -67,16 +67,8 @@ class ControllerSettings
                     "blogTags" => $tagsList, "id" => $obj->getPageId()));
             }
         }
+        //TODO logique d'affichage des enregistrements (forum)
 
-
-
-        //TODO ajouté verification et logique d'affichage des enregistrements (post+forum)
-        if (SessionManager::isUserConnected()){
-            MotorView::show('profileSettings/bookmark');
-        } else {
-            header("Location: /Auth/login ");
-            die();
-        }
     }
 
     /**
