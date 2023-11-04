@@ -96,3 +96,6 @@ span.d-flex > .dropdown {
     background: 0;
     border: 0;
 }
+.input-group-text{
+    border-radius: 0 5em 5em 0;
+}
