@@ -31,15 +31,18 @@
                                     <!-- Champ de saisie pour le mot de passe -->
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example22">Mot de passe
-                                            <input type="password" id="form2Example22" class="form-control"
-                                                   placeholder="********" name="password"/>
-                                            <span class="input-group-addon">
-                                                <i id="passwordToggle" class="fas fa-eye" style="cursor: pointer;"></i>
-                                            </span><!--Ajout de l'oeil-->
+                                            <div class="input-group">
+                                                <input type="password" id="form2Example22" class="form-control" placeholder="********" name="password" />
+                                                <span class="input-group-addon">
+                                                    <i id="passwordToggle" class="fas fa-eye" style="cursor: pointer;"></i>
+                                                    <i id="passwordHide" class="fas fa-eye-slash" style="display: none; cursor: pointer;"></i>
+                                                </span>
+                                            </div>
                                         </label>
                                         <!-- Zone d'affichage des messages d'erreur -->
                                         <label id="wrongInfo"></label>
                                     </div>
+
 
                                     <div class="text-center pt-1 mb-5 pb-1">
                                         <!-- Lien vers la réinitialisation du mot de passe -->
