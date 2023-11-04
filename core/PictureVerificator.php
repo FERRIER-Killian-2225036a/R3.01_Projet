@@ -89,7 +89,7 @@ class PictureVerificator
         
 
 
-        if (move_uploaded_file($targetPath, $targetPath)) {
+        if (true) {
             // Vérification de la sécurité avec Google Cloud Vision
             $imageContent = file_get_contents($targetPath);
             //error_log('usage api');
