@@ -85,10 +85,10 @@ class Blog_Comment
     /**
      * Cette méthode permet de verifier si une page existe par rapport a son id
      *
-     * @param int $CommentId
+     * @param int|string $CommentId
      * @return bool
      */
-    private function isCommentExist(int $CommentId): bool
+    private function isCommentExist(int|string $CommentId): bool
     {
         $sql = "SELECT * FROM BLOG_Comment WHERE CommentId = :CommentId";
         $stmt = $this->conn->prepare($sql);

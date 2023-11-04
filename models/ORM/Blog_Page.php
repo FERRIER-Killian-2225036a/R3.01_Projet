@@ -102,7 +102,7 @@ class Blog_Page
             (new Blog_categoryPage())->removeAllLinkBetweenCategoryAndPage($PageId);
             (new Blog_PageLike())->deleteAllPageLikeOfPage($PageId);
             (new Blog_Comment())->deleteAllCommentOfPage($PageId);
-            
+
             $stmt = $this->conn->prepare("DELETE FROM BLOG_Page WHERE PageId = ?");
             $stmt->bindParam(1, $PageId);
             $stmt->execute();
