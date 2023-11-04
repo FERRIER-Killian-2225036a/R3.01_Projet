@@ -57,7 +57,7 @@
             let boolIsPostBookmarked = 0;
             let svgBookmarkAdd;
             let svgBookmarkDel;
-        } catch ()
+        } catch {}
         /*if (boolIsPostBookmarked === undefined) {
             let boolIsPostBookmarked = 0;
         }
