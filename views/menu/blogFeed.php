@@ -5,7 +5,7 @@
 <main class="container">
     <div class="p-3">
         <!-- Conteneur du bouton avec rôle de bouton -->
-        <div class="btn bg-body-tertiary round background grow-button" id="<?php echo $mapView['blogPostUrl'] ?>" role="button">
+        <div class="btn bg-body-tertiary round background grow-button button-role" role="button">
             <!-- Image associée au bouton -->
             <img src="<?php echo $mapView['blogUrlPicture'] ?>" alt="Logo" class="responsive-image round p-1">
             <!-- Contenu textuel du bouton -->
@@ -50,7 +50,7 @@
         </div>
     </div>
 
-    <!-- Script JavaScript pour gérer le comportement du bouton avec rôle de bouton -->
+    <!-- Script JavaScript pour gérer le comportement du bouton avec rôle de bouton
     <script>
         // Script pour le changement du logo signet
         try {
@@ -71,5 +71,5 @@
             // On affiche le signet de suppression
             svgBookmarkDel.style.display = 'flex';
         }
-    </script>
+    </script>-->
 </main>

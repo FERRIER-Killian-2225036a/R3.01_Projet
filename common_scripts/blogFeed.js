@@ -38,7 +38,7 @@ function redirect(stringOfLikns) {
 
 
 function bookmark(listOfBooleen) {
-    try {
+    /*try {
         let boolIsPostBookmarked = 0;
         let svgBookmarkAdd;
         let svgBookmarkDel;
@@ -55,5 +55,6 @@ function bookmark(listOfBooleen) {
         svgBookmarkAdd.style.display = 'none';
         // On affiche le signet de suppression
         svgBookmarkDel.style.display = 'flex';
-    }
+    }*/
+    const divButtonRoles = document.querySelectorAll('.button-role');
 }
