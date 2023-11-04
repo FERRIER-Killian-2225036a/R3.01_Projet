@@ -44,5 +44,3 @@
         svgBookmarkDel.style.display = 'flex';
     }
 </script>
-</div>
-</div>

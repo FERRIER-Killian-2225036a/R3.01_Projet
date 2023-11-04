@@ -29,5 +29,3 @@
 </div>
 <script src="/common_scripts/myPostDisplay.js"></script>
 <script src="/common_scripts/postOptions.js"></script>
-</div>
-</div>
