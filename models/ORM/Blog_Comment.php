@@ -49,17 +49,15 @@ class Blog_Comment
      * Cette methode permet de créer un commentaire
      *
      * @param string $textC
-     * @param string $dateC
      * @param int $UserId
      * @param int $PageId
      * @return string|false
      */
-    public function createComment(string $textC, string $dateC, int $UserId, int $PageId): string|false
+    public function createComment(string $textC, int $UserId, int $PageId): string|false
     {
-        $sql = "INSERT INTO BLOG_Comment (textC, dateC, UserId, PageId) VALUES (:textC, :dateC, :UserId, :PageId)";
+        $sql = "INSERT INTO BLOG_Comment (textC, dateC, UserId, PageId) VALUES (:textC, CURRENT_TIMESTAMP, :UserId, :PageId)";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':textC', $textC);
-        $stmt->bindParam(':dateC', $dateC);
         $stmt->bindParam(':UserId', $UserId);
         $stmt->bindParam(':PageId', $PageId);
         $stmt->execute();

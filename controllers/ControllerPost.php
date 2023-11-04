@@ -449,7 +449,14 @@ class ControllerPost
 
                         header("Location: /Post/Blog/" . $idPost);
 
-                    } else {
+                    } elseif(isset($A_postParams["Comment"])){
+                        $textC = $A_postParams["Comment"];
+                        $textC = htmlspecialchars($textC);
+                        if ($textC != "" && $textC != null){
+                            (new Blog_Comment())->createComment($textC, $_SESSION['UserId'], $idPost);
+                        }
+                    }
+                    else {
                         (new UserSite())->incrementAlertLevelUser($_SESSION['UserId']);
                         header("Location: /Menu/BlogFeed");
 
@@ -481,6 +488,9 @@ class ControllerPost
                         $userModel = (new USERSiteModel($userId));
                         $numberOfFollower = $userModel->getNumberOfFollower();
                         $imgProfil = $userModel->getUrlPicture();
+                        if ($imgProfil == null) {
+                            $imgProfil = Constants::MEDIA_DIRECTORY_USERS . "Profil.png";
+                        }
                         $boolIsFollowed = $userModel->isFollowed($_SESSION['UserId']);
                         $boolIsPostBookmarked = $existingPost->isPostBookmarked($_SESSION['UserId']);
 

@@ -59,9 +59,11 @@
     <div class="row justify-content-center mt-4">
         <div class="col-8">
             <div class="input-group align-items-center">
-                <label style="width: 100%">
-                    <input type="text" class="form-control custom-input inputBackground" placeholder="Commenter">
+                <form action="<?php echo $mapView["CurentUrlPost"] ?>" method ="POST">
+                <label style="width: 100%"> <!-- TODO enlever style d'ici ? -->
+                    <input type="text" name="Comment" class="form-control custom-input inputBackground" placeholder="Commenter">
                 </label>
+                </form>
             </div>
         </div>
     </div>
