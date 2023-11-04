@@ -68,7 +68,7 @@ class ControllerSettings
             }
         }
         //TODO logique d'affichage des enregistrements (forum)
-        echo '</div></div></div></div></div>';
+        echo '</div></div>';
         echo '<script src="/common_scripts/myPostDisplay.js"></script>';
         echo '<script src="/common_scripts/postOptions.js"></script>';
     }
@@ -313,7 +313,7 @@ class ControllerSettings
                     "blogTags" => $tagsList, "id" => $obj->getPageId(), "statusP" => $obj->getStatusP()));
             }
         }
-        echo '</div></div></div></div></div>';
+        echo '</div></div>';
         echo '<script src="/common_scripts/myPostDisplay.js"></script>';
         echo '<script src="/common_scripts/postOptions.js"></script>';
         // recup requete, verif connexion + droits + propriétés
