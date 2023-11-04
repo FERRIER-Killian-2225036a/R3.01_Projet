@@ -130,6 +130,7 @@ class ControllerPost
 
                                 // le cas des appels des petits boutons de la page de settings
                                 if (isset($A_postParams["DeleteBlog"])) {
+
                                     $post->deletePage($idPost);
                                     header("Location: /Settings/MyPost");
                                     die();

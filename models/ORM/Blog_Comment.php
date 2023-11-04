@@ -267,11 +267,11 @@ class Blog_Comment
     /**
      * méthode pour verifier si un commentaire appartient a un user
      *
-     * @param int $CommentId
-     * @param int $UserId
+     * @param int|string $CommentId
+     * @param int|string $UserId
      * @return bool
      */
-    public function doesCommentIdBelongToUser(int $CommentId, int $UserId): bool
+    public function doesCommentIdBelongToUser(int|string $CommentId, int|string $UserId): bool
     {
         if ($this->isCommentExist($CommentId)) {
             $sql = "SELECT * FROM BLOG_Comment WHERE CommentId = :CommentId AND UserId = :UserId";
