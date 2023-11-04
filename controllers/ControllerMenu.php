@@ -119,7 +119,8 @@ class ControllerMenu
                 }
             }
             ?>
-            <script src='/common_scripts/blogFeed.js'></script>
+            <script src='/common_scripts/redirect.js'></script>
+            <script src='/common_scripts/bookmak.js'></script>
             <script>
                 redirect('<?php echo $listOfPageId; ?>');
                 bookmark('<?php echo $listOfBoolIsPostBookmarked; ?>');

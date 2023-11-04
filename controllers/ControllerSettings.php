@@ -54,12 +54,14 @@ class ControllerSettings
         foreach ($pageBlogBookmark as $id) {
             $ArrayOfBlogPageModel[] = new BlogPageModel($id);
         }
+        $listOfPageId = "";
         foreach ($ArrayOfBlogPageModel as $obj) {
             if ($obj->getStatusP() != "inactive") { // on va rajouter le lien d'édition
                 $tagsList = "";
                 foreach ($obj->getTags() as $tags) {
                     $tagsList .= "#" . $tags . " - ";
                 }
+                $listOfPageId .= $obj->getPageId().",";
                 MotorView::show('profileSettings/postBlog', array("blogPostUrl" => $obj->getPostUrl(),
                     "blogTitle" => $obj->getTITLE(),
                     "blogContent" => $obj->getContent(), "blogAuthor" => $obj->getAuthor(),
@@ -68,6 +70,12 @@ class ControllerSettings
             }
         }
         //TODO logique d'affichage des enregistrements (forum)
+        ?>
+        <script src='/common_scripts/redirect.js'></script>
+        <script>
+            redirect('<?php echo $listOfPageId; ?>');
+        </script>
+        <?php
         echo '</div></div>';
         echo '<script src="/common_scripts/myPostDisplay.js"></script>';
         echo '<script src="/common_scripts/postOptions.js"></script>';
