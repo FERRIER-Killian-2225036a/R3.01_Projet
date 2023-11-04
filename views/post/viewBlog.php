@@ -6,7 +6,7 @@
         <div class="row mb-4">
             <!-- Section d'informations sur l'auteur -->
             <div class="col-md-6 d-flex align-items-center">
-                <img src="<?php echo $mapView['ImgProfil'] ?>" alt="image" class="rounded-circle mr-3">
+                <img src="<?php echo $mapView['ImgProfil'] ?>" alt="image" class="rounded-circle mr-3" height="3em">
                 <div id="textUser">
                     <p class="mb-0"><?php echo $mapView['Author'] ?></p>
                     <small><?php echo $mapView['NumberOfFollower'] ?> abonnés</small>
@@ -59,10 +59,10 @@
     <div class="row justify-content-center mt-4">
         <div class="col-8">
             <div class="input-group align-items-center">
-                <form action="<?php echo $mapView["CurentUrlPost"] ?>" method ="POST">
-                <label style="width: 100%"> <!-- TODO enlever style d'ici ? -->
-                    <input type="text" name="Comment" class="form-control custom-input inputBackground" placeholder="Commenter">
-                </label>
+                <form action="<?php echo $mapView["CurentUrlPost"] ?>" method ="POST" style="width: 100%">
+                    <label style="width: 100%"> <!-- TODO enlever style d'ici ? -->
+                        <input type="text" name="Comment" class="form-control custom-input inputBackground" placeholder="Commenter">
+                    </label>
                 </form>
             </div>
         </div>
@@ -78,7 +78,7 @@
                     $picture = "/media/users/Profil.png";
                 }
                 echo '<div class="col-md-6 d-flex align-items-center">';
-                echo '<img src="' . $picture . '" alt="image" class="rounded-circle mr-3">';
+                echo '<img src="' . $picture . '" alt="image" class="rounded-circle mr-3" height="3em">';
                 echo '<div id="textUser">';
                 echo '<p class="mb-0">' . $comment->getUser()->getPseudo() . '</p>';
                 echo '<small>' . $comment->getUser()->getNumberOfFollower() . ' abonnés</small>';
