@@ -459,6 +459,17 @@ class ControllerPost
                             (new Blog_Comment())->createComment($textC, $_SESSION['UserId'], $idPost);
                         }
                         header("Location: /Post/Blog/" . $idPost);
+                    } elseif (isset($A_postParams["DeleteComment"])){ // cas suppression comment
+                        if ($existingPost->doesCommentIdBelongToUser($A_postParams["DeleteComment"], $_SESSION['UserId'])){
+                            (new Blog_Comment())->deleteComment($A_postParams["DeleteComment"]);
+                        }
+                        if ($existingPost->doesCommentIdBelongToUser($idPost,$existingPost->getUserId())) {
+                            (new Blog_Comment())->deleteComment($A_postParams["DeleteComment"]);
+                        } else{
+                            (new UserSite())->incrementAlertLevelUser($_SESSION['UserId']);
+                        }
+                        header("Location: /Post/Blog/" . $idPost);
+
                     }
                     else {
                         (new UserSite())->incrementAlertLevelUser($_SESSION['UserId']);

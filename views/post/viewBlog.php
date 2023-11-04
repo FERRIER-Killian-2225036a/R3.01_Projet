@@ -87,6 +87,16 @@
                 echo '<form action="' . "/User/Profil/". $comment->getUser()->getId() . '" method="post" >';
                 echo '<button class="btn btn-custom-purple followButton" name="follow" type="submit">Suivre</button>';
                 echo '</form>';
+                if ($comment->getUser()->getId() == $_SESSION["UserId"]) {
+                    echo '<form action="' . $mapView["CurentUrlPost"] . '" method ="POST" >';
+                    echo '<button class="btn btn-custom-purple deleteComment" name="DeleteComment" value="'.$comment->getCommentId() .'" type="submit">Supprimer</button>';
+                    echo '</form>';
+                }
+                else if ($comment->getUser()->getId() == $comment->getBlogPage()->getUserId()) {
+                    echo '<form action="' . $mapView["CurentUrlPost"] . '" method ="POST" >';
+                    echo '<button class="btn btn-custom-purple deleteComment" name="DeleteComment" value="'.$comment->getCommentId() .'" type="submit">Supprimer</button>';
+                    echo '</form>';
+                }
                 echo '</div>';
                 echo '<p>' . $comment->getTextC() . '</p>';
                 echo "<hr>";
