@@ -132,3 +132,8 @@
         padding-inline: 3.2em;
     }
 }
+
+/* Styles pour le form et l'input pour entrer un commentaire */
+#formCommentEnter,  #formCommentEnter > label{
+    width: 100%;
+}
