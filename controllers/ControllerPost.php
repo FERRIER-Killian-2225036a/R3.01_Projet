@@ -440,7 +440,7 @@ class ControllerPost
                     }
                     $existingPost = new BlogPageModel($idPost);
 
-                    if (isset($A_postParams["Bookmark"])) {
+                    if (isset($A_postParams["bookmark"])) {
                         // si le post est deja bookmark, on le supprime
 
 
