@@ -11,14 +11,23 @@
                          class="bi bi-three-dots" viewBox="0 0 16 16">
                         <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
                     </svg>
-                    <div class="dropdown-content">
-                        <a href="<?php echo $mapView['blogPostEditUrl'] ?>">Modifier</a>
-                        <a id="modifyVisibilityButton"> <?php if ($mapView['statusP'] != "innactive") {
-                                echo ($mapView['statusP'] == "active") ? "Mettre en visibilité privé" : "Mettre en visibilité public";
-                            } ?></a>
-                        <!-- De toute façon on n'affiche pas la publication si innactive + test dans le contrôleur pour la requête post -->
-                        <a id="deleteButton">Supprimer</a>
-                    </div>
+                    <?php if (isset($mapView["id"])){
+                        if ((new Blog_Page())->doesPageIdBelongToUser($mapView["id"],$_SESSION["UserId"])){
+                            echo '<div class="dropdown-content">';
+                            echo '<a href="'.$mapView['blogPostEditUrl'].'">Modifier</a>';
+                            echo '<a id="modifyVisibilityButton"> '.(($mapView['statusP'] != "innactive") ? (($mapView['statusP'] == "active") ? "Mettre en visibilité privé" : "Mettre en visibilité public") : "").'</a>';
+                            echo '<a id="deleteButton">Supprimer</a>';
+                            echo '</div>';
+                        }
+                        else {
+                            echo '<div class="dropdown-content">';
+                            //echo '<a href="'.$mapView['blogPostUrl'].'">Signaler</a>';
+                            echo '<a id="signet" href="'.$mapView['blogPostUrl'].'">désenregistrer</a>';
+                            echo '</div>';
+
+                        }
+
+                    } ?>
                 </div>
             </span>
             <p class="lead responsive-text"><?php echo $mapView['blogTags'] ?> <?php echo $mapView['blogDate'] ?>

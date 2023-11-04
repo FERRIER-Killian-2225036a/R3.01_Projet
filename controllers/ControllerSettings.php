@@ -43,6 +43,33 @@ class ControllerSettings
      */
     public function BookmarkAction(): void
     {
+        if (!SessionManager::isUserConnected()) {
+            header("Location: /Auth/login ");
+            die();
+        }
+        MotorView::show('profileSettings/bookmark');
+        $pageBlogBookmark = (new Blog_PageLike())->getAllPageLikeIdOfUser($_SESSION["UserId"]);
+
+        $ArrayOfBlogPageModel = array();
+        foreach ($pageBlogBookmark as $id) {
+            $ArrayOfBlogPageModel[] = new BlogPageModel($id);
+        }
+        foreach ($ArrayOfBlogPageModel as $obj) {
+            if ($obj->getStatusP() != "inactive") { // on va rajouter le lien d'édition
+                $tagsList = "";
+                foreach ($obj->getTags() as $tags) {
+                    $tagsList .= "#" . $tags . " - ";
+                }
+                MotorView::show('profileSettings/postBlog', array("blogPostUrl" => $obj->getPostUrl(),
+                    "blogTitle" => $obj->getTITLE(),
+                    "blogContent" => $obj->getContent(), "blogAuthor" => $obj->getAuthor(),
+                    "blogDate" => $obj->getDateP(), "blogUrlPicture" => $obj->getUrlPicture(),
+                    "blogTags" => $tagsList, "id" => $obj->getPageId()));
+            }
+        }
+
+
+
         //TODO ajouté verification et logique d'affichage des enregistrements (post+forum)
         if (SessionManager::isUserConnected()){
             MotorView::show('profileSettings/bookmark');
@@ -269,7 +296,10 @@ class ControllerSettings
 
         // on va recupere du model les blogs (plus tard les forums)
         // d'un membre selon son identifiant et les afficher sur sa page,
-
+        if (!SessionManager::isUserConnected()) {
+            header("Location: /Auth/login ");
+            die();
+        }
         MotorView::show('profileSettings/myPost');
         $pageBlog = new Blog_Page();
         $ArrayOf5IdByDate = $pageBlog->get5PagesByDate(null, $_SESSION["UserId"]);
