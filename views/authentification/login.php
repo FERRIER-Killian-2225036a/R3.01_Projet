@@ -32,11 +32,10 @@
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example22">Mot de passe
                                             <div class="input-group">
-                                                <input type="password" id="form2Example22" class="form-control" placeholder="********" name="password" />
-                                                <span class="input-group-addon">
-                                                    <i id="passwordToggle" class="fas fa-eye" style="cursor: pointer;"></i>
-                                                    <i id="passwordHide" class="fas fa-eye-slash" style="display: none; cursor: pointer;"></i>
-                                                </span>
+                                                <input type="password" id="form2Example22" class="form-control" placeholder="********" name="password"/>
+                                                <button id="passwordToggle" type="button" style="cursor: pointer;">Montrer le mot de passe</button>
+                                                <button id="passwordToggleOff" type="button" style="cursor: pointer; display: none;">Cacher le mot de passe</button>
+
                                             </div>
                                         </label>
                                         <!-- Zone d'affichage des messages d'erreur -->
