@@ -330,7 +330,7 @@ class ControllerPost
                             $_SESSION['Username'],
                             $_SESSION['UserId']);
                         error_log ("blog crée sans image");
-                        if (!$idNewPost instanceof Exception && $idNewPost !== false) //todo mettre le bon type de class
+                        if ($idNewPost instanceof Exception || $idNewPost == false) //todo mettre le bon type de class
                         {
                             error_log ("erreur lancé lors de la créa");
 
