@@ -6,7 +6,7 @@
         <div class="row mb-4">
             <!-- Section d'informations sur l'auteur -->
             <div class="col-md-6 d-flex align-items-center">
-                <img src="<?php echo $mapView['ImgProfil'] ?>" alt="image" class="rounded-circle mr-3" height="3em">
+                <img src="<?php echo $mapView['ImgProfil'] ?>" alt="image" class="rounded-circle mr-3" height="45px">
                 <div id="textUser">
                     <p class="mb-0"><?php echo $mapView['Author'] ?></p>
                     <small><?php echo $mapView['NumberOfFollower'] ?> abonnés</small>
@@ -78,7 +78,7 @@
                     $picture = "/media/users/Profil.png";
                 }
                 echo '<div class="col-md-6 d-flex align-items-center">';
-                echo '<img src="' . $picture . '" alt="image" class="rounded-circle mr-3" height="3em">';
+                echo '<img src="' . $picture . '" alt="image" class="rounded-circle mr-3" height="45px">';
                 echo '<div id="textUser">';
                 echo '<p class="mb-0">' . $comment->getUser()->getPseudo() . '</p>';
                 echo '<small>' . $comment->getUser()->getNumberOfFollower() . ' abonnés</small>';
