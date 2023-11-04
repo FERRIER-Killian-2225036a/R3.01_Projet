@@ -23,6 +23,7 @@
                             echo '<div class="dropdown-content">';
                             //echo '<a href="'.$mapView['blogPostUrl'].'">Signaler</a>';
                             echo '<a id="signet" href="'.$mapView['blogPostUrl'].'">désenregistrer</a>';
+                            echo '<a id="signet" >désenregistrer</a>'; // todo add function js to remove bookmark
                             echo '</div>';
 
                         }

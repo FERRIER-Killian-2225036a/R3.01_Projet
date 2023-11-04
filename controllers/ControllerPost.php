@@ -372,6 +372,8 @@ class ControllerPost
                                 $CategoryPageFormOrm->createLinkBetweenCategoryAndPage($id, $idNewPost);// on link la page au nouvel id.
                             }
                         }
+                        //TODO verifier si ca a marché avecc img et tt
+                        
                         header("Location: /Settings/MyPost");
                         die();
 
