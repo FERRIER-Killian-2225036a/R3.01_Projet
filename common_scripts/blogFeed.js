@@ -26,7 +26,7 @@ function redirect(stringOfLikns) {
         divButtonRoles[i].addEventListener("click", function(event) {
             const isInput = event.target.closest('.input-group');
             if (!isInput) {
-                window.location.href = "Post/Blog/" + listOfLikns[i];
+                window.location.href = "https://cyphub.tech/Post/Blog/" + listOfLikns[i];
             }
         });
     }
