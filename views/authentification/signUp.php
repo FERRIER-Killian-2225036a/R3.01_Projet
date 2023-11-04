@@ -64,7 +64,7 @@
 
                                     <div class="text-center pt-1 mb-5 pb-1">
                                         <!-- Bouton pour soumettre le formulaire d'inscription -->
-                                        <button class="btn btn-primary btn-block fa-lg mb-3" id="signUpButton" type="submit">S'inscrire</button>
+                                        <button class="btn btn-primary btn-block mb-3" id="signUpButton" type="submit">S'inscrire</button>
                                     </div>
 
                                     <div class="d-flex align-items-center justify-content-center pb-4">
