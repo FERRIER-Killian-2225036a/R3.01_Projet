@@ -94,6 +94,7 @@ class ControllerUser
                 }
             }
             echo '</div></div>';
+            echo '<script>const dropdown = document.querySelectorAll(".dopdown"); for (let i = 1; i<dropdown.length; i++){dropdown[1].style.display = "none";}</script>';
             echo '<script src="/common_scripts/myPostDisplay.js"></script>';
             echo '<script src="/common_scripts/postOptions.js"></script>';
         } else {
