@@ -92,7 +92,7 @@
                     echo '<button class="btn btn-custom-purple deleteComment" name="DeleteComment" value="'.$comment->getCommentId() .'" type="submit">Supprimer</button>';
                     echo '</form>';
                 }
-                else if ($comment->getUser()->getId() == $comment->getBlogPage()->getUserId()) {
+                elseif ($comment->getUser()->getId() == $comment->getBlogPage()->getUserId()) {
                     echo '<form action="' . $mapView["CurentUrlPost"] . '" method ="POST" >';
                     echo '<button class="btn btn-custom-purple deleteComment" name="DeleteComment" value="'.$comment->getCommentId() .'" type="submit">Supprimer</button>';
                     echo '</form>';
