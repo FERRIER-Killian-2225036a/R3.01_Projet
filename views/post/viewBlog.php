@@ -135,14 +135,13 @@
     let boolIsFollowed = <?php echo $mapView['BoolIsFollowed'] ? 1 : 0 ?>; // TODO php mauvais user, a changer (author au lieu de user) pas sure a verif ?
     // Condition si l'utilisateur est suivi
     if (boolIsFollowed === 1) {
-        for (let i = 0; i < followedButton.length; ++i) {
-            // On change le texte du bouton
-            followedButton[i].innerHTML = 'Suivi';
-            // On met le fond en violet
-            followedButton[i].style.backgroundColor = 'var(--purple)';
-            // On met le texte en blanc
-            followedButton[i].style.color = 'white';
-        }
+        // On change le texte du bouton
+        followedButton[0].innerHTML = 'Suivi';
+        // On met le fond en violet
+        followedButton[0].style.backgroundColor = 'var(--purple)';
+        // On met le texte en blanc
+        followedButton[0].style.color = 'white';
+
     }
 
     // Script pour le changement du logo signet
