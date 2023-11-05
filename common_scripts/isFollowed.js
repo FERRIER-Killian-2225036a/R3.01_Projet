@@ -15,7 +15,9 @@ function isFollowed(listOfBooleen) {
             followedButton[i].style.color = 'white';
         }
     }*/
+    console.log(listOfBooleen);
     const followedButton = document.querySelectorAll('.followButton');
+    console.log(followedButton);
     for (let i = 1; i < listOfBooleen.length; i++) {
         // Condition si l'article est enregistré
         if (listOfBooleen[i] === '1') {
