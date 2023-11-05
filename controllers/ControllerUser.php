@@ -80,6 +80,7 @@ class ControllerUser
                                 }
                             }
                             echo '</div></div>';
+                            echo '<script src="/common_scripts/postOptions.js"></script>';
                             echo '<script>const dropdown = document.querySelectorAll(".dropdown"); for (let i = 1; i<dropdown.length; i++){dropdown[i].style.display = "none";};</script>';
                             ?>
                             <script src='/common_scripts/redirect.js'></script>
@@ -90,7 +91,7 @@ class ControllerUser
                             <?php
                             echo '</div></div>';
                             echo '<script src="/common_scripts/myPostDisplay.js"></script>';
-                            echo '<script src="/common_scripts/postOptions.js"></script>';
+
                         }
 
                     }
