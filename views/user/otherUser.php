@@ -11,8 +11,7 @@
                  <form action="/User/Profil/<?= $mapView["User"]->getId() ;?>" method="post">
                     <button type="submit" name="follow" class="btn btn-outline-dark">Se désabonner</button>
                  </form>
-                
-                <button class="btn btn-outline-dark">Se désabonner</button>
+
             </div>
         </div>
         <!-- Colonne de droite TODO a reparer -->

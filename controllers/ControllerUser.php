@@ -48,6 +48,8 @@ class ControllerUser
                             } else {
                                 $userOfPage->addFollower( $_SESSION["UserId"]);
                             }
+                            header("Location: /User/Profil/" . $valideInt);
+                            die();
 
                         }
                     }
