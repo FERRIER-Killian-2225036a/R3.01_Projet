@@ -23,7 +23,7 @@
                 echo '</a>';
                 echo '<div>';
                 echo '<p class="mb-0">' . $user->getPseudo() . '</p>';
-                echo '<small>' . $user->getNumberOfFollower() . ' Abonnés - '. $user->getNumberOfFollow() ." Abonnements - " .$user->getNumberOfPost().' Posts</small>';
+                echo '<small>' . $user->getNumberOfFollower() . ' Abonnés - '. $user->getNumberOfFollowed() ." Abonnements - " .$user->getNumberOfPost().' Posts</small>';
                 echo '</div>';
                 echo '</div>';
                 echo '<div class="col-md-6 d-flex align-items-center justify-content-center">';
