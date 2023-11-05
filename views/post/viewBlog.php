@@ -6,9 +6,11 @@
         <div class="row mb-4">
             <!-- Section d'informations sur l'auteur -->
             <div class="col-md-6 d-flex align-items-center">
+                <a href="/User/Profil/<?= $mapView["AuthorId"]?>">
                 <img src="<?php echo $mapView['ImgProfil'] ?>" alt="image" class="rounded-circle mr-3" height="45px">
+                </a>
                 <div id="textUser">
-                    <p class="mb-0"><?php echo $mapView['Author'] ?></p>
+                    <a href="/User/Profil/<?= $mapView["AuthorId"]?>"><p class="mb-0"><?php echo $mapView['Author'] ?></p></a>
                     <small><?php echo $mapView['NumberOfFollower'] ?> abonnés</small>
                 </div>
                 <!-- Formulaire pour suivre l'auteur -->
@@ -78,9 +80,13 @@
                     $picture = "/media/users/Profil.png";
                 }
                 echo '<div class="col-md-6 d-flex align-items-center">';
+                echo '<a href="/User/Profil/'.$comment->getUser()->getId().'">';
                 echo '<img src="' . $picture . '" alt="image" class="rounded-circle mr-3" height="45px">';
+                echo '</a>';
                 echo '<div id="textUser">';
+                echo '<a href="/User/Profil/'.$comment->getUser()->getId().'">';
                 echo '<p class="mb-0">' . $comment->getUser()->getPseudo() . '</p>';
+                echo '</a>';
                 echo '<small>' . $comment->getUser()->getNumberOfFollower() . ' abonnés</small>';
                 echo '</div>';
                 //<!-- Formulaire pour suivre l'auteur /!\ potentiel bug revoir controlleur User pour géré les abos aussi pour l'auteur -->
