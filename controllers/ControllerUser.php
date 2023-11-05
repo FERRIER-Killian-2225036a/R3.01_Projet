@@ -42,7 +42,7 @@ class ControllerUser
                     $valideInt = filter_var($A_parametres[0], FILTER_VALIDATE_INT);
                     if ((new UserSite())->isUserIDExists($valideInt)) {
                         $userOfPage = new USERSiteModel($valideInt);
-                        if (isset($_POST["follow"])) { //TODO verif bdd car dyslexie
+                        if (isset($A_postParams["follow"])) { //TODO verif bdd car dyslexie
                             if ($userOfPage->isFollowed( $_SESSION["UserId"])) {
                                 $userOfPage->removeFollower( $_SESSION["UserId"]);
                             } else {
