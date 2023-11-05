@@ -1,9 +1,4 @@
-.responsive-image-user {
-    max-width: 100%;   /* Ajuste la largeur de l'image à la largeur de son conteneur tout en préservant les proportions */
-    height: auto;     /* Permet de conserver le ratio hauteur/largeur d'origine */
-    display: block;   /* Élimine l'espace supplémentaire en bas pour aligner l'image avec le texte autour */
-    margin: 0 auto;   /* Centrer l'image horizontalement si son conteneur est plus large que l'image */
-}
+
 
 .container {
     max-width: 100%;
