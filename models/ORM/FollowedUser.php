@@ -113,4 +113,36 @@ class FollowedUser
             $stmt->execute();
         }
     }
+
+    /**
+     * méthode pour recuperer tous les abonnements d'un utilisateur
+     *
+     * @param int|string $UserId
+     * @return array|false
+     */
+    public function getAllFollowedUser(int|string $UserId): false|array
+    {
+        $sql = "SELECT UserId FROM FollowedUser WHERE UserFollow = ?"; // TODO a verifier pcq la dislexie
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(1, $UserId, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    /**
+     * méthode pour recuperer le nombre d'abonnements d'un utilisateur
+     *
+     * @param int|string $UserId
+     * @return array|false
+     */
+    public function getNumberOfFollowed(int|string $UserId): false|array
+    {
+        $sql = "SELECT COUNT(*) FROM FollowedUser WHERE UserFollow = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(1, $UserId, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetchColumn();
+        return $result;
+    }
 }

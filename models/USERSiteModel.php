@@ -240,5 +240,24 @@ class USERSiteModel
         (new FollowedUser())->addFollower($this->Id, $UserId);
     }
 
+    /**
+     * méthode pour recuperer le nombre d'abonnement d'un utilisateur
+     *
+     * @return int
+     */
+    public function getNumberOfFollowed(): int
+    {
+        return (new FollowedUser)->getNumberOfFollowed($this->Id);
+    }
 
+    /**
+     * méthode pour recuperer le nombre de post d'un utilisateur
+     *
+     * @return int
+     */
+    public function getNumberOfPost(): int
+    {
+        return (new Blog_Page())->getNumberOfPost($this->Id);
+        //todo + forum post
+    }
 }

@@ -91,7 +91,13 @@ class ControllerSettings
     {
         //TODO ajouté verification et logique d'affichage des abonnements
         if (SessionManager::isUserConnected()){
-            MotorView::show('profileSettings/follow' );
+            $arrayOfFolledUser = (new FollowedUser())->getAllFollowedUser($_SESSION["UserId"]);
+            $arrayOfUser = array();
+            foreach ($arrayOfFolledUser as $user){
+                $arrayOfUser[] = new USERSiteModel($user);
+            }
+            MotorView::show('profileSettings/follow', array("ArrayOfFollowedUser" => $arrayOfUser)     );
+
         } else {
             header("Location: /Auth/login ");
             die();

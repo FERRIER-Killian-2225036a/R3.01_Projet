@@ -16,20 +16,26 @@
         </div>
         <!-- Section des personnes suivies -->
         <div class="row mb-4">
-            <div class="col-md-6 d-flex align-items-center justify-content-end">
-                <img src="../../media/public_assets/favicon.png" alt="image" class="rounded-circle mr-3">
-                <div>
-                    <p class="mb-0">KrokmouLeFurynocturne</p>
-                    <small>99 Abonnés     99 Abonnements     1K Posts</small>
-                </div>
-            </div>
-
-            <div class="col-md-6 d-flex align-items-center justify-content-center">
-                <div class="btn-group">
-                    <button class="btn btn-outline-dark">Se désabonner</button>
-                </div>
-            </div>
-            <hr class="my-3">
+            <?php foreach ($mapView["ArrayOfFollowedUser"] as $user) {
+                echo '<div class="col-md-6 d-flex align-items-center justify-content-end">';
+                echo '<a href="/User/Profil/' . $user->getId() . '" ';
+                echo '<img src="' . $user->getUrlPicture() . '" alt="image" class="rounded-circle mr-3">';
+                echo '</a>';
+                echo '<div>';
+                echo '<p class="mb-0">' . $user->getPseudo() . '</p>';
+                echo '<small>' . $user->getNumberOfFollower() . ' Abonnés - '. $user->getNumberOfFollow() ." Abonnements - " .$user->getNumberOfPost().' Posts</small>';
+                echo '</div>';
+                echo '</div>';
+                echo '<div class="col-md-6 d-flex align-items-center justify-content-center">';
+                echo '<div class="btn-group">';
+                echo '<form action="/User/Profil/' . $user->getId() . '" method="post">';
+                echo '<button type="submit" name="follow" class="btn btn-outline-dark">Se désabonner</button>'; //si abo on supp, sinon on add
+                echo '</form>';
+                echo '</div>';
+                echo '</div>';
+                echo '<hr class="my-3">';
+            } ?>
+            <?php ?>
         </div>
     </div>
 </div>

@@ -366,4 +366,18 @@ class Blog_Page
         return $arrayOfId;
     }
 
+    /**
+     * renvoie le nombre de post d'un user donné.
+     * @param int $Id
+     * @return int
+     */
+    public function getNumberOfPost(int $Id)
+    {
+        $stmt = $this->conn->prepare("SELECT count(*) FROM BLOG_Page WHERE UserId = ?");
+        $stmt->bindParam(1, $Id);
+        $stmt->execute();
+        $count = $stmt->fetchColumn();
+        return $count;
+    }
+
 }
