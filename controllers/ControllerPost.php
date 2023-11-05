@@ -560,6 +560,7 @@ class ControllerPost
                         <script src='/common_scripts/isFollowed.js'></script>
                         <script>
                             isFollowed('<?php echo $listBoolFollowed; ?>');
+                            console.log('<?php echo $listBoolFollowed; ?>')
                         </script>
                         <?php
                     }
