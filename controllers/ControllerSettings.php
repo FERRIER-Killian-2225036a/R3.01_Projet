@@ -96,7 +96,8 @@ class ControllerSettings
             foreach ($arrayOfFolledUser as $user){
                 $arrayOfUser[] = new USERSiteModel($user["UserId"]);
             }
-            MotorView::show('profileSettings/follow', array("ArrayOfFollowedUser" => $arrayOfUser)     );
+            $numberOfFollow = (new FollowedUser())->getNumberOfFollowed($_SESSION["UserId"]);
+            MotorView::show('profileSettings/follow', array("numberOfFollow"=>$numberOfFollow,"ArrayOfFollowedUser" => $arrayOfUser)     );
             /*
             if ($_SERVER["REQUEST_METHOD"]==="POST"){
                 if (isset($A_postParams["researchUser"])){

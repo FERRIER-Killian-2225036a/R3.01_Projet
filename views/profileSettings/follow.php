@@ -12,7 +12,7 @@
         <hr class="my-3">
         <!-- Section pour le nombre de personnes suivies -->
         <div class="col-md-6">
-            <h1>Vous suivez 1 compte : </h1>
+            <h1>Vous suivez <?= $mapView["numberOfFollow"]?> compte : </h1>
         </div>
         <!-- Section des personnes suivies -->
         <div class="row mb-4">
