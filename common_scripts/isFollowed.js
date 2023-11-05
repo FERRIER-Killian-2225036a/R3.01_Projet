@@ -16,7 +16,7 @@ function isFollowed(listOfBooleen) {
         }
     }*/
     const followedButton = document.querySelectorAll('.followButton');
-    for (let i = 0; i < listOfBooleen.length; i++) {
+    for (let i = 1; i < listOfBooleen.length; i++) {
         // Condition si l'article est enregistré
         if (listOfBooleen[i] === '1') {
             // On change le texte du bouton
