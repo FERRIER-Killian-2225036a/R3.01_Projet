@@ -75,34 +75,27 @@ class ControllerUser
                     }
                 }
             }
-            $pageBlogBookmark = (new Blog_PageLike())->getAllPageLikeIdOfUser($_SESSION["UserId"]);
+            $pageBlog = new Blog_Page();
+            $ArrayOf5IdByDate = $pageBlog->get5PagesByDate(null, $_SESSION["UserId"]);
             $ArrayOfBlogPageModel = array();
-            foreach ($pageBlogBookmark as $id) {
+            foreach ($ArrayOf5IdByDate as $id) {
                 $ArrayOfBlogPageModel[] = new BlogPageModel($id);
             }
-            $listOfPageId = "";
             foreach ($ArrayOfBlogPageModel as $obj) {
                 if ($obj->getStatusP() != "inactive") { // on va rajouter le lien d'édition
                     $tagsList = "";
                     foreach ($obj->getTags() as $tags) {
                         $tagsList .= "#" . $tags . " - ";
                     }
-                    $listOfPageId .= $obj->getPageId().",";
-                    MotorView::show('profileSettings/postBlog', array("blogPostUrl" => $obj->getPostUrl(),
-                        "blogTitle" => $obj->getTITLE(),
+                    MotorView::show('profileSettings/postBlog', array("blogPostEditUrl" => $obj->getPostEditUrl(), "blogTitle" => $obj->getTITLE(),
                         "blogContent" => $obj->getContent(), "blogAuthor" => $obj->getAuthor(),
                         "blogDate" => $obj->getDateP(), "blogUrlPicture" => $obj->getUrlPicture(),
-                        "blogTags" => $tagsList, "id" => $obj->getPageId()));
+                        "blogTags" => $tagsList, "id" => $obj->getPageId(), "statusP" => $obj->getStatusP()));
                 }
             }
-            //TODO logique d'affichage des enregistrements (forum)
-            ?>
-            <script src='/common_scripts/redirect.js'></script>
-            <script>
-                console.log('<?php echo $listOfPageId; ?>')
-                redirect('<?php echo $listOfPageId; ?>');
-            </script>
-            <?php
+            echo '</div></div>';
+            echo '<script src="/common_scripts/myPostDisplay.js"></script>';
+            echo '<script src="/common_scripts/postOptions.js"></script>';
         } else {
             header("Location: /Auth/Login");
             die();
