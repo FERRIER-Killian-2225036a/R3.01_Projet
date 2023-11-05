@@ -73,7 +73,6 @@ class ControllerSettings
         ?>
         <script src='/common_scripts/redirect.js'></script>
         <script>
-            console.log('<?php echo $listOfPageId; ?>')
             redirect('<?php echo $listOfPageId; ?>');
         </script>
         <?php
