@@ -1,5 +1,7 @@
 <link rel="stylesheet" href="/common_styles/user.css">
 <link rel="stylesheet" href="/common_styles/post.css">
+<script src="/common_scripts/dropdown.js"></script> <!-- Inclusion du script de dropdown -->
+<link rel="stylesheet" href="/common_styles/dropdown.css"> <!-- Inclusion de la feuille de style pour le dropdown -->
 <main class="container">
     <div class="row mb-4">
         <!-- Colonne de gauche -->
