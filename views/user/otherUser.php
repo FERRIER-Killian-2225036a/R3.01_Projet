@@ -35,7 +35,7 @@
             </div>
         </div>
     </div>
-
+    <label id="noPost">Pas de post</label> <!-- Étiquette pour afficher "Pas de post" -->
     <!-- Articles
     <div class="row">-->
         <!-- Premier élément
