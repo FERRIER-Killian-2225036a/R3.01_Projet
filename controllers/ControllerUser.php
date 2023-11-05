@@ -29,6 +29,21 @@ class ControllerUser
         die();
     }
 
+    /**
+     * Méthode pour afficher la vue du profil d'un user en mode spectateur
+     *
+     * @return void
+     */
+    public function ProfilAction(): void{
+        if (SessionManager::isUserConnected()){
+            MotorView::show('user/otherUser');
+        } else {
+            header("Location: /Auth/Login");
+            die();
+        }
+
+    }
+
 
 
 }

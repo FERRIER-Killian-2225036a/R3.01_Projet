@@ -134,9 +134,9 @@ class FollowedUser
      * méthode pour recuperer le nombre d'abonnements d'un utilisateur
      *
      * @param int|string $UserId
-     * @return array|false
+     * @return int|false
      */
-    public function getNumberOfFollowed(int|string $UserId): false|array
+    public function getNumberOfFollowed(int|string $UserId): false|int
     {
         $sql = "SELECT COUNT(*) FROM FollowedUser WHERE UserFollow = ?";
         $stmt = $this->conn->prepare($sql);
