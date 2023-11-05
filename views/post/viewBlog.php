@@ -84,7 +84,7 @@
                 echo '<small>' . $comment->getUser()->getNumberOfFollower() . ' abonnés</small>';
                 echo '</div>';
                 //<!-- Formulaire pour suivre l'auteur /!\ potentiel bug revoir controlleur User pour géré les abos aussi pour l'auteur -->
-                echo '<form action="'.$mapView["CurentUrlPost"].'" method="post" >';
+                echo '<form action="' . "/User/Profil/". $comment->getUser()->getId() . '" method="post" >';
                 echo '<button class="btn btn-custom-purple followButton" name="follow" type="submit">Suivre</button>';
                 echo '</form>';
                 if ($comment->getUser()->getId() == $_SESSION["UserId"]) {
