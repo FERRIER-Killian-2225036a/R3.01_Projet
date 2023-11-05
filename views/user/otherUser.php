@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/common_styles/user.css">
-<link rel="stylesheet" href="/common_styles/post.css">
+<link rel="stylesheet" href="/common_styles/profileSettings.css">
 <script src="/common_scripts/dropdown.js"></script> <!-- Inclusion du script de dropdown -->
 <link rel="stylesheet" href="/common_styles/dropdown.css"> <!-- Inclusion de la feuille de style pour le dropdown -->
 <div class="col container" id="rightSide">
