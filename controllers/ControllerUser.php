@@ -37,7 +37,7 @@ class ControllerUser
     public function ProfilAction(array $A_parametres = null, array $A_postParams = null): void
     {
         if (SessionManager::isUserConnected()) {
-            if ($_SERVER["REQUEST_METHOD"] === "Post") {
+            if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 if ($A_parametres !== null && $A_parametres[0] !== null) {
                     $valideInt = filter_var($A_parametres[0], FILTER_VALIDATE_INT);
                     if ((new UserSite())->isUserIDExists($valideInt)) {
