@@ -34,16 +34,52 @@ class ControllerUser
      *
      * @return void
      */
-    public function ProfilAction(): void{
-        if (SessionManager::isUserConnected()){
-            MotorView::show('user/otherUser');
+    public function ProfilAction(array $A_parametres = null, array $A_postParams = null): void
+    {
+        if (SessionManager::isUserConnected()) {
+            if ($_SERVER["REQUEST_METHOD"] === "Post") {
+                if ($A_parametres !== null && $A_parametres[0] !== null) {
+                    $valideInt = filter_var($A_parametres[0], FILTER_VALIDATE_INT);
+                    if ((new UserSite())->isUserIDExists($valideInt)) {
+                        if (isset($_POST["follow"])) { //TODO verif bdd car dyslexie
+                            if ((new FollowedUser())->isFollowed($valideInt, $_SESSION["UserId"])) {
+                                (new FollowedUser())->removeFollower($valideInt, $_SESSION["UserId"]);
+                            } else {
+                                (new FollowedUser())->addFollower($valideInt, $_SESSION["UserId"]);
+                            }
+
+                        }
+                    }
+
+                }
+
+            } else {
+                if ($A_parametres !== null && $A_parametres[0] !== null) {
+                    $valideInt = filter_var($A_parametres[0], FILTER_VALIDATE_INT);
+                    if ((new UserSite())->isUserIDExists($valideInt)) {
+                        $userModel = new USERSiteModel($valideInt);
+                        $arrayOfPageId = (new Blog_Page())->get5PagesByDate(null, $valideInt);
+                        $arrayOfBlogPageModel = array();
+                        if ($userModel->getStatus()!="banned"){
+                            foreach($arrayOfPageId as $id){
+                                $arrayOfBlogPageModel[] = new BlogPageModel($id);
+                            }
+                            MotorView::show('user/otherUser',array("User"=>$userModel,
+                                "Postes"=>$arrayOfBlogPageModel
+                                ));
+
+                        }
+                    }
+                }
+
+
+            }
         } else {
             header("Location: /Auth/Login");
             die();
         }
 
     }
-
 
 
 }

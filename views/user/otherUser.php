@@ -4,14 +4,14 @@
     <div class="row mb-4">
         <!-- Colonne de gauche -->
         <div class="col-md-6 d-flex align-items-center">
-            <img src="../../media/public_assets/favicon.png" alt="image" class="rounded-circle mr-3">
+            <img src="<?= $mapView["User"]->getUrlPicture() ;?>" alt="image" class="rounded-circle mr-3">
             <div>
-                <p class="mb-0">KrokmouLeFurynocturne</p>
-                <small>99 Abonnés 99 Abonnements 1K Posts</small>
+                <p class="mb-0"><?= $mapView["User"]->getPseudo() ;?></p>
+                <small><?= $mapView["User"]->getNumberOfFollower() ;?> Abonnés - <?= $mapView["User"]->getNumberOfFollowed() ;?> Abonnements - <?= $mapView["User"]->getNumberOfPost() ;?> Posts</small>
                 <button class="btn btn-outline-dark">Se désabonner</button>
             </div>
         </div>
-        <!-- Colonne de droite -->
+        <!-- Colonne de droite TODO a reparer -->
         <div class="col-md-6 d-flex align-items-center justify-content-end">
             <div class="dropdown">
                 <button type="button" class="btn btn-primary">
