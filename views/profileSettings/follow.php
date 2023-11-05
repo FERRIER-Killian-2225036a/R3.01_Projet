@@ -18,8 +18,8 @@
         <div class="row mb-4">
             <?php foreach ($mapView["ArrayOfFollowedUser"] as $user) {
                 echo '<div class="col-md-6 d-flex align-items-center justify-content-end">';
-                echo '<a href="/User/Profil/' . $user->getId() . '" ';
-                echo '<img src="' . $user->getUrlPicture() . '" alt="image" class="rounded-circle mr-3">';
+                echo '<a href="/User/Profil/' . $user->getId() . '" >';
+                echo '<img src="' . $user->getUrlPicture() . '" alt="image de profil des follows" class="rounded-circle mr-3">';
                 echo '</a>';
                 echo '<div>';
                 echo '<p class="mb-0">' . $user->getPseudo() . '</p>';
