@@ -112,6 +112,9 @@ class USERSiteModel
      */
     public function getUrlPicture(): ?string
     {
+        if ($this->UrlPicture == null) {
+            return Constants::PDP_URL_DEFAULT;
+        }
         return $this->UrlPicture;
     }
 

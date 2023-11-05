@@ -194,5 +194,18 @@ class SearchModel
 
     }
 
+    /**
+     * méthode de recherche pour les utilisateurs (destiné au follow)
+     *
+     * @param int|string $inputToSearch
+     * @return array
+     */
+    public function researchUser(int|string $inputToSearch): array
+    {
+        $arrayOfResult["USERSite"] = (new UserSite())->getUserIdByResearch($inputToSearch, false);
+        $arrayOfUrl = $this->transformSearchResultToUrl($arrayOfResult);
+        return $arrayOfUrl;
+    }
+
 
 }

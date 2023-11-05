@@ -97,7 +97,13 @@ class ControllerSettings
                 $arrayOfUser[] = new USERSiteModel($user["UserId"]);
             }
             MotorView::show('profileSettings/follow', array("ArrayOfFollowedUser" => $arrayOfUser)     );
-
+            /*
+            if ($_SERVER["REQUEST_METHOD"]==="POST"){
+                if (isset($A_postParams["researchUser"])){
+                    (new SearchModel())->researchUser($A_postParams["researchUser"]);
+                    //TODO display le résultat de la recherche
+                }
+            }*/
         } else {
             header("Location: /Auth/login ");
             die();
