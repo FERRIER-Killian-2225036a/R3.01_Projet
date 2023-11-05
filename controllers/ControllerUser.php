@@ -64,6 +64,7 @@ class ControllerUser
                         $arrayOfPageId = (new Blog_Page())->get5PagesByDate(null, $valideInt);
                         $arrayOfBlogPageModel = array();
                         if ($userModel->getStatus()!="banned"){
+                            MotorView::show('user/otherUser',array("User"=>$userModel));
                             foreach($arrayOfPageId as $id){
                                 $arrayOfBlogPageModel[] = new BlogPageModel($id);
                             }
@@ -73,7 +74,6 @@ class ControllerUser
                                     foreach ($obj->getTags() as $tags) {
                                         $tagsList .= "#" . $tags . " - ";
                                     }
-                                    MotorView::show('user/otherUser',array("User"=>$userModel));
                                     MotorView::show('profileSettings/postBlog', array("blogTitle" => $obj->getTITLE(),
                                         "blogContent" => $obj->getContent(), "blogAuthor" => $obj->getAuthor(),
                                         "blogDate" => $obj->getDateP(), "blogUrlPicture" => $obj->getUrlPicture(),
