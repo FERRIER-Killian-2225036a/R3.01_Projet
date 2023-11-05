@@ -4,6 +4,7 @@ function redirect(stringOfPostId) {
     const divButtonRoles = document.querySelectorAll('.button-role');
     // Séparation des éléments de stringOfPostId au niveau des virgules pour les entrer dans un tableau
     const listOfPostId = stringOfPostId.split(',');
+    console.log(listOfPostId);
     // Boucle parcourant tous les éléments de divButtonRoles
     for(let i=0; i<divButtonRoles.length; i++) {
         // Ajout d'un EventListener pour l'action du clique sur un élément de divButtonRoles
