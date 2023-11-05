@@ -559,7 +559,7 @@ class ControllerPost
                         ?>
                         <script src='/common_scripts/isFollowed.js'></script>
                         <script>
-                            redirect('<?php echo $listBoolFollowed; ?>');
+                            isFollowed('<?php echo $listBoolFollowed; ?>');
                         </script>
                         <?php
                     }
