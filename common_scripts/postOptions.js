@@ -6,7 +6,7 @@ function sendPostShowOrHide(id) {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
     });
-    //window.location.href = "https://cyphub.tech/Settings/MyPost";
+    window.location.href = "https://cyphub.tech/Settings/MyPost";
 }
 
 function sendPostDelete(id) {
@@ -17,7 +17,7 @@ function sendPostDelete(id) {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
     });
-    //window.location.href = "https://cyphub.tech/Settings/MyPost";
+    window.location.href = "https://cyphub.tech/Settings/MyPost";
 }
 
 function sendPostUnbookmark(id)  {
@@ -28,5 +28,5 @@ function sendPostUnbookmark(id)  {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
     });
-    //window.location.href = "https://cyphub.tech/Settings/Bookmark";
+    window.location.href = "https://cyphub.tech/Settings/Bookmark";
 }
