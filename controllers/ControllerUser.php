@@ -85,7 +85,6 @@ class ControllerUser
                             ?>
                             <script src='/common_scripts/redirect.js'></script>
                             <script>
-                                console.log('<?php echo $arrayOfPageId; ?>')
                                 redirect('<?php echo $arrayOfPageId; ?>');
                                 // Script pour le changement du bouton suivre
                                 // Sélection du bouton suivre
@@ -107,10 +106,7 @@ class ControllerUser
                             <?php
                             echo '</div></div>';
                             echo '<script src="/common_scripts/myPostDisplay.js"></script>';
-                            echo '<script src="/common_scripts/maxTextSize.js"></script>';
-
                         }
-
                     }
                 }
             }
