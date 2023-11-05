@@ -41,11 +41,12 @@ class ControllerUser
                 if ($A_parametres !== null && $A_parametres[0] !== null) {
                     $valideInt = filter_var($A_parametres[0], FILTER_VALIDATE_INT);
                     if ((new UserSite())->isUserIDExists($valideInt)) {
+                        $userOfPage = new USERSiteModel($valideInt);
                         if (isset($_POST["follow"])) { //TODO verif bdd car dyslexie
-                            if ((new FollowedUser())->isFollowed($valideInt, $_SESSION["UserId"])) {
-                                (new FollowedUser())->removeFollower($valideInt, $_SESSION["UserId"]);
+                            if ($userOfPage->isFollowed( $_SESSION["UserId"])) {
+                                $userOfPage->removeFollower( $_SESSION["UserId"]);
                             } else {
-                                (new FollowedUser())->addFollower($valideInt, $_SESSION["UserId"]);
+                                $userOfPage->addFollower( $_SESSION["UserId"]);
                             }
 
                         }
