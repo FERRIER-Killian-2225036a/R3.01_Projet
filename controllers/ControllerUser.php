@@ -52,31 +52,6 @@ class ControllerUser
                             die();
 
                         }
-                        $pageBlog = new Blog_Page();
-                        $ArrayOf5IdByDate = $pageBlog->get5PagesByDate(null, $valideInt);
-                        $ArrayOfBlogPageModel = array();
-                        foreach ($ArrayOf5IdByDate as $id) {
-                            $ArrayOfBlogPageModel[] = new BlogPageModel($id);
-                        }
-                        foreach ($ArrayOf5IdByDate as $id) {
-                            $ArrayOfBlogPageModel[] = new BlogPageModel($id);
-                        }
-                        foreach ($ArrayOfBlogPageModel as $obj) {
-                            if ($obj->getStatusP() != "inactive") { // on va rajouter le lien d'édition
-                                $tagsList = "";
-                                foreach ($obj->getTags() as $tags) {
-                                    $tagsList .= "#" . $tags . " - ";
-                                }
-                                MotorView::show('profileSettings/postBlog', array("blogPostEditUrl" => $obj->getPostEditUrl(), "blogTitle" => $obj->getTITLE(),
-                                    "blogContent" => $obj->getContent(), "blogAuthor" => $obj->getAuthor(),
-                                    "blogDate" => $obj->getDateP(), "blogUrlPicture" => $obj->getUrlPicture(),
-                                    "blogTags" => $tagsList, "id" => $obj->getPageId(), "statusP" => $obj->getStatusP()));
-                            }
-                        }
-                        echo '</div></div>';
-                        echo '<script>const dropdown = document.querySelectorAll(".dopdown"); console.log(dropdown[1]); for (let i = 1; i<dropdown.length; i++){dropdown[i].style.display = "none";};</script>';
-                        echo '<script src="/common_scripts/myPostDisplay.js"></script>';
-                        echo '<script src="/common_scripts/postOptions.js"></script>';
                     }
 
                 }
@@ -97,6 +72,25 @@ class ControllerUser
                                 ));
 
                         }
+                        foreach ($arrayOfPageId as $id) {
+                            $ArrayOfBlogPageModel[] = new BlogPageModel($id);
+                        }
+                        foreach ($ArrayOfBlogPageModel as $obj) {
+                            if ($obj->getStatusP() != "inactive") { // on va rajouter le lien d'édition
+                                $tagsList = "";
+                                foreach ($obj->getTags() as $tags) {
+                                    $tagsList .= "#" . $tags . " - ";
+                                }
+                                MotorView::show('profileSettings/postBlog', array("blogPostEditUrl" => $obj->getPostEditUrl(), "blogTitle" => $obj->getTITLE(),
+                                    "blogContent" => $obj->getContent(), "blogAuthor" => $obj->getAuthor(),
+                                    "blogDate" => $obj->getDateP(), "blogUrlPicture" => $obj->getUrlPicture(),
+                                    "blogTags" => $tagsList, "id" => $obj->getPageId(), "statusP" => $obj->getStatusP()));
+                            }
+                        }
+                        echo '</div></div>';
+                        echo '<script>const dropdown = document.querySelectorAll(".dopdown"); console.log(dropdown[1]); for (let i = 1; i<dropdown.length; i++){dropdown[i].style.display = "none";};</script>';
+                        echo '<script src="/common_scripts/myPostDisplay.js"></script>';
+                        echo '<script src="/common_scripts/postOptions.js"></script>';
                     }
                 }
             }
