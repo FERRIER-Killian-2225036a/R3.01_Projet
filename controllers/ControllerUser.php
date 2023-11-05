@@ -73,7 +73,7 @@ class ControllerUser
                                     foreach ($obj->getTags() as $tags) {
                                         $tagsList .= "#" . $tags . " - ";
                                     }
-                                    MotorView::show('profileSettings/postBlog', array("blogTitle" => $obj->getTITLE(),
+                                    MotorView::show('user/otherUser', array("blogTitle" => $obj->getTITLE(),
                                         "blogContent" => $obj->getContent(), "blogAuthor" => $obj->getAuthor(),
                                         "blogDate" => $obj->getDateP(), "blogUrlPicture" => $obj->getUrlPicture(),
                                         "blogTags" => $tagsList, "id" => $obj->getPageId()));
