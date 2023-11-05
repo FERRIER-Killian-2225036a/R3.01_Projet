@@ -33,9 +33,9 @@
         </div>
     </div>
 
-    <!-- Articles -->
-    <div class="row">
-        <!-- Premier élément -->
+    <!-- Articles
+    <div class="row">-->
+        <!-- Premier élément
         <div class="col-md-4 p-3">
             <a class="btn bg-body-tertiary round background grow-button d-block" role="button" href="#" target="_blank">
                 <div class="d-flex justify-content-center mb-2">
@@ -47,8 +47,8 @@
                     <p class="responsiveText">ça va parler chinois : Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit neskwik... VOIR PLUS</p>
                 </div>
             </a>
-        </div>
-        <!-- Deuxième élément -->
+        </div>-->
+        <!-- Deuxième élément
         <div class="col-md-4 p-3">
             <a class="btn bg-body-tertiary round background grow-button d-block" role="button" href="#" target="_blank">
                 <div class="d-flex justify-content-center mb-2">
@@ -59,8 +59,8 @@
                 <p class="lead responsiveText">Catégorie - 00-00-00 - Par l'auteur</p>
                 <p class="responsiveText">ça va parler chinois : Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit neskwik... VOIR PLUS</p>
         </div>
-    </div>
-    <!-- Troisième élément -->
+    </div>-->
+    <!-- Troisième élément
     <div class="col-md-4 p-3">
         <a class="btn bg-body-tertiary round background grow-button d-block" role="button" href="#" target="_blank">
             <div class="d-flex justify-content-center mb-2">
@@ -72,5 +72,5 @@
                 <p class="responsiveText">ça va parler chinois : Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit neskwik... VOIR PLUS</p>
             </div>
         </a>
-    </div>
+    </div>-->
 </main>
