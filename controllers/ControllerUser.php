@@ -82,7 +82,7 @@ class ControllerUser
                                         "blogTags" => $tagsList, "id" => $obj->getPageId(), "statusP" => $obj->getStatusP()));
                                 }
                             }
-                            echo '</div></div></main>';
+                            echo '</div></div>';
                             echo '<script>const dropdown = document.querySelectorAll(".dopdown"); console.log(dropdown[1]); for (let i = 1; i<dropdown.length; i++){dropdown[i].style.display = "none";};</script>';
                             echo '<script src="/common_scripts/myPostDisplay.js"></script>';
                             echo '<script src="/common_scripts/postOptions.js"></script>';

@@ -6,7 +6,7 @@
     <!-- Section pour le titre -->
     <div class="row mb-2 mt-2">
         <!-- Colonne de gauche -->
-        <div class="col-md-6">
+        <div class="col-md-6 d-flex">
             <img src="<?= $mapView["User"]->getUrlPicture() ;?>" alt="image" class="rounded-circle mr-3" id="imgUser">
             <div>
                 <p class="mb-0"><?= $mapView["User"]->getPseudo() ;?></p>
@@ -37,44 +37,4 @@
         </div>
     </div>
     <label id="noPost">Pas de post</label> <!-- Étiquette pour afficher "Pas de post" -->
-    <!-- Articles
-    <div class="row">-->
-        <!-- Premier élément
-        <div class="col-md-4 p-3">
-            <a class="btn bg-body-tertiary round background grow-button d-block" role="button" href="#" target="_blank">
-                <div class="d-flex justify-content-center mb-2">
-                    <img src="../../media/public_assets/imageTest.jpeg" alt="Logo" class="responsive-image-user round p-1">
-                </div>
-                <div class="text-content">
-                    <h1 class="responsiveTitle">Informatique nous rend dépendant</h1>
-                    <p class="lead responsiveText">Catégorie - 00-00-00 - Par l'auteur</p>
-                    <p class="responsiveText">ça va parler chinois : Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit neskwik... VOIR PLUS</p>
-                </div>
-            </a>
-        </div>-->
-        <!-- Deuxième élément
-        <div class="col-md-4 p-3">
-            <a class="btn bg-body-tertiary round background grow-button d-block" role="button" href="#" target="_blank">
-                <div class="d-flex justify-content-center mb-2">
-                    <img src="../../media/public_assets/imageTest.jpeg" alt="Logo" class="responsive-image-user round p-1">
-                </div>
-                <div class "text-content">
-                <h1 class="responsiveTitle">Informatique nous rend dépendant</h1>
-                <p class="lead responsiveText">Catégorie - 00-00-00 - Par l'auteur</p>
-                <p class="responsiveText">ça va parler chinois : Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit neskwik... VOIR PLUS</p>
-        </div>
-    </div>-->
-    <!-- Troisième élément
-    <div class="col-md-4 p-3">
-        <a class="btn bg-body-tertiary round background grow-button d-block" role="button" href="#" target="_blank">
-            <div class="d-flex justify-content-center mb-2">
-                <img src="../../media/public_assets/imageTest.jpeg" alt="Logo" class="responsive-image-user round p-1">
-            </div>
-            <div class="text-content">
-                <h1 class="responsiveTitle">Informatique nous rend dépendant</h1>
-                <p class="lead responsiveText">Catégorie - 00-00-00 - Par l'auteur</p>
-                <p class="responsiveText">ça va parler chinois : Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit neskwik... VOIR PLUS</p>
-            </div>
-        </a>
-    </div>
-</main>-->
+
