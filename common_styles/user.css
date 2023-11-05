@@ -3,7 +3,7 @@
 .container {
     max-width: 100%;
     margin: 0;
-    padding: 0;
+    padding: 1em 0 0;
     padding-inline: 11em;
 }
 
