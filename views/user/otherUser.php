@@ -8,6 +8,10 @@
             <div>
                 <p class="mb-0"><?= $mapView["User"]->getPseudo() ;?></p>
                 <small><?= $mapView["User"]->getNumberOfFollower() ;?> Abonnés - <?= $mapView["User"]->getNumberOfFollowed() ;?> Abonnements - <?= $mapView["User"]->getNumberOfPost() ;?> Posts</small>
+                 <form action="/User/Profil/<?= $mapView["User"]->getId() ;?>" method="post">
+                    <button type="submit" name="follow" class="btn btn-outline-dark">Se désabonner</button>
+                 </form>
+                
                 <button class="btn btn-outline-dark">Se désabonner</button>
             </div>
         </div>
