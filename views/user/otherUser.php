@@ -11,10 +11,10 @@
             <div>
                 <p class="mb-0"><?= $mapView["User"]->getPseudo() ;?></p>
                 <small><?= $mapView["User"]->getNumberOfFollower() ;?> Abonnés - <?= $mapView["User"]->getNumberOfFollowed() ;?> Abonnements - <?= $mapView["User"]->getNumberOfPost() ;?> Posts</small>
-                 <form action="/User/Profil/<?= $mapView["User"]->getId() ;?>" method="post">
-                    <button type="submit" name="follow" class="btn btn-outline-dark">Se désabonner</button>
-                 </form>
-
+                <!-- Formulaire pour suivre l'auteur -->
+                <form action="/User/Profil/<?= $mapView["User"]->getId() ;?>" method="post">
+                    <button class="btn btn-custom-purple followButton" name="follow" type="submit">Suivre</button>
+                </form>
             </div>
         </div>
         <!-- Colonne de droite TODO a reparer -->
