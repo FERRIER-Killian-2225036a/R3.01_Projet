@@ -555,6 +555,7 @@ class ControllerPost
                             "BoolIsPostBookmarked" => $boolIsPostBookmarked,
                             "CurentUrlPost" => $urlBookmark,
                             "Comments" => $arrayOfComments,
+                            "AuthorId" => $userId,
                         ));
                         ?>
                         <script src='/common_scripts/isFollowed.js'></script>
