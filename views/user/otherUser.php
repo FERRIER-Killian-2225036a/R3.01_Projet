@@ -24,8 +24,8 @@
                     Filtrer
                 </button>
                 <ul class="dropdown-menu">
-                    <label for="myInput"></label>
-                    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                    <label for="myInput">
+                    <input class="form-control" id="myInput" type="text" placeholder="Search.."></label>
                     <li><a href="#">Data</a></li>
                     <li><a href="#">Cybersec</a></li>
                     <li><a href="#">IDK</a></li>

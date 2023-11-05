@@ -8,6 +8,7 @@
 .container {
     max-width: 100%;
     margin-inline: 11em;
+    padding: 0;
 }
 
 #imgUser {
