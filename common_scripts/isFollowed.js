@@ -20,6 +20,7 @@ function isFollowed(listOfBooleen) {
     console.log(followedButton);
     for (let i = 1; i < listOfBooleen.length; i++) {
         // Condition si l'article est enregistré
+        console.log(listOfBooleen[i])
         if (listOfBooleen[i] === '1') {
             // On change le texte du bouton
             followedButton[i].innerHTML = 'Suivi';
