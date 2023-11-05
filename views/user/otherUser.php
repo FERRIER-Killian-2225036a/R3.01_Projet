@@ -2,10 +2,11 @@
 <link rel="stylesheet" href="/common_styles/post.css">
 <script src="/common_scripts/dropdown.js"></script> <!-- Inclusion du script de dropdown -->
 <link rel="stylesheet" href="/common_styles/dropdown.css"> <!-- Inclusion de la feuille de style pour le dropdown -->
-<main class="container">
-    <div class="row mb-4">
+<div class="col container" id="rightSide">
+    <!-- Section pour le titre -->
+    <div class="row mb-2 mt-2">
         <!-- Colonne de gauche -->
-        <div class="col-md-6 d-flex align-items-center">
+        <div class="col-md-6">
             <img src="<?= $mapView["User"]->getUrlPicture() ;?>" alt="image" class="rounded-circle mr-3" id="imgUser">
             <div>
                 <p class="mb-0"><?= $mapView["User"]->getPseudo() ;?></p>
