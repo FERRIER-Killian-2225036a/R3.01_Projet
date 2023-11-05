@@ -94,6 +94,7 @@ class ControllerSettings
             $arrayOfFolledUser = (new FollowedUser())->getAllFollowedUser($_SESSION["UserId"]);
             $arrayOfUser = array();
             foreach ($arrayOfFolledUser as $user){
+                print_r($user);
                 $arrayOfUser[] = new USERSiteModel($user);
             }
             MotorView::show('profileSettings/follow', array("ArrayOfFollowedUser" => $arrayOfUser)     );
