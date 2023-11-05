@@ -1,10 +1,9 @@
-<link rel="stylesheet" href="../../common_styles/user.css">
-<link rel="stylesheet" href="../../common_styles/general.css">
+<link rel="stylesheet" href="/common_styles/user.css">
 <main class="container">
     <div class="row mb-4">
         <!-- Colonne de gauche -->
         <div class="col-md-6 d-flex align-items-center">
-            <img src="<?= $mapView["User"]->getUrlPicture() ;?>" alt="image" class="rounded-circle mr-3">
+            <img src="<?= $mapView["User"]->getUrlPicture() ;?>" alt="image" class="rounded-circle mr-3" id="imgUser">
             <div>
                 <p class="mb-0"><?= $mapView["User"]->getPseudo() ;?></p>
                 <small><?= $mapView["User"]->getNumberOfFollower() ;?> Abonnés - <?= $mapView["User"]->getNumberOfFollowed() ;?> Abonnements - <?= $mapView["User"]->getNumberOfPost() ;?> Posts</small>
