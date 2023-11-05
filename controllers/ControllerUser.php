@@ -61,6 +61,7 @@ class ControllerUser
                     $valideInt = filter_var($A_parametres[0], FILTER_VALIDATE_INT);
                     if ((new UserSite())->isUserIDExists($valideInt)) {
                         $userModel = new USERSiteModel($valideInt);
+                        $boolIsFollowed = $userModel->isFollowed($_SESSION['UserId']);
                         $arrayOfPageId = (new Blog_Page())->get5PagesByDate(null, $valideInt);
                         $arrayOfBlogPageModel = array();
                         if ($userModel->getStatus()!="banned"){
@@ -90,7 +91,7 @@ class ControllerUser
                                 // Sélection du bouton suivre
                                 const followedButton = document.getElementsByClassName('followButton');
                                 // Récupération du boolen pour savoir si on suit l'utilisateur qui a posté
-                                let boolIsFollowed = <?php echo $mapView['BoolIsFollowed'] ? 1 : 0 ?>; // TODO php mauvais user, a changer (author au lieu de user) pas sure a verif ?
+                                let boolIsFollowed = <?php echo $boolIsFollowed ? 1 : 0 ?>; // TODO php mauvais user, a changer (author au lieu de user) pas sure a verif ?
                                 // Condition si l'utilisateur est suivi
                                 if (boolIsFollowed === 1) {
                                     for (let i = 0; i < followedButton.length; ++i) {
