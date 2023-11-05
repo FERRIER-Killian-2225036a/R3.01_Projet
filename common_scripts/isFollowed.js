@@ -16,10 +16,11 @@ function isFollowed(listOfBooleen) {
         }
     }*/
     console.log(listOfBooleen);
+    // Sélection des boutons suivre
     const followedButton = document.querySelectorAll('.followButton');
     console.log(followedButton);
-    for (let i = 1; i < listOfBooleen.length; i++) {
-        // Condition si l'article est enregistré
+    for (let i = 0; i < listOfBooleen.length; i++) {
+        // Condition si l'utilisateur est suivi
         console.log(listOfBooleen[i])
         if (listOfBooleen[i] === '1') {
             // On change le texte du bouton
