@@ -18,6 +18,17 @@ class ControllerUser
 {
     //follow pour post dans /User/Profil/{id}
 
+    /**
+     * Méthode par défaut du controller, on redirige vers la page /User/Profil
+     *
+     * @return void
+     */
+    public function DefaultAction(): void
+    {
+        header("Location: /User/Profil");
+        die();
+    }
+
 
 
 }
