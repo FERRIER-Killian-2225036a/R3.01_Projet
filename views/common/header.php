@@ -15,13 +15,7 @@
                     <form action="/Menu/Search" method="POST" class="d-flex">
                         <!-- Barre de recherche -->
 
-                        <!--<input class="form-control" name="Search" type="search" placeholder="Search" aria-label="Search">-->
-                        <div class="search-box">
-                            <button class="btn-search"><i class="fas fa-search"></i></button>
-                            <label>
-                                <input type="text" class="input-search" placeholder="Type to Search...">
-                            </label>
-                        </div>
+                        <input class="form-control" name="Search" type="search" placeholder="Search" aria-label="Search">
                     </form>
                 </li>
                 <li class="nav-item">
