@@ -69,12 +69,14 @@ class ControllerUser
                             foreach($arrayOfPageId as $id){
                                 $arrayOfBlogPageModel[] = new BlogPageModel($id);
                             }
+                            $listOfPageId = "";
                             foreach ($arrayOfBlogPageModel as $obj) {
                                 if ($obj->getStatusP() == "active") { // on va rajouter le lien d'édition
                                     $tagsList = "";
                                     foreach ($obj->getTags() as $tags) {
                                         $tagsList .= "#" . $tags . " - ";
                                     }
+                                    $listOfPageId .= $obj->getPageId().",";
                                     MotorView::show('profileSettings/postBlog', array("blogTitle" => $obj->getTITLE(),
                                         "blogContent" => $obj->getContent(), "blogAuthor" => $obj->getAuthor(),
                                         "blogDate" => $obj->getDateP(), "blogUrlPicture" => $obj->getUrlPicture(),
@@ -86,7 +88,7 @@ class ControllerUser
                             ?>
                             <script src='/common_scripts/redirect.js'></script>
                             <script>
-                                redirect('<?php echo $arrayOfPageId; ?>');
+                                redirect('<?php echo $listOfPageId; ?>');
                                 // Script pour le changement du bouton suivre
                                 // Sélection du bouton suivre
                                 const followedButton = document.getElementsByClassName('followButton');
