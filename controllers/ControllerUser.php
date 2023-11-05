@@ -67,23 +67,28 @@ class ControllerUser
                             foreach($arrayOfPageId as $id){
                                 $arrayOfBlogPageModel[] = new BlogPageModel($id);
                             }
-                            MotorView::show('user/otherUser',array("User"=>$userModel,
-                                "Postes"=>$arrayOfBlogPageModel
-                                ));
                             foreach ($arrayOfBlogPageModel as $obj) {
-                                if ($obj->getStatusP() != "inactive") { // on va rajouter le lien d'édition
+                                if ($obj->getStatusP() == "active") { // on va rajouter le lien d'édition
                                     $tagsList = "";
                                     foreach ($obj->getTags() as $tags) {
                                         $tagsList .= "#" . $tags . " - ";
                                     }
-                                    MotorView::show('profileSettings/postBlog', array("blogPostEditUrl" => $obj->getPostEditUrl(), "blogTitle" => $obj->getTITLE(),
+                                    MotorView::show('profileSettings/postBlog', array("blogTitle" => $obj->getTITLE(),
                                         "blogContent" => $obj->getContent(), "blogAuthor" => $obj->getAuthor(),
                                         "blogDate" => $obj->getDateP(), "blogUrlPicture" => $obj->getUrlPicture(),
-                                        "blogTags" => $tagsList, "id" => $obj->getPageId(), "statusP" => $obj->getStatusP()));
+                                        "blogTags" => $tagsList, "id" => $obj->getPageId()));
                                 }
                             }
                             echo '</div></div>';
-                            echo '<script>const dropdown = document.querySelectorAll(".dropdown"); console.log(dropdown[1]); for (let i = 1; i<dropdown.length; i++){dropdown[i].style.display = "none";};</script>';
+                            echo '<script>const dropdown = document.querySelectorAll(".dropdown"); for (let i = 1; i<dropdown.length; i++){dropdown[i].style.display = "none";};</script>';
+                            ?>
+                            <script src='/common_scripts/redirect.js'></script>
+                            <script>
+                                console.log('<?php echo $arrayOfPageId; ?>')
+                                redirect('<?php echo $arrayOfPageId; ?>');
+                            </script>
+                            <?php
+                            echo '</div></div>';
                             echo '<script src="/common_scripts/myPostDisplay.js"></script>';
                             echo '<script src="/common_scripts/postOptions.js"></script>';
                         }
