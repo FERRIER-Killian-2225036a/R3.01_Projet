@@ -24,11 +24,11 @@ function isFollowed(listOfBooleen) {
         console.log(listOfBooleen[i])
         if (listOfBooleen[i] === '1') {
             // On change le texte du bouton
-            followedButton[i].innerHTML = 'Suivi';
+            followedButton[i+1].innerHTML = 'Suivi';
             // On met le fond en violet
-            followedButton[i].style.backgroundColor = 'var(--purple)';
+            followedButton[i+1].style.backgroundColor = 'var(--purple)';
             // On met le texte en blanc
-            followedButton[i].style.color = 'white';
+            followedButton[i+1].style.color = 'white';
         }
     }
 }
