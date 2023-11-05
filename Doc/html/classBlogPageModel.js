@@ -1,7 +1,10 @@
 var classBlogPageModel =
 [
     [ "__construct", "classBlogPageModel_a512446f8997c552525b2211fc667069c.html#a512446f8997c552525b2211fc667069c", null ],
+    [ "addBookmark", "classBlogPageModel_a067dcdbe99131bd9f37d2f058e633515.html#a067dcdbe99131bd9f37d2f058e633515", null ],
+    [ "doesCommentIdBelongToUser", "classBlogPageModel_af85ec2163d46b997f22a74aa69c14aa5.html#af85ec2163d46b997f22a74aa69c14aa5", null ],
     [ "getAuthor", "classBlogPageModel_ab128fb08642e559cc955b4b949631ae9.html#ab128fb08642e559cc955b4b949631ae9", null ],
+    [ "getCommentsId", "classBlogPageModel_a25709814f513b172a43d837c1cae835f.html#a25709814f513b172a43d837c1cae835f", null ],
     [ "getContent", "classBlogPageModel_ad2107901968208789b8592ec9f052e12.html#ad2107901968208789b8592ec9f052e12", null ],
     [ "getDateP", "classBlogPageModel_ae1d9d7c89836a65ce3828d10a7af43c8.html#ae1d9d7c89836a65ce3828d10a7af43c8", null ],
     [ "getNumberOfLikes", "classBlogPageModel_ab0191c818149998cd735944be986499a.html#ab0191c818149998cd735944be986499a", null ],
@@ -13,6 +16,8 @@ var classBlogPageModel =
     [ "getTITLE", "classBlogPageModel_a7519a447a62d7ae676a089d1fd3b57b7.html#a7519a447a62d7ae676a089d1fd3b57b7", null ],
     [ "getUrlPicture", "classBlogPageModel_a84e41552ee0fff4c16aa9b939dedfb78.html#a84e41552ee0fff4c16aa9b939dedfb78", null ],
     [ "getUserId", "classBlogPageModel_a843156586c13463663fee24289c01066.html#a843156586c13463663fee24289c01066", null ],
+    [ "isPostBookmarked", "classBlogPageModel_ade1f6302acc083e6ba838d1b2a4d30e4.html#ade1f6302acc083e6ba838d1b2a4d30e4", null ],
+    [ "removeBookmark", "classBlogPageModel_aede7f791e227bca972af6de61257eedf.html#aede7f791e227bca972af6de61257eedf", null ],
     [ "$author", "classBlogPageModel.html#a70b36b405a14b532c369d24870bfd5da", null ],
     [ "$content", "classBlogPageModel.html#a5284c3c152d45cff9b44fe5ae634e37e", null ],
     [ "$dateP", "classBlogPageModel.html#a6b1fe2feee356a8dc07762b20b839bc5", null ],

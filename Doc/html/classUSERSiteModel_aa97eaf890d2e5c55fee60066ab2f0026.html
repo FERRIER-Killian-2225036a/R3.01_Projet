@@ -97,11 +97,14 @@ $(document).ready(function(){initNavTree('classUSERSiteModel_aa97eaf890d2e5c55fe
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Renvoie</dt><dd>string </dd></dl>
-<div class="fragment"><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                                   : <span class="keywordtype">string</span></div>
+<dl class="section return"><dt>Renvoie</dt><dd>string|null </dd></dl>
+<div class="fragment"><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                                   : ?<span class="keywordtype">string</span></div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    {</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">return</span> $this-&gt;UrlPicture;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">if</span> ($this-&gt;UrlPicture == <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <span class="keywordflow">return</span> Constants::PDP_URL_DEFAULT;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">return</span> $this-&gt;UrlPicture;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>

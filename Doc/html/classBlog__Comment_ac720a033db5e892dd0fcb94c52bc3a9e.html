@@ -106,20 +106,20 @@ $(document).ready(function(){initNavTree('classBlog__Comment_ac720a033db5e892dd0
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>array|false </dd></dl>
-<div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                                              : <span class="keyword">false</span>|array</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">if</span> ($this-&gt;<a class="code" href="classBlog__Comment_a8672ded74e79ca296511ad96fb610474.html#a8672ded74e79ca296511ad96fb610474">isCommentExist</a>($CommentId)) {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            $sql = <span class="stringliteral">&quot;SELECT * FROM BLOG_Comment WHERE CommentId = :CommentId&quot;</span>;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            $stmt = $this-&gt;conn-&gt;prepare($sql);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            $stmt-&gt;bindParam(<span class="stringliteral">&#39;:CommentId&#39;</span>, $CommentId);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            $stmt-&gt;execute();</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">return</span> $stmt-&gt;fetch(PDO::FETCH_ASSOC);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        }</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
-<div class="ttc" id="aclassBlog__Comment_a8672ded74e79ca296511ad96fb610474_html_a8672ded74e79ca296511ad96fb610474"><div class="ttname"><a href="classBlog__Comment_a8672ded74e79ca296511ad96fb610474.html#a8672ded74e79ca296511ad96fb610474">Blog_Comment\isCommentExist</a></div><div class="ttdeci">isCommentExist(int $CommentId)</div><div class="ttdef"><b>Definition:</b> Blog_Comment.php:93</div></div>
+<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                                              : <span class="keyword">false</span>|array</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">if</span> ($this-&gt;<a class="code" href="classBlog__Comment_ad0bbf522736b2d76eb4ebbed558701fc.html#ad0bbf522736b2d76eb4ebbed558701fc">isCommentExist</a>($CommentId)) {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            $sql = <span class="stringliteral">&quot;SELECT * FROM BLOG_Comment WHERE CommentId = :CommentId&quot;</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            $stmt = $this-&gt;conn-&gt;prepare($sql);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            $stmt-&gt;bindParam(<span class="stringliteral">&#39;:CommentId&#39;</span>, $CommentId);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            $stmt-&gt;execute();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">return</span> $stmt-&gt;fetch(PDO::FETCH_ASSOC);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
+<div class="ttc" id="aclassBlog__Comment_ad0bbf522736b2d76eb4ebbed558701fc_html_ad0bbf522736b2d76eb4ebbed558701fc"><div class="ttname"><a href="classBlog__Comment_ad0bbf522736b2d76eb4ebbed558701fc.html#ad0bbf522736b2d76eb4ebbed558701fc">Blog_Comment\isCommentExist</a></div><div class="ttdeci">isCommentExist(int|string $CommentId)</div><div class="ttdef"><b>Definition:</b> Blog_Comment.php:91</div></div>
 </div><!-- fragment -->
-<p class="reference">Références <a class="el" href="classBlog__Comment_a8672ded74e79ca296511ad96fb610474.html#a8672ded74e79ca296511ad96fb610474">isCommentExist()</a>.</p>
+<p class="reference">Références <a class="el" href="classBlog__Comment_ad0bbf522736b2d76eb4ebbed558701fc.html#ad0bbf522736b2d76eb4ebbed558701fc">isCommentExist()</a>.</p>
 
 </div>
 </div>

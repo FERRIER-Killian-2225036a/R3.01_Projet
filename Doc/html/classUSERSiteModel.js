@@ -1,6 +1,7 @@
 var classUSERSiteModel =
 [
     [ "__construct", "classUSERSiteModel_a04449db19f9e814a0ead47803354ef99.html#a04449db19f9e814a0ead47803354ef99", null ],
+    [ "addFollower", "classUSERSiteModel_a2965fd1c9d0d466ceeb87cc1a1757ca0.html#a2965fd1c9d0d466ceeb87cc1a1757ca0", null ],
     [ "getAlertLevelUser", "classUSERSiteModel_a032776814a3e83e0b03ee62390789f24.html#a032776814a3e83e0b03ee62390789f24", null ],
     [ "getDateFirstLogin", "classUSERSiteModel_a3e0e33d75744d6c36c1d92c10639f425.html#a3e0e33d75744d6c36c1d92c10639f425", null ],
     [ "getDateLastLogin", "classUSERSiteModel_a8d09e972cdd7be09f7316c3648db423c.html#a8d09e972cdd7be09f7316c3648db423c", null ],
@@ -9,10 +10,15 @@ var classUSERSiteModel =
     [ "getMail", "classUSERSiteModel_a921d457b3e26022b5519b799839b4faa.html#a921d457b3e26022b5519b799839b4faa", null ],
     [ "getNumberOfAction", "classUSERSiteModel_a537e8f574ce107d7bbaf5a32fee4ec45.html#a537e8f574ce107d7bbaf5a32fee4ec45", null ],
     [ "getNumberOfConnection", "classUSERSiteModel_a0157bf3131604ffbdc0b862ea9acb887.html#a0157bf3131604ffbdc0b862ea9acb887", null ],
+    [ "getNumberOfFollowed", "classUSERSiteModel_adf70361eca0e80daaed1378febebecf5.html#adf70361eca0e80daaed1378febebecf5", null ],
+    [ "getNumberOfFollower", "classUSERSiteModel_a0f36d40cfd2b0f8afc0ad442b0a36282.html#a0f36d40cfd2b0f8afc0ad442b0a36282", null ],
+    [ "getNumberOfPost", "classUSERSiteModel_a77ac7db38487f6ea54ac767c5ad93f67.html#a77ac7db38487f6ea54ac767c5ad93f67", null ],
     [ "getPseudo", "classUSERSiteModel_a2e112999de4bf6caf804f2dfd6eb18c6.html#a2e112999de4bf6caf804f2dfd6eb18c6", null ],
     [ "getRole", "classUSERSiteModel_a1450b9e273794f005d4a8e1ade56b38d.html#a1450b9e273794f005d4a8e1ade56b38d", null ],
     [ "getStatus", "classUSERSiteModel_ac55d01851f8099b29ada87ce2a532970.html#ac55d01851f8099b29ada87ce2a532970", null ],
     [ "getUrlPicture", "classUSERSiteModel_aa97eaf890d2e5c55fee60066ab2f0026.html#aa97eaf890d2e5c55fee60066ab2f0026", null ],
+    [ "isFollowed", "classUSERSiteModel_afe9e3434211a926922a2541a37ade8c6.html#afe9e3434211a926922a2541a37ade8c6", null ],
+    [ "removeFollower", "classUSERSiteModel_a9f0b48f0899486f16ab8b44b33a2b3d5.html#a9f0b48f0899486f16ab8b44b33a2b3d5", null ],
     [ "$AlertLevelUser", "classUSERSiteModel.html#afcf62da8d8a477e4ee748db5daff24f2", null ],
     [ "$DateFirstLogin", "classUSERSiteModel.html#a8e31baf06c142ee05887cb1a14647f35", null ],
     [ "$DateLastLogin", "classUSERSiteModel.html#a100e677b35ed7d4a456b109b37ba93e6", null ],

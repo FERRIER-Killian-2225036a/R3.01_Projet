@@ -108,10 +108,10 @@ $(document).ready(function(){initNavTree('classBlog__PageLike_aa3cbf22c1022b6f00
 <dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
 <div class="fragment"><div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                                                        : <span class="keywordtype">void</span></div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    {</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            $sql = <span class="stringliteral">&quot;DELETE FROM BLOG_PageLike WHERE UserId = :UserId&quot;</span>;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            $stmt = $this-&gt;conn-&gt;prepare($sql);</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            $stmt-&gt;bindParam(<span class="stringliteral">&#39;:UserId&#39;</span>, $UserId);</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            $stmt-&gt;execute();</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        $sql = <span class="stringliteral">&quot;DELETE FROM BLOG_PageLike WHERE UserId = :UserId&quot;</span>;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        $stmt = $this-&gt;conn-&gt;prepare($sql);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        $stmt-&gt;bindParam(<span class="stringliteral">&#39;:UserId&#39;</span>, $UserId);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        $stmt-&gt;execute();</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>

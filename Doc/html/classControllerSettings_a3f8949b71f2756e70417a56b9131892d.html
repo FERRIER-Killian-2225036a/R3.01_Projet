@@ -101,12 +101,50 @@ $(document).ready(function(){initNavTree('classControllerSettings_a3f8949b71f275
 <dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
 <div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                    : <span class="keywordtype">void</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="comment">//TODO ajouté verification et logique d&#39;affichage des enregistrements (post+forum)</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="classMotorView_a958b493a9fb4e0febfbf02eb7376da11.html#a958b493a9fb4e0febfbf02eb7376da11">MotorView::show</a>(<span class="stringliteral">&#39;profileSettings/bookmark&#39;</span>);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="classSessionManager_a6eacce9cf70e20f6206f1b2c01f6c439.html#a6eacce9cf70e20f6206f1b2c01f6c439">SessionManager::isUserConnected</a>()) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            header(<span class="stringliteral">&quot;Location: /Auth/login &quot;</span>);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            die();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="classMotorView_a958b493a9fb4e0febfbf02eb7376da11.html#a958b493a9fb4e0febfbf02eb7376da11">MotorView::show</a>(<span class="stringliteral">&#39;profileSettings/bookmark&#39;</span>);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        $pageBlogBookmark = (<span class="keyword">new</span> <a class="code" href="classBlog__PageLike.html">Blog_PageLike</a>())-&gt;getAllPageLikeIdOfUser($_SESSION[<span class="stringliteral">&quot;UserId&quot;</span>]);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        $ArrayOfBlogPageModel = array();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">foreach</span> ($pageBlogBookmark as $id) {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            $ArrayOfBlogPageModel[] = <span class="keyword">new</span> <a class="code" href="classBlogPageModel.html">BlogPageModel</a>($id);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        $listOfPageId = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">foreach</span> ($ArrayOfBlogPageModel as $obj) {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">if</span> ($obj-&gt;getStatusP() != <span class="stringliteral">&quot;inactive&quot;</span>) { <span class="comment">// on va rajouter le lien d&#39;édition</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                $tagsList = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                <span class="keywordflow">foreach</span> ($obj-&gt;getTags() as $tags) {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                    $tagsList .= <span class="stringliteral">&quot;#&quot;</span> . $tags . <span class="stringliteral">&quot; - &quot;</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                $listOfPageId .= $obj-&gt;getPageId().<span class="stringliteral">&quot;,&quot;</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                <a class="code" href="classMotorView_a958b493a9fb4e0febfbf02eb7376da11.html#a958b493a9fb4e0febfbf02eb7376da11">MotorView::show</a>(<span class="stringliteral">&#39;profileSettings/postBlog&#39;</span>, array(<span class="stringliteral">&quot;blogPostUrl&quot;</span> =&gt; $obj-&gt;getPostUrl(),</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                    <span class="stringliteral">&quot;blogTitle&quot;</span> =&gt; $obj-&gt;getTITLE(),</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                    <span class="stringliteral">&quot;blogContent&quot;</span> =&gt; $obj-&gt;getContent(), <span class="stringliteral">&quot;blogAuthor&quot;</span> =&gt; $obj-&gt;getAuthor(),</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                    <span class="stringliteral">&quot;blogDate&quot;</span> =&gt; $obj-&gt;getDateP(), <span class="stringliteral">&quot;blogUrlPicture&quot;</span> =&gt; $obj-&gt;getUrlPicture(),</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                    <span class="stringliteral">&quot;blogTags&quot;</span> =&gt; $tagsList, <span class="stringliteral">&quot;id&quot;</span> =&gt; $obj-&gt;getPageId()));</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="comment">//TODO logique d&#39;affichage des enregistrements (forum)</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        ?&gt;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        &lt;script src=<span class="stringliteral">&#39;/common_scripts/redirect.js&#39;</span>&gt;&lt;/script&gt;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        &lt;script&gt;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            console.log(<span class="stringliteral">&#39;&lt;?php echo $listOfPageId; ?&gt;&#39;</span>)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            redirect(<span class="stringliteral">&#39;&lt;?php echo $listOfPageId; ?&gt;&#39;</span>);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        &lt;/script&gt;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        &lt;?php</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        echo <span class="stringliteral">&#39;&lt;/div&gt;&lt;/div&gt;&#39;</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        echo <span class="stringliteral">&#39;&lt;script src=&quot;/common_scripts/myPostDisplay.js&quot;&gt;&lt;/script&gt;&#39;</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        echo <span class="stringliteral">&#39;&lt;script src=&quot;/common_scripts/postOptions.js&quot;&gt;&lt;/script&gt;&#39;</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
+<div class="ttc" id="aclassBlogPageModel_html"><div class="ttname"><a href="classBlogPageModel.html">BlogPageModel</a></div><div class="ttdef"><b>Definition:</b> BlogPageModel.php:22</div></div>
+<div class="ttc" id="aclassBlog__PageLike_html"><div class="ttname"><a href="classBlog__PageLike.html">Blog_PageLike</a></div><div class="ttdef"><b>Definition:</b> Blog_PageLike.php:28</div></div>
 <div class="ttc" id="aclassMotorView_a958b493a9fb4e0febfbf02eb7376da11_html_a958b493a9fb4e0febfbf02eb7376da11"><div class="ttname"><a href="classMotorView_a958b493a9fb4e0febfbf02eb7376da11.html#a958b493a9fb4e0febfbf02eb7376da11">MotorView\show</a></div><div class="ttdeci">static show(string $viewPath, array $mapOfModelContent=array())</div><div class="ttdef"><b>Definition:</b> MotorView.php:50</div></div>
+<div class="ttc" id="aclassSessionManager_a6eacce9cf70e20f6206f1b2c01f6c439_html_a6eacce9cf70e20f6206f1b2c01f6c439"><div class="ttname"><a href="classSessionManager_a6eacce9cf70e20f6206f1b2c01f6c439.html#a6eacce9cf70e20f6206f1b2c01f6c439">SessionManager\isUserConnected</a></div><div class="ttdeci">static isUserConnected()</div><div class="ttdef"><b>Definition:</b> SessionManager.php:35</div></div>
 </div><!-- fragment -->
-<p class="reference">Références <a class="el" href="classMotorView_a958b493a9fb4e0febfbf02eb7376da11.html#a958b493a9fb4e0febfbf02eb7376da11">MotorView\show()</a>.</p>
+<p class="reference">Références <a class="el" href="classSessionManager_a6eacce9cf70e20f6206f1b2c01f6c439.html#a6eacce9cf70e20f6206f1b2c01f6c439">SessionManager\isUserConnected()</a>, et <a class="el" href="classMotorView_a958b493a9fb4e0febfbf02eb7376da11.html#a958b493a9fb4e0febfbf02eb7376da11">MotorView\show()</a>.</p>
 
 </div>
 </div>

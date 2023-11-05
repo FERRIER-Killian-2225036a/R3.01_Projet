@@ -117,28 +117,28 @@ $(document).ready(function(){initNavTree('classUserSite_a37c8b17ef78558d489e03db
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>bool </dd></dl>
-<div class="fragment"><div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;                                                                : <span class="keywordtype">bool</span></div>
-<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;    {</div>
-<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;        $pwd_peppered = hash_hmac(<span class="stringliteral">&quot;sha256&quot;</span>, $password, Constants::$PEPPER);</div>
-<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160; </div>
-<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;        $stmt2 = $this-&gt;conn-&gt;prepare(<span class="stringliteral">&quot;SELECT Password FROM PASSWORD WHERE UserId = ?&quot;</span>);</div>
-<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;        $stmt2-&gt;bindParam(1, $UserId, PDO::PARAM_INT);</div>
-<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;        $stmt2-&gt;execute();</div>
-<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;        $result2 = $stmt2-&gt;fetch(PDO::FETCH_ASSOC);</div>
-<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;        $stmt2-&gt;closeCursor();</div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;        $userPassword = $result2[<span class="stringliteral">&#39;Password&#39;</span>];</div>
-<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160; </div>
-<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;        <span class="keywordflow">if</span> (!password_verify($pwd_peppered, $userPassword)) { <span class="comment">// si le mot de passe ne correspond pas</span></div>
-<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;            <span class="comment">//      throw new ExceptionsDatabase(&quot;Email or password does not match&quot;);</span></div>
-<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;            <span class="comment">//echo &quot;do not match&quot;;</span></div>
-<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;            <span class="comment">//TODO LOG DANS LA BASE DE LOG (tentative de connexion échouée avec l&#39;ip)</span></div>
-<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;            <span class="comment">//TODO INCREMENTER LE NIVEAU D&#39;ALERTE</span></div>
-<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;            <span class="comment">//TODO BLOQUER LE COMPTE SI NIVEAU D&#39;ALERTE TROP ELEVE</span></div>
-<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;            $this-&gt;<a class="code" href="classUserSite_a0fbfc4b69770ff5fabade85436ba68da.html#a0fbfc4b69770ff5fabade85436ba68da">incrementAlertLevelUser</a>($UserId);</div>
-<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;        }</div>
-<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;                                                                : <span class="keywordtype">bool</span></div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;    {</div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;        $pwd_peppered = hash_hmac(<span class="stringliteral">&quot;sha256&quot;</span>, $password, Constants::$PEPPER);</div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160; </div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;        $stmt2 = $this-&gt;conn-&gt;prepare(<span class="stringliteral">&quot;SELECT Password FROM PASSWORD WHERE UserId = ?&quot;</span>);</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;        $stmt2-&gt;bindParam(1, $UserId, PDO::PARAM_INT);</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;        $stmt2-&gt;execute();</div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;        $result2 = $stmt2-&gt;fetch(PDO::FETCH_ASSOC);</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;        $stmt2-&gt;closeCursor();</div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;        $userPassword = $result2[<span class="stringliteral">&#39;Password&#39;</span>];</div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160; </div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;        <span class="keywordflow">if</span> (!password_verify($pwd_peppered, $userPassword)) { <span class="comment">// si le mot de passe ne correspond pas</span></div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;            <span class="comment">//      throw new ExceptionsDatabase(&quot;Email or password does not match&quot;);</span></div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;            <span class="comment">//echo &quot;do not match&quot;;</span></div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;            <span class="comment">//TODO LOG DANS LA BASE DE LOG (tentative de connexion échouée avec l&#39;ip)</span></div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;            <span class="comment">//TODO INCREMENTER LE NIVEAU D&#39;ALERTE</span></div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;            <span class="comment">//TODO BLOQUER LE COMPTE SI NIVEAU D&#39;ALERTE TROP ELEVE</span></div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;            $this-&gt;<a class="code" href="classUserSite_a0fbfc4b69770ff5fabade85436ba68da.html#a0fbfc4b69770ff5fabade85436ba68da">incrementAlertLevelUser</a>($UserId);</div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;        }</div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;    }</div>
 <div class="ttc" id="aclassUserSite_a0fbfc4b69770ff5fabade85436ba68da_html_a0fbfc4b69770ff5fabade85436ba68da"><div class="ttname"><a href="classUserSite_a0fbfc4b69770ff5fabade85436ba68da.html#a0fbfc4b69770ff5fabade85436ba68da">UserSite\incrementAlertLevelUser</a></div><div class="ttdeci">incrementAlertLevelUser(int $CurrentUserId)</div><div class="ttdef"><b>Definition:</b> UserSite.php:433</div></div>
 </div><!-- fragment -->
 <p class="reference">Référencé par <a class="el" href="classUserSite_ad18b50d59c9455723f2fe35cc155a917.html#ad18b50d59c9455723f2fe35cc155a917">loginUser()</a>.</p>

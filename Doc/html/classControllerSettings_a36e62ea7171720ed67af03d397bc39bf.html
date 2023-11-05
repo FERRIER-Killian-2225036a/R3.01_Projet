@@ -99,14 +99,28 @@ $(document).ready(function(){initNavTree('classControllerSettings_a36e62ea717172
 </div><div class="memdoc">
 <p>Méthode pour afficher avec liaison du model (dans le futur) la vue myComment (commentaire)</p>
 <dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
-<div class="fragment"><div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                                     : <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    {</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <span class="comment">//TODO ajouté verification et logique d&#39;affichage des commentaires</span></div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        <a class="code" href="classMotorView_a958b493a9fb4e0febfbf02eb7376da11.html#a958b493a9fb4e0febfbf02eb7376da11">MotorView::show</a>(<span class="stringliteral">&#39;profileSettings/myComment&#39;</span>);</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                                     : <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    {</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classSessionManager_a6eacce9cf70e20f6206f1b2c01f6c439.html#a6eacce9cf70e20f6206f1b2c01f6c439">SessionManager::isUserConnected</a>()){</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            $arrayOfUserCommentId = (<span class="keyword">new</span> <a class="code" href="classBlog__Comment.html">Blog_Comment</a>())-&gt;getAllCommentIdOfUser($_SESSION[<span class="stringliteral">&quot;UserId&quot;</span>]);</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            $comments = array();</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            <span class="keywordflow">foreach</span> ($arrayOfUserCommentId as $commentId){</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                $comments[] = <span class="keyword">new</span> <a class="code" href="classBlogCommentModel.html">BlogCommentModel</a>($commentId);</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            }</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            <a class="code" href="classMotorView_a958b493a9fb4e0febfbf02eb7376da11.html#a958b493a9fb4e0febfbf02eb7376da11">MotorView::show</a>(<span class="stringliteral">&#39;profileSettings/myComment&#39;</span>, array(<span class="stringliteral">&quot;ArrayOfComment&quot;</span> =&gt; $comments));</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            header(<span class="stringliteral">&quot;Location: /Auth/login &quot;</span>);</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            die();</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        }</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        <span class="comment">//TODO géré POST pour supprimer commentaire</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    }</div>
+<div class="ttc" id="aclassBlogCommentModel_html"><div class="ttname"><a href="classBlogCommentModel.html">BlogCommentModel</a></div><div class="ttdef"><b>Definition:</b> BlogCommentModel.php:27</div></div>
+<div class="ttc" id="aclassBlog__Comment_html"><div class="ttname"><a href="classBlog__Comment.html">Blog_Comment</a></div><div class="ttdef"><b>Definition:</b> Blog_Comment.php:28</div></div>
 <div class="ttc" id="aclassMotorView_a958b493a9fb4e0febfbf02eb7376da11_html_a958b493a9fb4e0febfbf02eb7376da11"><div class="ttname"><a href="classMotorView_a958b493a9fb4e0febfbf02eb7376da11.html#a958b493a9fb4e0febfbf02eb7376da11">MotorView\show</a></div><div class="ttdeci">static show(string $viewPath, array $mapOfModelContent=array())</div><div class="ttdef"><b>Definition:</b> MotorView.php:50</div></div>
+<div class="ttc" id="aclassSessionManager_a6eacce9cf70e20f6206f1b2c01f6c439_html_a6eacce9cf70e20f6206f1b2c01f6c439"><div class="ttname"><a href="classSessionManager_a6eacce9cf70e20f6206f1b2c01f6c439.html#a6eacce9cf70e20f6206f1b2c01f6c439">SessionManager\isUserConnected</a></div><div class="ttdeci">static isUserConnected()</div><div class="ttdef"><b>Definition:</b> SessionManager.php:35</div></div>
 </div><!-- fragment -->
-<p class="reference">Références <a class="el" href="classMotorView_a958b493a9fb4e0febfbf02eb7376da11.html#a958b493a9fb4e0febfbf02eb7376da11">MotorView\show()</a>.</p>
+<p class="reference">Références <a class="el" href="classSessionManager_a6eacce9cf70e20f6206f1b2c01f6c439.html#a6eacce9cf70e20f6206f1b2c01f6c439">SessionManager\isUserConnected()</a>, et <a class="el" href="classMotorView_a958b493a9fb4e0febfbf02eb7376da11.html#a958b493a9fb4e0febfbf02eb7376da11">MotorView\show()</a>.</p>
 
 </div>
 </div>

@@ -6,6 +6,8 @@ var classUserSite =
     [ "disconnectUser", "classUserSite_a1a36d1dbda91510bc7a1fc6e8c064c58.html#a1a36d1dbda91510bc7a1fc6e8c064c58", null ],
     [ "getPseudoOfUser", "classUserSite_a3f3090fc36c10dcb5337bcf783cf6dd3.html#a3f3090fc36c10dcb5337bcf783cf6dd3", null ],
     [ "getStatusOfUser", "classUserSite_a9b577a33d176a2246eee1e99a55f4db8.html#a9b577a33d176a2246eee1e99a55f4db8", null ],
+    [ "getUserIdByPseudo", "classUserSite_a7ff541f6ad249bd856e729e2f0191a80.html#a7ff541f6ad249bd856e729e2f0191a80", null ],
+    [ "getUserIdByResearch", "classUserSite_ace15cbc9f02aadfc58817142f46e4ab9.html#ace15cbc9f02aadfc58817142f46e4ab9", null ],
     [ "getValuesById", "classUserSite_a6481bf49c11affd4f2837737bac65a8c.html#a6481bf49c11affd4f2837737bac65a8c", null ],
     [ "incrementAlertLevelUser", "classUserSite_a0fbfc4b69770ff5fabade85436ba68da.html#a0fbfc4b69770ff5fabade85436ba68da", null ],
     [ "incrementNumberOfAction", "classUserSite_ae42bf4e4ec625022bd6c29d922bc76ec.html#ae42bf4e4ec625022bd6c29d922bc76ec", null ],

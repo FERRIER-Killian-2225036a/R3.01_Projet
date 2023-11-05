@@ -106,14 +106,14 @@ $(document).ready(function(){initNavTree('classBlog__Page_a64efc15717eee5999da0c
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>bool </dd></dl>
-<div class="fragment"><div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                                          : <span class="keywordtype">bool</span></div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    {</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        $stmt = $this-&gt;conn-&gt;prepare(<span class="stringliteral">&quot;SELECT count(*) FROM BLOG_Page WHERE PageId = ?&quot;</span>);</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        $stmt-&gt;bindParam(1, $Id);</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        $stmt-&gt;execute();</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        $count = $stmt-&gt;fetchColumn();</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        <span class="keywordflow">return</span> $count &gt; 0;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                                          : <span class="keywordtype">bool</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    {</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        $stmt = $this-&gt;conn-&gt;prepare(<span class="stringliteral">&quot;SELECT count(*) FROM BLOG_Page WHERE PageId = ?&quot;</span>);</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        $stmt-&gt;bindParam(1, $Id);</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        $stmt-&gt;execute();</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        $count = $stmt-&gt;fetchColumn();</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        <span class="keywordflow">return</span> $count &gt; 0;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    }</div>
 </div><!-- fragment -->
 <p class="reference">Référencé par <a class="el" href="classBlog__Page_a68b2f56b645e4a77f278ef9b84e8c344.html#a68b2f56b645e4a77f278ef9b84e8c344">getValuesById()</a>.</p>
 

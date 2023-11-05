@@ -99,14 +99,35 @@ $(document).ready(function(){initNavTree('classControllerSettings_a33d3885c88d25
 </div><div class="memdoc">
 <p>Méthode pour afficher avec liaison du model (dans le futur) la vue follow (abonnement)</p>
 <dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
-<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                  : <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="comment">//TODO ajouté verification et logique d&#39;affichage des abonnements</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <a class="code" href="classMotorView_a958b493a9fb4e0febfbf02eb7376da11.html#a958b493a9fb4e0febfbf02eb7376da11">MotorView::show</a>(<span class="stringliteral">&#39;profileSettings/follow&#39;</span>);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                                  : <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="comment">//TODO ajouté verification et logique d&#39;affichage des abonnements</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classSessionManager_a6eacce9cf70e20f6206f1b2c01f6c439.html#a6eacce9cf70e20f6206f1b2c01f6c439">SessionManager::isUserConnected</a>()){</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            $arrayOfFolledUser = (<span class="keyword">new</span> <a class="code" href="classFollowedUser.html">FollowedUser</a>())-&gt;getAllFollowedUser($_SESSION[<span class="stringliteral">&quot;UserId&quot;</span>]);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            $arrayOfUser = array();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keywordflow">foreach</span> ($arrayOfFolledUser as $user){</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                $arrayOfUser[] = <span class="keyword">new</span> <a class="code" href="classUSERSiteModel.html">USERSiteModel</a>($user[<span class="stringliteral">&quot;UserId&quot;</span>]);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            $numberOfFollow = (<span class="keyword">new</span> <a class="code" href="classFollowedUser.html">FollowedUser</a>())-&gt;getNumberOfFollowed($_SESSION[<span class="stringliteral">&quot;UserId&quot;</span>]);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <a class="code" href="classMotorView_a958b493a9fb4e0febfbf02eb7376da11.html#a958b493a9fb4e0febfbf02eb7376da11">MotorView::show</a>(<span class="stringliteral">&#39;profileSettings/follow&#39;</span>, array(<span class="stringliteral">&quot;numberOfFollow&quot;</span>=&gt;$numberOfFollow,<span class="stringliteral">&quot;ArrayOfFollowedUser&quot;</span> =&gt; $arrayOfUser)     );</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="comment">/*</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">            if ($_SERVER[&quot;REQUEST_METHOD&quot;]===&quot;POST&quot;){</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">                if (isset($A_postParams[&quot;researchUser&quot;])){</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">                    (new SearchModel())-&gt;researchUser($A_postParams[&quot;researchUser&quot;]);</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">                    //TODO display le résultat de la recherche</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">                }</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">            }*/</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            header(<span class="stringliteral">&quot;Location: /Auth/login &quot;</span>);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            die();</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    }</div>
+<div class="ttc" id="aclassFollowedUser_html"><div class="ttname"><a href="classFollowedUser.html">FollowedUser</a></div><div class="ttdef"><b>Definition:</b> FollowedUser.php:23</div></div>
 <div class="ttc" id="aclassMotorView_a958b493a9fb4e0febfbf02eb7376da11_html_a958b493a9fb4e0febfbf02eb7376da11"><div class="ttname"><a href="classMotorView_a958b493a9fb4e0febfbf02eb7376da11.html#a958b493a9fb4e0febfbf02eb7376da11">MotorView\show</a></div><div class="ttdeci">static show(string $viewPath, array $mapOfModelContent=array())</div><div class="ttdef"><b>Definition:</b> MotorView.php:50</div></div>
+<div class="ttc" id="aclassSessionManager_a6eacce9cf70e20f6206f1b2c01f6c439_html_a6eacce9cf70e20f6206f1b2c01f6c439"><div class="ttname"><a href="classSessionManager_a6eacce9cf70e20f6206f1b2c01f6c439.html#a6eacce9cf70e20f6206f1b2c01f6c439">SessionManager\isUserConnected</a></div><div class="ttdeci">static isUserConnected()</div><div class="ttdef"><b>Definition:</b> SessionManager.php:35</div></div>
+<div class="ttc" id="aclassUSERSiteModel_html"><div class="ttname"><a href="classUSERSiteModel.html">USERSiteModel</a></div><div class="ttdef"><b>Definition:</b> USERSiteModel.php:20</div></div>
 </div><!-- fragment -->
-<p class="reference">Références <a class="el" href="classMotorView_a958b493a9fb4e0febfbf02eb7376da11.html#a958b493a9fb4e0febfbf02eb7376da11">MotorView\show()</a>.</p>
+<p class="reference">Références <a class="el" href="classSessionManager_a6eacce9cf70e20f6206f1b2c01f6c439.html#a6eacce9cf70e20f6206f1b2c01f6c439">SessionManager\isUserConnected()</a>, et <a class="el" href="classMotorView_a958b493a9fb4e0febfbf02eb7376da11.html#a958b493a9fb4e0febfbf02eb7376da11">MotorView\show()</a>.</p>
 
 </div>
 </div>

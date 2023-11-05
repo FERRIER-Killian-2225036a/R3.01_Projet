@@ -106,24 +106,24 @@ $(document).ready(function(){initNavTree('classBlog__Page_a68b2f56b645e4a77f278e
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Exception|ExceptionsDatabase|false|array </dd></dl>
-<div class="fragment"><div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                                          : <span class="keywordtype">bool</span>|<a class="code" href="classExceptionsDatabase.html">ExceptionsDatabase</a>|Exception|array</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    {</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            <span class="keywordflow">if</span> (!$this-&gt;<a class="code" href="classBlog__Page_a64efc15717eee5999da0c74ffd0465c8.html#a64efc15717eee5999da0c74ffd0465c8">isPageIdExist</a>($Id)) {</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="classExceptionsDatabase.html">ExceptionsDatabase</a>(<span class="stringliteral">&quot;This page doesn&#39;t exist&quot;</span>);</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            }</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160; </div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            $stmt = $this-&gt;conn-&gt;prepare(<span class="stringliteral">&quot;SELECT * FROM BLOG_Page WHERE PageId = ?&quot;</span>);</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            $stmt-&gt;bindParam(1, $Id);</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            $stmt-&gt;execute();</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            $mapArrayOfPageValues = $stmt-&gt;fetch(PDO::FETCH_ASSOC); <span class="comment">// Stocke le résultat dans le tableau</span></div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            $stmt-&gt;closeCursor();</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        } <span class="keywordflow">catch</span> (<a class="code" href="classExceptionsDatabase.html">ExceptionsDatabase</a> $e) {</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            <span class="keywordflow">return</span> $e;</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        }</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        <span class="keywordflow">return</span> $mapArrayOfPageValues; <span class="comment">// Retourne le tableau avec les valeurs de la requete</span></div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    }</div>
-<div class="ttc" id="aclassBlog__Page_a64efc15717eee5999da0c74ffd0465c8_html_a64efc15717eee5999da0c74ffd0465c8"><div class="ttname"><a href="classBlog__Page_a64efc15717eee5999da0c74ffd0465c8.html#a64efc15717eee5999da0c74ffd0465c8">Blog_Page\isPageIdExist</a></div><div class="ttdeci">isPageIdExist(int $Id)</div><div class="ttdef"><b>Definition:</b> Blog_Page.php:308</div></div>
+<div class="fragment"><div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                                          : <span class="keywordtype">bool</span>|<a class="code" href="classExceptionsDatabase.html">ExceptionsDatabase</a>|Exception|array</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    {</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <span class="keywordflow">if</span> (!$this-&gt;<a class="code" href="classBlog__Page_a64efc15717eee5999da0c74ffd0465c8.html#a64efc15717eee5999da0c74ffd0465c8">isPageIdExist</a>($Id)) {</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="classExceptionsDatabase.html">ExceptionsDatabase</a>(<span class="stringliteral">&quot;This page doesn&#39;t exist&quot;</span>);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            }</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            $stmt = $this-&gt;conn-&gt;prepare(<span class="stringliteral">&quot;SELECT * FROM BLOG_Page WHERE PageId = ?&quot;</span>);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            $stmt-&gt;bindParam(1, $Id);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            $stmt-&gt;execute();</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            $mapArrayOfPageValues = $stmt-&gt;fetch(PDO::FETCH_ASSOC); <span class="comment">// Stocke le résultat dans le tableau</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            $stmt-&gt;closeCursor();</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        } <span class="keywordflow">catch</span> (<a class="code" href="classExceptionsDatabase.html">ExceptionsDatabase</a> $e) {</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            <span class="keywordflow">return</span> $e;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        }</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        <span class="keywordflow">return</span> $mapArrayOfPageValues; <span class="comment">// Retourne le tableau avec les valeurs de la requete</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    }</div>
+<div class="ttc" id="aclassBlog__Page_a64efc15717eee5999da0c74ffd0465c8_html_a64efc15717eee5999da0c74ffd0465c8"><div class="ttname"><a href="classBlog__Page_a64efc15717eee5999da0c74ffd0465c8.html#a64efc15717eee5999da0c74ffd0465c8">Blog_Page\isPageIdExist</a></div><div class="ttdeci">isPageIdExist(int $Id)</div><div class="ttdef"><b>Definition:</b> Blog_Page.php:279</div></div>
 <div class="ttc" id="aclassExceptionsDatabase_html"><div class="ttname"><a href="classExceptionsDatabase.html">ExceptionsDatabase</a></div><div class="ttdef"><b>Definition:</b> ExceptionsDatabase.php:16</div></div>
 </div><!-- fragment -->
 <p class="reference">Références <a class="el" href="classBlog__Page_a64efc15717eee5999da0c74ffd0465c8.html#a64efc15717eee5999da0c74ffd0465c8">isPageIdExist()</a>.</p>

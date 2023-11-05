@@ -88,7 +88,26 @@ $(document).ready(function(){initNavTree('namespacemodels.html',''); initResizab
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>la Classe <a class="el" href="classBlogPageModel.html">BlogPageModel</a> du model directement en lien avec l'orm , on a cette classe pour eviter de trop faire de requete de lecture sur les données des blogs</p>
+<div class="textblock"><p>la Classe <a class="el" href="classBlogCommentModel.html">BlogCommentModel</a> est un objet comment qui contient les infos d'un commentaire afin de limité les requetes SQL</p>
+<p>les attributs de la table BLOG_Comment sont :</p><ul>
+<li>CommentId : int</li>
+<li>textC : text</li>
+<li>dateC : datetime</li>
+<li>UserId : int</li>
+<li>PageId : int</li>
+</ul>
+<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="classBlog__Page.html">Blog_Page</a> </dd>
+<dd>
+<a class="el" href="classUserSite.html">UserSite</a> </dd>
+<dd>
+<a class="el" href="classControllerMenu.html">ControllerMenu</a> </dd>
+<dd>
+<a class="el" href="classControllerPost.html">ControllerPost</a> </dd>
+<dd>
+<a class="el" href="classControllerSettings_a36e62ea7171720ed67af03d397bc39bf.html#a36e62ea7171720ed67af03d397bc39bf">ControllerSettings::MyCommentAction()</a></dd></dl>
+<dl class="section since"><dt>Depuis</dt><dd>1.0 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
+<p>la Classe <a class="el" href="classBlogPageModel.html">BlogPageModel</a> du model directement en lien avec l'orm , on a cette classe pour eviter de trop faire de requete de lecture sur les données des blogs</p>
 <p>Cette classe principale concerne les données des articles scrapé que l'on charge de la bdd</p>
 <dl class="section see"><dt>Voir également</dt><dd><a class="el" href="classUserSite.html">UserSite</a> </dd>
 <dd>
@@ -353,6 +372,13 @@ $(document).ready(function(){initNavTree('namespacemodels.html',''); initResizab
 <dd>
 <a class="el" href="classDBBrain.html">DBBrain</a></dd></dl>
 <p>/ORM </p><dl class="section since"><dt>Depuis</dt><dd>1.0 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
+<p>La classe <a class="el" href="classSearchModel.html">SearchModel</a> est responsable du lien Model / vue pour la recherche situé dans le header</p>
+<p>On gere l'affichage de suggestion de lien selon le role utilisateur, ainsi un modo peut chercher une ip par exemple, mais un utilisateur lambda ne peut pas et est limité a certaines zone de la bdd</p>
+<p>Recherche -&gt; (connecté &amp; modo) [IT_Articles] -&gt; title, content. [USERSite] -&gt; Pseudo , Mail, UserID, LastIpAdress [FORUM_Page] -&gt; title, message. [FORUM_Comment] -&gt; textComment [FORUM_Category] -&gt; label, description [<a class="el" href="classBlog__Page.html">Blog_Page</a>] -&gt; TITLE, content. [BLOG_Comment] -&gt; textC [BLOG_Category] -&gt; label, description [BLACKLIST] -&gt; UserID["pseudo"] ,Reason [METE] -&gt; UserID["pseudo"],Reason</p>
+<p>Recherche -&gt; (connecté) [IT_Articles] -&gt; title, content. [USERSite] -&gt; Pseudo si mec pas BlackList [FORUM_Page] -&gt; title, message. si status == "active" [FORUM_Comment] -&gt; textComment si status.Page == "active" [FORUM_Category] -&gt; label, description [<a class="el" href="classBlog__Page.html">Blog_Page</a>] -&gt; TITLE, content. si status.Page == "active" [BLOG_Comment] -&gt; textC si status.Page == "active" [BLOG_Category] -&gt; label, description</p>
+<p>Recherche -&gt; (pas connecté) [IT_Articles] -&gt; title, content. [USERSite] -&gt; Pseudo si mec pas BlackList</p>
+<dl class="section since"><dt>Depuis</dt><dd>1.0 </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
 <p>la Classe <a class="el" href="classTicketModel.html">TicketModel</a> du model directement en lien avec l'orm , on a cette classe pour eviter de trop faire de requete de lecture sur les données des tickets.</p>
 <p>Cette classe principale concerne les données des tickets dans la base de données</p>

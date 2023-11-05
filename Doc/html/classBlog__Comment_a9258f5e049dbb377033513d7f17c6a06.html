@@ -117,18 +117,18 @@ $(document).ready(function(){initNavTree('classBlog__Comment_a9258f5e049dbb37703
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
-<div class="fragment"><div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                                                                : <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    {</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="keywordflow">if</span> ($this-&gt;<a class="code" href="classBlog__Comment_a8672ded74e79ca296511ad96fb610474.html#a8672ded74e79ca296511ad96fb610474">isCommentExist</a>($CommentId)) {</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            $sql = <span class="stringliteral">&quot;UPDATE BLOG_Comment SET textC = :textC WHERE CommentId = :CommentId&quot;</span>;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            $stmt = $this-&gt;conn-&gt;prepare($sql);</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            $stmt-&gt;bindParam(<span class="stringliteral">&#39;:textC&#39;</span>, $textC);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            $stmt-&gt;execute();</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        }</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    }</div>
-<div class="ttc" id="aclassBlog__Comment_a8672ded74e79ca296511ad96fb610474_html_a8672ded74e79ca296511ad96fb610474"><div class="ttname"><a href="classBlog__Comment_a8672ded74e79ca296511ad96fb610474.html#a8672ded74e79ca296511ad96fb610474">Blog_Comment\isCommentExist</a></div><div class="ttdeci">isCommentExist(int $CommentId)</div><div class="ttdef"><b>Definition:</b> Blog_Comment.php:93</div></div>
+<div class="fragment"><div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                                                                : <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keywordflow">if</span> ($this-&gt;<a class="code" href="classBlog__Comment_ad0bbf522736b2d76eb4ebbed558701fc.html#ad0bbf522736b2d76eb4ebbed558701fc">isCommentExist</a>($CommentId)) {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            $sql = <span class="stringliteral">&quot;UPDATE BLOG_Comment SET textC = :textC WHERE CommentId = :CommentId&quot;</span>;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            $stmt = $this-&gt;conn-&gt;prepare($sql);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            $stmt-&gt;bindParam(<span class="stringliteral">&#39;:textC&#39;</span>, $textC);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            $stmt-&gt;execute();</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    }</div>
+<div class="ttc" id="aclassBlog__Comment_ad0bbf522736b2d76eb4ebbed558701fc_html_ad0bbf522736b2d76eb4ebbed558701fc"><div class="ttname"><a href="classBlog__Comment_ad0bbf522736b2d76eb4ebbed558701fc.html#ad0bbf522736b2d76eb4ebbed558701fc">Blog_Comment\isCommentExist</a></div><div class="ttdeci">isCommentExist(int|string $CommentId)</div><div class="ttdef"><b>Definition:</b> Blog_Comment.php:91</div></div>
 </div><!-- fragment -->
-<p class="reference">Références <a class="el" href="classBlog__Comment_a8672ded74e79ca296511ad96fb610474.html#a8672ded74e79ca296511ad96fb610474">isCommentExist()</a>.</p>
+<p class="reference">Références <a class="el" href="classBlog__Comment_ad0bbf522736b2d76eb4ebbed558701fc.html#ad0bbf522736b2d76eb4ebbed558701fc">isCommentExist()</a>.</p>
 
 </div>
 </div>

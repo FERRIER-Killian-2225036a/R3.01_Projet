@@ -7,6 +7,7 @@ var hierarchy =
     [ "Blog_Comment", "classBlog__Comment.html", null ],
     [ "Blog_Page", "classBlog__Page.html", null ],
     [ "Blog_PageLike", "classBlog__PageLike.html", null ],
+    [ "BlogCommentModel", "classBlogCommentModel.html", null ],
     [ "BlogPageModel", "classBlogPageModel.html", null ],
     [ "Constants", "classConstants.html", null ],
     [ "ControllerAdmin", "classControllerAdmin.html", null ],
@@ -34,9 +35,13 @@ var hierarchy =
     [ "MotorView", "classMotorView.html", null ],
     [ "MutedUser", "classMutedUser.html", null ],
     [ "PictureVerificator", "classPictureVerificator.html", null ],
+    [ "SearchModel", "classSearchModel.html", null ],
     [ "SessionManager", "classSessionManager.html", null ],
     [ "Ticket", "classTicket.html", null ],
     [ "TicketModel", "classTicketModel.html", null ],
     [ "UserSite", "classUserSite.html", null ],
-    [ "USERSiteModel", "classUSERSiteModel.html", null ]
+    [ "USERSiteModel", "classUSERSiteModel.html", null ],
+    [ "TestCase", null, [
+      [ "DBBrainTest", "classDBBrainTest.html", null ]
+    ] ]
 ];

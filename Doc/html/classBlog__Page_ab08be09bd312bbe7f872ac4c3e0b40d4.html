@@ -111,17 +111,21 @@ $(document).ready(function(){initNavTree('classBlog__Page_ab08be09bd312bbe7f872a
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">if</span> ($this-&gt;<a class="code" href="classBlog__Page_ad6eb3573e9945c932a89af1b974af977.html#ad6eb3573e9945c932a89af1b974af977">doesPageIdExist</a>($PageId)) {</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="comment">// on supprime les liens vers les categories de la page</span></div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            (<span class="keyword">new</span> <a class="code" href="classBlog__categoryPage.html">Blog_categoryPage</a>())-&gt;removeAllLinkBetweenCategoryAndPage($PageId);</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            $stmt = $this-&gt;conn-&gt;prepare(<span class="stringliteral">&quot;DELETE FROM BLOG_Page WHERE PageId = ?&quot;</span>);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            $stmt-&gt;bindParam(1, $PageId);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            $stmt-&gt;execute();</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            $stmt-&gt;closeCursor();</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="comment">// on supprime les categoriesPage liés a pageId, puis on supprime l&#39;article</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="comment">// ou alors on pourra imaginé a le mettre en innactive</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    }</div>
-<div class="ttc" id="aclassBlog__Page_ad6eb3573e9945c932a89af1b974af977_html_ad6eb3573e9945c932a89af1b974af977"><div class="ttname"><a href="classBlog__Page_ad6eb3573e9945c932a89af1b974af977.html#ad6eb3573e9945c932a89af1b974af977">Blog_Page\doesPageIdExist</a></div><div class="ttdeci">doesPageIdExist(int $PageId)</div><div class="ttdef"><b>Definition:</b> Blog_Page.php:155</div></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            (<span class="keyword">new</span> <a class="code" href="classBlog__PageLike.html">Blog_PageLike</a>())-&gt;deleteAllPageLikeOfPage($PageId);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            (<span class="keyword">new</span> <a class="code" href="classBlog__Comment.html">Blog_Comment</a>())-&gt;deleteAllCommentOfPage($PageId);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            $stmt = $this-&gt;conn-&gt;prepare(<span class="stringliteral">&quot;DELETE FROM BLOG_Page WHERE PageId = ?&quot;</span>);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            $stmt-&gt;bindParam(1, $PageId);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            $stmt-&gt;execute();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            $stmt-&gt;closeCursor();</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="comment">// on supprime les categoriesPage liés a pageId, puis on supprime l&#39;article</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="comment">// ou alors on pourra imaginé a le mettre en innactive</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div>
+<div class="ttc" id="aclassBlog__Comment_html"><div class="ttname"><a href="classBlog__Comment.html">Blog_Comment</a></div><div class="ttdef"><b>Definition:</b> Blog_Comment.php:28</div></div>
+<div class="ttc" id="aclassBlog__PageLike_html"><div class="ttname"><a href="classBlog__PageLike.html">Blog_PageLike</a></div><div class="ttdef"><b>Definition:</b> Blog_PageLike.php:28</div></div>
+<div class="ttc" id="aclassBlog__Page_ad6eb3573e9945c932a89af1b974af977_html_ad6eb3573e9945c932a89af1b974af977"><div class="ttname"><a href="classBlog__Page_ad6eb3573e9945c932a89af1b974af977.html#ad6eb3573e9945c932a89af1b974af977">Blog_Page\doesPageIdExist</a></div><div class="ttdeci">doesPageIdExist(int $PageId)</div><div class="ttdef"><b>Definition:</b> Blog_Page.php:122</div></div>
 <div class="ttc" id="aclassBlog__categoryPage_html"><div class="ttname"><a href="classBlog__categoryPage.html">Blog_categoryPage</a></div><div class="ttdef"><b>Definition:</b> Blog_categoryPage.php:25</div></div>
 </div><!-- fragment -->
 <p class="reference">Références <a class="el" href="classBlog__Page_ad6eb3573e9945c932a89af1b974af977.html#ad6eb3573e9945c932a89af1b974af977">doesPageIdExist()</a>.</p>

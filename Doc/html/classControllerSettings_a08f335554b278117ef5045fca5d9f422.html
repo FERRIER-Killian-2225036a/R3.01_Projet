@@ -99,14 +99,20 @@ $(document).ready(function(){initNavTree('classControllerSettings_a08f335554b278
 </div><div class="memdoc">
 <p>Méthode pour afficher avec liaison du model (dans le futur) la vue language (langue) on pourra changer la langue du site (futur passage en anglais) ? il faudra implementer un mécanisme type fichier.po pour la traduction Demande une grande refactorisation des vues, voir une implémentation des liens pour le contenu a traduire stocké dans la base de donnée ?</p>
 <dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
-<div class="fragment"><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                    : <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="comment">//TODO ajouté verification et remodeler tout l&#39;affichage pour la traduction</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="classMotorView_a958b493a9fb4e0febfbf02eb7376da11.html#a958b493a9fb4e0febfbf02eb7376da11">MotorView::show</a>(<span class="stringliteral">&#39;profileSettings/language&#39;</span>);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                                    : <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="comment">//TODO ajouté verification et remodeler tout l&#39;affichage pour la traduction</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classSessionManager_a6eacce9cf70e20f6206f1b2c01f6c439.html#a6eacce9cf70e20f6206f1b2c01f6c439">SessionManager::isUserConnected</a>()){</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <a class="code" href="classMotorView_a958b493a9fb4e0febfbf02eb7376da11.html#a958b493a9fb4e0febfbf02eb7376da11">MotorView::show</a>(<span class="stringliteral">&#39;profileSettings/language&#39;</span>);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            header(<span class="stringliteral">&quot;Location: /Auth/login &quot;</span>);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            die();</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        }</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    }</div>
 <div class="ttc" id="aclassMotorView_a958b493a9fb4e0febfbf02eb7376da11_html_a958b493a9fb4e0febfbf02eb7376da11"><div class="ttname"><a href="classMotorView_a958b493a9fb4e0febfbf02eb7376da11.html#a958b493a9fb4e0febfbf02eb7376da11">MotorView\show</a></div><div class="ttdeci">static show(string $viewPath, array $mapOfModelContent=array())</div><div class="ttdef"><b>Definition:</b> MotorView.php:50</div></div>
+<div class="ttc" id="aclassSessionManager_a6eacce9cf70e20f6206f1b2c01f6c439_html_a6eacce9cf70e20f6206f1b2c01f6c439"><div class="ttname"><a href="classSessionManager_a6eacce9cf70e20f6206f1b2c01f6c439.html#a6eacce9cf70e20f6206f1b2c01f6c439">SessionManager\isUserConnected</a></div><div class="ttdeci">static isUserConnected()</div><div class="ttdef"><b>Definition:</b> SessionManager.php:35</div></div>
 </div><!-- fragment -->
-<p class="reference">Références <a class="el" href="classMotorView_a958b493a9fb4e0febfbf02eb7376da11.html#a958b493a9fb4e0febfbf02eb7376da11">MotorView\show()</a>.</p>
+<p class="reference">Références <a class="el" href="classSessionManager_a6eacce9cf70e20f6206f1b2c01f6c439.html#a6eacce9cf70e20f6206f1b2c01f6c439">SessionManager\isUserConnected()</a>, et <a class="el" href="classMotorView_a958b493a9fb4e0febfbf02eb7376da11.html#a958b493a9fb4e0febfbf02eb7376da11">MotorView\show()</a>.</p>
 
 </div>
 </div>

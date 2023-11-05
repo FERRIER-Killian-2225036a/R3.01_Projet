@@ -106,18 +106,18 @@ $(document).ready(function(){initNavTree('classBlog__Comment_ab4feee6188e781a90c
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
-<div class="fragment"><div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                                                 : <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    {</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="keywordflow">if</span> ($this-&gt;<a class="code" href="classBlog__Comment_a8672ded74e79ca296511ad96fb610474.html#a8672ded74e79ca296511ad96fb610474">isCommentExist</a>($CommentId)) {</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            $sql = <span class="stringliteral">&quot;DELETE FROM BLOG_Comment WHERE CommentId = :CommentId&quot;</span>;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            $stmt = $this-&gt;conn-&gt;prepare($sql);</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            $stmt-&gt;bindParam(<span class="stringliteral">&#39;:CommentId&#39;</span>, $CommentId);</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            $stmt-&gt;execute();</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        }</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    }</div>
-<div class="ttc" id="aclassBlog__Comment_a8672ded74e79ca296511ad96fb610474_html_a8672ded74e79ca296511ad96fb610474"><div class="ttname"><a href="classBlog__Comment_a8672ded74e79ca296511ad96fb610474.html#a8672ded74e79ca296511ad96fb610474">Blog_Comment\isCommentExist</a></div><div class="ttdeci">isCommentExist(int $CommentId)</div><div class="ttdef"><b>Definition:</b> Blog_Comment.php:93</div></div>
+<div class="fragment"><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                                                 : <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="keywordflow">if</span> ($this-&gt;<a class="code" href="classBlog__Comment_ad0bbf522736b2d76eb4ebbed558701fc.html#ad0bbf522736b2d76eb4ebbed558701fc">isCommentExist</a>($CommentId)) {</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            $sql = <span class="stringliteral">&quot;DELETE FROM BLOG_Comment WHERE CommentId = :CommentId&quot;</span>;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            $stmt = $this-&gt;conn-&gt;prepare($sql);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            $stmt-&gt;bindParam(<span class="stringliteral">&#39;:CommentId&#39;</span>, $CommentId);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            $stmt-&gt;execute();</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        }</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    }</div>
+<div class="ttc" id="aclassBlog__Comment_ad0bbf522736b2d76eb4ebbed558701fc_html_ad0bbf522736b2d76eb4ebbed558701fc"><div class="ttname"><a href="classBlog__Comment_ad0bbf522736b2d76eb4ebbed558701fc.html#ad0bbf522736b2d76eb4ebbed558701fc">Blog_Comment\isCommentExist</a></div><div class="ttdeci">isCommentExist(int|string $CommentId)</div><div class="ttdef"><b>Definition:</b> Blog_Comment.php:91</div></div>
 </div><!-- fragment -->
-<p class="reference">Références <a class="el" href="classBlog__Comment_a8672ded74e79ca296511ad96fb610474.html#a8672ded74e79ca296511ad96fb610474">isCommentExist()</a>.</p>
+<p class="reference">Références <a class="el" href="classBlog__Comment_ad0bbf522736b2d76eb4ebbed558701fc.html#ad0bbf522736b2d76eb4ebbed558701fc">isCommentExist()</a>.</p>
 
 <p class="reference">Référencé par <a class="el" href="classBlog__Comment_a0040a61bd478fdec0bd2027df3eaa577.html#a0040a61bd478fdec0bd2027df3eaa577">deleteAllCommentOfPage()</a>, et <a class="el" href="classBlog__Comment_a42c1b5dc0cc2dad8447b2f57d948d591.html#a42c1b5dc0cc2dad8447b2f57d948d591">deleteAllCommentOfUser()</a>.</p>
 

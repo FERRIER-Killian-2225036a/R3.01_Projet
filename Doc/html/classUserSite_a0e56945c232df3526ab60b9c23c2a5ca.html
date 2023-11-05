@@ -119,29 +119,28 @@ $(document).ready(function(){initNavTree('classUserSite_a0e56945c232df3526ab60b9
 <dl class="section return"><dt>Renvoie</dt><dd>bool|ExceptionsDatabase </dd></dl>
 <div class="fragment"><div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;                                                                           : <span class="keywordtype">bool</span>|<a class="code" href="classExceptionsDatabase.html">ExceptionsDatabase</a></div>
 <div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;    {</div>
-<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;        error_log(<span class="stringliteral">&quot;update_picture&quot;</span>);</div>
-<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;        <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;            <span class="comment">// Check the user status</span></div>
-<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;            <span class="keywordflow">if</span> (!$this-&gt;<a class="code" href="classUserSite_a167329aac0a5111b97de903d7ecf0971.html#a167329aac0a5111b97de903d7ecf0971">isUserIDExists</a>($CurrentUserId)) {</div>
-<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="classExceptionsDatabase.html">ExceptionsDatabase</a>(<span class="stringliteral">&quot;User not exist&quot;</span>);</div>
-<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;            }</div>
-<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;            <span class="keywordflow">if</span> ($this-&gt;<a class="code" href="classUserSite_a9b577a33d176a2246eee1e99a55f4db8.html#a9b577a33d176a2246eee1e99a55f4db8">getStatusOfUser</a>($CurrentUserId) == <span class="stringliteral">&quot;Disconnected&quot;</span>) { <span class="comment">// on pourrait imaginé une condition pour</span></div>
-<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;                <span class="comment">// que le staff puisse changer la photo de profil de qqln d&#39;autre même si il est déconnecté</span></div>
-<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="classExceptionsDatabase.html">ExceptionsDatabase</a>(<span class="stringliteral">&quot;User status not valid&quot;</span>);</div>
-<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;            }</div>
-<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;            <span class="comment">// Change picture</span></div>
-<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;            $stmt = $this-&gt;conn-&gt;prepare(<span class="stringliteral">&quot;UPDATE USERSite SET UrlPicture = ? WHERE UserId = ?&quot;</span>);</div>
-<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;            $stmt-&gt;bindParam(1, $new_picture);</div>
-<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;            $stmt-&gt;bindParam(2, $CurrentUserId);</div>
-<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;            $stmt-&gt;execute();</div>
-<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;            $stmt-&gt;closeCursor();</div>
-<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;            $this-&gt;<a class="code" href="classUserSite_ae42bf4e4ec625022bd6c29d922bc76ec.html#ae42bf4e4ec625022bd6c29d922bc76ec">incrementNumberOfAction</a>($CurrentUserId);</div>
-<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160; </div>
-<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;        } <span class="keywordflow">catch</span> (<a class="code" href="classExceptionsDatabase.html">ExceptionsDatabase</a> $e) {</div>
-<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;            <span class="keywordflow">return</span> $e;</div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;        }</div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;    }</div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;            <span class="comment">// Check the user status</span></div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;            <span class="keywordflow">if</span> (!$this-&gt;<a class="code" href="classUserSite_a167329aac0a5111b97de903d7ecf0971.html#a167329aac0a5111b97de903d7ecf0971">isUserIDExists</a>($CurrentUserId)) {</div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="classExceptionsDatabase.html">ExceptionsDatabase</a>(<span class="stringliteral">&quot;User not exist&quot;</span>);</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;            }</div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;            <span class="keywordflow">if</span> ($this-&gt;<a class="code" href="classUserSite_a9b577a33d176a2246eee1e99a55f4db8.html#a9b577a33d176a2246eee1e99a55f4db8">getStatusOfUser</a>($CurrentUserId) == <span class="stringliteral">&quot;Disconnected&quot;</span>) { <span class="comment">// on pourrait imaginé une condition pour</span></div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;                <span class="comment">// que le staff puisse changer la photo de profil de qqln d&#39;autre même si il est déconnecté</span></div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="classExceptionsDatabase.html">ExceptionsDatabase</a>(<span class="stringliteral">&quot;User status not valid&quot;</span>);</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;            }</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;            <span class="comment">// Change picture</span></div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;            $stmt = $this-&gt;conn-&gt;prepare(<span class="stringliteral">&quot;UPDATE USERSite SET UrlPicture = ? WHERE UserId = ?&quot;</span>);</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;            $stmt-&gt;bindParam(1, $new_picture);</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;            $stmt-&gt;bindParam(2, $CurrentUserId);</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;            $stmt-&gt;execute();</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;            $stmt-&gt;closeCursor();</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;            $this-&gt;<a class="code" href="classUserSite_ae42bf4e4ec625022bd6c29d922bc76ec.html#ae42bf4e4ec625022bd6c29d922bc76ec">incrementNumberOfAction</a>($CurrentUserId);</div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160; </div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;        } <span class="keywordflow">catch</span> (<a class="code" href="classExceptionsDatabase.html">ExceptionsDatabase</a> $e) {</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;            <span class="keywordflow">return</span> $e;</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;        }</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;    }</div>
 <div class="ttc" id="aclassExceptionsDatabase_html"><div class="ttname"><a href="classExceptionsDatabase.html">ExceptionsDatabase</a></div><div class="ttdef"><b>Definition:</b> ExceptionsDatabase.php:16</div></div>
 <div class="ttc" id="aclassUserSite_a167329aac0a5111b97de903d7ecf0971_html_a167329aac0a5111b97de903d7ecf0971"><div class="ttname"><a href="classUserSite_a167329aac0a5111b97de903d7ecf0971.html#a167329aac0a5111b97de903d7ecf0971">UserSite\isUserIDExists</a></div><div class="ttdeci">isUserIDExists(int $id)</div><div class="ttdef"><b>Definition:</b> UserSite.php:276</div></div>
 <div class="ttc" id="aclassUserSite_a9b577a33d176a2246eee1e99a55f4db8_html_a9b577a33d176a2246eee1e99a55f4db8"><div class="ttname"><a href="classUserSite_a9b577a33d176a2246eee1e99a55f4db8.html#a9b577a33d176a2246eee1e99a55f4db8">UserSite\getStatusOfUser</a></div><div class="ttdeci">getStatusOfUser(int $UserId)</div><div class="ttdef"><b>Definition:</b> UserSite.php:362</div></div>

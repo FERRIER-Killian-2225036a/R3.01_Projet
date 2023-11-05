@@ -110,9 +110,6 @@ $(document).ready(function(){initNavTree('classControllerMenu_a3ab8b2a1be62bdefe
 </div><div class="memdoc">
 <p>Méthode pour afficher la vue du feed de blog en récupérant les 5 derniers posts publics de notre base de données</p>
 <p>on gère ici les request pour récupérer plus de blog, on gère ici les request pour filtrer les blogs, on gère ici les request pour liker/enregistrer un blog</p>
-<dl class="section see"><dt>Voir également</dt><dd>/models/BlogPageModel.php </dd>
-<dd>
-/models/Orm/Blog_Page.php </dd></dl>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramtype">array&#160;|&#160;null</td><td class="paramname">$A_parametres</td><td></td></tr>
@@ -121,6 +118,9 @@ $(document).ready(function(){initNavTree('classControllerMenu_a3ab8b2a1be62bdefe
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
+<dl class="section see"><dt>Voir également</dt><dd>/models/Orm/Blog_Page.php </dd>
+<dd>
+/models/BlogPageModel.php </dd></dl>
 <div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                                                                          : <span class="keywordtype">void</span></div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    {</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="comment">// TODO : récupérer les paramètres (afin de charger d&#39;autres Blogs)</span></div>
@@ -131,38 +131,67 @@ $(document).ready(function(){initNavTree('classControllerMenu_a3ab8b2a1be62bdefe
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="comment">// TODO : récuperer les params (tri) pour filtrer les résultats</span></div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="comment">//la requete ressemble à :  POST /Menu/BlogFeed/Filter</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        $page = <span class="keyword">new</span> <a class="code" href="classBlog__Page.html">Blog_Page</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classSessionManager_a6eacce9cf70e20f6206f1b2c01f6c439.html#a6eacce9cf70e20f6206f1b2c01f6c439">SessionManager::isUserConnected</a>()) {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            $page = <span class="keyword">new</span> <a class="code" href="classBlog__Page.html">Blog_Page</a>;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        $ArrayOf5IdByDate = $page-&gt;<a class="code" href="classBlog__Page_a39e8805501fac2a44408e1ae0135785a.html#a39e8805501fac2a44408e1ae0135785a">get5PagesByDate</a>();</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        $ArrayOfBlogPageModel = array();</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">foreach</span> ($ArrayOf5IdByDate as $id) {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            $ArrayOfBlogPageModel[] = <span class="keyword">new</span> <a class="code" href="classBlogPageModel.html">BlogPageModel</a>($id);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            $ArrayOf5IdByDate = $page-&gt;<a class="code" href="classBlog__Page_a39e8805501fac2a44408e1ae0135785a.html#a39e8805501fac2a44408e1ae0135785a">get5PagesByDate</a>();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            $ArrayOfBlogPageModel = array();</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keywordflow">foreach</span> ($ArrayOf5IdByDate as $id) {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                $ArrayOfBlogPageModel[] = <span class="keyword">new</span> <a class="code" href="classBlogPageModel.html">BlogPageModel</a>($id);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            }</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordflow">foreach</span> ($ArrayOfBlogPageModel as $obj) {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            error_log(<span class="stringliteral">&quot;statusP : &quot;</span> . $obj-&gt;getStatusP());</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keywordflow">if</span> ($obj-&gt;getStatusP() == <span class="stringliteral">&quot;active&quot;</span>) {</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                $tagsList = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <span class="keywordflow">foreach</span> ($obj-&gt;getTags() as $tags ){</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                    $tagsList .= <span class="stringliteral">&quot;#&quot;</span>.$tags .<span class="stringliteral">&quot; - &quot;</span>;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                <a class="code" href="classMotorView_a958b493a9fb4e0febfbf02eb7376da11.html#a958b493a9fb4e0febfbf02eb7376da11">MotorView::show</a>(<span class="stringliteral">&#39;menu/blogFeed&#39;</span>, array(<span class="stringliteral">&quot;blogPostUrl&quot;</span>=&gt;$obj-&gt;getPostUrl(),</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                                                                <span class="stringliteral">&quot;blogTitle&quot;</span> =&gt; $obj-&gt;getTITLE(),</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                                                <span class="stringliteral">&quot;blogContent&quot;</span> =&gt; $obj-&gt;getContent(),</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                                                                <span class="stringliteral">&quot;blogAuthor&quot;</span> =&gt; $obj-&gt;getAuthor(),</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                                                                <span class="stringliteral">&quot;blogDate&quot;</span> =&gt; $obj-&gt;getDateP(),</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                                                                <span class="stringliteral">&quot;blogUrlPicture&quot;</span> =&gt; $obj-&gt;getUrlPicture(),</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                                                                <span class="stringliteral">&quot;Tags&quot;</span>=&gt;$tagsList)); <span class="comment">// plus tard il faudra mettre si l&#39;user a bien liké ou non</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            }</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        }</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            $listOfPageId = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            $listOfBoolIsPostBookmarked = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keywordflow">foreach</span> ($ArrayOfBlogPageModel as $obj) {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <span class="keywordflow">if</span> ($obj-&gt;getStatusP() == <span class="stringliteral">&quot;active&quot;</span>) {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                    $tagsList = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                    <span class="keywordflow">foreach</span> ($obj-&gt;getTags() as $tags) {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                        $tagsList .= <span class="stringliteral">&quot;#&quot;</span> . $tags . <span class="stringliteral">&quot; - &quot;</span>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                    }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                    $boolIsPostBookmarked = (<span class="keyword">new</span> <a class="code" href="classBlogPageModel.html">BlogPageModel</a>($obj-&gt;getPageId()))-&gt;isPostBookmarked($_SESSION[<span class="stringliteral">&#39;UserId&#39;</span>]);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                    <span class="keywordflow">if</span> ($boolIsPostBookmarked) {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                        $listOfBoolIsPostBookmarked .= <span class="stringliteral">&quot;1&quot;</span>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                        $listOfBoolIsPostBookmarked .= <span class="stringliteral">&quot;0&quot;</span>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                    }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                    $listOfPageId .= $obj-&gt;getPageId().<span class="stringliteral">&quot;,&quot;</span>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                    $urlBookmark = <span class="stringliteral">&quot;/Post/Blog/&quot;</span> . $obj-&gt;getPageId();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                    <a class="code" href="classMotorView_a958b493a9fb4e0febfbf02eb7376da11.html#a958b493a9fb4e0febfbf02eb7376da11">MotorView::show</a>(<span class="stringliteral">&#39;menu/blogFeed&#39;</span>,</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                        array(</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                            <span class="stringliteral">&quot;blogPostUrl&quot;</span> =&gt; $obj-&gt;getPostUrl(),</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                            <span class="stringliteral">&quot;blogTitle&quot;</span> =&gt; $obj-&gt;getTITLE(),</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                            <span class="stringliteral">&quot;blogContent&quot;</span> =&gt; $obj-&gt;getContent(),</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                            <span class="stringliteral">&quot;blogAuthor&quot;</span> =&gt; $obj-&gt;getAuthor(),</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                            <span class="stringliteral">&quot;blogDate&quot;</span> =&gt; $obj-&gt;getDateP(),</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                            <span class="stringliteral">&quot;blogUrlPicture&quot;</span> =&gt; $obj-&gt;getUrlPicture(),</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                            <span class="stringliteral">&quot;Tags&quot;</span> =&gt; $tagsList,</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                            <span class="stringliteral">&quot;CurentUrlPost&quot;</span> =&gt; $urlBookmark,</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                            <span class="stringliteral">&quot;BoolIsPostBookmarked&quot;</span> =&gt; $boolIsPostBookmarked)); <span class="comment">// plus tard il faudra mettre si l&#39;user a bien liké ou non</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            ?&gt;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            &lt;script src=<span class="stringliteral">&#39;/common_scripts/redirect.js&#39;</span>&gt;&lt;/script&gt;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            &lt;script src=<span class="stringliteral">&#39;/common_scripts/bookmak.js&#39;</span>&gt;&lt;/script&gt;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            &lt;script&gt;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                redirect(<span class="stringliteral">&#39;&lt;?php echo $listOfPageId; ?&gt;&#39;</span>);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                bookmark(<span class="stringliteral">&#39;&lt;?php echo $listOfBoolIsPostBookmarked; ?&gt;&#39;</span>);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            &lt;/script&gt;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            &lt;?php</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            header(<span class="stringliteral">&quot;Location: /Auth/login&quot;</span>);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            die();</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    }</div>
 <div class="ttc" id="aclassBlogPageModel_html"><div class="ttname"><a href="classBlogPageModel.html">BlogPageModel</a></div><div class="ttdef"><b>Definition:</b> BlogPageModel.php:22</div></div>
-<div class="ttc" id="aclassBlog__Page_a39e8805501fac2a44408e1ae0135785a_html_a39e8805501fac2a44408e1ae0135785a"><div class="ttname"><a href="classBlog__Page_a39e8805501fac2a44408e1ae0135785a.html#a39e8805501fac2a44408e1ae0135785a">Blog_Page\get5PagesByDate</a></div><div class="ttdeci">get5PagesByDate(string $date=null, int $UserId=null)</div><div class="ttdef"><b>Definition:</b> Blog_Page.php:193</div></div>
+<div class="ttc" id="aclassBlog__Page_a39e8805501fac2a44408e1ae0135785a_html_a39e8805501fac2a44408e1ae0135785a"><div class="ttname"><a href="classBlog__Page_a39e8805501fac2a44408e1ae0135785a.html#a39e8805501fac2a44408e1ae0135785a">Blog_Page\get5PagesByDate</a></div><div class="ttdeci">get5PagesByDate(string $date=null, int $UserId=null)</div><div class="ttdef"><b>Definition:</b> Blog_Page.php:194</div></div>
 <div class="ttc" id="aclassBlog__Page_html"><div class="ttname"><a href="classBlog__Page.html">Blog_Page</a></div><div class="ttdef"><b>Definition:</b> Blog_Page.php:35</div></div>
 <div class="ttc" id="aclassMotorView_a958b493a9fb4e0febfbf02eb7376da11_html_a958b493a9fb4e0febfbf02eb7376da11"><div class="ttname"><a href="classMotorView_a958b493a9fb4e0febfbf02eb7376da11.html#a958b493a9fb4e0febfbf02eb7376da11">MotorView\show</a></div><div class="ttdeci">static show(string $viewPath, array $mapOfModelContent=array())</div><div class="ttdef"><b>Definition:</b> MotorView.php:50</div></div>
+<div class="ttc" id="aclassSessionManager_a6eacce9cf70e20f6206f1b2c01f6c439_html_a6eacce9cf70e20f6206f1b2c01f6c439"><div class="ttname"><a href="classSessionManager_a6eacce9cf70e20f6206f1b2c01f6c439.html#a6eacce9cf70e20f6206f1b2c01f6c439">SessionManager\isUserConnected</a></div><div class="ttdeci">static isUserConnected()</div><div class="ttdef"><b>Definition:</b> SessionManager.php:35</div></div>
 </div><!-- fragment -->
-<p class="reference">Références <a class="el" href="classBlog__Page_a39e8805501fac2a44408e1ae0135785a.html#a39e8805501fac2a44408e1ae0135785a">Blog_Page\get5PagesByDate()</a>, et <a class="el" href="classMotorView_a958b493a9fb4e0febfbf02eb7376da11.html#a958b493a9fb4e0febfbf02eb7376da11">MotorView\show()</a>.</p>
+<p class="reference">Références <a class="el" href="classBlog__Page_a39e8805501fac2a44408e1ae0135785a.html#a39e8805501fac2a44408e1ae0135785a">Blog_Page\get5PagesByDate()</a>, <a class="el" href="classSessionManager_a6eacce9cf70e20f6206f1b2c01f6c439.html#a6eacce9cf70e20f6206f1b2c01f6c439">SessionManager\isUserConnected()</a>, et <a class="el" href="classMotorView_a958b493a9fb4e0febfbf02eb7376da11.html#a958b493a9fb4e0febfbf02eb7376da11">MotorView\show()</a>.</p>
 
 </div>
 </div>

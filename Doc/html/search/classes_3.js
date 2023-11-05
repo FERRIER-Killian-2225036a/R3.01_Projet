@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['databasemanager_210',['DatabaseManager',['../classDatabaseManager.html',1,'']]],
-  ['dbbrain_211',['DBBrain',['../classDBBrain.html',1,'']]]
+  ['databasemanager_250',['DatabaseManager',['../classDatabaseManager.html',1,'']]],
+  ['dbbrain_251',['DBBrain',['../classDBBrain.html',1,'']]],
+  ['dbbraintest_252',['DBBrainTest',['../classDBBrainTest.html',1,'']]]
 ];
