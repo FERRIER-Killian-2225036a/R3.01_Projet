@@ -18,7 +18,7 @@
         <div class="col-md-6">
             <img id="profile-image"
                  src="<?= (SessionManager::isUserConnected() && $_SESSION['UrlPicture'] !== null) ? $_SESSION['UrlPicture'] : Constants::PDP_URL_DEFAULT; ?>"
-                 alt="Photo de profil" class="img-thumbnail w-10 rounded-circle">
+                 alt="Photo de profil" class="img-thumbnail w-10 rounded-circle" height="150" width="150">
         </div>
         <div class="col-md-6 d-flex align-items-center justify-content-end">
             <div class="btn-group">
