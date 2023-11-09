@@ -3,6 +3,8 @@
 <!-- Inclusion de fichiers CSS -->
 <link rel="stylesheet" href="/common_styles/password.css">
 <link rel="stylesheet" href="/common_styles/wrongInfo.css">
+<link rel="stylesheet" href="https://unpkg.com/cropperjs/dist/cropper.css">
+
 
 <!-- Conteneur principal -->
 <div class="col container">
@@ -28,10 +30,24 @@
                            style="display: none;">
                     <input type="hidden" name="ChangeProfilePicture" value="1">
                 </form>
+                <button id="cropButton" class="btn btn-outline-primary" style="display: none;">Recadrer</button>
+                <button id="confirmButton" class="btn btn-outline-success" style="display: none;">Valider</button>
                 <form action="/Settings/ManageAccount" method="POST">
                     <button class="btn btn-outline-danger" name="DeleteProfilePicture" type="submit">Supprimer</button>
                 </form>
                 <label id="wrongInfo"></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <div id="imageWrapper">
+                    <img id="image" src="" alt="Image de profil">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div id="cropperWrapper">
+                    <img id="croppedImage" src="" alt="Image recadrée">
+                </div>
             </div>
         </div>
     </div>
@@ -130,4 +146,6 @@
 <script src="/common_scripts/showErrorMessage.js"></script>
 <script src="/common_scripts/checkPassword.js"></script>
 <script src="/common_scripts/passwordVisibility.js"></script>
+<script src="/common_scripts/cropPicture.js"></script>
 <script src="https://kit.fontawesome.com/f8a6cc215e.js" crossorigin="anonymous"></script><!--Pour ajouter des icones -->
+<script src="https://unpkg.com/cropperjs/dist/cropper.js"></script>
