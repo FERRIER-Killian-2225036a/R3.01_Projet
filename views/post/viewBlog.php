@@ -6,9 +6,11 @@
         <div class="row mb-4">
             <!-- Section d'informations sur l'auteur -->
             <div class="col-md-6 d-flex align-items-center">
+                <a href="/User/Profil/<?= $mapView["AuthorId"]?>">
                 <img src="<?php echo $mapView['ImgProfil'] ?>" alt="image" class="rounded-circle mr-3" height="45px">
+                </a>
                 <div id="textUser">
-                    <p class="mb-0"><?php echo $mapView['Author'] ?></p>
+                    <a href="/User/Profil/<?= $mapView["AuthorId"]?>"><p class="mb-0"><?php echo $mapView['Author'] ?></p></a>
                     <small><?php echo $mapView['NumberOfFollower'] ?> abonnés</small>
                 </div>
                 <!-- Formulaire pour suivre l'auteur -->
@@ -78,9 +80,13 @@
                     $picture = "/media/users/Profil.png";
                 }
                 echo '<div class="col-md-6 d-flex align-items-center">';
+                echo '<a href="/User/Profil/'.$comment->getUser()->getId().'">';
                 echo '<img src="' . $picture . '" alt="image" class="rounded-circle mr-3" height="45px">';
+                echo '</a>';
                 echo '<div id="textUser">';
+                echo '<a href="/User/Profil/'.$comment->getUser()->getId().'">';
                 echo '<p class="mb-0">' . $comment->getUser()->getPseudo() . '</p>';
+                echo '</a>';
                 echo '<small>' . $comment->getUser()->getNumberOfFollower() . ' abonnés</small>';
                 echo '</div>';
                 //<!-- Formulaire pour suivre l'auteur /!\ potentiel bug revoir controlleur User pour géré les abos aussi pour l'auteur -->
@@ -92,7 +98,7 @@
                     echo '<button class="btn btn-custom-purple deleteComment" name="DeleteComment" value="'.$comment->getCommentId() .'" type="submit">Supprimer</button>';
                     echo '</form>';
                 }
-                else if ($comment->getUser()->getId() == $comment->getBlogPage()->getUserId()) {
+                elseif ($comment->getUser()->getId() == $comment->getBlogPage()->getUserId() && $_SESSION["UserId"] == $comment->getBlogPage()->getUserId()) {
                     echo '<form action="' . $mapView["CurentUrlPost"] . '" method ="POST" >';
                     echo '<button class="btn btn-custom-purple deleteComment" name="DeleteComment" value="'.$comment->getCommentId() .'" type="submit">Supprimer</button>';
                     echo '</form>';
@@ -135,14 +141,13 @@
     let boolIsFollowed = <?php echo $mapView['BoolIsFollowed'] ? 1 : 0 ?>; // TODO php mauvais user, a changer (author au lieu de user) pas sure a verif ?
     // Condition si l'utilisateur est suivi
     if (boolIsFollowed === 1) {
-        for (let i = 0; i < followedButton.length; ++i) {
-            // On change le texte du bouton
-            followedButton[i].innerHTML = 'Suivi';
-            // On met le fond en violet
-            followedButton[i].style.backgroundColor = 'var(--purple)';
-            // On met le texte en blanc
-            followedButton[i].style.color = 'white';
-        }
+        // On change le texte du bouton
+        followedButton[0].innerHTML = 'Suivi';
+        // On met le fond en violet
+        followedButton[0].style.backgroundColor = 'var(--purple)';
+        // On met le texte en blanc
+        followedButton[0].style.color = 'white';
+
     }
 
     // Script pour le changement du logo signet

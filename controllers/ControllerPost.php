@@ -536,6 +536,14 @@ class ControllerPost
                         }
                         $tagsStringForInput = substr($tagsStringForInput, 0, strlen($tagsStringForInput) - 1);
                         // $tagsStringForInput sera fourni dans l'input dans l'input de la vue,
+                        $listBoolFollowed = "";
+                        foreach ($arrayOfComments as $comment ) {
+                            if ($comment->getUser()->isFollowed($_SESSION['UserId'])) {
+                                $listBoolFollowed.="1";
+                            } else {
+                                $listBoolFollowed.="0";
+                            }
+                        }
                         MotorView::show('post/viewBlog', array("Title" => $title,
                             "Content" => $content,
                             "Tags" => $tagsStringForInput,
@@ -547,7 +555,14 @@ class ControllerPost
                             "BoolIsPostBookmarked" => $boolIsPostBookmarked,
                             "CurentUrlPost" => $urlBookmark,
                             "Comments" => $arrayOfComments,
+                            "AuthorId" => $userId,
                         ));
+                        ?>
+                        <script src='/common_scripts/isFollowed.js'></script>
+                        <script>
+                            isFollowed('<?php echo $listBoolFollowed; ?>');
+                        </script>
+                        <?php
                     }
                 }
 
