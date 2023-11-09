@@ -22,7 +22,12 @@
         </div>
         <div class="col-md-6 d-flex align-items-center justify-content-end">
             <div class="btn-group">
-                <a href="crop.php" class="btn btn-outline-dark mr-2">Modifier</a>
+                <form action="/Settings/ManageAccount" method="POST" enctype="multipart/form-data">
+                    <label for="file" class="btn btn-outline-dark mr-2">Modifier</label>
+                    <input id="file" type="file" name="ProfilePicture" accept=".jpg, .jpeg, .png, .gif"
+                           style="display: none;">
+                    <input type="hidden" name="ChangeProfilePicture" value="1">
+                </form>
                 <form action="/Settings/ManageAccount" method="POST">
                     <button class="btn btn-outline-danger" name="DeleteProfilePicture" type="submit">Supprimer</button>
                 </form>
@@ -125,4 +130,5 @@
 <script src="/common_scripts/showErrorMessage.js"></script>
 <script src="/common_scripts/checkPassword.js"></script>
 <script src="/common_scripts/passwordVisibility.js"></script>
+<script src="/common_scripts/cropPicture.js"></script>
 <script src="https://kit.fontawesome.com/f8a6cc215e.js" crossorigin="anonymous"></script><!--Pour ajouter des icones -->

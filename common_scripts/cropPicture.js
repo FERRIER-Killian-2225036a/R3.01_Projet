@@ -1,34 +1,27 @@
-// Au chargement de la page, configurez Cropper.js
-let cropper;
+// Supposons que "inputFile" est l'élément <input> pour sélectionner l'image.
+const inputFile = document.getElementById('inputFile');
 
-document.getElementById('image').src = 'url_de_votre_image_a_recadrer.jpg';
+inputFile.addEventListener('change', function() {
+    const file = inputFile.files[0];
+    const image = new Image();
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
 
-document.getElementById('cropButton').addEventListener('click', function() {
-    const image = document.getElementById('image');
-    const canvas = document.getElementById('croppedImage');
+    image.onload = function() {
+        const size = Math.min(image.width, image.height);
+        canvas.width = size;
+        canvas.height = size;
+        ctx.drawImage(image, 0, 0, size, size, 0, 0, size, size);
 
-    // Initialisez Cropper.js avec l'image
-    cropper = new Cropper(image, {
-        aspectRatio: 1, // Ratio carré
-        viewMode: 1,    // Ajuste l'image dans le cadre
-        crop: function(event) {
-            const croppedCanvas = cropper.getCroppedCanvas();
-            canvas.width = croppedCanvas.width;
-            canvas.height = croppedCanvas.height;
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(croppedCanvas, 0, 0, croppedCanvas.width, croppedCanvas.height);
-        }
-    });
+        // Maintenant, "canvas" contient l'image carrée recadrée.
+        const croppedImage = canvas.toDataURL('image/png');
+    };
 
-    document.getElementById('confirmButton').style.display = 'block';
-});
-
-document.getElementById('confirmButton').addEventListener('click', function() {
-    const croppedCanvas = cropper.getCroppedCanvas();
-
-    if (croppedCanvas) {
-        // Récupérer l'image recadrée et effectuer une action, par exemple, l'envoyer au serveur.
-        const croppedImageURL = croppedCanvas.toDataURL('image/jpeg');
-        // Vous pouvez maintenant faire quelque chose avec l'URL de l'image recadrée, par exemple, l'envoyer au serveur.
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            image.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
     }
 });
