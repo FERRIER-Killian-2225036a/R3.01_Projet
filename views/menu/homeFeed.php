@@ -10,9 +10,9 @@
                 <?php
                 if (SessionManager::isUserConnected()) {
                     // User is logged in
-                    echo '<h1 class="homeTitle">Bonjour ' . $_SESSION['username'] . ' !</h1>';
-                    echo '<p class="colorText lead text-body-secondary">Que voulez-vous faire aujourd\'hui.</p>';
-                    echo '<a href="/create-blog" class="cta colorText noneColor text-left block">';
+                    echo '<h1 class="homeTitle">Bonjour ' . $_SESSION['Username'] . ' !</h1>';
+                    echo '<p class="colorText lead text-body-secondary">Que voulez-vous faire aujourd\'hui ?</p>';
+                    echo '<a href="/Post/BlogEdit" class="cta colorText noneColor text-left block">';
                     echo '<span class="visual">Créer un blog</span>';
                     echo '<svg class="svg1" width="13px" height="10px" viewBox="0 0 13 10">';
                     echo '<path d="M1,5 L11,5"></path>';
