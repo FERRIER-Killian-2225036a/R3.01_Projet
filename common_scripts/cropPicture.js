@@ -1,39 +1,27 @@
-// Au chargement de la page, configurez Cropper.js
-let cropper;
+// Supposons que "inputFile" est l'élément <input> pour sélectionner l'image.
+const inputFile = document.getElementById('inputFile');
 
-document.getElementById('file').addEventListener('change', function() {
-    const file = this.files[0];
-    const image = document.getElementById('image');
+inputFile.addEventListener('change', function() {
+    const file = inputFile.files[0];
+    const image = new Image();
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
 
-    if (file && image) {
+    image.onload = function() {
+        const size = Math.min(image.width, image.height);
+        canvas.width = size;
+        canvas.height = size;
+        ctx.drawImage(image, 0, 0, size, size, 0, 0, size, size);
+
+        // Maintenant, "canvas" contient l'image carrée recadrée.
+        const croppedImage = canvas.toDataURL('image/png');
+    };
+
+    if (file) {
         const reader = new FileReader();
-
         reader.onload = function(e) {
             image.src = e.target.result;
-            document.getElementById('cropButton').style.display = 'block';
-
-            // Initialisez Cropper.js avec l'image
-            cropper = new Cropper(image, {
-                aspectRatio: 1, // Ratio carré
-                viewMode: 1,    // Ajuste l'image dans le cadre
-            });
         };
-
         reader.readAsDataURL(file);
     }
-});
-
-document.getElementById('cropButton').addEventListener('click', function() {
-    const croppedCanvas = cropper.getCroppedCanvas();
-
-    if (croppedCanvas) {
-        const croppedImage = document.getElementById('croppedImage');
-        croppedImage.src = croppedCanvas.toDataURL();
-        document.getElementById('confirmButton').style.display = 'block';
-    }
-});
-
-document.getElementById('confirmButton').addEventListener('click', function() {
-    // Récupérer l'image recadrée et effectuer une action, par exemple, l'envoyer au serveur.
-    // ...
 });
