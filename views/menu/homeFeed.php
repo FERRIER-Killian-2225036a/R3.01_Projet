@@ -20,6 +20,7 @@
                     echo '<polyline points="8 1 12 5 8 9"></polyline>';
                     echo '</svg>';
                     echo '</a>';
+                    echo '</div>';
                 } else {
                     // User is not logged in
                     echo '<h1 class="homeTitle">Bienvenue chez Cyphub !</h1>';
