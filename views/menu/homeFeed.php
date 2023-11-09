@@ -12,6 +12,7 @@
                     // User is logged in
                     echo '<h1 class="homeTitle">Bonjour ' . $_SESSION['Username'] . ' !</h1>';
                     echo '<p class="colorText lead text-body-secondary">Que voulez-vous faire aujourd\'hui ?</p>';
+                    echo '<div class="col-lg-8 col-md-8 mx-left">';
                     echo '<a href="/Post/BlogEdit" class="cta colorText noneColor text-left block">';
                     echo '<span class="visual">Créer un blog</span>';
                     echo '<svg class="svg1" width="13px" height="10px" viewBox="0 0 13 10">';
