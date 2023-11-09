@@ -7,32 +7,45 @@
     <section class="padding text-left">
         <div class="row">
             <div class="col-lg-6 col-md-8">
-                <!-- Titre de la page d'accueil -->
-                <h1 class="homeTitle">Bienvenue chez Cyphub !</h1>
-                <!-- Description de Cyphub -->
-                <p class="colorText lead text-body-secondary">Connectez-vous à l'avenir de la cybersécurité avec CybHub : Actualités, Blogs et Forums pour les passionnés de la cybersécurité</p>
-
-                <div class="col-lg-8 col-md-8 mx-left">
-                    <!-- Bouton de connexion -->
-                    <a href="/Auth/Login" class="cta colorText noneColor text-left block">
-                        <span class="visual">Se connecter</span>
-                        <svg class="svg1" width="13px" height="10px" viewBox="0 0 13 10">
-                            <path d="M1,5 L11,5"></path>
-                            <polyline points="8 1 12 5 8 9"></polyline>
-                        </svg>
-                    </a>
-                    <!-- Bouton de création de compte -->
-                    <a href="/Auth/SignUp" class="cta colorText noneColor text-left block">
-                        <span class="visual">Créer un compte</span>
-                        <svg class="svg1" width="13px" height="10px" viewBox="0 0 13 10">
-                            <path d="M1,5 L11,5"></path>
-                            <polyline points="8 1 12 5 8 9"></polyline>
-                        </svg>
-                    </a>
-                </div>
+                <?php
+                if (SessionManager::isUserConnected()) {
+                    // User is logged in
+                    echo '<h1 class="homeTitle">Bonjour ' . $_SESSION['username'] . ' !</h1>';
+                    echo '<p class="colorText lead text-body-secondary">Que voulez-vous faire aujourd\'hui.</p>';
+                    echo '<a href="/create-blog" class="cta colorText noneColor text-left block">';
+                    echo '<span class="visual">Créer un blog</span>';
+                    echo '<svg class="svg1" width="13px" height="10px" viewBox="0 0 13 10">';
+                    echo '<path d="M1,5 L11,5"></path>';
+                    echo '<polyline points="8 1 12 5 8 9"></polyline>';
+                    echo '</svg>';
+                    echo '</a>';
+                } else {
+                    // User is not logged in
+                    echo '<h1 class="homeTitle">Bienvenue chez Cyphub !</h1>';
+                    echo '<p class="colorText lead text-body-secondary">Connectez-vous à l\'avenir de la cybersécurité avec CybHub : Actualités, Blogs et Forums pour les passionnés de la cybersécurité</p>';
+                    echo '<div class="col-lg-8 col-md-8 mx-left">';
+                    echo '<a href="/Auth/Login" class="cta colorText noneColor text-left block">';
+                    echo '<span class="visual">Se connecter</span>';
+                    echo '<svg class="svg1" width="13px" height="10px" viewBox="0 0 13 10">';
+                    echo '<path d="M1,5 L11,5"></path>';
+                    echo '<polyline points="8 1 12 5 8 9"></polyline>';
+                    echo '</svg>';
+                    echo '</a>';
+                    echo '<a href="/Auth/SignUp" class="cta colorText noneColor text-left block">';
+                    echo '<span class="visual">Créer un compte</span>';
+                    echo '<svg class="svg1" width="13px" height="10px" viewBox="0 0 13 10">';
+                    echo '<path d="M1,5 L11,5"></path>';
+                    echo '<polyline points="8 1 12 5 8 9"></polyline>';
+                    echo '</svg>';
+                    echo '</a>';
+                    echo '</div>';
+                }
+                ?>
             </div>
 
-            <div class="col-lg-6 col-md-4 text-right">
+
+
+    <div class="col-lg-6 col-md-4 text-right">
                 <!-- Image de décoration à droite -->
                 <img src="/media/public_assets/homePicture.png" id="decorationImg" alt="Logo Cyphub" width="632" height="395">
             </div>
