@@ -28,7 +28,7 @@
                     <?php else : ?>
                         <a href="/Auth/Login">
                             <!-- Bouton de connexion -->
-                            <button class="btn btn-outline-light ml-3">SE CONNECTER</button>
+                            <button class="btn btn-outline-light"><strong>SE CONNECTER</strong></button>
                         </a>
                     <?php endif; ?>
                 </li>
