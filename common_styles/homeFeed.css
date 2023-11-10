@@ -171,3 +171,10 @@ a:hover {
     }
 
 }
+.img-fluid{
+    max-width: 100%;
+    height: auto;
+}
+.animated{
+    animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
