@@ -49,7 +49,7 @@
 
     <div class="col-lg-6 col-md-4 text-right">
                 <!-- Image de décoration à droite -->
-                <img src="/media/public_assets/newHomePicture.png" id="decorationImg" alt="Logo Cyphub" class="img-fluid animated" >
+                <img src="/media/public_assets/retestHomePicture.png" id="decorationImg" alt="Logo Cyphub" class="img-fluid animated" >
             </div>
         </div>
     </section>
