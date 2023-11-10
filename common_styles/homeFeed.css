@@ -178,3 +178,9 @@ a:hover {
 .animated{
     animation: up-down 2s ease-in-out infinite alternate-reverse both;
 }
+/* Style pour les boutons désactivés */
+.disabled {
+    opacity: 0.5;  /* Opacité réduite pour indiquer que le bouton est désactivé */
+    cursor: not-allowed;  /* Curseur non autorisé pour indiquer qu'il n'est pas cliquable */
+    /* Autres styles que vous souhaitez appliquer aux boutons désactivés */
+}
