@@ -175,8 +175,17 @@ a:hover {
     max-width: 100%;
     height: auto;
 }
-.animated{
-    animation: up-down 2s ease-in-out infinite alternate-reverse both;
+#decorationImg {
+    animation: moveDown 2s ease-in-out infinite;  /* L'animation durera 2 secondes, se répétera indéfiniment et aura une accélération/décélération */
+}
+
+@keyframes moveDown {
+    0% {
+        transform: translateY(-100%);  /* Commence à 100% en haut de l'élément (déplace l'image vers le haut de l'écran) */
+    }
+    100% {
+        transform: translateY(100%);   /* Termine à 100% en bas de l'élément (déplace l'image vers le bas de l'écran) */
+    }
 }
 /* Style pour les boutons désactivés */
 .disabled {
