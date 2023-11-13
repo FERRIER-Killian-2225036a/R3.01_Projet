@@ -1,8 +1,8 @@
 :root {
     /* Base Colors */
-    --purple: #7B3DFF;
+    --purple: #BA55D3;
     --purple-light: rgba(158, 117, 253, 0.7);
-    --purple-blue: linear-gradient(150deg,purple, darkviolet, deepskyblue);
+    --purple-blue: linear-gradient(90deg,purple, darkviolet, deepskyblue);
     --black: black;
     --red: red;
     --orange: orange;
