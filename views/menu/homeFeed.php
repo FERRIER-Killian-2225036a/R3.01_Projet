@@ -75,7 +75,7 @@
             </div>
             <div class="col-md-4 d-flex justify-content-center">
                 <!-- Bouton pour le forum -->
-                <a href="forumFeed.php" type="button" class="w-20 rounded-4 btn btn-lg text-center colorButton shadow-gn disabled"><!--grow-button Pour l'instant jusqu'à ce que la page forum fonctionne dès que ça fonctionne virer le disabled-->
+                <a href="forumFeed.php" type="button" class="w-20 rounded-4 btn btn-lg text-center colorButton shadow-gn grow-button "><!-- "disabled" grow-button Pour l'instant jusqu'à ce que la page forum fonctionne dès que ça fonctionne virer le disabled-->
                     <img class="iconSize" src="../../media/public_assets/icone/iconeForumWhite.png" alt="Icone Forum">
                     <p class="colorText responsiveText">Forum</p>
                 </a>
