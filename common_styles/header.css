@@ -63,7 +63,7 @@ a > img {
 
 /* Style pour la couleur violette personnalisée */
 .bg-custom-purple {
-    background: linear-gradient(150deg,purple, purple,darkviolet, darkviolet, darkviolet, darkviolet, darkviolet, darkviolet, deepskyblue); /* Couleur d'arrière-plan violette */
+    background: linear-gradient(150deg,purple,purple,purple, darkviolet,darkviolet,darkviolet,darkviolet); /* Couleur d'arrière-plan violette */
     color: white; /* Couleur du texte en blanc */
 }
 
