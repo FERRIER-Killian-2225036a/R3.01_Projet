@@ -5,7 +5,7 @@
 }
 
 .background {
-    background-color: var(--purple-light) !important;
+    background-color: var(--purple-blue) !important;
 }
 
 .block {
@@ -178,6 +178,8 @@ a:hover {
 
 /* Style pour les boutons désactivés */
 .disabled {
+    padding: 3.5em 0;
+    font-size: 16px;
     opacity: 0.5;  /* Opacité réduite pour indiquer que le bouton est désactivé */
     cursor: not-allowed;  /* Curseur non autorisé pour indiquer qu'il n'est pas cliquable */
     /* Autres styles que vous souhaitez appliquer aux boutons désactivés */

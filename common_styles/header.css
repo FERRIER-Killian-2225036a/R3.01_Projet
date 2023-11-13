@@ -5,7 +5,7 @@
 
 /* Style pour la barre de navigation supérieure */
 .navbar-top {
-    background-color: var(--purple-light) !important;
+    background-color: var(--purple-blue) !important;
 }
 
 /* Style pour la barre de navigation inférieure */
@@ -63,7 +63,7 @@ a > img {
 
 /* Style pour la couleur violette personnalisée */
 .bg-custom-purple {
-    background-color: var(--purple-light); /* Couleur d'arrière-plan violette */
+    background-color: var(--purple-blue); /* Couleur d'arrière-plan violette */
     color: white; /* Couleur du texte en blanc */
 }
 
