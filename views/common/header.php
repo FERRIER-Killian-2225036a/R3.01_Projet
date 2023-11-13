@@ -14,8 +14,7 @@
                 <li class="nav-item">
                     <form action="/Menu/Search" method="POST" class="d-flex">
                         <!-- Barre de recherche -->
-
-                        <input class="form-control" name="Search" type="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control mr-2" name="Search" type="search" placeholder="Search" aria-label="Search">
                     </form>
                 </li>
                 <li class="nav-item">
@@ -28,10 +27,11 @@
                     <?php else : ?>
                         <a href="/Auth/Login">
                             <!-- Bouton de connexion -->
-                            <button class="btn btn-outline-light"><strong>SE CONNECTER</strong></button>
+                            <button class="btn btn-outline-light menu-img"><strong>SE CONNECTER</strong></button>
                         </a>
                     <?php endif; ?>
                 </li>
+
                 <li class="nav-item">
                     <?php if (SessionManager::isUserConnected()) : ?>
                         <a href="/Auth/LogOut">
