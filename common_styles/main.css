@@ -2,7 +2,7 @@
     /* Base Colors */
     --purple: #7B3DFF;
     --purple-light: rgba(158, 117, 253, 0.7);
-    --purple-blue: linear-gradient(300deg,darkviolet, deepskyblue);
+    --purple-blue: linear-gradient(150deg,purple, darkviolet, deepskyblue);
     --black: black;
     --red: red;
     --orange: orange;
