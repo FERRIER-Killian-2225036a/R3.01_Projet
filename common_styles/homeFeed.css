@@ -178,17 +178,17 @@ a:hover {
 
 /* Style pour les boutons désactivés */
 .disabled {
-    padding: 3.5em 0;
-    font-size: 16px;
     opacity: 0.5;  /* Opacité réduite pour indiquer que le bouton est désactivé */
     cursor: not-allowed;  /* Curseur non autorisé pour indiquer qu'il n'est pas cliquable */
-    /* Autres styles que vous souhaitez appliquer aux boutons désactivés */
+    position: relative; /* Nécessaire pour positionner le pseudo-élément par rapport au bouton */
 }
-.grow-button-disabled{
-    padding: 3.5em 0;
-    font-size: 16px;
-    transition: transform 0.3s ease;
-    opacity: 0.5;  /* Opacité réduite pour indiquer que le bouton est désactivé */
-    cursor: not-allowed;  /* Curseur non autorisé pour indiquer qu'il n'est pas cliquable */
 
+.disabled::before {
+    content: '✖'; /* Caractère croix */
+    position: absolute; /* Position absolue par rapport au bouton */
+    top: 50%; /* Alignement vertical au centre */
+    left: 50%; /* Alignement horizontal au centre */
+    transform: translate(-50%, -50%); /* Ajustement pour centrer correctement la croix */
+    color: red; /* Couleur de la croix */
+    font-size: 14px; /* Taille de la croix */
 }
