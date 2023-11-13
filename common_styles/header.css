@@ -5,7 +5,7 @@
 
 /* Style pour la barre de navigation supérieure */
 .navbar-top {
-    background: linear-gradient(150deg,purple, darkviolet,darkviolet,darkviolet,darkviolet, deepskyblue) !important;
+    background: linear-gradient(150deg,purple,purple,purple, darkviolet,darkviolet,darkviolet,darkviolet) !important;
 }
 
 /* Style pour la barre de navigation inférieure */
@@ -63,7 +63,7 @@ a > img {
 
 /* Style pour la couleur violette personnalisée */
 .bg-custom-purple {
-    background: linear-gradient(150deg,purple, darkviolet, darkviolet, deepskyblue); /* Couleur d'arrière-plan violette */
+    background: linear-gradient(150deg,purple, purple,darkviolet, darkviolet, darkviolet, darkviolet, darkviolet, darkviolet, deepskyblue); /* Couleur d'arrière-plan violette */
     color: white; /* Couleur du texte en blanc */
 }
 
