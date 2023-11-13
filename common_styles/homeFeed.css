@@ -5,7 +5,7 @@
 }
 
 .background {
-    background-color: var(--purple-blue) !important;
+    background: var(--purple-blue) !important;
 }
 
 .block {
